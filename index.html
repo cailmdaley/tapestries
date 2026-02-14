@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portolan — Research Rhizome</title>
+    <title>Portolan — Research Tapestry</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <style>
       @font-face {
@@ -245,18 +245,61 @@
         padding: 0.2rem 0;
       }
 
+      /* ── Sidebar ── */
+      .rhizome-sidebar {
+        width: 20vw; min-width: 200px; flex-shrink: 0;
+        border-left: 1px solid var(--ui-border); background: var(--ui-dark-elevated);
+        display: flex; flex-direction: column; overflow: hidden; position: relative;
+        transition: width 200ms ease;
+      }
+      .rhizome-sidebar.expanded { width: 40vw; min-width: 300px; max-width: 800px; }
+      .rhizome-sidebar-resize {
+        position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+        cursor: col-resize; z-index: 10; background: transparent; display: none;
+      }
+      .rhizome-sidebar.expanded .rhizome-sidebar-resize { display: block; }
+      .rhizome-sidebar-resize:hover, .rhizome-sidebar-resize:active { background: var(--ui-gold); opacity: 0.4; }
+      .rhizome-fiber-list { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+      .rhizome-fiber-list.hidden { display: none; }
+      .rhizome-fiber-list .rhizome-search { border-top: none; border-bottom: 1px solid var(--ui-border); }
+      .rhizome-fiber-results { flex: 1; overflow-y: auto; padding: 0.2rem 0; }
+      .fiber-item {
+        display: flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.8rem;
+        cursor: pointer; font-family: var(--font-main); font-size: 0.82rem; color: var(--ui-text);
+        transition: background 150ms;
+      }
+      .fiber-item:hover { background: var(--ui-dark-surface); }
+      .fiber-item-rule { border-left: 2px solid var(--ui-teal); }
+      .fiber-item .fiber-status { flex-shrink: 0; font-size: 0.7rem; color: var(--ui-text-muted); }
+      .fiber-item .fiber-staleness { flex-shrink: 0; font-size: 0.55rem; }
+      .fiber-item .fiber-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .fiber-item .fiber-dot { flex-shrink: 0; font-size: 0.65rem; }
+      .fiber-item .fiber-kind {
+        flex-shrink: 0; font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase;
+        letter-spacing: 0.05em; padding: 0.1rem 0.3rem; border-radius: 2px;
+        background: var(--ui-dark-surface); color: var(--ui-text-muted);
+      }
+      .fiber-item .fiber-tag {
+        flex-shrink: 0; font-family: var(--font-mono); font-size: 0.55rem;
+        padding: 0.05rem 0.25rem; border-radius: 2px;
+        background: var(--ui-dark-surface); color: var(--ui-text-muted); border: 1px solid var(--ui-border);
+      }
+      .rhizome-legend {
+        flex-shrink: 0; padding: 0.4rem 0.8rem; border-top: 1px solid var(--ui-border);
+        display: flex; flex-wrap: wrap; gap: 0.5rem;
+        font-family: var(--font-main); font-size: 0.7rem; color: var(--ui-text-muted);
+      }
+      .legend-item { white-space: nowrap; }
+      .legend-sep { color: var(--ui-border); }
+      .rhizome-detail-reason { font-size: 0.82rem; color: var(--ui-text-muted); margin-bottom: 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--ui-border); }
+
       /* ── Detail panel ── */
       .rhizome-detail {
-        width: 420px;
-        flex-shrink: 0;
-        border-left: 1px solid var(--ui-border);
+        flex: 1; flex-shrink: 0;
         background: var(--ui-dark-elevated);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        position: relative;
+        display: flex; flex-direction: column; overflow: hidden; position: relative;
       }
-      .rhizome-detail.hidden { width: 0 !important; opacity: 0; border: none; overflow: hidden; }
+      .rhizome-detail.hidden { display: none; }
       .rhizome-detail-resize {
         position: absolute; left: 0; top: 0; bottom: 0;
         width: 4px; cursor: col-resize; z-index: 10; background: transparent;
@@ -327,18 +370,9 @@
       .rhizome-detail-body th, .rhizome-detail-body td { padding: 0.3rem 0.5rem; border: 1px solid var(--ui-border); text-align: left; }
       .rhizome-detail-body th { background: var(--ui-dark-surface); font-weight: 600; }
 
-      /* Detail: evidence */
-      .rhizome-evidence-section h3 {
-        display: flex; align-items: center; gap: 0.4rem;
-        font-family: var(--font-main); font-size: 0.85rem; font-weight: 600;
-        font-variant: small-caps; letter-spacing: 0.08em;
-        color: var(--ui-text-muted); cursor: pointer; margin: 0.6rem 0 0.3rem; user-select: none;
-      }
-      .rhizome-evidence-section h3:hover { color: var(--ui-text); }
-      .rhizome-evidence-section .toggle-icon { font-size: 0.75rem; color: var(--ui-text-muted); }
-      .evidence-container.collapsed { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-      .evidence-container:not(.collapsed) { max-height: 400px; overflow-y: auto; transition: max-height 0.3s ease-in; }
-      .rhizome-evidence { background: var(--ui-dark-surface); border-radius: 2px; padding: 0.5rem; }
+      /* Detail: evidence (code block) */
+      .rhizome-evidence-section { margin-top: 0.8rem; }
+      .rhizome-evidence { background: var(--ui-dark-surface); border-radius: 2px; padding: 0.5rem; max-height: 400px; overflow-y: auto; }
       .rhizome-evidence .evidence-item { display: flex; justify-content: space-between; padding: 0.2rem 0; font-size: 0.78rem; }
       .rhizome-evidence .evidence-key { font-family: var(--font-mono); color: var(--ui-text-muted); }
       .rhizome-evidence .evidence-value { font-family: var(--font-mono); color: var(--ui-text); }
@@ -376,7 +410,7 @@
         to { opacity: 1; transform: translateX(-50%) translateY(0); }
       }
     </style>
-    <script type="module" crossorigin src="./assets/index-Du2wCeUY.js"></script>
+    <script type="module" crossorigin src="./assets/index-3jeaj5Ah.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-CcXVtVH8.css">
   </head>
   <body>
