@@ -1,0 +1,1877 @@
+{
+  "nodes": [
+    {
+      "id": "1d-plots-8fbdf52f",
+      "title": "1d plots",
+      "kind": "task",
+      "status": "open",
+      "body": "# 1D Plotting Specification\n\nShared styling for version comparisons, B-mode error bar plots, and diagnostic figures.\n\n## Purpose\n\nConsistent visual language across all 1D comparison plots. Fiducial version emphasized, comparison versions subdued. Clear error visualization with minimal clutter.\n\n## A&A Figure Dimensions\n\nStandard widths (inches):\n- **Single-column**: 3.54 (88mm)\n- **Double-column**: 7.24 (180mm)\n\nAll figures use one of these two widths. Height varies by content.\n\n## Config References\n\n| Element | Config Key |\n|---------|------------|\n| Versions | `versions` |\n| Fiducial | `fiducial.version` |\n| Palette | `plotting.palette` |\n| Fiducial alpha | `plotting.version_alpha.fiducial` |\n| Comparison alpha | `plotting.version_alpha.comparison` |\n| Marker style | `plotting.markers.style` |\n| Line width | `plotting.markers.linewidth` |\n| Cap size | `plotting.markers.capsize` |\n| X-offsets | `plotting.x_offsets` |\n\n## Visual Design\n\n### Version Styling\n\nFiducial version at full opacity, comparison versions subdued to create visual hierarchy.\n\n### Markers\n\nUnfilled circles with moderate line weight — clean, distinguishable at small sizes. Error caps sized for visibility without dominating.\n\n### Axes\n\n- **Zero line**: Black reference for null hypothesis\n- **Grid**: Subtle guides on both axes\n- **Mode highlight**: Background shading when relevant\n\n### Legend\n\nBottom center, outside plot area. Single column for clarity. Framed for readability against varied backgrounds.",
+      "dependsOn": [],
+      "specName": "1d_plots",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "type": "foundation_spec",
+          "description": "Foundational technique specification"
+        },
+        "artifacts": {},
+        "mtime": 1768580671000,
+        "generated": "2026-01-16T17:22:49.781395"
+      }
+    },
+    {
+      "id": "cl-25c14bbc",
+      "title": "cl",
+      "kind": "task",
+      "status": "open",
+      "body": "# Harmonic-Space Power Spectra\n\nPseudo-Cl estimation of cosmic shear E/B-mode power spectra using NaMaster.\n\n## Method\n\nAngular power spectra C_ell are the harmonic-space analog of configuration-space correlation functions. For cosmic shear:\n\n- **C_ell^EE**: E-mode auto-power spectrum (cosmological signal)\n- **C_ell^BB**: B-mode auto-power spectrum (null test for systematics)\n- **C_ell^EB**: E-B cross-power spectrum (should be zero)\n\nPseudo-Cl estimation accounts for:\n1. Survey mask geometry via mode-coupling matrices\n2. Bandpower binning (sqrt(ell)-linear spacing)\n3. Noise bias subtraction\n\n## Config References\n\n| Parameter | Config Key |\n|-----------|------------|\n| ell bins | `cl.n_ell_bins` |\n| ell range | `cl.ell_min`, `cl.ell_max` |\n| Fiducial version | `fiducial.version` |\n\n## Data Source\n\nPseudo-Cl files computed by Sasha Guerrini using NaMaster:\n- `pseudo_cl_{version}.fits` — Power spectrum estimates\n- `pseudo_cl_cov_{version}.fits` — Bandpower covariance matrix\n\nLocation: `/home/guerrini/sp_validation/notebooks/cosmo_val/output/`\n\n## Comparison to Configuration-Space\n\nHarmonic-space methods integrate over angular scales, averaging out localized B-mode contamination. This explains why:\n- v1.4.8 passes harmonic tests but fails configuration-space tests\n- PTE healthy fractions are higher in harmonic space (~96%) than configuration space (~67-73%)\n\nThe complementary sensitivity makes both approaches valuable for systematic validation.",
+      "dependsOn": [],
+      "specName": "cl",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "type": "foundation_spec",
+          "description": "Foundational technique specification"
+        },
+        "artifacts": {},
+        "mtime": 1770088357000,
+        "generated": "2026-02-03T04:12:37.147924"
+      }
+    },
+    {
+      "id": "cl-version-comparison-9933f592",
+      "title": "cl version comparison",
+      "kind": "task",
+      "status": "open",
+      "body": "# Harmonic-Space Version Comparison\n\nDepends: [Harmonic-Space Power Spectra](cl.md), [2D Plots](2d_plots.md)\nMethod: [Harmonic-Space Power Spectra](cl.md)\nPlotting: [2D Plots](2d_plots.md)\n\n## Claim\n\nB-mode power spectra C_ell^BB are consistent with zero for v1.4.6 and v1.4.8, while v1.4.5 shows marginal tension. Unlike configuration-space statistics, harmonic methods average over localized B-modes, explaining why v1.4.8 passes here but fails Pure E/B and COSEBIS tests.\n\n## Config References\n\n| Parameter | Config Key |\n|-----------|------------|\n| Versions | `versions` |\n| ell bins | `cl.n_ell_bins` |\n| ell range | `cl.ell_min`, `cl.ell_max` |\n| PTE healthy range | `statistics.pte_healthy_range` |\n\n## Evidence\n\nPer-version B-mode PTEs:\n\n| Metric | Description |\n|--------|-------------|\n| `{version}.pte_bb` | B-mode power spectrum PTE |\n| `{version}.pte_eb` | E-B cross PTE |\n| `{version}.chi2_bb` | B-mode chi-squared |\n| `{version}.dof` | Degrees of freedom |\n\n## Outputs\n\n- `figure.png` — Two-panel plot (BB top, EB bottom) with all versions overlaid\n- Version comparison uses distinct colors/markers\n- sqrt(ell) x-axis scaling",
+      "dependsOn": [
+        "cl-25c14bbc",
+        "2d-plots-6bde2572"
+      ],
+      "specName": "cl_version_comparison",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "versions": {
+            "SP_v1.4.5_leak_corr_pte_bb": 0.00025345418590999743,
+            "SP_v1.4.5_leak_corr_chi2_bb": 67.38768366132548,
+            "SP_v1.4.5_leak_corr_dof_bb": 32,
+            "SP_v1.4.5_leak_corr_pte_eb": 0.947710221166384,
+            "SP_v1.4.5_leak_corr_chi2_eb": 20.19946282530121,
+            "SP_v1.4.5_leak_corr_dof_eb": 32,
+            "SP_v1.4.5_leak_corr_pte_bb_cut": 0.0030977602325951425,
+            "SP_v1.4.5_leak_corr_chi2_bb_cut": 37.26488470911654,
+            "SP_v1.4.5_leak_corr_dof_bb_cut": 17,
+            "SP_v1.4.5_leak_corr_pte_eb_cut": 0.7141800808534484,
+            "SP_v1.4.5_leak_corr_chi2_eb_cut": 13.324883064556422,
+            "SP_v1.4.5_leak_corr_dof_eb_cut": 17,
+            "SP_v1.4.6_leak_corr_pte_bb": 0.09792272864837098,
+            "SP_v1.4.6_leak_corr_chi2_bb": 42.700231272005574,
+            "SP_v1.4.6_leak_corr_dof_bb": 32,
+            "SP_v1.4.6_leak_corr_pte_eb": 0.9529512261516445,
+            "SP_v1.4.6_leak_corr_chi2_eb": 19.901337744849968,
+            "SP_v1.4.6_leak_corr_dof_eb": 32,
+            "SP_v1.4.6_leak_corr_pte_bb_cut": 0.27601504617402955,
+            "SP_v1.4.6_leak_corr_chi2_bb_cut": 19.96516207293183,
+            "SP_v1.4.6_leak_corr_dof_bb_cut": 17,
+            "SP_v1.4.6_leak_corr_pte_eb_cut": 0.6833556796060204,
+            "SP_v1.4.6_leak_corr_chi2_eb_cut": 13.769357592050355,
+            "SP_v1.4.6_leak_corr_dof_eb_cut": 17,
+            "SP_v1.4.6_ecut07_leak_corr_pte_bb": 0.208540352402497,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_bb": 38.19426928194824,
+            "SP_v1.4.6_ecut07_leak_corr_dof_bb": 32,
+            "SP_v1.4.6_ecut07_leak_corr_pte_eb": 0.925995945273206,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_eb": 21.252155908539322,
+            "SP_v1.4.6_ecut07_leak_corr_dof_eb": 32,
+            "SP_v1.4.6_ecut07_leak_corr_pte_bb_cut": 0.46331572881974226,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_bb_cut": 16.868404724206595,
+            "SP_v1.4.6_ecut07_leak_corr_dof_bb_cut": 17,
+            "SP_v1.4.6_ecut07_leak_corr_pte_eb_cut": 0.6264194015354494,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_eb_cut": 14.570053608387225,
+            "SP_v1.4.6_ecut07_leak_corr_dof_eb_cut": 17,
+            "SP_v1.4.8_leak_corr_pte_bb": 0.11358826422569772,
+            "SP_v1.4.8_leak_corr_chi2_bb": 41.87386424516653,
+            "SP_v1.4.8_leak_corr_dof_bb": 32,
+            "SP_v1.4.8_leak_corr_pte_eb": 0.6112407427814349,
+            "SP_v1.4.8_leak_corr_chi2_eb": 29.155806832568203,
+            "SP_v1.4.8_leak_corr_dof_eb": 32,
+            "SP_v1.4.8_leak_corr_pte_bb_cut": 0.4336497593195094,
+            "SP_v1.4.8_leak_corr_chi2_bb_cut": 17.30868253255327,
+            "SP_v1.4.8_leak_corr_dof_bb_cut": 17,
+            "SP_v1.4.8_leak_corr_pte_eb_cut": 0.2625760906484923,
+            "SP_v1.4.8_leak_corr_chi2_eb_cut": 20.231177000298878,
+            "SP_v1.4.8_leak_corr_dof_eb_cut": 17,
+            "SP_v1.4.11.3_leak_corr_pte_bb": 1.7848129151301884e-12,
+            "SP_v1.4.11.3_leak_corr_chi2_bb": 122.23988293212605,
+            "SP_v1.4.11.3_leak_corr_dof_bb": 32,
+            "SP_v1.4.11.3_leak_corr_pte_eb": 0.9725050233247705,
+            "SP_v1.4.11.3_leak_corr_chi2_eb": 18.516069343307766,
+            "SP_v1.4.11.3_leak_corr_dof_eb": 32,
+            "SP_v1.4.11.3_leak_corr_pte_bb_cut": 5.741528047876641e-10,
+            "SP_v1.4.11.3_leak_corr_chi2_bb_cut": 79.01196438983345,
+            "SP_v1.4.11.3_leak_corr_dof_bb_cut": 17,
+            "SP_v1.4.11.3_leak_corr_pte_eb_cut": 0.7454934521382017,
+            "SP_v1.4.11.3_leak_corr_chi2_eb_cut": 12.860198045925554,
+            "SP_v1.4.11.3_leak_corr_dof_eb_cut": 17,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_bb": 0.000039982584183035385,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_bb": 73.62141266991148,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_bb": 32,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_eb": 0.8347279319766803,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_eb": 24.263347744188064,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_eb": 32,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_bb_cut": 0.0012659675159892873,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_bb_cut": 40.06787574930871,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_bb_cut": 17,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_eb_cut": 0.40282046412613026,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_eb_cut": 17.78039029700274,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_eb_cut": 17
+          }
+        },
+        "artifacts": {
+          "figure": "figure.png"
+        },
+        "mtime": 1771046158000,
+        "generated": "2026-02-14T06:15:58.141344"
+      }
+    },
+    {
+      "id": "config-space-pte-matrices-17143971",
+      "title": "config space pte matrices",
+      "kind": "task",
+      "status": "open",
+      "body": "# Configuration-Space PTE Matrices\n\nDepends: [Pure E/B](pure_eb.md), [COSEBIS](cosebis.md), [2D Plots](2d_plots.md)\nMethod: [Pure E/B](pure_eb.md), [COSEBIS](cosebis.md)\nPlotting: [2D Plots](2d_plots.md)\n\n## Claim\n\nFiducial angular scale cuts are justified by PTE heatmaps across all (theta_min, theta_max) combinations. The main text presents a 1x3 composite for the fiducial version showing xi+^B, xi-^B, and COSEBIS B_n. The appendix presents an Nx3 composite showing all catalog versions (from `config.versions`) with each of the three B-mode statistics. Rows represent versions (labeled via `config.plotting.version_labels`), columns represent statistics.\n\nScale cuts from `fiducial.fiducial_xip_scale_cut` and `fiducial.fiducial_xim_scale_cut`. COSEBIS uses the same unified range.\n\n## Blind Handling\n\nUses fiducial blind from `config[\"fiducial\"][\"blind\"]`. Data vectors (ξ+^B, ξ-^B, COSEBIS B_n) are identical across blinds; covariances vary with blind via n(z)-dependent theoretical predictions.\n\n## Config References\n\n| Parameter | Config Key |\n|-----------|------------|\n| Versions | `versions` |\n| Fiducial version | `fiducial.version` |\n| xi+ scale cut | `fiducial.fiducial_xip_scale_cut` |\n| xi- scale cut | `fiducial.fiducial_xim_scale_cut` |\n| COSEBIS scale cut | `fiducial.fiducial_min_scale`, `fiducial.fiducial_max_scale` |\n\n## Evidence\n\nPer-version statistics for each statistic:\n\n| Metric | Description |\n|--------|-------------|\n| `{version}.role` | \"fiducial\" or \"appendix\" |\n| `{version}.xip_stats.pte_at_fiducial` | xi+^B PTE at fiducial scale cut |\n| `{version}.xip_stats.pte_at_full_range` | xi+^B PTE at full theta range |\n| `{version}.xim_stats.pte_at_fiducial` | xi-^B PTE at fiducial scale cut |\n| `{version}.xim_stats.pte_at_full_range` | xi-^B PTE at full theta range |\n| `{version}.cosebis_stats.pte_at_fiducial` | COSEBIS B_n PTE at fiducial |\n| `{version}.cosebis_stats.pte_at_full_range` | COSEBIS B_n PTE at full theta range |\n\n## Outputs\n\n- `figure_fiducial.png` — 1x3 composite for fiducial version (main text)\n  - Single row: xi+^B, xi-^B, COSEBIS B_n\n  - Y-axis label on leftmost panel\n  - Single shared colorbar on right\n\n- `figure_appendix.png` — Nx3 composite for all versions (appendix)\n  - Rows: All versions from `config.versions` with labels from `config.plotting.version_labels`\n  - Columns: xi+^B, xi-^B, COSEBIS B_n\n  - Y-axis label on each row's leftmost panel\n  - Version labels on right side of each row\n  - Single shared colorbar on right\n\nEach panel uses vlag colormap [0, 1] with contours at 0.05/0.95. Fiducial scale cut marked with hatched rectangle.\n\n## Comments\n**2026-02-09 00:21** — as mentioned in paper comments, all pte matrix plots should have subplot titles in the bottom right of each subplot instead. and new comment, the colorbar (axis) needs to be the same hight as the other subplots (e.g. colorbar height=matrix height)",
+      "dependsOn": [
+        "pure-eb-ca49d189",
+        "cosebis-4491229b",
+        "2d-plots-6bde2572"
+      ],
+      "specName": "config_space_pte_matrices",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "versions": {
+            "SP_v1.4.6_leak_corr": {
+              "role": "fiducial",
+              "xip_stats": {
+                "pte_at_fiducial": 0.5261986696315737,
+                "n_evaluated": 210,
+                "mean": 0.43160009417742723,
+                "median": 0.5281161093503952,
+                "std": 0.3209223579948812,
+                "pte_at_full_range": 0.0891485614462707
+              },
+              "xim_stats": {
+                "pte_at_fiducial": 0.35318253483433343,
+                "n_evaluated": 210,
+                "mean": 0.42869364360330553,
+                "median": 0.3505771655248592,
+                "std": 0.26425513876425993,
+                "pte_at_full_range": 0.39108440368474434
+              },
+              "combined_stats": {
+                "pte_at_fiducial": 0.5659619563072513,
+                "n_evaluated": 210,
+                "mean": 0.34711166549877426,
+                "median": 0.35898267877596024,
+                "std": 0.23643264206362513,
+                "pte_at_full_range": 0.2339289154558338
+              },
+              "cosebis_stats": {
+                "pte_at_fiducial": 0.8005586969141852,
+                "n_evaluated": 190,
+                "mean": 0.3604394083675809,
+                "median": 0.2782424029819657,
+                "std": 0.3227681703327341,
+                "pte_at_full_range": 0.00003599920290063126
+              },
+              "cosebis_20_stats": {
+                "pte_at_fiducial": 0.8856545218186217,
+                "n_evaluated": 190,
+                "mean": 0.37428628923738316,
+                "median": 0.33651150911018934,
+                "std": 0.29152836437617097,
+                "pte_at_full_range": 0.00030170357003152037
+              }
+            },
+            "SP_v1.4.5_leak_corr": {
+              "role": "appendix",
+              "xip_stats": {
+                "pte_at_fiducial": 0.3612799902043216,
+                "n_evaluated": 210,
+                "mean": 0.2933762986950992,
+                "median": 0.22243009925441168,
+                "std": 0.2256126483395535,
+                "pte_at_full_range": 0.04904051341385495
+              },
+              "xim_stats": {
+                "pte_at_fiducial": 0.0206162222093563,
+                "n_evaluated": 210,
+                "mean": 0.11645407870557913,
+                "median": 0.03135492924384754,
+                "std": 0.15953760797019279,
+                "pte_at_full_range": 0.002893926663892667
+              },
+              "combined_stats": {
+                "pte_at_fiducial": 0.03587176287484338,
+                "n_evaluated": 210,
+                "mean": 0.10213683169956161,
+                "median": 0.05931340843554458,
+                "std": 0.13836747330772287,
+                "pte_at_full_range": 0.011428556764972977
+              },
+              "cosebis_stats": {
+                "pte_at_fiducial": 0.7844738533509752,
+                "n_evaluated": 190,
+                "mean": 0.30432646976952527,
+                "median": 0.2103434208358842,
+                "std": 0.32359770648832925,
+                "pte_at_full_range": 5.250871191671864e-9
+              },
+              "cosebis_20_stats": {
+                "pte_at_fiducial": 0.44281626487180564,
+                "n_evaluated": 190,
+                "mean": 0.2936515951210247,
+                "median": 0.1934180767916418,
+                "std": 0.29460754098627073,
+                "pte_at_full_range": 1.8878202999238997e-7
+              }
+            },
+            "SP_v1.4.8_leak_corr": {
+              "role": "appendix",
+              "xip_stats": {
+                "pte_at_fiducial": 0.02366422398347494,
+                "n_evaluated": 210,
+                "mean": 0.2104920058068842,
+                "median": 0.10294586303504279,
+                "std": 0.23146106893372762,
+                "pte_at_full_range": 0.09262223318335489
+              },
+              "xim_stats": {
+                "pte_at_fiducial": 0.07836657082867451,
+                "n_evaluated": 210,
+                "mean": 0.2163323425758418,
+                "median": 0.12224007453912318,
+                "std": 0.23894503850884016,
+                "pte_at_full_range": 0.04246534672767419
+              },
+              "combined_stats": {
+                "pte_at_fiducial": 0.035459589716356946,
+                "n_evaluated": 210,
+                "mean": 0.13799861690406165,
+                "median": 0.08077703595435291,
+                "std": 0.16617116684043937,
+                "pte_at_full_range": 0.09466696759563945
+              },
+              "cosebis_stats": {
+                "pte_at_fiducial": 0.3235627999651649,
+                "n_evaluated": 190,
+                "mean": 0.2706590392599252,
+                "median": 0.11679733936759626,
+                "std": 0.3264750008716637,
+                "pte_at_full_range": 0.00000170487456546236
+              },
+              "cosebis_20_stats": {
+                "pte_at_fiducial": 0.749714126444399,
+                "n_evaluated": 190,
+                "mean": 0.27138382395397664,
+                "median": 0.08593676284128361,
+                "std": 0.32046437116802856,
+                "pte_at_full_range": 0.00001153383933050163
+              }
+            },
+            "SP_v1.4.11.3_leak_corr": {
+              "role": "appendix",
+              "xip_stats": {
+                "pte_at_fiducial": 0.19349665306055766,
+                "n_evaluated": 210,
+                "mean": 0.2745818174263283,
+                "median": 0.21643903971823858,
+                "std": 0.201913853314625,
+                "pte_at_full_range": 0.09640462798109341
+              },
+              "xim_stats": {
+                "pte_at_fiducial": 0.08813662445722911,
+                "n_evaluated": 210,
+                "mean": 0.2138570480905945,
+                "median": 0.0942047677784375,
+                "std": 0.2707059204149187,
+                "pte_at_full_range": 0.0019464474183022232
+              },
+              "combined_stats": {
+                "pte_at_fiducial": 0.04740885047337696,
+                "n_evaluated": 210,
+                "mean": 0.16488864193869654,
+                "median": 0.08107144770976554,
+                "std": 0.21531996125766462,
+                "pte_at_full_range": 0.017109907169484025
+              },
+              "cosebis_stats": {
+                "pte_at_fiducial": 0.6398839070487397,
+                "n_evaluated": 190,
+                "mean": 0.27685971752997884,
+                "median": 0.1924976245105996,
+                "std": 0.29083318245016165,
+                "pte_at_full_range": 6.668546570699685e-12
+              },
+              "cosebis_20_stats": {
+                "pte_at_fiducial": 0.4366570629602288,
+                "n_evaluated": 190,
+                "mean": 0.2649665887183615,
+                "median": 0.1540363147376697,
+                "std": 0.28708475788553234,
+                "pte_at_full_range": 1.749646845741515e-10
+              }
+            }
+          },
+          "fiducial_scale_cuts_arcmin": {
+            "xip": [
+              12,
+              83
+            ],
+            "xim": [
+              12,
+              83
+            ],
+            "cosebis": [
+              12,
+              83
+            ]
+          }
+        },
+        "artifacts": {
+          "figure_fiducial": "figure_fiducial.png",
+          "figure_appendix": "figure_appendix.png"
+        },
+        "mtime": 1771067035000,
+        "generated": "2026-02-14T12:03:54.927255"
+      }
+    },
+    {
+      "id": "cosebis-4491229b",
+      "title": "cosebis",
+      "kind": "task",
+      "status": "open",
+      "body": "# COSEBIS Specification\n\nComplete Orthogonal Sets of E/B-Integrals — a model-independent B-mode null test.\n\n## Purpose\n\nCOSEBIS compress 2PCF information into discrete modes with clean E/B separation. Unlike band powers, they're complete and orthogonal over a finite angular range. B-modes should be consistent with zero for a pure lensing signal.\n\n## Config References\n\n| Parameter | Config Key | Description |\n|-----------|------------|-------------|\n| n_modes | `cosebis.nmodes` | Number of COSEBIS modes to compute |\n| θ_min | `cosebis.theta_min` | Minimum angular scale (arcmin) |\n| θ_max | `cosebis.theta_max` | Maximum angular scale (arcmin) |\n| mode_subsets | `cosebis.mode_subsets` | Mode counts for PTE evaluation |\n| scale_cut | `fiducial.fiducial_min_scale` to `fiducial.fiducial_max_scale` | Fiducial scale range |\n| pte_range | `statistics.pte_healthy_range` | Healthy PTE bounds |\n\n## Integration Grid\n\nHigh-resolution 2PCF for accurate mode integration:\n\n| Parameter | Config Key |\n|-----------|------------|\n| min_sep | `fiducial.min_sep_int` |\n| max_sep | `fiducial.max_sep_int` |\n| nbins | `fiducial.nbins_int` |\n\n## Versions\n\nCompare across catalog versions from `config.versions`:\n- Fiducial: `fiducial.version`\n- All versions tested for consistency\n\n## Blind Handling\n\nUses fiducial blind from `config[\"fiducial\"][\"blind\"]`. COSEBIS B_n data vectors are identical across blinds; covariances vary with blind via n(z)-dependent theoretical predictions.\n\n## Analysis Decisions\n\n- **No Hartlap correction**: Using theoretical (CosmoCov) covariance, not jackknife\n- **Conservative scale cuts**: Require full bin containment within θ range\n- **PTE thresholds**: Values outside healthy range flag potential systematics\n\n## Outputs\n\n- B-mode plot with fiducial scale cuts\n- B-mode plot without scale cuts (full range)\n- PTE values for each mode subset",
+      "dependsOn": [],
+      "specName": "cosebis",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "type": "foundation_spec",
+          "description": "Foundational technique specification"
+        },
+        "artifacts": {},
+        "mtime": 1770088117000,
+        "generated": "2026-02-03T04:08:36.503784"
+      }
+    },
+    {
+      "id": "pure-eb-ca49d189",
+      "title": "pure eb",
+      "kind": "task",
+      "status": "open",
+      "body": "# Pure E/B Mode Decomposition\n\nSchneider et al. decomposition of shear correlation functions into pure E-mode, B-mode, and ambiguous components.\n\n## Purpose\n\nTraditional ξ± mix E and B modes. Pure-mode decomposition cleanly separates:\n- **E-modes**: Cosmological lensing signal\n- **B-modes**: Should be zero for pure lensing; non-zero indicates systematics\n- **Ambiguous modes**: Modes that cannot be uniquely assigned to E or B\n\n## Config References\n\n| Parameter | Config Key | Description |\n|-----------|------------|-------------|\n| ξ+ scale cut | `fiducial.fiducial_xip_scale_cut` | Angular range for ξ+ |\n| ξ- scale cut | `fiducial.fiducial_xim_scale_cut` | Angular range for ξ- |\n| version | `fiducial.version` | Catalog version |\n\n## Method\n\nFollowing Schneider et al. (2002), decompose:\n- ξ+(θ) → ξ+^E(θ) + ξ+^B(θ) + ξ+^amb(θ)\n- ξ-(θ) → ξ-^E(θ) + ξ-^B(θ) + ξ-^amb(θ)\n\nUses semi-analytical covariance propagation through the decomposition.\n\n## Data Products\n\nPrecomputed decomposition stored in:\n`results/paper_plots/intermediate/{version}_{blind}_pure_eb_semianalytic.npz`\n\nUses fiducial blind (A) from config. Each NPZ contains:\n- `theta`: Angular bins\n- `xip_E`, `xim_E`: Pure E-mode components\n- `xip_B`, `xim_B`: Pure B-mode components\n- `xip_amb`, `xim_amb`: Ambiguous components\n- `cov_pure_eb`: Full covariance matrix for decomposed modes (MC propagation)\n\n## Plotting Conventions\n\n- Total ξ± shown with filled markers\n- E-modes in teal (secondary, lower alpha)\n- B-modes in crimson (primary, unfilled markers, full opacity)\n- Ambiguous in purple (secondary, lower alpha)\n- Fiducial scale range highlighted",
+      "dependsOn": [],
+      "specName": "pure_eb",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "type": "foundation_spec",
+          "description": "Foundational technique specification"
+        },
+        "artifacts": {},
+        "mtime": 1770003453000,
+        "generated": "2026-02-02T04:37:32.591370"
+      }
+    },
+    {
+      "id": "pure-e-b-covariance-36cb87c5",
+      "title": "Pure E/B Covariance",
+      "kind": "task",
+      "status": "open",
+      "body": "# Pure E/B Covariance\n\nDepends: [Pure E/B](pure_eb.md), [Covariance](covariance.md), [2D Plots](2d_plots.md), [Pure E/B Data Vector](pure_eb_data_vector.md), [Pure E/B Version Comparison](pure_eb_version_comparison.md)\nMethod: [Pure E/B](pure_eb.md), [Covariance](covariance.md)\nPlotting: [2D Plots](2d_plots.md)\n\n## Claim\n\nPure E/B covariance blocks are well-conditioned; ill-conditioning is localized to ambiguous modes. The 6-block correlation structure validates the semi-analytic covariance propagation for B-mode tests.\n\n## Evidence\n\nBlock-wise condition numbers for the 120×120 pure E/B covariance (6 blocks of 20 bins each for ξ+/ξ- × E/B/amb):\n\n| Block | Description | Condition Number |\n|-------|-------------|------------------|\n| ξ_E | ξ+^E and ξ-^E combined | ~10^5 (well-conditioned) |\n| ξ_B | ξ+^B and ξ-^B combined | ~10^5 (well-conditioned) |\n| ξ_amb | ξ+^amb and ξ-^amb combined | ~10^15 (ill-conditioned) |\n\n**Key metrics:**\n- Full matrix positive definite\n- E and B blocks stable for PTE calculation\n- Ill-conditioning confined to ambiguous modes (expected)\n\n## Config References\n\n| Parameter | Config Key |\n|-----------|------------|\n| Version | `fiducial.version` |\n| Blind | `fiducial.blind` |\n| Integration bins | `fiducial.nbins_int` |\n| Reporting bins | `fiducial.nbins` |\n\n## Outputs\n\n- `pure_eb_covariance.png` — 6-block correlation matrix heatmap (icefire diverging colormap)\n- `evidence.json` — condition numbers, eigenvalue bounds, positive definiteness\n\n## Visualization\n\nCorrelation matrix with:\n- icefire diverging colormap (−1 to +1)\n- Block boundaries marked\n- Labels for E/B/amb blocks",
+      "dependsOn": [
+        "pure-eb-ca49d189",
+        "covariance-ffc73eb2",
+        "2d-plots-6bde2572"
+      ],
+      "specName": "pure_eb_covariance",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "condition_number": 263257832401216.78,
+          "is_positive_definite": true,
+          "min_eigenvalue": 1.0919305266355541e-24,
+          "max_eigenvalue": 2.874592635747951e-10,
+          "matrix_shape": [
+            120,
+            120
+          ],
+          "n_bins": 20,
+          "n_blocks": 6,
+          "block_analysis": {
+            "xi_E": {
+              "condition_number": 255584.82307067612,
+              "is_positive_definite": true,
+              "min_eigenvalue": 4.2689118859624677e-16,
+              "max_eigenvalue": 1.0910690890780236e-10,
+              "block_size": [
+                40,
+                40
+              ],
+              "description": "xi_+^E and xi_-^E combined (40x40)"
+            },
+            "xi_B": {
+              "condition_number": 322699.0131316482,
+              "is_positive_definite": true,
+              "min_eigenvalue": 3.4517135739216286e-16,
+              "max_eigenvalue": 1.1138645639176239e-10,
+              "block_size": [
+                40,
+                40
+              ],
+              "description": "xi_+^B and xi_-^B combined (40x40)"
+            },
+            "xi_amb": {
+              "condition_number": 176887851439595.03,
+              "is_positive_definite": true,
+              "min_eigenvalue": 1.1410425458192474e-24,
+              "max_eigenvalue": 2.0183656433113235e-10,
+              "block_size": [
+                40,
+                40
+              ],
+              "description": "xi_+^amb and xi_-^amb combined (40x40)"
+            }
+          }
+        },
+        "artifacts": {
+          "figure": "figure.png"
+        },
+        "mtime": 1771066375000,
+        "generated": "2026-02-14T11:52:55.476913"
+      }
+    },
+    {
+      "id": "pure-e-b-data-vector-1577af8d",
+      "title": "Pure E/B Data Vector",
+      "kind": "task",
+      "status": "open",
+      "body": "# Pure E/B Data Vector\n\nDepends: [Pure E/B](pure_eb.md), [Pure E/B Covariance](pure_eb_covariance.md), [1D Plots](1d_plots.md)\nMethod: [Pure E/B](pure_eb.md)\nCovariance: [Pure E/B Covariance](pure_eb_covariance.md)\nPlotting: [1D Plots](1d_plots.md)\n\n## Claim\n\nB-mode signals in UNIONS cosmic shear are consistent with zero at fiducial scale cuts, validating the absence of significant systematic contamination in the shear measurement pipeline.\n\n## Config References\n\n| Parameter | Config Key |\n|-----------|------------|\n| Fiducial version | `fiducial.version` |\n| xi+ scale cut | `fiducial.fiducial_xip_scale_cut` |\n| xi- scale cut | `fiducial.fiducial_xim_scale_cut` |\n| PTE range | `statistics.pte_healthy_range` |\n\n## Evidence\n\nPTE values for B-mode null tests at two scale ranges, using fiducial blind (A):\n\n1. **Fiducial scale cuts**: Angular range used for cosmological inference\n2. **Full theta range**: All measured angular bins (no cuts)\n\nFor each range, report:\n- xi+^B PTE\n- xi-^B PTE\n- Joint [xi+^B, xi-^B] PTE using full cross-covariance between components\n\nFiducial PTEs should fall within healthy range for null hypothesis consistency. Full-range PTEs may show tension at scales excluded from analysis.\n\n| Metric | Description |\n|--------|-------------|\n| `fiducial.pte_xip_B` | xi+ B-mode PTE at fiducial cuts |\n| `fiducial.pte_xim_B` | xi- B-mode PTE at fiducial cuts |\n| `fiducial.pte_joint` | Joint PTE at fiducial cuts |\n| `full.pte_xip_B` | xi+ B-mode PTE, full range |\n| `full.pte_xim_B` | xi- B-mode PTE, full range |\n| `full.pte_joint` | Joint PTE, full range |\n\n## Outputs\n\n- `figure.png` -- Pure E/B decomposition showing xi+^B and xi-^B consistent with zero\n\nFigure shows:\n- 1x2 layout: left panel (ξ+), right panel (ξ-)\n- Each panel shows all decomposition components stacked: total, E-modes, ambiguous, B-modes\n- Color coding: total (black), E-modes (teal), ambiguous (purple), B-modes (crimson)\n- Excluded scale regions shaded gray (outside fiducial range)",
+      "dependsOn": [
+        "pure-eb-ca49d189",
+        "1d-plots-8fbdf52f"
+      ],
+      "specName": "pure_eb_data_vector",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "fiducial": {
+            "scale_cut_xip": [
+              12,
+              83
+            ],
+            "scale_cut_xim": [
+              12,
+              83
+            ],
+            "pte_xip_B": 0.7774454286904791,
+            "pte_xim_B": 0.27011847929451144,
+            "pte_joint": 0.5970492505315715,
+            "chi2_joint_B": 12.115230981282618,
+            "dof_joint_B": 14
+          },
+          "full": {
+            "scale_cut_arcmin": [
+              1.1658,
+              221
+            ],
+            "pte_xip_B": 0.0891485614462707,
+            "pte_xim_B": 0.39108440368474434,
+            "pte_joint": 0.24874869083270554,
+            "chi2_joint_B": 45.65455442869105,
+            "dof_joint_B": 40
+          },
+          "version": "SP_v1.4.6_leak_corr",
+          "blind": "A"
+        },
+        "artifacts": {
+          "figure": "figure.png",
+          "figure_v1.4.11.3": "figure_v1.4.11.3.png",
+          "figure_v1.4.11.3_uncorrected": "figure_v1.4.11.3_uncorrected.png",
+          "figure_v1.4.5": "figure_v1.4.5.png",
+          "figure_v1.4.5_uncorrected": "figure_v1.4.5_uncorrected.png",
+          "figure_v1.4.6": "figure_v1.4.6.png",
+          "figure_v1.4.6_uncorrected": "figure_v1.4.6_uncorrected.png",
+          "figure_v1.4.8": "figure_v1.4.8.png",
+          "figure_v1.4.8_uncorrected": "figure_v1.4.8_uncorrected.png",
+          "figure_v1.4.11.2": "figure_v1.4.11.2.png",
+          "figure_v1.4.11.2_uncorrected": "figure_v1.4.11.2_uncorrected.png"
+        },
+        "mtime": 1771066872000,
+        "generated": "2026-02-14T12:01:12.280015"
+      }
+    },
+    {
+      "id": "ξ-cosmology-paper-b-mode-ab934b21",
+      "title": "ξ Cosmology Paper B-mode Reporting",
+      "kind": "task",
+      "status": "open",
+      "body": "# ξ Cosmology Paper B-mode Reporting\n\nSpec for B-mode validation reporting in the configuration-space cosmology paper (Goh et al., unions_2d_shear_xi).\n\nDepends on: [pure_eb_data_vector](pure_eb_data_vector.md), [cosebis_version_comparison](cosebis_version_comparison.md), [covariance_blind_consistency](covariance_blind_consistency.md)\n\n## Scope\n\nThis spec defines what B-mode evidence appears in Paper II (Goh et al.). Paper III (Daley et al.) contains the full version comparison and methodological details.\n\n## Reporting Choices\n\n### Catalog Version\n\nReport only **v1.4.6** (fiducial catalog with leakage correction). Version comparisons belong in Paper III.\n\n### COSEBIS Mode Count\n\nUse **n=6** modes, not n=20. Rationale:\n- Fewer modes = more conservative test (less prone to noise fluctuations)\n- n=6 captures the dominant B-mode signal at small scales\n- Consistent with scale cuts that exclude small and large angular scales\n\n### Statistics to Report\n\nReport both full-range and fiducial scale cut PTEs for both statistics. All PTEs are the **minimum across blinds** (conservative).\n\n| Statistic | Macro | Value |\n|-----------|-------|-------|\n| COSEBIS full PTE | `\\cosebisfullPte` | 1.52e-06 |\n| COSEBIS fiducial PTE | `\\cosebisfiducialPte` | 0.29 |\n| Joint ξ±^B full PTE | `\\ebfullPte` | 0.048 |\n| Joint ξ±^B fiducial PTE | `\\ebfiducialPte` | 0.28 |\n\nThe joint test combines ξ+^B and ξ-^B using the full cross-covariance matrix.\n\n### Scale Cuts\n\n| Correlation | Min (arcmin) | Max (arcmin) |\n|-------------|--------------|--------------|\n| ξ+^B | 6 | 85 |\n| ξ-^B | 15 | 85 |\n| COSEBIS | 6 | 85 |\n\n## Text Requirements\n\nThe E/B mode section should:\n1. State that significant B-modes appear at extreme scales (motivating scale cuts)\n2. Report passing PTEs at fiducial scale cuts\n3. Reference Paper III for methodology and version comparison\n4. Use auto-generated macros (never hardcode values)\n\n## Blinding and Covariance\n\nThe cosmological parameters (Ωm, σ8) are blinded with three independent blinds (A, B, C). Blinding affects the theoretical ξ± predictions, which propagate into the CosmoCov semi-analytical covariance matrices.\n\n### Covariance Variation Between Blinds\n\nFrom `covariance_blind_consistency`:\n- ξ+ covariance diagonals vary by up to **9%** between blinds\n- ξ- covariance diagonals vary by up to **8.6%** between blinds\n- All blinds pass the 10% consistency threshold\n\n### PTE Variation Between Blinds\n\nThe covariance variations propagate into PTE estimates differently for the two statistics:\n\n**Pure E/B (fiducial scale cuts):**\n\n| Blind | ξ+^B PTE | ξ-^B PTE | Joint PTE |\n|-------|----------|----------|-----------|\n| A | 0.483 | 0.097 | 0.284 |\n| B | 0.489 | 0.098 | 0.311 |\n| C | 0.502 | 0.083 | 0.288 |\n| **Δ (max − min)** | 0.02 | 0.015 | 0.027 |\n\n**COSEBIS (fiducial scale cuts, n=6):**\n\n| Blind | PTE |\n|-------|-----|\n| A | 0.2927 |\n| B | 0.2927 |\n| C | 0.2927 |\n| **Δ (max − min)** | <0.0001 |\n\nThe near-identical COSEBIS PTEs reflect the compressed information in mode space — the integration over angular scales averages out the blind-dependent covariance variations. Pure E/B PTEs show more sensitivity (ΔPTE ≈ 0.03) because the test operates directly on angular bins where covariance differences are localized.\n\n### Reporting Strategy\n\nReport the **minimum PTE across blinds** as the conservative estimate. This ensures reported PTEs remain valid regardless of which blind is eventually unblinded.\n\n**Additional macros for blinding discussion:**\n\n| Macro | Value | Description |\n|-------|-------|-------------|\n| `\\covXipMaxDev` | 9.08% | Max ξ+ covariance deviation between blinds |\n| `\\covXimMaxDev` | 8.59% | Max ξ- covariance deviation between blinds |\n| `\\ebJointPteDelta` | 0.027 | Joint PTE variation across blinds (max − min) |\n\n## Config References\n\n| Parameter | Config Key |\n|-----------|------------|\n| Fiducial version | `fiducial.version` |\n| COSEBIS modes | `cosebis.mode_subsets` (use n=6 subset) |\n| Scale cuts | `fiducial.fiducial_min_scale`, `fiducial.fiducial_max_scale` |",
+      "dependsOn": [
+        "pure-e-b-data-vector-1577af8d",
+        "cosebis-version-comparison-57a0d35c"
+      ],
+      "specName": "xi_cosmology_paper",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "type": "paper_integration",
+          "description": "Aggregates quantitative claims for paper reporting",
+          "dependencies_summary": {
+            "cosebis": {
+              "has_evidence": true,
+              "generated": "2026-02-03T04:08:36.503784"
+            },
+            "pure_eb": {
+              "has_evidence": true,
+              "generated": "2026-02-02T04:37:32.591370"
+            },
+            "bb_blind": {
+              "has_evidence": false
+            }
+          }
+        },
+        "artifacts": {
+          "macros": "claims_macros.tex"
+        },
+        "mtime": 1771066992000,
+        "generated": "2026-02-14T12:03:12.118879"
+      }
+    },
+    {
+      "id": "covariance-ffc73eb2",
+      "title": "Covariance",
+      "kind": "task",
+      "status": "open",
+      "body": "# Covariance\n\nSemi-analytical covariance estimation using CosmoCov.\n\n## Purpose\n\nProvides theoretical covariance matrices for ξ± correlation functions. Avoids jackknife noise by propagating analytical Gaussian covariance through the analysis pipeline.\n\n## Method\n\n1. **CosmoCov** computes Gaussian-only covariance for integration binning\n2. **Sampling** draws realizations from integration covariance\n3. **Propagation** bins samples to reporting scale, propagates through E/B decomposition\n\nGaussian-only approximation: non-Gaussian contributions computationally prohibitive at 1000 bins.\n\n## Config References\n\n| Parameter | Source | Description |\n|-----------|--------|-------------|\n| Samples | `config.yaml: covariance.n_samples` | MC samples for propagation (default 2000) |\n| Cosmology | `covariance.smk: PLANCK18` | From sp_validation.cosmology |\n| Mask Cls | `covariance.smk: MASK_CLS_FILES` | Per-version mask power spectra |\n| Use masked | `config.yaml: covariance.default_masked` | Whether to use masked covariance |\n\n## Fiducial Cosmology\n\nUses astropy Planck18 (Table 2: TT,TE,EE+lowE+lensing+BAO). See decision fiber `standardize-on-astropy-planck18-52558209`.\n\n| Parameter | Value |\n|-----------|-------|\n| Ω_m | 0.30966 |\n| Ω_b | 0.04897 |\n| h | 0.6766 |\n| n_s | 0.9665 |\n| σ_8 | 0.8102 |\n\n**History:** Previously used KiDS-Legacy cosmology (Ω_m=0.326, σ_8=0.786). Switched to Planck18 for consistency with harmonic-space analysis and to fix Ω_Λ bug (see `cosmocov-omega-v-inconsistency-1fd1649f`).\n\n## Survey Properties\n\nExtracted from catalog config (`cat_config.yaml`) per version:\n- Area (deg²)\n- n_e (gal/arcmin²)\n- σ_e (shape noise)\n\n## Binning\n\n| Scale | min | max | bins |\n|-------|-----|-----|------|\n| Integration | 0.5' | 500' | 1000 |\n| Reporting | 1' | 250' | 20 |\n\n## File Naming\n\n```\ncovariance_{version}_{blind}_{gaussian}_minsep={min}_maxsep={max}_nbins={n}{mask_suffix}_processed.txt\n```\n\n- `version`: SP_v1.4.6_leak_corr, etc.\n- `blind`: A, B, or C\n- `gaussian`: g (Gaussian-only) or ng (non-Gaussian)\n- `mask_suffix`: empty or `_masked`\n\n## Blind Handling\n\nB-mode claims use the fiducial blind from `config[\"fiducial\"][\"blind\"]`. Covariances are computed for the fiducial blind only.\n\n### Historical Note\n\nEarlier analysis computed min-PTE across all three blinds (A, B, C). This was simplified to single-blind after determining that B-mode data vectors are identical across blinds (only covariances differ via n(z)). See [Covariance Blind Consistency](covariance_blind_consistency.md) for validation showing ~10% diagonal variation between blinds.\n\n## Covariance Usage Policy\n\nOfficial results use specific covariance sources for consistency and correctness:\n\n| Quantity | Source | Gaussian | Binning | Notes |\n|----------|--------|----------|---------|-------|\n| Total ξ± errors | CosmoCov | ng | 20-bin (reporting) | Per-blind, masked |\n| Pure E/B mode errors | MC propagation | g | 1000→20 bin | Conservative: underestimates uncertainty |\n| COSEBIS errors | MC propagation | g | 1000→scales | Per scale cut |\n\n**Not used:**\n- TreeCorr jackknife covariance — too noisy for official results\n- NPZ `cov_xip_xim` field — deprecated (was jackknife)\n\n### Why Gaussian for E/B propagation?\n\nNon-Gaussian covariance at 1000-bin integration scale is computationally prohibitive. Using Gaussian-only **underestimates** the E/B covariance, which **overestimates** B-mode significance. This is conservative for a null test: if B-modes pass with underestimated errors, they would also pass with correct errors.\n\n## Related Specs\n\n- [Pure E/B](pure_eb.md) — uses semi-analytic covariance propagation\n- [COSEBIS](cosebis.md) — covariance propagation for bandpowers\n- [Covariance Blind Consistency](covariance_blind_consistency.md) — validates diagonal agreement across blinds",
+      "dependsOn": [],
+      "specName": "covariance",
+      "staleness": "no-evidence",
+      "evidence": null
+    },
+    {
+      "id": "harmonic-space-pte-matrices-f86b8278",
+      "title": "Harmonic-Space PTE Matrices",
+      "kind": "task",
+      "status": "open",
+      "body": "# Harmonic-Space PTE Matrices\n\nDepends: [Harmonic-Space Power Spectra](cl.md), [2D Plots](2d_plots.md)\nMethod: [Harmonic-Space Power Spectra](cl.md)\nPlotting: [2D Plots](2d_plots.md)\n\n## Claim\n\nHarmonic-space B-mode PTEs are consistent with noise at fiducial multipole range for the fiducial catalog version. PTE heatmaps across all (ell_min, ell_max) combinations show where B-modes become significant. The appendix presents all catalog versions (from `config.versions`) for comparison.\n\nFiducial scale cuts from `cl.fiducial_ell_min` and `cl.fiducial_ell_max`. Full B-mode test range from `cl.ell_min` to `cl.ell_max`.\n\n## Blind Handling\n\nUses fiducial blind from `config[\"fiducial\"][\"blind\"]`. The C_ℓ^BB data vector is identical across blinds; covariances vary with blind via n(z)-dependent theoretical predictions.\n\n## Config References\n\n| Parameter | Config Key |\n|-----------|------------|\n| Versions | `versions` |\n| Fiducial version | `fiducial.version` |\n| Full multipole range | `cl.ell_min`, `cl.ell_max` |\n| Fiducial multipole range | `cl.fiducial_ell_min`, `cl.fiducial_ell_max` |\n| Number of bins | `cl.n_ell_bins` |\n\n## Evidence\n\nPer-version statistics:\n\n| Metric | Description |\n|--------|-------------|\n| `{version}.role` | \"fiducial\" or \"appendix\" |\n| `{version}.pte_at_fiducial` | C_l^BB PTE at fiducial multipole range |\n| `{version}.pte_at_full_range` | C_l^BB PTE at full multipole range |\n| `{version}.n_evaluated` | Number of (ell_min, ell_max) pairs |\n| `{version}.ell_range` | [ell_min, ell_max] of full range |\n| `{version}.fiducial_ell_range` | [ell_min, ell_max] of fiducial range |\n| `{version}.n_ell_bins` | Number of multipole bins |\n\n## Outputs\n\n- `figure_fiducial.png` — PTE heatmap for fiducial version (main text)\n- `figure_appendix.png` — N-panel composite for all versions from `config.versions` (appendix)\n\nHeatmaps use vlag colormap [0, 1] with contours at 0.05/0.95. Fiducial multipole range marked with hatched rectangle.",
+      "dependsOn": [
+        "cl-25c14bbc",
+        "2d-plots-6bde2572"
+      ],
+      "specName": "harmonic_space_pte_matrices",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "blind": "A",
+          "versions": {
+            "SP_v1.4.5_leak_corr": {
+              "role": "appendix",
+              "pte_at_full_range": 0.00025345418590999743,
+              "n_evaluated": 496,
+              "ell_range": [
+                12.5,
+                1988.5000000000002
+              ],
+              "n_ell_bins": 32,
+              "mean": 0.06077303598137677,
+              "median": 0.010994610339359535,
+              "std": 0.1483358430083727,
+              "pte_at_fiducial": 0.003780440609376671,
+              "fiducial_ell_range": [
+                300,
+                1600
+              ]
+            },
+            "SP_v1.4.6_leak_corr": {
+              "role": "fiducial",
+              "pte_at_full_range": 0.09792272864837098,
+              "n_evaluated": 496,
+              "ell_range": [
+                12.5,
+                1988.5000000000002
+              ],
+              "n_ell_bins": 32,
+              "mean": 0.2151002583610062,
+              "median": 0.1667631983560041,
+              "std": 0.16314856178825046,
+              "pte_at_fiducial": 0.34823632478736205,
+              "fiducial_ell_range": [
+                300,
+                1600
+              ]
+            },
+            "SP_v1.4.6_ecut07_leak_corr": {
+              "role": "appendix",
+              "pte_at_full_range": 0.208540352402497,
+              "n_evaluated": 496,
+              "ell_range": [
+                12.5,
+                1988.5000000000002
+              ],
+              "n_ell_bins": 32,
+              "mean": 0.47655684556842554,
+              "median": 0.4855954499103687,
+              "std": 0.2563721470816098,
+              "pte_at_fiducial": 0.48774029024506393,
+              "fiducial_ell_range": [
+                300,
+                1600
+              ]
+            },
+            "SP_v1.4.8_leak_corr": {
+              "role": "appendix",
+              "pte_at_full_range": 0.11358826422569772,
+              "n_evaluated": 496,
+              "ell_range": [
+                12.5,
+                1988.5000000000002
+              ],
+              "n_ell_bins": 32,
+              "mean": 0.27953110221202154,
+              "median": 0.1906740396385464,
+              "std": 0.23400049990707236,
+              "pte_at_fiducial": 0.4533663302926109,
+              "fiducial_ell_range": [
+                300,
+                1600
+              ]
+            },
+            "SP_v1.4.11.3_leak_corr": {
+              "role": "appendix",
+              "pte_at_full_range": 1.7848129151301884e-12,
+              "n_evaluated": 496,
+              "ell_range": [
+                12.5,
+                1988.5000000000002
+              ],
+              "n_ell_bins": 32,
+              "mean": 0.022832297826412832,
+              "median": 0.000003895661718846965,
+              "std": 0.09994727342612973,
+              "pte_at_fiducial": 1.1158426041240516e-9,
+              "fiducial_ell_range": [
+                300,
+                1600
+              ]
+            },
+            "SP_v1.4.11.3_ecut07_leak_corr": {
+              "role": "appendix",
+              "pte_at_full_range": 0.000039982584183035385,
+              "n_evaluated": 496,
+              "ell_range": [
+                12.5,
+                1988.5000000000002
+              ],
+              "n_ell_bins": 32,
+              "mean": 0.16461626248639885,
+              "median": 0.026575200745849285,
+              "std": 0.24466212755824882,
+              "pte_at_fiducial": 0.003022365036620464,
+              "fiducial_ell_range": [
+                300,
+                1600
+              ]
+            }
+          }
+        },
+        "artifacts": {
+          "figure_fiducial": "figure_fiducial.png",
+          "figure_appendix": "figure_appendix.png"
+        },
+        "mtime": 1771067400000,
+        "generated": "2026-02-14T12:09:59.697380"
+      }
+    },
+    {
+      "id": "pure-e-b-version-comparison-2f69c789",
+      "title": "Pure E/B Version Comparison",
+      "kind": "task",
+      "status": "open",
+      "body": "# Pure E/B Version Comparison\n\nDepends: [Pure E/B](pure_eb.md), [1D Plots](1d_plots.md)\nMethod: [Pure E/B](pure_eb.md)\nPlotting: [1D Plots](1d_plots.md)\n\n## Claim\n\nB-mode correlation functions $\\xi_{\\pm}^B$ are consistent with zero across catalog versions. Total correlation functions $\\xi_{\\pm}$ show cosmological signal stability. Data outside fiducial scale cuts displayed greyed out.\n\n## Config References\n\n| Parameter | Config Key |\n|-----------|------------|\n| Versions | `versions` |\n| Fiducial | `fiducial.version` |\n| Scale cut (xi+) | `fiducial.fiducial_xip_scale_cut` |\n| Scale cut (xi-) | `fiducial.fiducial_xim_scale_cut` |\n\n## Evidence\n\nThis claim produces visualizations only. Statistical evidence (PTEs) is in [Pure E/B PTE Matrix](pure_eb_pte_matrix.md) and [Config Space PTE Matrices](config_space_pte_matrices.md).\n\n| Metric | Description |\n|--------|-------------|\n| `scale_cuts` | Angular ranges (fiducial cuts shown; excluded data greyed) |\n| `versions_plotted` | Catalog versions included |\n\n## Outputs\n\n- `figure.png` — Four-panel figure with asymmetric row heights\n  - Top row (2/3 height): $\\xi_+$ (left), $\\xi_-$ (right) as $\\theta \\xi \\times 10^4$\n  - Bottom row (1/3 height): $\\xi_+^B / \\sigma$ (left), $\\xi_-^B / \\sigma$ (right)\n  - Data outside fiducial scale cuts shown greyed out\n  - B-mode error bars are unity by construction (normalized)",
+      "dependsOn": [
+        "pure-eb-ca49d189",
+        "1d-plots-8fbdf52f"
+      ],
+      "specName": "pure_eb_version_comparison",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "scale_cuts": {
+            "full": [
+              1,
+              250
+            ],
+            "fiducial_xip": [
+              12,
+              83
+            ],
+            "fiducial_xim": [
+              12,
+              83
+            ]
+          },
+          "versions": {
+            "SP_v1.4.5_leak_corr_pte_xip_B": 0.0452022908304389,
+            "SP_v1.4.5_leak_corr_chi2_xip_B": 31.824711698783418,
+            "SP_v1.4.5_leak_corr_dof_xip_B": 20,
+            "SP_v1.4.5_leak_corr_pte_xim_B": 0.002532388640905662,
+            "SP_v1.4.5_leak_corr_chi2_xim_B": 42.292952688051955,
+            "SP_v1.4.5_leak_corr_dof_xim_B": 20,
+            "SP_v1.4.5_leak_corr_pte_xip_B_cut": 0.745773399405112,
+            "SP_v1.4.5_leak_corr_chi2_xip_B_cut": 4.290515768356998,
+            "SP_v1.4.5_leak_corr_dof_xip_B_cut": 7,
+            "SP_v1.4.5_leak_corr_pte_xim_B_cut": 0.050888056145043374,
+            "SP_v1.4.5_leak_corr_chi2_xim_B_cut": 14.016534241692623,
+            "SP_v1.4.5_leak_corr_dof_xim_B_cut": 7,
+            "SP_v1.4.6_leak_corr_pte_xip_B": 0.08319549929744995,
+            "SP_v1.4.6_leak_corr_chi2_xip_B": 29.23705688301902,
+            "SP_v1.4.6_leak_corr_dof_xip_B": 20,
+            "SP_v1.4.6_leak_corr_pte_xim_B": 0.3781046220680343,
+            "SP_v1.4.6_leak_corr_chi2_xim_B": 21.327186172625463,
+            "SP_v1.4.6_leak_corr_dof_xim_B": 20,
+            "SP_v1.4.6_leak_corr_pte_xip_B_cut": 0.7755783743560664,
+            "SP_v1.4.6_leak_corr_chi2_xip_B_cut": 4.036374480038562,
+            "SP_v1.4.6_leak_corr_dof_xip_B_cut": 7,
+            "SP_v1.4.6_leak_corr_pte_xim_B_cut": 0.2674662246921493,
+            "SP_v1.4.6_leak_corr_chi2_xim_B_cut": 8.798264536639202,
+            "SP_v1.4.6_leak_corr_dof_xim_B_cut": 7,
+            "SP_v1.4.6_ecut07_leak_corr_pte_xip_B": 0.2459020501612195,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_xip_B": 23.920048940331156,
+            "SP_v1.4.6_ecut07_leak_corr_dof_xip_B": 20,
+            "SP_v1.4.6_ecut07_leak_corr_pte_xim_B": 0.44991536280749395,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_xim_B": 20.12853690677743,
+            "SP_v1.4.6_ecut07_leak_corr_dof_xim_B": 20,
+            "SP_v1.4.6_ecut07_leak_corr_pte_xip_B_cut": 0.42804373097188464,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_xip_B_cut": 7.0080350443803905,
+            "SP_v1.4.6_ecut07_leak_corr_dof_xip_B_cut": 7,
+            "SP_v1.4.6_ecut07_leak_corr_pte_xim_B_cut": 0.8513583838686469,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_xim_B_cut": 3.345014738287797,
+            "SP_v1.4.6_ecut07_leak_corr_dof_xim_B_cut": 7,
+            "SP_v1.4.8_leak_corr_pte_xip_B": 0.086508009256103,
+            "SP_v1.4.8_leak_corr_chi2_xip_B": 29.06393878144242,
+            "SP_v1.4.8_leak_corr_dof_xip_B": 20,
+            "SP_v1.4.8_leak_corr_pte_xim_B": 0.03902909574706026,
+            "SP_v1.4.8_leak_corr_chi2_xim_B": 32.41942352880428,
+            "SP_v1.4.8_leak_corr_dof_xim_B": 20,
+            "SP_v1.4.8_leak_corr_pte_xip_B_cut": 0.3360828388641946,
+            "SP_v1.4.8_leak_corr_chi2_xip_B_cut": 7.960579185725102,
+            "SP_v1.4.8_leak_corr_dof_xip_B_cut": 7,
+            "SP_v1.4.8_leak_corr_pte_xim_B_cut": 0.04779007858829949,
+            "SP_v1.4.8_leak_corr_chi2_xim_B_cut": 14.196780829849251,
+            "SP_v1.4.8_leak_corr_dof_xim_B_cut": 7,
+            "SP_v1.4.11.3_leak_corr_pte_xip_B": 0.09011828926759423,
+            "SP_v1.4.11.3_leak_corr_chi2_xip_B": 28.881535379036592,
+            "SP_v1.4.11.3_leak_corr_dof_xip_B": 20,
+            "SP_v1.4.11.3_leak_corr_pte_xim_B": 0.001691884523005274,
+            "SP_v1.4.11.3_leak_corr_chi2_xim_B": 43.61928975967852,
+            "SP_v1.4.11.3_leak_corr_dof_xim_B": 20,
+            "SP_v1.4.11.3_leak_corr_pte_xip_B_cut": 0.2710680817868905,
+            "SP_v1.4.11.3_leak_corr_chi2_xip_B_cut": 8.750511700363887,
+            "SP_v1.4.11.3_leak_corr_dof_xip_B_cut": 7,
+            "SP_v1.4.11.3_leak_corr_pte_xim_B_cut": 0.06554270790779439,
+            "SP_v1.4.11.3_leak_corr_chi2_xim_B_cut": 13.281359917919522,
+            "SP_v1.4.11.3_leak_corr_dof_xim_B_cut": 7,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_xip_B": 0.08000670425398457,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_xip_B": 29.409332762721526,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_xip_B": 20,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_xim_B": 0.34097005643031314,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_xim_B": 21.991536785045703,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_xim_B": 20,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_xip_B_cut": 0.26568304305902796,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_xip_B_cut": 8.822088863652587,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_xip_B_cut": 7,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_xim_B_cut": 0.7573576815979614,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_xim_B_cut": 4.192498145696829,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_xim_B_cut": 7
+          }
+        },
+        "artifacts": {
+          "figure": "figure.png"
+        },
+        "mtime": 1771066708000,
+        "generated": "2026-02-14T11:58:27.694916"
+      }
+    },
+    {
+      "id": "cl-data-vector-e132481e",
+      "title": "cl data vector",
+      "kind": "task",
+      "status": "open",
+      "body": "# Harmonic-Space Fiducial\n\nDepends: [Harmonic-Space Power Spectra](cl.md), [2D Plots](2d_plots.md)\nMethod: [Harmonic-Space Power Spectra](cl.md)\n\n## Claim\n\nThe fiducial catalog (v1.4.6) shows B-mode power spectra consistent with zero across all ell bins, validating the absence of significant systematic contamination in harmonic space. PTEs are reported both for the full ell range and with scale cuts (ell_min=300, ell_max=1600) from the harmonic space paper.\n\n## Config References\n\n| Parameter | Config Key |\n|-----------|------------|\n| Fiducial version | `fiducial.version` |\n| ell bins | `cl.n_ell_bins` |\n| ell range | `cl.ell_min`, `cl.ell_max` |\n| Scale cuts | From harmonic space paper: ell_min=300, ell_max=1600 |\n\n## Evidence\n\nPower spectra and PTEs for BB and EB components, with and without scale cuts:\n\n| Metric | Description |\n|--------|-------------|\n| `pte_bb_full` | B-mode PTE, full ell range |\n| `pte_eb_full` | E-B cross PTE, full ell range |\n| `pte_bb_cut` | B-mode PTE with scale cuts |\n| `pte_eb_cut` | E-B cross PTE with scale cuts |\n| `ell_min_cut` | Lower scale cut (300) |\n| `ell_max_cut` | Upper scale cut (1600) |\n| `n_ell_bins` | Number of ell bins |\n\n## Outputs\n\n- `figure.png` — Single panel with BB and EB on same axis\n- BB: filled circles, EB: unfilled squares, slight x-shift for clarity\n- Data normalized by errors (C_ell / sigma)\n- Scale cuts marked with vertical dashed lines and shaded excluded regions\n- sqrt(ell) x-axis scaling matches bandpower binning",
+      "dependsOn": [
+        "cl-25c14bbc",
+        "2d-plots-6bde2572"
+      ],
+      "specName": "cl_data_vector",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "pte_eb_full": 0.9529512261516445,
+          "chi2_eb_full": 19.901337744849968,
+          "dof_eb_full": 32,
+          "pte_bb_full": 0.09792272864837098,
+          "chi2_bb_full": 42.700231272005574,
+          "dof_bb_full": 32,
+          "pte_eb_cut": 0.6833556796060204,
+          "chi2_eb_cut": 13.769357592050355,
+          "dof_eb_cut": 17,
+          "pte_bb_cut": 0.27601504617402955,
+          "chi2_bb_cut": 19.96516207293183,
+          "dof_bb_cut": 17,
+          "version": "SP_v1.4.6_leak_corr"
+        },
+        "artifacts": {
+          "figure": "figure.png",
+          "figure_v1.4.11.3": "figure_v1.4.11.3.png",
+          "figure_v1.4.11.3_uncorrected": "figure_v1.4.11.3_uncorrected.png",
+          "figure_v1.4.5": "figure_v1.4.5.png",
+          "figure_v1.4.5_uncorrected": "figure_v1.4.5_uncorrected.png",
+          "figure_v1.4.6": "figure_v1.4.6.png",
+          "figure_v1.4.6_uncorrected": "figure_v1.4.6_uncorrected.png",
+          "figure_v1.4.8": "figure_v1.4.8.png",
+          "figure_v1.4.8_uncorrected": "figure_v1.4.8_uncorrected.png",
+          "figure_v1.4.11.2": "figure_v1.4.11.2.png",
+          "figure_v1.4.11.2_uncorrected": "figure_v1.4.11.2_uncorrected.png"
+        },
+        "mtime": 1771046058000,
+        "generated": "2026-02-14T06:14:18.001775"
+      }
+    },
+    {
+      "id": "2d-plots-6bde2572",
+      "title": "2d plots",
+      "kind": "task",
+      "status": "open",
+      "body": "# 2D Plotting Specification\n\nShared styling for PTE heatmaps, covariance matrices, and 2D diagnostic plots.\n\n## Purpose\n\nVisualize parameter-space coverage (PTE grids) and correlation structure (covariance matrices). Emphasis on identifying outliers and structure.\n\n## A&A Figure Dimensions\n\nStandard widths (inches):\n- **Single-column**: 3.54 (88mm)\n- **Double-column**: 7.24 (180mm)\n\nSquare heatmaps use single-column width (3.54 × 3.54). Larger matrices may use double-column.\n\n## Config References\n\n| Element | Config Key |\n|---------|------------|\n| PTE thresholds | `statistics.pte_healthy_range` |\n\n## PTE Heatmaps\n\nGrid search results showing PTE as function of two parameters.\n\n### Colormap\n\n`vlag` — diverging, emphasizes extremes (low/high PTE).\n\n### Contours\n\nMark statistical significance at `statistics.pte_healthy_range` bounds — the 2σ equivalent thresholds.\n\n### Fiducial Marker\n\nHatched rectangle highlighting the chosen fiducial configuration.\n\n## Covariance Matrices\n\nVisualize E/B mode covariance structure.\n\n### Colormap\n\n`icefire` — symmetric diverging for positive/negative correlations.\n\n### Structure\n\nShow block separation between E-modes, B-modes, and ambiguous modes. Highlight cross-correlations between mode types.",
+      "dependsOn": [],
+      "specName": "2d_plots",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "type": "foundation_spec",
+          "description": "Foundational technique specification"
+        },
+        "artifacts": {},
+        "mtime": 1770088437000,
+        "generated": "2026-02-03T04:13:57.290589"
+      }
+    },
+    {
+      "id": "bmodes-paper-40d3553a",
+      "title": "bmodes paper",
+      "kind": "task",
+      "status": "open",
+      "body": "# B-modes Paper\n\n- [TeX source](docs/unions_release/unions_bmodes/unions_bmodes.tex)\n- [PDF](docs/unions_release/unions_bmodes/build/unions_bmodes.pdf)\n\nPaper III (Daley et al.) — B-mode validation for UNIONS cosmic shear.\n\nDepends on: [pure_eb_covariance](pure_eb_covariance.md), [pure_eb_data_vector](pure_eb_data_vector.md), [cosebis_version_comparison](cosebis_version_comparison.md), [cl_data_vector](cl_data_vector.md), [config_space_pte_matrices](config_space_pte_matrices.md), [harmonic_space_pte_matrices](harmonic_space_pte_matrices.md)\n\n## Scope\n\nThree statistics, multiple catalog versions (from `config.versions`), one question: are B-modes consistent with noise?\n\nPaper II (Goh et al.) reports the answer for the fiducial catalog. This paper shows the work — methodology, version comparison, scale cut selection.\n\n## Figure Mapping\n\n### Main Text (Results)\n\n| Figure | Claim | Output | Section | Label |\n|--------|-------|--------|---------|-------|\n| Pure E/B covariance | `pure_eb_covariance` | `figure.png` | §2.4 | `fig:eb_covariance` |\n| Pure E/B data vector | `pure_eb_data_vector` | `paper_figure` | §2.3 | `fig:pure_eb_data_vector` |\n| Harmonic fiducial | `cl_data_vector` | `paper_figure` | §2.3 | `fig:cl_data_vector` |\n| Config-space PTE composite | `config_space_pte_matrices` | `paper_figure_fiducial` | Results | `fig:pte_config_space` |\n| Harmonic PTE matrix | `harmonic_space_pte_matrices` | `paper_figure_fiducial` | Results | `fig:pte_cl` |\n\n### Appendix\n\n| Figure | Claim | Output | Section | Label |\n|--------|-------|--------|---------|-------|\n| Config-space PTE v1.4.5 | `config_space_pte_matrices` | `paper_figure_v145` | Appendix | `fig:pte_config_v145` |\n| Config-space PTE v1.4.8 | `config_space_pte_matrices` | `paper_figure_v148` | Appendix | `fig:pte_config_v148` |\n| Harmonic PTE appendix | `harmonic_space_pte_matrices` | `paper_figure_appendix` | Appendix | `fig:pte_cl_appendix` |\n\nFigures copy from `results/claims/{claim}/` to `docs/unions_release/unions_bmodes/Figures/`.\n\n## Pure E/B Covariance\n\nEvidence: `results/claims/pure_eb_covariance/evidence.json`\n\n### Block Structure\n\nSix blocks of 20 bins each, ordered: ξ+^E, ξ-^E, ξ+^B, ξ-^B, ξ+^amb, ξ-^amb.\n\nThe evidence groups these into three 40×40 analysis blocks:\n- `xi_E`: ξ+^E and ξ-^E combined\n- `xi_B`: ξ+^B and ξ-^B combined\n- `xi_amb`: ξ+^amb and ξ-^amb combined\n\n### Figure Context\n\nAppears in §2.4 after COSEBIS covariance discussion:\n\n> Figure~\\ref{fig:eb_covariance} shows the pure E/B covariance structure.\n\nCaption references `covariance.n_samples` (currently 2000).\n\n## PTE Reporting\n\n### Format\n\nTwo significant figures: \"PTE of 0.55\"\n\nScientific notation below 0.01: \"PTE of 2.6 × 10⁻⁴\"\n\n### Scale Cuts\n\nEn-dash, arcmin units: \"6–85 arcmin\"\n\n### Tables\n\nBold failures (< 0.01). Values from evidence files, not hardcoded.\n\nExample structure (values populated from evidence):\n\n| Version | ξ+^B | ξ-^B | Joint |\n|---------|------|------|-------|\n| v1.4.5 | `pure_eb_data_vector.evidence.v145...` | ... | ... |\n| v1.4.6 | `pure_eb_data_vector.evidence.fiducial...` | ... | ... |\n\n### Blind Handling\n\nAll PTEs use the fiducial blind from `config[\"fiducial\"][\"blind\"]`.\n\n## Macros\n\nGenerated by `paper_macros` rule → `docs/unions_release/unions_bmodes/claims_macros.tex`\n\n### Pure E/B Covariance\n\n| Macro | Evidence Path |\n|-------|---------------|\n| `\\ebcovCondE` | `pure_eb_covariance` → `block_analysis.xi_E.condition_number` |\n| `\\ebcovCondB` | `pure_eb_covariance` → `block_analysis.xi_B.condition_number` |\n| `\\ebcovCondAmb` | `pure_eb_covariance` → `block_analysis.xi_amb.condition_number` |\n| `\\ebcovCondFull` | `pure_eb_covariance` → `condition_number` |\n| `\\ebcovNbins` | `pure_eb_covariance` → `n_bins` |\n\n### Pure E/B Decomposition\n\n| Macro | Evidence Path |\n|-------|---------------|\n| `\\ebfiducialPte` | `pure_eb_data_vector` → `fiducial.pte_joint_min` |\n| `\\ebfullPte` | `pure_eb_data_vector` → `full.pte_joint_min` |\n| `\\ebthetaXipMin`, `\\ebthetaXipMax` | `pure_eb_data_vector` → `fiducial.scale_cut_xip` |\n| `\\ebthetaXimMin`, `\\ebthetaXimMax` | `pure_eb_data_vector` → `fiducial.scale_cut_xim` |\n\n### COSEBIS\n\n| Macro | Evidence Path |\n|-------|---------------|\n| `\\cosebisfiducialPte` | `cosebis_version_comparison` → `fiducial.versions.SP_v1.4.6_leak_corr.pte_6_min` |\n| `\\cosebisfullPte` | `cosebis_version_comparison` → `full.versions.SP_v1.4.6_leak_corr.pte_6_min` |\n| `\\cosebisthetaMin`, `\\cosebisthetaMax` | `cosebis_version_comparison` → `fiducial.scale_cut_arcmin` |\n\n### Covariance Consistency\n\n| Macro | Evidence Path |\n|-------|---------------|\n| `\\covXipMaxDev` | `covariance_blind_consistency` → max deviation across blinds |\n| `\\covXimMaxDev` | `covariance_blind_consistency` → max deviation across blinds |\n| `\\ebJointPteDelta` | `pure_eb_data_vector` → joint PTE variation (max − min) |\n\nNever hardcode values in text. Use macros.\n\n## Config References\n\n| Parameter | Config Key |\n|-----------|------------|\n| Fiducial version | `fiducial.version` |\n| MC samples | `covariance.n_samples` |\n| Reporting bins | `fiducial.nbins` |\n| ξ+ scale cut | `fiducial.fiducial_xip_scale_cut` |\n| ξ- scale cut | `fiducial.fiducial_xim_scale_cut` |",
+      "dependsOn": [
+        "pure-e-b-covariance-36cb87c5",
+        "pure-e-b-data-vector-1577af8d",
+        "cosebis-version-comparison-57a0d35c",
+        "cl-data-vector-e132481e",
+        "config-space-pte-matrices-17143971",
+        "harmonic-space-pte-matrices-f86b8278",
+        "pure-e-b-version-comparison-2f69c789",
+        "cl-version-comparison-9933f592",
+        "harmonic-vs-config-space-1931ab5a",
+        "cosebis-data-vector-01d10f52",
+        "ellipticity-cut-e-0-7-full-29b12eee"
+      ],
+      "specName": "bmodes_paper",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "type": "synthesis"
+        },
+        "artifacts": {},
+        "mtime": 1771067400000,
+        "generated": "2026-02-14T12:10:00.296040"
+      }
+    },
+    {
+      "id": "cosebis-data-vector-01d10f52",
+      "title": "COSEBIs Data Vector",
+      "kind": "task",
+      "status": "open",
+      "body": "# COSEBIs Data Vector\n\nDepends: [COSEBIS](cosebis.md), [1D Plots](1d_plots.md)\nMethod: [COSEBIS](cosebis.md)\nPlotting: [1D Plots](1d_plots.md)\n\n## Claim\n\nCOSEBIS B-modes at fiducial version (`fiducial.version`) are consistent with zero across the full angular range and at fiducial scale cuts.\n\n## Blind Handling\n\nUses fiducial blind from `config[\"fiducial\"][\"blind\"]`. COSEBIS B_n data vectors are identical across blinds; covariances vary with blind via n(z)-dependent theoretical predictions. Statistical evidence (PTEs) is in [COSEBIS PTE Matrix](cosebis_pte_matrix.md).\n\n## Config References\n\n| Parameter | Config Key |\n|-----------|------------|\n| Fiducial version | `fiducial.version` |\n| Fiducial scale cut | `fiducial.fiducial_min_scale` to `fiducial.fiducial_max_scale` |\n| Number of modes | `fiducial.nmodes` |\n\n## Evidence\n\nThis claim produces visualizations only. Statistical evidence (PTEs) is in [COSEBIS PTE Matrix](cosebis_pte_matrix.md).\n\n| Metric | Description |\n|--------|-------------|\n| `fiducial_scale_cut` | Angular range for fiducial |\n| `full_scale_cut` | Full angular range |\n| `nmodes` | Number of COSEBIS modes |\n\n## Outputs\n\n- `figure.png` — Single-panel figure showing $B_n / \\sigma_n$ for fiducial version\n  - Both scale cuts (fiducial and full) overplotted with different colors\n  - Error bars are unity by construction (normalized)\n  - Paper figure for main text B-mode validation\n\n## Notes\n\nThis is the paper-ready data vector figure. For multi-version comparison, see [COSEBIS Version Comparison](cosebis_version_comparison.md).",
+      "dependsOn": [
+        "cosebis-4491229b",
+        "1d-plots-8fbdf52f"
+      ],
+      "specName": "cosebis_data_vector",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "version": "SP_v1.4.6_leak_corr",
+          "fiducial_scale_cut": [
+            12,
+            83
+          ],
+          "full_scale_cut": [
+            1,
+            250
+          ],
+          "nmodes": 20,
+          "note": "Paper data vector figure. Statistical PTEs in cosebis_pte_matrix claim."
+        },
+        "artifacts": {
+          "figure": "figure.png",
+          "figure_v1.4.11.3": "figure_v1.4.11.3.png",
+          "figure_v1.4.11.3_uncorrected": "figure_v1.4.11.3_uncorrected.png",
+          "figure_v1.4.5": "figure_v1.4.5.png",
+          "figure_v1.4.5_uncorrected": "figure_v1.4.5_uncorrected.png",
+          "figure_v1.4.6": "figure_v1.4.6.png",
+          "figure_v1.4.6_uncorrected": "figure_v1.4.6_uncorrected.png",
+          "figure_v1.4.8": "figure_v1.4.8.png",
+          "figure_v1.4.8_uncorrected": "figure_v1.4.8_uncorrected.png",
+          "figure_v1.4.11.2": "figure_v1.4.11.2.png",
+          "figure_v1.4.11.2_uncorrected": "figure_v1.4.11.2_uncorrected.png"
+        },
+        "mtime": 1771067022000,
+        "generated": "2026-02-14T12:03:40.925984"
+      }
+    },
+    {
+      "id": "cosebis-version-comparison-57a0d35c",
+      "title": "COSEBIS Version Comparison",
+      "kind": "task",
+      "status": "open",
+      "body": "# COSEBIS Version Comparison\n\nDepends: [COSEBIS](cosebis.md), [1D Plots](1d_plots.md)\nMethod: [COSEBIS](cosebis.md)\nPlotting: [1D Plots](1d_plots.md)\n\n## Claim\n\nB-mode COSEBIS magnitudes are small relative to measurement uncertainty across catalog versions. Visualization shows $B_n / \\sigma_n$ (in units of standard deviation from zero) at fiducial and full angular ranges.\n\n## Config References\n\n| Parameter | Config Key |\n|-----------|------------|\n| Versions | `versions` |\n| Fiducial | `fiducial.version` |\n| Scale cut | `fiducial.fiducial_min_scale` to `fiducial.fiducial_max_scale` |\n\n## Evidence\n\nThis claim produces visualizations only. Statistical evidence (PTEs) is in [COSEBIS PTE Matrix](cosebis_pte_matrix.md).\n\n| Metric | Description |\n|--------|-------------|\n| `scale_cuts` | Angular ranges shown |\n| `versions_plotted` | Catalog versions included |\n\n## Outputs\n\n- `figure_stacked.png` — Two-panel figure showing $B_n / \\sigma_n$\n  - Top: Full range (no scale cuts)\n  - Bottom: Fiducial scale cut\n  - Error bars are unity by construction (normalized)",
+      "dependsOn": [
+        "cosebis-4491229b",
+        "1d-plots-8fbdf52f"
+      ],
+      "specName": "cosebis_version_comparison",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "scale_cuts": {
+            "fiducial": [
+              12,
+              83
+            ],
+            "full": [
+              1,
+              250
+            ]
+          },
+          "nmodes": 20,
+          "versions": {
+            "SP_v1.4.5_leak_corr_pte_B_fiducial": 0.34539860115740056,
+            "SP_v1.4.5_leak_corr_chi2_B_fiducial": 21.910285150355573,
+            "SP_v1.4.5_leak_corr_dof_B_fiducial": 20,
+            "SP_v1.4.5_leak_corr_pte_B_full": 1.8878202999238997e-7,
+            "SP_v1.4.5_leak_corr_chi2_B_full": 69.90466044316713,
+            "SP_v1.4.5_leak_corr_dof_B_full": 20,
+            "SP_v1.4.6_leak_corr_pte_B_fiducial": 0.6026197775241353,
+            "SP_v1.4.6_leak_corr_chi2_B_fiducial": 17.769037374962664,
+            "SP_v1.4.6_leak_corr_dof_B_fiducial": 20,
+            "SP_v1.4.6_leak_corr_pte_B_full": 0.00030170357003152037,
+            "SP_v1.4.6_leak_corr_chi2_B_full": 49.05778339976802,
+            "SP_v1.4.6_leak_corr_dof_B_full": 20,
+            "SP_v1.4.6_ecut07_leak_corr_pte_B_fiducial": 0.6817095739772672,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_B_fiducial": 16.554089079880725,
+            "SP_v1.4.6_ecut07_leak_corr_dof_B_fiducial": 20,
+            "SP_v1.4.6_ecut07_leak_corr_pte_B_full": 0.0021744964690473363,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_B_full": 42.79684252758114,
+            "SP_v1.4.6_ecut07_leak_corr_dof_B_full": 20,
+            "SP_v1.4.8_leak_corr_pte_B_fiducial": 0.5551667480001745,
+            "SP_v1.4.8_leak_corr_chi2_B_fiducial": 18.489950213848523,
+            "SP_v1.4.8_leak_corr_dof_B_fiducial": 20,
+            "SP_v1.4.8_leak_corr_pte_B_full": 0.00001153383933050163,
+            "SP_v1.4.8_leak_corr_chi2_B_full": 58.6410816424716,
+            "SP_v1.4.8_leak_corr_dof_B_full": 20,
+            "SP_v1.4.11.3_leak_corr_pte_B_fiducial": 0.3776473336874857,
+            "SP_v1.4.11.3_leak_corr_chi2_B_fiducial": 21.335150071338713,
+            "SP_v1.4.11.3_leak_corr_dof_B_fiducial": 20,
+            "SP_v1.4.11.3_leak_corr_pte_B_full": 1.749646845741515e-10,
+            "SP_v1.4.11.3_leak_corr_chi2_B_full": 87.86090078569691,
+            "SP_v1.4.11.3_leak_corr_dof_B_full": 20,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_B_fiducial": 0.7094239832247715,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_B_fiducial": 16.11565157574622,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_B_fiducial": 20,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_B_full": 0.0008506401866558503,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_B_full": 45.829303936254774,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_B_full": 20
+          }
+        },
+        "artifacts": {
+          "figure_stacked": "figure_stacked.png"
+        },
+        "mtime": 1771064134000,
+        "generated": "2026-02-14T11:15:33.163650"
+      }
+    },
+    {
+      "id": "bb-covariance-blind-independence-e38325b1",
+      "title": "BB Covariance Blind Independence",
+      "kind": "task",
+      "status": "open",
+      "dependsOn": [
+        "pure-eb-ca49d189",
+        "covariance-ffc73eb2",
+        "cosebis-4491229b",
+        "cl-25c14bbc"
+      ],
+      "specName": "bb_covariance_blind_independence",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "pure_eb": {
+            "xip_B": {
+              "B_to_A": {
+                "max_dev": 0.10892009377098921,
+                "mean_dev": 0.04519298101966838,
+                "min_ratio": 0.8910799062290108,
+                "max_ratio": 1.0528602823293356
+              },
+              "C_to_A": {
+                "max_dev": 0.10699255035542654,
+                "mean_dev": 0.045703228451609304,
+                "min_ratio": 0.8930074496445735,
+                "max_ratio": 1.0936267627809895
+              }
+            },
+            "xim_B": {
+              "B_to_A": {
+                "max_dev": 0.08564541446257667,
+                "mean_dev": 0.022564308592918674,
+                "min_ratio": 0.9143545855374233,
+                "max_ratio": 1.0368857111809267
+              },
+              "C_to_A": {
+                "max_dev": 0.08743274977293147,
+                "mean_dev": 0.02987668731736596,
+                "min_ratio": 0.9163633152111595,
+                "max_ratio": 1.0874327497729315
+              }
+            },
+            "xip_E": {
+              "B_to_A": {
+                "max_dev": 0.10940671798489843,
+                "mean_dev": 0.05675367644312611,
+                "min_ratio": 0.8905932820151016,
+                "max_ratio": 1.0534996657795697
+              },
+              "C_to_A": {
+                "max_dev": 0.1247576330801865,
+                "mean_dev": 0.05423690527137394,
+                "min_ratio": 0.9004515619967858,
+                "max_ratio": 1.1247576330801865
+              }
+            },
+            "xim_E": {
+              "B_to_A": {
+                "max_dev": 0.1017800844268314,
+                "mean_dev": 0.030637550352685127,
+                "min_ratio": 0.8982199155731686,
+                "max_ratio": 1.017991064776295
+              },
+              "C_to_A": {
+                "max_dev": 0.14647736232036346,
+                "mean_dev": 0.03828942860136927,
+                "min_ratio": 0.9256430017137826,
+                "max_ratio": 1.1464773623203635
+              }
+            }
+          },
+          "harmonic": {
+            "BB": {
+              "B_to_A": {
+                "max_dev": 0.0850277606056783,
+                "mean_dev": 0.01242057396854199,
+                "min_ratio": 0.9149722393943217,
+                "max_ratio": 0.999822186136556
+              },
+              "C_to_A": {
+                "max_dev": 0.08608110077813036,
+                "mean_dev": 0.012481964068788112,
+                "min_ratio": 1.0001739330268493,
+                "max_ratio": 1.0860811007781304
+              }
+            },
+            "EE": {
+              "B_to_A": {
+                "max_dev": 0.10901448137397118,
+                "mean_dev": 0.04019763513478912,
+                "min_ratio": 0.8909855186260288,
+                "max_ratio": 0.9954553176110915
+              },
+              "C_to_A": {
+                "max_dev": 0.1123853315582386,
+                "mean_dev": 0.04076606102642625,
+                "min_ratio": 1.0044494206787655,
+                "max_ratio": 1.1123853315582386
+              }
+            }
+          },
+          "cosebis": {
+            "B": {
+              "B_to_A": {
+                "max_dev": 0.000017245903864537837,
+                "mean_dev": 0.000006232501829139814,
+                "min_ratio": 0.9999827540961355,
+                "max_ratio": 0.9999986513068982
+              },
+              "C_to_A": {
+                "max_dev": 0.000016958512787379476,
+                "mean_dev": 0.000006121231835276575,
+                "min_ratio": 1.0000015626014547,
+                "max_ratio": 1.0000169585127874
+              }
+            },
+            "E": {
+              "B_to_A": {
+                "max_dev": 0.09804765208573007,
+                "mean_dev": 0.05931356568743286,
+                "min_ratio": 0.9019523479142699,
+                "max_ratio": 0.969685750451124
+              },
+              "C_to_A": {
+                "max_dev": 0.10083960744895415,
+                "mean_dev": 0.060289120452436576,
+                "min_ratio": 1.0302035338795883,
+                "max_ratio": 1.1008396074489541
+              }
+            },
+            "nmodes": 20,
+            "theta_min": 1,
+            "theta_max": 250
+          },
+          "summary": {
+            "cosebis_bb_max_deviation": 0.000017245903864537837,
+            "cosebis_ee_max_deviation": 0.10083960744895415,
+            "cosebis_bb_blind_independent": true,
+            "ee_varies_as_expected": true,
+            "bb_max_deviation": 0.10892009377098921,
+            "ee_max_deviation": 0.14647736232036346,
+            "bb_closer_to_unity": true,
+            "bb_within_2pct": false
+          },
+          "version": "SP_v1.4.6"
+        },
+        "artifacts": {
+          "figure": "figure.png"
+        },
+        "mtime": 1771066991000,
+        "generated": "2026-02-14T12:03:10.088733"
+      }
+    },
+    {
+      "id": "harmonic-vs-config-space-1931ab5a",
+      "title": "Harmonic vs config-space COSEBIS cross-validation claim",
+      "kind": "task",
+      "status": "closed",
+      "body": "This is your spec for a Ralph loop, a meditative iteration toward a desired state.\n\n## Desired State\n\nA claim `harmonic_config_cosebis_comparison` that cross-validates COSEBIS computed from two independent paths:\n\n1. **Harmonic**: pseudo-C_ell (NaMaster, standard powspace nbins=32 binning) -> `cosebis_from_Cell()` -> E_n, B_n\n2. **Configuration**: xi_pm (TreeCorr fine-binned 2PCF) -> `cosebis_from_xipm()` -> E_n, B_n\n\nThis is a visual cross-check — both paths should yield the same signal. **No chi2/PTE on the difference** because we don't know the cross-covariance between methods.\n\n**Key insight**: C_ell do NOT need to be finely binned for the C_ell -> COSEBIS integral (only real-space xi needs fine binning). Standard powspace nbins=32 pseudo-C_ell suffice.\n\n### Done looks like\n\n- `snakemake harmonic_config_cosebis_comparison` runs and produces `evidence.json` + figures\n- The claim appears in `CLAIM_RULES` in `synthesis.smk` and renders on the dashboard\n- `snakemake all_claims --dry-run` includes it without error\n- Declared `localrules`\n- **Two figure types** modeled on existing measurement claims:\n  1. **Data vector figure** (fiducial catalog only): E_n and B_n from both methods, both scale ranges (full [1,250]' and fiducial [12,83]'). B-modes in B_n/sigma units. Like `cosebis_data_vector`.\n  2. **Version comparison figure**: All versions overlaid, showing both methods per version. B-modes in B_n/sigma units. Like `cosebis_version_comparison` but with two curves (harmonic + config) per version.\n- Evidence JSON documents the comparison without chi2/PTE (visual cross-check only)\n- Methodology spec at `workflow/config/harmonic_config_cosebis_comparison.md`\n\n### Architecture\n\n- **Rule**: in `workflow/rules/claims.smk`, follows existing claim patterns\n- **Script**: `workflow/scripts/harmonic_config_cosebis_comparison.py`\n- **Spec**: `workflow/config/harmonic_config_cosebis_comparison.md`\n- **Dashboard**: in `CLAIM_RULES` list in `synthesis.smk`\n- **localrules**: in the localrules declaration in `claims.smk`\n\n### Constraints\n\n- Uses standard `powspace_nbins=32` pseudo-C_ell. Paths via `_pseudo_cl_path()` / `_pseudo_cl_cov_path()` helpers.\n- Config-space COSEBIS via `calculate_cosebis()` using fine-binned xi (integration grid from config)\n- Covariance for errorbars only (no chi2 on differences — cross-covariance unknown)\n- B-modes plotted in B_n/sigma units where possible\n- Both full range [1,250]' and fiducial [12,83]' scale cuts\n- Only leak-corrected versions (`VERSIONS_LEAK_CORR`), fiducial blind only\n- Use `PAPER_MPLSTYLE` from `plotting_utils.py`\n\n## Context\n\n### Existing patterns to follow\n\n- **Claim rule pattern**: see `cosebis_version_comparison` or `cl_data_vector` in `workflow/rules/claims.smk`\n- **Evidence JSON pattern**: check any `results/claims/*/evidence.json`\n- **Dashboard integration**: `CLAIM_RULES` list in `workflow/rules/synthesis.smk:20-31`\n- **localrules**: end of `claims.smk` (~line 560)\n- **Path helpers**: `_pseudo_cl_path()`, `_pseudo_cl_cov_path()`, `_xi_integration_path()`, `_cov_integration_path()` in `claims.smk:114-98`\n- **Plotting style**: `from plotting_utils import PAPER_MPLSTYLE` then `plt.style.use(PAPER_MPLSTYLE)`\n- **COSEBIS from C_ell**: `cosmo_numba.B_modes.cosebis.COSEBIS.cosebis_from_Cell(ell, Cell_E, Cell_B, theta, cache=True)`\n- **COSEBIS from xi**: `sp_validation.cosmo_val.CosmologyValidation.calculate_cosebis()`\n- **COSEBIS covariance from xi covariance**: `COSEBIS.cosebis_covariance_from_xipm_covariance(theta, cov_xi_pm)`\n\n### Deleted predecessor\n\nThe script existed before as `compare_harmonic_config_cosebis.py` (deleted in commit `dd5451c`). It can be recovered via `git show dd5451c -- \"*/compare_harmonic_config_cosebis.py\"`. It has useful structure but needs cleanup:\n- Remove IPython magic, os.chdir, snakemake_interactive\n- Remove fine-binning requirement (ell_min/ell_max cuts)\n- Use `snakemake.input.*` consistently\n- Use `PAPER_MPLSTYLE` instead of hardcoded path\n- Simplify to match current claim patterns\n\n### Key files\n\n- `workflow/rules/claims.smk` -- add the rule here\n- `workflow/rules/synthesis.smk` -- add to CLAIM_RULES\n- `workflow/scripts/` -- new script goes here\n- `workflow/config/` -- methodology spec goes here\n- `workflow/config/config.yaml` -- COSEBIS and fiducial parameters\n- Pseudo-C_ell files: `code/sp_validation/notebooks/cosmo_val/output/pseudo_cl_{version}_blind=A_powspace_nbins=32.fits`\n\n## Skills\n\n`/snakemake`, `/implementing-code`\n\n## Comments\n**2026-02-07 18:38** — Feb 7 update: cosmo_numba W_n(ℓ) validated as accurate (0.2-3% at filter peaks). The mode-dependent E_n offsets (ratios 0.01-1.04) are from 32-bin bandpower sampling underresolving oscillatory W_n(ℓ), not a code bug. In sigma units the harmonic/config E_n differences are small for low modes (n≤5-6) but grow for high modes (n>10). B_n consistent between methods. This is not a blocker for the paper — the cross-validation figure should note the sampling limitation for high modes.\n**2026-02-07 19:13** — Bandpower undersampling confirmed experimentally (test_bandpower_sampling.py). Same theory C(ℓ), same W_n — only difference is 32 vs 10k ℓ points. 32-bin E_n ratios degrade mode-dependently: 0.99→0.42 for modes 1-6 at full scale cut. cosmo_numba is correct; the 32-bin Simpson integration can't resolve W_n oscillations for n≥3.",
+      "dependsOn": [
+        "cosebis-4491229b",
+        "cosebis-w-n-ℓ-filter-faff6b7f"
+      ],
+      "specName": "harmonic_config_cosebis_comparison",
+      "staleness": "stale",
+      "evidence": {
+        "metrics": {
+          "nmodes": 20,
+          "reliable_modes": 8,
+          "scale_cut": [
+            1,
+            250
+          ],
+          "powspace_nbins": 96,
+          "versions_compared": [
+            "SP_v1.4.5_leak_corr",
+            "SP_v1.4.6_leak_corr",
+            "SP_v1.4.8_leak_corr",
+            "SP_v1.4.11.3_leak_corr"
+          ],
+          "harmonic_b_mode_ptes": {
+            "SP_v1.4.6_leak_corr": {
+              "chi2": 33.777952460809544,
+              "pte": 0.000044567540506404596,
+              "dof": 8
+            },
+            "SP_v1.4.11.3_leak_corr": {
+              "chi2": 94.31513390586613,
+              "pte": 6.167944404437867e-17,
+              "dof": 8
+            },
+            "SP_v1.4.5_leak_corr": {
+              "chi2": 51.31160684971468,
+              "pte": 2.2852078278021423e-8,
+              "dof": 8
+            },
+            "SP_v1.4.8_leak_corr": {
+              "chi2": 31.826453179453818,
+              "pte": 0.00010004841004574192,
+              "dof": 8
+            }
+          },
+          "note": "Harmonic-space COSEBIS computed via cosmo_numba cosebis_from_Cell() from 96-bin powspace pseudo-C_ell. With 96 bins, modes 1-8 are reliably recovered (validated on GLASS mocks: E_n/config within 2%). Higher modes are limited by W_n(ell) numerical precision at ~10^-14 amplitudes, not binning. Harmonic B-mode PTEs use modes 1-8 with propagated covariance."
+        },
+        "artifacts": {
+          "figure": "figure.png",
+          "figure_v1.4.11.3": "figure_v1.4.11.3.png",
+          "figure_v1.4.11.3_uncorrected": "figure_v1.4.11.3_uncorrected.png",
+          "figure_v1.4.5": "figure_v1.4.5.png",
+          "figure_v1.4.5_uncorrected": "figure_v1.4.5_uncorrected.png",
+          "figure_v1.4.6": "figure_v1.4.6.png",
+          "figure_v1.4.6_uncorrected": "figure_v1.4.6_uncorrected.png",
+          "figure_v1.4.8": "figure_v1.4.8.png",
+          "figure_v1.4.8_uncorrected": "figure_v1.4.8_uncorrected.png",
+          "figure_versions": "figure_versions.png",
+          "figure_v1.4.11.2": "figure_v1.4.11.2.png",
+          "figure_v1.4.11.2_uncorrected": "figure_v1.4.11.2_uncorrected.png"
+        },
+        "mtime": 1770790004000,
+        "generated": "2026-02-11T07:06:41.394998"
+      }
+    },
+    {
+      "id": "cosebis-w-n-ℓ-filter-faff6b7f",
+      "title": "COSEBIS W_n(ℓ) filter functions overlaid on bandpower data",
+      "kind": "task",
+      "status": "active",
+      "body": "## Purpose\n\nBuild intuition about the C_ℓ → COSEBIS transform: show the continuous W_n(ℓ) filter\nfunctions for modes 1-6 overlaid on the actual 32-bin BB bandpower data points.\nVisually demonstrates why coarse bandpowers underresolve higher modes — W_n oscillates\nincreasingly fast and 32 samples can't capture it.\n\n## Figure design\n\n- x-axis: ℓ (log scale)\n- Left y-axis: W_n(ℓ) filter functions (continuous curves, modes 1-6 in distinct colors)\n- Right y-axis: C_ℓ^BB data (32 bandpower points with errorbars)\n- Vertical lines or shading marking the 32 bin centres\n- Both [1,250]' and [12,83]' scale cuts (two panels or toggle)\n\n## Data sources\n\n- W_n(ℓ): cosmo_numba `COSEBIS.get_Wn_log(ell_dense)` at ~1000 ℓ points\n- C_ℓ^BB: fiducial pseudo-Cl FITS file (32 powspace bins)\n- Covariance: fiducial pseudo-Cl covariance for errorbars",
+      "dependsOn": [],
+      "specName": "cosebis_filter_overlay",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "nmodes_shown": 6,
+          "n_bandpower_bins": 32,
+          "ell_range": [
+            12.5,
+            1988.5000000000002
+          ],
+          "scale_cuts": {
+            "full": [
+              1,
+              250
+            ],
+            "fiducial": [
+              12,
+              83
+            ]
+          },
+          "note": "Higher COSEBIS modes have increasingly oscillatory W_n(ell) filters. 32 powspace bandpowers cannot resolve these oscillations for n >= 3, causing harmonic-space COSEBIS to diverge from configuration-space results. This is a sampling limitation, not a code error."
+        },
+        "artifacts": {
+          "figure": "figure.png"
+        },
+        "mtime": 1771066529000,
+        "generated": "2026-02-14T11:55:28.677518"
+      }
+    },
+    {
+      "id": "ellipticity-cut-e-0-7-full-29b12eee",
+      "title": "Ellipticity cut e<0.7: full pipeline run",
+      "kind": "task",
+      "status": "closed",
+      "body": "## What\n\nFull pipeline run for e<0.7 ellipticity cut on v1.4.6 and v1.4.11.3. Compare B-mode statistics (pure E/B, COSEBIS, harmonic C_ℓ) with and without the cut.\n\n## State\n\n**Check:** `snakemake-peek smk-172028` (launched 2026-02-12 17:20)\n**Monitor:** sleep 15 min → `snakemake-peek smk-172028` → repeat until completion or error\n\n**Pipeline target:** `ecut_version_comparisons` — runs 66 jobs total:\n- filter_catalog_ellipticity → ξ± → covariance → pure E/B chunks → comparison figures\n- Also: pseudo-Cl + Cl covariance for harmonic comparison, COSEBIS via ξ integration\n\n**Filtered catalog properties:**\n\n| Version | n_kept/n_total | fraction | n_eff (gal/arcmin²) | σ_e |\n|---------|---------------|----------|---------------------|------|\n| v1.4.6 e<0.7 | 59.2M/63.2M | 93.6% | 5.74 (was 6.13) | 0.342 (was 0.380) |\n| v1.4.11.3 e<0.7 | 72.7M/78.2M | 93.0% | 6.74 (was ~7.2) | 0.341 (was ~0.38) |\n\n**Infrastructure fixes applied this iteration:**\n1. `filter_catalog_ellipticity.py` — memory optimization (float32 intermediates, compute survey props before writing)\n2. `ecut.smk` — removed localrules for filter_catalog_ellipticity (needs 16GB), added mem_mb=16000\n3. `Snakefile` — `build_redshift_path()` strips `_ecut\\d+` to resolve parent n(z); `resolve_covariance_version()` skips v1.4.11.3→v1.4.11.2 mapping for ecut versions (they need own covariance)\n4. `covariance.smk` — `get_mask_cls_path()` strips `_ecut\\d+` to resolve parent mask\n5. `claims.smk` — `precompute_pure_eb` wildcard constraint updated to allow `_ecut\\d+`\n6. `cat_config.yaml` — populated n_e and sigma_e from survey_props.json for both ecut versions\n\n## Results\n\n**Pure E/B PTEs** (ξ_B+/ξ_B−, full range / fiducial θ∈[12′,83′]):\n\n| Version | PTE(ξ+B) full | cut | PTE(ξ−B) full | cut |\n|---|---|---|---|---|\n| v1.4.6 | 0.020 | 0.63 | 0.18 | 0.17 |\n| v1.4.6 \\|e\\|<0.7 | 0.10 | 0.33 | 0.24 | 0.76 |\n| v1.4.11.3 | 0.026 | 0.17 | 2.1e-4 | 0.030 |\n| v1.4.11.3 \\|e\\|<0.7 | 0.014 | 0.19 | 0.19 | 0.67 |\n\n**COSEBIS PTEs** (B_n, fiducial θ / full θ):\n\n| Version | PTE fiducial | PTE full |\n|---|---|---|\n| v1.4.6 | 0.38 | 1.0e-5 |\n| v1.4.6 \\|e\\|<0.7 | 0.46 | 1.3e-4 |\n| v1.4.11.3 | 0.21 | 6.7e-13 |\n| v1.4.11.3 \\|e\\|<0.7 | 0.55 | 8.2e-5 |\n\n**Harmonic C_ℓ PTEs** (BB/EB, full ℓ range / fiducial ℓ∈[300,1600]):\n\n| Version | PTE(BB) full | BB cut | PTE(EB) full | EB cut |\n|---|---|---|---|---|\n| v1.4.6 | 0.098 | 0.28 | 0.95 | 0.68 |\n| v1.4.6 \\|e\\|<0.7 | 0.21 | 0.46 | 0.93 | 0.63 |\n| v1.4.11.3 | 1.8e-12 | 5.7e-10 | 0.97 | 0.75 |\n| v1.4.11.3 \\|e\\|<0.7 | 4.0e-5 | 0.0013 | 0.83 | 0.40 |\n\nThe story is consistent across all three statistics: within fiducial scale cuts, everything is clean. The e<0.7 cut dramatically improves v1.4.11.3 ξ−B (PTE 2.1e-4 → 0.19 full, 0.030 → 0.67 cut). COSEBIS fiducial range is clean for all versions. Harmonic BB for v1.4.11.3 improves by many orders of magnitude but remains significant even with the cut.\n\nEB spectra are consistent with zero for all versions — the B-mode signal is BB-only (parity-even), consistent with PSF leakage or additive shear systematics rather than random noise.\n\n## Desired state\n\nComparison figures showing B-mode levels with vs without e<0.7 cut across all three statistics. Determine whether the cut meaningfully reduces B-modes.\n\n## Comments\n**2026-02-12 17:35** — 15/66 (23%) at 17:28. Covariance processing done for v1.4.6 ecut07. pseudo_cl/pseudo_cl_cov finishing. 4 xi jobs + 4 cosmocov jobs queued/running. Setting up 15-min monitoring.\n**2026-02-13 18:46** — Pipeline complete: 26/26 steps (100%). All three ecut comparison figures generated. Xi bottleneck: 1000-bin TreeCorr on 73M galaxies took 4h20m on 12-core n03.",
+      "dependsOn": [
+        "ecut-c-ℓ-version-comparison-bd923213",
+        "ecut-pure-e-b-version-comparison-00658ee0",
+        "ecut-cosebis-version-comparison-84ed07d7"
+      ],
+      "specName": "ellipticities",
+      "staleness": "no-evidence",
+      "evidence": null
+    },
+    {
+      "id": "ecut-c-ℓ-version-comparison-bd923213",
+      "title": "Ecut C_ℓ version comparison",
+      "kind": "task",
+      "status": "closed",
+      "body": "## What\n\nHarmonic-space $C_\\ell^{BB}$ and $C_\\ell^{EB}$ comparison: each catalog version with and without $|e| < 0.7$ ellipticity cut. Two-panel figure ($C_\\ell / \\sigma$) with paired color scheme (same color per parent version, filled marker = uncut, open diamond = cut).\n\nEvidence reports $\\chi^2$ PTEs for the null hypothesis ($B$-modes consistent with zero), both over the full $\\ell$ range and within analysis scale cuts ($\\ell \\in [300, 1600]$).",
+      "dependsOn": [],
+      "specName": "ecut_cl_version_comparison",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "versions": {
+            "SP_v1.4.6_leak_corr_pte_bb": 0.09792272864837177,
+            "SP_v1.4.6_leak_corr_chi2_bb": 42.70023127200553,
+            "SP_v1.4.6_leak_corr_dof_bb": 32,
+            "SP_v1.4.6_leak_corr_pte_eb": 0.9529512261516448,
+            "SP_v1.4.6_leak_corr_chi2_eb": 19.901337744849943,
+            "SP_v1.4.6_leak_corr_dof_eb": 32,
+            "SP_v1.4.6_leak_corr_pte_bb_cut": 0.2760150461740304,
+            "SP_v1.4.6_leak_corr_chi2_bb_cut": 19.965162072931815,
+            "SP_v1.4.6_leak_corr_dof_bb_cut": 17,
+            "SP_v1.4.6_leak_corr_pte_eb_cut": 0.6833556796060218,
+            "SP_v1.4.6_leak_corr_chi2_eb_cut": 13.769357592050337,
+            "SP_v1.4.6_leak_corr_dof_eb_cut": 17,
+            "SP_v1.4.6_ecut07_leak_corr_pte_bb": 0.208540352402497,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_bb": 38.19426928194824,
+            "SP_v1.4.6_ecut07_leak_corr_dof_bb": 32,
+            "SP_v1.4.6_ecut07_leak_corr_pte_eb": 0.9259959452732065,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_eb": 21.2521559085393,
+            "SP_v1.4.6_ecut07_leak_corr_dof_eb": 32,
+            "SP_v1.4.6_ecut07_leak_corr_pte_bb_cut": 0.46331572881974215,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_bb_cut": 16.8684047242066,
+            "SP_v1.4.6_ecut07_leak_corr_dof_bb_cut": 17,
+            "SP_v1.4.6_ecut07_leak_corr_pte_eb_cut": 0.6264194015354508,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_eb_cut": 14.570053608387207,
+            "SP_v1.4.6_ecut07_leak_corr_dof_eb_cut": 17,
+            "SP_v1.4.11.3_leak_corr_pte_bb": 1.7848129151301884e-12,
+            "SP_v1.4.11.3_leak_corr_chi2_bb": 122.23988293212605,
+            "SP_v1.4.11.3_leak_corr_dof_bb": 32,
+            "SP_v1.4.11.3_leak_corr_pte_eb": 0.9725050233247705,
+            "SP_v1.4.11.3_leak_corr_chi2_eb": 18.516069343307766,
+            "SP_v1.4.11.3_leak_corr_dof_eb": 32,
+            "SP_v1.4.11.3_leak_corr_pte_bb_cut": 5.74152804787662e-10,
+            "SP_v1.4.11.3_leak_corr_chi2_bb_cut": 79.01196438983347,
+            "SP_v1.4.11.3_leak_corr_dof_bb_cut": 17,
+            "SP_v1.4.11.3_leak_corr_pte_eb_cut": 0.7454934521382017,
+            "SP_v1.4.11.3_leak_corr_chi2_eb_cut": 12.860198045925555,
+            "SP_v1.4.11.3_leak_corr_dof_eb_cut": 17,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_bb": 0.00003998258418303535,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_bb": 73.62141266991149,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_bb": 32,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_eb": 0.83472793197668,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_eb": 24.263347744188074,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_eb": 32,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_bb_cut": 0.0012659675159892771,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_bb_cut": 40.06787574930873,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_bb_cut": 17,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_eb_cut": 0.40282046412612976,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_eb_cut": 17.780390297002747,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_eb_cut": 17
+          },
+          "ell_min": 12.5,
+          "ell_max": 1988.5000000000002,
+          "n_ell_bins": 32,
+          "ell_min_cut": 300,
+          "ell_max_cut": 1600
+        },
+        "artifacts": {
+          "figure": "figure.png"
+        },
+        "mtime": 1770934783000,
+        "generated": "2026-02-12T23:19:42.533117"
+      }
+    },
+    {
+      "id": "ecut-pure-e-b-version-comparison-00658ee0",
+      "title": "Ecut pure E/B version comparison",
+      "kind": "task",
+      "status": "closed",
+      "body": "## What\n\nPure E/B $\\xi_\\pm^B$ comparison: each catalog version with and without $|e| < 0.7$ cut. Four-panel figure: top row $\\theta\\xi_\\pm \\times 10^4$ (total signal), bottom row $\\xi_\\pm^B / \\sigma$ (B-mode normalized). Paired color scheme by parent version.\n\nEvidence reports $\\chi^2$ PTEs for $\\xi_+^B$ and $\\xi_-^B$ separately, both full range ($\\theta \\in [1', 250']$) and fiducial scale cuts ($\\theta \\in [12', 83']$).",
+      "dependsOn": [],
+      "specName": "ecut_pure_eb_version_comparison",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "scale_cuts": {
+            "full": [
+              1,
+              250
+            ],
+            "fiducial_xip": [
+              12,
+              83
+            ],
+            "fiducial_xim": [
+              12,
+              83
+            ]
+          },
+          "versions": {
+            "SP_v1.4.6_leak_corr_pte_xip_B": 0.020288875558614687,
+            "SP_v1.4.6_leak_corr_chi2_xip_B": 34.96548445773837,
+            "SP_v1.4.6_leak_corr_dof_xip_B": 20,
+            "SP_v1.4.6_leak_corr_pte_xim_B": 0.18270807130834615,
+            "SP_v1.4.6_leak_corr_chi2_xim_B": 25.507284295785464,
+            "SP_v1.4.6_leak_corr_dof_xim_B": 20,
+            "SP_v1.4.6_leak_corr_pte_xip_B_cut": 0.6324315681735402,
+            "SP_v1.4.6_leak_corr_chi2_xip_B_cut": 5.2257800472474605,
+            "SP_v1.4.6_leak_corr_dof_xip_B_cut": 7,
+            "SP_v1.4.6_leak_corr_pte_xim_B_cut": 0.16923053774505306,
+            "SP_v1.4.6_leak_corr_chi2_xim_B_cut": 10.356970244230485,
+            "SP_v1.4.6_leak_corr_dof_xim_B_cut": 7,
+            "SP_v1.4.6_ecut07_leak_corr_pte_xip_B": 0.10237174727340363,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_xip_B": 28.305087343552458,
+            "SP_v1.4.6_ecut07_leak_corr_dof_xip_B": 20,
+            "SP_v1.4.6_ecut07_leak_corr_pte_xim_B": 0.24199652356836693,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_xim_B": 24.009062327624747,
+            "SP_v1.4.6_ecut07_leak_corr_dof_xim_B": 20,
+            "SP_v1.4.6_ecut07_leak_corr_pte_xip_B_cut": 0.33107852645412517,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_xip_B_cut": 8.017212980460462,
+            "SP_v1.4.6_ecut07_leak_corr_dof_xip_B_cut": 7,
+            "SP_v1.4.6_ecut07_leak_corr_pte_xim_B_cut": 0.7640616109918084,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_xim_B_cut": 4.135357386398601,
+            "SP_v1.4.6_ecut07_leak_corr_dof_xim_B_cut": 7,
+            "SP_v1.4.11.3_leak_corr_pte_xip_B": 0.026234883922209202,
+            "SP_v1.4.11.3_leak_corr_chi2_xip_B": 33.983740832307994,
+            "SP_v1.4.11.3_leak_corr_dof_xip_B": 20,
+            "SP_v1.4.11.3_leak_corr_pte_xim_B": 0.00020805909339744025,
+            "SP_v1.4.11.3_leak_corr_chi2_xim_B": 50.189441215857954,
+            "SP_v1.4.11.3_leak_corr_dof_xim_B": 20,
+            "SP_v1.4.11.3_leak_corr_pte_xip_B_cut": 0.17005854549707175,
+            "SP_v1.4.11.3_leak_corr_chi2_xip_B_cut": 10.34100319243266,
+            "SP_v1.4.11.3_leak_corr_dof_xip_B_cut": 7,
+            "SP_v1.4.11.3_leak_corr_pte_xim_B_cut": 0.029601657520156064,
+            "SP_v1.4.11.3_leak_corr_chi2_xim_B_cut": 15.546196736216121,
+            "SP_v1.4.11.3_leak_corr_dof_xim_B_cut": 7,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_xip_B": 0.01435083651097802,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_xip_B": 36.255515819392976,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_xip_B": 20,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_xim_B": 0.1882827896220283,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_xim_B": 25.35232861285227,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_xim_B": 20,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_xip_B_cut": 0.18862636392885612,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_xip_B_cut": 9.999066682994322,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_xip_B_cut": 7,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_xim_B_cut": 0.6732886249299195,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_xim_B_cut": 4.8907906649469215,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_xim_B_cut": 7
+          }
+        },
+        "artifacts": {
+          "figure": "figure.png"
+        },
+        "mtime": 1771025777000,
+        "generated": "2026-02-14T00:36:17.218909"
+      }
+    },
+    {
+      "id": "ecut-cosebis-version-comparison-84ed07d7",
+      "title": "Ecut COSEBIS version comparison",
+      "kind": "task",
+      "status": "closed",
+      "body": "## What\n\nCOSEBIS $B_n$ comparison: each catalog version with and without $|e| < 0.7$ cut. Two-panel stacked figure: full $\\theta$ range (top) and fiducial $\\theta \\in [12', 83']$ (bottom), 20 modes. Paired color scheme by parent version.\n\nEvidence reports $\\chi^2$ PTEs for $B_n$ at both scale cuts.",
+      "dependsOn": [],
+      "specName": "ecut_cosebis_version_comparison",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "scale_cuts": {
+            "fiducial": [
+              12,
+              83
+            ],
+            "full": [
+              1,
+              250
+            ]
+          },
+          "nmodes": 20,
+          "versions": {
+            "SP_v1.4.6_leak_corr_pte_B_fiducial": 0.375151296909466,
+            "SP_v1.4.6_leak_corr_chi2_B_fiducial": 21.37870761719402,
+            "SP_v1.4.6_leak_corr_dof_B_fiducial": 20,
+            "SP_v1.4.6_leak_corr_pte_B_full": 0.000010075187708354613,
+            "SP_v1.4.6_leak_corr_chi2_B_full": 59.02339819751903,
+            "SP_v1.4.6_leak_corr_dof_B_full": 20,
+            "SP_v1.4.6_ecut07_leak_corr_pte_B_fiducial": 0.4631059066231823,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_B_fiducial": 19.917422354946066,
+            "SP_v1.4.6_ecut07_leak_corr_dof_B_fiducial": 20,
+            "SP_v1.4.6_ecut07_leak_corr_pte_B_full": 0.0001349844249047802,
+            "SP_v1.4.6_ecut07_leak_corr_chi2_B_full": 51.49184758038696,
+            "SP_v1.4.6_ecut07_leak_corr_dof_B_full": 20,
+            "SP_v1.4.11.3_leak_corr_pte_B_fiducial": 0.21493145176199627,
+            "SP_v1.4.11.3_leak_corr_chi2_B_fiducial": 24.655460802674263,
+            "SP_v1.4.11.3_leak_corr_dof_B_fiducial": 20,
+            "SP_v1.4.11.3_leak_corr_pte_B_full": 6.688023992069273e-13,
+            "SP_v1.4.11.3_leak_corr_chi2_B_full": 101.5338699842608,
+            "SP_v1.4.11.3_leak_corr_dof_B_full": 20,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_B_fiducial": 0.546374103847556,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_B_fiducial": 18.623986425373804,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_B_fiducial": 20,
+            "SP_v1.4.11.3_ecut07_leak_corr_pte_B_full": 0.00008231682724450371,
+            "SP_v1.4.11.3_ecut07_leak_corr_chi2_B_full": 52.962284824189695,
+            "SP_v1.4.11.3_ecut07_leak_corr_dof_B_full": 20
+          }
+        },
+        "artifacts": {
+          "figure_stacked": "figure_stacked.png"
+        },
+        "mtime": 1771031274000,
+        "generated": "2026-02-14T02:07:53.304124"
+      }
+    }
+  ],
+  "links": [
+    {
+      "source": "cl-25c14bbc",
+      "target": "cl-version-comparison-9933f592"
+    },
+    {
+      "source": "2d-plots-6bde2572",
+      "target": "cl-version-comparison-9933f592"
+    },
+    {
+      "source": "pure-eb-ca49d189",
+      "target": "config-space-pte-matrices-17143971"
+    },
+    {
+      "source": "cosebis-4491229b",
+      "target": "config-space-pte-matrices-17143971"
+    },
+    {
+      "source": "2d-plots-6bde2572",
+      "target": "config-space-pte-matrices-17143971"
+    },
+    {
+      "source": "pure-eb-ca49d189",
+      "target": "pure-e-b-covariance-36cb87c5"
+    },
+    {
+      "source": "covariance-ffc73eb2",
+      "target": "pure-e-b-covariance-36cb87c5"
+    },
+    {
+      "source": "2d-plots-6bde2572",
+      "target": "pure-e-b-covariance-36cb87c5"
+    },
+    {
+      "source": "pure-eb-ca49d189",
+      "target": "pure-e-b-data-vector-1577af8d"
+    },
+    {
+      "source": "1d-plots-8fbdf52f",
+      "target": "pure-e-b-data-vector-1577af8d"
+    },
+    {
+      "source": "pure-e-b-data-vector-1577af8d",
+      "target": "ξ-cosmology-paper-b-mode-ab934b21"
+    },
+    {
+      "source": "cosebis-version-comparison-57a0d35c",
+      "target": "ξ-cosmology-paper-b-mode-ab934b21"
+    },
+    {
+      "source": "cl-25c14bbc",
+      "target": "harmonic-space-pte-matrices-f86b8278"
+    },
+    {
+      "source": "2d-plots-6bde2572",
+      "target": "harmonic-space-pte-matrices-f86b8278"
+    },
+    {
+      "source": "pure-eb-ca49d189",
+      "target": "pure-e-b-version-comparison-2f69c789"
+    },
+    {
+      "source": "1d-plots-8fbdf52f",
+      "target": "pure-e-b-version-comparison-2f69c789"
+    },
+    {
+      "source": "cl-25c14bbc",
+      "target": "cl-data-vector-e132481e"
+    },
+    {
+      "source": "2d-plots-6bde2572",
+      "target": "cl-data-vector-e132481e"
+    },
+    {
+      "source": "pure-e-b-covariance-36cb87c5",
+      "target": "bmodes-paper-40d3553a"
+    },
+    {
+      "source": "pure-e-b-data-vector-1577af8d",
+      "target": "bmodes-paper-40d3553a"
+    },
+    {
+      "source": "cosebis-version-comparison-57a0d35c",
+      "target": "bmodes-paper-40d3553a"
+    },
+    {
+      "source": "cl-data-vector-e132481e",
+      "target": "bmodes-paper-40d3553a"
+    },
+    {
+      "source": "config-space-pte-matrices-17143971",
+      "target": "bmodes-paper-40d3553a"
+    },
+    {
+      "source": "harmonic-space-pte-matrices-f86b8278",
+      "target": "bmodes-paper-40d3553a"
+    },
+    {
+      "source": "pure-e-b-version-comparison-2f69c789",
+      "target": "bmodes-paper-40d3553a"
+    },
+    {
+      "source": "cl-version-comparison-9933f592",
+      "target": "bmodes-paper-40d3553a"
+    },
+    {
+      "source": "harmonic-vs-config-space-1931ab5a",
+      "target": "bmodes-paper-40d3553a"
+    },
+    {
+      "source": "cosebis-data-vector-01d10f52",
+      "target": "bmodes-paper-40d3553a"
+    },
+    {
+      "source": "ellipticity-cut-e-0-7-full-29b12eee",
+      "target": "bmodes-paper-40d3553a"
+    },
+    {
+      "source": "cosebis-4491229b",
+      "target": "cosebis-data-vector-01d10f52"
+    },
+    {
+      "source": "1d-plots-8fbdf52f",
+      "target": "cosebis-data-vector-01d10f52"
+    },
+    {
+      "source": "cosebis-4491229b",
+      "target": "cosebis-version-comparison-57a0d35c"
+    },
+    {
+      "source": "1d-plots-8fbdf52f",
+      "target": "cosebis-version-comparison-57a0d35c"
+    },
+    {
+      "source": "pure-eb-ca49d189",
+      "target": "bb-covariance-blind-independence-e38325b1"
+    },
+    {
+      "source": "covariance-ffc73eb2",
+      "target": "bb-covariance-blind-independence-e38325b1"
+    },
+    {
+      "source": "cosebis-4491229b",
+      "target": "bb-covariance-blind-independence-e38325b1"
+    },
+    {
+      "source": "cl-25c14bbc",
+      "target": "bb-covariance-blind-independence-e38325b1"
+    },
+    {
+      "source": "cosebis-4491229b",
+      "target": "harmonic-vs-config-space-1931ab5a"
+    },
+    {
+      "source": "cosebis-w-n-ℓ-filter-faff6b7f",
+      "target": "harmonic-vs-config-space-1931ab5a"
+    },
+    {
+      "source": "ecut-c-ℓ-version-comparison-bd923213",
+      "target": "ellipticity-cut-e-0-7-full-29b12eee"
+    },
+    {
+      "source": "ecut-pure-e-b-version-comparison-00658ee0",
+      "target": "ellipticity-cut-e-0-7-full-29b12eee"
+    },
+    {
+      "source": "ecut-cosebis-version-comparison-84ed07d7",
+      "target": "ellipticity-cut-e-0-7-full-29b12eee"
+    }
+  ],
+  "downstream": {
+    "bmodes-paper-40d3553a": [
+      {
+        "id": "paper-evidence-consistency-audit-6cb9c016",
+        "title": "Paper–evidence consistency audit",
+        "status": "closed",
+        "kind": "task"
+      },
+      {
+        "id": "paper-quality-coherence-30e6796a",
+        "title": "Paper quality: coherence, accuracy, narrative",
+        "status": "closed",
+        "kind": "task"
+      }
+    ],
+    "cl-25c14bbc": [
+      {
+        "id": "c-ell-don-t-need-fine-binning-1558bc21",
+        "title": "C_ell don't need fine binning for COSEBIS integration (Axel)",
+        "status": "closed",
+        "kind": "task"
+      },
+      {
+        "id": "bb-covariance-blind-0f9b0c73",
+        "title": "BB covariance blind independence: implementation and findings",
+        "status": "closed",
+        "kind": "task"
+      }
+    ],
+    "harmonic-vs-config-space-1931ab5a": [
+      {
+        "id": "harmonic-config-cosebis-4ecac3b9",
+        "title": "Harmonic-config COSEBIS comparison: paper-ready appendix figure",
+        "status": "closed",
+        "kind": "task"
+      }
+    ],
+    "cosebis-version-comparison-57a0d35c": [
+      {
+        "id": "cosebis-version-comparison-d96ef7b2",
+        "title": "COSEBIS version comparison figure added to paper main text",
+        "status": "closed",
+        "kind": "task"
+      }
+    ],
+    "cosebis-w-n-ℓ-filter-faff6b7f": [
+      {
+        "id": "log-spaced-c-ℓ-binning-for-355bca56",
+        "title": "Log-spaced C_ℓ binning for harmonic COSEBIS",
+        "status": "active",
+        "kind": "task"
+      },
+      {
+        "id": "mock-validation-all-b-mode-e7636dc5",
+        "title": "Mock validation: all B-mode statistics on zero-B GLASS mocks vs theory",
+        "status": "closed",
+        "kind": "task"
+      }
+    ],
+    "pure-eb-ca49d189": [
+      {
+        "id": "bb-covariance-blind-0f9b0c73",
+        "title": "BB covariance blind independence: implementation and findings",
+        "status": "closed",
+        "kind": "task"
+      }
+    ],
+    "covariance-ffc73eb2": [
+      {
+        "id": "bb-covariance-blind-0f9b0c73",
+        "title": "BB covariance blind independence: implementation and findings",
+        "status": "closed",
+        "kind": "task"
+      }
+    ],
+    "cosebis-4491229b": [
+      {
+        "id": "bb-covariance-blind-0f9b0c73",
+        "title": "BB covariance blind independence: implementation and findings",
+        "status": "closed",
+        "kind": "task"
+      }
+    ],
+    "ellipticity-cut-e-0-7-full-29b12eee": [
+      {
+        "id": "ecut-versions-need-own-c497047a",
+        "title": "Ecut versions need own covariance (not parent's)",
+        "status": "open",
+        "kind": "task"
+      },
+      {
+        "id": "filter-catalog-ellipticity-57deb384",
+        "title": "filter_catalog_ellipticity needs cluster memory",
+        "status": "open",
+        "kind": "task"
+      },
+      {
+        "id": "treecorr-1000-bin-xi-4h20m-on-cfa8fa68",
+        "title": "TreeCorr 1000-bin xi: 4h20m on 12 cores for 73M galaxies",
+        "status": "closed",
+        "kind": "task"
+      },
+      {
+        "id": "snakemake-4fa98a8f",
+        "title": "Snakemake MissingOutputException on NFS: use --latency-wait 60",
+        "status": "closed",
+        "kind": "task"
+      },
+      {
+        "id": "xi-rule-threads-48-to-12-601ef164",
+        "title": "Xi rule: threads 48 to 12, runtime 120 to 360 min",
+        "status": "closed",
+        "kind": "task"
+      },
+      {
+        "id": "paper-mention-of-ellipticity-eab318a4",
+        "title": "Paper mention of ellipticity cut investigation?",
+        "status": "open",
+        "kind": "task"
+      }
+    ],
+    "ecut-c-ℓ-version-comparison-bd923213": [
+      {
+        "id": "cl-comparison-rule-missing-f725e517",
+        "title": "cl_comparison rule missing paper_figure output",
+        "status": "closed",
+        "kind": "task"
+      },
+      {
+        "id": "ecut-comparison-paired-color-c3ff9307",
+        "title": "Ecut comparison: paired color scheme by parent version",
+        "status": "closed",
+        "kind": "task"
+      }
+    ]
+  },
+  "config": {
+    "versions": "[\"SP_v1.4.5\",\"SP_v1.4.5_leak_corr\",\"SP_v1.4.6\",\"SP_v1.4.6_leak_corr\",\"SP_v1.4.6_ecut07\",\"SP_v1.4.6_ecut07_leak_corr\",\"SP_v1.4.8\",\"SP_v1.4.8_leak_corr\",\"SP_v1.4.11.3\",\"SP_v1.4.11.3_leak_corr\",\"SP_v1.4.11.3_ecut07\",\"SP_v1.4.11.3_ecut07_leak_corr\"]",
+    "ellipticity_suffix": "_leak_corrected",
+    "npatches": "[120]",
+    "min_seps": "[1]",
+    "max_seps": "[250]",
+    "nbins": "[20]",
+    "min_seps_int": "[0.1]",
+    "max_seps_int": "[500]",
+    "nbins_int": "[100,200,300,500]",
+    "fiducial.version": "SP_v1.4.6_leak_corr",
+    "fiducial.blind": "A",
+    "fiducial.npatch": "1",
+    "fiducial.min_sep": "1",
+    "fiducial.max_sep": "250",
+    "fiducial.nbins": "20",
+    "fiducial.mock_version": "SP_v1.4.6",
+    "fiducial.min_sep_int": "0.5",
+    "fiducial.max_sep_int": "500",
+    "fiducial.nbins_int": "1000",
+    "fiducial.nmodes": "20",
+    "fiducial.fiducial_min_scale": "12",
+    "fiducial.fiducial_max_scale": "83",
+    "fiducial.fiducial_xip_scale_cut": "[12,83]",
+    "fiducial.fiducial_xim_scale_cut": "[12,83]",
+    "fiducial.chain": "SP_v1.4.6_leak_corr_C_sc_10_150_new_ia",
+    "var_method": "jackknife",
+    "covariance.default_masked": "true",
+    "covariance.use_semianalytic": "true",
+    "covariance.n_samples": "2000",
+    "cl.n_ell_bins": "32",
+    "cl.cosebis_nbins": "96",
+    "cl.fiducial_ell_min": "300",
+    "cl.fiducial_ell_max": "1600",
+    "cosebis.theta_min": "1",
+    "cosebis.theta_max": "250",
+    "cosebis.mode_subsets": "[6,20]",
+    "statistics.pte_healthy_range": "[0.05,0.95]",
+    "plotting.palette": "colorblind",
+    "plotting.version_alpha.fiducial": "1",
+    "plotting.version_alpha.comparison": "1",
+    "plotting.markers.style": "unfilled",
+    "plotting.markers.linewidth": "1.5",
+    "plotting.markers.capsize": "3",
+    "plotting.x_offsets": "[-0.12,-0.04,0.04,0.12]",
+    "plotting.version_labels.SP_v1.4.5_leak_corr": "Initial",
+    "plotting.version_labels.SP_v1.4.6_leak_corr": "Size cuts",
+    "plotting.version_labels.SP_v1.4.8_leak_corr": "Masking",
+    "plotting.version_labels.SP_v1.4.11.3_leak_corr": "Relaxed flags",
+    "plotting.fiducial_for_comparison": "SP_v1.4.6_leak_corr",
+    "plotting.version_box.edge_color": "0.3",
+    "plotting.version_box.edge_linewidth": "0.7",
+    "plotting.version_box.fiducial_line_color": "black",
+    "plotting.version_box.fiducial_line_width": "1",
+    "pure_eb.n_chunks": "20",
+    "pixel_mask.target_nsides": "[2048,4096,8192]",
+    "pixel_mask.source_file": "/n17data/UNIONS/WL/masks/mask_r_nside131072.hsp",
+    "glass_mocks.version": "v0",
+    "glass_mocks.seed_range": "[1,350]",
+    "tools.cosmocov_executable": "/n23data1/n06data/lgoh/scratch/UNIONS/CosmoCov/covs/cov",
+    "ecut.versions_for_comparison": "[\"SP_v1.4.6_leak_corr\",\"SP_v1.4.6_ecut07_leak_corr\",\"SP_v1.4.11.3_leak_corr\",\"SP_v1.4.11.3_ecut07_leak_corr\"]",
+    "ecut.version_labels.SP_v1.4.6_leak_corr": "v1.4.6",
+    "ecut.version_labels.SP_v1.4.6_ecut07_leak_corr": "v1.4.6 $|e|<0.7$",
+    "ecut.version_labels.SP_v1.4.11.3_leak_corr": "v1.4.11.3",
+    "ecut.version_labels.SP_v1.4.11.3_ecut07_leak_corr": "v1.4.11.3 $|e|<0.7$",
+    "ecut.fiducial_for_comparison": "SP_v1.4.6_leak_corr"
+  }
+}
