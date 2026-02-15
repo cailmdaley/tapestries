@@ -291,7 +291,13 @@
       }
       .legend-item { white-space: nowrap; }
       .legend-sep { color: var(--ui-border); }
-      .tapestry-detail-reason { font-size: 0.82rem; color: var(--ui-text-muted); margin-bottom: 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--ui-border); }
+      .tapestry-detail-outcome { font-size: 0.82rem; color: var(--ui-text); margin-bottom: 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--ui-border); line-height: 1.45; }
+      .tapestry-detail-outcome p { margin: 0.2rem 0; }
+      .tapestry-detail-outcome p:first-of-type { display: inline; }
+      .outcome-label { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ui-text-muted); margin-right: 0.4em; }
+      .tapestry-detail-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.5rem; }
+      .fiber-tag { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ui-text-muted); background: var(--ui-dark-surface); padding: 0.1rem 0.4rem; border-radius: 3px; }
+      .kind-badge { font-family: var(--font-mono); font-size: 0.68rem; color: var(--ui-text-muted); background: var(--ui-dark-surface); padding: 0.1rem 0.35rem; border-radius: 3px; text-transform: lowercase; flex-shrink: 0; }
 
       /* ── Detail panel ── */
       .tapestry-detail {
@@ -313,7 +319,7 @@
       .staleness-badge { font-size: 0.85rem; flex-shrink: 0; }
       .detail-name {
         font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500;
-        color: var(--ui-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        color: var(--ui-text);
       }
       .detail-status {
         font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase;
@@ -410,7 +416,7 @@
         to { opacity: 1; transform: translateX(-50%) translateY(0); }
       }
     </style>
-    <script type="module" crossorigin src="/tapestries/assets/index-q1hPj6k3.js"></script>
+    <script type="module" crossorigin src="/tapestries/assets/index-BSJAoVkH.js"></script>
     <link rel="stylesheet" crossorigin href="/tapestries/assets/index-DRKxklZO.css">
   </head>
   <body>
