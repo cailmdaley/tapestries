@@ -5,7 +5,7 @@
       "title": "The data: 6 redshift bins across the RR2 footprint",
       "kind": "task",
       "status": "closed",
-      "body": "The redshift dimension. For what the fields look like on the sky, see `tapestry:plot_field_overview`. This node shows how those galaxies are distributed in redshift — the tomographic binning that gives the cross-correlation its depth information.\n\n**Six bins from z ≈ 0.2 to 2.0.** The Euclid RR2 v2.1 weak lensing catalog contains ~50 million galaxies with shape measurements from two independent methods (lensmc and metacal). Tomographic bins are defined by the photometric pipeline, with n(z) distributions from `RR2_v2_Nz_WL_C2020_sel_pv.fits`. The effective sky fraction is ~1% per bin at nside 2048.\n\n**CMB side.** ACT DR6 (ILC reconstruction) and SPT-3G winter (GMV + TT/PP/MV variants). ACT overlaps the full Euclid footprint; SPT covers only the southern patch (Dec < -42°).\n\n**28 baseline spectra.** C_ℓ^{κE} in 20 log-spaced bandpowers (ℓ = 40–3000): 2 methods × 7 bins × 2 CMB experiments. These are the inputs to everything downstream — the signal overview (`tapestry:plot_signal_overview`), consistency tests, null tests, and theory comparison.\n\n**Covariance.** Knox formula throughout: σ²(C_b) = C^{κκ}_b · C^{γγ}_b / n_modes, where n_modes = Σ(2ℓ+1) · f_sky^eff. The effective sky fraction f_sky^eff = ⟨w₁w₂⟩² / ⟨w₁²w₂²⟩ (Hivon 2002) accounts for the apodized weight maps. Auto-spectra C^{κκ} and C^{γγ} are computed from the masked maps (not catalog-based). This is the diagonal of the covariance — no off-diagonal (bin-bin) correlations. Knox is preferred over NaMaster Gaussian, which overestimates variance by 10-130× at our fsky.\n\n**Script**: `workflow/scripts/compare_nz_distributions.py`",
+      "body": "The redshift dimension. For what the fields look like on the sky, see `tapestry:plot_field_overview`. This node shows how those galaxies are distributed in redshift — the tomographic binning that gives the cross-correlation its depth information.\n\n**Six bins from z ≈ 0.2 to 2.0.** The Euclid RR2 v2.1 weak lensing catalog contains ~50 million galaxies with shape measurements from two independent methods (lensmc and metacal). Tomographic bins are defined by the photometric pipeline, with n(z) distributions from `RR2_v2_Nz_WL_C2020_sel_pv.fits`. The effective sky fraction is ~1% per bin at nside 2048.\n\n**CMB side.** ACT DR6 (ILC reconstruction) and SPT-3G winter (GMV + TT/PP/MV variants). ACT overlaps the full Euclid footprint; SPT covers only the southern patch (Dec < -42°).\n\n**28 baseline spectra.** C_ℓ^{κE} in 20 log-spaced bandpowers (ℓ = 40–3000): 2 methods × 7 bins × 2 CMB experiments. These are the inputs to everything downstream — the signal overview (`tapestry:plot_signal_overview`), consistency tests, null tests, and theory comparison.\n\n**Covariance.** Knox formula throughout: σ²(C_b) = C^{κκ}_b · C^{γγ}_b / n_modes, where n_modes = Σ(2ℓ+1) · f_sky^eff. The effective sky fraction f_sky^eff = ⟨w₁w₂⟩² / ⟨w₁²w₂²⟩ (Hivon 2002) accounts for the apodized weight maps. Auto-spectra C^{κκ} and C^{γγ} are computed from the masked maps (not catalog-based). This is the diagonal of the covariance — no off-diagonal (bin-bin) correlations. Knox is preferred over NaMaster Gaussian, which overestimates variance by 10-130× at our fsky.\n\n**Script**: `workflow/scripts/compare_nz_distributions.py`\n\n## Comments\n**2026-02-15 23:44** — n(z) plot needs updating: (1) Plot the actual shear n(z) from the 6-bin file (RR2_v2_Nz_WL_C2020_sel_pv.fits), not the forecasted version. May need smoothing. (2) Empirical check: take bin IDs from the catalog and plot by photo-z median — verify bins match the n(z) file. (3) Galaxy clustering n(z) is optional for now, stick with shear.",
       "outcome": "Euclid RR2 v2.1 weak lensing catalog: ~50M galaxies, 6 tomographic bins, nside 2048. n(z) from theoretical pipeline (RR2_v2_Nz_WL_C2020_sel_pv.fits). Effective sky fraction ~0.01 per bin.",
       "tags": [
         "research",
@@ -14,7 +14,7 @@
         "tapestry:compare_nz_distributions"
       ],
       "createdAt": "2026-02-11T03:59:59.98083533+01:00",
-      "closedAt": "2026-02-15T19:39:10.681015048+01:00",
+      "closedAt": "2026-02-16T00:28:12.175707622+01:00",
       "dependsOn": [
         "the-sky-act-spt-and-euclid-on-706364a6"
       ],
@@ -45,8 +45,8 @@
       "id": "act-vs-spt-cross-spectra-b4181199",
       "title": "ACT vs SPT: same galaxies, same spectrum",
       "kind": "task",
-      "status": "closed",
-      "body": "The same Euclid shear field crossed with two independent CMB lensing reconstructions — ACT DR6 and SPT-3G GMV — should give the same spectrum. If it doesn't, something is wrong on the CMB side.\n\nThe 6-panel spectral overlay (lensmc baseline) shows it directly: salmon ACT and teal SPT data points track each other across all bins and multipoles. You can see both the agreement and the noise structure — SPT error bars widen at low ℓ where its smaller sky area limits the mode count, while ACT's larger footprint gives tighter constraints there. At high ℓ they converge. All 6 bins pass the shape consistency test (median chi2/dof = 0.86, median PTE = 0.63, 0 failures at 5%).\n\nThe agreement holds despite ACT and SPT showing different *amplitudes* relative to theory (A_lens = 0.93 vs 0.76). The chi2 test compares shape, not normalization — it cannot detect a uniform multiplicative offset. The SPT deficit is exactly that: a uniform ~24% suppression, consistent with a CMB-side calibration factor rather than ℓ-dependent systematics.\n\nA subtlety beneath the agreement: ACT is contaminated by stellar density and galactic extinction (`tapestry:plot_systematic_budget`: bias significance up to 8σ in some bins), while SPT is clean (<0.1σ after marginalization). This doesn't violate the consistency test because the contamination has the same sign as the signal — it inflates ACT, shifting its normalization up, but the shape remains consistent with SPT.\n\nFor the method-independence test (lensmc vs metacal), see `tapestry:plot_method_comparison`. For SPT estimator variants, see `tapestry:plot_spt_estimator_comparison`.",
+      "status": "open",
+      "body": "The same Euclid shear field crossed with two independent CMB lensing reconstructions — ACT DR6 and SPT-3G GMV — should give the same spectrum. If it doesn't, something is wrong on the CMB side.\n\nThe 6-panel spectral overlay (lensmc baseline) shows it directly: salmon ACT and teal SPT data points track each other across all bins and multipoles. You can see both the agreement and the noise structure — SPT error bars widen at low ℓ where its smaller sky area limits the mode count, while ACT's larger footprint gives tighter constraints there. At high ℓ they converge. All 6 bins pass the shape consistency test (median chi2/dof = 0.86, median PTE = 0.63, 0 failures at 5%).\n\nThe agreement holds despite ACT and SPT showing different *amplitudes* relative to theory (A_lens = 0.93 vs 0.76). The chi2 test compares shape, not normalization — it cannot detect a uniform multiplicative offset. The SPT deficit is exactly that: a uniform ~24% suppression, consistent with a CMB-side calibration factor rather than ℓ-dependent systematics.\n\nA subtlety beneath the agreement: ACT is contaminated by stellar density and galactic extinction (`tapestry:plot_systematic_budget`: bias significance up to 8σ in some bins), while SPT is clean (<0.1σ after marginalization). This doesn't violate the consistency test because the contamination has the same sign as the signal — it inflates ACT, shifting its normalization up, but the shape remains consistent with SPT.\n\nFor the method-independence test (lensmc vs metacal), see `tapestry:plot_method_comparison`. For SPT estimator variants, see `tapestry:plot_spt_estimator_comparison`.\n\n## Comments\n**2026-02-16 00:39** — ACT vs SPT comparison plot needs proper xlims — current axis range doesn't show the data well.",
       "outcome": "ACT and SPT cross-spectra are fully consistent: 14/14 pass at 5% level, median PTE=0.639, median chi2/dof=0.86. No evidence of CMB-side systematics. Evidence + plots co-located at results/claims/plot_act_vs_spt/.",
       "tags": [
         "tapestry:plot_act_vs_spt"
@@ -86,8 +86,8 @@
           ],
           "act_vs_spt_composite": "act_vs_spt_composite.png"
         },
-        "mtime": 1771182441000,
-        "generated": "2026-02-15T19:07:21.319079+00:00"
+        "mtime": 1771197633000,
+        "generated": "2026-02-15T23:20:33.057912+00:00"
       }
     },
     {
@@ -201,8 +201,8 @@
           ],
           "method_comparison_composite": "method_comparison_composite.png"
         },
-        "mtime": 1771182441000,
-        "generated": "2026-02-15T19:07:21.311465+00:00"
+        "mtime": 1771197633000,
+        "generated": "2026-02-15T23:20:32.769413+00:00"
       }
     },
     {
@@ -221,7 +221,7 @@
         "signal-overview-act-spt-theory-1ae2798f"
       ],
       "specName": "plot_theory_comparison",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_comparisons": 10,
@@ -249,10 +249,12 @@
             "results/claims/plot_theory_comparison/theory_comparison_metacal_x_spt_winter_mv_evidence.json"
           ],
           "theory_comparison_lensmc_x_act": "theory_comparison_lensmc_x_act.png",
-          "theory_comparison_lensmc_x_spt_winter_gmv": "theory_comparison_lensmc_x_spt_winter_gmv.png"
+          "theory_comparison_lensmc_x_spt_winter_gmv": "theory_comparison_lensmc_x_spt_winter_gmv.png",
+          "theory_comparison_metacal_x_act": "theory_comparison_metacal_x_act.png",
+          "theory_comparison_metacal_x_spt_winter_gmv": "theory_comparison_metacal_x_spt_winter_gmv.png"
         },
-        "mtime": 1771175648000,
-        "generated": "2026-02-15T17:14:08.643019+00:00"
+        "mtime": 1771197626000,
+        "generated": "2026-02-15T23:20:26.814706+00:00"
       }
     },
     {
@@ -268,10 +270,11 @@
       "createdAt": "2026-02-14T18:13:15.758141608+01:00",
       "closedAt": null,
       "dependsOn": [
-        "systematic-null-test-heatmap-92dec7e5"
+        "systematic-null-test-heatmap-92dec7e5",
+        "systematic-maps-on-the-sky-83122c03"
       ],
       "specName": "plot_contamination_metric",
-      "staleness": "fresh",
+      "staleness": "stale",
       "evidence": {
         "metrics": {
           "n_plots": 50,
@@ -342,8 +345,8 @@
           "contamination_composite_lensmc": "contamination_composite_lensmc.png",
           "contamination_composite_metacal": "contamination_composite_metacal.png"
         },
-        "mtime": 1771182136000,
-        "generated": "2026-02-15T19:02:16.364273+00:00"
+        "mtime": 1771197719000,
+        "generated": "2026-02-15T23:21:59.838485+00:00"
       }
     },
     {
@@ -359,7 +362,8 @@
       "createdAt": "2026-02-14T18:14:07.516956859+01:00",
       "closedAt": null,
       "dependsOn": [
-        "signal-overview-act-spt-theory-1ae2798f"
+        "signal-overview-act-spt-theory-1ae2798f",
+        "systematic-maps-on-the-sky-83122c03"
       ],
       "specName": "plot_systematic_null_tests",
       "staleness": "stale",
@@ -450,13 +454,13 @@
       "title": "SPT estimators: no foreground bias",
       "kind": "task",
       "status": "closed",
-      "body": "SPT-3G provides four CMB lensing estimator variants with genuinely different foreground sensitivity. GMV (baseline) uses all quadratic pairs — highest SNR but most foreground-exposed. TT (temperature-only) is maximally sensitive to tSZ from galaxy clusters. PP (polarization-only) is the cleanest but noisiest. MV (SQE) tests pipeline-level consistency. All share the same survey mask, so differences in their cross-spectra with Euclid shear isolate foreground contamination in the lensing reconstruction.\n\nThe 6-panel ratio plot (lensmc baseline) shows each variant divided by GMV as a function of multipole. The ratios scatter around unity in every bin — TT (salmon), PP (teal), MV (purple) all consistent with the 10% shaded band, with noise increasing at low ℓ where each variant's individual S/N is lowest. PP shows the widest scatter (noisiest estimator), but no systematic offset. TT — the critical test for tSZ bias — tracks GMV tightly. The large error bars at individual bandpowers correctly show that this is a noisy test: the power comes from the aggregate (18 comparisons, median chi2/dof = 0.19), not any single ℓ bin.\n\nThis means tSZ contamination of the SPT lensing reconstruction does not bias the shear × κ cross-correlation at current noise levels. The SPT normalization deficit (A_lens = 0.76) cannot be explained by foreground leakage — it persists identically across all four estimators, including the foreground-immune PP channel. This disfavors foreground-related hypotheses for the deficit (see `spt-deficit-characterization-6b724e41`).",
+      "body": "SPT-3G provides four CMB lensing estimator variants with genuinely different foreground sensitivity. GMV (baseline) uses all quadratic pairs — highest SNR but most foreground-exposed. TT (temperature-only) is maximally sensitive to tSZ from galaxy clusters. PP (polarization-only) is the cleanest but noisiest. MV (SQE) tests pipeline-level consistency. All share the same survey mask, so differences in their cross-spectra with Euclid shear isolate foreground contamination in the lensing reconstruction.\n\nThe 6-panel ratio plot (lensmc baseline) shows each variant divided by GMV as a function of multipole. The ratios scatter around unity in every bin — TT (salmon), PP (teal), MV (purple) all consistent with the 10% shaded band, with noise increasing at low ℓ where each variant's individual S/N is lowest. PP shows the widest scatter (noisiest estimator), but no systematic offset. TT — the critical test for tSZ bias — tracks GMV tightly. The large error bars at individual bandpowers correctly show that this is a noisy test: the power comes from the aggregate (18 comparisons, median chi2/dof = 0.19), not any single ℓ bin.\n\nThis means tSZ contamination of the SPT lensing reconstruction does not bias the shear × κ cross-correlation at current noise levels. The SPT normalization deficit (A_lens = 0.76) cannot be explained by foreground leakage — it persists identically across all four estimators, including the foreground-immune PP channel. This disfavors foreground-related hypotheses for the deficit (see `spt-deficit-characterization-6b724e41`).\n\n## Comments\n**2026-02-15 23:56** — Plot rework: drop the ratio plot (noise/noise ratios scatter too much at low ℓ). Instead plot differences relative to best-fit Planck amplitude: (C_variant - C_GMV) / C_theory(A_lens). Clean residual in interpretable units.",
       "outcome": "All 14 comparisons (2 methods x 7 bins) show complete consistency across all 4 SPT estimator variants. Chi2/dof: MV~0.03, TT~0.2, PP~0.3 (all vs GMV, dof=20). Min PTE=0.981 (metacal bin3 PP). No foreground contamination detected — tSZ bias in TT estimator does not affect shear x kappa cross-spectra at current noise levels. 42 cross-spectra computed, 14 comparison plots + evidence at results/claims/plot_spt_estimator_comparison/.",
       "tags": [
         "tapestry:plot_spt_estimator_comparison"
       ],
       "createdAt": "2026-02-15T04:05:05.21428304+01:00",
-      "closedAt": "2026-02-15T04:14:33.062076876+01:00",
+      "closedAt": "2026-02-16T00:28:19.927753312+01:00",
       "dependsOn": [
         "act-vs-spt-cross-spectra-b4181199"
       ],
@@ -565,10 +569,12 @@
             "results/claims/plot_theory_residual_analysis/theory_residual_metacal_evidence.json"
           ],
           "theory_residual_lensmc_amplitude_summary": "theory_residual_lensmc_amplitude_summary.png",
-          "theory_residual_lensmc": "theory_residual_lensmc.png"
+          "theory_residual_lensmc": "theory_residual_lensmc.png",
+          "theory_residual_metacal_amplitude_summary": "theory_residual_metacal_amplitude_summary.png",
+          "theory_residual_metacal": "theory_residual_metacal.png"
         },
-        "mtime": 1771175338000,
-        "generated": "2026-02-15T17:08:58.873286+00:00"
+        "mtime": 1771197604000,
+        "generated": "2026-02-15T23:20:04.505273+00:00"
       }
     },
     {
@@ -604,7 +610,7 @@
         "ℓ-range-robustness-amplitude-e86f1728"
       ],
       "specName": "plot_analysis_summary",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_bins": 6,
@@ -666,8 +672,8 @@
           "png": "analysis_summary.png",
           "analysis_summary": "analysis_summary.png"
         },
-        "mtime": 1771182244000,
-        "generated": "2026-02-15T19:04:04.356440+00:00"
+        "mtime": 1771197727000,
+        "generated": "2026-02-15T23:22:06.658609+00:00"
       }
     },
     {
@@ -944,10 +950,16 @@
             "results/claims/plot_deprojected_spectra/deprojected_metacal_x_spt_winter_gmv_evidence.json"
           ],
           "deprojected_lensmc_x_act_amplitude_shift": "deprojected_lensmc_x_act_amplitude_shift.png",
-          "deprojected_lensmc_x_act": "deprojected_lensmc_x_act.png"
+          "deprojected_lensmc_x_act": "deprojected_lensmc_x_act.png",
+          "deprojected_lensmc_x_spt_winter_gmv_amplitude_shift": "deprojected_lensmc_x_spt_winter_gmv_amplitude_shift.png",
+          "deprojected_lensmc_x_spt_winter_gmv": "deprojected_lensmc_x_spt_winter_gmv.png",
+          "deprojected_metacal_x_act_amplitude_shift": "deprojected_metacal_x_act_amplitude_shift.png",
+          "deprojected_metacal_x_act": "deprojected_metacal_x_act.png",
+          "deprojected_metacal_x_spt_winter_gmv_amplitude_shift": "deprojected_metacal_x_spt_winter_gmv_amplitude_shift.png",
+          "deprojected_metacal_x_spt_winter_gmv": "deprojected_metacal_x_spt_winter_gmv.png"
         },
-        "mtime": 1771175493000,
-        "generated": "2026-02-15T17:11:33.770974+00:00"
+        "mtime": 1771197634000,
+        "generated": "2026-02-15T23:20:33.851608+00:00"
       }
     },
     {
@@ -1032,10 +1044,16 @@
             "results/claims/evaluate_deprojected_likelihood/deprojected_likelihood_metacal_x_spt_winter_gmv_evidence.json"
           ],
           "deprojected_likelihood_lensmc_x_act_comparison": "deprojected_likelihood_lensmc_x_act_comparison.png",
-          "deprojected_likelihood_lensmc_x_spt_winter_gmv_comparison": "deprojected_likelihood_lensmc_x_spt_winter_gmv_comparison.png"
+          "deprojected_likelihood_lensmc_x_act": "deprojected_likelihood_lensmc_x_act.png",
+          "deprojected_likelihood_lensmc_x_spt_winter_gmv_comparison": "deprojected_likelihood_lensmc_x_spt_winter_gmv_comparison.png",
+          "deprojected_likelihood_lensmc_x_spt_winter_gmv": "deprojected_likelihood_lensmc_x_spt_winter_gmv.png",
+          "deprojected_likelihood_metacal_x_act_comparison": "deprojected_likelihood_metacal_x_act_comparison.png",
+          "deprojected_likelihood_metacal_x_act": "deprojected_likelihood_metacal_x_act.png",
+          "deprojected_likelihood_metacal_x_spt_winter_gmv_comparison": "deprojected_likelihood_metacal_x_spt_winter_gmv_comparison.png",
+          "deprojected_likelihood_metacal_x_spt_winter_gmv": "deprojected_likelihood_metacal_x_spt_winter_gmv.png"
         },
-        "mtime": 1771175494000,
-        "generated": "2026-02-15T17:11:34.400604+00:00"
+        "mtime": 1771197635000,
+        "generated": "2026-02-15T23:20:35.009512+00:00"
       }
     },
     {
@@ -1098,8 +1116,8 @@
         "artifacts": {
           "tex": "results_tables.tex"
         },
-        "mtime": 1771182442000,
-        "generated": "2026-02-15T19:07:22.029239+00:00"
+        "mtime": 1771197636000,
+        "generated": "2026-02-15T23:20:36.218926+00:00"
       }
     },
     {
@@ -1155,8 +1173,8 @@
           "ell_range_robustness_lensmc": "ell_range_robustness_lensmc.png",
           "ell_range_robustness_metacal": "ell_range_robustness_metacal.png"
         },
-        "mtime": 1771175492000,
-        "generated": "2026-02-15T17:11:32.406375+00:00"
+        "mtime": 1771197633000,
+        "generated": "2026-02-15T23:20:33.032362+00:00"
       }
     },
     {
@@ -1164,7 +1182,7 @@
       "title": "The sky: ACT, SPT, and Euclid on the RR2 footprint",
       "kind": "task",
       "status": "closed",
-      "body": "Three maps, one footprint. The cross-correlation lives where CMB lensing convergence from space and ground overlaps with Euclid galaxy shapes. This figure shows what those fields look like on the sky — the raw material before any spectrum is computed.\n\n**ACT DR6 κ** covers a broad swath of southern sky. The ILC lensing reconstruction is Wiener-filtered — W(ℓ) = C_signal/(C_signal + N), suppressing noise above ℓ ~ 200 — to reveal degree-scale convergence structure. Coherent over- and under-dense regions trace the matter distribution along the line of sight. Overlap with RR2 is ~130 deg², set by the Euclid footprint.\n\n**SPT-3G winter κ** covers the deep winter field (Dec < -42°). Only the southern patch of the RR2 footprint falls in this region. The GMV estimator combines temperature and polarization; the same field has TT, PP, and MV reconstructions for systematic cross-checks (`tapestry:plot_spt_estimator_comparison`).\n\n**Euclid RR2 shear weights** trace the galaxy density — two disjoint patches at Dec ≈ -33° and Dec ≈ -54°, with six tomographic bins slicing in redshift (`tapestry:compare_nz_distributions`).\n\nAll maps at nside 2048. The cross-correlation asks: do the convergence structures in CMB κ coincide with the galaxy shapes?\n\n**Script**: `workflow/scripts/plot_field_overview.py`",
+      "body": "Three maps, one footprint. The cross-correlation lives where CMB lensing convergence from space and ground overlaps with Euclid galaxy shapes. This figure shows what those fields look like on the sky — the raw material before any spectrum is computed.\n\n**ACT DR6 κ** covers a broad swath of southern sky (fsky ≈ 0.25). The ILC lensing reconstruction is Wiener-filtered using Planck 2018 C_ℓ^{κκ} theory as the signal model — the empirical approach fails because ACT's reconstruction noise is 25× SPT's, leaving the auto-spectrum noise-dominated at all ℓ (`wiener-filter-diagnostic-plot-w-14438464`). The theory-informed filter W(ℓ) = C_theory / (C_theory + N_estimate) gives W < 0.5 everywhere but still reveals degree-scale convergence structure. Overlap with RR2: ~306 deg² (ACT ∩ shear).\n\n**SPT-3G winter κ** covers the deep winter field (Dec < -42°, fsky ≈ 0.04). Only the southern patch of RR2 falls in this region. The deeper per-pixel noise gives ℓ_{1/2} ≈ 353 — modes below this are signal-dominated. The GMV estimator combines temperature and polarization; TT, PP, and MV reconstructions provide systematic cross-checks (`tapestry:plot_spt_estimator_comparison`). Overlap with RR2: ~140 deg² (SPT ∩ shear).\n\n**Euclid RR2 shear weights** trace the galaxy density — two disjoint patches at Dec ≈ -33° and Dec ≈ -54°, with six tomographic bins slicing in redshift (`tapestry:compare_nz_distributions`).\n\nAll maps at nside 2048. The Wiener filter diagnostic (second plot) shows the power spectra, empirical and theory-informed filters side by side — documenting why ACT needed a theory signal model.\n\n**Scripts**: `workflow/scripts/plot_field_overview.py`, `workflow/scripts/plot_wiener_diagnostic.py`",
       "outcome": "Wiener-filtered CMB lensing convergence (ACT DR6, SPT-3G) and Euclid shear weights on the RR2 sky. Three fields, two projection patches, overlap areas for cross-correlation.",
       "tags": [
         "tapestry:plot_field_overview"
@@ -1188,10 +1206,113 @@
         },
         "artifacts": {
           "png": "field_overview.png",
-          "field_overview": "field_overview.png"
+          "field_overview": "field_overview.png",
+          "wiener_diagnostic": "wiener_diagnostic.png"
         },
-        "mtime": 1771184302000,
-        "generated": "2026-02-15T19:38:02.650978+00:00"
+        "mtime": 1771196078000,
+        "generated": "2026-02-15T22:53:41.493528+00:00"
+      }
+    },
+    {
+      "id": "apodization-masks-what-enters-f6b5a581",
+      "title": "Apodization masks: what enters the cross-correlations",
+      "kind": "task",
+      "status": "closed",
+      "body": "Every NaMaster cross-spectrum multiplies two masks into the data before coupling matrix estimation. The CMB κ side gets `nmt.mask_apodization(mask, 0.15, \"C2\")` — a smooth cosine-squared taper that zeroes the field beyond the mask boundary. The shear side gets `apodize(weight > 0, 0.15, \"C2\") * weight` — the same taper applied to the binary footprint, then multiplied by the galaxy weight map. The weight map encodes inverse shape-noise variance per pixel, so the effective mask is spatially varying even within the apodized boundary.\n\nThese masks define the effective sky fraction that enters the Knox covariance: `fsky_eff = ⟨w₁w₂⟩² / ⟨w₁²w₂²⟩` (Hivon 2002). The C2 apodization with 0.15 rad (~8.6°) scale reduces fsky relative to the raw footprint but suppresses mode-coupling from sharp mask boundaries.\n\nThe figure shows raw vs apodized for all three masks: ACT, SPT, and shear weights. ACT's mask is broader (fsky ≈ 0.25) and fills both RR2 patches. SPT's mask is compact (fsky ≈ 0.04) and covers only the south patch. The shear weight map defines the Euclid galaxy density, with highest weights at the survey overlap centers and tapering at the edges.\n\nCross-ref: field overview (`tapestry:plot_field_overview`) shows the *data* on these masks. The `namaster-technical-patterns-60d42621` doc fiber documents the C2 apodization convention and its origin in gctools.",
+      "outcome": "24 tapestry nodes. Apodization masks visualized: ACT (fsky 0.248, 10225 deg²), SPT (fsky 0.044, 1804 deg²), shear (fsky 0.009, 385 deg²). C2 apodization at 0.15 rad preserves mask area — ACT mean weight drops only 0.4%. Shear weights multiplied after apodization (apodize(w>0) × w). Plot shows raw vs apodized for both RR2 patches.",
+      "tags": [
+        "tapestry:plot_apodization_masks"
+      ],
+      "createdAt": "2026-02-15T23:40:28.836985844+01:00",
+      "closedAt": "2026-02-16T00:36:36.949592583+01:00",
+      "dependsOn": [
+        "the-sky-act-spt-and-euclid-on-706364a6"
+      ],
+      "specName": "plot_apodization_masks",
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "aposcale_rad": 0.15,
+          "aposcale_deg": 8.59,
+          "method": "C2",
+          "nside": 2048,
+          "act_raw": {
+            "fsky": 0.24785,
+            "area_deg2": 10224.6,
+            "mean_weight": 1
+          },
+          "act_apod": {
+            "fsky": 0.24785,
+            "area_deg2": 10224.6,
+            "mean_weight": 0.9957
+          },
+          "spt_raw": {
+            "fsky": 0.04372,
+            "area_deg2": 1803.6,
+            "mean_weight": 0.9234
+          },
+          "spt_apod": {
+            "fsky": 0.04372,
+            "area_deg2": 1803.6,
+            "mean_weight": 0.9234
+          },
+          "shear_raw": {
+            "fsky": 0.00934,
+            "area_deg2": 385.3,
+            "mean_weight": 1
+          },
+          "shear_apod": {
+            "fsky": 0.00934,
+            "area_deg2": 385.3,
+            "mean_weight": 791.1463
+          }
+        },
+        "artifacts": {
+          "png": "apodization_masks.png",
+          "apodization_masks": "apodization_masks.png"
+        },
+        "mtime": 1771198404000,
+        "generated": "2026-02-15T23:33:00.764648+00:00"
+      }
+    },
+    {
+      "id": "systematic-maps-on-the-sky-83122c03",
+      "title": "Systematic maps on the sky: stellar density and galactic extinction on RR2",
+      "kind": "task",
+      "status": "closed",
+      "body": "Stellar density and galactic extinction are the two systematics that matter. The bias budget (`tapestry:plot_systematic_budget`) shows stellar density dominates ACT contamination (S_bias up to 8σ for metacal), with galactic extinction second (up to 5.8σ). Exposures, SAA, and zodiacal light are clean (chi2/dof ≈ 1). This figure shows where the contamination lives spatially.\n\nBoth maps come from the Euclid VMPZ-ID mosaic masks pipeline (sparse HEALPix at nside 16384, NESTED ordering). We load and downgrade to nside 2048 using `read_partial_map`, zeroing HEALPix UNSEEN sentinel values that otherwise dominate cross-spectra.\n\nStellar density traces Milky Way structure — higher toward the galactic plane, with gradients across the two RR2 patches. Galactic extinction follows a similar but not identical pattern, with additional structure from dust filaments. Both systematics contaminate cross-spectra because they correlate with both the shear field (through spatially-varying galaxy selection) and the CMB κ field (through the ISW effect and residual foreground leakage in the lensing reconstruction).\n\nThe contamination metric `X^f_S(ℓ) = C^{κS} · C^{fS} / C^{SS}` (`tapestry:plot_contamination_metric`) quantifies the per-bandpower bias from each systematic. Template marginalization (`tapestry:evaluate_deprojected_likelihood`) removes their effect at the cost of ~5σ in detection significance (20σ → 15σ for ACT).\n\nCross-ref: masks on which these maps are evaluated (`tapestry:plot_apodization_masks`).",
+      "outcome": "Stellar density and galactic extinction visualized on RR2 footprint. Stellar density: median 0 (sparse), p90 0.1 stars/deg². Galactic extinction: median E(B-V) 0.016, p90 0.030. Both loaded from VMPZ-ID nside 16384 sparse FITS via read_partial_map, downgraded to 2048. These are the two dominant contaminants identified by the bias budget (S_bias up to 8σ for stellar density, 5.8σ for galactic extinction in ACT).",
+      "tags": [
+        "tapestry:plot_systematic_maps"
+      ],
+      "createdAt": "2026-02-15T23:54:20.416058525+01:00",
+      "closedAt": "2026-02-16T00:36:41.487898661+01:00",
+      "dependsOn": [
+        "apodization-masks-what-enters-f6b5a581",
+        "the-sky-act-spt-and-euclid-on-706364a6"
+      ],
+      "specName": "plot_systematic_maps",
+      "staleness": "stale",
+      "evidence": {
+        "metrics": {
+          "nside": 2048,
+          "stellar_density": {
+            "median": 0,
+            "p10": 0,
+            "p90": 0.1
+          },
+          "galactic_extinction": {
+            "median": 0.0163,
+            "p10": 0.01,
+            "p90": 0.0301
+          }
+        },
+        "artifacts": {
+          "png": "systematic_maps.png",
+          "systematic_maps": "systematic_maps.png"
+        },
+        "mtime": 1771198364000,
+        "generated": "2026-02-15T23:32:30.382464+00:00"
       }
     }
   ],
@@ -1221,7 +1342,15 @@
       "target": "contamination-metric-product-c-e55501f4"
     },
     {
+      "source": "systematic-maps-on-the-sky-83122c03",
+      "target": "contamination-metric-product-c-e55501f4"
+    },
+    {
       "source": "signal-overview-act-spt-theory-1ae2798f",
+      "target": "systematic-null-test-heatmap-92dec7e5"
+    },
+    {
+      "source": "systematic-maps-on-the-sky-83122c03",
       "target": "systematic-null-test-heatmap-92dec7e5"
     },
     {
@@ -1411,6 +1540,18 @@
     {
       "source": "theory-residual-analysis-6a66a995",
       "target": "ℓ-range-robustness-amplitude-e86f1728"
+    },
+    {
+      "source": "the-sky-act-spt-and-euclid-on-706364a6",
+      "target": "apodization-masks-what-enters-f6b5a581"
+    },
+    {
+      "source": "apodization-masks-what-enters-f6b5a581",
+      "target": "systematic-maps-on-the-sky-83122c03"
+    },
+    {
+      "source": "the-sky-act-spt-and-euclid-on-706364a6",
+      "target": "systematic-maps-on-the-sky-83122c03"
     }
   ],
   "downstream": {
@@ -1430,7 +1571,19 @@
       {
         "id": "wiener-filter-diagnostic-plot-w-14438464",
         "title": "Wiener filter diagnostic: plot W(ℓ) and power spectra for ACT/SPT κ",
-        "status": "open",
+        "status": "closed",
+        "kind": "task"
+      },
+      {
+        "id": "apodization-masks-what-enters-f6b5a581",
+        "title": "Apodization masks: what enters the cross-correlations",
+        "status": "closed",
+        "kind": "task"
+      },
+      {
+        "id": "systematic-maps-on-the-sky-83122c03",
+        "title": "Systematic maps on the sky: stellar density and galactic extinction on RR2",
+        "status": "closed",
         "kind": "task"
       }
     ],
@@ -1438,7 +1591,7 @@
       {
         "id": "act-vs-spt-cross-spectra-b4181199",
         "title": "ACT vs SPT: same galaxies, same spectrum",
-        "status": "closed",
+        "status": "open",
         "kind": "task"
       },
       {
@@ -1518,6 +1671,20 @@
       {
         "id": "results-table-paper-ready-latex-2a507292",
         "title": "Results table: paper-ready LaTeX compilation of all key numbers",
+        "status": "closed",
+        "kind": "task"
+      }
+    ],
+    "systematic-maps-on-the-sky-83122c03": [
+      {
+        "id": "contamination-metric-product-c-e55501f4",
+        "title": "Contamination metric: small per bandpower, dangerous in aggregate",
+        "status": "closed",
+        "kind": "task"
+      },
+      {
+        "id": "systematic-null-test-heatmap-92dec7e5",
+        "title": "Systematic null tests: galactic extinction correlates with shear",
         "status": "closed",
         "kind": "task"
       }
@@ -1812,6 +1979,12 @@
         "title": "Systematic contamination: five-layer analysis methodology",
         "status": "closed",
         "kind": "task"
+      },
+      {
+        "id": "template-deprojection-verify-aba0d269",
+        "title": "Template deprojection: verify methodology against DES×SPT paper",
+        "status": "closed",
+        "kind": "task"
       }
     ],
     "deprojected-likelihood-joint-26b1588e": [
@@ -1864,6 +2037,12 @@
         "title": "SPT deficit bin-level structure: shape fails at low-z, amplitude-only at high-z",
         "status": "closed",
         "kind": "task"
+      },
+      {
+        "id": "ℓ-range-robustness-for-spt-2ec181e2",
+        "title": "ℓ-range robustness for SPT estimator variants (TT, PP, GMV)",
+        "status": "open",
+        "kind": "task"
       }
     ],
     "n-z-quantization-analysis-and-74fadc5c": [
@@ -1886,6 +2065,14 @@
       {
         "id": "findings-synthesis-euclid-cmb-03354e57",
         "title": "Findings synthesis: Euclid × CMB-κ cross-correlation analysis",
+        "status": "closed",
+        "kind": "task"
+      }
+    ],
+    "apodization-masks-what-enters-f6b5a581": [
+      {
+        "id": "systematic-maps-on-the-sky-83122c03",
+        "title": "Systematic maps on the sky: stellar density and galactic extinction on RR2",
         "status": "closed",
         "kind": "task"
       }
@@ -1931,7 +2118,7 @@
     {
       "id": "cmbx-3x2pt-blinding-strategy-d2469de7",
       "title": "CMBX 3x2pt blinding strategy",
-      "status": "open",
+      "status": "closed",
       "kind": "task",
       "tags": [
         "blinding",
@@ -1939,9 +2126,9 @@
         "tr1"
       ],
       "body": "CMBX 3x2pt blinded consistently with main Euclid 3x2pt blinding. Lets us compare results without unblinding and simplifies collaboration across working groups.\n\nDone with support from Sam Farrens but outside the official Euclid 3x2pt blinding framework. We match the JC1 scheme as closely as possible: a list of cosmologies generates corresponding data-vector shifts, and one shift is randomly picked by an external blinder (Sam Farrens or Chaitanya Chawak).\n\n## Consistency Requirements\n\nTo stay consistent with 3x2pt, we need:\n\n1. The same cosmology list used in JC1 to produce our shifts\n2. Verification that our shifts match CLOE's for the common data vectors:\n   - Galaxy clustering (dd)\n   - Weak lensing (gg)\n   - Galaxy-galaxy lensing (dg)\n\nThis verification is our responsibility.\n\n## Workflow\n\n1. Produce unblinded data vectors from catalogs on the SAS\n2. Run basic numerical checks for pathologies — never plot them\n3. Submit via Redmine to Sam Farrens and Chaitanya Chawak:\n   - Unblinded data vectors\n   - Our computed shifts\n   - Mixing matrices\n4. Receive blinded vectors back\n\nThe mixing matrix must be applied after blinding. Alternatively, we could pass pre-mixed blinded vectors instead of the unblinded vector, shifts, and matrix separately.\n\n## The Blinding Transformation\n\nFollowing the JC1 scheme, blinding applies a shift at the level of summary statistics:\n\nC_l^blind = C_l^obs + DC_l\n\nwhere DC_l = C_l(theta_ref + Dtheta) - C_l(theta_ref)\n\n- theta_ref: reference (fiducial) cosmology\n- Dtheta: blind parameter shift, drawn from a predefined list\n- The reference cosmology should describe the data well\n- The blinded result remains consistent with a realization of theta_ref + Dtheta\n\nOne shift is selected at random by the external blinder from the predefined list.\n\n## Data Format Specification\n\nFollowing the DPDD 2PCF format for Euclid's 3x2pt data products, extended for CMBX cross-correlations.\n\n### Data Vector Components\n\n| Component | DPDD Product | Spectra (6 bins) |\n|-----------|-------------|------------------|\n| dd | TwoPCFWLClPosPos2D | 21 (6 auto + 15 cross) |\n| gg | TwoPCFWLPEBShearShear2D | 21 (6 auto + 15 cross) |\n| dg | TwoPCFWLPEBPosShear2D | 36 (6x6) |\n| dk | (extension) | 6 |\n| gk | (extension) | 6 |\n| kk | (extension) | 1 |\n| **Total** | | **91 spectra** |\n\nWith ~20 l-bins per spectrum: ~1820 data points.\n\n### FITS Structure\n\nEach data product follows the DPDD 2PCF structure:\n- Primary HDU: Metadata keywords including BLINDING flag, SOFTNAME, SOFTVERS, angular binning parameters\n- Extension HDUs: One per bin combination, named {TYPE}_{n}\n- HDU headers: BIN_ID1, BIN_ID2 specify the tomographic bin pair\n\nStandard columns: ELL, ELL_LOWER, ELL_UPPER\n\n### CMBX Extensions\n\nFor CMB lensing cross-correlations (dk, gk, kk):\n- HDU naming: POSKAPPA_CL_{n}, SHEARKAPPA_PEB_{n}, KAPPAKAPPA_CL_1\n- CMB lensing has no tomography: use BIN_ID2=0 for k\n- Follow same column structure as corresponding Euclid products\n\n### Shift Vectors\n\nMatch the data vector structure exactly. Multiple shift files: shifts_001.fits, shifts_002.fits, etc.\n\n## Implementation Status\n\nA prototype shift-generation script exists. It computes DC_l = -C_l^bandpower(theta_ref) + C_l^bandpower(theta_shift) and saves to timestamped pickle files. Output format will be converted to DPDD-aligned FITS.\n\n## Open Items\n\n- Obtain cosmology parameter list from JC1 (Martin Crocce / Guadalupe)\n- Establish Redmine issue template for shift submission\n- Confirm timeline with Sam Farrens\n- Validate theory code agreement with CLOE on common vectors\n\n## References\n\n- Muir et al. 2019 (arXiv:1911.05929): Blinding multi-probe cosmological experiments\n- Euclid DPDD: http://st-dm.pages.euclid-sgs.uk/data-product-doc/dmdr1/\n- JC1 blinding slides",
-      "outcome": null,
+      "outcome": "Settled: fixed-cosmology A_lens fitting only. No Omega_m, S_8, or richer parameter fits. Current analysis is internal — don't share broadly. The full 3x2pt blinding protocol (DPDD format, shift vectors, Redmine submission to Sam Farrens) remains documented here for when we move to parameter inference, but that's not TR1 scope.",
       "createdAt": "2026-02-11T03:58:14.864610579+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-15T23:25:22.364329755+01:00",
       "dependsOn": []
     },
     {
@@ -1971,10 +2158,10 @@
         "data",
         "tapestry:compare_nz_distributions"
       ],
-      "body": "The redshift dimension. For what the fields look like on the sky, see `tapestry:plot_field_overview`. This node shows how those galaxies are distributed in redshift — the tomographic binning that gives the cross-correlation its depth information.\n\n**Six bins from z ≈ 0.2 to 2.0.** The Euclid RR2 v2.1 weak lensing catalog contains ~50 million galaxies with shape measurements from two independent methods (lensmc and metacal). Tomographic bins are defined by the photometric pipeline, with n(z) distributions from `RR2_v2_Nz_WL_C2020_sel_pv.fits`. The effective sky fraction is ~1% per bin at nside 2048.\n\n**CMB side.** ACT DR6 (ILC reconstruction) and SPT-3G winter (GMV + TT/PP/MV variants). ACT overlaps the full Euclid footprint; SPT covers only the southern patch (Dec < -42°).\n\n**28 baseline spectra.** C_ℓ^{κE} in 20 log-spaced bandpowers (ℓ = 40–3000): 2 methods × 7 bins × 2 CMB experiments. These are the inputs to everything downstream — the signal overview (`tapestry:plot_signal_overview`), consistency tests, null tests, and theory comparison.\n\n**Covariance.** Knox formula throughout: σ²(C_b) = C^{κκ}_b · C^{γγ}_b / n_modes, where n_modes = Σ(2ℓ+1) · f_sky^eff. The effective sky fraction f_sky^eff = ⟨w₁w₂⟩² / ⟨w₁²w₂²⟩ (Hivon 2002) accounts for the apodized weight maps. Auto-spectra C^{κκ} and C^{γγ} are computed from the masked maps (not catalog-based). This is the diagonal of the covariance — no off-diagonal (bin-bin) correlations. Knox is preferred over NaMaster Gaussian, which overestimates variance by 10-130× at our fsky.\n\n**Script**: `workflow/scripts/compare_nz_distributions.py`",
+      "body": "The redshift dimension. For what the fields look like on the sky, see `tapestry:plot_field_overview`. This node shows how those galaxies are distributed in redshift — the tomographic binning that gives the cross-correlation its depth information.\n\n**Six bins from z ≈ 0.2 to 2.0.** The Euclid RR2 v2.1 weak lensing catalog contains ~50 million galaxies with shape measurements from two independent methods (lensmc and metacal). Tomographic bins are defined by the photometric pipeline, with n(z) distributions from `RR2_v2_Nz_WL_C2020_sel_pv.fits`. The effective sky fraction is ~1% per bin at nside 2048.\n\n**CMB side.** ACT DR6 (ILC reconstruction) and SPT-3G winter (GMV + TT/PP/MV variants). ACT overlaps the full Euclid footprint; SPT covers only the southern patch (Dec < -42°).\n\n**28 baseline spectra.** C_ℓ^{κE} in 20 log-spaced bandpowers (ℓ = 40–3000): 2 methods × 7 bins × 2 CMB experiments. These are the inputs to everything downstream — the signal overview (`tapestry:plot_signal_overview`), consistency tests, null tests, and theory comparison.\n\n**Covariance.** Knox formula throughout: σ²(C_b) = C^{κκ}_b · C^{γγ}_b / n_modes, where n_modes = Σ(2ℓ+1) · f_sky^eff. The effective sky fraction f_sky^eff = ⟨w₁w₂⟩² / ⟨w₁²w₂²⟩ (Hivon 2002) accounts for the apodized weight maps. Auto-spectra C^{κκ} and C^{γγ} are computed from the masked maps (not catalog-based). This is the diagonal of the covariance — no off-diagonal (bin-bin) correlations. Knox is preferred over NaMaster Gaussian, which overestimates variance by 10-130× at our fsky.\n\n**Script**: `workflow/scripts/compare_nz_distributions.py`\n\n## Comments\n**2026-02-15 23:44** — n(z) plot needs updating: (1) Plot the actual shear n(z) from the 6-bin file (RR2_v2_Nz_WL_C2020_sel_pv.fits), not the forecasted version. May need smoothing. (2) Empirical check: take bin IDs from the catalog and plot by photo-z median — verify bins match the n(z) file. (3) Galaxy clustering n(z) is optional for now, stick with shear.",
       "outcome": "Euclid RR2 v2.1 weak lensing catalog: ~50M galaxies, 6 tomographic bins, nside 2048. n(z) from theoretical pipeline (RR2_v2_Nz_WL_C2020_sel_pv.fits). Effective sky fraction ~0.01 per bin.",
       "createdAt": "2026-02-11T03:59:59.98083533+01:00",
-      "closedAt": "2026-02-15T19:39:10.681015048+01:00",
+      "closedAt": "2026-02-16T00:28:12.175707622+01:00",
       "dependsOn": [
         "the-sky-act-spt-and-euclid-on-706364a6"
       ]
@@ -2091,15 +2278,15 @@
     {
       "id": "mass-maps-at-v1-4-path-not-v2-1-fdc14589",
       "title": "Mass maps at v1.4 path, not v2.1",
-      "status": "open",
+      "status": "closed",
       "kind": "task",
       "tags": [
         "investigation"
       ],
       "body": "SKS/SKSP 2D mass maps are available for download from the Euclid PIC shared server:\n`https://shared.euclid.pic.es:8453/tr1/WL/euclid_tr1_le3_v1_1/2D_MASS/`\n\nSame credentials as in `inputs/euclid/download_tr1_systematics.sh` (user: euclid012).\n\n## Implementation plan\n\n1. Adapt the download script: change URL path to `tr1/WL/euclid_tr1_le3_v1_1/2D_MASS/`, destination to `inputs/euclid/maps/2d_mass/`.\n2. Download and inspect: identify SKS (single-bin) and SKSP (tomographic) kappa maps, their masks, nside, ordering.\n3. Update `config.yaml` paths for `wl_sks` and `wl_sksp` methods in `get_euclid_map_files()`.\n4. Run the existing `compute_cross_spectrum` rule for sks/sksp methods — infrastructure already handles them via the Snakefile method dispatch.",
-      "outcome": null,
+      "outcome": "Investigated. 2D-MASS-WL-TR1-V1.1 available at PIC (35 GB tar.gz). Contains KS/KS+ convergence maps for south region only, processed through PF 2.8.0/2.8.1/2.8.2. Key issues: (1) built from V1.1 shear catalog, not our v2.1 — version mismatch; (2) south region only; (3) PF 2.8.0 has tomographic binning bug (equidistant vs equipop), PF 2.8.1 has uncleaned density maps; (4) PF 2.8.2 is cleanest but only has KS (not KS+), only lensmc, small patches + clusters. Not worth downloading for current analysis — version mismatch with our v2.1 catalog would introduce uncontrolled systematics. If κ_WL × κ_CMB cross-check is needed, better to compute our own convergence from v2.1 shear maps via KS inversion.",
       "createdAt": "2026-02-11T14:09:07.396807185+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-16T00:11:10.72423174+01:00",
       "dependsOn": [
         "cross-correlation-pipeline-v2-1e4a96bc"
       ]
@@ -2294,12 +2481,12 @@
     {
       "id": "act-vs-spt-cross-spectra-b4181199",
       "title": "ACT vs SPT: same galaxies, same spectrum",
-      "status": "closed",
+      "status": "open",
       "kind": "task",
       "tags": [
         "tapestry:plot_act_vs_spt"
       ],
-      "body": "The same Euclid shear field crossed with two independent CMB lensing reconstructions — ACT DR6 and SPT-3G GMV — should give the same spectrum. If it doesn't, something is wrong on the CMB side.\n\nThe 6-panel spectral overlay (lensmc baseline) shows it directly: salmon ACT and teal SPT data points track each other across all bins and multipoles. You can see both the agreement and the noise structure — SPT error bars widen at low ℓ where its smaller sky area limits the mode count, while ACT's larger footprint gives tighter constraints there. At high ℓ they converge. All 6 bins pass the shape consistency test (median chi2/dof = 0.86, median PTE = 0.63, 0 failures at 5%).\n\nThe agreement holds despite ACT and SPT showing different *amplitudes* relative to theory (A_lens = 0.93 vs 0.76). The chi2 test compares shape, not normalization — it cannot detect a uniform multiplicative offset. The SPT deficit is exactly that: a uniform ~24% suppression, consistent with a CMB-side calibration factor rather than ℓ-dependent systematics.\n\nA subtlety beneath the agreement: ACT is contaminated by stellar density and galactic extinction (`tapestry:plot_systematic_budget`: bias significance up to 8σ in some bins), while SPT is clean (<0.1σ after marginalization). This doesn't violate the consistency test because the contamination has the same sign as the signal — it inflates ACT, shifting its normalization up, but the shape remains consistent with SPT.\n\nFor the method-independence test (lensmc vs metacal), see `tapestry:plot_method_comparison`. For SPT estimator variants, see `tapestry:plot_spt_estimator_comparison`.",
+      "body": "The same Euclid shear field crossed with two independent CMB lensing reconstructions — ACT DR6 and SPT-3G GMV — should give the same spectrum. If it doesn't, something is wrong on the CMB side.\n\nThe 6-panel spectral overlay (lensmc baseline) shows it directly: salmon ACT and teal SPT data points track each other across all bins and multipoles. You can see both the agreement and the noise structure — SPT error bars widen at low ℓ where its smaller sky area limits the mode count, while ACT's larger footprint gives tighter constraints there. At high ℓ they converge. All 6 bins pass the shape consistency test (median chi2/dof = 0.86, median PTE = 0.63, 0 failures at 5%).\n\nThe agreement holds despite ACT and SPT showing different *amplitudes* relative to theory (A_lens = 0.93 vs 0.76). The chi2 test compares shape, not normalization — it cannot detect a uniform multiplicative offset. The SPT deficit is exactly that: a uniform ~24% suppression, consistent with a CMB-side calibration factor rather than ℓ-dependent systematics.\n\nA subtlety beneath the agreement: ACT is contaminated by stellar density and galactic extinction (`tapestry:plot_systematic_budget`: bias significance up to 8σ in some bins), while SPT is clean (<0.1σ after marginalization). This doesn't violate the consistency test because the contamination has the same sign as the signal — it inflates ACT, shifting its normalization up, but the shape remains consistent with SPT.\n\nFor the method-independence test (lensmc vs metacal), see `tapestry:plot_method_comparison`. For SPT estimator variants, see `tapestry:plot_spt_estimator_comparison`.\n\n## Comments\n**2026-02-16 00:39** — ACT vs SPT comparison plot needs proper xlims — current axis range doesn't show the data well.",
       "outcome": "ACT and SPT cross-spectra are fully consistent: 14/14 pass at 5% level, median PTE=0.639, median chi2/dof=0.86. No evidence of CMB-side systematics. Evidence + plots co-located at results/claims/plot_act_vs_spt/.",
       "createdAt": "2026-02-14T17:53:30.673248363+01:00",
       "closedAt": null,
@@ -2415,7 +2602,8 @@
       "createdAt": "2026-02-14T18:13:15.758141608+01:00",
       "closedAt": null,
       "dependsOn": [
-        "systematic-null-test-heatmap-92dec7e5"
+        "systematic-null-test-heatmap-92dec7e5",
+        "systematic-maps-on-the-sky-83122c03"
       ]
     },
     {
@@ -2445,7 +2633,8 @@
       "createdAt": "2026-02-14T18:14:07.516956859+01:00",
       "closedAt": null,
       "dependsOn": [
-        "signal-overview-act-spt-theory-1ae2798f"
+        "signal-overview-act-spt-theory-1ae2798f",
+        "systematic-maps-on-the-sky-83122c03"
       ]
     },
     {
@@ -2546,10 +2735,10 @@
       "tags": [
         "tapestry:plot_spt_estimator_comparison"
       ],
-      "body": "SPT-3G provides four CMB lensing estimator variants with genuinely different foreground sensitivity. GMV (baseline) uses all quadratic pairs — highest SNR but most foreground-exposed. TT (temperature-only) is maximally sensitive to tSZ from galaxy clusters. PP (polarization-only) is the cleanest but noisiest. MV (SQE) tests pipeline-level consistency. All share the same survey mask, so differences in their cross-spectra with Euclid shear isolate foreground contamination in the lensing reconstruction.\n\nThe 6-panel ratio plot (lensmc baseline) shows each variant divided by GMV as a function of multipole. The ratios scatter around unity in every bin — TT (salmon), PP (teal), MV (purple) all consistent with the 10% shaded band, with noise increasing at low ℓ where each variant's individual S/N is lowest. PP shows the widest scatter (noisiest estimator), but no systematic offset. TT — the critical test for tSZ bias — tracks GMV tightly. The large error bars at individual bandpowers correctly show that this is a noisy test: the power comes from the aggregate (18 comparisons, median chi2/dof = 0.19), not any single ℓ bin.\n\nThis means tSZ contamination of the SPT lensing reconstruction does not bias the shear × κ cross-correlation at current noise levels. The SPT normalization deficit (A_lens = 0.76) cannot be explained by foreground leakage — it persists identically across all four estimators, including the foreground-immune PP channel. This disfavors foreground-related hypotheses for the deficit (see `spt-deficit-characterization-6b724e41`).",
+      "body": "SPT-3G provides four CMB lensing estimator variants with genuinely different foreground sensitivity. GMV (baseline) uses all quadratic pairs — highest SNR but most foreground-exposed. TT (temperature-only) is maximally sensitive to tSZ from galaxy clusters. PP (polarization-only) is the cleanest but noisiest. MV (SQE) tests pipeline-level consistency. All share the same survey mask, so differences in their cross-spectra with Euclid shear isolate foreground contamination in the lensing reconstruction.\n\nThe 6-panel ratio plot (lensmc baseline) shows each variant divided by GMV as a function of multipole. The ratios scatter around unity in every bin — TT (salmon), PP (teal), MV (purple) all consistent with the 10% shaded band, with noise increasing at low ℓ where each variant's individual S/N is lowest. PP shows the widest scatter (noisiest estimator), but no systematic offset. TT — the critical test for tSZ bias — tracks GMV tightly. The large error bars at individual bandpowers correctly show that this is a noisy test: the power comes from the aggregate (18 comparisons, median chi2/dof = 0.19), not any single ℓ bin.\n\nThis means tSZ contamination of the SPT lensing reconstruction does not bias the shear × κ cross-correlation at current noise levels. The SPT normalization deficit (A_lens = 0.76) cannot be explained by foreground leakage — it persists identically across all four estimators, including the foreground-immune PP channel. This disfavors foreground-related hypotheses for the deficit (see `spt-deficit-characterization-6b724e41`).\n\n## Comments\n**2026-02-15 23:56** — Plot rework: drop the ratio plot (noise/noise ratios scatter too much at low ℓ). Instead plot differences relative to best-fit Planck amplitude: (C_variant - C_GMV) / C_theory(A_lens). Clean residual in interpretable units.",
       "outcome": "All 14 comparisons (2 methods x 7 bins) show complete consistency across all 4 SPT estimator variants. Chi2/dof: MV~0.03, TT~0.2, PP~0.3 (all vs GMV, dof=20). Min PTE=0.981 (metacal bin3 PP). No foreground contamination detected — tSZ bias in TT estimator does not affect shear x kappa cross-spectra at current noise levels. 42 cross-spectra computed, 14 comparison plots + evidence at results/claims/plot_spt_estimator_comparison/.",
       "createdAt": "2026-02-15T04:05:05.21428304+01:00",
-      "closedAt": "2026-02-15T04:14:33.062076876+01:00",
+      "closedAt": "2026-02-16T00:28:19.927753312+01:00",
       "dependsOn": [
         "act-vs-spt-cross-spectra-b4181199"
       ]
@@ -2923,8 +3112,8 @@
       "tags": [
         "doc"
       ],
-      "body": "This document synthesizes the complete Euclid × CMB-κ cross-correlation analysis, walking the DAG of 30 tapestry nodes to tell a coherent scientific narrative. For quantitative details, follow the fiber IDs to evidence files at `results/claims/{specName}/`. For paper-ready numbers, see `generate_results_table` (LaTeX tables) and `plot_analysis_summary` (one-page figure).\n\n## 1. Detection\n\nWe measure pseudo-C_ℓ cross-spectra between Euclid weak lensing shear (RR2 v2.1 catalog, ~30% of DR1 area) and CMB lensing convergence from ACT DR6 and SPT-3G winter field. NaMaster handles mode-coupling from partial sky coverage. The pipeline produces 28 baseline cross-spectra (2 shear methods × 7 tomographic bins × 2 CMB experiments) at 20 log-spaced bandpowers over ℓ = 40–3000.\n\n**Combined detection significance.** ACT: 20σ. SPT: 21σ. All 12 individual tomographic bins (6 per CMB) detected above 3σ, with 11/12 above 5σ. Knox S/N increases with redshift as expected from the growth of the lensing kernel overlap: bin 1 (~5.5σ) through bin 6 (~11.7σ). See `compute_cross_spectrum` for per-spectrum evidence.\n\n**Shear sign convention.** The correct mapping from Euclid ellipticities to HEALPix (Q,U) is [-e1, e2] — Euclid's e1 is along RA (East), while HEALPix Q is along colatitude (South), requiring a π/2 frame rotation. This was the subject of early investigation (`sign-convention-for-standard-wl-7ebc8d73`). Auto-spectra are invariant to global (Q,U) sign flips; only cross-spectra with spin-0 tracers (CMB κ) break the symmetry. Documented in `auto-spectra-invariant-to-28144a52`.\n\n## 2. Internal consistency\n\nFour independent consistency tests, all passing at 5% significance:\n\n**ACT vs SPT** (`plot_act_vs_spt`). 14/14 comparisons pass. Median PTE = 0.64, median χ²/dof = 0.86. The two CMB experiments, with independent telescopes, optics, detectors, scanning strategies, and lensing reconstruction pipelines, recover the same cross-correlation signal across all tomographic bins and both shear methods. This is the strongest evidence that the measurement is real and not an artifact of either CMB pipeline.\n\n**lensmc vs metacal** (`plot_method_comparison`). 35/35 comparisons pass (7 bins × 5 CMB experiments). Median χ²/dof = 0.14, median PTE = 1.00. The low χ² reflects a subtlety: both methods use the same galaxies and the same CMB map, so their noise is highly correlated. The Knox formula for the difference overestimates the variance because it assumes independent noise. The test confirms agreement but is not very constraining for this reason.\n\n**SPT estimators** (`plot_spt_estimator_comparison`). 14/14 pass. Median PTE = 0.98. Four CMB lensing estimators (GMV, TT, PP, MV) yield consistent cross-spectra. Since temperature-based (TT) and polarization-based (PP) estimators have different sensitivity to extragalactic foregrounds (tSZ, CIB, radio sources), this rules out foreground contamination in the CMB lensing reconstruction as a source of bias.\n\n**Catalog vs map** (`plot_catalog_vs_map_comparison`, `plot_catalog_validation_summary`). 28/28 agree with Pearson correlation 0.986–1.000. NmtFieldCatalog computes pseudo-C_ℓ directly from galaxy positions and ellipticities, bypassing pixelization and map-making. Agreement with the map-based pipeline confirms that the map construction step introduces no significant artifacts. S/N-weighted RMS fractional difference: 3–46%.\n\n## 3. Null tests\n\nThree classes of null test, probing different potential failure modes:\n\n**Jackknife sign-flip** (`plot_jackknife_null_test`). Random sign (±1) applied to each galaxy's ellipticity, destroying the coherent cosmological signal while preserving noise structure, pixel coverage, and weight maps. 24/24 null spectra consistent with zero (median Knox χ²/dof = 0.88, median PTE = 0.62). No galaxy-side systematics (PSF residuals, selection effects, calibration errors) detected.\n\n**Simulation null** (`plot_sim_null_test`). 11 simulated SPT κ maps (1 Gaussian + 10 Agora from healqest) crossed with real Euclid shear. These simulations have no correlation with the galaxy field by construction. 65/66 spectra consistent with zero (median χ²/dof = 0.92, PTE = 0.56). The one false alarm is expected (~3.3 expected at 5%). The empirical variance ratio (Knox/scatter) = 0.83, confirming Knox is slightly conservative — appropriate for a detection claim.\n\n**Spatial variation** (`plot_spatial_variation`). RR2 footprint split into north (Dec > −31.7°) and south (Dec < −31.7°) patches, each crossed with ACT. 6/6 pass at ℓ > 100 (median χ²/dof = 1.34, PTE = 0.16). Failures at ℓ < 100 are expected — each patch has fsky ~ 0.001, giving < 1 mode per low-ℓ bandpower. SPT excluded from this test because its winter field (Dec < −42°) doesn't overlap the north patch. Decision documented in `knox-unreliable-below-ell-100-868b270f`.\n\n## 4. Systematic contamination\n\nSystematic contamination is the analysis's deepest investigation, spanning five layers of increasing sophistication.\n\n**Layer 1: Shear × systematic null tests** (`compute_systematic_cross_spectrum`, `plot_systematic_null_tests`). Five VMPZ-ID templates tested: stellar density, galactic extinction, number of exposures, SAA passages, zodiacal light. 70 cross-spectra (5 × 2 methods × 7 bins). 54/70 pass; galactic extinction fails 10/14, stellar density 5/14, exposures 1/14. SAA and zodiacal light clean. However, these tests check only the galaxy side — a systematic could correlate with CMB κ without appearing in C^{γS}.\n\n**Layer 2: CMB κ × systematic** (`compute_cmbk_systematic_cross_spectrum`). 25 spectra (5 maps × 5 CMB experiments). Galactic extinction contaminates all CMB κ reconstructions (chi2/dof > 3 for all estimators). Stellar density also correlates with CMB κ. This contamination is CMB-estimator-independent — it's physical (dust biasing the CMB gradient estimator), not an artifact of a specific lensing pipeline.\n\n**Layer 3: Contamination metric** (`plot_contamination_metric`). Following DES×SPT (2203.12440, §A.4): X^f_S(ℓ) = C^{κS}_ℓ · C^{fS}_ℓ / C^{SS}_ℓ measures the systematic's projection into the cross-correlation signal. 50 plots (5 × 2 × 5). Individually, all X metrics are sub-percent of the signal uncertainty. But this per-systematic view underestimates the cumulative bias.\n\n**Layer 4: Bias budget** (`plot_systematic_budget`). S_bias = √(Σ X²/σ²) integrates the contamination significance over ℓ-bins. ACT: stellar density is the dominant contaminant (max 4.4σ in bin 5, all 6 bins > 1σ), followed by galactic extinction (max 3.7σ). SPT: almost all < 1σ. The ACT/SPT asymmetry arises from ACT's larger sky overlap with galactic plane. metacal shows ~2× higher bias than lensmc — different shear weight maps couple differently to spatially-varying systematics.\n\n**Layer 5: Template marginalization** (`evaluate_deprojected_likelihood`). Naive template subtraction injects noise: d'^T C^{-1} d' includes X^T C^{-1} X (template noise) that dominated the chi2, producing an S/N *increase* after \"cleaning\" — a paradox resolved analytically. The correct approach is Fisher matrix marginalization: d = A·theory + Σ α_S·X_S. Results:\n\n| | ACT lensmc | ACT metacal | SPT lensmc |\n|---|---|---|---|\n| Raw Â(IA) | 0.93 ± 0.06 | 0.89 ± 0.06 | 0.76 ± 0.05 |\n| Marginalized Â(IA) | 0.86 ± 0.06 | 0.82 ± 0.06 | 0.75 ± 0.05 |\n| Profile χ²/dof | 0.75 | 0.82 | 1.61 |\n| Marginalized S/N | 15σ | 13σ | 14σ |\n\nKey finding: contamination was *boosting* ACT signal (positive X_total, same sign as the lensing signal). After proper marginalization, ACT is *more* consistent with theory (profile χ²/dof improves from 0.88 to 0.75). The \"coincidental good fit\" of the raw spectra was partly cosmological and partly systematic — their contributions happened to partially cancel in the goodness-of-fit metric. SPT is essentially unaffected by contamination (< 0.1σ shift).\n\n## 5. Theory comparison\n\nFiducial: Planck 2018 best-fit ΛCDM (decision fiber `fiducial-cosmology-planck-2018-f1a59f23`). Theory C_ℓ computed via CCL with Limber approximation (`compute_theory_cls`). Two models compared:\n\n**Vanilla Planck 2018.** ACT: Â = 0.84 ± 0.05, χ²/dof = 0.95, PTE = 0.63. SPT: Â = 0.69 ± 0.05, χ²/dof = 2.08, PTE ≈ 0. Both show theory overprediction (A < 1).\n\n**+ NLA intrinsic alignment** (`nla-intrinsic-alignment-cb1dea0b`). A_IA = 1.72, η_IA = −0.41 (eDR1like defaults, consistent with KiDS/DES). IA suppresses the signal through the GI term, strongest at low-z (36% suppression in bin 1, 4% in bin 6). ACT: Â = 0.93 ± 0.06 (1.3σ from unity, consistent). SPT: Â = 0.76 ± 0.05 (4.9σ low, shape chi2 still fails). Two effects cleanly separated: common IA suppression (~10%) + SPT-specific normalization (~24%).\n\n**+ Template marginalization.** ACT: Â = 0.86 ± 0.06, profile χ²/dof = 0.75, PTE = 0.98. ACT is fully consistent with Planck 2018 + NLA IA after systematic handling. SPT: χ²/dof = 1.6 persists — the deficit is intrinsic (CMB-side), not contamination. Documented in `spt-normalization-deficit-2cbccf68`.\n\n## 6. The SPT normalization question\n\nSPT cross-spectra are 24% low relative to Planck 2018 + NLA IA. This deficit is:\n- **Method-independent**: lensmc and metacal show the same pattern\n- **Estimator-independent**: GMV, TT, PP, MV all agree\n- **Contamination-independent**: template marginalization barely changes SPT\n\nPer-bin analysis (`spt-deficit-bin-level-structure-de2540dd`) reveals two distinct regimes. The chi2 here is a **shape test** at best-fit amplitude (ν = 19 per bin), not a unity test (A = 1, ν = 20) — this isolates ℓ-dependence disagreement from overall amplitude deficit (`per-bin-chi2-uses-shape-test-at-af2aacf1`):\n- **Bins 1–3 (low-z)**: shape FAILS (chi2_shape/dof = 1.7–2.7, PTE 0.0001–0.03). The ℓ-dependence doesn't match theory even after amplitude fitting — something distorts the spectral shape.\n- **Bins 4–6 (high-z)**: shape PASSES (chi2_shape/dof = 1.2–1.6, PTE 0.06–0.21). Amplitude deficit only — consistent with a simple calibration offset.\n- ACT passes shape tests in ALL 6 bins (chi2_shape/dof = 0.59–1.18).\n\nThe low-z shape failure is diagnostic. Low-z lensing kernels peak at lower ℓ, where SPT's lmin=500 filtering removes signal modes. Missing low-ℓ information would distort the reconstructed cross-spectrum shape at low redshift while leaving high-z bins (which have broader ℓ-support) affected only in amplitude.\n\n**ℓ-range robustness test** (`plot_ell_range_robustness`, iteration 31) confirms the scale dependence directly. Progressive ℓ_max cuts show SPT bins 1–3 amplitude dropping from Â ≈ 1.5 at ℓ_max ~ 200 to Â ≈ 0.7 at full range — high-ℓ bandpowers actively suppress the cross-spectrum. ACT is stable (worst deviation 1.5σ, bin 3). This rules out a uniform calibration offset and points to SPT-specific effects at high ℓ: transfer function mismodeling or higher-order noise bias leakage. Baryonic feedback is disfavored as the primary cause — it would suppress both experiments equally.\n\nN0/N1 bias subtraction only affects auto-spectra (C^{κκ}), NOT cross-spectra (C^{κγ}) — the deficit must be in the response function normalization or mean-field residuals. The simulation null test (65/66 pass) confirms no spurious correlation; the issue is the amplitude and shape of the real signal. Requires SPT team investigation.\n\n## 7. Covariance and statistical framework\n\nKnox analytic covariance is primary for all chi2/PTE computations (`covariance-methodology-b17f19da`). Var(C^{ab}_b) = C^{aa}_b · C^{bb}_b / n_modes with fsky_eff from Hivon (2002). Diagonal — no bandpower correlations. Validated by simulation null test: empirical variance ratio 0.83 (Knox slightly conservative).\n\nNaMaster Gaussian covariance (iNKA) overestimates variance by 10–130× at our fsky ~ 0.01 — documented in `suspiciously-good-ptes-in-dbf44cbb` and `systematic-pte-overestimation-89f57308`. Retained in SACC files but not used for chi2.\n\nFor the fiducial likelihood evaluation, the full bandpower covariance from NaMaster PKL files is used. The Knox and PKL frameworks are consistent where they overlap.\n\n## 8. Data products\n\n**SACC files** (`validate_sacc`). Combined data product containing tracers (NZTracer for shear, MiscTracer for CMB κ), n(z) curves (6 bins from RR2_v2_Nz_WL_C2020_sel_pv), data vectors (560 points per CMB: 14 spectra × 40 bandpowers), and covariance matrices.\n\n**PKL files** (`build_likelihood_input`). NPZ→PKL bridge for the eDR1like likelihood. Includes bandpower window functions (Bbl), data vectors, covariance, and tracer information. Four files: 2 methods × 2 CMB baselines.\n\n**LaTeX results tables** (`generate_results_table`). Three tables: detection & theory (Table 1), per-bin amplitudes (Table 2), validation summary (Table 3). All numbers traceable to evidence.json files.\n\n## 9. Summary of key numbers\n\n| Quantity | ACT (lensmc) | SPT (lensmc) |\n|---|---|---|\n| Raw detection S/N | 20σ | 21σ |\n| Marginalized S/N | 15σ | 14σ |\n| Â (vanilla) | 0.84 ± 0.05 | 0.69 ± 0.05 |\n| Â (NLA IA) | 0.93 ± 0.06 | 0.76 ± 0.05 |\n| Â (IA + marginalized) | 0.86 ± 0.06 | 0.75 ± 0.05 |\n| Profile χ²/dof | 0.75 (PTE 0.98) | 1.61 (PTE ≈ 0) |\n| Per-bin shape χ²/dof | 0.59–1.18 (all pass) | 1.2–2.7 (bins 4–6 pass) |\n| Consistency (ACT vs SPT) | 14/14 pass | |\n| Method comparison | 35/35 pass | |\n| Null tests (jackknife) | 24/24 pass | |\n| Null tests (sim) | 65/66 pass | |\n| Spatial variation (ℓ > 100) | 6/6 pass | |\n| Max systematic bias | 4.4σ (stellar dens.) | < 1σ |\n| ℓ-range stability (max dev.) | 1.5σ (stable) | 2.7σ (scale-dependent) |\n\n## 10. Open items\n\n- **SPT normalization deficit** — not addressable without SPT team input. See `spt-normalization-deficit-2cbccf68`.\n- **Missing theory effects** — baryonic feedback (~3–5%), multiplicative shear calibration (~2%), n(z) shifts (~1–3%) are all excluded from the current model. Combined ~6–10% correction would bring ACT Â from 0.86 to ~0.91–0.95, fully resolving the residual deficit. eDR1like supports baryonic feedback via CAMB backend (HMCode Mead2020) but not via CCL. Shear m-bias not implemented in eDR1like at all. See `theory-model-completeness-for-526d66a5`.\n- **Curl mode null test** — blocked on data. ACT provides only baseline ILC κ; SPT has no curl product. Would need collaboration request.\n- **Mass maps** — SKS/SKSP maps at v1.4 path, not v2.1. Investigated in `mass-maps-at-v1-4-path-not-v2-1-fdc14589`.\n- **Blinding strategy** — unresolved. See `cmbx-3x2pt-blinding-strategy-d2469de7`.\n\n## Provenance\n\nThis synthesis was compiled from 31 tapestry-tagged fibers with evidence files at `results/claims/{specName}/evidence.json`. All evidence generated 2026-02-15. Every tapestry node has enriched aggregate evidence — rule-specific handlers extract key metrics (not just record counts) from individual evidence files. Per-bin chi2 values use shape tests at best-fit amplitude (ν = 19), isolating spectral shape from amplitude deficit; joint fits use the full covariance (ν = 119 for IA, ν = 115 for marginalized). The complete fiber DAG is navigable via `felt tree <fiber-id>` or the tapestry dashboard. Every number in this document traces back to a specific evidence.json field, which in turn traces to a Snakemake rule output.",
-      "outcome": "Comprehensive narrative synthesis of the Euclid x CMB-kappa cross-correlation analysis, walking the full DAG of 31 tapestry nodes. Covers: (1) 20sigma/21sigma detection with 28 baseline spectra; (2) four consistency tests all passing; (3) three null tests passing; (4) five-layer systematic contamination analysis from null tests through template marginalization; (5) theory comparison with Planck 2018 + NLA IA; (6) SPT normalization deficit characterization (bin-level: shape fails at low-z, amplitude-only at high-z); (7) covariance methodology (Knox primary, iNKA secondary); (8) data products (SACC, PKL, LaTeX). All numbers traced to evidence.json files. Per-bin chi2 uses shape test at best-fit A (dof=19). All 31 evidence nodes enriched with rule-specific handlers. Key numbers: ACT 15sigma marginalized, A_hat(IA+marg)=0.86+/-0.06, profile chi2/dof=0.75 (PTE 0.98). SPT 14sigma, A_hat=0.75+/-0.05, chi2/dof=1.6. Theory model completeness documented: missing baryons+m-bias (~6-10%) would resolve ACT residual. 11 upstream fiber dependencies.",
+      "body": "This document synthesizes the complete Euclid × CMB-κ cross-correlation analysis, walking the DAG of 24 tapestry nodes to tell a coherent scientific narrative. For quantitative details, follow the fiber IDs to evidence files at `results/claims/{specName}/`. For paper-ready numbers, see `generate_results_table` (LaTeX tables) and `plot_analysis_summary` (one-page figure).\n\n## 1. Detection\n\nWe measure pseudo-C_ℓ cross-spectra between Euclid weak lensing shear (RR2 v2.1 catalog, ~30% of DR1 area) and CMB lensing convergence from ACT DR6 and SPT-3G winter field. NaMaster handles mode-coupling from partial sky coverage. The pipeline produces 28 baseline cross-spectra (2 shear methods × 7 tomographic bins × 2 CMB experiments) at 20 log-spaced bandpowers over ℓ = 40–3000.\n\n**Combined detection significance.** ACT: 20σ. SPT: 21σ. All 12 individual tomographic bins (6 per CMB) detected above 3σ, with 11/12 above 5σ. Knox S/N increases with redshift as expected from the growth of the lensing kernel overlap: bin 1 (~5.5σ) through bin 6 (~11.7σ). See `compute_cross_spectrum` for per-spectrum evidence.\n\n**Shear sign convention.** The correct mapping from Euclid ellipticities to HEALPix (Q,U) is [-e1, e2] — Euclid's e1 is along RA (East), while HEALPix Q is along colatitude (South), requiring a π/2 frame rotation. This was the subject of early investigation (`sign-convention-for-standard-wl-7ebc8d73`). Auto-spectra are invariant to global (Q,U) sign flips; only cross-spectra with spin-0 tracers (CMB κ) break the symmetry. Documented in `auto-spectra-invariant-to-28144a52`.\n\n## 2. Internal consistency\n\nFour independent consistency tests, all passing at 5% significance:\n\n**ACT vs SPT** (`plot_act_vs_spt`). 14/14 comparisons pass. Median PTE = 0.64, median χ²/dof = 0.86. The two CMB experiments, with independent telescopes, optics, detectors, scanning strategies, and lensing reconstruction pipelines, recover the same cross-correlation signal across all tomographic bins and both shear methods. This is the strongest evidence that the measurement is real and not an artifact of either CMB pipeline.\n\n**lensmc vs metacal** (`plot_method_comparison`). 35/35 comparisons pass (7 bins × 5 CMB experiments). Median χ²/dof = 0.14, median PTE = 1.00. The low χ² reflects a subtlety: both methods use the same galaxies and the same CMB map, so their noise is highly correlated. The Knox formula for the difference overestimates the variance because it assumes independent noise. The test confirms agreement but is not very constraining for this reason.\n\n**SPT estimators** (`plot_spt_estimator_comparison`). 14/14 pass. Median PTE = 0.98. Four CMB lensing estimators (GMV, TT, PP, MV) yield consistent cross-spectra. Since temperature-based (TT) and polarization-based (PP) estimators have different sensitivity to extragalactic foregrounds (tSZ, CIB, radio sources), this rules out foreground contamination in the CMB lensing reconstruction as a source of bias.\n\n**Catalog vs map** (`plot_catalog_vs_map_comparison`, `plot_catalog_validation_summary`). 28/28 agree with Pearson correlation 0.986–1.000. NmtFieldCatalog computes pseudo-C_ℓ directly from galaxy positions and ellipticities, bypassing pixelization and map-making. Agreement with the map-based pipeline confirms that the map construction step introduces no significant artifacts. S/N-weighted RMS fractional difference: 3–46%.\n\n## 3. Null tests\n\nThree classes of null test, probing different potential failure modes:\n\n**Jackknife sign-flip** (`plot_jackknife_null_test`). Random sign (±1) applied to each galaxy's ellipticity, destroying the coherent cosmological signal while preserving noise structure, pixel coverage, and weight maps. 24/24 null spectra consistent with zero (median Knox χ²/dof = 0.88, median PTE = 0.62). No galaxy-side systematics (PSF residuals, selection effects, calibration errors) detected.\n\n**Simulation null** (`plot_sim_null_test`). 11 simulated SPT κ maps (1 Gaussian + 10 Agora from healqest) crossed with real Euclid shear. These simulations have no correlation with the galaxy field by construction. 65/66 spectra consistent with zero (median χ²/dof = 0.92, PTE = 0.56). The one false alarm is expected (~3.3 expected at 5%). The empirical variance ratio (Knox/scatter) = 0.83, confirming Knox is slightly conservative — appropriate for a detection claim.\n\n**Spatial variation** (`plot_spatial_variation`). RR2 footprint split into north (Dec > −31.7°) and south (Dec < −31.7°) patches, each crossed with ACT. 6/6 pass at ℓ > 100 (median χ²/dof = 1.34, PTE = 0.16). Failures at ℓ < 100 are expected — each patch has fsky ~ 0.001, giving < 1 mode per low-ℓ bandpower. SPT excluded from this test because its winter field (Dec < −42°) doesn't overlap the north patch. Decision documented in `knox-unreliable-below-ell-100-868b270f`.\n\n## 4. Systematic contamination\n\nSystematic contamination is the analysis's deepest investigation, spanning five layers of increasing sophistication.\n\n**Layer 1: Shear × systematic null tests** (`compute_systematic_cross_spectrum`, `plot_systematic_null_tests`). Five VMPZ-ID templates tested: stellar density, galactic extinction, number of exposures, SAA passages, zodiacal light. 70 cross-spectra (5 × 2 methods × 7 bins). 54/70 pass; galactic extinction fails 10/14, stellar density 5/14, exposures 1/14. SAA and zodiacal light clean. However, these tests check only the galaxy side — a systematic could correlate with CMB κ without appearing in C^{γS}.\n\n**Layer 2: CMB κ × systematic** (`compute_cmbk_systematic_cross_spectrum`). 25 spectra (5 maps × 5 CMB experiments). Galactic extinction contaminates all CMB κ reconstructions (chi2/dof > 3 for all estimators). Stellar density also correlates with CMB κ. This contamination is CMB-estimator-independent — it's physical (dust biasing the CMB gradient estimator), not an artifact of a specific lensing pipeline.\n\n**Layer 3: Contamination metric** (`plot_contamination_metric`). Following DES×SPT (2203.12440, §A.4): X^f_S(ℓ) = C^{κS}_ℓ · C^{fS}_ℓ / C^{SS}_ℓ measures the systematic's projection into the cross-correlation signal. 50 plots (5 × 2 × 5). Individually, all X metrics are sub-percent of the signal uncertainty. But this per-systematic view underestimates the cumulative bias.\n\n**Layer 4: Bias budget** (`plot_systematic_budget`). S_bias = √(Σ X²/σ²) integrates the contamination significance over ℓ-bins. ACT: stellar density is the dominant contaminant (max 4.4σ in bin 5, all 6 bins > 1σ), followed by galactic extinction (max 3.7σ). SPT: almost all < 1σ. The ACT/SPT asymmetry arises from ACT's larger sky overlap with galactic plane. metacal shows ~2× higher bias than lensmc — different shear weight maps couple differently to spatially-varying systematics.\n\n**Layer 5: Template marginalization** (`evaluate_deprojected_likelihood`). Naive template subtraction injects noise: d'^T C^{-1} d' includes X^T C^{-1} X (template noise) that dominated the chi2, producing an S/N *increase* after \"cleaning\" — a paradox resolved analytically. The correct approach is Fisher matrix marginalization: d = A·theory + Σ α_S·X_S. Results:\n\n| | ACT lensmc | ACT metacal | SPT lensmc |\n|---|---|---|---|\n| Raw A_lens | 0.93 ± 0.06 | 0.89 ± 0.06 | 0.76 ± 0.05 |\n| Marginalized A_lens | 0.86 ± 0.06 | 0.82 ± 0.06 | 0.75 ± 0.05 |\n| Profile χ²/dof | 0.75 | 0.82 | 1.61 |\n| Marginalized S/N | 15σ | 13σ | 14σ |\n\nKey finding: contamination was *boosting* ACT signal (positive X_total, same sign as the lensing signal). After proper marginalization, ACT is *more* consistent with theory (profile χ²/dof improves from 0.88 to 0.75). The \"coincidental good fit\" of the raw spectra was partly cosmological and partly systematic — their contributions happened to partially cancel in the goodness-of-fit metric. SPT is essentially unaffected by contamination (< 0.1σ shift).\n\n## 5. Theory comparison\n\nFiducial: Planck 2018 best-fit ΛCDM (decision fiber `fiducial-cosmology-planck-2018-f1a59f23`). Theory C_ℓ computed via CCL with Limber approximation (`compute_theory_cls`). Two models compared:\n\n**Vanilla Planck 2018.** ACT: A_van = 0.84 ± 0.05, χ²/dof = 0.95, PTE = 0.63. SPT: A_van = 0.69 ± 0.05, χ²/dof = 2.08, PTE ≈ 0. Both show theory overprediction (A < 1).\n\n**+ NLA intrinsic alignment** (`nla-intrinsic-alignment-cb1dea0b`). A_IA = 1.72, η_IA = −0.41 (eDR1like defaults, consistent with KiDS/DES). IA suppresses the signal through the GI term, strongest at low-z (36% suppression in bin 1, 4% in bin 6). ACT: A_lens = 0.93 ± 0.06 (1.3σ from unity, consistent). SPT: A_lens = 0.76 ± 0.05 (4.9σ low, shape chi2 still fails). Two effects cleanly separated: common IA suppression (~10%) + SPT-specific normalization (~24%).\n\n**+ Template marginalization.** ACT: A_lens^marg = 0.86 ± 0.06, profile χ²/dof = 0.75, PTE = 0.98. ACT is fully consistent with Planck 2018 + NLA IA after systematic handling. SPT: χ²/dof = 1.6 persists — the deficit is intrinsic (CMB-side), not contamination. Documented in `spt-normalization-deficit-2cbccf68`.\n\n## 6. The SPT normalization question\n\nSPT cross-spectra are 24% low relative to Planck 2018 + NLA IA. This deficit is:\n- **Method-independent**: lensmc and metacal show the same pattern\n- **Estimator-independent**: GMV, TT, PP, MV all agree\n- **Contamination-independent**: template marginalization barely changes SPT\n\nPer-bin analysis (`spt-deficit-bin-level-structure-de2540dd`) reveals two distinct regimes. The chi2 here is a **shape test** at best-fit amplitude (ν = 19 per bin), not a unity test (A = 1, ν = 20) — this isolates ℓ-dependence disagreement from overall amplitude deficit (`per-bin-chi2-uses-shape-test-at-af2aacf1`):\n- **Bins 1–3 (low-z)**: shape FAILS (chi2_shape/dof = 1.7–2.7, PTE 0.0001–0.03). The ℓ-dependence doesn't match theory even after amplitude fitting — something distorts the spectral shape.\n- **Bins 4–6 (high-z)**: shape PASSES (chi2_shape/dof = 1.2–1.6, PTE 0.06–0.21). Amplitude deficit only — consistent with a simple calibration offset.\n- ACT passes shape tests in ALL 6 bins (chi2_shape/dof = 0.59–1.18).\n\nThe low-z shape failure is diagnostic. Low-z lensing kernels peak at lower ℓ, where SPT's lmin=500 filtering removes signal modes. Missing low-ℓ information would distort the reconstructed cross-spectrum shape at low redshift while leaving high-z bins (which have broader ℓ-support) affected only in amplitude.\n\n**ℓ-range robustness test** (`plot_ell_range_robustness`) confirms the scale dependence directly. Progressive ℓ_max cuts show SPT bins 1–3 amplitude dropping from A_lens ≈ 1.5 at ℓ_max ~ 200 to A_lens ≈ 0.7 at full range — high-ℓ bandpowers actively suppress the cross-spectrum. ACT is stable (worst deviation 1.5σ, bin 3). This rules out a uniform calibration offset and points to SPT-specific effects at high ℓ.\n\n**The ℓ ≈ 84.5 spike** (`spt-ℓ-100-spike-suspicious-ed5a480a`). A single bandpower at ℓ = 84.5 spikes in 5/6 SPT bins with Knox S/N = 3.4–5.1σ, 3.8–5.4× neighbor average. All four SPT estimators agree within ~20%. Both shear methods agree. B-modes are clean. The spike amplitude scales with redshift bin (3×10⁻⁸ to 1.1×10⁻⁷), tracking the lensing kernel — it's coupling to genuine signal, not additive noise. ACT shows no corresponding feature. This single bandpower is likely the dominant driver of the ℓ-range amplitude inflation at low ℓ_max and contributes to the overall A_lens suppression at full range.\n\nN0/N1 bias subtraction only affects auto-spectra (C^{κκ}), NOT cross-spectra (C^{κγ}) — the deficit must be in the response function normalization or mean-field residuals. The simulation null test (65/66 pass) confirms no spurious correlation; the issue is the amplitude and shape of the real signal. Leading hypotheses (ranked): (1) SPT κ transfer function — scale-dependent normalization bias; (2) SPT mask mode-coupling at fsky ≈ 0.04; (3) SPT lmin filtering distorting cross-spectrum at low output multipoles. See `spt-deficit-characterization-6b724e41` for full characterization.\n\n## 7. Covariance and statistical framework\n\nKnox analytic covariance is primary for all chi2/PTE computations (`covariance-methodology-b17f19da`). Var(C^{ab}_b) = C^{aa}_b · C^{bb}_b / n_modes with fsky_eff from Hivon (2002). Diagonal — no bandpower correlations. Validated by simulation null test: empirical variance ratio 0.83 (Knox slightly conservative).\n\nNaMaster Gaussian covariance (iNKA) overestimates variance by 10–130× at our fsky ~ 0.01 — documented in `suspiciously-good-ptes-in-dbf44cbb` and `systematic-pte-overestimation-89f57308`. Retained in SACC files but not used for chi2.\n\nFor the fiducial likelihood evaluation, the full bandpower covariance from NaMaster PKL files is used. The Knox and PKL frameworks are consistent where they overlap.\n\n## 8. Data products\n\n**SACC files** (`validate_sacc`). Combined data product containing tracers (NZTracer for shear, MiscTracer for CMB κ), n(z) curves (6 bins from RR2_v2_Nz_WL_C2020_sel_pv), data vectors (560 points per CMB: 14 spectra × 40 bandpowers), and covariance matrices.\n\n**PKL files** (`build_likelihood_input`). NPZ→PKL bridge for the eDR1like likelihood. Includes bandpower window functions (Bbl), data vectors, covariance, and tracer information. Four files: 2 methods × 2 CMB baselines.\n\n**LaTeX results tables** (`generate_results_table`). Three tables: detection & theory (Table 1), per-bin amplitudes (Table 2), validation summary (Table 3). All numbers traceable to evidence.json files.\n\n## 9. Summary of key numbers\n\n| Quantity | ACT (lensmc) | SPT (lensmc) |\n|---|---|---|\n| Raw detection S/N | 20σ | 21σ |\n| Marginalized S/N | 15σ | 14σ |\n| A_van (vanilla) | 0.84 ± 0.05 | 0.69 ± 0.05 |\n| A_lens (NLA IA) | 0.93 ± 0.06 | 0.76 ± 0.05 |\n| A_lens^marg (IA + marg.) | 0.86 ± 0.06 | 0.75 ± 0.05 |\n| Profile χ²/dof | 0.75 (PTE 0.98) | 1.61 (PTE ≈ 0) |\n| Per-bin shape χ²/dof | 0.59–1.18 (all pass) | 1.2–2.7 (bins 4–6 pass) |\n| Consistency (ACT vs SPT) | 14/14 pass | |\n| Method comparison | 35/35 pass | |\n| Null tests (jackknife) | 24/24 pass | |\n| Null tests (sim) | 65/66 pass | |\n| Spatial variation (ℓ > 100) | 6/6 pass | |\n| Max systematic bias | 4.4σ (stellar dens.) | < 1σ |\n| ℓ-range stability (max dev.) | 1.5σ (stable) | 2.7σ (scale-dependent) |\n| SPT ℓ=84.5 spike | not present | 3.4–5.1σ (5/6 bins) |\n\n## 10. Open items\n\n- **SPT normalization deficit** — not addressable without SPT team input. See `spt-normalization-deficit-2cbccf68`.\n- **Missing theory effects** — baryonic feedback (~3–5%), multiplicative shear calibration (~2%), n(z) shifts (~1–3%) are all excluded from the current model. Combined ~6–10% correction would bring ACT A_lens from 0.86 to ~0.91–0.95, fully resolving the residual deficit. Theory uses CCL with Halofit nonlinear P(k) — the CAMB HMCode baryonic feedback settings in eDR1like defaults.py are dead code for our CCL-based pipeline (`theory-prediction-audit-07c96181`). Shear m-bias not implemented in eDR1like at all. See `theory-model-completeness-for-526d66a5`.\n- **Curl mode null test** — blocked on data. ACT provides only baseline ILC κ; SPT has no curl product. Would need collaboration request.\n- **Mass maps** — SKS/SKSP maps at v1.4 path, not v2.1. Investigated in `mass-maps-at-v1-4-path-not-v2-1-fdc14589`.\n- **Blinding strategy** — unresolved. See `cmbx-3x2pt-blinding-strategy-d2469de7`.\n\n## Provenance\n\nThis synthesis was compiled from 24 tapestry-tagged fibers with evidence files at `results/claims/{specName}/evidence.json`. All evidence generated 2026-02-15/16. The tapestry was compressed from 31→21 nodes during narrative shaping (`narrative-tapestry-compress-31-6c42a4d6`), then expanded to 24 with three new visualization nodes: `plot_field_overview` (sky projection), `plot_apodization_masks` (mask methodology), `plot_systematic_maps` (contaminant spatial structure). Every tapestry node has enriched aggregate evidence — rule-specific handlers extract key metrics from individual evidence files. Per-bin chi2 values use shape tests at best-fit amplitude (ν = 19), isolating spectral shape from amplitude deficit; joint fits use the full covariance (ν = 119 for IA, ν = 115 for marginalized). A_lens = data / (Planck 2018 ΛCDM + NLA IA); A_IA is a fixed nuisance parameter, not a result (see `a-lens-naming-fitted-amplitude-c5d1c543`). Theory prediction uses CCL with Halofit nonlinear P(k) — CAMB HMCode baryonic feedback settings in eDR1like defaults.py are dead code for our pipeline (see `theory-prediction-audit-07c96181`). Every number in this document traces back to a specific evidence.json field, which in turn traces to a Snakemake rule output.",
+      "outcome": "Comprehensive narrative synthesis of 24 tapestry nodes (compressed from 31, plus 3 new visualization nodes). Key numbers: ACT 20σ raw → 15σ marginalized, A_lens=0.86±0.06, profile chi2/dof=0.75 (PTE 0.98). SPT 21σ raw → 14σ marg, A_lens=0.75±0.05, chi2/dof=1.6. SPT ℓ=84.5 spike: single bandpower at 3.4-5.1σ in 5/6 bins, likely dominant driver of scale-dependent deficit. Theory uses CCL Halofit (CAMB HMCode is dead code). Five-layer systematic analysis, template marginalization resolves ACT contamination. SPT deficit intrinsic (CMB-side). All A_lens notation per naming convention decision.",
       "createdAt": "2026-02-15T12:25:55.164047357+01:00",
       "closedAt": "2026-02-15T12:29:38.418893356+01:00",
       "dependsOn": [
@@ -3064,12 +3253,14 @@
       "tags": [
         "doc"
       ],
-      "outcome": "SPT 24% amplitude deficit (4.9σ after NLA IA). Method/estimator independent, not systematic contamination. Low-z shape fails (bins 1-3), high-z amplitude-only (bins 4-6). ℓ-range dependent: A drops from 1.5 to 0.7 with increasing ℓ_max. Points to κ transfer function effects, not calibration offset or baryons. Sources: iterations 9-10, 27, 31.",
+      "body": "SPT-3G × Euclid shear cross-spectra show A_lens = 0.76 ± 0.05 — a 4.9σ deficit from unity after NLA IA correction. The deficit has three layers of structure that point to a CMB-side origin.\n\n**Layer 1: bin-level.** Shape fails at low redshift (bins 1-3, chi2_shape/dof = 1.7-2.7) but passes at high redshift (bins 4-6, chi2_shape/dof = 1.2-1.6). At high-z the deficit is amplitude-only — the spectral shape is correct but the overall normalization is low. At low-z the shape itself is wrong, likely from SPT's ℓ_min ≈ 500 filtering distorting cross-spectrum bandpowers at low ℓ.\n\n**Layer 2: ℓ-range dependence.** Progressive ℓ_max cuts show A_lens dropping from ~1.5 at ℓ_max ≈ 200 to ~0.7 at full range. The worst case is bin 2 (2.7σ deviation, A range 0.74-2.55). ACT is stable (worst 1.5σ). This rules out a uniform calibration offset and disfavors baryonic feedback (which would affect both experiments).\n\n**Layer 3: the ℓ=84.5 spike.** A single bandpower at ℓ=84.5 spikes in 5/6 SPT bins (Knox S/N = 3.4-5.1σ, 3.8-5.4× neighbor average). All four SPT estimators (GMV/TT/PP/MV) agree within ~20%. Both shear methods agree. B-modes are clean. The spike amplitude scales with redshift bin (3e-8 to 1.1e-7), tracking the lensing kernel — it's coupling to genuine signal, not additive noise. This single bandpower is likely the dominant driver of the ℓ-range amplitude inflation at low ℓ_max, and its inclusion at full range suppresses the fitted A_lens.\n\n**Hypotheses (ranked):**\n1. SPT κ transfer function — scale-dependent normalization bias in the lensing reconstruction pipeline. The ℓ=84.5 feature suggests a specific angular scale where the reconstruction is miscalibrated.\n2. SPT mask mode-coupling — the compact SPT winter field (fsky ≈ 0.04) creates stronger mode-coupling at low ℓ than ACT's broader footprint (fsky ≈ 0.25). A single ℓ bin could absorb leaked power.\n3. SPT lmin filtering — the reconstruction pipeline applies ℓ_min ≈ 500 to temperature maps, which could distort the cross-spectrum at low output multipoles through non-trivial mode-mixing.\n\n**Ruled out:** systematic contamination (SPT is clean in bias budget), foreground bias (all estimators agree), shear method dependence (lensmc ≈ metacal), baryonic feedback (would affect both experiments equally).",
+      "outcome": "SPT 24% amplitude deficit (4.9σ after NLA IA). Method/estimator independent, not systematic contamination. Low-z shape fails (bins 1-3), high-z amplitude-only (bins 4-6). ℓ-range dependent: A drops from 1.5 to 0.7 with increasing ℓ_max. Single bandpower spike at ℓ=84.5 in 5/6 bins is likely the dominant driver. Points to κ transfer function effects, not calibration offset or baryons.",
       "createdAt": "2026-02-15T16:21:43.356754316+01:00",
       "closedAt": null,
       "dependsOn": [
         "spt-normalization-deficit-2cbccf68",
-        "spt-deficit-bin-level-structure-de2540dd"
+        "spt-deficit-bin-level-structure-de2540dd",
+        "spt-ℓ-100-spike-suspicious-ed5a480a"
       ]
     },
     {
@@ -3212,7 +3403,7 @@
       "tags": [
         "tapestry:plot_field_overview"
       ],
-      "body": "Three maps, one footprint. The cross-correlation lives where CMB lensing convergence from space and ground overlaps with Euclid galaxy shapes. This figure shows what those fields look like on the sky — the raw material before any spectrum is computed.\n\n**ACT DR6 κ** covers a broad swath of southern sky. The ILC lensing reconstruction is Wiener-filtered — W(ℓ) = C_signal/(C_signal + N), suppressing noise above ℓ ~ 200 — to reveal degree-scale convergence structure. Coherent over- and under-dense regions trace the matter distribution along the line of sight. Overlap with RR2 is ~130 deg², set by the Euclid footprint.\n\n**SPT-3G winter κ** covers the deep winter field (Dec < -42°). Only the southern patch of the RR2 footprint falls in this region. The GMV estimator combines temperature and polarization; the same field has TT, PP, and MV reconstructions for systematic cross-checks (`tapestry:plot_spt_estimator_comparison`).\n\n**Euclid RR2 shear weights** trace the galaxy density — two disjoint patches at Dec ≈ -33° and Dec ≈ -54°, with six tomographic bins slicing in redshift (`tapestry:compare_nz_distributions`).\n\nAll maps at nside 2048. The cross-correlation asks: do the convergence structures in CMB κ coincide with the galaxy shapes?\n\n**Script**: `workflow/scripts/plot_field_overview.py`",
+      "body": "Three maps, one footprint. The cross-correlation lives where CMB lensing convergence from space and ground overlaps with Euclid galaxy shapes. This figure shows what those fields look like on the sky — the raw material before any spectrum is computed.\n\n**ACT DR6 κ** covers a broad swath of southern sky (fsky ≈ 0.25). The ILC lensing reconstruction is Wiener-filtered using Planck 2018 C_ℓ^{κκ} theory as the signal model — the empirical approach fails because ACT's reconstruction noise is 25× SPT's, leaving the auto-spectrum noise-dominated at all ℓ (`wiener-filter-diagnostic-plot-w-14438464`). The theory-informed filter W(ℓ) = C_theory / (C_theory + N_estimate) gives W < 0.5 everywhere but still reveals degree-scale convergence structure. Overlap with RR2: ~306 deg² (ACT ∩ shear).\n\n**SPT-3G winter κ** covers the deep winter field (Dec < -42°, fsky ≈ 0.04). Only the southern patch of RR2 falls in this region. The deeper per-pixel noise gives ℓ_{1/2} ≈ 353 — modes below this are signal-dominated. The GMV estimator combines temperature and polarization; TT, PP, and MV reconstructions provide systematic cross-checks (`tapestry:plot_spt_estimator_comparison`). Overlap with RR2: ~140 deg² (SPT ∩ shear).\n\n**Euclid RR2 shear weights** trace the galaxy density — two disjoint patches at Dec ≈ -33° and Dec ≈ -54°, with six tomographic bins slicing in redshift (`tapestry:compare_nz_distributions`).\n\nAll maps at nside 2048. The Wiener filter diagnostic (second plot) shows the power spectra, empirical and theory-informed filters side by side — documenting why ACT needed a theory signal model.\n\n**Scripts**: `workflow/scripts/plot_field_overview.py`, `workflow/scripts/plot_wiener_diagnostic.py`",
       "outcome": "Wiener-filtered CMB lensing convergence (ACT DR6, SPT-3G) and Euclid shear weights on the RR2 sky. Three fields, two projection patches, overlap areas for cross-correlation.",
       "createdAt": "2026-02-15T19:02:09.671614093+01:00",
       "closedAt": null,
@@ -3267,15 +3458,15 @@
     {
       "id": "wiener-filter-diagnostic-plot-w-14438464",
       "title": "Wiener filter diagnostic: plot W(ℓ) and power spectra for ACT/SPT κ",
-      "status": "open",
+      "status": "closed",
       "kind": "task",
       "tags": [
-        "question"
+        "investigation"
       ],
-      "body": "Sanity check for the Wiener filter used in the field overview. The current filter estimates signal and noise from the map power spectrum itself — worth verifying this makes sense.\n\n**Proposed diagnostic (low priority):**\n- Plot C_signal, C_noise, C_total for ACT and SPT κ maps\n- Overlay the Wiener filter W(ℓ) = C_signal / (C_signal + C_noise)\n- For ACT/SPT: compare against Planck 2018 C_ℓ^{κκ} as the signal model and whatever map-level noise estimates are available (reconstruction noise N0)\n- Show signal-only vs signal+noise filtered maps side by side\n\nThis would add a second plot to the field overview node — harmonic-space content of the filter alongside the real-space maps. Not urgent (\"don't need to do this year\" for the CMB lensing maps specifically), but would confirm the empirical Wiener filter is doing sensible things.",
-      "outcome": null,
+      "body": "Plot W(ℓ) = C_signal / (C_signal + C_noise) for the ACT and SPT κ maps used in the field overview. The current filter estimates signal and noise from the map power spectrum itself — worth visualizing what it's actually doing.\n\n**Scope**: CMB lensing maps only (not shear).\n\n**Motivation**: The field overview shows ACT κ with too much small-scale power — the Wiener filter isn't suppressing noise properly for ACT, while SPT looks clean. Since noise is estimated directly from the map, the filter should work for both — but something is going wrong for ACT. The W(ℓ) plot will likely reveal what: maybe the signal/noise crossover is at a different ℓ than expected, or ACT's noise power spectrum has structure that the empirical estimator mischaracterizes.\n\nIf the Wiener filter can't be fixed for ACT, fall back to Gaussian smoothing. But diagnose first.\n\n**Deliverables:**\n- Plot C_signal, C_noise, C_total for ACT and SPT κ maps\n- Overlay the Wiener filter W(ℓ) = C_signal / (C_signal + C_noise)\n- For ACT/SPT: compare against Planck 2018 C_ℓ^{κκ} as the signal model and reconstruction noise N0\n- This adds a second plot to the field overview node — harmonic-space content of the filter alongside the real-space maps\n- If needed: fix the ACT filtering or switch to Gaussian smoothing",
+      "outcome": "Diagnosed and fixed. Empirical Wiener filter fails for ACT: reconstruction noise 25× higher than SPT, pseudo-Cl never exceeds noise floor → W(ℓ) ≈ 0 everywhere. Root cause: CMB lensing auto-spectrum noise-dominated (expected). Fix: theory-informed filter using Planck 2018 C_ℓ^{κκ} as signal model, noise estimated from map residual. SPT ℓ_{1/2}=353. ACT W<0.5 everywhere but sufficient for visualization. Diagnostic plot (3 panels: spectra, empirical W, theory W) + updated field overview with theory-informed filter implemented.",
       "createdAt": "2026-02-15T20:34:26.379991688+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-16T00:01:00.461982756+01:00",
       "dependsOn": [
         "the-sky-act-spt-and-euclid-on-706364a6"
       ]
@@ -3324,6 +3515,259 @@
       "closedAt": null,
       "dependsOn": [
         "narrative-tapestry-compress-31-6c42a4d6"
+      ]
+    },
+    {
+      "id": "tapestry-iteration-open-fibers-b1115ae0",
+      "title": "Tapestry iteration: open fibers and refinement",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "spec",
+        "ralph"
+      ],
+      "body": "The tapestry is a feedback surface between agent and scientist. Each iteration turns tokens into something inspectable — an honest, digestible view of what the analysis is doing, what's working, what's not. The scientist sees it, responds, and the loop tightens.\n\nThe goal isn't narrative polish. It's advancing the analysis itself — closing open questions, running new checks, extending coverage — and keeping the tapestry honest about what was found.\n\n## Desired State\n\nThe analysis improves. Each iteration: survey open fibers (`felt ls`), close what can be closed through work, and update the tapestry to reflect reality.\n\nWhen open items run out, curiosity drives the next question. The project scope (`docs/spt_euclid_proposal.md`) and the reference papers define what a complete analysis looks like. Read them. Find the gaps between what we've done and what they did. File new fibers for what's missing. The tapestry grows by discovering what it lacks.\n\nAfter new work, update affected tapestry nodes. Keep the principles: finding-oriented titles, spectral plots, prose bodies, cross-links. Grow the tapestry only when new work warrants it.\n\n### Code health\n\nThe codebase grew through 30+ iterations. When the open-fiber queue is light or at the end of an iteration, run a code-simplification pass using subagents:\n\n1. **Launch** several Explore subagents in parallel to audit different parts of the codebase — scripts, config, Snakefile rules, shared utilities. Each checks for: duplicated logic, hardcoded values that belong in config, copy-pasted functions, inconsistent patterns.\n2. **Synthesize** their findings into a concrete list of refactors.\n3. **Implement** the changes: extract shared utilities, consolidate config, DRY up repeated patterns.\n\nPrinciples:\n- **Single source of truth**: Parameter values live in `config/config.yaml`, not hardcoded in scripts. Cosmological parameters, ℓ ranges, bin counts, file paths — one place.\n- **DRY**: If three scripts compute Knox covariance the same way, that's one function in a shared module.\n- **Maintainable structure**: The pipeline needs to survive handoff to collaborators and DR1.\n\nThis is not optional background work — when no analysis fibers are immediately actionable, code simplification IS the work.\n\n### Done\n\nRun until 2:30 AM CET. Progress = open fibers closed, analysis extended, tapestry honest about the current state.\n\n## Assumptions\n\n- **A_lens is the measurement.** A_lens = data / (Planck 2018 ΛCDM + NLA IA). A_lens = 1 means agreement. A_IA is a fixed nuisance parameter, not a result.\n- **Blinding.** Fixed-cosmology A_lens fitting is fine internally. No Ω_m, S_8 fits. Don't share broadly.\n- **Plots carry data.** Spectra, residuals, correlation coefficients — not summary heatmaps. The reader sees the data.\n- **Read plots sparingly.** Max 5 images per session.\n- **Node discipline.** 1–5 plots per node. Prose bodies. Evidence at `results/claims/{specName}/evidence.json`.\n- **Cross-links.** Use markdown links to `.felt/` files so they render as clickable in the dashboard: `[field overview](.felt/the-sky-act-spt-and-euclid-on-706364a6.md)`. Not backtick `tapestry:` references.\n- **Trust the DAG.** Never suppress reruns. Recomputation is cheap, stale results are not.\n\n## Context\n\n### Project scope and references\n\n- **Proposal**: `docs/spt_euclid_proposal.md` — full 3×2pt scope (δκ, γκ, κκ), deliverables, team\n- **MoU fiber**: `spt-euclid-mou-collaboration-6de6bc54`\n- **DES×SPT×Planck methods**: `docs/papers/2203.12439_des_spt_planck_methods/main.tex`\n- **DES×SPT×Planck correlations**: `docs/papers/2203.12440_des_spt_planck_correlations/main.tex`\n- **DES×SPT×Planck constraints**: `docs/papers/2206.10824_des_spt_planck_constraints/main.tex`\n- **ACT×DES shear**: `docs/papers/2309.04412_act_des_shear/main.tex`\n\n### Current analysis state\n\n`felt show findings-synthesis-euclid-cmb-03354e57` — the comprehensive narrative.\n\nKey numbers: 20σ/21σ raw → 15σ/14σ marginalized. Four consistency tests pass. Three null tests pass. Stellar density contaminates ACT (boosts signal). Template marginalization corrects. SPT 24% deficit — scale-dependent, intrinsic, open.\n\n22 tapestry nodes, 31 PNGs, 8 narrative regions. All evidence fresh.\n\n### Doc fibers\n\n- `systematic-contamination-five-f509e962` — five-layer contamination methodology\n- `spt-deficit-characterization-6b724e41` — SPT deficit characterization\n- `namaster-technical-patterns-60d42621` — NaMaster conventions\n- `snakemake-workflow-discipline-88f4f4f8` — DAG discipline\n- `nla-intrinsic-alignment-theory-57e37bd1` — NLA IA model\n\n### Files\n\n- **Snakefile**: `workflow/Snakefile` + `workflow/rules/explorations.smk`\n- **Scripts**: `workflow/scripts/plot_*.py`, `workflow/scripts/compute_*.py`\n- **Evidence**: `workflow/scripts/aggregate_evidence.py`, `results/claims/{specName}/`\n- **Config**: `config/config.yaml`\n- **Mass map download**: `inputs/euclid/download_tr1_systematics.sh` (adapt URL for 2D_MASS)\n\n### Execution\n\nComputational work → Snakemake → SLURM (`-j20` for batch). Plot scripts are localrules. Never load large maps on the login node.\n\n## Skills\n\n- `/tapestry` — fiber ↔ evidence ↔ plot conventions\n- `/snakemake` — rules, execution, localrules\n- `/data-visualization` — figure design\n- `/felt` — fiber management, dependencies\n- `/implementing-code` — script development\n\n## Evidence\n\n- Open fibers: `felt ls`\n- Plot inventory: `for d in results/claims/*/; do echo \"$(ls \"$d\"/*.png 2>/dev/null | wc -l) $(basename \"$d\")\"; done | sort -rn`\n- Tapestry tags: `grep -rh 'tapestry:' .felt/*.md | grep -oP 'tapestry:\\w+' | sort -u`\n- Evidence freshness: check mtimes against upstream chain\n\n## Comments\n**2026-02-15 23:41** — Cross-references between tapestry fibers should use markdown links to the .felt/ files so they render as clickable links in the dashboard. E.g. [field overview](.felt/the-sky-act-spt-and-euclid-on-706364a6.md) rather than backtick tapestry:plot_field_overview references. Update fiber bodies to use this pattern.",
+      "outcome": null,
+      "createdAt": "2026-02-15T23:31:14.185122678+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "narrative-tapestry-compress-31-6c42a4d6",
+        "wiener-filter-diagnostic-plot-w-14438464",
+        "mass-maps-at-v1-4-path-not-v2-1-fdc14589"
+      ]
+    },
+    {
+      "id": "apodization-masks-what-enters-f6b5a581",
+      "title": "Apodization masks: what enters the cross-correlations",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "tapestry:plot_apodization_masks"
+      ],
+      "body": "Every NaMaster cross-spectrum multiplies two masks into the data before coupling matrix estimation. The CMB κ side gets `nmt.mask_apodization(mask, 0.15, \"C2\")` — a smooth cosine-squared taper that zeroes the field beyond the mask boundary. The shear side gets `apodize(weight > 0, 0.15, \"C2\") * weight` — the same taper applied to the binary footprint, then multiplied by the galaxy weight map. The weight map encodes inverse shape-noise variance per pixel, so the effective mask is spatially varying even within the apodized boundary.\n\nThese masks define the effective sky fraction that enters the Knox covariance: `fsky_eff = ⟨w₁w₂⟩² / ⟨w₁²w₂²⟩` (Hivon 2002). The C2 apodization with 0.15 rad (~8.6°) scale reduces fsky relative to the raw footprint but suppresses mode-coupling from sharp mask boundaries.\n\nThe figure shows raw vs apodized for all three masks: ACT, SPT, and shear weights. ACT's mask is broader (fsky ≈ 0.25) and fills both RR2 patches. SPT's mask is compact (fsky ≈ 0.04) and covers only the south patch. The shear weight map defines the Euclid galaxy density, with highest weights at the survey overlap centers and tapering at the edges.\n\nCross-ref: field overview (`tapestry:plot_field_overview`) shows the *data* on these masks. The `namaster-technical-patterns-60d42621` doc fiber documents the C2 apodization convention and its origin in gctools.",
+      "outcome": "24 tapestry nodes. Apodization masks visualized: ACT (fsky 0.248, 10225 deg²), SPT (fsky 0.044, 1804 deg²), shear (fsky 0.009, 385 deg²). C2 apodization at 0.15 rad preserves mask area — ACT mean weight drops only 0.4%. Shear weights multiplied after apodization (apodize(w>0) × w). Plot shows raw vs apodized for both RR2 patches.",
+      "createdAt": "2026-02-15T23:40:28.836985844+01:00",
+      "closedAt": "2026-02-16T00:36:36.949592583+01:00",
+      "dependsOn": [
+        "the-sky-act-spt-and-euclid-on-706364a6"
+      ]
+    },
+    {
+      "id": "spt-ℓ-100-spike-suspicious-ed5a480a",
+      "title": "SPT ℓ≈100 spike: suspicious single bandpower in cross-spectra",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "investigation"
+      ],
+      "body": "A single bandpower near ℓ ≈ 100 spikes in many SPT-3G × shear cross-spectra. Not present in ACT. Suspect masking or apodization — the SPT winter field mask has sharp boundaries that could couple power at these scales. Could also be an artifact of the SPT κ reconstruction at the edge of its ℓ range.\n\nInvestigate: check the bandpower values across all 6 bins × methods. Compare the SPT apodized mask boundary structure to ACT's. Check if the spike persists with different apodization widths or if it disappears when excluding that bandpower from fits.",
+      "outcome": "Confirmed. Single bandpower at ℓ=84.5 spikes in 5/6 SPT bins (Knox S/N = 3.4–5.1σ, 3.8–5.4× neighbor average). NOT present in ACT. Key diagnostics: (1) All 4 SPT estimators (GMV/TT/PP/MV) agree within ~20% — not foreground-specific. (2) Both shear methods agree — not shear-measurement artifact. (3) B-modes clean (|B/E| = 0.07–0.26) — not E-B leakage. (4) Amplitude scales with redshift bin (3e-8 to 1.1e-7, bin 1→6) — tracks lensing kernel, not additive noise. Origin is CMB-side, SPT-specific. Likely SPT κ transfer function or mask mode-coupling at this angular scale. This single bandpower is probably the dominant driver of the scale-dependent amplitude behavior in the ℓ-range robustness test (low-ℓ amplitude inflation → A_lens suppression at full range). Downstream implication: excluding this bandpower from SPT fits would likely reduce the SPT deficit.",
+      "createdAt": "2026-02-15T23:46:19.195937813+01:00",
+      "closedAt": "2026-02-16T00:25:08.132038417+01:00",
+      "dependsOn": [
+        "tapestry-iteration-open-fibers-b1115ae0"
+      ]
+    },
+    {
+      "id": "default-to-catalog-based-e4dce945",
+      "title": "Default to catalog-based estimator with configurable fallback",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "decision"
+      ],
+      "body": "Switch the default cross-spectrum estimator from map-based (NmtField) to catalog-based (NmtFieldCatalog). Make this a config flag so map-based is still available as fallback.\n\n**Rationale**: Catalog-based avoids pixelization effects and map-making entirely — one fewer step between galaxies and spectra. We already validated that catalog and map-based agree (correlation 0.986–1.000 across 28 spectra), so this is safe.\n\n**Covariance**: For now, use the harmonic-space (map-based) Knox covariance for catalog spectra too. The error bars should be the same to good approximation — same effective fsky, same number of modes.\n\n**Implementation**: Config flag in `config.yaml` (e.g., `estimator: catalog` / `estimator: map`). The Snakefile dispatches to NmtFieldCatalog or NmtField accordingly. Existing `compute_cross_spectrum.py` already handles both paths.\n\n**Also**: Compare wall-clock times between catalog and map estimators. The catalog approach skips map-making but NmtFieldCatalog may be slower at high lmax with large catalogs (~5M galaxies). Worth benchmarking.",
+      "outcome": null,
+      "createdAt": "2026-02-15T23:48:05.29508455+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "tapestry-iteration-open-fibers-b1115ae0"
+      ]
+    },
+    {
+      "id": "spatial-variation-overlap-vs-78b94be6",
+      "title": "Spatial variation: overlap vs non-overlap instead of north-south",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "investigation"
+      ],
+      "body": "Replace the current north-south spatial variation test with an overlap-based split. The key region is the **ACT+SPT overlap** — the only place where both CMB experiments see the same galaxies.\n\nThree natural regions of the shear footprint:\n\n1. **ACT-only** — where ACT κ overlaps shear but SPT doesn't\n2. **ACT+SPT overlap** — where both CMB experiments cover the shear field\n3. **SPT-only** — where SPT κ overlaps shear but ACT doesn't\n\nThe overlap region enables the strongest consistency test: same galaxies, two independent CMB pipelines. Any difference between ACT×shear and SPT×shear in the overlap is purely CMB-side.\n\nImplementation: pixel-level mask overlap to determine region sizes, then cross-spectra per region. First step: count pixels in each region to assess feasibility (need enough modes for meaningful bandpowers). Reuses `compute_cross_spectrum.py` with `patch_mask` input.\n\nSupersedes the current north-south approach (which was ACT-only anyway since SPT's winter field doesn't reach the north patch).",
+      "outcome": null,
+      "createdAt": "2026-02-15T23:49:54.364047948+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "tapestry-iteration-open-fibers-b1115ae0",
+        "spatial-variation-test-two-efde7911"
+      ]
+    },
+    {
+      "id": "template-deprojection-verify-aba0d269",
+      "title": "Template deprojection: verify methodology against DES×SPT paper",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "investigation"
+      ],
+      "body": "The current template deprojection/marginalization methodology isn't well documented in the fiber bodies, and it's unclear whether our implementation matches the DES×SPT approach (2203.12440, Appendix A.4).\n\n**Tasks:**\n1. Read our `plot_deprojected_spectra.py` and `evaluate_deprojected_likelihood.py` — document exactly what we're computing, step by step.\n2. Read the DES×SPT correlations paper (2203.12440), specifically the contamination metric and template deprojection methodology.\n3. Compare: are we doing the same thing? If not, where do we diverge and why?\n4. Update the deprojection fiber bodies to clearly explain the methodology.\n\nKey concern: naive template subtraction (d' = d - X) injects noise. We switched to Fisher marginalization (d = A*theory + Σ α_S*X_S), which should be correct — but verify the implementation matches the formalism and the DES precedent.",
+      "outcome": "Verified. Our X^f_S(ℓ) = C^{κS}·C^{fS}/C^{SS} is the harmonic equivalent of DES×SPT Eq. A.4.1 (same formula, different space). Key difference: DES found all systematics negligible (1-2 orders below noise), so they never needed subtraction or marginalization. We found stellar density/galactic extinction are significant for ACT (up to 8σ integrated bias budget), requiring template marginalization. Our Fisher matrix approach (d = A·theory + Σ α_S·X_S) is standard CMB foreground marginalization — no DES precedent because they didn't need it. Naive subtraction correctly identified as noise-injecting (X^T·C^{-1}·X >> 2·d^T·C^{-1}·X). Implementation is correct and more thorough than DES×SPT. Full mathematical documentation in methods-comparison-des-spt-vs-53d89a30.",
+      "createdAt": "2026-02-15T23:54:18.401154557+01:00",
+      "closedAt": "2026-02-16T00:13:07.696046164+01:00",
+      "dependsOn": [
+        "tapestry-iteration-open-fibers-b1115ae0",
+        "template-deprojection-a1621797"
+      ]
+    },
+    {
+      "id": "systematic-maps-on-the-sky-83122c03",
+      "title": "Systematic maps on the sky: stellar density and galactic extinction on RR2",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "tapestry:plot_systematic_maps"
+      ],
+      "body": "Stellar density and galactic extinction are the two systematics that matter. The bias budget (`tapestry:plot_systematic_budget`) shows stellar density dominates ACT contamination (S_bias up to 8σ for metacal), with galactic extinction second (up to 5.8σ). Exposures, SAA, and zodiacal light are clean (chi2/dof ≈ 1). This figure shows where the contamination lives spatially.\n\nBoth maps come from the Euclid VMPZ-ID mosaic masks pipeline (sparse HEALPix at nside 16384, NESTED ordering). We load and downgrade to nside 2048 using `read_partial_map`, zeroing HEALPix UNSEEN sentinel values that otherwise dominate cross-spectra.\n\nStellar density traces Milky Way structure — higher toward the galactic plane, with gradients across the two RR2 patches. Galactic extinction follows a similar but not identical pattern, with additional structure from dust filaments. Both systematics contaminate cross-spectra because they correlate with both the shear field (through spatially-varying galaxy selection) and the CMB κ field (through the ISW effect and residual foreground leakage in the lensing reconstruction).\n\nThe contamination metric `X^f_S(ℓ) = C^{κS} · C^{fS} / C^{SS}` (`tapestry:plot_contamination_metric`) quantifies the per-bandpower bias from each systematic. Template marginalization (`tapestry:evaluate_deprojected_likelihood`) removes their effect at the cost of ~5σ in detection significance (20σ → 15σ for ACT).\n\nCross-ref: masks on which these maps are evaluated (`tapestry:plot_apodization_masks`).",
+      "outcome": "Stellar density and galactic extinction visualized on RR2 footprint. Stellar density: median 0 (sparse), p90 0.1 stars/deg². Galactic extinction: median E(B-V) 0.016, p90 0.030. Both loaded from VMPZ-ID nside 16384 sparse FITS via read_partial_map, downgraded to 2048. These are the two dominant contaminants identified by the bias budget (S_bias up to 8σ for stellar density, 5.8σ for galactic extinction in ACT).",
+      "createdAt": "2026-02-15T23:54:20.416058525+01:00",
+      "closedAt": "2026-02-16T00:36:41.487898661+01:00",
+      "dependsOn": [
+        "apodization-masks-what-enters-f6b5a581",
+        "the-sky-act-spt-and-euclid-on-706364a6"
+      ]
+    },
+    {
+      "id": "audit-purge-ia-framing-from-fc68b53d",
+      "title": "Audit: purge IA framing from plots — A_lens is the measurement",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "investigation"
+      ],
+      "body": "Sweep all theory-related plots and scripts for residual IA framing. The decision (`a-lens-naming-fitted-amplitude-c5d1c543`): IA is a fixed nuisance parameter baked into the theory prediction. The fitted quantity is A_lens = data / (Planck 2018 + NLA IA). Plots should not imply that IA is being fitted or that IA amplitude is a result.\n\n**What to look for:**\n- Plot labels/legends mentioning \"IA\" or \"A_IA\" as if it's a fitted parameter\n- Dual curves showing \"vanilla\" vs \"IA\" theory — the IA theory IS the theory now; vanilla is historical context at most\n- Axis labels or titles that frame the comparison as \"with/without IA\"\n- Any plot where the reader could conclude that IA treatment is the main finding rather than A_lens\n\n**The framing**: We show that NLA IA is included in the prediction (one sentence, one reference to the IA doc fiber). Then we fit A_lens. That's it. IA is like the n(z) or the cosmological parameters — an input, not a result.",
+      "outcome": "All reader-facing plot labels purged of $\\hat{A}$ and $\\hat{A}_{\\rm IA}$ — replaced with $A_{\\rm lens}$ (NLA IA theory), $A_{\\rm van}$ (vanilla), or $A_{\\rm lens}^{\\rm marg}$ (marginalized). 16 instances across 6 scripts: plot_analysis_summary.py (3), plot_theory_residual_analysis.py (4), plot_ell_range_robustness.py (2), plot_deprojected_spectra.py (4), evaluate_deprojected_likelihood.py (2), generate_results_table.py (3 — caption + column headers in Tables 1 and 2). Internal variable names (A_hat, sigma_A) and evidence JSON keys unchanged — only reader-facing labels affected. Downstream rebuild required.",
+      "createdAt": "2026-02-15T23:55:35.337077093+01:00",
+      "closedAt": "2026-02-16T00:18:36.39445189+01:00",
+      "dependsOn": [
+        "tapestry-iteration-open-fibers-b1115ae0",
+        "a-lens-naming-fitted-amplitude-c5d1c543"
+      ]
+    },
+    {
+      "id": "theory-prediction-audit-07c96181",
+      "title": "Theory prediction audit: document inputs, code, and assumptions",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "investigation"
+      ],
+      "body": "Document exactly what goes into the theory C_ℓ^{Eκ} prediction, end to end. The scientist should be able to read this fiber and understand precisely what's being compared to the data.\n\n**Questions to answer:**\n- **Cosmological parameters**: Which Planck 2018 chain/best-fit? TT+TE+EE+lowE? TTTEEE+lensing? Which specific parameter values?\n- **n(z)**: Which file? How are the 6 bins used — directly from `RR2_v2_Nz_WL_C2020_sel_pv.fits` or resampled/smoothed? Sum-normalized?\n- **Lensing kernel**: CCL `WeakLensingTracer` — what inputs? How is the CMB κ kernel constructed?\n- **IA model**: NLA-z via CCL's `use_A_ia=True` — confirm A_IA=1.72, η=-0.41 are from the Euclid pipeline (which reference?).\n- **Power spectrum**: CCL's `angular_cl`? Limber approximation? What ℓ range? Halofit for nonlinear matter P(k)?\n- **Code path**: `compute_theory_cls.py` → which CCL/CAMB functions specifically?\n- **What's NOT included**: baryonic feedback, m-bias, photo-z shifts, higher-order lensing corrections. (Some of this is in the `theory-model-completeness` doc fiber — consolidate.)\n\nThe output should be a clear, readable doc fiber or update to the existing theory fibers.",
+      "outcome": "Audited the full theory prediction pipeline. Code path: compute_theory_cls.py → eDR1like.theory.Theory(theory_provider='ccl') → ccl.angular_cl.\n\n**Cosmology**: Planck 2018 base plikHM TTTEEE+lowE+lensing+BAO (defaults.py). Key params: A_s=2.105e-9, n_s=0.9665, H0=67.66, Ω_c=0.261, Ω_b=0.049, m_ν=0.06 eV.\n\n**CCL setup**: Cosmology(**cosmo_ccl) with NO explicit transfer_function or matter_power_spectrum — defaults to Boltzmann (CAMB) + Halofit. NOT HMCode. The CAMB HMCode+baryonic settings in defaults.py (mead2020, A_baryon=3.13) only apply when theory_provider='camb', which our pipeline does not use.\n\n**Tracers**: CMBLensingTracer(z_source=1089, n_samples=100). WeakLensingTracer(dndz, has_shear=True, n_samples=256, ia_bias=(z, A_IA*(1+z)^eta_IA)).\n\n**IA**: NLA-z via CCL use_A_ia=True. A_IA=1.72, η_IA=-0.41 (hardcoded in theory.py:163-165). CCL computes C_1·ρ_cr·Ω_m/D(z) internally.\n\n**Integration**: Limber (spline method). ℓ range: 2 to lmax=3000 (from config.yaml). Binned through NaMaster Bbl windows (bpws[0,:,0,:]) to match data bandpowers.\n\n**NOT included**: baryonic feedback (Halofit, not HMCode), shear calibration m-bias, photo-z shifts, higher-order lensing, source clustering. See theory-model-completeness-for-526d66a5 for impact estimates.",
+      "createdAt": "2026-02-15T23:57:45.587677687+01:00",
+      "closedAt": "2026-02-16T00:21:19.773603751+01:00",
+      "dependsOn": [
+        "tapestry-iteration-open-fibers-b1115ae0",
+        "nla-intrinsic-alignment-theory-57e37bd1"
+      ]
+    },
+    {
+      "id": "galaxy-density-cmb-lensing-δκ-a755afc3",
+      "title": "Galaxy density × CMB lensing (δκ) cross-correlation",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "3x2pt",
+        "delta-kappa"
+      ],
+      "body": "Galaxy density × CMB lensing is the second leg of the CMB lensing 3×2pt (alongside γκ and κκ). DES×SPT measured δκ at S/N=19.6 with 4 density bins; extrapolating to DR1 footprint gives expected combined S/N ≈ 60 (proposal estimate).\n\n## Data availability (all present)\n\n**GC catalog**: `inputs/euclid/catalogs/catalogRR2_v2_GC_031124.parquet` (304 MB). 7 tomographic bins via `pos_tom_bin_id`. Selection: vis_det=1, spurious_flag=0, phz_flags=0, star/galaxy separation via flux cuts.\n\n**Position n(z)**: `inputs/euclid/dndz/RR2_v2_Nz_GC_C2020_sel_pv.fits`. Same z-grid structure as shear n(z) (linspace 0→6, 3000 points). 7 bins.\n\n**CMB κ maps**: 5 experiments already loaded (ACT + 4 SPT variants).\n\n## Implementation path\n\n1. **Config**: Add `nz.pos`, GC catalog path, `pos_tom_bins: [1,2,3,4,5,6,7]` to config.yaml\n2. **Map building**: Extend `build_maps.py` for method=\"pos\" → weighted number count maps. Or write a thin `build_density_maps.py`. The v1.4 maps had `weighted_counts_map.fits` — use as template.\n3. **Cross-spectrum**: `compute_cross_spectrum.py` handles spin-2×spin-0. For spin-0×spin-0, need separate rule or parametrize spin. NaMaster's NmtField with spin=0 for density.\n4. **Galaxy bias**: Linear bias minimum (free b_g per bin). DES used both linear and nonlinear models with scale cuts.\n5. **Systematics**: Stellar density contamination is the primary concern (already quantified for γκ). Magnification effects needed for density (not for shear).\n6. **Theory**: Extend `compute_theory_cls.py` to include density×lensing predictions via CCL NumberCountsTracer.\n\n## Reference\n\n- DES×SPT (2203.12440): 6 MagLim bins, scale cuts for nonlinear bias, S/N=19.6\n- Proposal: \"validated harmonic-space data vectors and covariances for galaxy density x CMB lensing\"",
+      "outcome": "Not started. Core deliverable from proposal (DR1-KP-CMBX-3/2). DES×SPT achieved δκ S/N=19.6 (4 bins). All inputs available on Leonardo — GC catalog (7 bins), position n(z), CMB κ maps. Infrastructure exists (NaMaster spin-0×spin-0, tracer classes). Missing: density map building rule, config entries, Snakemake rules, galaxy bias model.",
+      "createdAt": "2026-02-16T00:02:07.921509141+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "cross-correlation-pipeline-v2-1e4a96bc"
+      ]
+    },
+    {
+      "id": "cmb-lensing-auto-spectrum-κκ-752374df",
+      "title": "CMB lensing auto-spectrum (κκ) for 3×2pt",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "3x2pt",
+        "kappa-kappa"
+      ],
+      "outcome": "Not started. Third probe of the CMB lensing 3×2pt: κ auto-spectrum. SPT provides simulations for noise debiasing (N0 subtraction). ACT has published N0/N1 curves. Simple NaMaster auto-spectrum → subtract N0. Would provide: independent cosmological constraint, κ noise characterization, cross-check with published SPT/ACT auto-spectra.",
+      "createdAt": "2026-02-16T00:02:16.41328041+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "cross-correlation-pipeline-v2-1e4a96bc"
+      ]
+    },
+    {
+      "id": "spt-summer-field-descoping-92c2cec0",
+      "title": "SPT Summer field: descoping decision needed",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "3x2pt",
+        "question"
+      ],
+      "outcome": "SPT Summer data (A+B sub-fields) archived at inputs/spt/ as tar.gz (1.1 GB maps + 23 MB masks). Not extracted, not configured. Proposal allows descoping to Winter-only ('if Summer maps not sufficiently robust in time'). Winter analysis is production-grade (30 tapestry nodes, 32 ralph iterations). Decision needed: extract Summer for DR1 analysis or formally descope? Summer adds ~1000 deg² overlap (vs Winter ~140 deg²). TT-only estimator (no GMV/MV/PP like Winter).",
+      "createdAt": "2026-02-16T00:04:48.607647267+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "galaxy-density-cmb-lensing-δκ-a755afc3"
+      ]
+    },
+    {
+      "id": "cross-shear-null-test-γ-κ-90e43c64",
+      "title": "Cross-shear null test (γ_⊥ × κ)",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "validation",
+        "null-test"
+      ],
+      "body": "Reopened — the previous closure was premature. The 93% B/E ratio needs proper investigation, not acceptance.\n\n**Open questions:**\n1. **Are we using NaMaster's E→B purification?** NaMaster implements spin-0/spin-2 purification to deconvolve E→B leakage from partial sky. If we're NOT using it, the B-modes may be mostly leakage. If we ARE, the residual B-modes are real signal (or systematics). Check `purify_b=True` in NmtField construction.\n2. **Does catalog-based (NmtFieldCatalog) see the same B-mode amplitude?** Catalog estimators handle the mask differently — if B/E ratio changes dramatically, it's a mask/leakage effect, not physical.\n3. **How much is leakage vs signal?** Quantify: run with and without purification, compare B-mode amplitudes. The difference is leakage; the remainder is signal+noise.\n4. **B × κ as a null test**: if purified B-modes are consistent with noise, that's a powerful null test — B-mode shear should not correlate with CMB κ (no physical mechanism). If it does, something is wrong.\n5. **What do DES×SPT and ACT×DES do?** Read the papers — do they use purification? Real-space γ_⊥? Both?\n\nThe previous 93% number may simply mean we weren't purifying. That would be a significant pipeline issue — not just for null tests but for the E-mode spectra themselves (leaked B contamination).",
+      "outcome": null,
+      "createdAt": "2026-02-16T00:05:24.113677032+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "cross-correlation-pipeline-v2-1e4a96bc",
+        "tapestry-iteration-open-fibers-b1115ae0"
+      ]
+    },
+    {
+      "id": "methods-comparison-des-spt-vs-53d89a30",
+      "title": "Methods comparison: DES×SPT vs CMBX pipeline",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "methodology",
+        "doc"
+      ],
+      "body": "How our pipeline compares to the DES×SPT and ACT×DES CMB lensing cross-correlation analyses. This shapes priorities for DR1.\n\n## Covariance\n\n**DES×SPT**: Lognormal analytical model + 300 Flask noise simulations. Signal terms from shifted lognormal model; noise from realistic CMB+galaxy simulations. Required a 4% ad-hoc upscaling of γκ covariance to match chi2 distributions. Validated with jackknife (80 patches).\n\n**ACT×DES**: 511 lognormal simulations as primary, analytical Gaussian as cross-check. Agrees to ~0.5%. Hartlap correction applied (α ≈ 0.951).\n\n**Us**: Knox formula — `Var(C^{ab}_b) = C^{aa}_b · C^{bb}_b / n_modes` with effective fsky from Hivon 2002. Simpler, no tuning, validated empirically: sim null test shows empirical variance ratio 0.83 (Knox slightly conservative). NaMaster Gaussian covariance overestimates by 10-130× at our fsky~0.01, which is why Knox was adopted.\n\n**Gap**: No simulation-based covariance. Knox is sufficient for detection and null tests but insufficient for parameter inference (non-Gaussian terms, cross-bin correlations). For DR1 cosmological constraints, simulation covariance will be needed.\n\n## Intrinsic alignment\n\n**DES×SPT**: TATT model (5 parameters) — more general than NLA. Lensing ratio likelihood strongly constrains IA, improving S₈ by ~40%. Parameters from DES Y3 external priors.\n\n**ACT×DES**: NLA (2 parameters) with DES-Y1-derived priors. Prior-dominated at S/N=7.\n\n**Us**: NLA-z with fixed A_IA=1.72, η_IA=-0.41 (eDR1like defaults). Not fitted — baked into the Planck 2018 prediction as a nuisance correction. A_lens = data / (ΛCDM + NLA IA). IA suppression: 36% at bin 1, 4% at bin 6. Resolves most of the ACT amplitude deficit (0.83 → 0.93). See `nla-intrinsic-alignment-theory-57e37bd1`.\n\n**Gap**: TATT for DR1 cosmological constraints. NLA sufficient for current fixed-cosmology analysis.\n\n## Shear calibration\n\n**DES×SPT**: Explicit multiplicative bias m per bin, externally constrained (Gaussian priors from Y3). CMB cross-correlations independently constrain m to 5-10%.\n\n**ACT×DES**: External m priors from DES Y3.\n\n**Us**: No explicit m parameter. Instead: metacal vs lensmc consistency test (`tapestry:plot_method_comparison`). These use different shape measurement pipelines — agreement to chi2/dof=0.14 (correlated noise from shared galaxies+CMB) validates calibration cross-pipeline. This is an empirical validation, not a model parameter.\n\n**Gap**: Explicit m parameterization needed for DR1 parameter inference. Current consistency test is sufficient for fixed-cosmology analysis.\n\n## Scale cuts\n\n**DES×SPT**: Physically motivated — OWLS AGN baryonic feedback model sets minimum angular scale per bin. Conservative: removes scales where bias > 0.3σ in S₈-Ω_m. δκ loses ~40% of S/N from scale cuts.\n\n**Us**: Fixed ℓ-range (40-3000 from NaMaster binning). Progressive ℓ_max robustness test (`tapestry:plot_ell_range_robustness`) detects real scale-dependence: ACT stable (max 1.5σ), SPT scale-dependent (2.7σ in bin 2). This test is more informative than fixed cuts — reveals where the data actually deviates, rather than assuming a model for what to cut.\n\n**For DR1**: Need baryonic feedback modeling (HMCode/SP(k)) to determine appropriate scale cuts for parameter inference. `theory-model-completeness-for-526d66a5` documents missing effects: baryonic feedback 3-5%, m-bias ~2%, n(z) shifts 1-3%.\n\n## Systematic contamination\n\n**DES×SPT**: Survey property cross-correlations X^f_S(θ) measured and shown to be below measurement noise. Not integrated into budget.\n\n**ACT×DES**: Same contamination metric, shown to be <5% of Cl error.\n\n**Us**: Five-layer analysis (`systematic-contamination-five-f509e962`): (1) null test C^{fS}/σ_Knox per bandpower, (2) contamination metric X = C^{κS}·C^{fS}/C^{SS}, (3) integrated bias budget S_bias per systematic×bin×CMB, (4) template marginalization via joint Fisher fit, (5) ℓ-range robustness. Discovered stellar density as dominant ACT contaminant (up to 8σ integrated), contamination BOOSTED ACT signal (positive X), template marginalization corrects A_lens from 0.93→0.86 (profile chi2/dof=0.75). More thorough than either reference paper.\n\n## Photo-z\n\n**DES×SPT**: Shift + stretch parameters per bin, externally constrained. Hyperrank as efficient alternative.\n\n**Us**: Official Euclid RR2 n(z) used as-is (6 bins, C2020 selection). No shift/stretch parameterization.\n\n**Gap**: For DR1 parameter inference, photo-z uncertainty propagation needed.\n\n## References\n\n- DES×SPT×Planck methods: `docs/papers/2203.12439_des_spt_planck_methods/main.tex`\n- DES×SPT×Planck correlations: `docs/papers/2203.12440_des_spt_planck_correlations/main.tex`\n- ACT×DES shear: `docs/papers/2309.04412_act_des_shear/main.tex`",
+      "outcome": "Systematic comparison of DES×SPT×Planck (2203.12439/12440) and ACT×DES (2309.04412) methodology against our pipeline. Our contamination analysis is more thorough. Their covariance and scale-cut approaches are more mature. Key differences shape what each analysis is sensitive to.",
+      "createdAt": "2026-02-16T00:07:30.523394993+01:00",
+      "closedAt": "2026-02-16T00:37:51.649998845+01:00",
+      "dependsOn": [
+        "cross-correlation-pipeline-v2-1e4a96bc"
+      ]
+    },
+    {
+      "id": "ℓ-range-robustness-for-spt-2ec181e2",
+      "title": "ℓ-range robustness for SPT estimator variants (TT, PP, GMV)",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "investigation"
+      ],
+      "body": "Run the progressive ℓ_max amplitude fit for SPT TT, PP, and GMV separately. The current ℓ-range robustness test shows SPT is scale-dependent (bins 1-3 drop from Â≈1.5 at ℓ_max~200 to Â≈0.7 at full range), but that's GMV only. Breaking it out by estimator variant would reveal whether the scale dependence is driven by temperature (TT), polarization (PP), or both — which constrains the origin (foregrounds vs transfer function vs noise bias).\n\nIf TT shows the scale dependence but PP doesn't, that points to temperature-side foreground leakage. If both show it equally, it's more likely a κ reconstruction transfer function or normalization issue common to all estimators.",
+      "outcome": null,
+      "createdAt": "2026-02-16T00:40:36.192280293+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "tapestry-iteration-open-fibers-b1115ae0",
+        "ℓ-range-robustness-amplitude-e86f1728"
       ]
     }
   ]
