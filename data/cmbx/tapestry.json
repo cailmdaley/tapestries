@@ -45,14 +45,14 @@
       "id": "act-vs-spt-cross-spectra-b4181199",
       "title": "ACT vs SPT: same galaxies, same spectrum",
       "kind": "task",
-      "status": "open",
+      "status": "closed",
       "body": "The same Euclid shear field crossed with two independent CMB lensing reconstructions — ACT DR6 and SPT-3G GMV — should give the same spectrum. If it doesn't, something is wrong on the CMB side.\n\nThe 6-panel spectral overlay (lensmc baseline) shows it directly: salmon ACT and teal SPT data points track each other across all bins and multipoles. You can see both the agreement and the noise structure — SPT error bars widen at low ℓ where its smaller sky area limits the mode count, while ACT's larger footprint gives tighter constraints there. At high ℓ they converge. All 6 bins pass the shape consistency test (median chi2/dof = 0.86, median PTE = 0.63, 0 failures at 5%).\n\nThe agreement holds despite ACT and SPT showing different *amplitudes* relative to theory (A_lens = 0.93 vs 0.76). The chi2 test compares shape, not normalization — it cannot detect a uniform multiplicative offset. The SPT deficit is exactly that: a uniform ~24% suppression, consistent with a CMB-side calibration factor rather than ℓ-dependent systematics.\n\nA subtlety beneath the agreement: ACT is contaminated by stellar density and galactic extinction (`tapestry:plot_systematic_budget`: bias significance up to 8σ in some bins), while SPT is clean (<0.1σ after marginalization). This doesn't violate the consistency test because the contamination has the same sign as the signal — it inflates ACT, shifting its normalization up, but the shape remains consistent with SPT.\n\nFor the method-independence test (lensmc vs metacal), see `tapestry:plot_method_comparison`. For SPT estimator variants, see `tapestry:plot_spt_estimator_comparison`.\n\n## Comments\n**2026-02-16 00:39** — ACT vs SPT comparison plot needs proper xlims — current axis range doesn't show the data well.",
       "outcome": "ACT and SPT cross-spectra are fully consistent: 14/14 pass at 5% level, median PTE=0.639, median chi2/dof=0.86. No evidence of CMB-side systematics. Evidence + plots co-located at results/claims/plot_act_vs_spt/.",
       "tags": [
         "tapestry:plot_act_vs_spt"
       ],
       "createdAt": "2026-02-14T17:53:30.673248363+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-16T01:51:07.325300787+01:00",
       "dependsOn": [
         "signal-overview-act-spt-theory-1ae2798f"
       ],
@@ -84,10 +84,24 @@
             "results/claims/plot_act_vs_spt/act_vs_spt_metacal_bin5_evidence.json",
             "results/claims/plot_act_vs_spt/act_vs_spt_metacal_bin6_evidence.json"
           ],
-          "act_vs_spt_composite": "act_vs_spt_composite.png"
+          "act_vs_spt_composite": "act_vs_spt_composite.png",
+          "act_vs_spt_lensmc_bin1": "act_vs_spt_lensmc_bin1.png",
+          "act_vs_spt_lensmc_bin2": "act_vs_spt_lensmc_bin2.png",
+          "act_vs_spt_lensmc_bin3": "act_vs_spt_lensmc_bin3.png",
+          "act_vs_spt_lensmc_bin4": "act_vs_spt_lensmc_bin4.png",
+          "act_vs_spt_lensmc_bin5": "act_vs_spt_lensmc_bin5.png",
+          "act_vs_spt_lensmc_bin6": "act_vs_spt_lensmc_bin6.png",
+          "act_vs_spt_lensmc_binall": "act_vs_spt_lensmc_binall.png",
+          "act_vs_spt_metacal_bin1": "act_vs_spt_metacal_bin1.png",
+          "act_vs_spt_metacal_bin2": "act_vs_spt_metacal_bin2.png",
+          "act_vs_spt_metacal_bin3": "act_vs_spt_metacal_bin3.png",
+          "act_vs_spt_metacal_bin4": "act_vs_spt_metacal_bin4.png",
+          "act_vs_spt_metacal_bin5": "act_vs_spt_metacal_bin5.png",
+          "act_vs_spt_metacal_bin6": "act_vs_spt_metacal_bin6.png",
+          "act_vs_spt_metacal_binall": "act_vs_spt_metacal_binall.png"
         },
-        "mtime": 1771197633000,
-        "generated": "2026-02-15T23:20:33.057912+00:00"
+        "mtime": 1771201400000,
+        "generated": "2026-02-16T00:23:20.311283+00:00"
       }
     },
     {
@@ -199,10 +213,45 @@
             "results/claims/plot_method_comparison/method_comparison_bin6_x_spt_winter_pp_evidence.json",
             "results/claims/plot_method_comparison/method_comparison_bin6_x_spt_winter_mv_evidence.json"
           ],
+          "method_comparison_bin1_x_act": "method_comparison_bin1_x_act.png",
+          "method_comparison_bin1_x_spt_winter_gmv": "method_comparison_bin1_x_spt_winter_gmv.png",
+          "method_comparison_bin1_x_spt_winter_mv": "method_comparison_bin1_x_spt_winter_mv.png",
+          "method_comparison_bin1_x_spt_winter_pp": "method_comparison_bin1_x_spt_winter_pp.png",
+          "method_comparison_bin1_x_spt_winter_tt": "method_comparison_bin1_x_spt_winter_tt.png",
+          "method_comparison_bin2_x_act": "method_comparison_bin2_x_act.png",
+          "method_comparison_bin2_x_spt_winter_gmv": "method_comparison_bin2_x_spt_winter_gmv.png",
+          "method_comparison_bin2_x_spt_winter_mv": "method_comparison_bin2_x_spt_winter_mv.png",
+          "method_comparison_bin2_x_spt_winter_pp": "method_comparison_bin2_x_spt_winter_pp.png",
+          "method_comparison_bin2_x_spt_winter_tt": "method_comparison_bin2_x_spt_winter_tt.png",
+          "method_comparison_bin3_x_act": "method_comparison_bin3_x_act.png",
+          "method_comparison_bin3_x_spt_winter_gmv": "method_comparison_bin3_x_spt_winter_gmv.png",
+          "method_comparison_bin3_x_spt_winter_mv": "method_comparison_bin3_x_spt_winter_mv.png",
+          "method_comparison_bin3_x_spt_winter_pp": "method_comparison_bin3_x_spt_winter_pp.png",
+          "method_comparison_bin3_x_spt_winter_tt": "method_comparison_bin3_x_spt_winter_tt.png",
+          "method_comparison_bin4_x_act": "method_comparison_bin4_x_act.png",
+          "method_comparison_bin4_x_spt_winter_gmv": "method_comparison_bin4_x_spt_winter_gmv.png",
+          "method_comparison_bin4_x_spt_winter_mv": "method_comparison_bin4_x_spt_winter_mv.png",
+          "method_comparison_bin4_x_spt_winter_pp": "method_comparison_bin4_x_spt_winter_pp.png",
+          "method_comparison_bin4_x_spt_winter_tt": "method_comparison_bin4_x_spt_winter_tt.png",
+          "method_comparison_bin5_x_act": "method_comparison_bin5_x_act.png",
+          "method_comparison_bin5_x_spt_winter_gmv": "method_comparison_bin5_x_spt_winter_gmv.png",
+          "method_comparison_bin5_x_spt_winter_mv": "method_comparison_bin5_x_spt_winter_mv.png",
+          "method_comparison_bin5_x_spt_winter_pp": "method_comparison_bin5_x_spt_winter_pp.png",
+          "method_comparison_bin5_x_spt_winter_tt": "method_comparison_bin5_x_spt_winter_tt.png",
+          "method_comparison_bin6_x_act": "method_comparison_bin6_x_act.png",
+          "method_comparison_bin6_x_spt_winter_gmv": "method_comparison_bin6_x_spt_winter_gmv.png",
+          "method_comparison_bin6_x_spt_winter_mv": "method_comparison_bin6_x_spt_winter_mv.png",
+          "method_comparison_bin6_x_spt_winter_pp": "method_comparison_bin6_x_spt_winter_pp.png",
+          "method_comparison_bin6_x_spt_winter_tt": "method_comparison_bin6_x_spt_winter_tt.png",
+          "method_comparison_binall_x_act": "method_comparison_binall_x_act.png",
+          "method_comparison_binall_x_spt_winter_gmv": "method_comparison_binall_x_spt_winter_gmv.png",
+          "method_comparison_binall_x_spt_winter_mv": "method_comparison_binall_x_spt_winter_mv.png",
+          "method_comparison_binall_x_spt_winter_pp": "method_comparison_binall_x_spt_winter_pp.png",
+          "method_comparison_binall_x_spt_winter_tt": "method_comparison_binall_x_spt_winter_tt.png",
           "method_comparison_composite": "method_comparison_composite.png"
         },
-        "mtime": 1771197633000,
-        "generated": "2026-02-15T23:20:32.769413+00:00"
+        "mtime": 1771201568000,
+        "generated": "2026-02-16T00:26:08.767704+00:00"
       }
     },
     {
@@ -224,37 +273,31 @@
       "staleness": "fresh",
       "evidence": {
         "metrics": {
-          "n_comparisons": 10,
-          "n_with_pte": 10,
+          "n_comparisons": 4,
+          "n_with_pte": 4,
           "n_consistent_5pct": 2,
-          "median_pte": 0,
-          "median_chi2_per_dof": 1.72,
-          "ia_n_with_pte": 10,
+          "median_pte": 0.227,
+          "median_chi2_per_dof": 1.4,
+          "ia_n_with_pte": 4,
           "ia_n_consistent_5pct": 2,
-          "ia_median_pte": 0,
-          "ia_median_chi2_per_dof": 1.61,
+          "ia_median_pte": 0.301,
+          "ia_median_chi2_per_dof": 1.31,
           "ia_model": "NLA-z (A_IA=1.72, eta=-0.41)"
         },
         "artifacts": {
           "individual_evidence": [
             "results/claims/plot_theory_comparison/theory_comparison_lensmc_x_act_evidence.json",
             "results/claims/plot_theory_comparison/theory_comparison_lensmc_x_spt_winter_gmv_evidence.json",
-            "results/claims/plot_theory_comparison/theory_comparison_lensmc_x_spt_winter_tt_evidence.json",
-            "results/claims/plot_theory_comparison/theory_comparison_lensmc_x_spt_winter_pp_evidence.json",
-            "results/claims/plot_theory_comparison/theory_comparison_lensmc_x_spt_winter_mv_evidence.json",
             "results/claims/plot_theory_comparison/theory_comparison_metacal_x_act_evidence.json",
-            "results/claims/plot_theory_comparison/theory_comparison_metacal_x_spt_winter_gmv_evidence.json",
-            "results/claims/plot_theory_comparison/theory_comparison_metacal_x_spt_winter_tt_evidence.json",
-            "results/claims/plot_theory_comparison/theory_comparison_metacal_x_spt_winter_pp_evidence.json",
-            "results/claims/plot_theory_comparison/theory_comparison_metacal_x_spt_winter_mv_evidence.json"
+            "results/claims/plot_theory_comparison/theory_comparison_metacal_x_spt_winter_gmv_evidence.json"
           ],
           "theory_comparison_lensmc_x_act": "theory_comparison_lensmc_x_act.png",
           "theory_comparison_lensmc_x_spt_winter_gmv": "theory_comparison_lensmc_x_spt_winter_gmv.png",
           "theory_comparison_metacal_x_act": "theory_comparison_metacal_x_act.png",
           "theory_comparison_metacal_x_spt_winter_gmv": "theory_comparison_metacal_x_spt_winter_gmv.png"
         },
-        "mtime": 1771197626000,
-        "generated": "2026-02-15T23:20:26.814706+00:00"
+        "mtime": 1771201398000,
+        "generated": "2026-02-16T00:23:18.648372+00:00"
       }
     },
     {
@@ -274,7 +317,7 @@
         "systematic-maps-on-the-sky-83122c03"
       ],
       "specName": "plot_contamination_metric",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_plots": 50,
@@ -345,8 +388,8 @@
           "contamination_composite_lensmc": "contamination_composite_lensmc.png",
           "contamination_composite_metacal": "contamination_composite_metacal.png"
         },
-        "mtime": 1771197719000,
-        "generated": "2026-02-15T23:21:59.838485+00:00"
+        "mtime": 1771201414000,
+        "generated": "2026-02-16T00:23:34.927582+00:00"
       }
     },
     {
@@ -431,7 +474,7 @@
         "signal-overview-act-spt-theory-1ae2798f"
       ],
       "specName": "plot_catalog_validation_summary",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_comparisons": 6,
@@ -445,8 +488,8 @@
           "png": "catalog_validation_summary.png",
           "catalog_validation_summary": "catalog_validation_summary.png"
         },
-        "mtime": 1771172760000,
-        "generated": "2026-02-15T16:25:59.544560+00:00"
+        "mtime": 1771201410000,
+        "generated": "2026-02-16T00:23:29.772043+00:00"
       }
     },
     {
@@ -465,7 +508,7 @@
         "act-vs-spt-cross-spectra-b4181199"
       ],
       "specName": "plot_spt_estimator_comparison",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_comparisons": 14,
@@ -491,10 +534,24 @@
             "results/claims/plot_spt_estimator_comparison/spt_estimator_metacal_bin5_evidence.json",
             "results/claims/plot_spt_estimator_comparison/spt_estimator_metacal_bin6_evidence.json"
           ],
-          "spt_estimator_composite": "spt_estimator_composite.png"
+          "spt_estimator_composite": "spt_estimator_composite.png",
+          "spt_estimator_lensmc_bin1": "spt_estimator_lensmc_bin1.png",
+          "spt_estimator_lensmc_bin2": "spt_estimator_lensmc_bin2.png",
+          "spt_estimator_lensmc_bin3": "spt_estimator_lensmc_bin3.png",
+          "spt_estimator_lensmc_bin4": "spt_estimator_lensmc_bin4.png",
+          "spt_estimator_lensmc_bin5": "spt_estimator_lensmc_bin5.png",
+          "spt_estimator_lensmc_bin6": "spt_estimator_lensmc_bin6.png",
+          "spt_estimator_lensmc_binall": "spt_estimator_lensmc_binall.png",
+          "spt_estimator_metacal_bin1": "spt_estimator_metacal_bin1.png",
+          "spt_estimator_metacal_bin2": "spt_estimator_metacal_bin2.png",
+          "spt_estimator_metacal_bin3": "spt_estimator_metacal_bin3.png",
+          "spt_estimator_metacal_bin4": "spt_estimator_metacal_bin4.png",
+          "spt_estimator_metacal_bin5": "spt_estimator_metacal_bin5.png",
+          "spt_estimator_metacal_bin6": "spt_estimator_metacal_bin6.png",
+          "spt_estimator_metacal_binall": "spt_estimator_metacal_binall.png"
         },
-        "mtime": 1771175561000,
-        "generated": "2026-02-15T17:12:41.833960+00:00"
+        "mtime": 1771201400000,
+        "generated": "2026-02-16T00:23:20.330921+00:00"
       }
     },
     {
@@ -513,7 +570,7 @@
         "signal-overview-act-spt-theory-1ae2798f"
       ],
       "specName": "plot_jackknife_null_test",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_comparisons": 4,
@@ -530,10 +587,13 @@
             "results/claims/plot_jackknife_null_test/jackknife_null_metacal_x_act_evidence.json",
             "results/claims/plot_jackknife_null_test/jackknife_null_metacal_x_spt_winter_gmv_evidence.json"
           ],
-          "jackknife_null_lensmc_x_act": "jackknife_null_lensmc_x_act.png"
+          "jackknife_null_lensmc_x_act": "jackknife_null_lensmc_x_act.png",
+          "jackknife_null_lensmc_x_spt_winter_gmv": "jackknife_null_lensmc_x_spt_winter_gmv.png",
+          "jackknife_null_metacal_x_act": "jackknife_null_metacal_x_act.png",
+          "jackknife_null_metacal_x_spt_winter_gmv": "jackknife_null_metacal_x_spt_winter_gmv.png"
         },
-        "mtime": 1771168887000,
-        "generated": "2026-02-15T15:21:27.807714+00:00"
+        "mtime": 1771201400000,
+        "generated": "2026-02-16T00:23:20.307578+00:00"
       }
     },
     {
@@ -573,8 +633,8 @@
           "theory_residual_metacal_amplitude_summary": "theory_residual_metacal_amplitude_summary.png",
           "theory_residual_metacal": "theory_residual_metacal.png"
         },
-        "mtime": 1771197604000,
-        "generated": "2026-02-15T23:20:04.505273+00:00"
+        "mtime": 1771201396000,
+        "generated": "2026-02-16T00:23:16.144729+00:00"
       }
     },
     {
@@ -607,7 +667,8 @@
         "systematic-bias-budget-709ea507",
         "template-deprojection-a1621797",
         "deprojected-likelihood-joint-26b1588e",
-        "ℓ-range-robustness-amplitude-e86f1728"
+        "ℓ-range-robustness-amplitude-e86f1728",
+        "same-sky-same-galaxies-act-and-85397551"
       ],
       "specName": "plot_analysis_summary",
       "staleness": "fresh",
@@ -672,8 +733,8 @@
           "png": "analysis_summary.png",
           "analysis_summary": "analysis_summary.png"
         },
-        "mtime": 1771197727000,
-        "generated": "2026-02-15T23:22:06.658609+00:00"
+        "mtime": 1771201588000,
+        "generated": "2026-02-16T00:26:28.078861+00:00"
       }
     },
     {
@@ -692,7 +753,7 @@
         "theory-comparison-data-d5cc9678"
       ],
       "specName": "evaluate_fiducial_likelihood",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_evaluations": 4,
@@ -751,10 +812,12 @@
             "results/claims/evaluate_fiducial_likelihood/likelihood_metacal_x_spt_winter_gmv_evidence.json"
           ],
           "likelihood_lensmc_x_act": "likelihood_lensmc_x_act.png",
-          "likelihood_lensmc_x_spt_winter_gmv": "likelihood_lensmc_x_spt_winter_gmv.png"
+          "likelihood_lensmc_x_spt_winter_gmv": "likelihood_lensmc_x_spt_winter_gmv.png",
+          "likelihood_metacal_x_act": "likelihood_metacal_x_act.png",
+          "likelihood_metacal_x_spt_winter_gmv": "likelihood_metacal_x_spt_winter_gmv.png"
         },
-        "mtime": 1771175489000,
-        "generated": "2026-02-15T17:11:29.502766+00:00"
+        "mtime": 1771201410000,
+        "generated": "2026-02-16T00:23:30.580576+00:00"
       }
     },
     {
@@ -790,8 +853,8 @@
           ],
           "sim_null_lensmc_x_spt_winter_gmv": "sim_null_lensmc_x_spt_winter_gmv.png"
         },
-        "mtime": 1771168882000,
-        "generated": "2026-02-15T15:21:22.066590+00:00"
+        "mtime": 1771201399000,
+        "generated": "2026-02-16T00:23:19.244049+00:00"
       }
     },
     {
@@ -828,8 +891,8 @@
           ],
           "spatial_variation_lensmc_x_act": "spatial_variation_lensmc_x_act.png"
         },
-        "mtime": 1771168882000,
-        "generated": "2026-02-15T15:21:22.730685+00:00"
+        "mtime": 1771201395000,
+        "generated": "2026-02-16T00:23:15.588199+00:00"
       }
     },
     {
@@ -905,8 +968,8 @@
           "systematic_budget_lensmc": "systematic_budget_lensmc.png",
           "systematic_budget_metacal": "systematic_budget_metacal.png"
         },
-        "mtime": 1771168887000,
-        "generated": "2026-02-15T15:21:27.121622+00:00"
+        "mtime": 1771201400000,
+        "generated": "2026-02-16T00:23:19.960516+00:00"
       }
     },
     {
@@ -958,8 +1021,8 @@
           "deprojected_metacal_x_spt_winter_gmv_amplitude_shift": "deprojected_metacal_x_spt_winter_gmv_amplitude_shift.png",
           "deprojected_metacal_x_spt_winter_gmv": "deprojected_metacal_x_spt_winter_gmv.png"
         },
-        "mtime": 1771197634000,
-        "generated": "2026-02-15T23:20:33.851608+00:00"
+        "mtime": 1771201415000,
+        "generated": "2026-02-16T00:23:35.446214+00:00"
       }
     },
     {
@@ -1052,8 +1115,8 @@
           "deprojected_likelihood_metacal_x_spt_winter_gmv_comparison": "deprojected_likelihood_metacal_x_spt_winter_gmv_comparison.png",
           "deprojected_likelihood_metacal_x_spt_winter_gmv": "deprojected_likelihood_metacal_x_spt_winter_gmv.png"
         },
-        "mtime": 1771197635000,
-        "generated": "2026-02-15T23:20:35.009512+00:00"
+        "mtime": 1771201416000,
+        "generated": "2026-02-16T00:23:36.071823+00:00"
       }
     },
     {
@@ -1085,7 +1148,7 @@
         "ℓ-range-robustness-amplitude-e86f1728"
       ],
       "specName": "generate_results_table",
-      "staleness": "fresh",
+      "staleness": "stale",
       "evidence": {
         "metrics": {
           "n_method_cmb_combos": 4,
@@ -1125,7 +1188,7 @@
       "title": "ℓ-range robustness: ACT stable, SPT scale-dependent",
       "kind": "task",
       "status": "closed",
-      "body": "Progressively include bandpowers up to ℓ_max and fit the lensing amplitude A_lens, testing whether the measurement is robust across angular scales. Starting from ℓ_max ≈ 105 (5 bandpowers minimum), each step adds one more bandpower until the full range (ℓ ≈ 2700).\n\n**ACT is scale-stable.** Worst deviation from the full-range A_lens is 1.5σ (bin 3). Bins 4-6 are rock-solid (< 1σ). The ACT measurement is robust to ℓ-range selection.\n\n**SPT shows scale-dependent deficit.** Bins 1-3 start at A_lens ≈ 1.5 with only low-ℓ bandpowers and drop to A_lens ≈ 0.7 as high-ℓ data is added. The deficit is not a uniform calibration offset — high-ℓ bandpowers actively suppress the amplitude. Worst case: bin 2, max deviation 2.7σ, A_lens range 0.74-2.55. Bins 4-6 are more stable (deviations 1.3-1.9σ) but still trend downward.\n\nThis constrains the deficit's origin (full characterization in `spt-deficit-characterization-6b724e41`). Three hypotheses, in order of likelihood:\n\n1. **SPT κ transfer function** — residual ℓ-dependent normalization in the Wiener-filtered κ map, not captured by our flat theory scaling. CMB-side, SPT-specific. Favored: explains why ACT is clean.\n\n2. **Higher-order noise bias leakage** — N3/2 and trispectrum terms that formally cancel in cross-correlation but may leak at high ℓ. Also CMB-side, SPT-specific.\n\n3. **Baryonic feedback** — suppresses small-scale matter power (ℓ > 500-1000). Would match the downward trend but should affect both experiments equally. Disfavored by ACT stability.",
+      "body": "Progressively include bandpowers up to ℓ_max and fit the lensing amplitude A_lens, testing whether the measurement is robust across angular scales. Starting from ℓ_max ≈ 105 (5 bandpowers minimum), each step adds one more bandpower until the full range (ℓ ≈ 2700).\n\n**ACT is scale-stable.** Worst deviation from the full-range A_lens is 1.5σ (bin 3). Bins 4-6 are rock-solid (< 1σ). The ACT measurement is robust to ℓ-range selection.\n\n**SPT shows scale-dependent deficit.** Bins 1-3 start at A_lens ≈ 1.5 with only low-ℓ bandpowers and drop to A_lens ≈ 0.7 as high-ℓ data is added. The deficit is not a uniform calibration offset — high-ℓ bandpowers actively suppress the amplitude. Worst case: bin 2, max deviation 2.7σ, A_lens range 0.74-2.55. Bins 4-6 are more stable (deviations 1.3-1.9σ) but still trend downward.\n\n**Per-estimator breakdown sharpens the picture.** Running the same test separately for SPT TT, PP, and MV reveals the scale dependence is primarily temperature-driven. PP (polarization-only) is the most scale-stable (worst 1.82σ vs 2.4-2.7σ for TT/GMV/MV) and gives systematically higher full-range A_lens (0.83-1.41 vs 0.08-0.85 for TT). TT bin 1 is catastrophic (A_lens = 0.08); PP bin 1 gives A_lens = 1.41. Combined estimators (GMV, MV) inherit TT's instability.\n\nThis constrains the deficit's origin (full characterization in [SPT deficit](.felt/spt-deficit-characterization-6b724e41.md)). Three hypotheses, refined by the per-estimator test:\n\n1. **SPT κ_TT normalization/filtering** — temperature-specific normalization residual in the Wiener-filtered κ map. PP's stability and higher amplitudes strongly favor a T-side origin. Foreground leakage into κ_TT at low ℓ is a candidate mechanism. Favored: explains both ACT/SPT asymmetry and TT/PP asymmetry.\n\n2. **Higher-order noise bias leakage** — N3/2 and trispectrum terms that formally cancel in cross-correlation but may leak at high ℓ. Also CMB-side, SPT-specific. Partially consistent — but would not explain the strong TT/PP asymmetry unless N0_TT >> N0_PP.\n\n3. **Baryonic feedback** — suppresses small-scale matter power (ℓ > 500-1000). Disfavored: would affect both experiments and both estimators equally.",
       "outcome": "ACT amplitude stable (worst deviation 1.5σ, bin 3 lensmc). SPT shows significant scale dependence: worst 2.7σ (bin 2 lensmc), driven by high-ℓ bandpowers pulling amplitude DOWN. SPT bins 1-3 drop from A_lens≈1.5 at ℓ_max~200 to A_lens≈0.7 at full range — deficit is NOT a uniform calibration offset but scale-dependent, concentrated at high ℓ.",
       "tags": [
         "tapestry:plot_ell_range_robustness"
@@ -1136,7 +1199,7 @@
         "theory-residual-analysis-6a66a995"
       ],
       "specName": "plot_ell_range_robustness",
-      "staleness": "fresh",
+      "staleness": "stale",
       "evidence": {
         "metrics": {
           "n_methods": 2,
@@ -1171,10 +1234,11 @@
             "results/claims/plot_ell_range_robustness/ell_range_robustness_metacal_evidence.json"
           ],
           "ell_range_robustness_lensmc": "ell_range_robustness_lensmc.png",
+          "ell_range_robustness_lensmc_spt_variants": "ell_range_robustness_lensmc_spt_variants.png",
           "ell_range_robustness_metacal": "ell_range_robustness_metacal.png"
         },
-        "mtime": 1771197633000,
-        "generated": "2026-02-15T23:20:33.032362+00:00"
+        "mtime": 1771201394000,
+        "generated": "2026-02-16T00:23:14.747012+00:00"
       }
     },
     {
@@ -1314,6 +1378,25 @@
         "mtime": 1771198364000,
         "generated": "2026-02-15T23:32:30.382464+00:00"
       }
+    },
+    {
+      "id": "same-sky-same-galaxies-act-and-85397551",
+      "title": "Same sky, same galaxies: ACT and SPT agree in the overlap",
+      "kind": "task",
+      "status": "closed",
+      "body": "The [full-footprint comparison](.felt/act-vs-spt-cross-spectra-b4181199.md) shows ACT and SPT agree in shape — but the two experiments see different sky areas. ACT covers the full RR2 footprint; SPT covers a subset. A shape agreement across different sky could mask local disagreements.\n\nThe overlap test eliminates this. The RR2 shear footprint splits naturally into three regions based on CMB κ coverage: ACT-only (0.47% fsky), ACT+SPT overlap (0.27% fsky), and SPT-only (0.08% fsky). In the overlap region, both experiments observe exactly the same CMB modes through the same galaxies. Any difference is purely CMB-side — reconstruction algorithm, noise properties, transfer function.\n\nThe 6-panel spectral overlay shows ACT and SPT cross-spectra in the overlap region. Knox error bars are larger than the full-footprint case (fsky_overlap / fsky_full ≈ 0.3), but the signal is clearly detected in every bin (ACT median 10σ, SPT median 8.3σ). The chi2 of the difference spectrum (ACT − SPT) tests whether the two are drawn from the same underlying signal. Joint chi2/dof = 1.01 (120 dof), PTE = 0.46. Textbook consistency.\n\nBin 6 is the only marginal case (chi2/dof = 1.74, PTE = 0.022). With 6 independent bins, expecting ~0.3 false alarms at 5% — one marginal failure is unremarkable. The remaining 5 bins sit comfortably in the chi2 distribution (PTE range 0.28–0.88).\n\nThis supersedes the north-south patch split (which was ACT-only anyway — SPT's winter field doesn't reach the north patch). The overlap test is strictly stronger: same sky, same galaxies, two independent CMB pipelines.",
+      "outcome": "Joint chi2/dof = 1.01 (120 dof, PTE = 0.46). Overlap region: 133k pixels, fsky = 0.27%. ACT median Knox SNR = 10σ, SPT = 8.3σ. 5/6 bins pass at 5%, bin 6 marginal (PTE = 0.022). This is the strongest consistency test — identical galaxies AND identical sky modes. Evidence at results/claims/plot_overlap_comparison/.",
+      "tags": [
+        "tapestry:plot_overlap_comparison"
+      ],
+      "createdAt": "2026-02-16T01:16:04.951094927+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "act-vs-spt-cross-spectra-b4181199"
+      ],
+      "specName": "plot_overlap_comparison",
+      "staleness": "no-evidence",
+      "evidence": null
     }
   ],
   "links": [
@@ -1442,6 +1525,10 @@
       "target": "analysis-summary-one-page-c5170698"
     },
     {
+      "source": "same-sky-same-galaxies-act-and-85397551",
+      "target": "analysis-summary-one-page-c5170698"
+    },
+    {
       "source": "theory-comparison-data-d5cc9678",
       "target": "fiducial-likelihood-evaluation-4c17b5d9"
     },
@@ -1552,6 +1639,10 @@
     {
       "source": "the-sky-act-spt-and-euclid-on-706364a6",
       "target": "systematic-maps-on-the-sky-83122c03"
+    },
+    {
+      "source": "act-vs-spt-cross-spectra-b4181199",
+      "target": "same-sky-same-galaxies-act-and-85397551"
     }
   ],
   "downstream": {
@@ -1591,7 +1682,7 @@
       {
         "id": "act-vs-spt-cross-spectra-b4181199",
         "title": "ACT vs SPT: same galaxies, same spectrum",
-        "status": "open",
+        "status": "closed",
         "kind": "task"
       },
       {
@@ -1711,6 +1802,12 @@
       {
         "id": "results-table-paper-ready-latex-2a507292",
         "title": "Results table: paper-ready LaTeX compilation of all key numbers",
+        "status": "closed",
+        "kind": "task"
+      },
+      {
+        "id": "same-sky-same-galaxies-act-and-85397551",
+        "title": "Same sky, same galaxies: ACT and SPT agree in the overlap",
         "status": "closed",
         "kind": "task"
       }
@@ -2041,7 +2138,15 @@
       {
         "id": "ℓ-range-robustness-for-spt-2ec181e2",
         "title": "ℓ-range robustness for SPT estimator variants (TT, PP, GMV)",
-        "status": "open",
+        "status": "closed",
+        "kind": "task"
+      }
+    ],
+    "same-sky-same-galaxies-act-and-85397551": [
+      {
+        "id": "analysis-summary-one-page-c5170698",
+        "title": "Analysis summary: one-page synthesis",
+        "status": "closed",
         "kind": "task"
       }
     ],
@@ -2481,7 +2586,7 @@
     {
       "id": "act-vs-spt-cross-spectra-b4181199",
       "title": "ACT vs SPT: same galaxies, same spectrum",
-      "status": "open",
+      "status": "closed",
       "kind": "task",
       "tags": [
         "tapestry:plot_act_vs_spt"
@@ -2489,7 +2594,7 @@
       "body": "The same Euclid shear field crossed with two independent CMB lensing reconstructions — ACT DR6 and SPT-3G GMV — should give the same spectrum. If it doesn't, something is wrong on the CMB side.\n\nThe 6-panel spectral overlay (lensmc baseline) shows it directly: salmon ACT and teal SPT data points track each other across all bins and multipoles. You can see both the agreement and the noise structure — SPT error bars widen at low ℓ where its smaller sky area limits the mode count, while ACT's larger footprint gives tighter constraints there. At high ℓ they converge. All 6 bins pass the shape consistency test (median chi2/dof = 0.86, median PTE = 0.63, 0 failures at 5%).\n\nThe agreement holds despite ACT and SPT showing different *amplitudes* relative to theory (A_lens = 0.93 vs 0.76). The chi2 test compares shape, not normalization — it cannot detect a uniform multiplicative offset. The SPT deficit is exactly that: a uniform ~24% suppression, consistent with a CMB-side calibration factor rather than ℓ-dependent systematics.\n\nA subtlety beneath the agreement: ACT is contaminated by stellar density and galactic extinction (`tapestry:plot_systematic_budget`: bias significance up to 8σ in some bins), while SPT is clean (<0.1σ after marginalization). This doesn't violate the consistency test because the contamination has the same sign as the signal — it inflates ACT, shifting its normalization up, but the shape remains consistent with SPT.\n\nFor the method-independence test (lensmc vs metacal), see `tapestry:plot_method_comparison`. For SPT estimator variants, see `tapestry:plot_spt_estimator_comparison`.\n\n## Comments\n**2026-02-16 00:39** — ACT vs SPT comparison plot needs proper xlims — current axis range doesn't show the data well.",
       "outcome": "ACT and SPT cross-spectra are fully consistent: 14/14 pass at 5% level, median PTE=0.639, median chi2/dof=0.86. No evidence of CMB-side systematics. Evidence + plots co-located at results/claims/plot_act_vs_spt/.",
       "createdAt": "2026-02-14T17:53:30.673248363+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-16T01:51:07.325300787+01:00",
       "dependsOn": [
         "signal-overview-act-spt-theory-1ae2798f"
       ]
@@ -2825,7 +2930,8 @@
         "systematic-bias-budget-709ea507",
         "template-deprojection-a1621797",
         "deprojected-likelihood-joint-26b1588e",
-        "ℓ-range-robustness-amplitude-e86f1728"
+        "ℓ-range-robustness-amplitude-e86f1728",
+        "same-sky-same-galaxies-act-and-85397551"
       ]
     },
     {
@@ -3178,7 +3284,7 @@
       "tags": [
         "tapestry:plot_ell_range_robustness"
       ],
-      "body": "Progressively include bandpowers up to ℓ_max and fit the lensing amplitude A_lens, testing whether the measurement is robust across angular scales. Starting from ℓ_max ≈ 105 (5 bandpowers minimum), each step adds one more bandpower until the full range (ℓ ≈ 2700).\n\n**ACT is scale-stable.** Worst deviation from the full-range A_lens is 1.5σ (bin 3). Bins 4-6 are rock-solid (< 1σ). The ACT measurement is robust to ℓ-range selection.\n\n**SPT shows scale-dependent deficit.** Bins 1-3 start at A_lens ≈ 1.5 with only low-ℓ bandpowers and drop to A_lens ≈ 0.7 as high-ℓ data is added. The deficit is not a uniform calibration offset — high-ℓ bandpowers actively suppress the amplitude. Worst case: bin 2, max deviation 2.7σ, A_lens range 0.74-2.55. Bins 4-6 are more stable (deviations 1.3-1.9σ) but still trend downward.\n\nThis constrains the deficit's origin (full characterization in `spt-deficit-characterization-6b724e41`). Three hypotheses, in order of likelihood:\n\n1. **SPT κ transfer function** — residual ℓ-dependent normalization in the Wiener-filtered κ map, not captured by our flat theory scaling. CMB-side, SPT-specific. Favored: explains why ACT is clean.\n\n2. **Higher-order noise bias leakage** — N3/2 and trispectrum terms that formally cancel in cross-correlation but may leak at high ℓ. Also CMB-side, SPT-specific.\n\n3. **Baryonic feedback** — suppresses small-scale matter power (ℓ > 500-1000). Would match the downward trend but should affect both experiments equally. Disfavored by ACT stability.",
+      "body": "Progressively include bandpowers up to ℓ_max and fit the lensing amplitude A_lens, testing whether the measurement is robust across angular scales. Starting from ℓ_max ≈ 105 (5 bandpowers minimum), each step adds one more bandpower until the full range (ℓ ≈ 2700).\n\n**ACT is scale-stable.** Worst deviation from the full-range A_lens is 1.5σ (bin 3). Bins 4-6 are rock-solid (< 1σ). The ACT measurement is robust to ℓ-range selection.\n\n**SPT shows scale-dependent deficit.** Bins 1-3 start at A_lens ≈ 1.5 with only low-ℓ bandpowers and drop to A_lens ≈ 0.7 as high-ℓ data is added. The deficit is not a uniform calibration offset — high-ℓ bandpowers actively suppress the amplitude. Worst case: bin 2, max deviation 2.7σ, A_lens range 0.74-2.55. Bins 4-6 are more stable (deviations 1.3-1.9σ) but still trend downward.\n\n**Per-estimator breakdown sharpens the picture.** Running the same test separately for SPT TT, PP, and MV reveals the scale dependence is primarily temperature-driven. PP (polarization-only) is the most scale-stable (worst 1.82σ vs 2.4-2.7σ for TT/GMV/MV) and gives systematically higher full-range A_lens (0.83-1.41 vs 0.08-0.85 for TT). TT bin 1 is catastrophic (A_lens = 0.08); PP bin 1 gives A_lens = 1.41. Combined estimators (GMV, MV) inherit TT's instability.\n\nThis constrains the deficit's origin (full characterization in [SPT deficit](.felt/spt-deficit-characterization-6b724e41.md)). Three hypotheses, refined by the per-estimator test:\n\n1. **SPT κ_TT normalization/filtering** — temperature-specific normalization residual in the Wiener-filtered κ map. PP's stability and higher amplitudes strongly favor a T-side origin. Foreground leakage into κ_TT at low ℓ is a candidate mechanism. Favored: explains both ACT/SPT asymmetry and TT/PP asymmetry.\n\n2. **Higher-order noise bias leakage** — N3/2 and trispectrum terms that formally cancel in cross-correlation but may leak at high ℓ. Also CMB-side, SPT-specific. Partially consistent — but would not explain the strong TT/PP asymmetry unless N0_TT >> N0_PP.\n\n3. **Baryonic feedback** — suppresses small-scale matter power (ℓ > 500-1000). Disfavored: would affect both experiments and both estimators equally.",
       "outcome": "ACT amplitude stable (worst deviation 1.5σ, bin 3 lensmc). SPT shows significant scale dependence: worst 2.7σ (bin 2 lensmc), driven by high-ℓ bandpowers pulling amplitude DOWN. SPT bins 1-3 drop from A_lens≈1.5 at ℓ_max~200 to A_lens≈0.7 at full range — deficit is NOT a uniform calibration offset but scale-dependent, concentrated at high ℓ.",
       "createdAt": "2026-02-15T15:19:58.303844642+01:00",
       "closedAt": null,
@@ -3254,7 +3360,7 @@
         "doc"
       ],
       "body": "SPT-3G × Euclid shear cross-spectra show A_lens = 0.76 ± 0.05 — a 4.9σ deficit from unity after NLA IA correction. The deficit has three layers of structure that point to a CMB-side origin.\n\n**Layer 1: bin-level.** Shape fails at low redshift (bins 1-3, chi2_shape/dof = 1.7-2.7) but passes at high redshift (bins 4-6, chi2_shape/dof = 1.2-1.6). At high-z the deficit is amplitude-only — the spectral shape is correct but the overall normalization is low. At low-z the shape itself is wrong, likely from SPT's ℓ_min ≈ 500 filtering distorting cross-spectrum bandpowers at low ℓ.\n\n**Layer 2: ℓ-range dependence.** Progressive ℓ_max cuts show A_lens dropping from ~1.5 at ℓ_max ≈ 200 to ~0.7 at full range. The worst case is bin 2 (2.7σ deviation, A range 0.74-2.55). ACT is stable (worst 1.5σ). This rules out a uniform calibration offset and disfavors baryonic feedback (which would affect both experiments).\n\n**Layer 3: the ℓ=84.5 spike.** A single bandpower at ℓ=84.5 spikes in 5/6 SPT bins (Knox S/N = 3.4-5.1σ, 3.8-5.4× neighbor average). All four SPT estimators (GMV/TT/PP/MV) agree within ~20%. Both shear methods agree. B-modes are clean. The spike amplitude scales with redshift bin (3e-8 to 1.1e-7), tracking the lensing kernel — it's coupling to genuine signal, not additive noise. This single bandpower is likely the dominant driver of the ℓ-range amplitude inflation at low ℓ_max, and its inclusion at full range suppresses the fitted A_lens.\n\n**Hypotheses (ranked):**\n1. SPT κ transfer function — scale-dependent normalization bias in the lensing reconstruction pipeline. The ℓ=84.5 feature suggests a specific angular scale where the reconstruction is miscalibrated.\n2. SPT mask mode-coupling — the compact SPT winter field (fsky ≈ 0.04) creates stronger mode-coupling at low ℓ than ACT's broader footprint (fsky ≈ 0.25). A single ℓ bin could absorb leaked power.\n3. SPT lmin filtering — the reconstruction pipeline applies ℓ_min ≈ 500 to temperature maps, which could distort the cross-spectrum at low output multipoles through non-trivial mode-mixing.\n\n**Ruled out:** systematic contamination (SPT is clean in bias budget), foreground bias (all estimators agree), shear method dependence (lensmc ≈ metacal), baryonic feedback (would affect both experiments equally).",
-      "outcome": "SPT 24% amplitude deficit (4.9σ after NLA IA). Method/estimator independent, not systematic contamination. Low-z shape fails (bins 1-3), high-z amplitude-only (bins 4-6). ℓ-range dependent: A drops from 1.5 to 0.7 with increasing ℓ_max. Single bandpower spike at ℓ=84.5 in 5/6 bins is likely the dominant driver. Points to κ transfer function effects, not calibration offset or baryons.",
+      "outcome": "SPT 24% amplitude deficit (4.9σ after NLA IA). Method/estimator independent, not systematic contamination. Low-z shape fails (bins 1-3), high-z amplitude-only (bins 4-6). ℓ-range dependent: A drops from 1.5 to 0.7 with increasing ℓ_max. Single bandpower spike at ℓ=84.5 in 5/6 bins is likely the dominant driver. NEW: per-estimator ℓ-range test shows PP (polarization-only) is most scale-stable (worst 1.82σ vs 2.4-2.7σ for TT/GMV/MV) and gives systematically higher A_lens (0.83-1.41 vs 0.08-0.85 for TT). Scale dependence is dominated by the temperature channel. Deficit is primarily T-side, not reconstruction-universal. Hypothesis ranking: SPT κ_TT normalization/filtering > common transfer function > baryonic feedback (disfavored — ACT stable).",
       "createdAt": "2026-02-15T16:21:43.356754316+01:00",
       "closedAt": null,
       "dependsOn": [
@@ -3526,7 +3632,7 @@
         "spec",
         "ralph"
       ],
-      "body": "The tapestry is a feedback surface between agent and scientist. Each iteration turns tokens into something inspectable — an honest, digestible view of what the analysis is doing, what's working, what's not. The scientist sees it, responds, and the loop tightens.\n\nThe goal isn't narrative polish. It's advancing the analysis itself — closing open questions, running new checks, extending coverage — and keeping the tapestry honest about what was found.\n\n## Desired State\n\nThe analysis improves. Each iteration: survey open fibers (`felt ls`), close what can be closed through work, and update the tapestry to reflect reality.\n\nWhen open items run out, curiosity drives the next question. The project scope (`docs/spt_euclid_proposal.md`) and the reference papers define what a complete analysis looks like. Read them. Find the gaps between what we've done and what they did. File new fibers for what's missing. The tapestry grows by discovering what it lacks.\n\nAfter new work, update affected tapestry nodes. Keep the principles: finding-oriented titles, spectral plots, prose bodies, cross-links. Grow the tapestry only when new work warrants it.\n\n### Code health\n\nThe codebase grew through 30+ iterations. When the open-fiber queue is light or at the end of an iteration, run a code-simplification pass using subagents:\n\n1. **Launch** several Explore subagents in parallel to audit different parts of the codebase — scripts, config, Snakefile rules, shared utilities. Each checks for: duplicated logic, hardcoded values that belong in config, copy-pasted functions, inconsistent patterns.\n2. **Synthesize** their findings into a concrete list of refactors.\n3. **Implement** the changes: extract shared utilities, consolidate config, DRY up repeated patterns.\n\nPrinciples:\n- **Single source of truth**: Parameter values live in `config/config.yaml`, not hardcoded in scripts. Cosmological parameters, ℓ ranges, bin counts, file paths — one place.\n- **DRY**: If three scripts compute Knox covariance the same way, that's one function in a shared module.\n- **Maintainable structure**: The pipeline needs to survive handoff to collaborators and DR1.\n\nThis is not optional background work — when no analysis fibers are immediately actionable, code simplification IS the work.\n\n### Done\n\nRun until 2:30 AM CET. Progress = open fibers closed, analysis extended, tapestry honest about the current state.\n\n## Assumptions\n\n- **A_lens is the measurement.** A_lens = data / (Planck 2018 ΛCDM + NLA IA). A_lens = 1 means agreement. A_IA is a fixed nuisance parameter, not a result.\n- **Blinding.** Fixed-cosmology A_lens fitting is fine internally. No Ω_m, S_8 fits. Don't share broadly.\n- **Plots carry data.** Spectra, residuals, correlation coefficients — not summary heatmaps. The reader sees the data.\n- **Read plots sparingly.** Max 5 images per session.\n- **Node discipline.** 1–5 plots per node. Prose bodies. Evidence at `results/claims/{specName}/evidence.json`.\n- **Cross-links.** Use markdown links to `.felt/` files so they render as clickable in the dashboard: `[field overview](.felt/the-sky-act-spt-and-euclid-on-706364a6.md)`. Not backtick `tapestry:` references.\n- **Trust the DAG.** Never suppress reruns. Recomputation is cheap, stale results are not.\n\n## Context\n\n### Project scope and references\n\n- **Proposal**: `docs/spt_euclid_proposal.md` — full 3×2pt scope (δκ, γκ, κκ), deliverables, team\n- **MoU fiber**: `spt-euclid-mou-collaboration-6de6bc54`\n- **DES×SPT×Planck methods**: `docs/papers/2203.12439_des_spt_planck_methods/main.tex`\n- **DES×SPT×Planck correlations**: `docs/papers/2203.12440_des_spt_planck_correlations/main.tex`\n- **DES×SPT×Planck constraints**: `docs/papers/2206.10824_des_spt_planck_constraints/main.tex`\n- **ACT×DES shear**: `docs/papers/2309.04412_act_des_shear/main.tex`\n\n### Current analysis state\n\n`felt show findings-synthesis-euclid-cmb-03354e57` — the comprehensive narrative.\n\nKey numbers: 20σ/21σ raw → 15σ/14σ marginalized. Four consistency tests pass. Three null tests pass. Stellar density contaminates ACT (boosts signal). Template marginalization corrects. SPT 24% deficit — scale-dependent, intrinsic, open.\n\n22 tapestry nodes, 31 PNGs, 8 narrative regions. All evidence fresh.\n\n### Doc fibers\n\n- `systematic-contamination-five-f509e962` — five-layer contamination methodology\n- `spt-deficit-characterization-6b724e41` — SPT deficit characterization\n- `namaster-technical-patterns-60d42621` — NaMaster conventions\n- `snakemake-workflow-discipline-88f4f4f8` — DAG discipline\n- `nla-intrinsic-alignment-theory-57e37bd1` — NLA IA model\n\n### Files\n\n- **Snakefile**: `workflow/Snakefile` + `workflow/rules/explorations.smk`\n- **Scripts**: `workflow/scripts/plot_*.py`, `workflow/scripts/compute_*.py`\n- **Evidence**: `workflow/scripts/aggregate_evidence.py`, `results/claims/{specName}/`\n- **Config**: `config/config.yaml`\n- **Mass map download**: `inputs/euclid/download_tr1_systematics.sh` (adapt URL for 2D_MASS)\n\n### Execution\n\nComputational work → Snakemake → SLURM (`-j20` for batch). Plot scripts are localrules. Never load large maps on the login node.\n\n## Skills\n\n- `/tapestry` — fiber ↔ evidence ↔ plot conventions\n- `/snakemake` — rules, execution, localrules\n- `/data-visualization` — figure design\n- `/felt` — fiber management, dependencies\n- `/implementing-code` — script development\n\n## Evidence\n\n- Open fibers: `felt ls`\n- Plot inventory: `for d in results/claims/*/; do echo \"$(ls \"$d\"/*.png 2>/dev/null | wc -l) $(basename \"$d\")\"; done | sort -rn`\n- Tapestry tags: `grep -rh 'tapestry:' .felt/*.md | grep -oP 'tapestry:\\w+' | sort -u`\n- Evidence freshness: check mtimes against upstream chain\n\n## Comments\n**2026-02-15 23:41** — Cross-references between tapestry fibers should use markdown links to the .felt/ files so they render as clickable links in the dashboard. E.g. [field overview](.felt/the-sky-act-spt-and-euclid-on-706364a6.md) rather than backtick tapestry:plot_field_overview references. Update fiber bodies to use this pattern.",
+      "body": "The tapestry is a feedback surface between agent and scientist. Each iteration turns tokens into something inspectable — an honest, digestible view of what the analysis is doing, what's working, what's not. The scientist sees it, responds, and the loop tightens.\n\nThe goal isn't narrative polish. It's advancing the analysis itself — closing open questions, running new checks, extending coverage — and keeping the tapestry honest about what was found.\n\n## Desired State\n\nThe analysis improves. Each iteration: survey ALL open fibers (`felt ls` — not just `felt downstream`, which only shows fibers linked to this spec), close what can be closed through work, and update the tapestry to reflect reality.\n\nWhen open items run out, curiosity drives the next question. The project scope (`docs/spt_euclid_proposal.md`) and the reference papers define what a complete analysis looks like. Read them. Find the gaps between what we've done and what they did. File new fibers for what's missing. The tapestry grows by discovering what it lacks.\n\nAfter new work, update affected tapestry nodes. Keep the principles: finding-oriented titles, spectral plots, prose bodies, cross-links. Grow the tapestry only when new work warrants it.\n\n### Code health\n\nThe codebase grew through 30+ iterations. When the open-fiber queue is light or at the end of an iteration, run a code-simplification pass using subagents:\n\n1. **Launch** several Explore subagents in parallel to audit different parts of the codebase — scripts, config, Snakefile rules, shared utilities. Each checks for: duplicated logic, hardcoded values that belong in config, copy-pasted functions, inconsistent patterns.\n2. **Synthesize** their findings into a concrete list of refactors.\n3. **Implement** the changes: extract shared utilities, consolidate config, DRY up repeated patterns.\n\nPrinciples:\n- **Single source of truth**: Parameter values live in `config/config.yaml`, not hardcoded in scripts. Cosmological parameters, ℓ ranges, bin counts, file paths — one place.\n- **DRY**: If three scripts compute Knox covariance the same way, that's one function in a shared module.\n- **Maintainable structure**: The pipeline needs to survive handoff to collaborators and DR1.\n\nThis is not optional background work — when no analysis fibers are immediately actionable, code simplification IS the work.\n\n### Done\n\nRun until all open fibers and avenues have been addressed. Progress = open fibers closed, analysis extended, tapestry honest about the current state.\n\n## Assumptions\n\n- **A_lens is the measurement.** A_lens = data / (Planck 2018 ΛCDM + NLA IA). A_lens = 1 means agreement. A_IA is a fixed nuisance parameter, not a result.\n- **Blinding.** Fixed-cosmology A_lens fitting is fine internally. No Ω_m, S_8 fits. Don't share broadly.\n- **Plots carry data.** Spectra, residuals, correlation coefficients — not summary heatmaps. The reader sees the data.\n- **Read plots sparingly.** Max 5 images per session.\n- **Node discipline.** 1–5 plots per node. Prose bodies. Evidence at `results/claims/{specName}/evidence.json`.\n- **Cross-links.** Use markdown links to `.felt/` files so they render as clickable in the dashboard: `[field overview](.felt/the-sky-act-spt-and-euclid-on-706364a6.md)`. Not backtick `tapestry:` references.\n- **Trust the DAG.** Never suppress reruns. Recomputation is cheap, stale results are not.\n\n## Context\n\n### Project scope and references\n\n- **Proposal**: `docs/spt_euclid_proposal.md` — full 3×2pt scope (δκ, γκ, κκ), deliverables, team\n- **MoU fiber**: `spt-euclid-mou-collaboration-6de6bc54`\n- **DES×SPT×Planck methods**: `docs/papers/2203.12439_des_spt_planck_methods/main.tex`\n- **DES×SPT×Planck correlations**: `docs/papers/2203.12440_des_spt_planck_correlations/main.tex`\n- **DES×SPT×Planck constraints**: `docs/papers/2206.10824_des_spt_planck_constraints/main.tex`\n- **ACT×DES shear**: `docs/papers/2309.04412_act_des_shear/main.tex`\n\n### Current analysis state\n\n`felt show findings-synthesis-euclid-cmb-03354e57` — the comprehensive narrative.\n\nKey numbers: 20σ/21σ raw → 15σ/14σ marginalized. Four consistency tests pass. Three null tests pass. Stellar density contaminates ACT (boosts signal). Template marginalization corrects. SPT 24% deficit — scale-dependent, intrinsic, open.\n\n22 tapestry nodes, 31 PNGs, 8 narrative regions. All evidence fresh.\n\n### Doc fibers\n\n- `systematic-contamination-five-f509e962` — five-layer contamination methodology\n- `spt-deficit-characterization-6b724e41` — SPT deficit characterization\n- `namaster-technical-patterns-60d42621` — NaMaster conventions\n- `snakemake-workflow-discipline-88f4f4f8` — DAG discipline\n- `nla-intrinsic-alignment-theory-57e37bd1` — NLA IA model\n\n### Files\n\n- **Snakefile**: `workflow/Snakefile` + `workflow/rules/explorations.smk`\n- **Scripts**: `workflow/scripts/plot_*.py`, `workflow/scripts/compute_*.py`\n- **Evidence**: `workflow/scripts/aggregate_evidence.py`, `results/claims/{specName}/`\n- **Config**: `config/config.yaml`\n- **Mass map download**: `inputs/euclid/download_tr1_systematics.sh` (adapt URL for 2D_MASS)\n\n### Execution\n\nComputational work → Snakemake → SLURM (`-j20` for batch). Plot scripts are localrules. Never load large maps on the login node.\n\n## Skills\n\n- `/tapestry` — fiber ↔ evidence ↔ plot conventions\n- `/snakemake` — rules, execution, localrules\n- `/data-visualization` — figure design\n- `/felt` — fiber management, dependencies\n- `/implementing-code` — script development\n\n## Evidence\n\n- Open fibers: `felt ls`\n- Plot inventory: `for d in results/claims/*/; do echo \"$(ls \"$d\"/*.png 2>/dev/null | wc -l) $(basename \"$d\")\"; done | sort -rn`\n- Tapestry tags: `grep -rh 'tapestry:' .felt/*.md | grep -oP 'tapestry:\\w+' | sort -u`\n- Evidence freshness: check mtimes against upstream chain\n\n## Comments\n**2026-02-15 23:41** — Cross-references between tapestry fibers should use markdown links to the .felt/ files so they render as clickable links in the dashboard. E.g. [field overview](.felt/the-sky-act-spt-and-euclid-on-706364a6.md) rather than backtick tapestry:plot_field_overview references. Update fiber bodies to use this pattern.",
       "outcome": null,
       "createdAt": "2026-02-15T23:31:14.185122678+01:00",
       "closedAt": null,
@@ -3587,15 +3693,15 @@
     {
       "id": "spatial-variation-overlap-vs-78b94be6",
       "title": "Spatial variation: overlap vs non-overlap instead of north-south",
-      "status": "open",
+      "status": "closed",
       "kind": "task",
       "tags": [
         "investigation"
       ],
       "body": "Replace the current north-south spatial variation test with an overlap-based split. The key region is the **ACT+SPT overlap** — the only place where both CMB experiments see the same galaxies.\n\nThree natural regions of the shear footprint:\n\n1. **ACT-only** — where ACT κ overlaps shear but SPT doesn't\n2. **ACT+SPT overlap** — where both CMB experiments cover the shear field\n3. **SPT-only** — where SPT κ overlaps shear but ACT doesn't\n\nThe overlap region enables the strongest consistency test: same galaxies, two independent CMB pipelines. Any difference between ACT×shear and SPT×shear in the overlap is purely CMB-side.\n\nImplementation: pixel-level mask overlap to determine region sizes, then cross-spectra per region. First step: count pixels in each region to assess feasibility (need enough modes for meaningful bandpowers). Reuses `compute_cross_spectrum.py` with `patch_mask` input.\n\nSupersedes the current north-south approach (which was ACT-only anyway since SPT's winter field doesn't reach the north patch).",
-      "outcome": null,
+      "outcome": "Overlap test implemented and computed. Three regions: ACT-only (0.47% fsky, 235k px), ACT+SPT overlap (0.27% fsky, 133k px), SPT-only (0.08% fsky, 39k px). In the overlap region: joint chi2/dof = 1.01 (120 dof), PTE = 0.456. 5/6 bins pass, bin 6 marginal (PTE = 0.022). ACT and SPT are statistically identical on the same sky. Supersedes north-south split (which was ACT-only anyway). Knox SNR: ACT median 10σ, SPT median 8.3σ in overlap alone.",
       "createdAt": "2026-02-15T23:49:54.364047948+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-16T01:15:06.137339991+01:00",
       "dependsOn": [
         "tapestry-iteration-open-fibers-b1115ae0",
         "spatial-variation-test-two-efde7911"
@@ -3727,7 +3833,7 @@
         "validation",
         "null-test"
       ],
-      "body": "Reopened — the previous closure was premature. The 93% B/E ratio needs proper investigation, not acceptance.\n\n**Open questions:**\n1. **Are we using NaMaster's E→B purification?** NaMaster implements spin-0/spin-2 purification to deconvolve E→B leakage from partial sky. If we're NOT using it, the B-modes may be mostly leakage. If we ARE, the residual B-modes are real signal (or systematics). Check `purify_b=True` in NmtField construction.\n2. **Does catalog-based (NmtFieldCatalog) see the same B-mode amplitude?** Catalog estimators handle the mask differently — if B/E ratio changes dramatically, it's a mask/leakage effect, not physical.\n3. **How much is leakage vs signal?** Quantify: run with and without purification, compare B-mode amplitudes. The difference is leakage; the remainder is signal+noise.\n4. **B × κ as a null test**: if purified B-modes are consistent with noise, that's a powerful null test — B-mode shear should not correlate with CMB κ (no physical mechanism). If it does, something is wrong.\n5. **What do DES×SPT and ACT×DES do?** Read the papers — do they use purification? Real-space γ_⊥? Both?\n\nThe previous 93% number may simply mean we weren't purifying. That would be a significant pipeline issue — not just for null tests but for the E-mode spectra themselves (leaked B contamination).",
+      "body": "B-mode shear should not correlate with CMB κ — making B×κ a powerful null test for shear systematics. We implemented the test and discovered that **NaMaster Gaussian covariance (BB block) underestimates B-mode variance by ~15-150×**, rendering the analytic covariance unusable for this test.\n\n## Findings\n\n**The test ran, but the covariance is wrong.** All 12 bins (6 tomo × 2 CMB) show chi2/dof = 332-2897 with PTE≈0. B/E amplitude ratios range 0.20-0.96. The B×κ signal is dominated by E→B leakage from partial sky — expected behavior — but NaMaster's Gaussian covariance BB block doesn't capture the leakage contribution to variance.\n\n**No reference analysis uses NaMaster Gaussian for B-mode covariance.** ACT×DES (2309.04412) performed B×κ as a null test (PTE=0.81, passes all 4 bins) but used 511 simulations for covariance. DES×SPT (2203.12440) used real-space cross-shear (γ_⊥) instead of harmonic B-modes. Neither used `purify_b`.\n\n**Neither we nor gctools use `purify_b=True`.** Only `n_iter=1` (SHT convergence). Purification is a separate feature (Smith 2006) that deconvolves E→B leakage analytically. It would clean the B-mode estimate but doesn't fix the covariance issue.\n\n**E-mode spectra are not affected.** The 93% B/E ratio means the B-mode *estimate* is contaminated by leakage, but the MASTER deconvolution correctly recovers E-modes. The mode-coupling matrix handles this for E — it's only the B-mode that remains contaminated without purification.\n\n## What's needed to make this test work\n\n1. **Simulation-based covariance** (ACT×DES approach): Generate ~500 Gaussian shear + noise sims, cross-correlate with κ, measure B×κ scatter. Expensive but definitive.\n2. **Purification + Knox**: Enable `purify_b=True`, which should suppress E→B leakage enough that Knox (or Gaussian) covariance becomes adequate. Requires recomputation of all cross-spectra.\n3. **Empirical variance from data**: Use the jackknife framework to estimate B-mode scatter from data resampling.\n\n## Status\n\nRules implemented: `plot_bmode_null_test`, `aggregate_bmode_null_evidence`. Evidence at `results/claims/plot_bmode_null_test/`. The test infrastructure works — it just needs proper covariance. Blocked on covariance methodology decision.",
       "outcome": null,
       "createdAt": "2026-02-16T00:05:24.113677032+01:00",
       "closedAt": null,
@@ -3756,18 +3862,249 @@
     {
       "id": "ℓ-range-robustness-for-spt-2ec181e2",
       "title": "ℓ-range robustness for SPT estimator variants (TT, PP, GMV)",
-      "status": "open",
+      "status": "closed",
       "kind": "task",
       "tags": [
         "investigation"
       ],
       "body": "Run the progressive ℓ_max amplitude fit for SPT TT, PP, and GMV separately. The current ℓ-range robustness test shows SPT is scale-dependent (bins 1-3 drop from Â≈1.5 at ℓ_max~200 to Â≈0.7 at full range), but that's GMV only. Breaking it out by estimator variant would reveal whether the scale dependence is driven by temperature (TT), polarization (PP), or both — which constrains the origin (foregrounds vs transfer function vs noise bias).\n\nIf TT shows the scale dependence but PP doesn't, that points to temperature-side foreground leakage. If both show it equally, it's more likely a κ reconstruction transfer function or normalization issue common to all estimators.",
-      "outcome": null,
+      "outcome": "Computed ℓ-range robustness for all 4 SPT estimators (GMV, TT, PP, MV). Key finding: PP (polarization-only) is the most scale-stable (worst 1.82σ vs 2.4–2.7σ for TT/GMV/MV) and systematically gives higher A_lens (0.83–1.41 vs 0.08–0.85 for TT). All estimators worst in bin 2. Scale dependence is dominated by the temperature channel — TT and combined estimators (GMV, MV) show larger scale-dependent drops. This points to temperature-side normalization or foreground leakage rather than a universal κ transfer function. PP bin1 gives A_lens=1.41 (consistent with theory) while TT bin1 gives A_lens=0.08 (catastrophic). Constrains SPT deficit origin: primarily T-side, not reconstruction-universal.",
       "createdAt": "2026-02-16T00:40:36.192280293+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-16T02:01:17.788470118+01:00",
       "dependsOn": [
         "tapestry-iteration-open-fibers-b1115ae0",
-        "ℓ-range-robustness-amplitude-e86f1728"
+        "ℓ-range-robustness-amplitude-e86f1728",
+        "spt-deficit-characterization-6b724e41"
+      ]
+    },
+    {
+      "id": "png-curation-undone-by-rebuilds-b56cb5f8",
+      "title": "PNG curation undone by rebuilds: structural issue",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "investigation"
+      ],
+      "outcome": "Root cause for SPT variants fixed: aggregate_theory_comparison_evidence and aggregate_redshift_trend_evidence changed from cmbk_list to cmbk_baseline. Deleted 18 orphaned SPT variant files (12 from theory_comparison, 6 from redshift_trend). Remaining metacal PNGs in 4 nodes (theory_comparison, theory_residual, deprojected_spectra, deprojected_likelihood) are structural — the evidence needs both methods but the tapestry only shows lensmc. Would need evidence/PNG decoupling to fix completely.",
+      "createdAt": "2026-02-16T00:43:45.581608249+01:00",
+      "closedAt": "2026-02-16T01:15:16.06441479+01:00",
+      "dependsOn": []
+    },
+    {
+      "id": "knox-covariance-separated-from-f1cc4ea7",
+      "title": "Knox covariance separated from Gaussian covariance in compute_cross_spectrum.py",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "decision"
+      ],
+      "outcome": "Refactored compute_cross_spectrum.py: Knox variance now computed independently via compute_knox param (defaults to compute_cov for backward compat). Separates cheap analytic Knox estimate from expensive NaMaster Gaussian covariance workspace. Used by overlap cross-spectra (compute_knox=True, compute_cov=False). Triggers 282-job DAG rebuild (script mtime change) — outputs unchanged for existing rules.",
+      "createdAt": "2026-02-16T01:15:35.146069406+01:00",
+      "closedAt": null,
+      "dependsOn": []
+    },
+    {
+      "id": "shared-plot-utilities-module-e3652252",
+      "title": "Shared plot utilities module (plot_utils.py)",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "decision"
+      ],
+      "outcome": "Created workflow/scripts/plot_utils.py with canonical color palette (COLORS, LABELS, MARKERS), theme setup (setup_theme), and bin palette. Standardizes ACT=#E8788A, SPT=#5B9EA6 across all plots. Used by plot_overlap_comparison.py — existing scripts can migrate incrementally. Addresses code health audit finding of 28 scripts with duplicated color/theme definitions.",
+      "createdAt": "2026-02-16T01:15:43.508269023+01:00",
+      "closedAt": null,
+      "dependsOn": []
+    },
+    {
+      "id": "same-sky-same-galaxies-act-and-85397551",
+      "title": "Same sky, same galaxies: ACT and SPT agree in the overlap",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "tapestry:plot_overlap_comparison"
+      ],
+      "body": "The [full-footprint comparison](.felt/act-vs-spt-cross-spectra-b4181199.md) shows ACT and SPT agree in shape — but the two experiments see different sky areas. ACT covers the full RR2 footprint; SPT covers a subset. A shape agreement across different sky could mask local disagreements.\n\nThe overlap test eliminates this. The RR2 shear footprint splits naturally into three regions based on CMB κ coverage: ACT-only (0.47% fsky), ACT+SPT overlap (0.27% fsky), and SPT-only (0.08% fsky). In the overlap region, both experiments observe exactly the same CMB modes through the same galaxies. Any difference is purely CMB-side — reconstruction algorithm, noise properties, transfer function.\n\nThe 6-panel spectral overlay shows ACT and SPT cross-spectra in the overlap region. Knox error bars are larger than the full-footprint case (fsky_overlap / fsky_full ≈ 0.3), but the signal is clearly detected in every bin (ACT median 10σ, SPT median 8.3σ). The chi2 of the difference spectrum (ACT − SPT) tests whether the two are drawn from the same underlying signal. Joint chi2/dof = 1.01 (120 dof), PTE = 0.46. Textbook consistency.\n\nBin 6 is the only marginal case (chi2/dof = 1.74, PTE = 0.022). With 6 independent bins, expecting ~0.3 false alarms at 5% — one marginal failure is unremarkable. The remaining 5 bins sit comfortably in the chi2 distribution (PTE range 0.28–0.88).\n\nThis supersedes the north-south patch split (which was ACT-only anyway — SPT's winter field doesn't reach the north patch). The overlap test is strictly stronger: same sky, same galaxies, two independent CMB pipelines.",
+      "outcome": "Joint chi2/dof = 1.01 (120 dof, PTE = 0.46). Overlap region: 133k pixels, fsky = 0.27%. ACT median Knox SNR = 10σ, SPT = 8.3σ. 5/6 bins pass at 5%, bin 6 marginal (PTE = 0.022). This is the strongest consistency test — identical galaxies AND identical sky modes. Evidence at results/claims/plot_overlap_comparison/.",
+      "createdAt": "2026-02-16T01:16:04.951094927+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "act-vs-spt-cross-spectra-b4181199"
+      ]
+    },
+    {
+      "id": "ia-parameters-hardcoded-in-7-956bdff1",
+      "title": "IA parameters hardcoded in 7+ scripts — should centralize in config",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "code-health"
+      ],
+      "body": "A_IA=1.72 and eta_IA=-0.41 are hardcoded in 7+ scripts: compute_theory_cls.py, plot_theory_comparison.py, plot_theory_residual_analysis.py, evaluate_deprojected_likelihood.py, evaluate_fiducial_likelihood.py, plot_deprojected_spectra.py, generate_results_table.py. Should live in config.yaml under `intrinsic_alignment:`. Touching compute_theory_cls.py triggers a theory recomputation cascade.",
+      "outcome": "Centralized in config.yaml under intrinsic_alignment: section. theory.py now accepts ia_params dict kwarg (backward-compatible defaults). compute_theory_cls.py reads from config and passes to Theory. 6 reporting scripts read from config for metadata strings. LaTeX table caption in generate_results_table.py uses config values via placeholder replacement. All 1.72/−0.41 references now flow from config. Touching compute_theory_cls.py triggers theory recompute cascade — let the DAG run.",
+      "createdAt": "2026-02-16T01:28:24.48693552+01:00",
+      "closedAt": "2026-02-16T01:39:09.770147664+01:00",
+      "dependsOn": []
+    },
+    {
+      "id": "namaster-gaussian-covariance-9373b1fa",
+      "title": "NaMaster Gaussian covariance fails for B-mode: underestimates variance ~25×",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "pattern",
+        "namaster"
+      ],
+      "outcome": "NaMaster gaussian_covariance BB block underestimates B-mode variance by 15-150× because it doesn't capture E→B leakage contributions. ACT×DES used 511 sims instead. Chi2/dof=332-2897 across all bins. The Gaussian approximation is adequate for E-modes but not B-modes at partial sky. B×κ null test requires simulation-based covariance, purification, or empirical scatter.",
+      "createdAt": "2026-02-16T01:48:52.054644353+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "cross-shear-null-test-γ-κ-90e43c64"
+      ]
+    },
+    {
+      "id": "extract-shared-namaster-50414b01",
+      "title": "Extract shared NaMaster utilities into nmt_utils.py",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "code-health"
+      ],
+      "outcome": "Created workflow/scripts/nmt_utils.py with 6 shared functions: make_shear_mask, make_cmb_mask, make_convergence_mask, make_shear_field, make_scalar_field, compute_knox_variance, plus zero_unseen helper. Replaced duplicated definitions in compute_cross_spectrum.py (5 functions + Knox block), compute_systematic_cross_spectrum.py (4 functions + Knox + sentinel), compute_cmbk_systematic_cross_spectrum.py (Knox + sentinel). Function signatures now require explicit aposcale parameter (no silent defaults). compute_knox_variance returns dict with raw pcls for Gaussian covariance reuse. Provenance triggers 165-job rebuild (70 cross + 70 systematic + 25 cmbk systematic) — behavior is identical, code extraction only.",
+      "createdAt": "2026-02-16T02:03:31.493907653+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "tapestry-iteration-open-fibers-b1115ae0"
+      ]
+    },
+    {
+      "id": "code-health-plot-utils-py-85f96d8c",
+      "title": "Code health: plot_utils.py adoption gap — 22 scripts redefine colors/labels locally",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "code-health"
+      ],
+      "outcome": "Merged with spectrum_utils.py effort. 9 scripts now import from plot_utils and/or spectrum_utils: plot_act_vs_spt, plot_signal_overview, plot_jackknife_null_test, plot_theory_comparison, plot_method_comparison, plot_redshift_trend + 3 already done (plot_bmode_null_test, plot_ell_range_robustness, plot_overlap_comparison). Replaced local sns.set_theme() with setup_theme(), local color/marker/label dicts with COLORS/LABELS/MARKERS from plot_utils. 25 remaining scripts still use local definitions — all mechanical replacements following the established pattern.",
+      "createdAt": "2026-02-16T02:03:56.590845896+01:00",
+      "closedAt": "2026-02-16T02:12:10.471122824+01:00",
+      "dependsOn": [
+        "extract-shared-namaster-50414b01"
+      ]
+    },
+    {
+      "id": "code-health-spectrum-loading-9e1ecf9c",
+      "title": "Code health: spectrum loading pattern duplicated in 15+ plot scripts",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "code-health"
+      ],
+      "outcome": "Created workflow/scripts/spectrum_utils.py with 5 shared functions: load_cross_spectrum(), compute_snr(), compute_chi2_vs_zero(), compute_chi2_consistency(), load_evidence(). Eliminates ~30 lines of duplicated NPZ loading + error extraction per script. Migrated 6 scripts in iteration 5: plot_act_vs_spt, plot_signal_overview, plot_jackknife_null_test, plot_theory_comparison, plot_method_comparison, plot_redshift_trend. 25 scripts remain — mechanical, can be done incrementally. The pattern is standardized; adoption is now copy-paste.",
+      "createdAt": "2026-02-16T02:03:58.358996385+01:00",
+      "closedAt": "2026-02-16T02:12:02.517808836+01:00",
+      "dependsOn": [
+        "extract-shared-namaster-50414b01"
+      ]
+    },
+    {
+      "id": "code-health-remaining-25-c0eb2d87",
+      "title": "Code health: remaining 25 scripts need spectrum_utils/plot_utils migration",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "code-health"
+      ],
+      "outcome": "Migrated 13 scripts to use plot_utils (COLORS, LABELS, SYSMAP_LABELS, BIN_PALETTE, setup_theme) and spectrum_utils (load_cross_spectrum, load_evidence). Added SYSMAP_LABELS to plot_utils.py. Total: 22/30 plot scripts now use shared utilities, up from 9/30. Remaining 8: plot_analysis_summary, plot_field_overview, plot_cross_spectrum, plot_catalog_vs_map_comparison, plot_apodization_masks, plot_shear_maps, plot_systematic_maps, plot_wiener_diagnostic. These are lower priority (map visualizations, individual plots, diagnostics).",
+      "createdAt": "2026-02-16T02:12:17.071390634+01:00",
+      "closedAt": "2026-02-16T02:22:29.87840157+01:00",
+      "dependsOn": [
+        "code-health-spectrum-loading-9e1ecf9c",
+        "code-health-plot-utils-py-85f96d8c"
+      ]
+    },
+    {
+      "id": "code-health-8-remaining-plot-a10d6aec",
+      "title": "Code health: 8 remaining plot scripts need shared utility migration",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "code-health"
+      ],
+      "outcome": "All 8 remaining plot scripts migrated to shared utilities. Theme: all 8 now use setup_theme() from plot_utils instead of bare sns.set_theme()/sns.set_palette(). Spectrum loading: plot_cross_spectrum.py and plot_catalog_vs_map_comparison.py now use load_cross_spectrum() from spectrum_utils. Evidence loading: plot_cross_spectrum.py uses load_evidence(). Labels: plot_cross_spectrum.py uses LABELS dict. Colors: plot_analysis_summary.py uses COLORS dict. SNR: plot_analysis_summary.py uses compute_snr() for NPZ fallback. Bonus: also migrated 3 composite scripts (plot_act_vs_spt_composite, plot_method_comparison_composite, plot_spt_estimator_composite) that had bare sns.set_theme despite importing from plot_utils. Remaining bare calls: 2 evaluate scripts (compute scripts with embedded plots) + 2 explore scripts (Jupyter-style, different conventions) + plot_utils.py itself (canonical source).",
+      "createdAt": "2026-02-16T02:22:35.461268634+01:00",
+      "closedAt": "2026-02-16T02:30:27.217951766+01:00",
+      "dependsOn": [
+        "code-health-remaining-25-c0eb2d87"
+      ]
+    },
+    {
+      "id": "namaster-gaussian-covariance-25b31fd7",
+      "title": "NaMaster Gaussian covariance: investigate 10-130× overestimate",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "investigation",
+        "covariance"
+      ],
+      "body": "The Knox covariance was adopted as primary because NaMaster's `gaussian_covariance()` overestimated EE variance by 10-130× at our fsky (~0.01). This blocked the B×κ null test (where NaMaster BB *underestimates*).\n\n**Key question**: Was the overestimate real or a bug? Possibilities:\n1. **Noise misspecification**: We feed `coupled_cell / mean(m*m)` as input spectra — are these the right \"guess\" spectra? gctools does the same (`cls[i,j] = compute_coupled_cell(fi,fj)/mean(mi*mj)`), so pattern matches.\n2. **Small fsky breakdown**: At fsky=0.01, the mode-coupling matrix is poorly conditioned. The decoupling step may amplify variance.\n3. **Missing noise bias subtraction**: Auto-spectra include shape noise. Knox uses these directly. NaMaster covariance propagates them through mode-coupling, which may amplify.\n4. **Workspace caching issue**: Covariance workspace computed from wrong field pair?\n\n**Goal**: If NaMaster Gaussian covariance can be made accurate, use it everywhere instead of Knox. This would also unblock the B×κ null test (NaMaster handles BB properly when EE is correct).\n\n**Diagnostics**:\n- Compare NaMaster vs Knox vs empirical (from sim null test scatter) variance\n- Check whether noise Cl specification in NmtField changes the result\n- Check whether catalog-based (no mode coupling) gives different covariance\n- Read NaMaster docs on INKA (Improved Narrow Kernel Approximation)",
+      "outcome": "**Root cause identified**: double-coupling of guess spectra. We pass coupled/fsky pseudo-Cℓ to `gaussian_covariance(coupled=False)`, which treats them as true spectra and applies mode-coupling internally — coupling applied twice. At fsky~0.01, this inflates variance by 10-130×.\n\n**Fix (following ACT×DES)**: Use theory C_ℓ + noise as guess spectra instead of data-derived pseudo-Cℓ. Theory auto-spectra (C_ℓ^{EE}, C_ℓ^{κκ}) now extracted in compute_theory_cls.py. Remaining: (1) ACT/SPT N_0 reconstruction noise curves, (2) wire theory+noise into compute_cross_spectrum.py covariance call, (3) shape noise from FITS NOISE_CL header.\n\n**Implementation chain**: act-dr6-lensing-noise-curve-n-0-8804f8c6 → wire theory into covariance → validate against Knox/sims → switch primary covariance.",
+      "createdAt": "2026-02-16T02:38:12.262864758+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "cross-shear-null-test-γ-κ-90e43c64",
+        "namaster-gaussian-covariance-9373b1fa"
+      ]
+    },
+    {
+      "id": "switch-primary-covariance-from-a8f3dbf9",
+      "title": "Switch primary covariance from Knox to NaMaster Gaussian",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "decision",
+        "covariance"
+      ],
+      "body": "User direction: use NaMaster's `gaussian_covariance()` (INKA — Improved Narrow Kernel Approximation) as the primary covariance everywhere, replacing Knox formula. This would also unblock the B×κ null test.\n\nBlocked on the investigation fiber: need to understand why NaMaster Gaussian was overestimating EE variance by 10-130× before adopting it. If that was a bug, this switch is straightforward. If it's fundamental (small fsky breakdown), need to decide whether conservative errors are acceptable.\n\n**Scope**: All cross-spectrum error bars, all chi2 tests, all S/N calculations, all evidence.json fields. Every plot that shows error bars would change.",
+      "outcome": null,
+      "createdAt": "2026-02-16T02:38:54.548314868+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "namaster-gaussian-covariance-25b31fd7"
+      ]
+    },
+    {
+      "id": "act-dr6-lensing-noise-curve-n-0-8804f8c6",
+      "title": "ACT DR6 lensing noise curve (N_0^κκ): download and integrate",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "infrastructure",
+        "covariance"
+      ],
+      "outcome": "Not started. ACT DR6 publishes N_0^κκ reconstruction noise as part of their lensing data release (Madhavacheril+2024, Qu+2024). Needed as input to NaMaster gaussian_covariance() — theory C_ℓ^κκ + N_0 serves as the guess auto-spectrum. Download from LAMBDA/ACT data release, add to inputs/act/, configure in config.yaml. SPT N_0 can be estimated from simulation maps already on disk (kgmv_fid_052425_{1,5001-5010}.fits).",
+      "createdAt": "2026-02-16T02:50:08.532456112+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "namaster-gaussian-covariance-25b31fd7"
+      ]
+    },
+    {
+      "id": "wire-theory-noise-guess-spectra-6a08873b",
+      "title": "Wire theory+noise guess spectra into NaMaster Gaussian covariance",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "implementation",
+        "covariance"
+      ],
+      "outcome": "Not started. After theory auto-spectra (cl_ee_theory, cl_kk_theory now in NPZ) and noise curves (NOISE_CL from FITS header, N_0 from ACT/SPT) are available: modify compute_cross_spectrum.py to construct guess spectra = theory + noise for gaussian_covariance(coupled=False). Validate NaMaster vs Knox vs sim scatter. Then wire into switch-primary-covariance decision.",
+      "createdAt": "2026-02-16T02:53:30.58678095+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "namaster-gaussian-covariance-25b31fd7",
+        "act-dr6-lensing-noise-curve-n-0-8804f8c6",
+        "switch-primary-covariance-from-a8f3dbf9"
       ]
     }
   ]
