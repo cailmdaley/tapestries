@@ -1138,8 +1138,8 @@
           "png_0": "bmode_null_lensmc_x_act.png",
           "png_1": "bmode_null_lensmc_x_spt_winter_gmv.png"
         },
-        "mtime": 1771392798000,
-        "generated": "2026-02-18T05:33:18.545398+00:00"
+        "mtime": 1771428006000,
+        "generated": "2026-02-18T15:20:06.344971+00:00"
       }
     },
     {
@@ -1168,7 +1168,7 @@
       "title": "Covariance validation: NaMaster agrees with Knox within 25%",
       "kind": "task",
       "status": "open",
-      "body": "Two independent covariance estimates — NaMaster Gaussian (harmonic-space, mask-aware) and Knox formula (analytic mode counting) — agree within ~25% for density × CMB κ cross-spectra across all 6 redshift bins and both CMB experiments. This validates the error bars used throughout the analysis.\n\n**NaMaster Gaussian covariance** uses the Improved Narrow Kernel Approximation (INKA) with theory+noise guess spectra: C^{κκ} + N_L for the CMB auto, C^{EE/δδ} + shape/shot noise for the galaxy auto, and C^{fκ}_theory for the cross. This captures mask mode-coupling effects that the Knox formula ignores.\n\n**Knox formula** uses analytic mode counting: Var(C^{ab}_b) = C^{aa}_b · C^{bb}_b / n_modes_b, with n_modes from fsky_eff (Hivon 2002). Independent of mask geometry beyond the effective sky fraction.\n\nThe ratio NaMaster/Knox ≈ 1.04 for density (spin-0 × spin-0) and ≈ 1.26 for shear (spin-2 × spin-0, map-based). The >1 ratio is expected: mode coupling from partial sky mixes power between bins, increasing variance beyond what Knox predicts.\n\n**For catalog-based shear** (production default): NaMaster Gaussian covariance is unavailable — NmtFieldCatalog doesn't expose map-domain masks needed for the covariance workspace. Error bars use a Knox proxy based on analytical shape noise: N^{EE} = (σ²_{e1} + σ²_{e2}) / (2 n_eff_sr).\n\n**Bug history**: An interleaved diagonal extraction bug inflated the apparent NaMaster/Knox ratio to ~31× for spin-2 fields. The NaMaster `gaussian_covariance()` output for spin-2 × spin-0 is (2·nbins, 2·nbins) with Eκ and Bκ components interleaved as (bin0_Eκ, bin0_Bκ, bin1_Eκ, ...). Plain `np.diag(cov)[:nbins]` mixed components from wrong bins. Fixed via `extract_covariance_diagonal()` in `nmt_utils.py`.\n\n**Script**: `workflow/scripts/plot_covariance_validation.py`",
+      "body": "Two independent covariance estimates — NaMaster Gaussian (harmonic-space, mask-aware) and Knox formula (analytic mode counting) — agree within ~25% for density × CMB κ cross-spectra across all 6 redshift bins and both CMB experiments. This validates the error bars used throughout the analysis.\n\n**NaMaster Gaussian covariance** uses the Improved Narrow Kernel Approximation (INKA) with theory+noise guess spectra: C^{κκ} + N_L for the CMB auto, C^{EE/δδ} + shape/shot noise for the galaxy auto, and C^{fκ}_theory for the cross. This captures mask mode-coupling effects that the Knox formula ignores.\n\n**Knox formula** uses analytic mode counting: Var(C^{ab}_b) = C^{aa}_b · C^{bb}_b / n_modes_b, with n_modes from fsky_eff (Hivon 2002). Independent of mask geometry beyond the effective sky fraction.\n\nThe ratio NaMaster/Knox ≈ 1.04 for density (spin-0 × spin-0) and ≈ 1.26 for shear (spin-2 × spin-0, map-based). The >1 ratio is expected: mode coupling from partial sky mixes power between bins, increasing variance beyond what Knox predicts.\n\n**For catalog-based shear** (production default): the NaMaster Gaussian covariance is computed using an auxiliary map-based NmtField. The catalog field measures the spectrum (via NmtFieldCatalog), but the covariance workspace requires map-domain masks that NmtFieldCatalog can't expose. Since covariance depends on mask geometry and auto-spectra (not the measurement method), the map-based covariance is valid for catalog spectra. This gives uniform NaMaster error bars across all probes.\n\n**Bug history**: An interleaved diagonal extraction bug inflated the apparent NaMaster/Knox ratio to ~31× for spin-2 fields. The NaMaster `gaussian_covariance()` output for spin-2 × spin-0 is (2·nbins, 2·nbins) with Eκ and Bκ components interleaved as (bin0_Eκ, bin0_Bκ, bin1_Eκ, ...). Plain `np.diag(cov)[:nbins]` mixed components from wrong bins. Fixed via `extract_covariance_diagonal()` in `nmt_utils.py`.\n\n**Script**: `workflow/scripts/plot_covariance_validation.py`",
       "outcome": null,
       "tags": [
         "tapestry:plot_covariance_validation",
@@ -1180,8 +1180,25 @@
         "catalog-validation-summary-d0b856bd"
       ],
       "specName": "plot_covariance_validation",
-      "staleness": "no-evidence",
-      "evidence": null
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "median_nmt_knox_ratio": 1.041,
+          "min_nmt_knox_ratio": 0.96,
+          "max_nmt_knox_ratio": 2.206,
+          "std_nmt_knox_ratio": 0.149,
+          "n_bins_compared": 6,
+          "n_cmbk_compared": 2,
+          "interleaved_bug_fixed": true,
+          "covariance_method": "NaMaster Gaussian (theory+noise guess spectra)",
+          "shear_covariance": "Knox proxy (catalog-based, NaMaster requires map masks)"
+        },
+        "artifacts": {
+          "png": "covariance_validation.png"
+        },
+        "mtime": 1771427655000,
+        "generated": "2026-02-18T15:14:13.437617+00:00"
+      }
     }
   ],
   "links": [
@@ -1845,6 +1862,12 @@
       {
         "id": "signal-overview-act-spt-theory-1ae2798f",
         "title": "The signal: cross-spectra for 6 bins (γκ + δκ), ACT and SPT",
+        "status": "closed",
+        "kind": "task"
+      },
+      {
+        "id": "map-based-namaster-covariance-884f2578",
+        "title": "Map-based NaMaster covariance for catalog-based shear cross-spectra",
         "status": "closed",
         "kind": "task"
       }
@@ -4576,7 +4599,7 @@
     },
     {
       "id": "full-tapestry-recomputation-047c308e",
-      "title": "Full tapestry recomputation running (smk-155005)",
+      "title": "Full tapestry recomputation running (smk-160542)",
       "status": "active",
       "kind": "task",
       "tags": [
@@ -4660,7 +4683,7 @@
         "tapestry:plot_covariance_validation",
         "region:methodology"
       ],
-      "body": "Two independent covariance estimates — NaMaster Gaussian (harmonic-space, mask-aware) and Knox formula (analytic mode counting) — agree within ~25% for density × CMB κ cross-spectra across all 6 redshift bins and both CMB experiments. This validates the error bars used throughout the analysis.\n\n**NaMaster Gaussian covariance** uses the Improved Narrow Kernel Approximation (INKA) with theory+noise guess spectra: C^{κκ} + N_L for the CMB auto, C^{EE/δδ} + shape/shot noise for the galaxy auto, and C^{fκ}_theory for the cross. This captures mask mode-coupling effects that the Knox formula ignores.\n\n**Knox formula** uses analytic mode counting: Var(C^{ab}_b) = C^{aa}_b · C^{bb}_b / n_modes_b, with n_modes from fsky_eff (Hivon 2002). Independent of mask geometry beyond the effective sky fraction.\n\nThe ratio NaMaster/Knox ≈ 1.04 for density (spin-0 × spin-0) and ≈ 1.26 for shear (spin-2 × spin-0, map-based). The >1 ratio is expected: mode coupling from partial sky mixes power between bins, increasing variance beyond what Knox predicts.\n\n**For catalog-based shear** (production default): NaMaster Gaussian covariance is unavailable — NmtFieldCatalog doesn't expose map-domain masks needed for the covariance workspace. Error bars use a Knox proxy based on analytical shape noise: N^{EE} = (σ²_{e1} + σ²_{e2}) / (2 n_eff_sr).\n\n**Bug history**: An interleaved diagonal extraction bug inflated the apparent NaMaster/Knox ratio to ~31× for spin-2 fields. The NaMaster `gaussian_covariance()` output for spin-2 × spin-0 is (2·nbins, 2·nbins) with Eκ and Bκ components interleaved as (bin0_Eκ, bin0_Bκ, bin1_Eκ, ...). Plain `np.diag(cov)[:nbins]` mixed components from wrong bins. Fixed via `extract_covariance_diagonal()` in `nmt_utils.py`.\n\n**Script**: `workflow/scripts/plot_covariance_validation.py`",
+      "body": "Two independent covariance estimates — NaMaster Gaussian (harmonic-space, mask-aware) and Knox formula (analytic mode counting) — agree within ~25% for density × CMB κ cross-spectra across all 6 redshift bins and both CMB experiments. This validates the error bars used throughout the analysis.\n\n**NaMaster Gaussian covariance** uses the Improved Narrow Kernel Approximation (INKA) with theory+noise guess spectra: C^{κκ} + N_L for the CMB auto, C^{EE/δδ} + shape/shot noise for the galaxy auto, and C^{fκ}_theory for the cross. This captures mask mode-coupling effects that the Knox formula ignores.\n\n**Knox formula** uses analytic mode counting: Var(C^{ab}_b) = C^{aa}_b · C^{bb}_b / n_modes_b, with n_modes from fsky_eff (Hivon 2002). Independent of mask geometry beyond the effective sky fraction.\n\nThe ratio NaMaster/Knox ≈ 1.04 for density (spin-0 × spin-0) and ≈ 1.26 for shear (spin-2 × spin-0, map-based). The >1 ratio is expected: mode coupling from partial sky mixes power between bins, increasing variance beyond what Knox predicts.\n\n**For catalog-based shear** (production default): the NaMaster Gaussian covariance is computed using an auxiliary map-based NmtField. The catalog field measures the spectrum (via NmtFieldCatalog), but the covariance workspace requires map-domain masks that NmtFieldCatalog can't expose. Since covariance depends on mask geometry and auto-spectra (not the measurement method), the map-based covariance is valid for catalog spectra. This gives uniform NaMaster error bars across all probes.\n\n**Bug history**: An interleaved diagonal extraction bug inflated the apparent NaMaster/Knox ratio to ~31× for spin-2 fields. The NaMaster `gaussian_covariance()` output for spin-2 × spin-0 is (2·nbins, 2·nbins) with Eκ and Bκ components interleaved as (bin0_Eκ, bin0_Bκ, bin1_Eκ, ...). Plain `np.diag(cov)[:nbins]` mixed components from wrong bins. Fixed via `extract_covariance_diagonal()` in `nmt_utils.py`.\n\n**Script**: `workflow/scripts/plot_covariance_validation.py`",
       "outcome": null,
       "createdAt": "2026-02-18T15:46:29.913255271+01:00",
       "closedAt": null,
@@ -4668,6 +4691,22 @@
         "namaster-covariance-validate-07e17cab",
         "ralph-titan-tapestry-b5db47d7",
         "catalog-validation-summary-d0b856bd"
+      ]
+    },
+    {
+      "id": "map-based-namaster-covariance-884f2578",
+      "title": "Map-based NaMaster covariance for catalog-based shear cross-spectra",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "decision",
+        "covariance"
+      ],
+      "outcome": "Catalog-based shear now uses map-based auxiliary NmtField for NaMaster Gaussian covariance. NmtFieldCatalog can't expose get_mask() needed for covariance workspace, but covariance depends on mask geometry and auto-spectra, not measurement method. Snakefile passes map+mask alongside catalog as inputs. Script builds auxiliary map-based field for cov_workspace and gaussian_covariance while using catalog field for the spectrum. Knox proxy kept as diagnostic. Changes: Snakefile get_euclid_map_files(), compute_cross_spectrum.py, plot_covariance_validation.py (now shows both density+shear ratios), spectrum_utils.py comments.",
+      "createdAt": "2026-02-18T16:18:20.163553289+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "covariance-validation-namaster-4b3c85a4"
       ]
     }
   ]
