@@ -312,8 +312,8 @@
       }
       .tapestry-detail-resize:hover, .tapestry-detail-resize:active { background: var(--accent-gold); opacity: 0.4; }
       .tapestry-detail-header {
-        display: flex; align-items: center; justify-content: space-between;
-        padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--ui-border); flex-shrink: 0;
+        display: flex; align-items: flex-start; justify-content: space-between;
+        padding: 0.6rem 0.8rem 0.2rem; flex-shrink: 0;
       }
       .tapestry-detail-title { display: flex; align-items: center; gap: 0.4rem; min-width: 0; }
       .staleness-badge { font-size: 0.85rem; flex-shrink: 0; }
@@ -321,11 +321,19 @@
         font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500;
         color: var(--ui-text);
       }
-      .detail-status {
-        font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase;
-        letter-spacing: 0.05em; padding: 0.15rem 0.4rem; border-radius: 2px;
-        background: var(--ui-dark-surface); color: var(--ui-text-muted); flex-shrink: 0;
+      .tapestry-detail-meta {
+        display: flex; align-items: center; flex-wrap: wrap;
+        gap: 0.2rem 0.5rem; padding: 0 0.8rem 0.5rem;
+        font: 0.7rem/1.2 var(--font-mono); color: var(--ui-text-muted);
+        border-bottom: 1px solid var(--ui-border); flex-shrink: 0;
       }
+      .tapestry-detail-meta .detail-status {
+        text-transform: uppercase; letter-spacing: 0.05em;
+        padding: 0.1rem 0.35rem; border-radius: 2px;
+        background: var(--ui-dark-surface);
+      }
+      .tapestry-detail-meta .tapestry-detail-tags { display: contents; }
+      .detail-meta-spacer { flex: 1; }
       .tapestry-detail-close {
         background: none; border: none; color: var(--ui-text-muted);
         font-size: 1.2rem; cursor: pointer; padding: 0.1rem 0.3rem; line-height: 1; flex-shrink: 0;
@@ -334,9 +342,12 @@
       .tapestry-detail-content { flex: 1; overflow-y: auto; padding: 0.8rem; }
 
       /* Detail: graph */
-      .tapestry-detail-graph { padding-bottom: 0.6rem; margin-bottom: 0.6rem; border-bottom: 1px solid var(--ui-border); }
-      .tapestry-detail-graph-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; font-size: 0.8rem; padding: 0.15rem 0; }
-      .tapestry-detail-graph-line .graph-label { color: var(--ui-text-muted); font-style: italic; font-family: var(--font-main); font-size: 0.75rem; min-width: 5.5em; }
+      .tapestry-detail-graph {
+        display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem;
+        padding-bottom: 0.6rem; margin-bottom: 0.6rem; border-bottom: 1px solid var(--ui-border);
+      }
+      .graph-arrow { color: var(--ui-text-muted); font-size: 0.75rem; opacity: 0.6; }
+      .graph-sep { color: var(--ui-text-muted); font-size: 0.75rem; opacity: 0.4; margin: 0 0.15rem; }
       .dep-tag {
         font-family: var(--font-mono); font-size: 0.7rem;
         background: var(--ui-dark-surface); padding: 0.15rem 0.4rem;
@@ -416,7 +427,7 @@
         to { opacity: 1; transform: translateX(-50%) translateY(0); }
       }
     </style>
-    <script type="module" crossorigin src="/tapestries/assets/index-Dz7XwSzV.js"></script>
+    <script type="module" crossorigin src="/tapestries/assets/index-DsK3dd5v.js"></script>
     <link rel="stylesheet" crossorigin href="/tapestries/assets/index-DRKxklZO.css">
   </head>
   <body>
