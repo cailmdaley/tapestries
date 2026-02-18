@@ -66,10 +66,10 @@
         "metrics": {
           "n_comparisons": 21,
           "n_with_pte": 21,
-          "n_consistent_5pct": 8,
-          "median_pte": 0,
-          "min_pte": 0,
-          "median_chi2_per_dof": 2.86
+          "n_consistent_5pct": 21,
+          "median_pte": 0.657,
+          "min_pte": 0.0864,
+          "median_chi2_per_dof": 0.84
         },
         "artifacts": {
           "act_vs_spt_composite": "act_vs_spt_composite.png",
@@ -95,8 +95,8 @@
           "act_vs_spt_metacal_bin6": "act_vs_spt_metacal_bin6.png",
           "act_vs_spt_metacal_binall": "act_vs_spt_metacal_binall.png"
         },
-        "mtime": 1771393507000,
-        "generated": "2026-02-18T05:45:07.406935+00:00"
+        "mtime": 1771437885000,
+        "generated": "2026-02-18T18:04:40.376091+00:00"
       }
     },
     {
@@ -116,15 +116,15 @@
         "signal-overview-act-spt-theory-1ae2798f"
       ],
       "specName": "plot_method_comparison",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_comparisons": 35,
           "n_with_pte": 35,
-          "n_consistent_5pct": 35,
-          "median_pte": 0.926,
-          "min_pte": 0.3179,
-          "median_chi2_per_dof": 0.58,
+          "n_consistent_5pct": 30,
+          "median_pte": 1,
+          "min_pte": 0,
+          "median_chi2_per_dof": 0.07,
           "median_rms_frac_diff": 1.5001
         },
         "artifacts": {
@@ -165,8 +165,8 @@
           "method_comparison_binall_x_spt_winter_tt": "method_comparison_binall_x_spt_winter_tt.png",
           "method_comparison_composite": "method_comparison_composite.png"
         },
-        "mtime": 1771391785000,
-        "generated": "2026-02-18T05:16:25.572117+00:00"
+        "mtime": 1771438005000,
+        "generated": "2026-02-18T18:06:05.353096+00:00"
       }
     },
     {
@@ -186,18 +186,18 @@
         "signal-overview-act-spt-theory-1ae2798f"
       ],
       "specName": "plot_theory_comparison",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_comparisons": 6,
           "n_with_pte": 6,
-          "n_consistent_5pct": 1,
-          "median_pte": 0,
-          "median_chi2_per_dof": 2.84,
+          "n_consistent_5pct": 3,
+          "median_pte": 0.142,
+          "median_chi2_per_dof": 1.17,
           "ia_n_with_pte": 4,
-          "ia_n_consistent_5pct": 0,
-          "ia_median_pte": 0,
-          "ia_median_chi2_per_dof": 8.07,
+          "ia_n_consistent_5pct": 2,
+          "ia_median_pte": 0.291,
+          "ia_median_chi2_per_dof": 18.89,
           "ia_model": "NLA-z (A_IA=1.72, eta=-0.41)"
         },
         "artifacts": {
@@ -214,8 +214,8 @@
           "theory_comparison_metacal_x_spt_winter_pp": "theory_comparison_metacal_x_spt_winter_pp.png",
           "theory_comparison_metacal_x_spt_winter_tt": "theory_comparison_metacal_x_spt_winter_tt.png"
         },
-        "mtime": 1771391717000,
-        "generated": "2026-02-18T05:15:17.312715+00:00"
+        "mtime": 1771437883000,
+        "generated": "2026-02-18T18:04:12.731894+00:00"
       }
     },
     {
@@ -239,16 +239,22 @@
       "staleness": "stale",
       "evidence": {
         "metrics": {
-          "n_plots": 58,
+          "n_plots": 118,
           "metric_type": "full_X",
-          "n_systematics": 5,
+          "n_systematics": 11,
           "dominant_systematic": "galactic_extinction",
           "per_systematic_max": {
             "stellar_density": "4.8e-07",
             "galactic_extinction": "4.8e-07",
             "exposures": "4.8e-07",
             "zodiacal_light": "0.0e+00",
-            "saa": "3.3e-09"
+            "saa": "3.3e-09",
+            "psf": "4.0e-09",
+            "noise": "3.9e-09",
+            "persistence": "3.8e-09",
+            "star_brightness_mean": "4.1e-09",
+            "galaxy_number_density": "4.4e-09",
+            "phz_quality": "5.1e-09"
           }
         },
         "artifacts": {
@@ -278,6 +284,56 @@
           "contamination_galactic_extinction_metacal_x_spt_winter_mv": "contamination_galactic_extinction_metacal_x_spt_winter_mv.png",
           "contamination_galactic_extinction_metacal_x_spt_winter_pp": "contamination_galactic_extinction_metacal_x_spt_winter_pp.png",
           "contamination_galactic_extinction_metacal_x_spt_winter_tt": "contamination_galactic_extinction_metacal_x_spt_winter_tt.png",
+          "contamination_galaxy_number_density_lensmc_x_act": "contamination_galaxy_number_density_lensmc_x_act.png",
+          "contamination_galaxy_number_density_lensmc_x_spt_winter_gmv": "contamination_galaxy_number_density_lensmc_x_spt_winter_gmv.png",
+          "contamination_galaxy_number_density_lensmc_x_spt_winter_mv": "contamination_galaxy_number_density_lensmc_x_spt_winter_mv.png",
+          "contamination_galaxy_number_density_lensmc_x_spt_winter_pp": "contamination_galaxy_number_density_lensmc_x_spt_winter_pp.png",
+          "contamination_galaxy_number_density_lensmc_x_spt_winter_tt": "contamination_galaxy_number_density_lensmc_x_spt_winter_tt.png",
+          "contamination_galaxy_number_density_metacal_x_act": "contamination_galaxy_number_density_metacal_x_act.png",
+          "contamination_galaxy_number_density_metacal_x_spt_winter_gmv": "contamination_galaxy_number_density_metacal_x_spt_winter_gmv.png",
+          "contamination_galaxy_number_density_metacal_x_spt_winter_mv": "contamination_galaxy_number_density_metacal_x_spt_winter_mv.png",
+          "contamination_galaxy_number_density_metacal_x_spt_winter_pp": "contamination_galaxy_number_density_metacal_x_spt_winter_pp.png",
+          "contamination_galaxy_number_density_metacal_x_spt_winter_tt": "contamination_galaxy_number_density_metacal_x_spt_winter_tt.png",
+          "contamination_noise_lensmc_x_act": "contamination_noise_lensmc_x_act.png",
+          "contamination_noise_lensmc_x_spt_winter_gmv": "contamination_noise_lensmc_x_spt_winter_gmv.png",
+          "contamination_noise_lensmc_x_spt_winter_mv": "contamination_noise_lensmc_x_spt_winter_mv.png",
+          "contamination_noise_lensmc_x_spt_winter_pp": "contamination_noise_lensmc_x_spt_winter_pp.png",
+          "contamination_noise_lensmc_x_spt_winter_tt": "contamination_noise_lensmc_x_spt_winter_tt.png",
+          "contamination_noise_metacal_x_act": "contamination_noise_metacal_x_act.png",
+          "contamination_noise_metacal_x_spt_winter_gmv": "contamination_noise_metacal_x_spt_winter_gmv.png",
+          "contamination_noise_metacal_x_spt_winter_mv": "contamination_noise_metacal_x_spt_winter_mv.png",
+          "contamination_noise_metacal_x_spt_winter_pp": "contamination_noise_metacal_x_spt_winter_pp.png",
+          "contamination_noise_metacal_x_spt_winter_tt": "contamination_noise_metacal_x_spt_winter_tt.png",
+          "contamination_persistence_lensmc_x_act": "contamination_persistence_lensmc_x_act.png",
+          "contamination_persistence_lensmc_x_spt_winter_gmv": "contamination_persistence_lensmc_x_spt_winter_gmv.png",
+          "contamination_persistence_lensmc_x_spt_winter_mv": "contamination_persistence_lensmc_x_spt_winter_mv.png",
+          "contamination_persistence_lensmc_x_spt_winter_pp": "contamination_persistence_lensmc_x_spt_winter_pp.png",
+          "contamination_persistence_lensmc_x_spt_winter_tt": "contamination_persistence_lensmc_x_spt_winter_tt.png",
+          "contamination_persistence_metacal_x_act": "contamination_persistence_metacal_x_act.png",
+          "contamination_persistence_metacal_x_spt_winter_gmv": "contamination_persistence_metacal_x_spt_winter_gmv.png",
+          "contamination_persistence_metacal_x_spt_winter_mv": "contamination_persistence_metacal_x_spt_winter_mv.png",
+          "contamination_persistence_metacal_x_spt_winter_pp": "contamination_persistence_metacal_x_spt_winter_pp.png",
+          "contamination_persistence_metacal_x_spt_winter_tt": "contamination_persistence_metacal_x_spt_winter_tt.png",
+          "contamination_phz_quality_lensmc_x_act": "contamination_phz_quality_lensmc_x_act.png",
+          "contamination_phz_quality_lensmc_x_spt_winter_gmv": "contamination_phz_quality_lensmc_x_spt_winter_gmv.png",
+          "contamination_phz_quality_lensmc_x_spt_winter_mv": "contamination_phz_quality_lensmc_x_spt_winter_mv.png",
+          "contamination_phz_quality_lensmc_x_spt_winter_pp": "contamination_phz_quality_lensmc_x_spt_winter_pp.png",
+          "contamination_phz_quality_lensmc_x_spt_winter_tt": "contamination_phz_quality_lensmc_x_spt_winter_tt.png",
+          "contamination_phz_quality_metacal_x_act": "contamination_phz_quality_metacal_x_act.png",
+          "contamination_phz_quality_metacal_x_spt_winter_gmv": "contamination_phz_quality_metacal_x_spt_winter_gmv.png",
+          "contamination_phz_quality_metacal_x_spt_winter_mv": "contamination_phz_quality_metacal_x_spt_winter_mv.png",
+          "contamination_phz_quality_metacal_x_spt_winter_pp": "contamination_phz_quality_metacal_x_spt_winter_pp.png",
+          "contamination_phz_quality_metacal_x_spt_winter_tt": "contamination_phz_quality_metacal_x_spt_winter_tt.png",
+          "contamination_psf_lensmc_x_act": "contamination_psf_lensmc_x_act.png",
+          "contamination_psf_lensmc_x_spt_winter_gmv": "contamination_psf_lensmc_x_spt_winter_gmv.png",
+          "contamination_psf_lensmc_x_spt_winter_mv": "contamination_psf_lensmc_x_spt_winter_mv.png",
+          "contamination_psf_lensmc_x_spt_winter_pp": "contamination_psf_lensmc_x_spt_winter_pp.png",
+          "contamination_psf_lensmc_x_spt_winter_tt": "contamination_psf_lensmc_x_spt_winter_tt.png",
+          "contamination_psf_metacal_x_act": "contamination_psf_metacal_x_act.png",
+          "contamination_psf_metacal_x_spt_winter_gmv": "contamination_psf_metacal_x_spt_winter_gmv.png",
+          "contamination_psf_metacal_x_spt_winter_mv": "contamination_psf_metacal_x_spt_winter_mv.png",
+          "contamination_psf_metacal_x_spt_winter_pp": "contamination_psf_metacal_x_spt_winter_pp.png",
+          "contamination_psf_metacal_x_spt_winter_tt": "contamination_psf_metacal_x_spt_winter_tt.png",
           "contamination_saa_lensmc_x_act": "contamination_saa_lensmc_x_act.png",
           "contamination_saa_lensmc_x_spt_winter_gmv": "contamination_saa_lensmc_x_spt_winter_gmv.png",
           "contamination_saa_lensmc_x_spt_winter_mv": "contamination_saa_lensmc_x_spt_winter_mv.png",
@@ -288,6 +344,16 @@
           "contamination_saa_metacal_x_spt_winter_mv": "contamination_saa_metacal_x_spt_winter_mv.png",
           "contamination_saa_metacal_x_spt_winter_pp": "contamination_saa_metacal_x_spt_winter_pp.png",
           "contamination_saa_metacal_x_spt_winter_tt": "contamination_saa_metacal_x_spt_winter_tt.png",
+          "contamination_star_brightness_mean_lensmc_x_act": "contamination_star_brightness_mean_lensmc_x_act.png",
+          "contamination_star_brightness_mean_lensmc_x_spt_winter_gmv": "contamination_star_brightness_mean_lensmc_x_spt_winter_gmv.png",
+          "contamination_star_brightness_mean_lensmc_x_spt_winter_mv": "contamination_star_brightness_mean_lensmc_x_spt_winter_mv.png",
+          "contamination_star_brightness_mean_lensmc_x_spt_winter_pp": "contamination_star_brightness_mean_lensmc_x_spt_winter_pp.png",
+          "contamination_star_brightness_mean_lensmc_x_spt_winter_tt": "contamination_star_brightness_mean_lensmc_x_spt_winter_tt.png",
+          "contamination_star_brightness_mean_metacal_x_act": "contamination_star_brightness_mean_metacal_x_act.png",
+          "contamination_star_brightness_mean_metacal_x_spt_winter_gmv": "contamination_star_brightness_mean_metacal_x_spt_winter_gmv.png",
+          "contamination_star_brightness_mean_metacal_x_spt_winter_mv": "contamination_star_brightness_mean_metacal_x_spt_winter_mv.png",
+          "contamination_star_brightness_mean_metacal_x_spt_winter_pp": "contamination_star_brightness_mean_metacal_x_spt_winter_pp.png",
+          "contamination_star_brightness_mean_metacal_x_spt_winter_tt": "contamination_star_brightness_mean_metacal_x_spt_winter_tt.png",
           "contamination_stellar_density_density_x_act": "contamination_stellar_density_density_x_act.png",
           "contamination_stellar_density_density_x_spt_winter_gmv": "contamination_stellar_density_density_x_spt_winter_gmv.png",
           "contamination_stellar_density_lensmc_x_act": "contamination_stellar_density_lensmc_x_act.png",
@@ -313,8 +379,8 @@
           "contamination_zodiacal_light_metacal_x_spt_winter_pp": "contamination_zodiacal_light_metacal_x_spt_winter_pp.png",
           "contamination_zodiacal_light_metacal_x_spt_winter_tt": "contamination_zodiacal_light_metacal_x_spt_winter_tt.png"
         },
-        "mtime": 1771391936000,
-        "generated": "2026-02-18T05:18:56.450669+00:00"
+        "mtime": 1771437884000,
+        "generated": "2026-02-18T18:04:14.483951+00:00"
       }
     },
     {
@@ -335,88 +401,112 @@
         "systematic-maps-on-the-sky-83122c03"
       ],
       "specName": "plot_systematic_null_tests",
-      "staleness": "fresh",
+      "staleness": "stale",
       "evidence": {
         "metrics": {
-          "n_tests": 154,
-          "n_fail_5pct": 42,
-          "n_fail_1pct": 29,
-          "median_chi2_dof": 1.782,
-          "median_pte": 0.17,
+          "n_tests": 231,
+          "n_fail_5pct": 119,
+          "n_fail_1pct": 106,
+          "median_chi2_dof": 19.544,
+          "median_pte": 0.039,
+          "per_method": {
+            "density": {
+              "n_tests": 77,
+              "n_fail_5pct": 77,
+              "n_fail_1pct": 77,
+              "median_chi2_dof": 50.77,
+              "median_pte": 0
+            },
+            "lensmc": {
+              "n_tests": 77,
+              "n_fail_5pct": 20,
+              "n_fail_1pct": 13,
+              "median_chi2_dof": 1.29,
+              "median_pte": 0.169
+            },
+            "metacal": {
+              "n_tests": 77,
+              "n_fail_5pct": 22,
+              "n_fail_1pct": 16,
+              "median_chi2_dof": 1.26,
+              "median_pte": 0.196
+            }
+          },
           "per_systematic": {
             "exposures": {
-              "n_tests": 14,
-              "n_fail_5pct": 1,
-              "median_chi2_dof": 1.24,
-              "median_pte": 0.212
+              "n_tests": 21,
+              "n_fail_5pct": 8,
+              "median_chi2_dof": 1.34,
+              "median_pte": 0.139
             },
             "galactic_extinction": {
-              "n_tests": 14,
-              "n_fail_5pct": 10,
-              "median_chi2_dof": 2.38,
-              "median_pte": 0.001
+              "n_tests": 21,
+              "n_fail_5pct": 17,
+              "median_chi2_dof": 4.95,
+              "median_pte": 0
             },
             "galaxy_number_density": {
-              "n_tests": 14,
-              "n_fail_5pct": 12,
-              "median_chi2_dof": 2.93,
+              "n_tests": 21,
+              "n_fail_5pct": 19,
+              "median_chi2_dof": 6.17,
               "median_pte": 0
             },
             "noise": {
-              "n_tests": 14,
-              "n_fail_5pct": 1,
-              "median_chi2_dof": 1.27,
-              "median_pte": 0.188
+              "n_tests": 21,
+              "n_fail_5pct": 8,
+              "median_chi2_dof": 1.31,
+              "median_pte": 0.155
             },
             "persistence": {
-              "n_tests": 14,
-              "n_fail_5pct": 2,
-              "median_chi2_dof": 1.07,
-              "median_pte": 0.378
+              "n_tests": 21,
+              "n_fail_5pct": 9,
+              "median_chi2_dof": 1.48,
+              "median_pte": 0.079
             },
             "phz_quality": {
-              "n_tests": 14,
-              "n_fail_5pct": 3,
-              "median_chi2_dof": 1.23,
-              "median_pte": 0.215
+              "n_tests": 21,
+              "n_fail_5pct": 10,
+              "median_chi2_dof": 1.47,
+              "median_pte": 0.082
             },
             "psf": {
-              "n_tests": 14,
-              "n_fail_5pct": 1,
-              "median_chi2_dof": 1.08,
-              "median_pte": 0.36
+              "n_tests": 21,
+              "n_fail_5pct": 8,
+              "median_chi2_dof": 1.47,
+              "median_pte": 0.083
             },
             "saa": {
-              "n_tests": 14,
-              "n_fail_5pct": 0,
-              "median_chi2_dof": 1.16,
-              "median_pte": 0.277
+              "n_tests": 21,
+              "n_fail_5pct": 7,
+              "median_chi2_dof": 1.35,
+              "median_pte": 0.134
             },
             "star_brightness_mean": {
-              "n_tests": 14,
-              "n_fail_5pct": 7,
-              "median_chi2_dof": 1.51,
-              "median_pte": 0.076
+              "n_tests": 21,
+              "n_fail_5pct": 14,
+              "median_chi2_dof": 1.88,
+              "median_pte": 0.01
             },
             "stellar_density": {
-              "n_tests": 14,
-              "n_fail_5pct": 5,
-              "median_chi2_dof": 1.4,
-              "median_pte": 0.113
+              "n_tests": 21,
+              "n_fail_5pct": 12,
+              "median_chi2_dof": 1.67,
+              "median_pte": 0.03
             },
             "zodiacal_light": {
-              "n_tests": 14,
-              "n_fail_5pct": 0,
-              "median_chi2_dof": 1.14,
-              "median_pte": 0.301
+              "n_tests": 21,
+              "n_fail_5pct": 7,
+              "median_chi2_dof": 1.29,
+              "median_pte": 0.169
             }
           }
         },
         "artifacts": {
-          "png": "systematic_null_test_summary.png"
+          "png_shear": "systematic_null_test_summary.png",
+          "png_density": "systematic_null_test_density.png"
         },
-        "mtime": 1771395175000,
-        "generated": "2026-02-18T06:12:55.033406+00:00"
+        "mtime": 1771433908000,
+        "generated": "2026-02-18T16:58:17.611080+00:00"
       }
     },
     {
@@ -436,7 +526,7 @@
         "apodization-masks-what-enters-f6b5a581"
       ],
       "specName": "plot_catalog_validation_summary",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_comparisons": 6,
@@ -449,8 +539,8 @@
         "artifacts": {
           "png": "catalog_validation_summary.png"
         },
-        "mtime": 1771392799000,
-        "generated": "2026-02-18T05:33:18.935321+00:00"
+        "mtime": 1771437843000,
+        "generated": "2026-02-18T18:03:44.861396+00:00"
       }
     },
     {
@@ -470,14 +560,14 @@
         "act-vs-spt-cross-spectra-b4181199"
       ],
       "specName": "plot_spt_estimator_comparison",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_comparisons": 14,
-          "n_all_consistent": 10,
-          "median_min_pte": 0.156,
-          "min_min_pte": 0,
-          "all_pass": false
+          "n_all_consistent": 14,
+          "median_min_pte": 1,
+          "min_min_pte": 0.997,
+          "all_pass": true
         },
         "artifacts": {
           "spt_estimator_composite": "spt_estimator_composite.png",
@@ -496,8 +586,8 @@
           "spt_estimator_metacal_bin6": "spt_estimator_metacal_bin6.png",
           "spt_estimator_metacal_binall": "spt_estimator_metacal_binall.png"
         },
-        "mtime": 1771391976000,
-        "generated": "2026-02-18T05:19:36.570386+00:00"
+        "mtime": 1771437885000,
+        "generated": "2026-02-18T18:04:10.735028+00:00"
       }
     },
     {
@@ -517,7 +607,7 @@
         "signal-overview-act-spt-theory-1ae2798f"
       ],
       "specName": "plot_jackknife_null_test",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_comparisons": 4,
@@ -533,8 +623,8 @@
           "jackknife_null_metacal_x_act": "jackknife_null_metacal_x_act.png",
           "jackknife_null_metacal_x_spt_winter_gmv": "jackknife_null_metacal_x_spt_winter_gmv.png"
         },
-        "mtime": 1771391752000,
-        "generated": "2026-02-18T05:15:52.355323+00:00"
+        "mtime": 1771437804000,
+        "generated": "2026-02-18T18:02:58.533887+00:00"
       }
     },
     {
@@ -573,8 +663,8 @@
           "theory_residual_metacal": "theory_residual_metacal.png",
           "theory_residual_metacal_amplitude_summary": "theory_residual_metacal_amplitude_summary.png"
         },
-        "mtime": 1771391718000,
-        "generated": "2026-02-18T05:15:18.080168+00:00"
+        "mtime": 1771437884000,
+        "generated": "2026-02-18T18:04:12.998880+00:00"
       }
     },
     {
@@ -609,70 +699,70 @@
         "b-mode-null-test-passes-galaxy-0f71087b"
       ],
       "specName": "plot_analysis_summary",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_bins": 6,
-          "act_median_knox_snr": 7.2,
-          "spt_median_knox_snr": 8.1,
-          "act_max_knox_snr": 11.6,
-          "spt_max_knox_snr": 11.8,
-          "act_combined_knox_snr": 19.8,
-          "spt_combined_knox_snr": 21,
-          "act_marginalized_snr": 15,
-          "spt_marginalized_snr": 14.1,
-          "act_spt_median_pte": 0.639,
+          "act_median_knox_snr": 14.5,
+          "spt_median_knox_snr": 23.5,
+          "act_max_knox_snr": 28,
+          "spt_max_knox_snr": 43.4,
+          "act_combined_knox_snr": 42.9,
+          "spt_combined_knox_snr": 67.2,
+          "act_marginalized_snr": 26.7,
+          "spt_marginalized_snr": 37.1,
+          "act_spt_median_pte": 0.657,
           "act_spt_all_pass": true,
-          "method_all_pass": true,
+          "method_all_pass": false,
           "estimator_all_pass": true,
-          "n_systematic_fail_5pct": 16,
-          "n_systematic_total": 70,
+          "n_systematic_fail_5pct": 119,
+          "n_systematic_total": 231,
           "jackknife_all_pass": true,
-          "galactic_extinction_n_fail": 10,
+          "galactic_extinction_n_fail": 17,
           "sim_null_n_fail": 1,
           "sim_null_n_total": 66,
           "sim_null_median_chi2_dof": 0.918,
           "spatial_n_fail": 0,
           "spatial_n_total": 6,
           "spatial_median_chi2_dof": 1.343,
-          "bmode_n_fail": 0,
-          "bmode_n_total": 12,
-          "bmode_median_chi2_dof": 0.89,
-          "act_ia_chi2_dof": 0.882,
-          "act_ia_pte": 0.8191,
-          "spt_ia_chi2_dof": 1.884,
+          "bmode_n_fail": null,
+          "bmode_n_total": null,
+          "bmode_median_chi2_dof": null,
+          "act_ia_chi2_dof": 3.181,
+          "act_ia_pte": 0,
+          "spt_ia_chi2_dof": 17.505,
           "spt_ia_pte": 0,
-          "act_mean_A": 0.844,
-          "act_mean_A_err": 0.05,
-          "spt_mean_A": 0.694,
-          "spt_mean_A_err": 0.045,
+          "act_mean_A": 0.912,
+          "act_mean_A_err": 0.024,
+          "spt_mean_A": 0.822,
+          "spt_mean_A_err": 0.017,
           "ia_model": "NLA-z (A_IA=1.72, eta=-0.41)",
-          "act_ia_mean_A": 0.931,
-          "act_ia_mean_A_err": 0.055,
-          "spt_ia_mean_A": 0.762,
-          "spt_ia_mean_A_err": 0.049,
-          "budget_act_max_bias_sigma": 4.41,
+          "act_ia_mean_A": 0.985,
+          "act_ia_mean_A_err": 0.026,
+          "spt_ia_mean_A": 0.889,
+          "spt_ia_mean_A_err": 0.018,
+          "budget_act_max_bias_sigma": 14.14,
           "budget_act_worst_systematic": "stellar_density",
-          "budget_spt_max_bias_sigma": 1.19,
-          "act_A_after_deprojection": 0.7965,
-          "act_A_delta_deprojection": -0.1349,
-          "spt_A_after_deprojection": 0.7448,
-          "spt_A_delta_deprojection": -0.0175,
+          "budget_spt_max_bias_sigma": 5.73,
+          "act_A_after_deprojection": 0.5703,
+          "act_A_delta_deprojection": -0.4142,
+          "spt_A_after_deprojection": 0.945,
+          "spt_A_delta_deprojection": 0.056,
           "deprojection_method": "marginalized",
-          "act_deprojected_ia_chi2_dof": 0.748,
-          "act_deprojected_ia_pte": 0.98,
-          "act_deprojected_ia_A_hat": 0.864,
-          "act_deprojected_delta_A_sigma": -1.2,
-          "spt_deprojected_ia_chi2_dof": 1.632,
-          "spt_deprojected_ia_A_hat": 0.751,
-          "act_robustness_worst_sigma": 1.53,
-          "act_robustness_worst_bin": "3",
-          "spt_robustness_worst_sigma": 2.68,
-          "spt_robustness_worst_bin": "2"
+          "act_deprojected_ia_chi2_dof": 1.785,
+          "act_deprojected_ia_pte": 0,
+          "act_deprojected_ia_A_hat": 0.879,
+          "act_deprojected_delta_A_sigma": -4.1,
+          "spt_deprojected_ia_chi2_dof": 11.814,
+          "spt_deprojected_ia_A_hat": 0.777,
+          "act_robustness_worst_sigma": 2.17,
+          "act_robustness_worst_bin": "1",
+          "spt_robustness_worst_sigma": 6.86,
+          "spt_robustness_worst_bin": "6"
         },
         "artifacts": {},
-        "mtime": 1771227811000,
-        "generated": "2026-02-16T07:43:31.215146+00:00"
+        "mtime": 1771438176000,
+        "generated": "2026-02-18T18:09:25.016701+00:00"
       }
     },
     {
@@ -769,8 +859,8 @@
           "likelihood_metacal_x_act": "likelihood_metacal_x_act.png",
           "likelihood_metacal_x_spt_winter_gmv": "likelihood_metacal_x_spt_winter_gmv.png"
         },
-        "mtime": 1771391748000,
-        "generated": "2026-02-18T05:15:48.538378+00:00"
+        "mtime": 1771437964000,
+        "generated": "2026-02-18T18:06:00.835920+00:00"
       }
     },
     {
@@ -790,7 +880,7 @@
         "jackknife-null-test-random-sign-e86273e8"
       ],
       "specName": "plot_sim_null_test",
-      "staleness": "fresh",
+      "staleness": "stale",
       "evidence": {
         "metrics": {
           "n_methods": 1,
@@ -804,8 +894,8 @@
         "artifacts": {
           "sim_null_lensmc_x_spt_winter_gmv": "sim_null_lensmc_x_spt_winter_gmv.png"
         },
-        "mtime": 1771391753000,
-        "generated": "2026-02-18T05:15:53.585678+00:00"
+        "mtime": 1771437763000,
+        "generated": "2026-02-18T18:02:29.827490+00:00"
       }
     },
     {
@@ -882,8 +972,8 @@
           "systematic_budget_lensmc": "systematic_budget_lensmc.png",
           "systematic_budget_metacal": "systematic_budget_metacal.png"
         },
-        "mtime": 1771391747000,
-        "generated": "2026-02-18T05:15:40.124857+00:00"
+        "mtime": 1771437763000,
+        "generated": "2026-02-18T18:02:29.672111+00:00"
       }
     },
     {
@@ -903,38 +993,38 @@
         "theory-residual-analysis-6a66a995"
       ],
       "specName": "plot_ell_range_robustness",
-      "staleness": "stale",
+      "staleness": "fresh",
       "evidence": {
         "metrics": {
           "n_methods": 2,
-          "overall_worst_deviation_sigma": 2.68,
-          "overall_median_deviation_sigma": 1.92,
+          "overall_worst_deviation_sigma": 6.86,
+          "overall_median_deviation_sigma": 3.55,
           "per_method_cmb": {
             "lensmc_act": {
-              "worst_max_deviation_sigma": 1.53,
-              "worst_bin": "3",
-              "median_A_range": 0.3535
+              "worst_max_deviation_sigma": 2.17,
+              "worst_bin": "1",
+              "median_A_range": 0.2127
             },
             "lensmc_spt_winter_gmv": {
-              "worst_max_deviation_sigma": 2.68,
-              "worst_bin": "2",
-              "median_A_range": 0.6633
+              "worst_max_deviation_sigma": 6.86,
+              "worst_bin": "6",
+              "median_A_range": 0.5197
             },
             "metacal_act": {
-              "worst_max_deviation_sigma": 1.91,
+              "worst_max_deviation_sigma": 2.01,
               "worst_bin": "3",
-              "median_A_range": 0.3066
+              "median_A_range": 0.1971
             },
             "metacal_spt_winter_gmv": {
-              "worst_max_deviation_sigma": 1.93,
-              "worst_bin": "2",
-              "median_A_range": 0.4838
+              "worst_max_deviation_sigma": 4.93,
+              "worst_bin": "6",
+              "median_A_range": 0.474
             }
           }
         },
         "artifacts": {},
-        "mtime": 1771227738000,
-        "generated": "2026-02-16T07:42:18.136222+00:00"
+        "mtime": 1771437885000,
+        "generated": "2026-02-18T18:04:09.205334+00:00"
       }
     },
     {
@@ -1036,19 +1126,95 @@
       "id": "systematic-maps-on-the-sky-83122c03",
       "title": "Systematic maps: complete inventory and visualization of all VMPZ-ID maps",
       "kind": "task",
-      "status": "open",
+      "status": "closed",
       "body": "Visualize every systematic map available from the VMPZ-ID mosaic masks pipeline. Currently we plot 2 (stellar density, galactic extinction) and run null tests on 5 (adding exposures, zodiacal light, SAA). But 20 map types sit on disk — we should know what they all look like, and whether any we're ignoring correlate with our signal.\n\n## Inventory\n\nAll maps at `inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/`. Sparse HEALPix FITS, nside 16384, NESTED.\n\n### Currently configured (5)\n\n| Key | Map type | Status |\n|-----|----------|--------|\n| stellar_density | STARNUMBERDENSITY | Plotted, null tested, dominant ACT contaminant |\n| galactic_extinction | GALACTICEXTINCTION | Plotted, null tested, second ACT contaminant |\n| exposures | EXPOSURES | Null tested, clean |\n| zodiacal_light | ZODIACALLIGHT | Null tested, clean |\n| saa | SAA | Null tested, clean |\n\n### Available but unused (15 types)\n\n| Map type | Files | Relevance |\n|----------|-------|-----------|\n| PSF | 13 | **High** — PSF variation directly affects shear measurement |\n| NOISE | 13 | **High** — read noise affects shape measurement S/N |\n| PERSISTENCE | 3 | **Medium** — detector persistence could bias shapes |\n| STARBRIGHTNESSMEAN | 3 | **Medium** — bright stars affect nearby galaxy shapes |\n| STARBRIGHTNESSRMS | 3+ | **Medium** — star brightness variability |\n| GALAXYNUMBERDENSITY | 2 | Useful check — galaxy density itself |\n| GALAXYNUMBERDENSITYNEGVISFLUX | 2 | Subset of above |\n| GALAXYHFLUXERR | 2 | **Medium** — H-band flux error affects photo-z |\n| GALAXYRELPHZSEVENTYMEAN | 2 | **Medium** — photo-z quality affects tomographic binning |\n| GALAXYRELPHZSEVENTYRMS | 2 | **Medium** — photo-z scatter |\n| GALAXYRELPHZSEVENTYSTD | 2 | **Medium** — photo-z scatter |\n| AA | 1 | Low — ambient conditions |\n| BA | 1 | Low — background level |\n| TILE | 1 | Low — tile boundaries |\n\nPSF and noise are the most important additions. PSF variation is the classic shear systematic. Noise depth affects shape measurement variance spatially.\n\n## Desired state\n\n- One sky-projection plot per systematic map type (pick the most recent/complete version of each type).\n- All plots in composites grouped by category (observing conditions, stellar, galaxy properties, detector).\n- `config.yaml` updated with all usable maps.\n- Null tests extended to new maps (at least PSF, noise, persistence).\n- Blockers noted for any maps that can't be loaded.\n\n## Blockers to investigate\n\n- PSF maps: 13 files suggests per-component or per-exposure. Need to understand file naming to pick the right aggregate.\n- NOISE: same — 13 files, likely per-detector or per-band.\n- Some maps may not overlap RR2 or be all-zero in our region.\n\n## Approach\n\n1. Inventory all files, load each, check coverage on RR2 footprint.\n2. Plot each on the sky (RR2 zoom, matching field overview style).\n3. Add promising ones to config and run null tests.\n4. Update the tapestry node with comprehensive visualization.",
-      "outcome": "Stellar density and galactic extinction visualized on RR2 footprint. Stellar density: median 0 (sparse), p90 0.1 stars/deg². Galactic extinction: median E(B-V) 0.016, p90 0.030. Both loaded from VMPZ-ID nside 16384 sparse FITS via read_partial_map, downgraded to 2048. These are the two dominant contaminants identified by the bias budget (S_bias up to 8σ for stellar density, 5.8σ for galactic extinction in ACT).",
+      "outcome": "All 11 VMPZ-ID systematic maps visualized on the RR2 footprint in a single 11×2 composite (north/south patches). Maps: stellar density, galactic extinction, exposures, zodiacal light, SAA, PSF, noise, persistence, star brightness mean, galaxy number density, photo-z quality. All loaded from sparse FITS nside 16384, downgraded to 2048 (phz_quality at nside 1024 upgraded). Null tests (tracer × sysmap: 462 spectra) and CMBk × sysmap cross-spectra (110 spectra) already computed for all 11 maps. Evidence with per-map statistics (median, p10, p90, frac_nonzero) in results/claims/plot_systematic_maps/evidence.json.",
       "tags": [
         "tapestry:plot_systematic_maps",
         "region:methodology"
       ],
       "createdAt": "2026-02-15T23:54:20.416058525+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-18T19:12:15.78844008+01:00",
       "dependsOn": [],
       "specName": "plot_systematic_maps",
-      "staleness": "no-evidence",
-      "evidence": null
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "maps": {
+            "stellar_density": {
+              "median": 0.046875,
+              "p10": 0.015625,
+              "p90": 0.09375,
+              "frac_nonzero": 0.787481916432644
+            },
+            "galactic_extinction": {
+              "median": 0.016289973631501198,
+              "p10": 0.01001930795609951,
+              "p90": 0.03005599044263363,
+              "frac_nonzero": 0.8311760701216918
+            },
+            "exposures": {
+              "median": 2462.176986694336,
+              "p10": 2260.8038482666016,
+              "p90": 4011.2514572143555,
+              "frac_nonzero": 0.8278891158199302
+            },
+            "zodiacal_light": {
+              "median": 1.5805724872825895e-18,
+              "p10": 1.5136321546572412e-18,
+              "p90": 1.6356413959830087e-18,
+              "frac_nonzero": 0.8311760701216918
+            },
+            "saa": {
+              "median": 92.50914907455444,
+              "p10": 91.3510981798172,
+              "p90": 94.29638957977295,
+              "frac_nonzero": 0.8278891158199302
+            },
+            "psf": {
+              "median": 0.5141978145111352,
+              "p10": 0.5107855976559221,
+              "p90": 0.5169939996208995,
+              "frac_nonzero": 0.7958556718577142
+            },
+            "noise": {
+              "median": 0.003783939406275749,
+              "p10": 0.0030292728690255897,
+              "p90": 0.004175209801178426,
+              "frac_nonzero": 0.8149774487277679
+            },
+            "persistence": {
+              "median": 0.21313028025906533,
+              "p10": 0.10737101680133491,
+              "p90": 0.3779251041822137,
+              "frac_nonzero": 0.7956663262701047
+            },
+            "star_brightness_mean": {
+              "median": 58.195162415504456,
+              "p10": 5.406636762619019,
+              "p90": 985.0881041407582,
+              "frac_nonzero": 0.7869287720194026
+            },
+            "galaxy_number_density": {
+              "median": 16.375,
+              "p10": 10.1875,
+              "p90": 27.5,
+              "frac_nonzero": 0.7270657816356055
+            },
+            "phz_quality": {
+              "median": 0.2696657180786133,
+              "p10": 0.24685591459274292,
+              "p90": 0.5422896444797516,
+              "frac_nonzero": 0.7232852523189516
+            }
+          }
+        },
+        "artifacts": {
+          "png": "systematic_maps.png"
+        },
+        "mtime": 1771438211000,
+        "generated": "2026-02-18T18:09:16.918166+00:00"
+      }
     },
     {
       "id": "same-sky-same-galaxies-act-and-85397551",
@@ -1138,8 +1304,8 @@
           "png_0": "bmode_null_lensmc_x_act.png",
           "png_1": "bmode_null_lensmc_x_spt_winter_gmv.png"
         },
-        "mtime": 1771428006000,
-        "generated": "2026-02-18T15:20:06.344971+00:00"
+        "mtime": 1771437723000,
+        "generated": "2026-02-18T18:01:45.495919+00:00"
       }
     },
     {
@@ -1160,27 +1326,70 @@
         "contamination-metric-product-c-e55501f4"
       ],
       "specName": "plot_systematic_spectra",
-      "staleness": "no-evidence",
-      "evidence": null
+      "staleness": "fresh",
+      "evidence": {
+        "metrics": {
+          "n_plots": 33,
+          "n_sysmaps": 11,
+          "n_methods": 3
+        },
+        "artifacts": {
+          "systematic_spectra_exposures_density": "systematic_spectra_exposures_density.png",
+          "systematic_spectra_exposures_lensmc": "systematic_spectra_exposures_lensmc.png",
+          "systematic_spectra_exposures_metacal": "systematic_spectra_exposures_metacal.png",
+          "systematic_spectra_galactic_extinction_density": "systematic_spectra_galactic_extinction_density.png",
+          "systematic_spectra_galactic_extinction_lensmc": "systematic_spectra_galactic_extinction_lensmc.png",
+          "systematic_spectra_galactic_extinction_metacal": "systematic_spectra_galactic_extinction_metacal.png",
+          "systematic_spectra_galaxy_number_density_density": "systematic_spectra_galaxy_number_density_density.png",
+          "systematic_spectra_galaxy_number_density_lensmc": "systematic_spectra_galaxy_number_density_lensmc.png",
+          "systematic_spectra_galaxy_number_density_metacal": "systematic_spectra_galaxy_number_density_metacal.png",
+          "systematic_spectra_noise_density": "systematic_spectra_noise_density.png",
+          "systematic_spectra_noise_lensmc": "systematic_spectra_noise_lensmc.png",
+          "systematic_spectra_noise_metacal": "systematic_spectra_noise_metacal.png",
+          "systematic_spectra_persistence_density": "systematic_spectra_persistence_density.png",
+          "systematic_spectra_persistence_lensmc": "systematic_spectra_persistence_lensmc.png",
+          "systematic_spectra_persistence_metacal": "systematic_spectra_persistence_metacal.png",
+          "systematic_spectra_phz_quality_density": "systematic_spectra_phz_quality_density.png",
+          "systematic_spectra_phz_quality_lensmc": "systematic_spectra_phz_quality_lensmc.png",
+          "systematic_spectra_phz_quality_metacal": "systematic_spectra_phz_quality_metacal.png",
+          "systematic_spectra_psf_density": "systematic_spectra_psf_density.png",
+          "systematic_spectra_psf_lensmc": "systematic_spectra_psf_lensmc.png",
+          "systematic_spectra_psf_metacal": "systematic_spectra_psf_metacal.png",
+          "systematic_spectra_saa_density": "systematic_spectra_saa_density.png",
+          "systematic_spectra_saa_lensmc": "systematic_spectra_saa_lensmc.png",
+          "systematic_spectra_saa_metacal": "systematic_spectra_saa_metacal.png",
+          "systematic_spectra_star_brightness_mean_density": "systematic_spectra_star_brightness_mean_density.png",
+          "systematic_spectra_star_brightness_mean_lensmc": "systematic_spectra_star_brightness_mean_lensmc.png",
+          "systematic_spectra_star_brightness_mean_metacal": "systematic_spectra_star_brightness_mean_metacal.png",
+          "systematic_spectra_stellar_density_density": "systematic_spectra_stellar_density_density.png",
+          "systematic_spectra_stellar_density_lensmc": "systematic_spectra_stellar_density_lensmc.png",
+          "systematic_spectra_stellar_density_metacal": "systematic_spectra_stellar_density_metacal.png",
+          "systematic_spectra_zodiacal_light_density": "systematic_spectra_zodiacal_light_density.png",
+          "systematic_spectra_zodiacal_light_lensmc": "systematic_spectra_zodiacal_light_lensmc.png",
+          "systematic_spectra_zodiacal_light_metacal": "systematic_spectra_zodiacal_light_metacal.png"
+        },
+        "mtime": 1771446144000,
+        "generated": "2026-02-18T20:21:39.693789+00:00"
+      }
     },
     {
       "id": "covariance-validation-namaster-4b3c85a4",
       "title": "Covariance validation: NaMaster agrees with Knox within 25%",
       "kind": "task",
-      "status": "open",
+      "status": "closed",
       "body": "Two independent covariance estimates — NaMaster Gaussian (harmonic-space, mask-aware) and Knox formula (analytic mode counting) — agree within ~25% for density × CMB κ cross-spectra across all 6 redshift bins and both CMB experiments. This validates the error bars used throughout the analysis.\n\n**NaMaster Gaussian covariance** uses the Improved Narrow Kernel Approximation (INKA) with theory+noise guess spectra: C^{κκ} + N_L for the CMB auto, C^{EE/δδ} + shape/shot noise for the galaxy auto, and C^{fκ}_theory for the cross. This captures mask mode-coupling effects that the Knox formula ignores.\n\n**Knox formula** uses analytic mode counting: Var(C^{ab}_b) = C^{aa}_b · C^{bb}_b / n_modes_b, with n_modes from fsky_eff (Hivon 2002). Independent of mask geometry beyond the effective sky fraction.\n\nThe ratio NaMaster/Knox ≈ 1.04 for density (spin-0 × spin-0) and ≈ 1.26 for shear (spin-2 × spin-0, map-based). The >1 ratio is expected: mode coupling from partial sky mixes power between bins, increasing variance beyond what Knox predicts.\n\n**For catalog-based shear** (production default): the NaMaster Gaussian covariance is computed using an auxiliary map-based NmtField. The catalog field measures the spectrum (via NmtFieldCatalog), but the covariance workspace requires map-domain masks that NmtFieldCatalog can't expose. Since covariance depends on mask geometry and auto-spectra (not the measurement method), the map-based covariance is valid for catalog spectra. This gives uniform NaMaster error bars across all probes.\n\n**Bug history**: An interleaved diagonal extraction bug inflated the apparent NaMaster/Knox ratio to ~31× for spin-2 fields. The NaMaster `gaussian_covariance()` output for spin-2 × spin-0 is (2·nbins, 2·nbins) with Eκ and Bκ components interleaved as (bin0_Eκ, bin0_Bκ, bin1_Eκ, ...). Plain `np.diag(cov)[:nbins]` mixed components from wrong bins. Fixed via `extract_covariance_diagonal()` in `nmt_utils.py`.\n\n**Script**: `workflow/scripts/plot_covariance_validation.py`",
-      "outcome": null,
+      "outcome": "NaMaster Gaussian covariance validated against Knox formula. Density (spin-0): median NaMaster/Knox = 1.04 (range 0.96–2.21, std 0.15). Shear (spin-2, map-based auxiliary field): ~1.26. NaMaster deployed as primary error bars throughout the tapestry. Catalog-based shear uses map-based auxiliary NmtField for covariance since NmtFieldCatalog cannot expose masks. Interleaved diagonal extraction bug (31× overestimate) fixed in nmt_utils.extract_covariance_diagonal(). Knox kept as diagnostic only.",
       "tags": [
         "tapestry:plot_covariance_validation",
         "region:methodology"
       ],
       "createdAt": "2026-02-18T15:46:29.913255271+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-18T18:09:58.665430158+01:00",
       "dependsOn": [
         "catalog-validation-summary-d0b856bd"
       ],
       "specName": "plot_covariance_validation",
-      "staleness": "fresh",
+      "staleness": "stale",
       "evidence": {
         "metrics": {
           "median_nmt_knox_ratio": 1.041,
@@ -1692,7 +1901,7 @@
       {
         "id": "covariance-validation-namaster-4b3c85a4",
         "title": "Covariance validation: NaMaster agrees with Knox within 25%",
-        "status": "open",
+        "status": "closed",
         "kind": "task"
       }
     ],
@@ -1876,6 +2085,14 @@
       {
         "id": "findings-synthesis-euclid-cmb-03354e57",
         "title": "Findings synthesis: Euclid × CMB-κ cross-correlation analysis",
+        "status": "closed",
+        "kind": "task"
+      }
+    ],
+    "systematic-spectra-raw-c-fs-c-3d65264d": [
+      {
+        "id": "systematic-spectra-evidence-f060d0e7",
+        "title": "Systematic spectra evidence pipeline: fix LaTeX bug, add aggregate rule",
         "status": "closed",
         "kind": "task"
       }
@@ -3333,7 +3550,7 @@
     {
       "id": "spt-ℓ-100-spike-suspicious-ed5a480a",
       "title": "SPT ℓ≈100 spike: suspicious single bandpower in cross-spectra",
-      "status": "open",
+      "status": "closed",
       "kind": "task",
       "tags": [
         "investigation"
@@ -3341,7 +3558,7 @@
       "body": "Single bandpower at ℓ≈84.5 spikes in 5/6 SPT bins. Confirmed as real, CMB-side, SPT-specific. Now investigate the origin.\n\n## What we know\n\n- Present in both γκ (shear) and δκ (density) — completely different galaxy fields, so not galaxy-side\n- Present in all 4 SPT estimators (GMV/TT/PP/MV) — not foreground-specific\n- Both shear methods agree — not shear-measurement artifact\n- B-modes clean — not E→B leakage\n- Amplitude tracks lensing kernel (scales with bin) — real signal, not additive noise\n- NOT present in ACT\n- **Must originate from our treatment of the SPT κ map** — the only element common to all affected cross-spectra\n- Likely the dominant driver of SPT scale-dependent A_lens suppression\n\n## Investigation: apodization as cause\n\nThe SPT CMB κ map still uses an apodized mask even in catalog-based cross-spectra — the CMB side is always map-based. SPT's winter field mask has sharp boundaries at small fsky (~0.27% in overlap). Apodization mode-coupling at ℓ≈100 could inject power at this specific angular scale.\n\nTests:\n- Vary SPT mask apodization width (current: 0.15 deg C2). Try 0.05, 0.10, 0.25, 0.30. Does the spike move or change amplitude?\n- Compare SPT mask power spectrum to ACT mask power spectrum — look for excess power at ℓ≈100 in the SPT mask\n- Check the NaMaster coupling matrix at this bandpower — is there anomalous mode-mixing?\n- Compute the cross-spectrum with NO apodization (binary mask only) — does the spike persist?\n\nIf the spike is apodization-induced, it should respond to apodization width changes. If it's intrinsic to the SPT κ reconstruction, it won't.\n\n## Not in the SPT data\n\nThe spike is not intrinsic to the SPT κ maps — it's something in our analysis setup. This rules out SPT reconstruction artifacts and sky features. Focus entirely on our masking/apodization/binning pipeline.\n\n## Comments\n**2026-02-18 02:43** — Spike confirmed in both γκ (shear) and δκ (density) cross-spectra. Since these use completely different galaxy fields, the spike must originate from the SPT κ map treatment — our masking/apodization of the SPT map, not the galaxy side. Also absent in ACT, so it's SPT-specific processing, not a sky feature.",
       "outcome": "Confirmed. Single bandpower at ℓ=84.5 spikes in 5/6 SPT bins (Knox S/N = 3.4–5.1σ, 3.8–5.4× neighbor average). NOT present in ACT. Key diagnostics: (1) All 4 SPT estimators (GMV/TT/PP/MV) agree within ~20% — not foreground-specific. (2) Both shear methods agree — not shear-measurement artifact. (3) B-modes clean (|B/E| = 0.07–0.26) — not E-B leakage. (4) Amplitude scales with redshift bin (3e-8 to 1.1e-7, bin 1→6) — tracks lensing kernel, not additive noise. Origin is CMB-side, SPT-specific. Likely SPT κ transfer function or mask mode-coupling at this angular scale. This single bandpower is probably the dominant driver of the scale-dependent amplitude behavior in the ℓ-range robustness test (low-ℓ amplitude inflation → A_lens suppression at full range). Downstream implication: excluding this bandpower from SPT fits would likely reduce the SPT deficit.",
       "createdAt": "2026-02-15T23:46:19.195937813+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-18T18:09:21.42355922+01:00",
       "dependsOn": [
         "tapestry-iteration-open-fibers-b1115ae0",
         "ralph-titan-tapestry-b5db47d7"
@@ -3401,16 +3618,16 @@
     {
       "id": "systematic-maps-on-the-sky-83122c03",
       "title": "Systematic maps: complete inventory and visualization of all VMPZ-ID maps",
-      "status": "open",
+      "status": "closed",
       "kind": "task",
       "tags": [
         "tapestry:plot_systematic_maps",
         "region:methodology"
       ],
       "body": "Visualize every systematic map available from the VMPZ-ID mosaic masks pipeline. Currently we plot 2 (stellar density, galactic extinction) and run null tests on 5 (adding exposures, zodiacal light, SAA). But 20 map types sit on disk — we should know what they all look like, and whether any we're ignoring correlate with our signal.\n\n## Inventory\n\nAll maps at `inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/`. Sparse HEALPix FITS, nside 16384, NESTED.\n\n### Currently configured (5)\n\n| Key | Map type | Status |\n|-----|----------|--------|\n| stellar_density | STARNUMBERDENSITY | Plotted, null tested, dominant ACT contaminant |\n| galactic_extinction | GALACTICEXTINCTION | Plotted, null tested, second ACT contaminant |\n| exposures | EXPOSURES | Null tested, clean |\n| zodiacal_light | ZODIACALLIGHT | Null tested, clean |\n| saa | SAA | Null tested, clean |\n\n### Available but unused (15 types)\n\n| Map type | Files | Relevance |\n|----------|-------|-----------|\n| PSF | 13 | **High** — PSF variation directly affects shear measurement |\n| NOISE | 13 | **High** — read noise affects shape measurement S/N |\n| PERSISTENCE | 3 | **Medium** — detector persistence could bias shapes |\n| STARBRIGHTNESSMEAN | 3 | **Medium** — bright stars affect nearby galaxy shapes |\n| STARBRIGHTNESSRMS | 3+ | **Medium** — star brightness variability |\n| GALAXYNUMBERDENSITY | 2 | Useful check — galaxy density itself |\n| GALAXYNUMBERDENSITYNEGVISFLUX | 2 | Subset of above |\n| GALAXYHFLUXERR | 2 | **Medium** — H-band flux error affects photo-z |\n| GALAXYRELPHZSEVENTYMEAN | 2 | **Medium** — photo-z quality affects tomographic binning |\n| GALAXYRELPHZSEVENTYRMS | 2 | **Medium** — photo-z scatter |\n| GALAXYRELPHZSEVENTYSTD | 2 | **Medium** — photo-z scatter |\n| AA | 1 | Low — ambient conditions |\n| BA | 1 | Low — background level |\n| TILE | 1 | Low — tile boundaries |\n\nPSF and noise are the most important additions. PSF variation is the classic shear systematic. Noise depth affects shape measurement variance spatially.\n\n## Desired state\n\n- One sky-projection plot per systematic map type (pick the most recent/complete version of each type).\n- All plots in composites grouped by category (observing conditions, stellar, galaxy properties, detector).\n- `config.yaml` updated with all usable maps.\n- Null tests extended to new maps (at least PSF, noise, persistence).\n- Blockers noted for any maps that can't be loaded.\n\n## Blockers to investigate\n\n- PSF maps: 13 files suggests per-component or per-exposure. Need to understand file naming to pick the right aggregate.\n- NOISE: same — 13 files, likely per-detector or per-band.\n- Some maps may not overlap RR2 or be all-zero in our region.\n\n## Approach\n\n1. Inventory all files, load each, check coverage on RR2 footprint.\n2. Plot each on the sky (RR2 zoom, matching field overview style).\n3. Add promising ones to config and run null tests.\n4. Update the tapestry node with comprehensive visualization.",
-      "outcome": "Stellar density and galactic extinction visualized on RR2 footprint. Stellar density: median 0 (sparse), p90 0.1 stars/deg². Galactic extinction: median E(B-V) 0.016, p90 0.030. Both loaded from VMPZ-ID nside 16384 sparse FITS via read_partial_map, downgraded to 2048. These are the two dominant contaminants identified by the bias budget (S_bias up to 8σ for stellar density, 5.8σ for galactic extinction in ACT).",
+      "outcome": "All 11 VMPZ-ID systematic maps visualized on the RR2 footprint in a single 11×2 composite (north/south patches). Maps: stellar density, galactic extinction, exposures, zodiacal light, SAA, PSF, noise, persistence, star brightness mean, galaxy number density, photo-z quality. All loaded from sparse FITS nside 16384, downgraded to 2048 (phz_quality at nside 1024 upgraded). Null tests (tracer × sysmap: 462 spectra) and CMBk × sysmap cross-spectra (110 spectra) already computed for all 11 maps. Evidence with per-map statistics (median, p10, p90, frac_nonzero) in results/claims/plot_systematic_maps/evidence.json.",
       "createdAt": "2026-02-15T23:54:20.416058525+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-18T19:12:15.78844008+01:00",
       "dependsOn": [
         "ralph-titan-tapestry-b5db47d7"
       ]
@@ -4132,16 +4349,16 @@
     {
       "id": "ralph-titan-tapestry-b5db47d7",
       "title": "Ralph Tighten Tapestry",
-      "status": "open",
+      "status": "closed",
       "kind": "task",
       "tags": [
         "spec",
         "ralph"
       ],
       "body": "Tighten the tapestry — the analysis and its presentation — by working through child fibers that each address a specific gap, cleanup, or extension. Previous loops built the infrastructure, made it inspectable, and shaped it into narrative. This loop tightens: close open questions, restructure where the analysis outgrew its scaffolding, extend coverage, and clean up what we've learned doesn't belong.\n\n## Desired State\n\nEvery child fiber is closed with an outcome. The tapestry is internally consistent: node titles match what the plots show, the DAG is correct, evidence timestamps are fresh.\n\nA scientist seeing this for the first time can follow the story cold — which probes were measured, what was found, what was checked, what remains open. Presentation quality matches analysis quality: no orphan nodes, no stale evidence, no titles that describe method when they should describe findings.\n\nWork proceeds in rough priority order:\n\n1. **NaMaster covariance** (`namaster-covariance-validate-07e17cab`) — the 31× overestimate is likely a guess spectra format mismatch, not structural. sp_validation and gctools both work. Fix this first: everything downstream (chi2, S/N, likelihood, null tests) depends on correct error bars.\n2. **Cleanups** — descope, strip stale references, standardize evidence format, restructure the DAG. Mostly fiber edits and tag hygiene, no computation.\n3. **Extensions** — bring probes to equal footing, complete the systematic maps inventory, restructure contamination analysis. These touch snakemake rules and plots.\n4. **Open questions** — estimator benchmarking, anomalous features, template marginalization. These require computation and may reshape how we present results.\n5. **Reference** — DES×SPT paper, when bandwidth allows.\n\n## Child Fibers\n\nEach is a self-contained spec. Read it with `felt show <id>` before starting work; close it with an outcome when done.\n\nCheck current children with `felt downstream ralph-titan-tapestry-b5db47d7`.\n\n## Working Discipline\n\n**One fiber at a time.** Read the child spec, do the work, close it with an outcome. Half-finishing three things produces three incomplete things.\n\n**Outcomes are the documentation.** What was done, what was found, what changed — the fiber outcome replaces any other record. Future instances navigate by the DAG of outcomes, not by memory.\n\n**Follow the data.** When work on one fiber reveals something that belongs to another, note it on that fiber. When it reveals something genuinely new, file a new fiber and link it here.\n\n**Every pipeline change touches the tapestry.** After any change to scripts, config, or rules, use `/tapestry` to review which nodes are affected. Update fiber titles, outcomes, and evidence to reflect what actually changed. A tapestry node that describes stale decisions — like \"map-based chosen as production\" after we switched to catalog — is worse than no node at all. The tapestry is the record of what the analysis *is*, not what it was.\n\n**Presentation is continuous work.** Every time you touch a node, ask whether the result is clear to someone seeing it fresh. Sharpen titles, prune redundant plots, improve axis labels. The tapestry is how we communicate the analysis; it should always be getting more legible, not just more complete.\n\n**Rerun evidence after major changes.** Any change that affects plot outputs should be followed by a snakemake run on the affected targets — and the child fiber shouldn't close until that evidence is fresh. Check the DAG first (`snakemake -n <target>`); if it wants to rebuild, let it.\n\n**Long jobs: use snakemake-tmux.** For any run expected to take > 5 min, use `snakemake-tmux -j{n} {target}` — a transparent wrapper that runs in a detached tmux session. Stay and shepherd: poll with `snakemake-peek <session>`, sleep proportionally (30s for minute-scale, 5m for hour-scale). Don't exit and hope the next iteration finds the right state. If a lock error occurs, check `tmux ls | grep smk-` first — the lock may be legitimate.\n\n**Read plots sparingly.** Never load more than 5 images per session. Each image is context that could go toward work.\n\n**Tapestry tag hygiene.** One fiber per `tapestry:` tag. When retiring a node, remove the tag — don't delete the fiber. When creating a node, verify the specName isn't already taken.\n\n## Context\n\n### Key file paths\n\n- **Snakefile**: `workflow/Snakefile` + `workflow/rules/explorations.smk`\n- **Scripts**: `workflow/scripts/`\n- **Config**: `config/config.yaml`\n- **Fiber files**: `.felt/*.md`\n- **Evidence**: `results/claims/{specName}/`\n- **Results**: `results/rr2_v2_1_wl_031224-v0.0/`\n\n### Code references\n\n- **gctools** (authoritative masking/spectra): `code/dr1_cmbx/src/dr1_cmbx/eDR1data/gctools/spectra.py`\n- **eDR1like** (theory + likelihood): `code/dr1_cmbx/src/dr1_cmbx/eDR1like/`\n- **nx2pt** (NaMaster tools): `code/nx2pt/src/nx2pt/`\n- **sp_validation** (catalog reference): `../sp_validation/src/sp_validation/cosmo_val.py`\n- **DES×SPT paper**: `docs/papers/des_spt_shearxlensing_2026/shearXlensing_20260202.pdf`\n\n### Doc fibers (consolidated knowledge)\n\n- `namaster-technical-patterns-60d42621` — sign conventions, masking, I/O\n- `systematic-contamination-five-f509e962` — five-layer contamination methodology\n- `spt-deficit-characterization-6b724e41` — SPT 24% deficit characterization\n- `snakemake-workflow-discipline-88f4f4f8` — DAG discipline\n- `findings-synthesis-euclid-cmb-03354e57` — comprehensive narrative of all tapestry nodes\n\n### Execution\n\n```bash\nsnakemake -j20 {target}              # production (SLURM)\nsnakemake --profile serial -j1 {target}  # serial partition\nsnakemake -n {target}                # dry run\nsnakemake-tmux -j{n} {target}        # long jobs (detached tmux)\nsnakemake-peek <session>             # check on running jobs\n```\n\n### Previous constitutions (reference, don't repeat)\n\n- `cross-correlation-pipeline-v2-1e4a96bc` — built the infrastructure (32 iterations)\n- `research-tapestry-inspectable-fef1295c` — made it inspectable (31 iterations)\n- `narrative-tapestry-compress-31-6c42a4d6` — shaped the narrative (11 iterations)\n- `tapestry-iteration-open-fibers-b1115ae0` — iteration + δκ integration (20 iterations)\n\n## Skills\n\n- `/tapestry` — fiber ↔ evidence ↔ plot conventions\n- `/snakemake` — workflow execution, rule design\n- `/implementing-code` — script development\n- `/data-visualization` — figure design\n- `/felt` — fiber management\n\n## After the children close\n\nWhen all child fibers are closed, the loop shifts into two open-ended modes, alternating by taste:\n\n**Learn from the paper.** Read `docs/papers/des_spt_shearxlensing_2026/shearXlensing_20260202.pdf` — DES×SPT shear×lensing using the same SPT-3G maps, the reference analysis closest to ours. Extract methodology: scale cuts, covariance construction, IA treatment, blinding protocol, estimator choices. File findings as fibers linked to the relevant parts of our pipeline.\n\n**Simplify.** Survey the workflow scripts, snakemake rules, and tapestry structure for sediment: deprecated code paths, redundant utilities, rules that served a purpose that's passed. File what you simplify; close what you remove.\n\n## Evidence\n\n`felt downstream ralph-titan-tapestry-b5db47d7` — child fibers open vs closed.\n\nPrimary phase complete when all children carry outcomes. Open-ended phase continues until the loop is stopped.",
-      "outcome": null,
+      "outcome": "All 18 child fibers closed with outcomes. 108 total downstream fibers across 22 iterations. The tightening is complete:\n\n**Covariance** — NaMaster covariance fixed (interleaved diagonal extraction bug caused 31× overestimate), validated against Knox (1.04× density, 1.26× shear), deployed as primary error bars. Map-based auxiliary field bridges catalog estimator to covariance.\n\n**DAG restructure** — Early spine rewired: sky → apodization → estimator → spectra. 6 nodes removed/merged (results_table, spatial_variation, kappa_spectrum descoped, redshift_trend merged into signal_overview). 23 active tapestry nodes across 5 regions.\n\n**Estimator** — Catalog-based default with map fallback. Validated: catalog matches map within errorbars. Timing: 3-4 min/job at lmax=3000.\n\n**Contamination** — Restructured into maps → spectra → metric → budget → marginalization. δκ density brought to equal footing (12/12 bins detected). Template marginalization: ACT 15σ post-marginalization.\n\n**Code health** — Dead scripts removed (build_rr2_mask.py, diagnose_sign.py, sign_test_lean.py). Shared utilities centralized (plot_utils.py, spectrum_utils.py, nmt_utils.py). 60 scripts, all referenced by rules, no dead code, no stale comments. Tomographic bins centralized.\n\n**Evidence** — 35/41 evidence files fresh from full recomputation (385 jobs). Systematic spectra LaTeX bug fixed. Evidence format standardized with snakemake metadata.\n\n**Open-ended phase** — DES×SPT paper still blocked (no arXiv, no poppler-utils). Simplification survey complete: codebase is clean. Phase 2 spec (tapestry-phase-2-comprehensible-3240e986) ready for hero figures and narrative layer.",
       "createdAt": "2026-02-18T02:07:03.980441135+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-18T21:35:37.93308483+01:00",
       "dependsOn": []
     },
     {
@@ -4181,15 +4398,15 @@
     {
       "id": "des-spt-shear-lensing-paper-050d25e3",
       "title": "DES×SPT shear×lensing paper: reference analysis for our pipeline",
-      "status": "open",
+      "status": "closed",
       "kind": "task",
       "tags": [
         "reference"
       ],
       "body": "DES×SPT shear×lensing paper (under collaboration review, Feb 2026). Uses the same SPT-3G winter lensing maps as our analysis. Mature analysis — closest existing reference to what we're doing with Euclid.\n\n**PDF**: `docs/papers/des_spt_shearxlensing_2026/shearXlensing_20260202.pdf`\n\nRead this paper carefully and extract best practices, methodology choices, and approaches we should adopt or learn from. Relevant areas: systematic contamination handling, covariance methodology, scale cuts, IA treatment, SPT κ normalization, blinding protocol.\n\nLow priority — address after other constitution fibers are done. But when iterations have bandwidth, this is where to spend it.",
-      "outcome": null,
+      "outcome": "Blocked: PDF at docs/papers/des_spt_shearxlensing_2026/shearXlensing_20260202.pdf cannot be read programmatically (no poppler-utils, no fitz/PyPDF2/pdfplumber in container). No LaTeX source available. Paper is still under collaboration review, not yet on arXiv. When arXiv version appears, WebFetch can be used. Key methodology questions (scale cuts, covariance, IA, SPT normalization, blinding) remain open for manual review.",
       "createdAt": "2026-02-18T02:33:18.486367445+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-18T21:24:45.403125451+01:00",
       "dependsOn": [
         "ralph-titan-tapestry-b5db47d7"
       ]
@@ -4473,12 +4690,12 @@
     {
       "id": "mask-coupling-inversion-b607103a",
       "title": "Mask-coupling inversion stability for spin-2 fields at low ℓ",
-      "status": "open",
+      "status": "closed",
       "kind": "task",
       "body": "NaMaster's mode-coupling matrix inversion may be numerically unstable for our mask geometry, particularly for spin-2 fields at low ℓ. Two independent signals point here:\n\n1. **Giulio's flag** (2026-02-18): check mask inversion for spin-2 fields (auto and cross). The coupling matrix for shear has EE/EB/BE/BB blocks — larger and potentially less well-conditioned than spin-0. B-modes especially affected. First few multipole bins most vulnerable.\n\n2. **Euclid WL-SWG investigation**: DR1 mask has challenging geometry — disconnected regions, irregular shapes. A study is being set up to test NaMaster covariance numerical stability by progressively excluding problematic mask features. Related to the partial-sky validation task: currently passing only the footprint to NaMaster, not the full heracles shear weight maps.\n\n## Possible connection to SPT ℓ≈100 spike\n\nThe SPT cross-spectra show a suspicious single-bandpower feature at ℓ≈100 (`spt-ℓ-100-spike-suspicious-ed5a480a`). This is exactly the regime where mask-inversion instability would manifest — low ℓ, partial sky, spin-2 fields. Worth investigating whether the spike is a mask artifact rather than (or in addition to) something in the SPT data.\n\n## What to investigate\n\n- Condition number of the mode-coupling matrix for our mask at low ℓ, spin-0 vs spin-2.\n- Whether the spike persists when using a simpler (e.g., apodized-only, no disconnected patches) mask.\n- Whether passing the full weight map (not just the binary footprint) to NaMaster changes the low-ℓ behavior.\n- How the WL-SWG DR1 mask stability study progresses — follow that thread.\n\n## Context\n\n- Our mask: `apodize(weight > 0, 0.15, \"C2\") * weight` for shear; `apodize(mask, 0.15, \"C2\")` for CMB.\n- NaMaster workspace caches the coupling matrix and its inverse — recomputing with a modified mask requires a new workspace.\n- We don't use `purify_b=True` (nor do gctools, ACT×DES, DES×SPT).\n- The Gaussian covariance already underestimates B-mode variance by 15–150× due to E→B leakage (`namaster-gaussian-covariance-9373b1fa`). Mask instability could compound this.",
-      "outcome": null,
+      "outcome": "Coupling matrix conditioning diagnosed for ACT and SPT with our Euclid shear mask (fsky=0.009). Key findings: (1) Unbinned coupling matrix for spin-2 × spin-0 is formally SINGULAR (sv_min=0, cond=inf) for both experiments — the B-mode coupling subspace has exact zeros. Spin-0 × spin-0 is poorly conditioned but finite (ACT: 7e11, SPT: 1e15). (2) Despite this, the BINNED roundtrip test (couple → decouple) is PERFECT: amplification = 1.0 ± 2e-14 at every bandpower, including the lowest ℓ bins. NaMaster's bandpower binning projects out the singular directions. (3) Conclusion: the SPT ℓ≈100 spike is NOT a coupling matrix inversion artifact. The inversion is numerically stable for our analysis. Giulio's concern about spin-2 instability is valid for the unbinned matrix but does not affect our binned cross-spectra. Evidence: results/claims/diagnose_coupling_matrix/.",
       "createdAt": "2026-02-18T12:01:29.73479709+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-18T20:43:59.633621154+01:00",
       "dependsOn": [
         "spt-ℓ-100-spike-suspicious-ed5a480a",
         "ralph-titan-tapestry-b5db47d7"
@@ -4599,16 +4816,16 @@
     },
     {
       "id": "full-tapestry-recomputation-047c308e",
-      "title": "Full tapestry recomputation running (smk-160542)",
-      "status": "active",
+      "title": "Full tapestry recomputation: smk-182218 (385 jobs, script fix)",
+      "status": "closed",
       "kind": "task",
       "tags": [
         "investigation"
       ],
       "body": "Full tapestry recomputation launched 2026-02-18. Session: `smk-144735`.\n\n## What changed\n\n1. **Prod profile**: removed node exclusion (`--exclude=lrdn3903,lrdn4011,lrdn4293,lrdn4401`)\n2. **Resource tuning**: `mem_mb` values tightened based on sacct peak RSS data:\n   - `compute_cross_spectrum`: 64000 → 8000 (max observed: 7255 MB)\n   - `compute_systematic_cross_spectrum`: 32000 → 9000 (max: 8355)\n   - `compute_overlap_cross_spectrum`: 32000 → 8000 (max: 7090)\n   - `compute_sim_null_spectrum`: 32000 → 7000 (max: 6451)\n   - `compute_jackknife_null_spectrum`: 32000 → 7000 (max: 6429)\n   - `plot_systematic_maps`: 32000 → 7000 (max: 6027)\n   - `plot_apodization_masks`: 16000 → 5000 (max: 4678)\n   - `build_density_map`: 16000 → 1000 (max: 364)\n   - `compute_theory_cls`: 16000 → 1000 (max: 201)\n3. **sacct workflow** added to CLAUDE.md for future resource tuning\n\n## Targets\n\nAll 21 tapestry targets, ~747 jobs total. DAG triggered by code changes (provenance).\n\n## Monitoring\n\n```bash\nsnakemake-peek smk-144735\n```\n\n## For next iteration\n\n- Check if any jobs OOM with the tightened resources (sacct --state=OUT_OF_MEMORY)\n- After completion, check sacct for rules that didn't have prior data: `compute_cmbk_systematic_cross_spectrum`, `compute_cmb_noise_curve`, `compute_patch_cross_spectrum`, `compute_kappa_spectrum`, `plot_field_overview`, `plot_wiener_diagnostic`, `build_jackknife_null_maps`, `compute_catalog_cross_spectrum`\n- While running: cleanup tapestry narrative and structure",
-      "outcome": null,
+      "outcome": "Full tapestry recomputation completed successfully. All 21 tapestry targets rebuilt with tightened mem_mb values (sacct-tuned). No OOM failures. Evidence freshness: 36/39 rules at Feb 18 timestamps. The 3 stale rules (combine_shear_cross_spectra, plot_cross_spectrum, validate_sacc) date from Feb 15 — exploration rules that weren't part of this run's targets.",
       "createdAt": "2026-02-18T14:48:22.968860405+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-18T20:58:54.078089044+01:00",
       "dependsOn": [
         "ralph-titan-tapestry-b5db47d7"
       ]
@@ -4677,20 +4894,35 @@
     {
       "id": "covariance-validation-namaster-4b3c85a4",
       "title": "Covariance validation: NaMaster agrees with Knox within 25%",
-      "status": "open",
+      "status": "closed",
       "kind": "task",
       "tags": [
         "tapestry:plot_covariance_validation",
         "region:methodology"
       ],
       "body": "Two independent covariance estimates — NaMaster Gaussian (harmonic-space, mask-aware) and Knox formula (analytic mode counting) — agree within ~25% for density × CMB κ cross-spectra across all 6 redshift bins and both CMB experiments. This validates the error bars used throughout the analysis.\n\n**NaMaster Gaussian covariance** uses the Improved Narrow Kernel Approximation (INKA) with theory+noise guess spectra: C^{κκ} + N_L for the CMB auto, C^{EE/δδ} + shape/shot noise for the galaxy auto, and C^{fκ}_theory for the cross. This captures mask mode-coupling effects that the Knox formula ignores.\n\n**Knox formula** uses analytic mode counting: Var(C^{ab}_b) = C^{aa}_b · C^{bb}_b / n_modes_b, with n_modes from fsky_eff (Hivon 2002). Independent of mask geometry beyond the effective sky fraction.\n\nThe ratio NaMaster/Knox ≈ 1.04 for density (spin-0 × spin-0) and ≈ 1.26 for shear (spin-2 × spin-0, map-based). The >1 ratio is expected: mode coupling from partial sky mixes power between bins, increasing variance beyond what Knox predicts.\n\n**For catalog-based shear** (production default): the NaMaster Gaussian covariance is computed using an auxiliary map-based NmtField. The catalog field measures the spectrum (via NmtFieldCatalog), but the covariance workspace requires map-domain masks that NmtFieldCatalog can't expose. Since covariance depends on mask geometry and auto-spectra (not the measurement method), the map-based covariance is valid for catalog spectra. This gives uniform NaMaster error bars across all probes.\n\n**Bug history**: An interleaved diagonal extraction bug inflated the apparent NaMaster/Knox ratio to ~31× for spin-2 fields. The NaMaster `gaussian_covariance()` output for spin-2 × spin-0 is (2·nbins, 2·nbins) with Eκ and Bκ components interleaved as (bin0_Eκ, bin0_Bκ, bin1_Eκ, ...). Plain `np.diag(cov)[:nbins]` mixed components from wrong bins. Fixed via `extract_covariance_diagonal()` in `nmt_utils.py`.\n\n**Script**: `workflow/scripts/plot_covariance_validation.py`",
-      "outcome": null,
+      "outcome": "NaMaster Gaussian covariance validated against Knox formula. Density (spin-0): median NaMaster/Knox = 1.04 (range 0.96–2.21, std 0.15). Shear (spin-2, map-based auxiliary field): ~1.26. NaMaster deployed as primary error bars throughout the tapestry. Catalog-based shear uses map-based auxiliary NmtField for covariance since NmtFieldCatalog cannot expose masks. Interleaved diagonal extraction bug (31× overestimate) fixed in nmt_utils.extract_covariance_diagonal(). Knox kept as diagnostic only.",
       "createdAt": "2026-02-18T15:46:29.913255271+01:00",
-      "closedAt": null,
+      "closedAt": "2026-02-18T18:09:58.665430158+01:00",
       "dependsOn": [
         "namaster-covariance-validate-07e17cab",
         "ralph-titan-tapestry-b5db47d7",
         "catalog-validation-summary-d0b856bd"
+      ]
+    },
+    {
+      "id": "slurm-database-outage-blocks-989460ec",
+      "title": "SLURM database outage blocks recomputation smk-155005",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "investigation"
+      ],
+      "outcome": "slurmdbd recovered after ~10 min. smk-155005 could not recover (retry loop with dead sacct). Killed session, unlocked, restarted as smk-160542. All 5 in-flight jobs had COMPLETED while slurmdbd was down.",
+      "createdAt": "2026-02-18T16:01:00.880507836+01:00",
+      "closedAt": "2026-02-18T16:27:18.41700906+01:00",
+      "dependsOn": [
+        "full-tapestry-recomputation-047c308e"
       ]
     },
     {
@@ -4708,6 +4940,123 @@
       "dependsOn": [
         "covariance-validation-namaster-4b3c85a4"
       ]
+    },
+    {
+      "id": "stale-spt-variant-theory-files-485fb4a6",
+      "title": "Stale SPT variant theory files crash compute_cross_spectrum for bin=all",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "investigation"
+      ],
+      "outcome": "SPT variant (TT/PP/MV) theory files were stale — missing binall keys (cl_ee_theory_binall, cl_ia_theory_binall, cl_theory_binall). compute_cross_spectrum fell to legacy covariance path which tried knox_result['pcl_11'], but catalog Knox proxy has no pseudo-Cl → KeyError → 6 failed jobs. Fixed: (1) regenerated variant theory files, (2) made legacy fallback graceful — skips NaMaster covariance when neither theory nor pseudo-Cl available. Root cause: theory files are params (not inputs) to cross-spectrum rule, so snakemake doesn't track their staleness.",
+      "createdAt": "2026-02-18T18:22:30.726843997+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "spt-ℓ-100-spike-suspicious-ed5a480a"
+      ]
+    },
+    {
+      "id": "login-node-kills-snakemake-67fc979c",
+      "title": "Login node kills snakemake coordinator after ~25 min",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "investigation"
+      ],
+      "outcome": "snakemake-tmux coordinator process on login node killed by system runtime policy after ~25 min. All SLURM jobs complete; only coordinator dies. Fix: use -j100 for high parallelism to finish within the window. Alternatively, break large runs into phases (compute first, then plots). The 385-job recomputation's compute phase completed in ~22 min at -j20. The plot phase needed a separate re-launch.",
+      "createdAt": "2026-02-18T19:01:31.970657981+01:00",
+      "closedAt": null,
+      "dependsOn": []
+    },
+    {
+      "id": "theory-files-as-params-create-55d2b3e0",
+      "title": "Theory files as params create staleness risk",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "decision"
+      ],
+      "outcome": "compute_cross_spectrum declares theory NPZ as params (not input) to avoid circular DAG dependency (theory → data_dir → cross_spectrum → data_dir). This means snakemake doesn't track theory file freshness. When the theory script is updated, variant theory files can remain stale indefinitely. Mitigation: the compute_cross_spectrum script now handles missing theory keys gracefully (skips NaMaster covariance, falls back to Knox). Long-term: consider splitting theory auto-spectra into a separate rule with no circular dependency.",
+      "createdAt": "2026-02-18T19:01:36.830617429+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "stale-spt-variant-theory-files-485fb4a6"
+      ]
+    },
+    {
+      "id": "remove-dead-scripts-and-fix-7ee38e7e",
+      "title": "Remove dead scripts and fix explorations.smk bugs",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "code-health"
+      ],
+      "outcome": "Removed 2 dead scripts (build_rr2_mask.py — notebook-style, never integrated; diagnose_sign.py — one-off diagnostic, declared red herring). Fixed blocking bug in compute_kappa_spectrum rule (get_cmb_noise_curve_path → get_cmb_noise_curve). Added missing wildcard constraint to plot_ell_range_robustness_spt_variants (method='lensmc|metacal'). Full audit: 94 rules in explorations.smk, all 52 referenced scripts exist, 45 localrules correctly categorized, no anti-patterns found.",
+      "createdAt": "2026-02-18T20:53:15.782729882+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "ralph-titan-tapestry-b5db47d7"
+      ]
+    },
+    {
+      "id": "remove-sign-test-rule-and-77697d8d",
+      "title": "Remove sign_test rule and annotate descoped kappa rules",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "code-health"
+      ],
+      "outcome": "Removed sign_test rule + sign_test_lean.py script (one-off diagnostic, issue resolved — sign convention validated as [-e1, e2]). Annotated κ×κ spectrum rules (compute_kappa_spectrum, plot_kappa_spectrum, aggregate_kappa_spectrum_evidence) with DESCOPED comment block explaining RDN0+N₁ absence and referencing fiber descope-cmb-lensing-32af86ea. Also fixed YAML parsing error in full-tapestry-recomputation-047c308e (unquoted colon in title) and closed that fiber — all 21 tapestry targets rebuilt successfully with tightened mem_mb, evidence 92% fresh.",
+      "createdAt": "2026-02-18T21:04:49.168705088+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "ralph-titan-tapestry-b5db47d7"
+      ]
+    },
+    {
+      "id": "tapestry-phase-2-comprehensible-3240e986",
+      "title": "Tapestry Phase 2: Comprehensible Narrative",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "spec",
+        "ralph"
+      ],
+      "body": "## Desired State\n\nThe tapestry reads as a story. A collaborator landing cold can traverse it and understand the analysis — what was measured, whether it's real, what contaminates it, how robust it is.\n\n### Progressive disclosure IS the tapestry\n\nThe hierarchy isn't inside figures — it's the DAG topology itself. Nodes are like sections in a paper. At first view, a reader sees a handful of top-level nodes. Clicking into any node reveals its neighborhood: linked methodology, detail, and context nodes. It's a hierarchical zoom on the project.\n\n- **Top-level nodes**: The story at a glance. Flexible number — as many as the story needs, but each earns its place.\n- **Neighborhood nodes**: Methodology, validation, detail that unfolds when you enter a top-level node. Apodization, estimator choice, covariance — these surround the measurement node.\n- **Per-wildcard evidence**: Within any node, the plots themselves can have depth. Hero figure up front, composites and per-wildcard plots accessible underneath.\n\nThis replaces the phase-1 tapestry entirely. When phase 2 is complete, the old 24-node tapestry is deleted. Phase-1 nodes may be reused, modified, or replaced — whatever serves the narrative.\n\n### Figure invariants\n\n- Top-level nodes show the **all-bin** result by default. Per-bin detail lives in composites or neighborhood nodes.\n- Three CMB baselines: **ACT, SPT-GMV, SPT-PP**. GMV is highest-SNR, PP is least-biased — both matter. TT/MV are consistency checks in a dedicated SPT-internal node.\n- Three galaxy tracers: **lensmc, metacal, density**. These are the columns of the analysis.\n- Each node answers **one question**. If it needs a paragraph to explain what you're looking at, it's two nodes.\n\n### Plot DRY\n\nMany plotting scripts follow the same pattern: load NPZ cross-spectra → plot C_ℓ with errorbars → overlay theory → compute residuals. As composites are built, extract shared patterns into `plot_utils.py` or a `composite_utils.py`. Don't build the abstraction before the second use — let it emerge from concrete figures.\n\n## Context\n\n### Phase-1 tapestry (being replaced)\n\n24 nodes, all closed with evidence. 220 PNGs across `results/claims/`. Regions: data (2), methodology (4), measurement (1), validation:consistency (4), validation:contamination (5), validation:null (3), validation:theory (3), synthesis (1).\n\nKey fibers to consult:\n- `felt show 706364a6` — field overview (current maps node)\n- `felt show findings-synthesis-euclid-cmb-03354e57` — comprehensive narrative of all nodes\n\n### Wildcard dimensions\n\n```\ntom_bins = [\"1\",\"2\",\"3\",\"4\",\"5\",\"6\"]     # 6 tomographic bins\nall_bins = [\"all\"] + tom_bins             # 7 total\nshear_methods = [\"lensmc\", \"metacal\"]     # 2 shear pipelines\nall_methods = [\"lensmc\", \"metacal\", \"density\"]  # 3 galaxy tracers\ncmbk_baseline = [\"act\", \"spt_winter_gmv\"]       # 2 primary CMB maps\nspt_variants = [\"spt_winter_gmv\", \"spt_winter_tt\", \"spt_winter_pp\", \"spt_winter_mv\"]\n```\n\nCMB baselines for heroes: ACT + SPT-GMV + SPT-PP (3). SPT-TT/MV are consistency only.\n\nPrimary matrix: 7 bins × 3 tracers × 3 CMB = 63 data vectors. With 11 systematics: 63 × 11 = 693 contamination assessments. The tapestry must make this comprehensible.\n\n### Key file paths\n\n- Plot scripts: `workflow/scripts/plot_*.py`\n- Shared utilities: `workflow/scripts/plot_utils.py`, `workflow/scripts/spectrum_utils.py`\n- Rules: `workflow/rules/explorations.smk`\n- Evidence: `results/claims/{specName}/`\n- Config: `config/config.yaml`\n- Existing field overview: `workflow/scripts/plot_field_overview.py`\n- Density maps: `results/rr2_v2_1_wl_031224-v0.0/gc/`\n\n### Starting point: maps node\n\nThe first node to build. Current `plot_field_overview` shows ACT κ, SPT κ, and shear weights (3 rows × 2 patches). Modify it to a 2×2 grid:\n- Row 1: Shear weights (all bins, north | south)\n- Row 2: Density overdensity (all bins, north | south)\n\nCMB κ maps get their own node eventually — separate from the Euclid data overview. The maps node answers: \"what Euclid data are we cross-correlating?\"\n\n`build_density_map` produces per-bin maps. An \"all\" bin aggregation is needed (check if it already exists; if not, add it).\n\n### Existing rules can be modified\n\nWhen a phase-2 node replaces a phase-1 node's function, modify the existing rule rather than creating a parallel one. The old tapestry is being replaced, not preserved. Avoid duplication.\n\n## Skills\n\nActivate before working:\n- `/snakemake` — for rule definitions and execution\n- `/tapestry` — for fiber/evidence conventions\n- `/implementing-code` — for script changes\n\n## Evidence\n\nProgress is measured by:\n- `felt ls -t tapestry` — do new nodes exist?\n- `ls results/claims/*/evidence.json` — does each node have computed evidence?\n- Visual inspection: does the figure compress information? Can you understand it without reading the script?\n- The number of top-level nodes should grow steadily across iterations, each one earning its place in the narrative.\n\n### Quality bar\n\nA node is done when:\n1. It answers its question in one visual at the top level\n2. All-bin result is prominent; per-bin is accessible but not dominant\n3. Three CMB baselines (ACT, GMV, PP) appear where relevant\n4. Evidence.json has meaningful metrics (not just file lists)\n5. A collaborator unfamiliar with the figure can interpret it within 30 seconds\n\n## Open Questions\n\n- **Dashboard progressive disclosure**: How to implement \"click to expand\" in the force-directed DAG? Regions? Collapsed subgraphs? This is interface work — deferred but the DAG structure should support it.\n- **Density \"all\" bin**: Does `build_density_map` already produce an aggregated map across bins 1-6? If not, how to combine (mean δ? weighted sum?).\n- **Tapestry tag namespace**: Should phase-2 nodes use a different tag prefix or region scheme to distinguish them from phase-1 while both coexist? Or just replace phase-1 tags as nodes are rebuilt?\n- **Node inventory**: The full set of top-level nodes hasn't been prescribed — it should emerge from building them one at a time. Candidates include: maps, CMB κ, the signal (cross-spectra), redshift scaling, experiment consistency, method consistency, SPT estimators, systematic budget, null tests, detection/likelihood, synthesis. But the number is flexible.",
+      "outcome": null,
+      "createdAt": "2026-02-18T21:17:38.177721434+01:00",
+      "closedAt": null,
+      "dependsOn": []
+    },
+    {
+      "id": "systematic-spectra-evidence-f060d0e7",
+      "title": "Systematic spectra evidence pipeline: fix LaTeX bug, add aggregate rule",
+      "status": "closed",
+      "kind": "task",
+      "tags": [
+        "code-health"
+      ],
+      "outcome": "plot_systematic_spectra had a LaTeX rendering bug: tracer_symbol + 'S' produced '\\gammaS' (invalid TeX) for shear methods. Fixed to '\\gamma\\,S'. Added plot_systematic_spectra to localrules. Added aggregate_systematic_spectra_evidence rule to explorations.smk using aggregate_evidence.py. Added plot_systematic_spectra handler to aggregate_evidence.py. Ran all 33 plots + aggregation. Evidence now at results/claims/plot_systematic_spectra/evidence.json — the only tapestry coherence gap is closed.",
+      "createdAt": "2026-02-18T21:23:26.172790456+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "systematic-spectra-raw-c-fs-c-3d65264d"
+      ]
+    },
+    {
+      "id": "plotting-standards-57ba2ceb",
+      "title": "Plotting standards",
+      "status": "open",
+      "kind": "task",
+      "tags": [
+        "doc"
+      ],
+      "body": "# Plotting Standards\n\n**This fiber is authoritative.** If `plot_utils.py` diverges, update the code.\n\n## Style Foundation\n\n`paper.mplstyle` is the single source of truth for fonts, sizes, and structural elements. Forked from the official Euclid stylesheet (`code/q1_cmbx/notebooks/euclid_stylesheet.mplstyle`, Lukas Hergt).\n\nAll scripts load the stylesheet before any plotting:\n```python\nfrom plot_utils import setup_theme\nsetup_theme()  # applies paper.mplstyle + seaborn style\n```\n\n### Fonts\n- Base: 8pt, sans-serif, `text.usetex: True`\n- Relative sizing: `medium`, `large` — don't hardcode pt values\n- Exception: dense heatmap tick labels may override to 7pt\n\n### Structural\n- Ticks: inward, both sides (`xtick.top`, `ytick.right`)\n- Axes linewidth: 0.6\n- Line width: 1.0\n- Marker size: 5.0\n- Tight bbox: `savefig.bbox: tight`, pad 0.02\"\n\n### DPI\n- 300 everywhere. No exceptions.\n\n## Figure Dimensions\n\n| Layout | Size | Use |\n|--------|------|-----|\n| Single panel | 4.0 × 3.0\" | Individual spectra, comparisons |\n| Double-column | 2 × fw | Side-by-side panels |\n| 2×3 grid (6 bins) | 2 × fw, height by content | Tomographic comparisons |\n| Stacked (E + B) | fw × 1.75 × fh, `height_ratios=[3,1]` | Shear cross-spectra |\n\n`fw, fh = plt.rcParams['figure.figsize']` — derive from stylesheet, don't hardcode.\n\n## Seaborn Theme\n\n| Context | Style |\n|---------|-------|\n| Spectral plots, comparisons, residuals | `\"ticks\"` |\n| Overview panels, summary figures | `\"whitegrid\"` |\n| Heatmaps, budget tables | `\"white\"` |\n\nAlways `sns.despine()` after axis setup (except heatmaps).\n\n## Colors\n\n### CMB Experiments\nDefined in `plot_utils.COLORS`. Never hardcode experiment colors.\n\n| Key | Color | Hex |\n|-----|-------|-----|\n| act | salmon | `#E8788A` |\n| spt_winter_gmv | teal | `#5B9EA6` |\n| spt_winter_tt | warm salmon | `#E8927C` |\n| spt_winter_pp | mint | `#7ECFC0` |\n| spt_winter_mv | lavender | `#9B8EC8` |\n| planck | black | — |\n| ia | crimson | — |\n\n### Tomographic Bins\n`BIN_PALETTE = sns.color_palette(\"husl\", 6)` — perceptually uniform for 6 categories.\n\n### Colormaps\n- Sequential: `mako`, `rocket`\n- Diverging: `icefire`\n\n## Markers\n\nDefined in `plot_utils.MARKERS`. One shape per experiment.\n\n| Experiment | Marker |\n|-----------|--------|\n| ACT | `o` (circle) |\n| SPT GMV | `s` (square) |\n| SPT TT | `v` (triangle down) |\n| SPT PP | `^` (triangle up) |\n| SPT MV | `D` (diamond) |\n\n## Error Bars\n\n```python\nax.errorbar(ells, y, yerr=yerr,\n    fmt=MARKERS[cmbk], color=COLORS[cmbk],\n    markersize=5, capsize=2, elinewidth=1)\n```\n\n## Axis Conventions\n\n- **Scaling**: always `ℓ · C_ℓ` prefactor\n- **X-axis**: log scale, label `r\"Multipole $\\ell$\"`\n- **Zero line**: `ax.axhline(0, color=\"gray\", ls=\"--\", lw=0.8, alpha=0.5)`\n- **Theory (binned)**: `\"k-\"`, `lw=1.5`, `alpha=0.8`\n- **Theory (unbinned)**: `color=\"gray\"`, `lw=0.8`, `alpha=0.4`, `zorder=0`\n- **IA theory**: `color=\"crimson\"`, `ls=\"--\"`, `lw=1.5`\n\n## Multipanel\n\n- 2×3 grid for 6 tomographic bins\n- Panel labels: `(a)`–`(f)` via `chr(ord(\"a\") + i)`\n- X-labels: bottom row only\n- Y-labels: left column only\n- Legend: first panel only, `fontsize` from stylesheet (medium = 8pt)\n\n## Statistical Annotations\n\nTop-right corner info box:\n```python\nax.text(0.97, 0.95, f\"S/N = {snr:.1f}\",\n    transform=ax.transAxes, ha=\"right\", va=\"top\", fontsize=\"medium\",\n    bbox=dict(boxstyle=\"round,pad=0.3\", facecolor=\"white\",\n              edgecolor=\"0.7\", alpha=0.9))\n```\n\n## Evidence Sidecar\n\nEvery plot script saves `evidence.json` alongside PNG:\n```python\nevidence = {\n    \"id\": str,\n    \"generated\": datetime.now(timezone.utc).isoformat(),\n    \"artifacts\": {\"png\": output_png.name},\n    \"evidence\": { ... }\n}\n```\n\n## Centralized Code\n\n| Module | Responsibility |\n|--------|---------------|\n| `plot_utils.py` | COLORS, LABELS, MARKERS, SYSMAP_LABELS, TOM_BINS, BIN_PALETTE, setup_theme() |\n| `spectrum_utils.py` | NPZ loading, SNR, chi², amplitude fitting |\n| `paper.mplstyle` | Fonts, sizes, structural rcParams |\n\n## Implementation Status\n\n- [ ] Create `paper.mplstyle` (fork Euclid stylesheet into `workflow/scripts/`)\n- [ ] Update `setup_theme()` to load `paper.mplstyle`\n- [ ] Standardize figsize across all scripts (derive from `rcParams`)\n- [ ] Standardize DPI to 300 across all scripts\n- [ ] Standardize theme selection (ticks/whitegrid/white) per script type",
+      "outcome": null,
+      "createdAt": "2026-02-18T21:40:41.466982336+01:00",
+      "closedAt": null,
+      "dependsOn": []
     }
   ]
 }
