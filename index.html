@@ -450,6 +450,11 @@
         color: var(--ui-text-muted); cursor: pointer; transition: all 150ms;
       }
       .dep-tag:hover { border-color: var(--ui-teal); color: var(--ui-teal); }
+      .dep-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem; }
+      .dep-dir-label {
+        font-size: 0.68rem; color: var(--ui-text-muted); opacity: 0.6;
+        font-family: var(--font-mono); min-width: 5.5rem; flex-shrink: 0;
+      }
 
       /* Detail: artifact viewer */
       .tapestry-artifact-viewer { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.8rem; }
