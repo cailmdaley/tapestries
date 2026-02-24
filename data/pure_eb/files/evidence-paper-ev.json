@@ -1,0 +1,199 @@
+{
+  "spec_id": "config_space_pte_matrices",
+  "spec_path": "workflow/config/config_space_pte_matrices.md",
+  "generated": "2026-02-22T07:29:07.230288",
+  "evidence": {
+    "versions": {
+      "SP_v1.4.6.3_leak_corr": {
+        "role": "fiducial",
+        "xip_stats": {
+          "pte_at_fiducial": 0.2970951360771668,
+          "n_evaluated": 210,
+          "mean": 0.5122426079073102,
+          "median": 0.5069014208697336,
+          "std": 0.20381254040255678,
+          "pte_at_full_range": 0.42143260641466423
+        },
+        "xim_stats": {
+          "pte_at_fiducial": 0.26523999231126505,
+          "n_evaluated": 210,
+          "mean": 0.3066411745521073,
+          "median": 0.23951882009434236,
+          "std": 0.21015649500256126,
+          "pte_at_full_range": 0.16747444970672215
+        },
+        "combined_stats": {
+          "pte_at_fiducial": 0.1958922080722787,
+          "n_evaluated": 210,
+          "mean": 0.4070731342247864,
+          "median": 0.38491611416589333,
+          "std": 0.23552887559937657,
+          "pte_at_full_range": 0.42456907870112326
+        },
+        "cosebis_stats": {
+          "pte_at_fiducial": 0.7766086730519802,
+          "n_evaluated": 190,
+          "mean": 0.3384152916367927,
+          "median": 0.2747492076201175,
+          "std": 0.2991160067123262,
+          "pte_at_full_range": 1.366351271250592e-05
+        },
+        "cosebis_20_stats": {
+          "pte_at_fiducial": 0.9425004770231936,
+          "n_evaluated": 190,
+          "mean": 0.3588619463590258,
+          "median": 0.3334914860500082,
+          "std": 0.2836828899782666,
+          "pte_at_full_range": 0.0001082741023446752
+        }
+      },
+      "SP_v1.4.5_leak_corr": {
+        "role": "appendix",
+        "xip_stats": {
+          "pte_at_fiducial": 0.5131992176263529,
+          "n_evaluated": 210,
+          "mean": 0.3026482997362422,
+          "median": 0.22942913714570806,
+          "std": 0.25969312802487887,
+          "pte_at_full_range": 0.02582767680769463
+        },
+        "xim_stats": {
+          "pte_at_fiducial": 0.004612223759289125,
+          "n_evaluated": 210,
+          "mean": 0.08569295582151483,
+          "median": 0.016068701421340377,
+          "std": 0.16617204523019605,
+          "pte_at_full_range": 0.0007707064136562951
+        },
+        "combined_stats": {
+          "pte_at_fiducial": 0.029933126825716933,
+          "n_evaluated": 210,
+          "mean": 0.07316594799514109,
+          "median": 0.037022027830564574,
+          "std": 0.11960328425337254,
+          "pte_at_full_range": 0.003667302187617878
+        },
+        "cosebis_stats": {
+          "pte_at_fiducial": 0.937810097254718,
+          "n_evaluated": 190,
+          "mean": 0.3023484991238186,
+          "median": 0.22222323306339276,
+          "std": 0.3055018457612863,
+          "pte_at_full_range": 7.37093366564306e-10
+        },
+        "cosebis_20_stats": {
+          "pte_at_fiducial": 0.6109546588553032,
+          "n_evaluated": 190,
+          "mean": 0.3203852698203433,
+          "median": 0.26434964854568643,
+          "std": 0.2843079382666484,
+          "pte_at_full_range": 4.1462979415869077e-07
+        }
+      },
+      "SP_v1.4.8_leak_corr": {
+        "role": "appendix",
+        "xip_stats": {
+          "pte_at_fiducial": 0.020470836506751515,
+          "n_evaluated": 210,
+          "mean": 0.28396589163750224,
+          "median": 0.1852752159615781,
+          "std": 0.2772539420758346,
+          "pte_at_full_range": 0.0387343549385166
+        },
+        "xim_stats": {
+          "pte_at_fiducial": 0.04745775016171921,
+          "n_evaluated": 210,
+          "mean": 0.17436105080895428,
+          "median": 0.09972788218134054,
+          "std": 0.1824718296335327,
+          "pte_at_full_range": 0.02019334947847868
+        },
+        "combined_stats": {
+          "pte_at_fiducial": 0.014491106510593646,
+          "n_evaluated": 210,
+          "mean": 0.18273639213939408,
+          "median": 0.0716200181115705,
+          "std": 0.2311291894485953,
+          "pte_at_full_range": 0.01815752288924876
+        },
+        "cosebis_stats": {
+          "pte_at_fiducial": 0.604286416242688,
+          "n_evaluated": 190,
+          "mean": 0.278948166194325,
+          "median": 0.1353599790119695,
+          "std": 0.313381280576204,
+          "pte_at_full_range": 4.941829587239478e-06
+        },
+        "cosebis_20_stats": {
+          "pte_at_fiducial": 0.8114081025453388,
+          "n_evaluated": 190,
+          "mean": 0.26320014617070475,
+          "median": 0.12777793797593104,
+          "std": 0.29604232695151217,
+          "pte_at_full_range": 2.501204809918987e-05
+        }
+      },
+      "SP_v1.4.11.3_leak_corr": {
+        "role": "appendix",
+        "xip_stats": {
+          "pte_at_fiducial": 0.7822131490976897,
+          "n_evaluated": 210,
+          "mean": 0.3330740306629164,
+          "median": 0.25218163561611645,
+          "std": 0.2598024866885641,
+          "pte_at_full_range": 0.10057974841766522
+        },
+        "xim_stats": {
+          "pte_at_fiducial": 0.0009398868345527742,
+          "n_evaluated": 210,
+          "mean": 0.09699996687795585,
+          "median": 0.004635285780159019,
+          "std": 0.20965980198246,
+          "pte_at_full_range": 2.941286923996496e-06
+        },
+        "combined_stats": {
+          "pte_at_fiducial": 0.013804814788752067,
+          "n_evaluated": 210,
+          "mean": 0.07447892251622579,
+          "median": 0.017671364081269764,
+          "std": 0.16293557127842892,
+          "pte_at_full_range": 0.0009070698550446011
+        },
+        "cosebis_stats": {
+          "pte_at_fiducial": 0.8238237127290963,
+          "n_evaluated": 190,
+          "mean": 0.23311342244788605,
+          "median": 0.14628390602657157,
+          "std": 0.26407431723454394,
+          "pte_at_full_range": 1.7040647413678019e-10
+        },
+        "cosebis_20_stats": {
+          "pte_at_fiducial": 0.8307594318413329,
+          "n_evaluated": 190,
+          "mean": 0.24647319244771207,
+          "median": 0.14445926703759743,
+          "std": 0.2689531045531583,
+          "pte_at_full_range": 1.156112246583642e-08
+        }
+      }
+    },
+    "fiducial_scale_cuts_arcmin": {
+      "xip": [
+        12,
+        83
+      ],
+      "xim": [
+        12,
+        83
+      ],
+      "cosebis": [
+        12,
+        83
+      ]
+    }
+  },
+  "output": {
+    "figure_fiducial": "figure_fiducial.png",
+    "figure_appendix": "figure_appendix.png"
+  }
+}

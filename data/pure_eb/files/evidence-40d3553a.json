@@ -1,0 +1,59 @@
+{
+  "spec_id": "pure_eb_covariance",
+  "spec_path": "workflow/config/pure_eb_covariance.md",
+  "generated": "2026-02-22T00:35:49.535698",
+  "evidence": {
+    "condition_number": 3.275510934883257e+16,
+    "is_positive_definite": true,
+    "min_eigenvalue": 8.569168317904432e-27,
+    "max_eigenvalue": 2.806840452815113e-10,
+    "matrix_shape": [
+      120,
+      120
+    ],
+    "n_bins": 20,
+    "n_blocks": 6,
+    "block_analysis": {
+      "xi_E": {
+        "condition_number": 155513.93687743924,
+        "is_positive_definite": true,
+        "min_eigenvalue": 6.552317360720522e-16,
+        "max_eigenvalue": 1.0189766684360404e-10,
+        "block_size": [
+          40,
+          40
+        ],
+        "description": "xi_+^E and xi_-^E combined (40x40)"
+      },
+      "xi_B": {
+        "condition_number": 190578.471054738,
+        "is_positive_definite": true,
+        "min_eigenvalue": 5.219277356515741e-16,
+        "max_eigenvalue": 9.946818986153845e-11,
+        "block_size": [
+          40,
+          40
+        ],
+        "description": "xi_+^B and xi_-^B combined (40x40)"
+      },
+      "xi_amb": {
+        "condition_number": 1.984701786177396e+16,
+        "is_positive_definite": true,
+        "min_eigenvalue": 9.947330521852387e-27,
+        "max_eigenvalue": 1.974248465441736e-10,
+        "block_size": [
+          40,
+          40
+        ],
+        "description": "xi_+^amb and xi_-^amb combined (40x40)"
+      }
+    }
+  },
+  "parameters": {
+    "version": "SP_v1.4.6.3_leak_corr",
+    "blind": "A"
+  },
+  "output": {
+    "figure": "figure.png"
+  }
+}

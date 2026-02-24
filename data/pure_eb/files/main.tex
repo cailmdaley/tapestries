@@ -1,0 +1,830 @@
+%                                                                 aa.dem
+% AA vers. 9.1, LaTeX class for Astronomy & Astrophysics
+% demonstration file
+%                                                       (c) EDP Sciences
+%-----------------------------------------------------------------------
+%
+%\documentclass[referee]{aa} % for a referee version
+%\documentclass[onecolumn]{aa} % for a paper on 1 column  
+%\documentclass[longauth]{aa} % for the long lists of affiliations 
+%\documentclass[letter]{aa} % for the letters 
+%\documentclass[bibyear]{aa} % if the references are not structured 
+%                              according to the author-year natbib style
+
+%
+\documentclass{aa}  
+
+%
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\graphicspath{ {Figures/} }
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[labelfont=bf]{caption}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{txfonts}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=MidnightBlue,
+    filecolor=MidnightBlue,
+    citecolor=MidnightBlue,
+    urlcolor=MidnightBlue,
+}
+\usepackage[capitalize,noabbrev]{cleveref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sg}[1]{\textcolor{blue}{#1}}
+\newcommand{\SG}[1]{\textcolor{blue}{[SG: #1]}}
+\newcommand{\lisa}[1]{\textcolor{magenta}{LG: #1}}
+\newcommand{\placeholder}[1]{\textcolor{red}{#1}}
+\usepackage[normalem]{ulem}
+\newcommand{\CD}[1]{\textcolor{teal}{#1}}
+\newcommand{\CDout}[1]{\textcolor{teal}{\sout{#1}}}
+% To add links in your PDF file, use the package "hyperref"
+% with options according to your LaTeX or PDFLaTeX drivers.
+% Add file containing the macros
+\input{macro.tex}
+%
+\begin{document} 
+
+
+   \title{UNIONS-3500 weak lensing: V. 2D cosmological constraints in harmonic space}
+
+   \author{\sg{Sacha Guerrini}
+          \inst{1}
+          \thanks{\email{sacha.guerrini@cea.fr}}
+          \and
+          Lisa W. K. Goh
+          \inst{3,4}
+          \and
+          Fabian Hervas-Peters
+          \inst{2}
+          \and
+          Martin Kilbinger
+          \inst{2}
+          \and
+          Anna Wittje
+          \inst{5}
+          \and
+          Michael J. Hudson
+          \inst{6,7,8}
+          \and
+          Ludovic van Waerbeke
+          \inst{9}
+          \and
+          others
+          }
+
+   \institute{%
+        Universit\'e Paris Cit\'e, Universit\'e Paris-Saclay, CEA, CNRS, AIM, F-91191, Gif-sur-Yvette, France
+    \and
+        Université Paris-Saclay, Université Paris Cité, CEA, CNRS, AIM, F-91191 Gif-sur-Yvette, France 
+    \and
+        Institute for Astronomy, University of Edinburgh, Royal Observatory, Blackford Hill, Edinburgh EH9 3HJ, UK
+    \and
+        Higgs Centre for Theoretical Physics, School of Physics and Astronomy, The University of Edinburgh, Edinburgh EH9 3FD, UK
+    \and
+        Ruhr University Bochum, Faculty of Physics and Astronomy, Astronomical Institute (AIRUB), German Centre for Cosmological Lensing, 44780 Bochum, Germany
+    \and
+        Department of Physics and Astronomy, University of Waterloo, 200 University Avenue West, Waterloo, Ontario N2L 3G1, Canada
+    \and
+        Waterloo Centre for Astrophysics, University of Waterloo, Waterloo, Ontario N2L 3G1, Canada
+    \and
+        Perimeter Institute for Theoretical Physics, 31 Caroline St. North, Waterloo, ON N2L 2Y5, Canada
+    \and
+        Department of Physics and Astronomy, University of British Columbia, 6224 Agricultural Road, V6T 1Z1, Vancouver, Canada
+        }
+
+   \date{Received XXXX; accepted YYYY}
+ 
+  \abstract{
+   The Ultraviolet Near-Infrared Optical Northern Survey (UNIONS) is a photometric survey in the northern sky. The quality of the data in the $r$ band provides precise shape measurements to constrain the growth of structures using cosmic shear.
+  % aims heading (mandatory)
+   This work aims to constrain cosmological parameters using a harmonic-space estimator of the cosmic shear signal, known as pseudo-$C_\ell$.
+  % methods heading (mandatory)
+   We perform our analysis in the context of the standard $\Lambda$CDM model. We model astrophysical systematic effects such as baryonic feedback and intrinsic alignments (IA) of galaxies. We check that the point spread function (PSF) systematic contribution does not affect our constraints. We finally assess the impact of different scale cuts and modelling choices on the constraints.
+  % results heading (mandatory)
+   \SG{TBD}
+  % conclusions heading (optional), leave it empty if necessary 
+   \SG{ To UNIONS reviewers: parts ready to read are Sections 1 to 4.7 included. Section 4.8 presents the image simulations used to estimate the multiplicative shear bias and is not fully ready yet. Section 5 presents results and will be finalised after unblinding. I encourage to look at the plots in Section 5 to validate the style, in particular Figure 10. The conclusion builds upon this section. Appendices A, B and C can be read as well. Appendix D depends on the result section. Red text corresponds to placeholder that might change with any analysis choice that might vary (lensing sample, scale cuts, etc). Note also that due to the page limit of A\&A some technical sections might be moved to the Appendix and summarised in the main text.}
+   }
+
+   \keywords{Cosmology --
+                weak lensing
+               }
+
+   \maketitle
+%
+%-------------------------------------------------------------------
+
+\section{Introduction}
+%
+Gravitational lensing by the large-scale structure of the Universe distorts the observed shapes of galaxies coherently. This \emph{cosmic shear} effect is sensitive to the growth of structures and the expansion history of the Universe. Cosmic shear is therefore a powerful probe for studying the behaviour of dark energy across time and for testing general relativity on cosmological scales \citep[see, e.g.,][for a review]{kilbingerCosmologyCosmicShear2015,mandelbaumWeakLensingPrecision2018}. In the last decade, Stage-III photometric surveys such as the Dark Energy Survey \citep[DES,][]{gattiDarkEnergySurvey2021}, the Kilo-Degree Survey \citep[KiDS,][]{wrightFifthDataRelease2024}, and the Hyper-Suprime Cam \citep[HSC,][]{liThreeyearShearCatalog2022} survey have provided strong constraints on the cosmological parameters related to the growth of structure, namely the density of matter $\Omega_{\rm m}$ and the amplitude of structure $\sigma_8$. The constraining power on the combination $S_8 \equiv \sigma_8 \sqrt{\Omega_{\rm m}/0.3}$ is competitive with cosmic microwave background observations \citep{planckcollaborationPlanck2018Results2020}. The use of two-point correlation functions from cosmic shear has become a standard technique to constrain the cosmological parameters \citep{amonDarkEnergySurvey2022,seccoDarkEnergySurvey2022, douxDarkEnergySurvey2022, asgariKiDS1000CosmologyCosmic2021, wrightKiDSLegacyCosmologicalConstraints2025, dalalHyperSuprimeCamYear2023,liHyperSuprimeCamYear2023}. Stage-III surveys have paved the way for the next-generation photometric surveys, such as the ESA satellite \textit{Euclid} \citep{mellierEuclidOverviewEuclid2025}, the Vera Rubin Observatory Legacy Survey of Space and Time \citep[LSST,][]{ivezicLSSTScienceDrivers2019} and NASA's Nancy Grace Roman Space Telescope \citep{akesonWideFieldInfrared2019}, which will observe an order of magnitude more galaxies due to improved observations in quality, area, depth, and spectral coverage. Because of their reduced statistical uncertainties, these experiments are pioneering in the study of dark energy and, in particular, of its evolution with time, as suggested by the Dark Energy Spectroscopic Instrument (DESI) first and second Data Releases \citep{desicollaborationDESI2024VI2025,desicollaborationDESIDR2Results2025}. However, the reduced noise level requires an exquisite understanding of astrophysical and instrumental systematics that pollute the cosmic shear signal. This pushes the community to carefully analyse each component of the analysis framework, from data reduction to the inference of cosmological parameters. Stage-III surveys have been essential for developing and validating the pipelines that will analyse those next-generation surveys \citep{jeffersonReanalysisStageIIICosmic2025}.
+
+The Ultraviolet Near-Infrared Optical Northern Survey \citep[UNIONS,][]{gwynUNIONSUltravioletNearinfrared2025a} is the last Stage-III survey and provides photometric coverage of the northern hemisphere. It gives complementary cosmic shear data to the other ground-based surveys, with excellent data quality in the $ugriz$-photometric bands. We can use two-point statistics of the cosmic shear field to extract cosmological information. The shear field, however, contains non-Gaussianities \citep{taruyaLognormalPropertyWeakLensing2002,hilbertCosmicShearCovariance2011,clerkinTestingLognormalityGalaxy2017} and extra information can be captured in higher-order statistics \citep[see e.g.,][]{ajaniStarletL1normWeak2021,ajaniEuclidPreparationXXVIII2023,euclidcollaborationEuclidPreparationDR12025}. Nevertheless, the two-point functions remain the primary source of information. They are accompanied by a good understanding of their theoretical modelling and different sources of systematics \citep{schneiderBaryonicEffectsWeak2020,navarro-gironesPAUSurveyMeasuring2025}. Two-point statistics can also be efficiently measured on the data. The shear two-point function can be expressed in configuration space using the correlation function $\xi_\pm(\vartheta)$ \citep{schneiderAnalysisTwopointStatistics2002}, as a function of angular separation $\vartheta$, or in harmonic space computing the shear angular power spectrum, $C_\ell$ \citep{deshpandeEuclidPreparationXXXVI2024}, as a function of the multipole $\ell$. While in principle the two statistics summarise the same cosmological information \citep{kilbingerPrecisionCalculationsCosmic2017,parkMatchingCosmicShear2025}, their different responses to systematic effects and the nontrivial distribution of the cosmological information across angular scales $\vartheta$ and multipoles $\ell$ can lead to potential differences in the cosmological constraints using one or the other.
+
+In this work, we present measurements of the non-tomographic cosmic shear power spectrum from UNIONS data, which we used to constrain the cosmological parameters of the $\Lambda$CDM model. We assessed the robustness of the modelling, varying scale cuts and the sensitivity of the inference to other modelling details, such as our choice of model of the non-linear part of the matter power spectrum and the impact of baryonic feedback, one of the main sources of uncertainty in weak lensing studies. Finally, we studied the consistency of these constraints with other weak lensing surveys and external probes. We also compare our results to those obtained in configuration space and published in a companion paper \citep{gohUNIONSWeakLensing2026}.
+
+The paper is organised as follows. Section~\ref{sec:UNIONS} presents UNIONS weak lensing data; Section~\ref{sec:methods} presents the methodology used to measure the non-tomographic cosmic shear power spectrum and to obtain theoretical predictions for given cosmological parameters. The modelling addresses the choices of non-linear matter power spectrum, including baryonic feedback, the intrinsic alignment of galaxies, and the estimation of the covariance of the cosmic shear power spectrum. Section~\ref{sec:inference} presents the inference pipeline and the choice of priors for intrinsic alignment, shear multiplicative bias, and redshift distribution uncertainties. We also discuss the amplitude of point spread function (PSF) systematics and validate the covariance modelling. Section~\ref{sec:results} presents our main results: cosmological constraints on the growth of structure using the non-tomographic cosmic shear power spectrum with UNIONS data. We perform robustness checks on our modelling and compare our constraints to those of previous weak lensing experiments and external probes, such as \textit{Planck}. Additionally, Table~\ref{tab:unions_papers} provides a summary of the set of papers in this release: catalogue construction (Paper~I; \citealt{kilbingerUNIONSWeakLensing2026});  image simulations and validation (Paper~II; \citealt{hervaspetersUNIONSWeakLensing2026}); $B$-mode validation (Paper~III; \citealt{daleyUNIONSWeakLensing2026}); configuration space cosmological constraints (Paper~IV; \citealt{gohUNIONSWeakLensing2026}); and harmonic space cosmological constraints (Paper~V; This work).
+
+\begin{table*}
+\centering
+\begin{tabular}{l l l}
+\hline
+\hline
+ & \textbf{Author} & \textbf{Title} \\
+\hline
+I & \cite{kilbingerUNIONSWeakLensing2026} & \placeholder{Weak lensing catalogues} \\
+II & \cite{hervaspetersUNIONSWeakLensing2026} & \placeholder{Image simulations for cosmic shear} \\
+III & \cite{daleyUNIONSWeakLensing2026} & \placeholder{$B$-mode validation and comparison for cosmic shear}\\
+IV & \cite{gohUNIONSWeakLensing2026} & \placeholder{2D cosmological constraints in configuration space}\\
+V & \textbf{This work} & \placeholder{2D cosmological constraints in harmonic space} \\
+\hline
+\end{tabular}
+\caption{List of associated publications in this coordinated UNIONS release.}
+\label{tab:unions_papers}
+\end{table*}
+
+
+%--------------------------------------------------------------------
+\section{The UNIONS data set}
+\label{sec:UNIONS}
+
+UNIONS is a photometric survey in the northern sky \citep{gwynUNIONSUltravioletNearinfrared2025a}. It combines multi-band photometric images from telescopes located in Hawai'i to observe over \CD{${\sim}5\,000$} deg$^2$ of sky. The Canada-France Hawai'i Telescope (CFHT) provides $u$- and $r$-band images, this part of the survey being called the Canada-France Imaging Survey (CFIS). The Panoramic Survey Telescope and Rapid Response System (Pan-STARRS) provides the $i$- and $z$-band data and Subaru, which takes images in the $z$ band in the framework of WISHES (Wide Imaging with Subaru HSC of the Euclid Sky), and the $g$ band in WHIGS (Waterloo Hawai'i Ifa Survey). UNIONS is a key piece of the \textit{Euclid} survey. The broad filter band of the VIS instrument aboard \textit{Euclid} prevents accurate photometric redshift estimation \citep{euclidcollaborationEuclidIIVIS2025}. The need for ground-based data on the \textit{Euclid} survey footprint necessitated the existence and accelerated the progression of the surveys introduced above \citep{scaramellaEuclidPreparationEuclid2022a}. In that context, UNIONS has been granted an extension to collect data in the $r$ band down to 15° in declination to match the forecasted footprint of LSST. This analysis relies on non-tomographic cosmic shear measurements on $3\,500$ deg$^2$ using CFIS $r$-band data.
+
+\subsection{UNIONS $3\,500$ deg$^2$ catalogue}
+\label{sec:UNIONS_catalogue}
+%
+We use the \placeholder{fiducial UNIONS weak lensing}\footnote{it corresponds to the version SP v1.4.6.3 in \cite{kilbingerUNIONSWeakLensing2026}.} sample of galaxies introduced in the catalogue paper \citep{kilbingerUNIONSWeakLensing2026}. It is composed of \CD{$61\,378\,891$} galaxies covering \CD{$A_\mathrm{eff} = 2\,894$} deg$^2$ of effective area on the sky after masking. The effective density of galaxies amounts to \CD{$n_\mathrm{eff} = 4.96$} per square arcminute. The PSF fitting and the shape measurement are performed with \texttt{ShapePipe} \citep{guinotShapePipeNewShape2022, farrensShapePipeModularWeaklensing2022}, and the PSF is modelled using \texttt{PSFex} \citep{bertinAutomatedMorphometrySExtractor2011}. The shape of the galaxies is measured using \texttt{ngmix} \citep{sheldonNGMIXGaussianMixture2015} and the calibration of the galaxy ellipticities is performed using \texttt{Metacalibration} \citep{huffMetacalibrationDirectSelfCalibration2017, sheldonPracticalWeaklensingShear2017} to estimate the shear response matrix, $R$, of each object. The PSF estimation and shape measurement are performed using photometric data from the $r$ band, benefiting from a competitive seeing of approximately $0.7''$. The weak lensing sample is selected after applying masks to remove areas of the sky polluted by stellar spikes, satellite trails, or other instrumental spurious effects. In addition, we remove small objects, more sensitive to leakage and other PSF effects, applying a cut in size using the ratio of the half-light radius of the galaxy, $r_\mathrm{HLR, gal}$, and of the PSF, $r_\mathrm{HLR, PSF}$: \placeholder{$r_\mathrm{HLR, gal}/r_\mathrm{HLR, PSF} > 0.7$}.  The output catalogue contains two sets of ellipticities for each galaxy. Calibrated shapes using \texttt{Metacalibration} are saved, but undergo a second correction step to remove residual PSF leakage empirically, adapted from \cite{liKiDSLegacyCalibrationUnifying2023}. More details on the PSF fitting and validation, shape measurement, sample selection, and leakage correction can be found in the associated catalogue paper \citep{kilbingerUNIONSWeakLensing2026}. The impact of this empirical leakage calibration is discussed in Sects.~\ref{sec:PSF} and \ref{sec:robustness_modelling_psf}. The shape noise per ellipticity component of the weak lensing sample used in this work amounts to $\sigma_e = 0.27$. A reminder of the definitions of the effective area, number density, and of the shape noise used in this work can be found in Appendix~\ref{app:definitions}.
+
+\subsection{Redshift distribution}
+\label{sec:redshift distribution}
+We estimate the redshift distribution for the UNIONS $r$-band weak lensing source sample using the colour--redshift relation \citep[see section 3 of][, for full details]{gohUNIONSWeakLensing2026}. The multi-band photometry in this case is taken from the Canada--France--Hawaii Telescope Lensing Survey \citep[CFHTLenS;][]{heymansCFHTLenSCanadaFranceHawaiiTelescope2012,erbenCFHTLenSCanadaFranceHawaiiTelescope2013}, which provides substantially deeper $ugriz$ data \citep{hildebrandtCFHTLenSImprovingQuality2012}. For $44.2~\mathrm{deg}^2$ in the CFHT W3 field, basically all CFIS $r$-band detections have CFHTLenS counterparts, so we cross-match sources and adopt their associated $ugriz$ magnitudes. This matched sample is assumed to represent the colour--redshift distribution of the whole UNIONS population.
+
+To calibrate redshifts, we compile a spectroscopic sample that spans the same photometric space as the matched UNIONS--CFHTLenS sources. This includes galaxies from DEEP2 \citep{newmanDEEP2GalaxyRedshift2013}, the VIMOS VLT Deep Survey \citep[VVDS;][]{lefevreVIMOSVLTDeep2005}, and the VIMOS Public Redshift Survey \citep[VIPERS;][]{scodeggioVIMOSPublicExtragalactic2018}, all observed in CFHTLenS $ugriz$ filters.
+
+Using the multi-band photometry of the spectroscopic sample, we train a self-organising map (SOM; \citealt{kohonenSelforganizedFormationTopologically1982}) based on the colours and magnitudes of the galaxies \citep{mastersMappingGalaxyColorRedshift2015,wrightPhotometricRedshiftCalibration2020}. The SOM is initialised on a $101 \times 101$ grid and then hierarchically clustered into approximately $5\,000$ resolution elements, preserving photometric structure while increasing the effective spectroscopic sampling per cell.
+
+We populate the SOM with UNIONS sources by assigning each galaxy to its best-matching cell in colour-magnitude space. Each galaxy carries a shear weight $w_j^{\rm shape}$ and a shear-response weight $w_j^R$ derived from a smoothed shear response \citep{mylesDarkEnergySurvey2021}. The response weight is obtained by binning galaxies in the $(\mathrm{SNR}, r_\mathrm{HLR, gal}/r_\mathrm{HLR, PSF})$ plane and assigning the mean response $\langle R \rangle$ of the corresponding bin \citep[similar to ][]{gattiDarkEnergySurvey2021}.
+
+The SOM weight for cell $i$ is then
+\begin{equation}
+    w_i^{\mathrm{SOM}} =
+    \frac{\displaystyle \sum_{j \in i} 
+    w_{j}^{\rm shape}\, w_{j}^{R}}
+    {\displaystyle N_{i}^{\rm spec}},
+\end{equation}
+normalised with the number $N_{i}^{\rm spec}$ of spec-$z$ objects per cell $i$, which ensures that the spectroscopic set is reweighted to match the effective distribution of lensing sources \citep{wrightPhotometricRedshiftCalibration2020}.
+
+Finally, the redshift distribution of the UNIONS weak-lensing sample is computed by summing over SOM cells:
+\begin{equation}
+    n(z)
+    = \sum_i w_i^{\mathrm{SOM}}\, n_i^{\mathrm{spec}}(z),
+\end{equation}
+where $n_i^{\mathrm{spec}}(z)$ is the spectroscopic redshift distribution in cell $i$. To obtain a statistically robust estimate of the final redshift distribution, we jackknife over the spatially binned spectroscopic calibration sample and adopt their mean as the final calibrated distribution $n(z)$, shown in Fig.~\ref{fig:nz}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{redshift_distribution_SP_v1.4.6.pdf}
+    \caption{Normalised redshift distribution, $n(z)$. The redshift distribution is obtained using the colour--redshift relation method described in Sect.~\ref{sec:redshift distribution}. \SG{This plot shows the redshift distribution of Blind A. To be updated with the correct redshift distribution when unblind.}}
+    \label{fig:nz}
+\end{figure}
+
+
+%--------------------------------------------------------------------
+\section{Methods}
+\label{sec:methods}
+
+This work aims to extract cosmological constraints from the measurements of the angular power spectrum of the non-tomographic cosmic shear field inferred from the UNIONS data. This section describes the estimation of the angular power spectrum from the data (Sect.~\ref{sec:cs_power_spectrum}), the theoretical modelling of the power spectrum (Sect.~\ref{sec:modelling}) and the covariance matrix used in the multivariate Gaussian likelihood (Sect.~\ref{sec:cov_modelling}).
+%--------------------------------------------------------------------
+\subsection{Angular power spectrum measurements}
+\label{sec:pseudo_cl}
+
+Cosmic shear is represented by a spin-2 field, $\bs{\gamma} \equiv (\gamma_1, \gamma_2)$. At linear order, it corresponds to the distortions of the observed ellipticities of background galaxies, $\bs{e}^\mathrm{obs} \equiv (e_1^\mathrm{obs}, e_2^\mathrm{obs})$. The galaxies present in the UNIONS galaxy catalogue sample the shear field at discrete positions $\hat{\bs{n}}$ on the celestial sphere.
+
+To constrain cosmology, we estimate the angular power spectrum of the shear field. The true shear field $\bs{\gamma}$ can be decomposed on the basis of spherical harmonics. A spin-2 field, like $\bs{\gamma}$ can decompose in $E$-(curl-free) and $B$-(divergence-free) modes. With $a \in \{1, 2\}$ the component index and $\alpha \in \{E, B\}$ the mode index, this decomposition writes as
+%
+\begin{align}
+    \gamma^a(\sphangle) = \underset{\ell m}{\sum} \sphharmonics{\pm 2}{\ell}{m}{a}{\alpha}(\sphangle) \gamma_{\ell m}^\alpha,
+\end{align}
+%
+where $\sphharmonics{s}{\ell}{m}{a}{\alpha}(\sphangle)$ are the generalised spin-$s$ spherical harmonic functions \citep{hikageShearPowerSpectrum2011} and the component index is a superscript. For full-sky observations, the shear power spectra are then defined by the covariance matrix of the spherical harmonic coefficients,
+%
+\begin{align}
+ \langle \gamma^\alpha_{\ell m} \gamma^{\beta*}_{\ell' m'} \rangle = C_\ell^{\alpha \beta} \delta_{\ell \ell'} \delta_{m m'},
+\end{align}
+%
+where $\alpha,\beta \in \{E, B\}$, and which can be estimated with
+%
+\begin{align}
+\label{eq:full-sky estimator}
+    \hat{C}_\ell^{\alpha \beta} = \frac 1 {2 \ell +1} \underoverset{m=-\ell}{\ell}{\sum} \gamma^\alpha_{\ell m} \gamma^\beta_{\ell m},
+\end{align}
+%
+where the hat refers to the \emph{full-sky} angular power spectrum throughout. Gravitational lensing does not create $B$ modes to first order. However, a number of effects may generate small $B$-mode power spectra, such as second-order lensing effects \citep{krauseWeakLensingPower2010} or the clustering of source galaxies \citep{schneiderBmodesCosmicShear2002}. Given the statistical sensitivity of UNIONS these higher order effects will not create measurable $B$-modes, therefore $B$-modes are a useful diagnostic to detect potential systematic effects in the data, such as PSF dependence discussed in Sect.~\ref{sec:PSF}.
+
+This approach works for a full-sky observation, but we only have partial coverage of the sky due to the survey footprint. A mask is applied to the shear field that couples multipoles and biases the estimator defined in Eq.~\ref{eq:full-sky estimator}. We thus estimate the power spectra with the pseudo-$C_\ell$ formalism \citep{hivonMASTERCosmicMicrowave2002} using the \texttt{NaMaster} software \citep{alonsoUnifiedPseudoClFramework2019}. Previous measurements in the Dark Energy Survey \citep{douxDarkEnergySurvey2022} and the Hyper-Suprime Cam \citep{dalalHyperSuprimeCamYear2023} survey binned the galaxy shape catalogue in pixels on the sphere using \texttt{HealPy} \citep{gorskiHEALPixFrameworkHighResolution2005, zoncaHealpyEqualArea2019} at a chosen resolution and measured the power spectrum of the maps \citep{alonsoUnifiedPseudoClFramework2019}. This approach raises issues at the scale of the pixel resolution or below, where the pixel window function and aliasing can bias the estimation of the pseudo-$C_\ell$. If the number density of sources constituting the mask is low, it is dominated by Poisson noise, which can lead to numerical instabilities and bias. We address these issues using a catalogue-based estimator \citep{wolzCatalogbasedPseudoCls2025}.
+
+Let $w(\sphangle)$ denote the mask and $\tilde{\bs{\gamma}}(\sphangle) \equiv w(\sphangle) \bs{\gamma}(\sphangle)$ the masked shear field. We use the subscript $i$ to denote the $i$th point with sky position $\sphangle_i$. The mask and masked shear field are then, using $\delta^{\rm D}(\sphangle_1, \sphangle_2)$ the Dirac delta function on the sphere,
+%
+\begin{align}
+    w(\sphangle) = \underset{i}{\sum}w_i \delta^{\rm D}(\sphangle, \sphangle_i), \quad \tilde{\bs{\gamma}}(\sphangle) = \underset{i}{\sum} w_i \bs{f}_i \delta^{\rm D}(\sphangle, \sphangle_i).
+\end{align}
+%
+The power spectrum of the masked shear field has an expectation value of
+%
+\begin{align}
+\label{eq:pseudo_cl}
+    \langle \tilde{C}_\ell^{\alpha \beta} \rangle = \underset{\ell'}{\sum} ({\sf M}_{\ell \ell'})^{\alpha \beta}_{\alpha' \beta'} S_{\ell'}^{\alpha' \beta'} + \tilde{N}_\ell^{\alpha \beta},
+\end{align}
+%
+where ${\sf M}_{\ell \ell'}$ is the mode-coupling matrix, $S_{\ell}^{\alpha \beta}$ the signal power spectrum of the unmasked shear field and $\tilde{N}_\ell^{\alpha \beta}$ is the noise bias due to shape noise. The tilde notation will be used throughout to refer to quantities obtained from the mask field. The mode-coupling matrix describes how the mask correlates different multipoles as well as the leakage between $E$ and $B$ modes. In addition, one can define an estimator for the binned power spectra, independent of whether the field is masked or not, and defined as
+%
+\begin{align}
+    C_L^{\alpha \beta} = \underset{\ell \in L}{\sum} \omega_L^\ell C_\ell^{\alpha \beta},
+\end{align}
+%
+where $\omega_L^\ell$ is a set of weights defined for multipoles $\ell$ in bandpower $L=[\ell_\mathrm{min}, \ell_\mathrm{max}]$ and normalised such as $\sum_{\ell \in L}\omega_L^\ell = 1$. The estimator for the binned power spectrum is then given by
+%
+\begin{align}
+\label{eq:estimate_power_spectrum}
+    \hat{C}_L^{\alpha \beta} = \underset{L'}{\sum}  ([{\sf M}^S_{L L'}]^{-1})^{\alpha \beta}_{\alpha' \beta'} \langle \tilde{S}_{L'}^{\alpha' \beta'} \rangle,
+\end{align}
+%
+where $\tilde{S}_L^{\alpha \beta}$ is the signal of the masked power spectrum after removing the noise bias, and the mode-coupling matrix, ${\sf M}^S_{L L'}$, is estimated for this noise-subtracted estimator and binned following 
+%
+\begin{align}
+    {\sf M}^S_{L L'} = \underset{\ell \in L}{\sum} \underset{\ell' \in L'}{\sum} \omega_L^\ell {\sf M}^S_{\ell \ell'}.
+\end{align}
+These operations are performed by \texttt{NaMaster}, and more details on the algorithm can be found in \cite{lizancosHarmonicAnalysisDiscrete2024} and \cite{wolzCatalogbasedPseudoCls2025}.
+
+
+In this work, we apply the same binning strategy as \cite{douxDarkEnergySurvey2022}, using an equal-weight binning scheme with 32 square-root-spaced bins defined between multipoles $\ell_{\rm min}=8$ and $\ell_\mathrm{max} = 2048$. Contrary to \cite{douxDarkEnergySurvey2022}, we do not need to remove the noise bias and correct for the pixel window function, since the noise bias is removed in the catalogue-based estimator. The estimated shear power spectrum for UNIONS data is shown in Fig.~\ref{fig:data_vector_and_best_fit}, along with the best-fitting model for our fiducial $\Lambda$CDM results described in Sect.~\ref{sec:results}. The $EB$ and $BB$ power spectra are discussed in Sect.~\ref{sec:B_modes}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/paperplot_Cell_EE_and_best_fit.pdf}
+    \caption{Measurement of the cosmic shear power spectrum using the UNIONS weak lensing sample. Data points are computed with \texttt{NaMaster} using a catalogue-based estimator (see Sect.~\ref{sec:pseudo_cl}). Error bars are obtained using the Gaussian covariance estimator of \texttt{NaMaster} and adding the non-Gaussian contributions using \texttt{OneCovariance} (see Sect.~\ref{sec:cov_modelling}). The solid blue line corresponds to the best fit obtained using our fiducial setup described in Sect.~\ref{sec:inference}, relying on \texttt{HMCode2020}. The dashed blue line is obtained using \texttt{Halofit} for the non-linear power spectrum. The solid orange line corresponds to the best-fit obtained in configuration space \citep[see][]{gohUNIONSWeakLensing2026}. The vertical dashed lines represent the scale-cuts applied for different $k_\mathrm{max}$ (see Sect.~\ref{sec:scale_cut}).}
+    \label{fig:data_vector_and_best_fit}
+\end{figure}
+%--------------------------------------------------------------------
+\subsection{Modelling}
+\label{sec:modelling}
+%
+This section presents the theoretical background for the observed shear power spectra and the different sources of systematic effects.
+%
+\subsubsection{Cosmic shear power spectrum}
+\label{sec:cs_power_spectrum}
+%
+We compute the cosmic shear power spectrum using the Limber approximation \citep{limberAnalysisCountsExtragalactic1953}. This approximation is valid as long as we are not considering the largest scales \citep[small multipoles,][]{lemosEffectLimberFlatsky2017, kilbingerPrecisionCalculationsCosmic2017}. The angular power spectrum can be computed as,
+%
+\begin{align}
+\label{eq:cs_power_spectrum}
+    C_\ell = \int_0^{\chi_\mathrm{H}} d\chi \frac{q^2(\chi)}{\chi^2} P_\mathrm{NL}\left[k=\frac{\ell + 1/2}{\chi}, z(\chi) \right],
+\end{align}
+%
+where $\chi$ is the comoving distance, $\chi_\mathrm{H}$ is the comoving horizon distance, and $P_\mathrm{NL}$ is the non-linear 3D matter power spectrum. The lensing efficiency is given by
+%
+\begin{align}
+    q(\chi) = \frac 3 2 \Omega_{\rm m} \frac{H_0^2}{c^2} \frac{\chi}{a(\chi)} \int_\chi^{\chi_\mathrm{H}}d\chi' n(\chi') \frac{\chi-\chi'}{\chi'},
+\end{align}
+%
+where $\Omega_{\rm m}$ is the matter density parameter, $H_0$ is the Hubble constant, $a = 1/(1+z)$ is the scale factor, and $n(\chi)$ is the redshift distribution of source galaxies described in Sect.~\ref{sec:redshift distribution}.
+
+To perform the modelling, the linear part of the power spectrum is computed using \texttt{CAMB} \citep{lewisEfficientComputationCosmic2000}. The linear power spectrum computation model takes five cosmological parameters as input, $\omega_{\rm m}=\Omega_{\rm m} h^2$, $H_0 = 100h$ km s$^{-1}$ Mpc$^{-1}$, the amplitude of the primordial power spectrum, $A_\mathrm{s}$, and its tilt, $n_\mathrm{s}$, and the baryon density $\omega_{\rm b} = \Omega_{\rm b} h^2$. Some of them are derived from the sampled parameters described in Sect.~\ref{sec:inference} and summarised in Table~\ref{tab:inference_priors}.
+
+The linear power spectrum is not a sufficient description of matter clustering at scales probed by cosmic shear. At small scales, the growth of structure is non-linear \citep{jainCosmologicalModelPredictions1997, bernardeauLargescaleStructureUniverse2002} and affected by baryonic feedback from supernovae and active galactic nuclei \citep{vandaalenEffectsGalaxyFormation2011,semboloniQuantifyingEffectBaryon2011, chisariImpactBaryonsMatter2018, schallerFlamingoProjectBaryon2025}. We model this non-linear part of the power spectrum using \texttt{HMCode 2020} \citep{meadHmcode2020ImprovedModelling2021}, based on the halo-model, fitting physically motivated parameters to $N$-body and hydrodynamical simulations. The code provides a version that models baryonic feedback with a single parameter $T_\mathrm{AGN}$ controlling the amplitude of the feedback. We use this model to obtain our cosmic shear power spectrum predictions. Calibrations with $N$-body simulations estimate the value of the AGN temperature to be around $T_\mathrm{AGN} \sim 10^{7.6}-10^{8}$ K. In the inference, we marginalise on this parameter with a uniform prior informed by hydrodynamical simulations (see Sect.~\ref{sec:inference} and Table~\ref{tab:inference_priors})
+%
+\subsubsection{Intrinsic alignment}
+\label{sec:intrinsic_alignment}
+%
+In addition to baryonic effects, cosmic shear is sensitive to astrophysical systematic effects due to the intrinsic alignment (IA) of galaxies \citep[see][for a recent review]{chisariRisingTideIntrinsic2025}. Galaxies are extended objects and are therefore sensitive to the tidal field of the gravitational potential. Galaxies forming in the same overdensity will therefore tend to align with each other rather than having randomly distributed shapes. The observed shear power spectrum is therefore polluted by an additional contribution from the correlation of intrinsic shapes $C_{\ell, \mathrm{II}}$. Additionally, galaxies at different distances along the same line of sight experiencing lensing or gravitational tidal interactions from the same large-scale structure will contribute to the cosmic shear power spectrum with an additional cross-correlation term, $C_{\ell, \mathrm{\gamma I}}$, such that
+%
+\begin{align}
+    C_\ell^{\mathrm{obs}} = C_{\ell, \mathrm{\gamma \gamma}} + C_{\ell, \mathrm{\gamma I}} + C_{\ell, \mathrm{I\gamma }} + C_{\ell, \mathrm{II}},
+\end{align}
+%
+where the angular power spectra can be expressed in terms of the 3D power spectra, assuming the Limber approximation:
+%
+\begin{align}
+    C_{\ell, \mathrm{II}} &= \int_0^{\chi_\mathrm{H}} d\chi \frac{n^2(\chi)}{\chi^2}P_\mathrm{II}\left[k = \frac{\ell + 1/2}{\chi}, z(\chi) \right];\\
+    C_{\ell, \mathrm{\gamma I}} &= \int_0^{\chi_\mathrm{H}} \frac{q(\chi)n(\chi)}{\chi} P_\mathrm{\gamma I} \left[ k=\frac{\ell +1/2}{\chi}, z(\chi)\right].
+\end{align}
+
+We model intrinsic alignment using the non-linear linear alignment (NLA) model \citep{hirataIntrinsicAlignmentlensingInterference2004, bridleDarkEnergyConstraints2007}. This model extends the linear alignment model to small scales, effectively replacing the linear matter power spectrum, $P_\mathrm{L}(k, z)$, by the non-linear one, $P_\mathrm{NL}(k, z)$. The power spectra used to model intrinsic alignment are then
+%
+\begin{align}
+    P_\mathrm{II}(k,z) &= \left(\frac{C_1(z) \rho_\mathrm{crit} \Omega_{\rm m}}{\bar{D}}\right)^2 P_\mathrm{NL}(k,z),\\
+    P_\mathrm{\gamma I}(k,z) &= - \frac{C_1(z) \rho_\mathrm{crit} \Omega_{\rm m}}{\bar{D}} P_\mathrm{NL}(k,z),
+\end{align}
+%
+where, 
+%
+\begin{align}
+    C_1(z) = A_\mathrm{IA}\bar{C}_1\left( \frac{1+z}{1+z_0}\right)^{\eta_\mathrm{IA}},
+\end{align}
+%
+$\bar{D}(z)\propto (1+z)D(z)$, with $D(z)$ the growth factor normalised to unity today, $\bar{C_1}=5 \times 10^{-14} (h^2 M_\odot /$Mpc$^{-3} )^{-2}$ is a normalisation constant \citep{hirataIntrinsicAlignmentlensingInterference2004}, and $z_0$ is a pivot redshift. Since our measurement is non-tomographic we cannot break the degeneracy between intrinsic alignment and cosmic shear. We therefore removed the redshift dependence by setting $\eta_\mathrm{IA}=0$ and we placed a strong prior on the amplitude of the intrinsic alignment power spectrum $A_\mathrm{IA}$ (see Sect.~\ref{sec:intrinsic_alignment_prior} for details on this procedure).
+%
+%--------------------------------------------------------------------
+\subsection{Covariance modelling}
+\label{sec:cov_modelling}
+%
+We assume that the cosmic shear power spectrum follows a multivariate Gaussian distribution with fixed covariance. We rely on a theoretical estimate of the covariance to perform the inference detailed in Sect.~\ref{sec:inference}.
+
+The analytical expression of the covariance of the $E$-mode of the shear power spectrum can be written as a sum of Gaussian and non-Gaussian contributions from the shear field. The Gaussian contribution is computed with \texttt{NaMaster} using the improved narrow kernel approximation (iNKA) estimator \citep{garcia-garciaDisconnectedPseudoClCovariances2019, nicolaCosmicShearPower2021}. The estimator accounts for mode-mixing due to masking and binning within the pseudo-$C_\ell$ framework described in Sect.~\ref{sec:pseudo_cl}. The code requires the mode-coupled pseudo-$C_\ell$ spectra computed for the theoretical full-sky spectra convolved by the mixing matrix introduced in Eq.~\ref{eq:pseudo_cl}. We add the noise bias to the theoretical power spectrum, estimated using the following analytical expression derived in \cite{nicolaCosmicShearPower2021} for the binned noise pseudo-power spectrum:
+%
+\begin{align}
+\tilde{N}_L = \Omega_\mathrm{pix} \left \langle \underset{i \in p}{\sum} w_i^2 \frac{e^2_{1,i} + e^2_{2,i}}{2}\right \rangle_p,
+\end{align}
+%
+where $\Omega_\mathrm{pix}$ is the area of a pixel in steradians and the average is performed on all pixels. We work with a resolution of $N_\mathrm{side}=1024$\footnote{corresponding to a pixel size of $\sim 3.4$ arcmin.} and weight the generated maps using the galaxy count maps. This estimate is equivalent to the noise bias obtained by projecting the weak lensing samples on the \texttt{HealPix} map after applying random rotations to their shapes. This process correctly accounts for the shape noise and the variation of the number density on the sky. A fundamental difference with the catalogue-based estimator used in Sect.~\ref{sec:pseudo_cl}, however, is the use of the pixelised shear field to estimate the covariance in the absence of a catalogue-based estimator for the covariance within \texttt{NaMaster}. We validate the covariance using \texttt{OneCovariance} \citep{reischkeKiDSLegacyCovarianceValidation2025}, another code to estimate covariances analytically, and from \texttt{GLASS} \citep{tessoreGLASSGeneratorLarge2023} lognormal mocks in Sect.~\ref{sec:validation_covariance}.
+
+The non-Gaussian contribution to the covariance is the sum of the connected four-point covariance (cNG) arising from the shear field trispectrum, and the so-called supersample covariance (SSC), accounting for correlations of multipoles used in the analysis with supersurvey modes with larger wavelengths than the survey used \citep[see][for more details]{reischkeKiDSLegacyCovarianceValidation2025}. The non-Gaussian terms are computed using \texttt{OneCovariance} software. The software also computes the Gaussian part of the covariance described above. It is used for comparison in Sect.~\ref{sec:validation_covariance}. Contrary to iNKA, the analytic expression in \texttt{OneCovariance} does not account for the exact survey geometry and applies a scaling by the fraction of observed sky, $f_\mathrm{sky}$, derived from the mask. These subtle differences can explain some discrepancies between the various methods used to estimate the covariance, further detailed in Sect.~\ref{sec:validation_covariance}. The covariance matrices estimated are presented in Fig.~\ref{fig:corr_matrix}. The derived error bars on the cosmic shear power spectrum for the Gaussian and non-Gaussian parts are presented in Fig.~\ref{fig:errorbar_non_gaussian_cov}.
+
+The lower right panel in Fig.~\ref{fig:corr_matrix} shows the correlation matrix of the non-Gaussian covariance only, normalised using the diagonal of the full covariance. We see that the non-Gaussian terms add extra covariance at different multipoles, which becomes non-negligible for $100 \lesssim \ell \lesssim 900$, with correlations at the roughly $10\%$ level. This translates into an increase of the error bars on the diagonal of the covariance matrix of $3\%$ at $\ell = 300$, as shown in the lower panel of Fig.~\ref{fig:errorbar_non_gaussian_cov}. Section~\ref{sec:validation_covariance} will discuss the agreement between the iNKA covariance and the one obtained from \texttt{GLASS} mocks and \texttt{OneCovariance}. 
+
+The iNKA estimator introduced above also provides an estimate of the covariance matrix of the $B$-mode shear power spectrum and the cross-covariance between $E$- and $B$-mode power spectra. This estimator is used in Sect.~\ref{sec:B_modes} to assess the significance of the $B$ mode in the measured signal. The theoretical estimator is validated against Gaussian simulations in Appendix~\ref{app:B_mode_cov_validation}, following the procedure described in \cite{douxDarkEnergySurvey2022}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/corr_matrix_comparison.pdf}
+    \includegraphics[width=1\linewidth]{Figures/corr_matrix_comparison_non_gaussian.pdf}
+    \caption{ Correlation matrix of the non-tomographic cosmic shear power spectrum. The covariance matrix is estimated using two theory prescriptions, iNKA and \texttt{OneCovariance}, detailed in Sect.~\ref{sec:cov_modelling}. It is compared to the covariance estimated from \texttt{GLASS} mocks. \textit{Top}: Gaussian parts of the theory covariance compared to the simulation covariance. \textit{Bottom}: Full covariance, including the non-Gaussian part of \texttt{OneCovariance}. The bottom right panel shows the non-Gaussian part of the covariance only, normalised with the full covariance diagonal. We see a correlation between multipoles $\ell = 100$ and $900$.}
+    \label{fig:corr_matrix}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/paper_plot_errorbar_validation.pdf}
+    \caption{Comparison of the error bars of the theory prescription introduced in Sect.~\ref{sec:cov_modelling} and the covariance estimated from \texttt{GLASS} mocks. \textit{Top}: error bars on the diagonal in solid lines. The dashed line corresponds to the second diagonal. \textit{Bottom}: Relative error compared to the fiducial covariance matrix used for the analysis, specifically the iNKA Gaussian part and the \texttt{OneCovariance} non-Gaussian part. There is a discrepancy of $15\%$ between the \texttt{NaMaster} estimate and the one obtained from mocks. Some of this discrepancy can be explained by a spatially varying number density (see Appendix~\ref{app:density_variation_covariance}).}
+    \label{fig:errorbar_non_gaussian_cov}
+\end{figure}
+
+
+%--------------------------------------------------------------------
+\section{Inference pipeline validation}
+\label{sec:inference}
+
+We perform our analysis using a multivariate Gaussian likelihood with fixed covariance within the Bayesian framework. Bayes' theorem \citep{bayesLIIEssaySolving1997} provides the probability distribution of the parameters $\theta$ given a model $\model$ and the observed data $d$. The probability distribution $p(\theta \,|d, \model)$ is given by
+%
+\begin{align}
+    p(\theta \, |d, \model) = \frac{ \mathcal{L}(\theta) \times \Pi(\theta \,|\model)}{\mathcal{Z}(d \,|\model)},
+\end{align}
+%
+where $\Pi(\theta \, |\model)$ is the prior distribution of the parameters, $\mathcal{Z}(d \, |\model)$ is the Bayesian evidence, which gives the probability of observing the data after marginalising over the parameters $\theta$, and $\mathcal{L}(\theta) \equiv p(d \, |\theta, \model)$ is the likelihood function. This corresponds to the probability of observing the data $d$ given the parameters $\theta$ (and the chosen model $\model$). In this work, we assume the following form of the likelihood:
+%
+\begin{align}
+    -2 \log \mathcal{L} \propto [d-T(\theta)]^{\sf T} C^{-1} [d-T(\theta)],
+\end{align}
+%
+where $d$ is the data vector. $T(\theta)$ is the prediction obtained from \texttt{CosmoSIS} \citep{zuntzCosmoSISModularCosmological2015} and implementing the predictions developed in Sect.~\ref{sec:modelling} and additional systematics developed in Sects.~\ref{sec:intrinsic_alignment}, \ref{sec:multiplicative_bias} and~\ref{sec:redshift_uncertainty}, and $C$ is the covariance matrix of the data whose computation has been detailed in Sect.~\ref{sec:cov_modelling}. We introduce our inference choices in Sect.~\ref{sec:inference_choices}. In Sect.~\ref{sec:intrinsic_alignment_prior}, we explain how we choose the prior on the amplitude of the intrinsic alignment before discussing the impact of PSF systematic effects in Sect.~\ref{sec:PSF}. We validate the covariance in Sect.~\ref{sec:validation_covariance}. We measure the significance of $B$ modes in Sect.~\ref{sec:B_modes} before discussing the scale-cuts choice in Sect.~\ref{sec:scale_cut}. Sections~\ref{sec:multiplicative_bias} and~\ref{sec:redshift_uncertainty} describe how we account for biases in shear and redshift estimations. In Appendix~\ref{app:blinding}, we briefly describe the blinding procedure at the redshift distribution level adopted in this work.
+
+\subsection{Inference choices}
+\label{sec:inference_choices}
+
+In this work, we choose a similar sampling strategy to \cite{desandkidscollaborationY3KiDS1000Consistent2023}. We sample the cosmological parameters $\{\omega_{\rm c}, \omega_{\rm b}, H_0, n_\mathrm{s}, S_8\}$, with $S_8 \equiv \sigma_8 \sqrt{\Omega_{\rm m}/0.3}$, derived from the matter density $\Omega_{\rm m}$ and the amplitude of matter density fluctuations at the characteristic scale of $8 h^{-1}$ Mpc, $\sigma_8$. $\omega_{\rm c} \equiv \Omega_{\rm c} h^2$ is the physical cold dark matter density. The parameter $A_{\rm s}$ is derived from $S_8$, $\omega_{\rm c}$ and $\omega_{\rm b}$ as an input to \texttt{CAMB} (see Sect.~\ref{sec:cs_power_spectrum}). The parameter estimation is performed using the \texttt{Polychord} \citep{handleyPolychordNestedSampling2015, handleyPolychordNextgenerationNested2015} nested sampler.
+
+The choice of priors used in this work is similar to the Hybrid setup in \citet[][see table 2]{desandkidscollaborationY3KiDS1000Consistent2023}. In addition, we impose a prior on the baryon energy density parameter $\omega_{\rm b}$ derived from Big Bang nucleosynthesis (BBN) constraints \citep{cookeOnePercentDetermination2018, schonebergBAO+BBNRevisitedGrowing2022, schoneberg2024BBNBaryon2024}. Since the optical depth of reionisation $\tau$ is not constrained in weak lensing analyses, we fix it to $\tau=0.0544$. We also assume a flat Universe and one massive neutrino species, with effective relativistic degrees of freedom $N_\mathrm{eff} = 3.046$ and $m_\nu = 0.06$eV. In addition, we sample nuisance parameters to marginalise over astrophysical systematics, described previously (Sects.~\ref{sec:intrinsic_alignment} and \ref{sec:cs_power_spectrum}, and various biases discussed in this section). Table~\ref{tab:inference_priors} lists the priors for the full set of cosmological and nuisance parameters that we sample in our analysis. The following subsections describe the choice of priors for nuisance parameters, detail how we account for various systematic biases and validate the power spectrum measurement and covariance estimate.
+
+\subsection{Intrinsic alignment prior}
+\label{sec:intrinsic_alignment_prior}
+
+Due to our non-tomographic measurement, we cannot efficiently break the degeneracy between intrinsic alignments and the amplitude of the growth of structures. To constrain $S_8$, we must therefore rely on a well-motivated prior on the amplitude of intrinsic alignment $A_{\rm IA}$. This prior can be built from the multiple direct intrinsic alignment measurements on early-type galaxies \citep{joachimiConstraintsIntrinsicAlignment2011, mandelbaumWiggleZDarkEnergy2011, singhIntrinsicAlignmentsSDSSIII2015, johnstonKiDS+GAMAIntrinsicAlignment2019, fortunaKiDS1000ConstraintsIntrinsic2021, liKiDS1000CosmologyImproved2023,hervaspetersUNIONSDirectMeasurement2025, navarro-gironesPAUSurveyMeasuring2025}. A similar approach has been used in previous cosmic shear analyses \citep{fortunaHaloModelVersatile2021,wrightKiDSLegacyCosmologicalConstraints2025}. Our weak lensing sample also includes late-type galaxies, which are expected to have weaker intrinsic alignment signal. We parameterise the total intrinsic alignment amplitude as a combination of the contributions from red and blue galaxies, weighted by their respective fractions, $f_{\rm r}$ and $f_{\rm b}$, in the sample:
+%
+\begin{equation}
+    A_{\rm IA}=f_{\rm r} \, A_{\rm IA,r}+f_{\rm b} \,A_{\rm IA,b} \ .
+\end{equation}
+%
+Using the photometry of CFHTLenS on W3, the same sample used for estimating the redshift distribution in Sect.~\ref{sec:redshift distribution}, we split the sample into red and blue galaxies. For blue galaxies, we use the result of \cite{johnstonKiDS+GAMAIntrinsicAlignment2019}, which fitted the available measurements to obtain $A_\mathrm{IA, b} = 0.21 \pm 0.37$. For red galaxies, we sample the posterior distribution of the double power-law fit performed on $A_{\rm IA}(L/L_0)$, at the mean luminosity value of red galaxies measured on W3. This gives us $A_{\rm IA, r} = 2.75 \pm 0.49$. Adding the Gaussian errors in quadrature, we obtain a final prior of $A_{\rm IA} = 0.83 \pm 0.39$. We have tested the robustness of this prior against changes in the colour separation criteria, finding only small differences. This method remains limited by selection effects and variations between surveys. We account for this by almost doubling the width of the Gaussian prior (see Table~\ref{tab:inference_priors}). More details on the procedure are given in Sect. 4.2 of \cite{gohUNIONSWeakLensing2026}.
+%
+\subsection{Point spread function}
+\label{sec:PSF}
+%
+Point spread function (PSF) systematics arise due to PSF mismodelling or when eccentric PSF shapes leak into the measured shape of galaxies. These two effects can lead to both additive and multiplicative biases of the shear. The multiplicative bias is calibrated using \texttt{MetaCalibration} and image simulations \citep{hervaspetersUNIONSWeakLensing2026}. The additive bias can be estimated using galaxy-PSF correlation functions \citep{guerriniGalaxyPointSpread2025}. The use of correlation functions in configuration space, as presented in \cite{gohUNIONSWeakLensing2026}, has enabled the modelling of the PSF systematic effects and their incorporation in the inference pipeline. In this section, we will assess the significance of PSF systematic effects in harmonic space.
+
+The primary source of PSF systematics in configuration space is associated with PSF leakage, which corresponds to a non-zero correlation between galaxy and PSF ellipticities. We assume that the observed ellipticities, defined in Sect.~\ref{sec:pseudo_cl}, follow
+%
+\begin{align}
+    \bs{e}^\mathrm{obs} = \bs{\epsilon}^\mathrm{s} + \bs{\gamma} + \alpha \bs{e}^\mathrm{PSF},
+\end{align}
+%
+where $\bs{\epsilon}^{\rm s}$ is the intrinsic ellipticity of the galaxy, $\bs{e}^\mathrm{PSF}$ is the ellipticity of the PSF at the galaxy position and $\alpha$ quantifies the amplitude of the PSF leakage and is modelled as a scalar quantity. We can then compute the equivalent of $\rho_0(\vartheta)$ and $\tau_0(\vartheta)$ \citep{jarvisDarkEnergySurvey2021, gattiDarkEnergySurvey2021},
+%
+\begin{align}
+    C_\ell^{\rho_0} &= \langle \bs{e}^\mathrm{PSF} \bs{e}^\mathrm{PSF} \rangle_\ell,\\
+    \label{eq:tau_0_cl}
+    C_\ell^{\tau_0} &= \langle \bs{e}^\mathrm{obs} \bs{e}^\mathrm{PSF} \rangle_\ell.
+\end{align}
+%
+Similar to the methodology used in configuration space in Hervas-Peters et al., in prep., we define the amplitude of the PSF systematic contribution to the observed power spectrum as
+%
+\begin{align}
+    \label{eq:cl_sys}
+    C_\ell^\mathrm{sys} \equiv \frac{({C_\ell^{\tau_0}})^2}{C_\ell^{\rho_0}}.
+\end{align}
+%
+Figure~\ref{fig:tau_0_cell} shows the galaxy-PSF power spectrum $C_\ell^{\tau_0}$. We see that most of the signal is located on large scales (small multipoles), which corresponds to the behaviour of the leakage in configuration space \citep[see][]{kilbingerUNIONSWeakLensing2026,gohUNIONSWeakLensing2026}. The $EE$ and $BB$ parts of the power spectrum are represented for raw ellipticities in the shape catalogue and for the object-wise leakage-corrected ellipticities using the methodology in \cite{liKiDSLegacyCalibrationUnifying2023}. We can note two things. First, the object-wise correction tends to reduce the amplitude of $C_\ell^{\tau_0}$ in both $E$ and $B$ modes, showing the positive effect of the leakage calibration in removing some of the associated effect. Second, the galaxy-PSF signal, concentrated in the `$+$' component of the correlation function in configuration space, splits into $E$ and $B$ modes with comparable amplitude. This means that PSF systematic effects generate some $B$-mode signal, but at the same time the amplitude of PSF systematics present in the fitted $EE$ signal is reduced. This can be seen from Fig.~\ref{fig:ratio_cell_cell_sys}, showing the ratio between the estimated additive PSF systematics contribution, $C_\ell^\mathrm{sys}$ and the cosmological signal. After applying the leakage correction, the systematic contribution remains below 5\% on almost all scales and below 2.5\% for most multipoles, whereas before correction the additive bias exceeded 10\% on large scales \citep[see][]{gohUNIONSWeakLensing2026}. In addition, two peaks appear in the $EE$ part of $C_\ell^{\tau_0}$ (see Figure~\ref{fig:tau_0_cell}) and equivalently in $C_\ell^\mathrm{sys}$ at $\ell=400$ and $\ell=1000$. \CD{These correspond to peaks in the Bessel function of the Hankel transform at $\theta \sim 27'$ and $\theta \sim 10'$, respectively.} We highlight that this excess at $\ell=1000$ corresponds to the excess observed in the two-point correlation function $\xi_+$ at $\theta=10'$ in \cite{gohUNIONSWeakLensing2026}. \CD{This peak is, however, not seen in the configuration-space $\tau_0$ correlation function} \citep{kilbingerUNIONSWeakLensing2026}.  Uncertainties for $C_\ell^{\tau_0}$ are estimated from the iNKA estimator and are used to derive error bars of the additive systematic contribution, $C_\ell^\mathrm{sys}$. For the latter, the size of the error bars are underestimated because the estimation of $C_\ell^{\rho_0}$ covariance matrix is too unstable to be used. The error bars in Fig.~\ref{fig:ratio_cell_cell_sys} are therefore indicative only.
+
+The amplitude of the PSF systematics contribution, $C_\ell^\mathrm{sys}$, is therefore small enough to neglect in the modelling. In Sect.~\ref{sec:robustness_modelling_psf}, we will perform verification inference runs to validate that the PSF systematics do not have a substantial impact on the inference.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/tau_0_cl.pdf}
+    \caption{Galaxy-PSF power spectrum introduced in Eq.~\ref{eq:tau_0_cl}. The $EE$ and $BB$ parts of the power spectrum are shown for raw ellipticities in the shape catalogue and for the object-wise leakage-corrected ellipticities using the methodology in \cite{liKiDSLegacyCalibrationUnifying2023} and described in Hervas-Peters et al., in prep. The signal mostly appears on large scales, which is consistent with configuration space leakage measurements. The leakage correction reduces the amplitude of the galaxy-PSF correlation in both $E$ and $B$ modes. Data points are slightly offset for visualisation purposes.}
+    \label{fig:tau_0_cell}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/leakage_bias_fraction_ee.pdf}
+    \caption{Ratio between the estimated additive PSF systematics contribution, $C_\ell^\mathrm{sys}$ (see Eq.~\ref{eq:cl_sys}), and the cosmological signal $C_\ell^{EE}$. The ratio is shown for raw ellipticities in the shape catalogue and for the object-wise leakage-corrected ellipticities. The leakage correction reduces the amplitude of the systematic contribution to below 5\% on almost all scales and below 2.5\% for most multipoles. Data points for the leakage-corrected case are slightly offset for visualisation purposes.}
+    \label{fig:ratio_cell_cell_sys}
+\end{figure}
+
+\begin{table}
+\centering
+\renewcommand{\arraystretch}{1.4}
+\caption{Table of sampled parameters and their respective priors for the cosmological and nuisance parameters adopted in this analysis. }
+\begin{tabularx}{\linewidth}{p{3.5cm}p{3.5cm}}
+
+Parameter & Prior \\
+\hline
+\hline
+\multicolumn{2}{c}{Cosmology} \\
+\hline
+$\omega_{\rm b}$ & $\mathcal{N}(0.0244,0.0038)$\\
+$\omega_{\rm c}$ & $\mathcal U(0.051, 0.255)$\\
+$h$ & $\mathcal U(0.64, 0.82)$ \\
+$n_{\rm s}$ & $\mathcal U(0.84, 1.1)$ \\
+$S_8$  & $\mathcal U(0.1,1.3)$ \\
+$\log_{10}(T_{\rm AGN}/\mathrm{K})$ &  $\mathcal U(7.3, 8.0)$ \\
+\hline
+\multicolumn{2}{c}{Nuisance} \\
+\hline
+$A_{\rm IA}$ & $\mathcal N(0.83, 0.7)$\\
+$\Delta z$& $\mathcal{N}(0.036,0.013)$\\
+$m$& $\mathcal{U}(\placeholder{0.0, 0.01})$\\
+\hline
+\end{tabularx}
+\footnotesize{\textbf{Note:} Here $\mathcal{U}$(min,max) denotes a uniform prior, while $\mathcal{N}$(mean, std) denotes a Gaussian-distributed prior.}
+\label{tab:inference_priors}
+\end{table}
+%
+\subsection{Validation of the covariance}
+\label{sec:validation_covariance}
+%
+To validate the covariance, we create $350$ mocks generated using the \texttt{GLASS} software \citep{tessoreGLASSGeneratorLarge2023}. The mocks are generated for a fiducial cosmology and output a catalogue of objects that reproduces the footprint, the number density, the shape noise, and the redshift distribution of UNIONS weak lensing sample. We also use the theory prescription from \texttt{OneCovariance} to validate the covariance matrix. The fiducial cosmology used here is the \textit{Planck} 2018 cosmology \citep{planckcollaborationPlanck2018Results2020}.
+
+Figure~\ref{fig:errorbar_non_gaussian_cov} shows the error bars for the three different estimates of the covariance and the first diagonal. The upper panel shows the error bars after adding the non-Gaussian contributions computed with \texttt{OneCovariance} to the Gaussian part of iNKA or \texttt{OneCovariance}. We find good agreement between the three methods on the largest scales ($\ell < 100$). On small scales, the covariance estimates obtained from \texttt{OneCovariance} and the \texttt{GLASS} mocks agree remarkably well. However, the estimate computed from the Gaussian part of iNKA tends to overestimate the variance. We discuss in Appendix~\ref{app:density_variation_covariance} how this can be partly explained by a varying number density across the sky in the UNIONS survey. The lower panel shows the relative difference using iNKA combined with the \texttt{OneCovariance} non-Gaussian terms as the baseline. The discrepancy increases to $15\%$ on small scales. We will check the impact of this effect on cosmological inference in Sect.~\ref{sec:robustness_modelling_covariance}.
+
+Finally, the iNKA covariance for the $EB$ and $BB$ power spectra is used in Sect.~\ref{sec:B_modes} to perform $B$-mode null tests. Gaussian simulations are used to validate the semi-analytical estimate in Appendix~\ref{app:B_mode_cov_validation}. 
+%
+\subsection{$B$-modes null test}
+\label{sec:B_modes}
+%
+As mentioned in Sect.~\ref{sec:pseudo_cl}, gravitational lensing does not produce $B$ modes, to first order in the shear field and under the Born approximation. The $B$ modes produced by source clustering, intrinsic alignments, or other higher-order effects are expected to be small compared to the noise level in UNIONS data. However, as discussed in Sect.~\ref{sec:PSF}, systematic effects like PSF leakage can produce larger $B$-modes in practice. We understood, from Fig.~\ref{fig:tau_0_cell}, that some $B$-modes due to PSF systematics might pollute the cosmic shear signal. Hence, measuring the $B$-mode significance is a non-sufficient, yet informative test of systematic effects.
+
+Figure~\ref{fig:eb_bb_power_spectrum} shows the $EB$ and $BB$ power spectra measured on the non-tomographic UNIONS data, using the procedure described in Sect.~\ref{sec:pseudo_cl}. The covariance is estimated using iNKA (see Sect.~\ref{sec:cov_modelling} for details). For the $EB$ power spectrum, we obtain a $\chi^2$ of $20$ for $32$ degrees of freedom, leading to a probability-to-exceed (PTE) of $0.95$. For the $BB$ power spectrum, we measure a $\chi^2$ of $43$ for $32$ degrees of freedom, amounting to a PTE of $0.098$. We set our PTE test threshold to $0.05$. In \citep{daleyUNIONSWeakLensing2026}, $B$ modes in configuration space are identified at both small and large scales. While the null test marginally passes, we observe a small amplitude on both small and large scales. Removing the three points at the smallest scales improves the $B$-mode null test, reaching a PTE of $0.14$, corresponding to an increase of $50\%$. Removing an additional point on small scales increases the PTE up to $0.21$. In addition, removing points below $\ell_\mathrm{min}=300$ further improves the PTE to $0.33$. \cite{daleyUNIONSWeakLensing2026} provides further details on the $B$-mode measurements in configuration and harmonic space, compares both estimators, and motivates the scale cuts used in configuration space and in this work (see Sect.~\ref{sec:scale_cut}). The covariance used for the $B$-mode null test is validated against Gaussian simulations in Appendix~\ref{app:B_mode_cov_validation} following the procedure described in \cite{douxDarkEnergySurvey2022}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/paperplot_data_vectors_eb_bb.pdf}
+    \caption{ $EB$ and $BB$ power spectra measured on the non-tomographic UNIONS data. Data points for the leakage-corrected case are slightly offset for visualisation purposes. The covariance is estimated using iNKA (see Sect.~\ref{sec:cov_modelling} for details) and validated against Gaussian simulations. The $\chi^2$ and probability-to-exceeds (PTE) are reported on the figure. When considering all scales, our findings are consistent with the null hypothesis of no $B$ modes. Removing leakage slightly improves the PTE; the test marginally passes without scale cuts. Removing the three largest multipoles ($\ell > 1700$) further improves the PTEs of $BB$-mode null test to $0.12$ and $0.21$ for the catalogues with and without leakage correction, respectively.}
+    \label{fig:eb_bb_power_spectrum}
+\end{figure}
+%
+\subsection{Scale cuts}
+\label{sec:scale_cut}
+%
+\CD{Modelling} uncertainties on small-scales of the cosmic shear power spectrum and unmodelled systematic effects can bias the cosmological inference if not properly accounted for. A strategy to mitigate the bias is to cut the scales where the model cannot accurately capture the physical effects or where unknown systematic effects dominate the signal. In this work, we motivate our choice of scale cut from both theoretical considerations and $B$-mode measurements.
+
+Section~\ref{sec:cs_power_spectrum} describes the difficulty of modelling the non-linear power spectrum and the effect of baryonic feedback. To make the analysis robust to this uncertainty, we remove the scales where our theoretical model fails to accurately capture the physical effects. Our method consists of deriving an approximate cut in multipoles from a small-scale cut of 3D Fourier modes, which is motivated by theoretical considerations. In practice, we assume that the theoretical model is valid up to a specific wavenumber $k_\mathrm{max}$ and we discard the multipoles $\ell$ that receive significant contributions from smaller scales, $k > k_\mathrm{max}$.
+
+Following \cite{douxConsistencyCosmicShear2021}, we rewrite Eq.~\ref{eq:cs_power_spectrum} as an integral over $k$ modes. We then define the scale $k_{>\alpha}(\ell)$ at which the integral for $C_\ell$ reaches a fraction $\alpha$ of its total value, such that
+%
+\begin{align}
+\label{eq:Cl_integrand}
+    \int_{-\infty}^{\ln k_{>\alpha}(\ell)} \drom \ln k \frac{\drom C_\ell}{\drom \ln k} = \alpha C_\ell. 
+\end{align}
+%
+Figure~\ref{fig:Cl_integrand_vs_k} shows the integrand $\drom \ln C_\ell / \drom \ln k$ varying with the wavenumber $k$ in $h$ Mpc$^{-1}$. This shows that estimating $k_{>\alpha}(\ell)$ from Eq.~\ref{eq:Cl_integrand} corresponds to finding the wavenumber for which the integral under the curves in Fig.~\ref{fig:Cl_integrand_vs_k} amounts to $\alpha$\% of the total value. For a given choice of $\alpha$ and $k_\mathrm{max}$, we then obtain the small-scale multipole cut by numerically solving for $\ell_\mathrm{max}$ such that $k_{>\alpha}(\ell_\mathrm{max}) = k_\mathrm{max}$. We set $\alpha=0.95$, i.e., wavenumbers $k$ larger than $k_{>\alpha}(\ell)$ contribute at most 5\% of the total signal, and consider $k_\mathrm{max} = 1, 3$ and $5$ $h$ Mpc$^{-1}$ cuts. This scale cut definition is \CD{model-dependent} because the sensitivity to some $k$-modes depends on the shape of the 3D matter power spectrum. In Sect.~\ref{sec:robustness_modelling}, we will explore the impact of varying the non-linear matter power spectrum model while preserving our scale cuts, including the sensitivity to baryonic feedback modelling in \texttt{HMCode2020}. Solving for $\ell_\mathrm{max}$, and given our redshift distribution, we find that the scale cut associated with $k_\mathrm{max} = 3 h$ Mpc$^{-1}$ is $\ell_\mathrm{max} = 1800$.
+
+In addition, based on the probability-to-exceed values in \cite{daleyUNIONSWeakLensing2026} and Sect.~\ref{sec:B_modes}, we decided to remove the largest and smallest scales, where we see some potential $B$ modes. To be conservative, we use $\ell_\mathrm{min}=300$ and $\ell_\mathrm{max}=1600$. This choice of $\ell_\mathrm{max}$ corresponds to a maximum wavenumber $k_\mathrm{max} \thickapprox 2.6 h$ Mpc$^{-1}$ in the above framework. This choice of scale cuts becomes our fiducial setup and is used in Sect.~\ref{sec:fiducial_analysis}. We show in Appendix~\ref{app:B_mode_cov_validation} that this choice of cuts is robust to the choice of covariance estimator used in the $B$-mode null test.
+
+For consistency, we run inference splitting the data vector into small and large scales. For robustness to modelling, we use the methodology above for $k_\mathrm{max} \in [1, 3, 5]\,h\,\mathrm{Mpc}^{-1}$ while keeping $\ell_\mathrm{min}=300$ fixed. We also run inference with \texttt{Halofit} and \texttt{HMCode} without baryons to test the sensitivity to baryonic feedback modelling. Finally, we \CD{relax the large-scale cut} while keeping the fiducial $\ell_\mathrm{max}=1600$, to check the impact of large-scale $B$ modes. Results are in Sect.~\ref{sec:robustness_modelling_sc}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/Cl_integrand_vs_k.pdf}
+    \caption{ Integrand of the cosmic shear power spectrum with respect to $k$ in $h$ Mpc$^{-1}$. The different colour lines correspond to different multipole values. \CD{For higher multipoles, higher wavenumbers contribute to the integrand, so smaller scales are captured by the multipole in the angular power spectrum.} Section~\ref{sec:scale_cut} develops how these curves can be used to derive a scale cut in harmonic space given a maximum wavenumber $k_\mathrm{max}$.}
+    \label{fig:Cl_integrand_vs_k}
+\end{figure}
+%
+\subsection{Redshift distribution uncertainties}
+\label{sec:redshift_uncertainty}
+%
+We include uncertainties on the redshift distributions by allowing overall translations of the fiducial redshift distributions, shown in Fig.~\ref{fig:nz}, such that
+%
+\begin{align}
+    n(z) \rightarrow n(z+\Delta z).
+\end{align}
+%
+Redshift uncertainties are estimated using realistic mock catalogues \citep[see][and Sect. 4.4, for full details]{gohUNIONSWeakLensing2026} constructed from the MICE2 simulation \citep{fosalbaMICEGrandChallenge2015}. These mocks are designed to reproduce the photometric properties and selection functions of the UNIONS analysis, including CFHTLenS-like noisy $ugriz$ photometry \citep{hildebrandtCFHTLenSImprovingQuality2012}. We apply a noise-modelling framework inspired by \citet{vandenbuschTestingKiDSCrosscorrelation2020} to generate fluxes that reflect depth variations, seeing, and galaxy size. To ensure realistic selection functions, we employ the kNN-matching scheme of \citet{wrightKiDSLegacyRedshiftDistributions2025}, reproducing both the UNIONS--CFHTLenS matched photometric sample and the spectroscopic calibration sets including DEEP2 \citep{newmanDEEP2GalaxyRedshift2013}, VVDS \citep{lefevreVIMOSVLTDeep2005}, and VIPERS \citep{scodeggioVIMOSPublicExtragalactic2018}.
+
+The mock photometric and spectroscopic samples are then passed through the same SOM-based redshift-calibration pipeline used in the configuration space analysis (see Sect.\,\ref{sec:redshift distribution}), using the shape weights, and shear-response weights, that are also assigned by the kNN matching. Within the mocks, we compare the SOM-recovered redshift distribution to the true MICE2 redshifts, which yields an estimate of the systematic bias in the mean redshift, $\Delta z = 0.033$.
+
+To quantify the uncertainty on the bias, we use the standard deviation of the jackknife realisations of the SOM-based $n(z)$ from the real data. This provides a fully data-driven estimate of the uncertainty, which we verify is consistent with the scatter measured in the mock catalogues. We therefore adopt an uncertainty of $\pm 0.013$ as the width of the prior on the mean redshift shift parameter.
+
+%
+\subsection{Shear multiplicative bias}
+\label{sec:multiplicative_bias}
+%
+Some of the shear multiplicative bias is corrected for by \texttt{MetaCalibration}. However, residual multiplicative bias can remain due to blending, which is not accurately corrected for by \texttt{MetaCalibration} \SG{Add citation?}. The residual multiplicative bias and its uncertainty are estimated from image simulations \citep{hervaspetersUNIONSWeakLensing2026}. The residual multiplicative bias $m$ is then added to the inference as a nuisance parameter and rescales the power spectrum, such that
+%
+\begin{align}
+    C_\ell \rightarrow (1+m)^2 C_\ell.
+\end{align}
+%
+\SG{Add a few details on the image simulations}
+%
+%--------------------------------------------------------------------
+\section{Results}
+\label{sec:results}
+\SG{In this section and until unblinding, I will write the paper as if Blind A was the final result. After unblinding, I will update the numbers and figures accordingly.}
+
+This section presents the main result of the paper. We use the measurement of the non-tomographic cosmic shear power spectrum from UNIONS data to constrain the $\Lambda$CDM model in Sect.~\ref{sec:fiducial_analysis} and compare to constraints obtained from \textit{Planck}. We explore the robustness to modelling choices in Sect.~\ref{sec:robustness_modelling} by varying the scale cut choices, checking the influence of the object-wise PSF leakage correction (described in Sect.~\ref{sec:PSF}) and the impact of the choice made for the non-linear matter power spectrum modelling. In Sect.~\ref{sec:consistency} we quantify the consistency between our measurement in harmonic space and its analogue in configuration space from \cite{gohUNIONSWeakLensing2026}. We finally compare our results to other weak lensing experiments in Sect.~\ref{sec:comparison_weak_lensing_survey}.
+
+\subsection{Fiducial analysis}
+\label{sec:fiducial_analysis}
+%
+We present constraints on $\Lambda$CDM using the fiducial model described in Sects.~\ref{sec:methods} and~\ref{sec:inference}. In this fiducial setup, we use \texttt{HMCode2020} for the non-linear part of the matter power spectrum and NLA for intrinsic alignments without redshift dependence ($\eta_\mathrm{IA} = 0$). The scale cuts $\ell_{\rm min}=300$ and $\ell_\mathrm{max} = 1600$ are derived from Sect.~\ref{sec:scale_cut}, informed by $B$-mode analysis in Sect.~\ref{sec:B_modes} and \cite{daleyUNIONSWeakLensing2026}. \CD{These cuts correspond to $k_\mathrm{max} \approx 2.6\,h\,\mathrm{Mpc}^{-1}$ (see Sect.~\ref{sec:scale_cut}).} The object-wise PSF leakage-corrected ellipticities are used to reduce PSF systematics contributions. The sampled parameters and their priors are summarised in Table~\ref{tab:inference_priors}. Figure~\ref{fig:cl_vs_xi} shows constraints obtained from this work in \placeholder{blue} and is compared to constraints obtained from the configuration space analysis in \placeholder{orange} from \cite{gohUNIONSWeakLensing2026}. Constraints obtained from \textit{Planck} are shown in \placeholder{pink}. The 1D marginal constraints are also shown in Fig.~\ref{fig:whisker_plot} along with constraints for variations of the analysis further developed in Sect.~\ref{sec:robustness_modelling} and comparisons to other experiments discussed below.
+
+
+Using the non-tomographic cosmic shear power spectrum, we find
+%
+\begin{align*}
+    \Omega_{\rm m} &= \placeholder{0.30_{-0.16}^{+0.08}}, \text{[$C_\ell$, $\ell_\mathrm{min}=300$, $\ell_\mathrm{max}=1600$]},\\
+    \sigma_8 &= \placeholder{0.89_{-0.25}^{+0.19}}, \text{[$C_\ell$, $\ell_\mathrm{min}=300$, $\ell_\mathrm{max}=1600$]},\\
+    S_8 &= \placeholder{0.853_{-0.062}^{+0.064}}, \text{[$C_\ell$, $\ell_\mathrm{min}=300$, $\ell_\mathrm{max}=1600$]},\\
+\end{align*}
+%
+where we report the mean and 68 per cent confidence intervals of the posterior. The corresponding theoretical shear power spectrum is shown in Fig.~\ref{fig:data_vector_and_best_fit} as a \placeholder{blue solid line}. The agreement of the data is good with a $\chi^2 = \placeholder{21}$ for $\placeholder{17}$ degrees of freedom. Our constraints are consistent with \textit{Planck} at the $\placeholder{0.00}\, \sigma$ level, as shown in Fig.~\ref{fig:cl_vs_xi}. The constraints on $S_8$ are consistent with the configuration space analysis of UNIONS data \citep{gohUNIONSWeakLensing2026} at the $\placeholder{0.4} \, \sigma$ level, assuming independent error bars. The consistency between the two analyses, accounting for the correlation between the statistics, is discussed in Sect.~\ref{sec:consistency}.
+
+Appendix~\ref{app:additional_results} shows the full posterior for our fiducial setup in Figure~\ref{fig:full_posterior}, summarises results and metrics in Table~\ref{tab:metrics} and provides additional discussion on the obtained constraints.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/cosmological_constraints_cl_vs_xi/contours_s8_omegam_cell.pdf}
+    \caption{1D and 2D posteriors on $S_8 \equiv \sigma_8 (\Omega_{\rm m} / 0.3)^{0.5}$ and $\Omega_{\rm m}$ obtained using our fiducial analysis setup in harmonic space (this work, blue contours), configuration space \citep[][orange contours]{gohUNIONSWeakLensing2026}. This is compared to constraints from \textit{Planck} (pink contours). The consistency between configuration and harmonic space constraints on $S_8$ is discussed in Sect.~\ref{sec:consistency}. Our results are consistent with \textit{Planck} at the $\placeholder{0.00}\, \sigma$ level.}
+    \label{fig:cl_vs_xi}
+\end{figure}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/whisker_plot.pdf}
+    \caption{Comparison of 1D marginal posterior distributions over the parameters $S_8 \equiv \sigma_8 (\Omega_{\rm m} / 0.3)^{0.5}$, $\sigma_8$, and $\Omega_{\rm m}$ from UNIONS (this work), other experiments and consistency tests. (i) Constraints obtained from the harmonic space (this work) and configuration space \citep{gohUNIONSWeakLensing2026} analyses of UNIONS data are shown in \placeholder{blue} and \placeholder{orange}, respectively. (ii) Comparison with constraints obtained from other experiments, including weak lensing experiment in black. Our results are consistent with Planck at the $\placeholder{0.3}\, \sigma$ level and with other weak lensing experiments at the roughly $\placeholder{1} \, \sigma$ level. (iii) Constraints obtained from varying the scale cut in harmonic space are shown for $k_\mathrm{max} \in [1, 3, 5] h$ Mpc$^{-1}$ (see Sect.~\ref{sec:scale_cut}) and keeping only small or large scales. (iv) Constraints obtained by varying the non-linear matter power spectrum modelling using \texttt{Halofit} or \texttt{HMCode2020} without baryonic feedback. (v) Constraints obtained using both the Gaussian and non-Gaussian terms computed with \texttt{OneCovariance} to estimate the covariance matrix. (vi) Comparison of the constraints obtained without applying the empirical leakage calibration (see Sect.~\ref{sec:PSF}). \SG{Need to add results from other experiments obtained in harmonic space.}}
+    \label{fig:whisker_plot}
+\end{figure*}
+
+\subsection{Robustness to modelling choices}
+\label{sec:robustness_modelling}
+
+\CD{We assess the robustness of the cosmological constraints against analysis choices in Sects.~\ref{sec:methods} and \ref{sec:inference}.}
+
+\subsubsection{Scale cuts}
+\label{sec:robustness_modelling_sc}
+
+Scale cuts are derived in Sect.~\ref{sec:scale_cut} using \texttt{HMCode2020} non-linear power spectrum modelling and baryonic feedback emulation. Given a $k_\mathrm{max}$, an upper limit multipole $\ell_\mathrm{max}$ is derived such that the angular power spectrum depends by less than 5\% on $k$-scales larger than $k_\mathrm{max}$. To test the sensitivity of our analysis to scale cuts, we run inference using \CD{$k_\mathrm{max} = 5\,h\,\mathrm{Mpc}^{-1}$} ($\ell_\mathrm{max}=2048$), \CD{$k_\mathrm{max} = 3\,h\,\mathrm{Mpc}^{-1}$} ($\ell_\mathrm{max}=1800$) and \CD{$k_\mathrm{max} = 1\,h\,\mathrm{Mpc}^{-1}$} ($\ell_\mathrm{max} = 500$) while keeping the lower multipole limit to $\ell_\mathrm{min}=300$. Figure~\ref{fig:contours_scale_cuts} presents the constraints obtained by varying the scale cut. Adding smaller scales gives consistent constraints with our fiducial setup ($\placeholder{+0.08} \, \sigma$ and $\placeholder{xx} \, \sigma$). Cutting at $\ell_\mathrm{max}=500$ shifts $S_8$ to a lower value by $\placeholder{-0.10} \, \sigma$. Including large scales (below $\ell_\mathrm{min}=300$) increases $S_8$ by $\placeholder{+0.22}\, \sigma$. \SG{Add interpretation}
+
+In addition, Figure~\ref{fig:contours_small_vs_large_scales} shows a comparison of the constraints obtained when using only small or large scales. The cut is performed at $\ell_\mathrm{mid} = 800$ so that each inference runs on the same number of data points. Constraints from large scales only ($\ell < 800$) are consistent with the fiducial at the $\placeholder{-0.06} \,  \sigma$ level. Small scales alone drive $S_8$ to lower values ($\placeholder{-0.16} \, \sigma$). \SG{Add interpretation}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/cosmological_constraints_scale_cuts/contours_s8_omegam_cell.pdf}
+    \caption{1D and 2D marginal posteriors on $S_8$ and $\Omega_{\rm m}$ obtained varying the scale cut on small scales. The scale cut derivation is described in Sect.~\ref{sec:scale_cut} and is performed for \CD{$k_\mathrm{max} \in [1, 3, 5]\,h\,\mathrm{Mpc}^{-1}$} (orange, purple, and red contours, respectively). Green constraints show the marginal posterior obtained when including the largest scales ($\ell \leq 300$) in the inference.}
+    \label{fig:contours_scale_cuts}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/cosmological_constraints_small_vs_large_scales/contours_s8_omegam_cell.pdf}
+    \caption{1D and 2D marginal posteriors on $S_8$ and $\Omega_{\rm m}$ obtained after isolating small and large scales. The pivot multipole used is $\ell_\mathrm{mid}=800$ to analyse approximately the same number of multipoles on small and large scales. Using scales below $\ell_\mathrm{mid}$ (purple contour) gives consistent constraints, while limiting the analysis to small scales (orange contour) prefers slightly lower values of $S_8$, although remaining consistent ($\placeholder{-0.16}\, \sigma$).}
+    \label{fig:contours_small_vs_large_scales}
+\end{figure}
+
+\subsubsection{Point spread function leakage}
+\label{sec:robustness_modelling_psf}
+
+Our fiducial analysis uses leakage-corrected ellipticity \citep[see Sect.~\ref{sec:PSF} and][for details]{kilbingerUNIONSWeakLensing2026}. In Sect.~\ref{sec:PSF}, \CD{the additive bias due to PSF systematics is found to be negligible} (see Fig.~\ref{fig:ratio_cell_cell_sys}). To further check this assumption, we run an inference chain on the cosmic shear power spectrum measured using the leakage-uncorrected ellipticities. Figure~\ref{fig:contours_leakage} shows the constraints obtained without applying this correction against our fiducial setup. The leakage correction impacts the power spectrum measurement, particularly on large scales where leakage is the most significant. We find that running with and without leakage correction gives consistent constraints, showing the minimal impact of PSF systematics on our cosmological inference. The reduced error bars obtained on $S_8$ without applying the leakage calibration might be explained by the noise created in the calibration process.  \SG{In \citep{gohUNIONSWeakLensing2026}, a similar test is performed in configuration space. We show that ignoring PSF systematic contributions shifts $S_8$ by \placeholder{xx}$\sigma$.} \placeholder{Adding interpretation depending on the result}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/cosmological_constraints_leakage/contours_s8_omegam_cell.pdf}
+    \caption{1D and 2D marginal posteriors of $S_8$ and $\Omega_{\rm m}$ obtained using the leakage-corrected ellipticities (fiducial analysis, blue contour) and the raw ellipticities from the shape catalogue (red contour). The constraints are consistent at the $\placeholder{0.00} \, \sigma$ level, showing the minimal impact of PSF systematics on our cosmological inference.}
+    \label{fig:contours_leakage}
+\end{figure}
+
+\subsubsection{Covariance modelling}
+
+\label{sec:robustness_modelling_covariance}
+In Sect.~\ref{sec:cov_modelling}, we identified a difference of around $15\%$ between the covariance estimated with iNKA and the one computed with \texttt{OneCovariance}. We replace the iNKA covariance with the \texttt{OneCovariance} covariance in our fiducial analysis. Constraints are reported in Fig.~\ref{fig:contours_covariance}. Using \texttt{OneCovariance} shifts $S_8$ to higher values by \placeholder{0.13} \, $\sigma$. Differences in the hypotheses used to compute iNKA and \texttt{OneCovariance} covariances, discussed in Sect.~\ref{sec:validation_covariance}, might explain this shift. In particular, \texttt{OneCovariance} assumes a constant number density across the sky while iNKA can account for variations of the number density (see Appendix~\ref{app:density_variation_covariance} for more details). Such variations are present in UNIONS data and impact the covariance estimation. In addition, the Gaussian covariance estimate in iNKA accounts for the mask geometry more accurately than \texttt{OneCovariance}, which could also impact the inference. Appendix~\ref{app:density_variation_covariance} further discusses this difference.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/cosmological_constraints_covariance/contours_s8_omegam_cell.pdf}
+    \caption{1D and 2D marginal posteriors of $S_8$ and $\Omega_{\rm m}$ obtained using the iNKA covariance (fiducial analysis, blue contour) and the \texttt{OneCovariance} covariance (red contour). Using \texttt{OneCovariance} shifts $S_8$ to higher values by \placeholder{0.13} $\sigma$. The difference might originate from different assumptions used to compute the two covariances (see Sect.~\ref{sec:robustness_modelling_covariance} for details).}
+    \label{fig:contours_covariance}
+\end{figure}
+
+\subsubsection{Non-linear matter power spectrum modelling}
+
+In this section, we run two additional inference chains, varying the non-linear matter power spectrum modelling. By that, we do not intend to test the sensitivity of our analysis to dark matter models beyond the cold dark matter paradigm but rather to assess its sensitivity to our choice for the non-linear description, whose default is \texttt{HMCode2020} including baryonic feedback as described in Sect.~\ref{sec:cs_power_spectrum}. For this test, we first replace \texttt{HMCode2020} with \texttt{Halofit} \citep{takahashiREVISINGHALOFITMODEL2012} to model the non-linear part of the matter power spectrum. Second, we use \texttt{HMCode2020} without baryonic feedback. Figure~\ref{fig:contours_NL_modelling} shows the constraints obtained with these two models compared to our fiducial setup. Using \texttt{Halofit} shifts $S_8$ to lower values by $\placeholder{-0.11} \, \sigma$ while ignoring baryonic feedback gives consistent results on $S_8$ ($\placeholder{-0.03} \, \sigma$). The agreement at the $\placeholder{0.3} \, \sigma$ level shows the robustness of our analysis to the non-linear matter power spectrum modelling. The observed shift is consistent with results reported in Figure 9 of \cite{guMitigatingNonlinearSystematics2025}\CD{, suggesting that this level of bias is not a problem here, but could be for UNIONS tomographic analysis and will be with Stage-IV analysis.}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/cosmological_constraints_NL_modelling/contours_s8_omegam_cell.pdf}
+    \caption{1D and 2D marginal posteriors of $S_8$ and $\Omega_{\rm m}$ obtained using \texttt{HMCode2020} with baryonic feedback (fiducial analysis, blue contour), \texttt{Halofit} (orange contour), and \texttt{HMCode2020} without baryonic feedback (purple contour).}
+    \label{fig:contours_NL_modelling}
+\end{figure}
+
+\subsection{Consistency with configuration space analysis}
+\label{sec:consistency}
+
+As can be seen in Fig.~\ref{fig:whisker_plot}, constraints obtained from the harmonic space analysis (this work) and configuration space analysis \citep{gohUNIONSWeakLensing2026} are consistent at the $\placeholder{0.4} \, \sigma$ level on $S_8$, assuming independent error bars. However, this assumption is incorrect, since constraints are derived from the same data set. To quantify the consistency more accurately, we estimate the correlation between the two measurements using the \texttt{GLASS} mocks presented in Sect.~\ref{sec:validation_covariance}. For each of the $350$ \texttt{GLASS} mock realisations, we measure both the cosmic shear power spectrum and the two-point correlation functions. We then run a cosmological inference on each of these measurements using the same setup as for our fiducial analysis. This procedure gives us $350$ samples of the cosmological parameters for both harmonic and configuration space analyses.
+
+Figure~\ref{fig:difference_config_harm} shows a histogram of the difference between the estimate of $S_8$ in configuration and harmonic space performed on the $350$ \texttt{GLASS} mocks. We see that the two-point correlation function and the power spectrum are more likely to give the same results but we see that a difference of \placeholder{0.034} on $S_8$ is not completely unlikely. \SG{Try to quantify the number of sigmas between the twos.}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/S8_difference_config_harm.pdf}
+    \caption{Histogram of the difference in estimated $S_8$ using the two-point correlation function and the power spectrum from the $350$ \texttt{GLASS} mocks. Given our inference pipelines, a difference of $\placeholder{0.034}$ is not unlikely. \SG{Give the number of sigmas}}
+    \label{fig:difference_config_harm}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/S8_joint_config_harm.pdf}
+    \caption{2D histogram of the $S_8$ values estimated on the \texttt{GLASS} mock in configuration (x-axis) and harmonic (y-axis) spaces.}
+    \label{fig:joint_config_harm}
+\end{figure}
+
+
+\subsection{Comparison to other weak lensing surveys}
+\label{sec:comparison_weak_lensing_survey}
+
+Figure~\ref{fig:comparison_weak_lensing_surveys} compares the constraints described above with results from DES Y3, HSC Y3 and KiDS-1000.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/cosmological_constraints_weak_lensing/contours_OMEGA_M_S8_2D_weak_lensing_all_surveys.pdf}
+    \caption{Comparison of 2D marginal posteriors on $S_8$ and $\Omega_{\rm m}$ obtained from UNIONS (this work, blue contour), DES Y3, HSC Y3, and KiDS-1000. Our results are consistent with other weak lensing experiments at the roughly $\placeholder{1} \, \sigma$ level.}
+    \label{fig:comparison_weak_lensing_surveys}
+\end{figure}
+%--------------------------------------------------------------------
+
+\section{Conclusion}
+%--------------------------------------------------------------------
+In this work, we have used data from the Ultraviolet Near-Infrared Optical Northern Survey (UNIONS) to measure the non-tomographic cosmic shear power spectrum and constrain cosmological parameters within the $\Lambda$CDM framework. Our weak lensing sample, containing millions of galaxies, is obtained using \texttt{MetaCalibration} on the $r$ band data of the Canada-France Imaging Survey (CFIS) \citep[see][]{hervaspetersUNIONSWeakLensing2026}. We measure the cosmic shear power spectrum using a pseudo-$C_\ell$ approach \citep{alonsoUnifiedPseudoClFramework2019} that accounts for the complex survey geometry. The analysis is accompanied by a configuration space analysis \citep{gohUNIONSWeakLensing2026} allowing for a cross-validation of the results.
+
+\SG{To be continued...}
+
+
+\begin{acknowledgements}
+We are honoured and grateful for the opportunity of observing the Universe from Maunakea and Haleakala, which both have cultural, historical and natural significance in Hawaii. This work is based on data obtained as part of the Canada-France Imaging Survey, a CFHT large program of the National Research Council of Canada and the French Centre National de la Recherche Scientifique. Based on observations obtained with MegaPrime/MegaCam, a joint project of CFHT and CEA Saclay, at the Canada-France-Hawaii Telescope (CFHT) which is operated by the National Research Council (NRC) of Canada, the Institut National des Science de l’Univers (INSU) of the Centre National de la Recherche Scientifique (CNRS) of France, and the University of Hawaii. This research used the facilities of the Canadian Astronomy Data Centre operated by the National Research Council of Canada with the support of the Canadian Space Agency. This research is based in part on data collected at Subaru Telescope, which is operated by the National Astronomical Observatory of Japan.
+Pan-STARRS is a project of the Institute for Astronomy of the University of Hawaii, and is supported by the NASA SSO Near Earth Observation Program under grants 80NSSC18K0971, NNX14AM74G, NNX12AR65G, NNX13AQ47G, NNX08AR22G, 80NSSC21K1572 and by the State of Hawaii.
+This work was made possible by utilising the CANDIDE cluster at the Institut d’Astrophysique de Paris. The cluster was funded through grants from the PNCG, CNES, DIM-ACAV, the Euclid Consortium, and the Danish National Research Foundation Cosmic Dawn Center (DNRF140). It is maintained by Stephane Rouberol.
+The authors acknowledge the use of the Canadian Advanced Network for Astronomy Research (CANFAR) Science Platform operated by the Canadian Astronomy Data Centre (CADC) and the Digital Research Alliance of Canada (DRAC), with support from the National Research Council of Canada (NRC), the Canadian Space Agency (CSA), CANARIE, and the Canada Foundation for Innovation (CFI).
+LWKG thanks the University of Edinburgh School of Physics and Astronomy for a postdoctoral Fellowship.
+CD and MK acknowledge support from the Agence Nationale de la Recherche (ANR-22CE31-0014-01) TOSCA project.
+MJH acknowledges support from NSERC through a Discovery Grant.
+LVW acknowledges support from NSERC through a Discovery Grant. 
+We would like to thank our external blinding coordinator, Koen Kuijken.
+\end{acknowledgements}
+
+\bibliographystyle{aa} % style aa.bst
+\bibliography{2D_harmony_paper} % your references Yourfile.bib
+
+\begin{appendix}
+
+\section{Definition of the survey properties}
+\label{app:definitions}
+
+In Sect.~\ref{sec:UNIONS_catalogue}, we described the weak lensing sample used in this work. We report an effective area \CD{$A_\mathrm{eff}=2\,894$} deg$^2$, an effective number density of galaxies \CD{$n_\mathrm{eff} = 4.96$} arcmin$^{-2}$ and an ellipticity dispersion per component $\sigma_e = 0.27$.
+
+\CDout{The effective area is obtained by binning the weak lensing sample in \texttt{HEALPix} pixels of resolution $N_\mathrm{side} = 8192$ and counting the number of pixels containing at least one galaxy. Each pixel has an area of $A_\mathrm{pix} = 0.73$ arcmin$^2$, leading to an effective area of $A_\mathrm{eff} = N_\mathrm{pix, eff} \times A_\mathrm{pix}$, where $N_\mathrm{pix, eff}$ is the number of pixels containing at least one galaxy. We checked that this choice of pixel resolution matches the area obtained from masked images, while being substantially simpler and faster to compute.} \CD{We compute the effective area by binning the galaxy catalog into \texttt{HEALPix} pixels at $N_\mathrm{side} = 4096$ and counting occupied pixels, giving $A_\mathrm{eff} = N_\mathrm{pix, eff} \times A_\mathrm{pix}$ with $A_\mathrm{pix} = 0.74$ arcmin$^2$. The footprint is determined by spatially-structured selection criteria — tile coverage, image-quality flags, and star and artifact masks — applied to the detection catalog before galaxy-property cuts; galaxy-property cuts such as size do not enter. At this resolution, empty pixels reflect genuine gaps in survey coverage rather than shot noise in the source distribution, consistent with independent estimates from image-derived masks.}
+
+The effective number density, $n_\mathrm{eff}$ and shape variance $\sigma_e$ are defined following \cite{heymansCFHTLenSCanadaFranceHawaiiTelescope2012}. Given each galaxy shear weight $w_i$,
+%
+\begin{align}
+n_\mathrm{eff} &= \frac{1}{A_\mathrm{eff}} \frac{\left(\sum w_i\right)^2}{\sum w_i^2},\\
+\sigma_e^2 &= \frac 1 2 \left[ \frac{\sum (w_i e_{i, 1})^2}{\sum w_i^2} + \frac{\sum (w_i e_{i, 2})^2 }{ \sum w_i^2} \right].
+\label{eq:sigma_epsilon}
+\end{align}
+%
+The shape variance, $\sigma_e$, is defined per component such that the total ellipticity variance is $2 \sigma_e^2$. In Eq.~\eqref{eq:sigma_epsilon}, $e_{i, 1}$ and $e_{i, 2}$ have been calibrated with the response matrix, providing the correct $\sigma_e^2/n_\mathrm{eff}$ for analytical covariance matrix estimation.
+
+\section{Density variation and covariance estimation}
+\label{app:density_variation_covariance}
+
+In Sect.~\ref{sec:validation_covariance}, we showed that the iNKA covariance used in this work overestimates by $15\%$ the uncertainty compared to what is obtained from \texttt{OneCovariance} and \texttt{GLASS} simulations. Among the differences between the three methods, iNKA differs in its treatment of the noise. An underlying assumption in \texttt{OneCovariance} and \texttt{GLASS} mocks is that the noise is stationary. This is not true if the number density of objects strongly varies across the sky. By randomly rotating galaxies in the UNIONS lensing sample and projecting this on the sphere, we account for such variations in the noise bias term.
+
+We test the impact of density variation on the covariance estimation by running iNKA on a \texttt{GLASS} mock where the galaxy sampling is homogeneous and does not suffer from depth variations. Figure~\ref{fig:density_map_comparison} shows a comparison of the density map of UNIONS data and a \texttt{GLASS} mock. Galaxy density near the Galactic plane is lower in UNIONS data, likely due to crowding from the high stellar density in this region or dust extinction.
+
+Figure~\ref{fig:density_variation_effect} shows the uncertainty obtained from iNKA with the noise bias estimated from UNIONS data and from a \texttt{GLASS} mock with homogeneous density. We can see that using a homogeneous density reduces the error bars by about $10\%$, showing the impact of density variations on the covariance estimation. However, this effect only explains part of the difference observed between iNKA and \texttt{OneCovariance} covariances (green line in Figure~\ref{fig:density_variation_effect}), suggesting that other differences in the assumptions made in the two methods also contribute to this mismatch. It could be the impact of the mask modelling in the Gaussian part of the covariance that is more accurately accounted for in iNKA. \texttt{OneCovariance} corrects for the area of the survey using the $f_\mathrm{sky}$ approximation, which might not be accurate enough for UNIONS mask geometry. The mask deconvolution process being an ill-posed problem, this might explain the increase in the variance in iNKA covariance estimation.
+
+
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/number_density_map_unions_vs_glass.pdf}
+    \caption{Comparison of the density map of UNIONS data (left) and a \texttt{GLASS} mock (right). The \texttt{GLASS} mock is statistically homogeneous by construction and allows us to assess the inhomogeneity of UNIONS data by eye. We can see a reduced density of objects in UNIONS data near the Galactic plane that might be due to crowding and dust extinction.}
+    \label{fig:density_map_comparison}
+\end{figure*}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/density_variation_effect_errorbar.pdf}
+    \caption{Comparison of the error bars obtained from iNKA covariance estimation using the noise bias of UNIONS data (brown line) and a \texttt{GLASS} mock with homogeneous density (orange line). Using a homogeneous density reduces the error bars by around $10\%$, showing the impact of density variations on the covariance estimation. The green line shows the uncertainty using the \texttt{OneCovariance} Gaussian part showing a mismatch of approximately $20\%$ with iNKA. The density variation only explains part of this difference.}
+    \label{fig:density_variation_effect}
+\end{figure}
+
+\section{Validation of the $B$-mode covariance}
+\label{app:B_mode_cov_validation}
+
+In Sect.~\ref{sec:B_modes}, we measure and assess the significance of the $B$ modes present in our cosmic shear power spectrum measurement with UNIONS data. We estimate the covariance between data points using the Gaussian covariance obtained with iNKA, like for the $EE$ part of the power spectrum. We validate this choice by measuring the $BB$ component of the power spectrum on $10 \, 000$ Gaussian simulations. A Gaussian signal is sampled from a fiducial power spectrum on top of which noise is added by randomly rotating galaxies from the UNIONS weak lensing sample. The $BB$ power spectrum is then measured using the same pseudo-$C_\ell$ approach as for the data. Figure~\ref{fig:B_mode_cov_validation} shows a comparison of the standard deviation obtained from these $10 \, 000$ Gaussian simulations and the iNKA covariance estimation. We can see good agreement between the two approaches, validating our choice to use iNKA to estimate the $B$-mode covariance.
+
+The agreement is at the $5\%$ level on scales larger than $\ell = 100$ and some discrepancy appears on the largest scales where iNKA overestimates the error bars. We here use the covariance computed from Gaussian simulations to assess the $EB$ and $BB$ significance performed in Sect.~\ref{sec:B_modes}. Using all scales, we find that the $EB$ power spectrum is consistent with the null hypothesis with a PTE of $0.87$. For the $BB$ power spectrum, we find a PTE of $0.021$ below our threshold of $p_\mathrm{thr}=0.05$ to claim a significant detection of $B$ modes. After applying the scale cuts described in Sect.~\ref{sec:scale_cut}, the PTE for the $BB$ power spectrum increases to $0.17$, showing that the $B$ modes are not significant when removing the largest and smallest scales and further motivating our choice of scale cuts. The $EB$ power spectrum PTE after the cuts amounts to $0.63$. Our fiducial inference setup is thus robust to the choice of covariance when assessing the significance of $B$ modes.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/paper_plot_errorbar_validation_BB_EB.pdf}
+    \caption{Comparison of the standard deviation of the $BB$ power spectrum obtained from $10 \,000$ Gaussian simulations (orange points) and the iNKA covariance estimation (blue line). Both agree at the $5\%$ level on intermediate and small scales. However, on the largest scales, iNKA overestimates the uncertainty by more than $10\%$. }
+    \label{fig:B_mode_cov_validation}
+\end{figure}
+
+\section{Additional results}
+\label{app:additional_results}
+
+\subsection{Full posterior}
+
+Figure~\ref{fig:full_posterior} shows the complete posterior obtained in harmonic and real space. Other parameters than $S_8$ and $\Omega_{\rm m}$ are not discussed in the main text but are summarised in Table~\ref{tab:metrics}, along with goodness-of-fit metrics. From this full posterior, nuisance parameters are not constrained by our analysis. The redshift distribution shift, $\Delta z$, and the multiplicative shear bias, $m$, still follow their respective priors. The intrinsic alignment amplitude, $A_\mathrm{IA}$ exhibits a strong degeneracy with $S_8$ as described in Sect.~\ref{sec:intrinsic_alignment_prior}. Increasing the uncertainty in the amplitude of the intrinsic alignment prior would thus increase the uncertainty on $S_8$, hence the conservative choice made in Sect.~\ref{sec:intrinsic_alignment_prior}.
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/cosmological_constraints_cl_vs_xi/contours_all_cell.pdf}
+    \caption{Full posterior obtained in harmonic space (blue contour) and configuration space (orange contour).}
+    \label{fig:full_posterior}
+\end{figure*}
+
+\subsection{Blinding}
+\label{app:blinding}
+
+To prevent confirmation bias, we performed our analysis choices in a blinded setup using three different redshift distributions, without knowing the correct one. Blinding was performed by an external collaborator who applied a random shift to the redshift distribution, thus inducing an offset of the marginalised $S_8$ posterior distributions. Figure~\ref{fig:contours_blind} shows constraints obtained from the three different blinds. \CD{The unknown modification creates a shift in $S_8$.} The bulk of this manuscript was prepared prior to unblinding and underwent review by the broader UNIONS collaboration, including the external blinding coordinator.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/cosmological_constraints_blind/contours_s8_omegam_cell.pdf}
+    \caption{Constraints obtained using the non-tomographic cosmic shear power spectrum measured on UNIONS data for each redshift blind. $S_8$ is shifted to a different value for each blind, making our analysis choices robust against confirmation bias.}
+    \label{fig:contours_blind}
+\end{figure}
+
+
+\renewcommand{\arraystretch}{1.3} % increases row height by 30%
+
+\begin{table*}
+\begin{tabular}{l c|c|c|c|c|c|c|}
+\hline
+\hline
+Experiment name & $S_8$ & $\Omega_{\rm m}$ & $\sigma_8$ & $A_\mathrm{IA}$ & $\log T_\mathrm{AGN}$ & $\chi^2$/$N_{\rm dof}$ & PTE \\ 
+\hline
+UNIONS $C_\ell$, Blind A &  $0.834^{+0.064}_{-0.062}$ &  $0.301^{+0.077}_{-0.160}$ &  $0.892^{+0.191}_{-0.272}$ &  $0.921^{+0.703}_{-0.777}$ &  $7.675^{+0.276}_{-0.254}$ & 21.31/8 & 0.00636 \\
+UNIONS $C_\ell$, Blind B &  $0.862^{+0.071}_{-0.065}$ &  $0.308^{+0.078}_{-0.150}$ &  $0.903^{+0.187}_{-0.248}$ &  $0.953^{+0.745}_{-0.600}$ &  $7.660^{+0.272}_{-0.268}$ & 19.57/8 & 0.01210 \\
+UNIONS $C_\ell$, Blind C &  $0.804^{+0.065}_{-0.054}$ &  $0.309^{+0.080}_{-0.167}$ &  $0.852^{+0.185}_{-0.286}$ &  $0.903^{+0.774}_{-0.679}$ &  $7.702^{+0.274}_{-0.134}$ & 23.41/8 & 0.00287 \\
+UNIONS $\xi_\pm(\vartheta)$, (Goh et al., 2026) &  $0.800^{+0.059}_{-0.063}$ &  $0.291^{+0.069}_{-0.140}$ &  $0.862^{+0.166}_{-0.245}$ &  $1.127^{+0.664}_{-0.694}$ &  $7.683^{+0.279}_{-0.264}$ & 20.48/5 & 0.00102 \\
+$k_\mathrm{max}=3 h$ Mpc$^{-1}$, $\ell_\mathrm{max}=1800$ &  $0.840^{+0.061}_{-0.064}$ &  $0.289^{+0.059}_{-0.147}$ &  $0.912^{+0.220}_{-0.218}$ &  $0.960^{+0.824}_{-0.637}$ &  $7.671^{+0.284}_{-0.179}$ & 21.23/10 & 0.01957 \\
+$k_\mathrm{max}=1 h$ Mpc$^{-1}$, $\ell_\mathrm{max}=500$ &  $0.825^{+0.058}_{-0.062}$ &  $0.334^{+0.090}_{-0.147}$ &  $0.825^{+0.131}_{-0.238}$ &  $0.915^{+0.615}_{-0.688}$ &  $7.644^{+0.289}_{-0.293}$ & 21.79/-5 & nan \\
+Include large scales, $\ell_\mathrm{max}=1600$ &  $0.853^{+0.066}_{-0.066}$ &  $0.292^{+0.072}_{-0.143}$ &  $0.917^{+0.216}_{-0.250}$ &  $1.365^{+0.678}_{-0.659}$ &  $7.599^{+0.192}_{-0.268}$ & 17.54/19 & 0.55312 \\
+Small scales only &  $0.818^{+0.073}_{-0.065}$ &  $0.322^{+0.099}_{-0.150}$ &  $0.842^{+0.149}_{-0.268}$ &  $0.927^{+0.694}_{-0.723}$ &  $7.674^{+0.283}_{-0.281}$ & 20.95/0 & nan \\
+Large scales only &  $0.828^{+0.072}_{-0.057}$ &  $0.340^{+0.097}_{-0.156}$ &  $0.825^{+0.149}_{-0.238}$ &  $0.895^{+0.708}_{-0.647}$ &  $7.657^{+0.270}_{-0.207}$ & 22.66/-1 & nan \\
+\texttt{Halofit} &  $0.824^{+0.052}_{-0.061}$ &  $0.284^{+0.065}_{-0.147}$ &  $0.900^{+0.182}_{-0.236}$ &  $1.034^{+0.759}_{-0.759}$ &  $7.659^{+0.273}_{-0.265}$ & 19.71/8 & 0.01151 \\
+\texttt{HMCode} no baryons &  $0.831^{+0.065}_{-0.064}$ &  $0.285^{+0.117}_{-0.152}$ &  $0.913^{+0.231}_{-0.269}$ &  $1.038^{+0.720}_{-0.748}$ &  $7.665^{+0.278}_{-0.170}$ & 20.00/8 & 0.01035 \\
+\texttt{OneCovariance} only &  $0.845^{+0.060}_{-0.056}$ &  $0.291^{+0.065}_{-0.152}$ &  $0.917^{+0.223}_{-0.219}$ &  $1.027^{+0.699}_{-0.660}$ &  $7.680^{+0.266}_{-0.212}$ & 28.85/8 & 0.00034 \\
+No leakage correction &  $0.834^{+0.057}_{-0.059}$ &  $0.295^{+0.069}_{-0.152}$ &  $0.898^{+0.187}_{-0.259}$ &  $0.905^{+0.696}_{-0.621}$ &  $7.671^{+0.279}_{-0.158}$ & 20.22/8 & 0.00955 \\
+\hline
+\end{tabular}
+\caption{Summary of the 1D marginal constraints on $S_8$, $\Omega_{\rm m}$, $\sigma_8$, $A_\mathrm{IA}$ and $T_\mathrm{AGN}$ for our fiducial analysis and variations developed in Sect.~\ref{sec:robustness_modelling}. We also report the $\chi^2$ at the best-fit model, the number of degrees of freedom and the corresponding PTEs. \SG{Now we subtract to many parameters to get the reduced $\chi^2$? Need to check carefully how many effective parameters we have.}}
+\label{tab:metrics}
+\end{table*}
+
+\subsection{Consistency between harmonic and configuration space analyses}
+
+\end{appendix}
+
+
+\end{document}

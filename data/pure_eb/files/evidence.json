@@ -1,0 +1,86 @@
+{
+  "spec_id": "harmonic_space_pte_matrices",
+  "spec_path": "workflow/config/harmonic_space_pte_matrices.md",
+  "generated": "2026-02-22T07:02:25.763828",
+  "evidence": {
+    "blind": "A",
+    "versions": {
+      "SP_v1.4.5_leak_corr": {
+        "role": "appendix",
+        "pte_at_full_range": 0.00025345418590999743,
+        "n_evaluated": 496,
+        "ell_range": [
+          12.5,
+          1988.5000000000002
+        ],
+        "n_ell_bins": 32,
+        "mean": 0.06077303598137677,
+        "median": 0.010994610339359535,
+        "std": 0.1483358430083727,
+        "pte_at_fiducial": 0.003780440609376671,
+        "fiducial_ell_range": [
+          300,
+          1600
+        ]
+      },
+      "SP_v1.4.6.3_leak_corr": {
+        "role": "fiducial",
+        "pte_at_full_range": 0.13201985408677888,
+        "n_evaluated": 496,
+        "ell_range": [
+          12.5,
+          1988.5000000000002
+        ],
+        "n_ell_bins": 32,
+        "mean": 0.24139777850852984,
+        "median": 0.1876611975943456,
+        "std": 0.17846428164291223,
+        "pte_at_fiducial": 0.3942888899229005,
+        "fiducial_ell_range": [
+          300,
+          1600
+        ]
+      },
+      "SP_v1.4.8_leak_corr": {
+        "role": "appendix",
+        "pte_at_full_range": 0.11358826422569772,
+        "n_evaluated": 496,
+        "ell_range": [
+          12.5,
+          1988.5000000000002
+        ],
+        "n_ell_bins": 32,
+        "mean": 0.27953110221202154,
+        "median": 0.1906740396385464,
+        "std": 0.23400049990707236,
+        "pte_at_fiducial": 0.4533663302926109,
+        "fiducial_ell_range": [
+          300,
+          1600
+        ]
+      },
+      "SP_v1.4.11.3_leak_corr": {
+        "role": "appendix",
+        "pte_at_full_range": 1.7848129151301884e-12,
+        "n_evaluated": 496,
+        "ell_range": [
+          12.5,
+          1988.5000000000002
+        ],
+        "n_ell_bins": 32,
+        "mean": 0.022832297826412832,
+        "median": 3.895661718846965e-06,
+        "std": 0.09994727342612973,
+        "pte_at_fiducial": 1.1158426041240516e-09,
+        "fiducial_ell_range": [
+          300,
+          1600
+        ]
+      }
+    }
+  },
+  "output": {
+    "figure_fiducial": "figure_fiducial.png",
+    "figure_appendix": "figure_appendix.png"
+  }
+}

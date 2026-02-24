@@ -1,0 +1,37 @@
+{
+  "id": "wiener_filter_validation",
+  "generated": "2026-02-23T08:12:07.518344+00:00",
+  "input": {},
+  "output": {
+    "wiener_filter_validation": "wiener_filter_validation.png",
+    "evidence": "evidence.json"
+  },
+  "params": {},
+  "artifacts": {
+    "png": "wiener_filter_validation.png"
+  },
+  "evidence": {
+    "lmax": 1000,
+    "act_noise_floor_empirical": 6.853636016908232e-08,
+    "spt_noise_floor_empirical": 2.7158563817660473e-09,
+    "noise_ratio_act_over_spt": 25.2,
+    "act_ell_half_theory": null,
+    "spt_ell_half_theory": 353,
+    "act_fsky": 0.25793,
+    "spt_fsky": 0.04372,
+    "finding": "Empirical Wiener filter fails for ACT: reconstruction noise 25x higher than SPT, map pseudo-Cl never exceeds noise floor. Theory-informed filter using Planck 2018 C_\u2113^{\u03ba\u03ba} resolves the issue by providing the known signal model. ACT W(\u2113) now peaks at ~0.5 for \u2113<100, SPT at ~0.8."
+  },
+  "provenance": {
+    "input": {
+      "act_kappa": "/leonardo_work/EUHPC_E05_083/cmbx/inputs/act/kappa_map_data_act_dr6_lensing_v1_baseline.fits",
+      "act_mask": "/leonardo_work/EUHPC_E05_083/cmbx/inputs/act/masks/mask_act_dr6_lensing_v1_healpix_nside_2048_baseline.fits",
+      "spt_kappa": "/leonardo_work/EUHPC_E05_083/cmbx/inputs/spt/maps/lensing/winter/gmv/kgmv_fid_052425_0.fits",
+      "spt_mask": "/leonardo_work/EUHPC_E05_083/cmbx/inputs/spt/masks/lensing/winter/mask2048_border_apod_mask_threshold0.1_allghz_dense.fits"
+    },
+    "output": {
+      "png": "results/claims/wiener_filter_validation/wiener_filter_validation.png",
+      "evidence": "results/claims/wiener_filter_validation/evidence.json"
+    },
+    "params": {}
+  }
+}

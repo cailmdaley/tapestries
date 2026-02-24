@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City HUD Explorer — Portolan</title>
+<style>
+  :root {
+    --ui-bg: #1a1a1a;
+    --ui-surface: #242424;
+    --ui-border: #333;
+    --ui-text: #ccc;
+    --ui-muted: #777;
+    --ui-accent: #c4a86a;
+    --ui-accent-dim: #9a7b35;
+    /* Porch Morning */
+    --map-bg: #C8B8A8;
+    --parchment: #DFD2C0;
+    --parchment-dark: #CCBDA8;
+    --ink-dark: #2E2A26;
+    --ink-body: #4A453E;
+    --ink-faded: #7A7368;
+    --gold: #9A7B35;
+    --teal: #5A7B7B;
+    --verdigris: #5A7B7B;
+    --rust: #8A5548;
+    --sepia: #6B5B3E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--ui-bg);
+    color: var(--ui-text);
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: 1fr auto;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* ─── Controls Panel ─── */
+  .controls {
+    grid-row: 1 / -1;
+    background: var(--ui-surface);
+    border-right: 1px solid var(--ui-border);
+    overflow-y: auto;
+    padding: 16px;
+  }
+
+  .controls h1 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ui-accent);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .controls .subtitle {
+    font-size: 11px;
+    color: var(--ui-muted);
+    margin-bottom: 20px;
+  }
+
+  .control-group {
+    margin-bottom: 20px;
+  }
+
+  .control-group h2 {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ui-muted);
+    margin-bottom: 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--ui-border);
+  }
+
+  .control-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .control-row label {
+    font-size: 12px;
+    color: var(--ui-text);
+    flex-shrink: 0;
+  }
+
+  .control-row input[type="range"] {
+    width: 120px;
+    accent-color: var(--ui-accent);
+  }
+
+  .control-row .value {
+    font-size: 11px;
+    color: var(--ui-muted);
+    width: 32px;
+    text-align: right;
+    font-family: 'SF Mono', 'Cascadia Code', monospace;
+  }
+
+  select {
+    background: var(--ui-bg);
+    color: var(--ui-text);
+    border: 1px solid var(--ui-border);
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 3px;
+  }
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .toggle-row input[type="checkbox"] {
+    accent-color: var(--ui-accent);
+  }
+
+  .toggle-row label {
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  /* Presets */
+  .presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .preset-btn {
+    font-size: 11px;
+    padding: 4px 10px;
+    background: var(--ui-bg);
+    color: var(--ui-text);
+    border: 1px solid var(--ui-border);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 150ms;
+  }
+
+  .preset-btn:hover {
+    border-color: var(--ui-accent);
+    color: var(--ui-accent);
+  }
+
+  .preset-btn.active {
+    background: var(--ui-accent-dim);
+    color: #fff;
+    border-color: var(--ui-accent);
+  }
+
+  /* Corner assignment dropdowns */
+  .corner-assignment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .corner-slot {
+    background: var(--ui-bg);
+    border: 1px solid var(--ui-border);
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .corner-slot .corner-label {
+    font-size: 10px;
+    color: var(--ui-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+
+  .corner-slot select {
+    width: 100%;
+    font-size: 11px;
+  }
+
+  /* Edge assignment */
+  .edge-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .edge-slot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .edge-slot .edge-label {
+    font-size: 10px;
+    color: var(--ui-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    width: 50px;
+    flex-shrink: 0;
+  }
+
+  .edge-slot select {
+    flex: 1;
+    font-size: 11px;
+  }
+
+  /* ─── Preview ─── */
+  .preview-area {
+    position: relative;
+    overflow: hidden;
+    background: var(--map-bg);
+    /* Subtle paper texture */
+    background-image:
+      radial-gradient(circle at 30% 40%, rgba(160,130,90,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 70% 60%, rgba(100,80,50,0.06) 0%, transparent 40%);
+  }
+
+  /* Fake map content */
+  .map-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .map-hex {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    opacity: 0.15;
+  }
+
+  .map-hex svg { width: 100%; height: 100%; }
+
+  /* City sprite placeholder */
+  .city-sprite {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .city-sprite-inner {
+    width: 100%;
+    height: 100%;
+    background: var(--gold);
+    opacity: 0.3;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  /* Worker dots */
+  .worker-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--teal);
+    opacity: 0.6;
+  }
+
+  /* ─── HUD Corners ─── */
+  .hud-corner {
+    position: absolute;
+    pointer-events: auto;
+    transition: opacity 200ms, transform 200ms;
+  }
+
+  .hud-corner.top-left { top: 0; left: 0; }
+  .hud-corner.top-right { top: 0; right: 0; }
+  .hud-corner.bottom-left { bottom: 0; left: 0; }
+  .hud-corner.bottom-right { bottom: 0; right: 0; }
+
+  .hud-edge {
+    position: absolute;
+    pointer-events: auto;
+    transition: opacity 200ms;
+  }
+
+  .hud-edge.top { top: 0; left: 50%; transform: translateX(-50%); }
+  .hud-edge.bottom { bottom: 0; left: 50%; transform: translateX(-50%); }
+
+  /* ─── HUD Widget Styles ─── */
+
+  /* City Identity (name, path, git) */
+  .widget-identity {
+    padding: 16px 20px;
+    max-width: 360px;
+  }
+
+  .widget-identity .city-name {
+    font-family: 'EB Garamond', 'Palatino', Georgia, serif;
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-dark);
+    margin-bottom: 2px;
+  }
+
+  .widget-identity .city-path {
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-faded);
+    margin-bottom: 4px;
+  }
+
+  .widget-identity .git-line {
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 10px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .widget-identity .git-branch { color: var(--verdigris); font-weight: 500; }
+  .widget-identity .git-stat { color: var(--sepia); }
+  .widget-identity .git-add { color: #6a8a5a; }
+  .widget-identity .git-remove { color: var(--rust); }
+
+  /* Fibers widget */
+  .widget-fibers {
+    padding: 12px 16px;
+    max-width: 300px;
+  }
+
+  .widget-fibers .fibers-header {
+    font-family: 'EB Garamond', 'Palatino', Georgia, serif;
+    font-variant: small-caps;
+    font-size: 12px;
+    color: var(--ink-faded);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  .widget-fibers .fiber-item {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 3px 0;
+    font-size: 12px;
+    color: var(--ink-body);
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .widget-fibers .fiber-item:last-child { border-bottom: none; }
+
+  .widget-fibers .fiber-status { font-size: 10px; color: var(--ink-faded); }
+  .widget-fibers .fiber-kind {
+    font-size: 9px;
+    color: var(--ink-faded);
+    background: rgba(0,0,0,0.04);
+    padding: 1px 5px;
+    border-radius: 2px;
+    margin-left: auto;
+  }
+
+  /* Actions widget */
+  .widget-actions {
+    padding: 12px 16px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .widget-actions .action-btn {
+    font-family: 'EB Garamond', 'Palatino', Georgia, serif;
+    font-size: 13px;
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.3);
+    border: 1px solid rgba(0,0,0,0.12);
+    color: var(--ink-body);
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 150ms;
+  }
+
+  .widget-actions .action-btn:hover {
+    background: rgba(154,123,53,0.1);
+    border-color: var(--gold);
+  }
+
+  .widget-actions .action-btn.primary {
+    background: rgba(154,123,53,0.12);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* Search widget */
+  .widget-search {
+    padding: 10px 16px;
+  }
+
+  .widget-search input {
+    width: 220px;
+    padding: 6px 12px;
+    font-family: 'EB Garamond', 'Palatino', Georgia, serif;
+    font-size: 13px;
+    color: var(--ink-body);
+    background: rgba(255,255,255,0.4);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 3px;
+    outline: none;
+  }
+
+  .widget-search input::placeholder {
+    color: var(--ink-faded);
+    font-style: italic;
+  }
+
+  /* Workers widget */
+  .widget-workers {
+    padding: 10px 16px;
+    max-width: 280px;
+  }
+
+  .widget-workers .workers-header {
+    font-family: 'EB Garamond', 'Palatino', Georgia, serif;
+    font-variant: small-caps;
+    font-size: 12px;
+    color: var(--ink-faded);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  .widget-workers .worker-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 0;
+    font-size: 12px;
+    color: var(--ink-body);
+  }
+
+  .widget-workers .worker-dot-sm {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .widget-workers .worker-dot-sm.working { background: var(--teal); }
+  .widget-workers .worker-dot-sm.idle { background: var(--ink-faded); }
+
+  .widget-workers .worker-name {
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 11px;
+  }
+
+  .widget-workers .worker-activity {
+    font-size: 10px;
+    color: var(--ink-faded);
+    margin-left: auto;
+  }
+
+  /* Git detail widget */
+  .widget-git-detail {
+    padding: 10px 16px;
+    max-width: 260px;
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+    font-size: 11px;
+  }
+
+  .widget-git-detail .git-detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+    color: var(--ink-body);
+  }
+
+  .widget-git-detail .git-label { color: var(--ink-faded); }
+
+  /* ─── HUD Chrome Styles ─── */
+
+  /* Glass/frosted */
+  .chrome-glass {
+    background: rgba(223, 210, 192, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Parchment */
+  .chrome-parchment {
+    background: linear-gradient(135deg, #DFD2C0 0%, #D4C7B5 50%, #CCBDA8 100%);
+    box-shadow: 0 2px 8px rgba(60,45,30,0.12);
+  }
+
+  /* Borderless */
+  .chrome-borderless {
+    background: transparent;
+  }
+
+  /* Vellum */
+  .chrome-vellum {
+    background: rgba(223, 210, 192, 0.88);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow:
+      0 1px 4px rgba(60,45,30,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+
+  /* Corner radius modes */
+  .radius-none { border-radius: 0; }
+  .radius-subtle { border-radius: 4px; }
+  .radius-round { border-radius: 8px; }
+
+  /* Corner-aware rounding (only round the exposed corner) */
+  .hud-corner.top-left .radius-inset { border-bottom-right-radius: 8px; }
+  .hud-corner.top-right .radius-inset { border-bottom-left-radius: 8px; }
+  .hud-corner.bottom-left .radius-inset { border-top-right-radius: 8px; }
+  .hud-corner.bottom-right .radius-inset { border-top-left-radius: 8px; }
+
+  /* Margin modes */
+  .margin-flush { /* no margin, flush to corner */ }
+  .margin-inset { margin: 12px; }
+  .margin-breathe { margin: 20px; }
+
+  /* ─── Prompt Output ─── */
+  .prompt-area {
+    grid-column: 2;
+    background: var(--ui-surface);
+    border-top: 1px solid var(--ui-border);
+    padding: 12px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    max-height: 140px;
+    overflow-y: auto;
+  }
+
+  .prompt-text {
+    flex: 1;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ui-text);
+    font-family: 'SF Mono', 'Cascadia Code', monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .copy-btn {
+    padding: 6px 14px;
+    font-size: 11px;
+    background: var(--ui-bg);
+    color: var(--ui-accent);
+    border: 1px solid var(--ui-accent-dim);
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 150ms;
+    flex-shrink: 0;
+  }
+
+  .copy-btn:hover {
+    background: var(--ui-accent-dim);
+    color: #fff;
+  }
+
+  /* Annotations overlay */
+  .annotation {
+    position: absolute;
+    font-size: 10px;
+    color: var(--ui-accent);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms;
+    font-family: 'SF Mono', monospace;
+    text-shadow: 0 0 4px rgba(0,0,0,0.5);
+    z-index: 100;
+  }
+
+  .show-annotations .annotation { opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- Controls -->
+<div class="controls">
+  <h1>City HUD Explorer</h1>
+  <p class="subtitle">Civ-style corner layout for portolan city panel</p>
+
+  <!-- Presets -->
+  <div class="control-group">
+    <h2>Presets</h2>
+    <div class="presets">
+      <button class="preset-btn active" data-preset="classic-civ">Classic Civ</button>
+      <button class="preset-btn" data-preset="minimal">Minimal</button>
+      <button class="preset-btn" data-preset="manuscript">Manuscript</button>
+      <button class="preset-btn" data-preset="heads-up">Heads Up</button>
+      <button class="preset-btn" data-preset="dense">Dense</button>
+    </div>
+  </div>
+
+  <!-- Corner Assignment -->
+  <div class="control-group">
+    <h2>Corner Placement</h2>
+    <div class="corner-assignment">
+      <div class="corner-slot">
+        <div class="corner-label">Top Left</div>
+        <select id="corner-tl">
+          <option value="identity">City Identity</option>
+          <option value="fibers">Fibers</option>
+          <option value="workers">Workers</option>
+          <option value="actions">Actions</option>
+          <option value="search">Search</option>
+          <option value="git">Git Detail</option>
+          <option value="none">Empty</option>
+        </select>
+      </div>
+      <div class="corner-slot">
+        <div class="corner-label">Top Right</div>
+        <select id="corner-tr">
+          <option value="none">Empty</option>
+          <option value="identity">City Identity</option>
+          <option value="fibers">Fibers</option>
+          <option value="workers">Workers</option>
+          <option value="actions">Actions</option>
+          <option value="search">Search</option>
+          <option value="git">Git Detail</option>
+        </select>
+      </div>
+      <div class="corner-slot">
+        <div class="corner-label">Bottom Left</div>
+        <select id="corner-bl">
+          <option value="fibers">Fibers</option>
+          <option value="identity">City Identity</option>
+          <option value="workers">Workers</option>
+          <option value="actions">Actions</option>
+          <option value="search">Search</option>
+          <option value="git">Git Detail</option>
+          <option value="none">Empty</option>
+        </select>
+      </div>
+      <div class="corner-slot">
+        <div class="corner-label">Bottom Right</div>
+        <select id="corner-br">
+          <option value="actions">Actions</option>
+          <option value="identity">City Identity</option>
+          <option value="fibers">Fibers</option>
+          <option value="workers">Workers</option>
+          <option value="search">Search</option>
+          <option value="git">Git Detail</option>
+          <option value="none">Empty</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edge Assignment -->
+  <div class="control-group">
+    <h2>Edge Bars</h2>
+    <div class="edge-slots">
+      <div class="edge-slot">
+        <span class="edge-label">Top</span>
+        <select id="edge-top">
+          <option value="none">Empty</option>
+          <option value="search">Search</option>
+          <option value="workers">Workers</option>
+          <option value="actions">Actions</option>
+        </select>
+      </div>
+      <div class="edge-slot">
+        <span class="edge-label">Bottom</span>
+        <select id="edge-bottom">
+          <option value="none">Empty</option>
+          <option value="search">Search</option>
+          <option value="workers">Workers</option>
+          <option value="actions">Actions</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chrome -->
+  <div class="control-group">
+    <h2>Chrome Style</h2>
+    <div class="control-row">
+      <label>Surface</label>
+      <select id="chrome-style">
+        <option value="glass">Glass (frosted)</option>
+        <option value="parchment">Parchment (opaque)</option>
+        <option value="vellum">Vellum (subtle)</option>
+        <option value="borderless">Borderless</option>
+      </select>
+    </div>
+    <div class="control-row">
+      <label>Corners</label>
+      <select id="radius-mode">
+        <option value="inset">Inset (exposed only)</option>
+        <option value="subtle">Subtle (4px all)</option>
+        <option value="round">Round (8px all)</option>
+        <option value="none">Sharp</option>
+      </select>
+    </div>
+    <div class="control-row">
+      <label>Spacing</label>
+      <select id="margin-mode">
+        <option value="flush">Flush to corner</option>
+        <option value="inset">Inset (12px)</option>
+        <option value="breathe">Breathe (20px)</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Typography -->
+  <div class="control-group">
+    <h2>Typography</h2>
+    <div class="control-row">
+      <label>City Name</label>
+      <select id="name-size">
+        <option value="20">20px</option>
+        <option value="24" selected>24px</option>
+        <option value="28">28px</option>
+        <option value="32">32px</option>
+      </select>
+    </div>
+    <div class="toggle-row">
+      <input type="checkbox" id="small-caps" checked>
+      <label for="small-caps">Small caps</label>
+    </div>
+    <div class="toggle-row">
+      <input type="checkbox" id="show-path" checked>
+      <label for="show-path">Show path</label>
+    </div>
+    <div class="toggle-row">
+      <input type="checkbox" id="show-git-inline" checked>
+      <label for="show-git-inline">Git status inline</label>
+    </div>
+  </div>
+
+  <!-- Fiber Display -->
+  <div class="control-group">
+    <h2>Fiber Display</h2>
+    <div class="control-row">
+      <label>Max shown</label>
+      <input type="range" id="fiber-count" min="2" max="8" value="4">
+      <span class="value" id="fiber-count-val">4</span>
+    </div>
+    <div class="toggle-row">
+      <input type="checkbox" id="fiber-kinds" checked>
+      <label for="fiber-kinds">Show kind badges</label>
+    </div>
+    <div class="toggle-row">
+      <input type="checkbox" id="fiber-closed">
+      <label for="fiber-closed">Include closed</label>
+    </div>
+  </div>
+
+  <!-- Opacity / Presence -->
+  <div class="control-group">
+    <h2>Presence</h2>
+    <div class="control-row">
+      <label>Opacity</label>
+      <input type="range" id="hud-opacity" min="40" max="100" value="100">
+      <span class="value" id="hud-opacity-val">100</span>
+    </div>
+    <div class="toggle-row">
+      <input type="checkbox" id="hover-reveal">
+      <label for="hover-reveal">Reveal on hover</label>
+    </div>
+    <div class="toggle-row">
+      <input type="checkbox" id="show-annotations">
+      <label for="show-annotations">Show annotations</label>
+    </div>
+  </div>
+</div>
+
+<!-- Preview -->
+<div class="preview-area" id="preview">
+  <!-- Fake map background elements -->
+  <div class="map-content">
+    <div class="map-hex" style="left:25%;top:30%"><svg viewBox="0 0 100 100"><polygon points="50,0 100,25 100,75 50,100 0,75 0,25" fill="none" stroke="rgba(154,123,53,0.3)" stroke-width="1"/></svg></div>
+    <div class="map-hex" style="left:55%;top:50%"><svg viewBox="0 0 100 100"><polygon points="50,0 100,25 100,75 50,100 0,75 0,25" fill="none" stroke="rgba(154,123,53,0.3)" stroke-width="1"/></svg></div>
+    <div class="map-hex" style="left:35%;top:60%"><svg viewBox="0 0 100 100"><polygon points="50,0 100,25 100,75 50,100 0,75 0,25" fill="none" stroke="rgba(154,123,53,0.3)" stroke-width="1"/></svg></div>
+    <div class="city-sprite"><div class="city-sprite-inner"></div></div>
+    <div class="worker-dot" style="top:calc(50% - 30px);left:calc(50% + 50px)"></div>
+    <div class="worker-dot" style="top:calc(50% + 40px);left:calc(50% + 20px);background:var(--ink-faded)"></div>
+    <div class="worker-dot" style="top:calc(50% + 10px);left:calc(50% - 60px)"></div>
+  </div>
+
+  <!-- HUD Corners -->
+  <div class="hud-corner top-left" id="hud-tl"></div>
+  <div class="hud-corner top-right" id="hud-tr"></div>
+  <div class="hud-corner bottom-left" id="hud-bl"></div>
+  <div class="hud-corner bottom-right" id="hud-br"></div>
+
+  <!-- HUD Edges -->
+  <div class="hud-edge top" id="hud-edge-top"></div>
+  <div class="hud-edge bottom" id="hud-edge-bottom"></div>
+
+  <!-- Annotations -->
+  <div class="annotation" style="top:8px;left:50%;transform:translateX(-50%)">center stays clear</div>
+</div>
+
+<!-- Prompt Output -->
+<div class="prompt-area">
+  <div class="prompt-text" id="prompt-output">Adjust controls to generate a layout prompt.</div>
+  <button class="copy-btn" id="copy-btn">Copy</button>
+</div>
+
+<script>
+  // ─── Mock Data ───
+  const MOCK_FIBERS = [
+    { status: '○', title: 'Vellum design philosophy', kind: 'spec' },
+    { status: '○', title: 'Document nano-banana prompting', kind: 'doc' },
+    { status: '◐', title: 'Coastline rendering experiment', kind: 'task' },
+    { status: '○', title: 'Worker swarm murmuration', kind: 'task' },
+    { status: '●', title: 'Wire conversation hook', kind: 'task' },
+    { status: '●', title: 'ConversationCache dedup', kind: 'decision' },
+    { status: '●', title: 'Mid-turn text delivery', kind: 'decision' },
+    { status: '○', title: 'Remote agent SSH tunnel', kind: 'doc' },
+  ];
+
+  const MOCK_WORKERS = [
+    { name: 'coastline-exp', status: 'working', activity: 'Edit: main.ts' },
+    { name: 'fiber-review', status: 'idle', activity: '2m ago' },
+    { name: 'test-runner', status: 'working', activity: 'Bash: npm test' },
+  ];
+
+  // ─── State ───
+  const DEFAULTS = {
+    cornerTL: 'identity',
+    cornerTR: 'none',
+    cornerBL: 'fibers',
+    cornerBR: 'actions',
+    edgeTop: 'none',
+    edgeBottom: 'none',
+    chrome: 'glass',
+    radius: 'inset',
+    margin: 'flush',
+    nameSize: 24,
+    smallCaps: true,
+    showPath: true,
+    showGitInline: true,
+    fiberCount: 4,
+    fiberKinds: true,
+    fiberClosed: false,
+    opacity: 100,
+    hoverReveal: false,
+    showAnnotations: false,
+  };
+
+  const state = { ...DEFAULTS };
+
+  // ─── Presets ───
+  const PRESETS = {
+    'classic-civ': {
+      cornerTL: 'identity', cornerTR: 'none', cornerBL: 'fibers', cornerBR: 'actions',
+      edgeTop: 'none', edgeBottom: 'none',
+      chrome: 'glass', radius: 'inset', margin: 'flush',
+      nameSize: 24, smallCaps: true, showPath: true, showGitInline: true,
+      fiberCount: 4, fiberKinds: true, fiberClosed: false,
+      opacity: 100, hoverReveal: false,
+    },
+    'minimal': {
+      cornerTL: 'identity', cornerTR: 'none', cornerBL: 'none', cornerBR: 'none',
+      edgeTop: 'none', edgeBottom: 'search',
+      chrome: 'borderless', radius: 'none', margin: 'inset',
+      nameSize: 28, smallCaps: true, showPath: false, showGitInline: true,
+      fiberCount: 3, fiberKinds: false, fiberClosed: false,
+      opacity: 80, hoverReveal: true,
+    },
+    'manuscript': {
+      cornerTL: 'identity', cornerTR: 'git', cornerBL: 'fibers', cornerBR: 'workers',
+      edgeTop: 'none', edgeBottom: 'actions',
+      chrome: 'parchment', radius: 'none', margin: 'flush',
+      nameSize: 28, smallCaps: true, showPath: true, showGitInline: false,
+      fiberCount: 6, fiberKinds: true, fiberClosed: true,
+      opacity: 100, hoverReveal: false,
+    },
+    'heads-up': {
+      cornerTL: 'identity', cornerTR: 'workers', cornerBL: 'fibers', cornerBR: 'actions',
+      edgeTop: 'search', edgeBottom: 'none',
+      chrome: 'vellum', radius: 'subtle', margin: 'inset',
+      nameSize: 20, smallCaps: true, showPath: true, showGitInline: true,
+      fiberCount: 4, fiberKinds: true, fiberClosed: false,
+      opacity: 90, hoverReveal: false,
+    },
+    'dense': {
+      cornerTL: 'identity', cornerTR: 'workers', cornerBL: 'fibers', cornerBR: 'git',
+      edgeTop: 'search', edgeBottom: 'actions',
+      chrome: 'glass', radius: 'inset', margin: 'flush',
+      nameSize: 20, smallCaps: true, showPath: true, showGitInline: true,
+      fiberCount: 6, fiberKinds: true, fiberClosed: true,
+      opacity: 95, hoverReveal: false,
+    },
+  };
+
+  // ─── Widget Renderers ───
+  function renderWidget(type) {
+    switch (type) {
+      case 'identity': return renderIdentity();
+      case 'fibers': return renderFibers();
+      case 'actions': return renderActions();
+      case 'search': return renderSearch();
+      case 'workers': return renderWorkers();
+      case 'git': return renderGitDetail();
+      case 'none': return '';
+      default: return '';
+    }
+  }
+
+  function renderIdentity() {
+    const nameStyle = `font-size:${state.nameSize}px;${state.smallCaps ? '' : 'font-variant:normal;text-transform:none;'}`;
+    const path = state.showPath ? '<div class="city-path">~/Documents/projects/portolan</div>' : '';
+    const git = state.showGitInline ? `
+      <div class="git-line">
+        <span class="git-branch">coastline-experiment</span>
+        <span class="git-stat">●3 ○2 ?1</span>
+        <span class="git-add">+84</span>
+        <span class="git-remove">-12</span>
+      </div>
+    ` : '';
+
+    return `<div class="widget-identity">
+      <div class="city-name" style="${nameStyle}">portolan</div>
+      ${path}
+      ${git}
+    </div>`;
+  }
+
+  function renderFibers() {
+    const count = state.fiberCount;
+    const fibers = state.fiberClosed ? MOCK_FIBERS.slice(0, count) : MOCK_FIBERS.filter(f => f.status !== '●').slice(0, count);
+    const kindBadge = (kind) => state.fiberKinds ? `<span class="fiber-kind">${kind}</span>` : '';
+
+    const items = fibers.map(f => `
+      <div class="fiber-item">
+        <span class="fiber-status">${f.status}</span>
+        <span>${f.title}</span>
+        ${kindBadge(f.kind)}
+      </div>
+    `).join('');
+
+    return `<div class="widget-fibers">
+      <div class="fibers-header">fibers</div>
+      ${items}
+    </div>`;
+  }
+
+  function renderActions() {
+    return `<div class="widget-actions">
+      <button class="action-btn primary">+ Worker</button>
+      <button class="action-btn">Search</button>
+      <button class="action-btn">Claims</button>
+    </div>`;
+  }
+
+  function renderSearch() {
+    return `<div class="widget-search">
+      <input type="text" placeholder="Search files & fibers…" readonly>
+    </div>`;
+  }
+
+  function renderWorkers() {
+    const rows = MOCK_WORKERS.map(w => `
+      <div class="worker-row">
+        <span class="worker-dot-sm ${w.status}"></span>
+        <span class="worker-name">${w.name}</span>
+        <span class="worker-activity">${w.activity}</span>
+      </div>
+    `).join('');
+
+    return `<div class="widget-workers">
+      <div class="workers-header">workers</div>
+      ${rows}
+    </div>`;
+  }
+
+  function renderGitDetail() {
+    return `<div class="widget-git-detail">
+      <div class="git-detail-row"><span class="git-label">branch</span><span style="color:var(--verdigris)">coastline-experiment</span></div>
+      <div class="git-detail-row"><span class="git-label">staged</span><span>●3 (2M, 1A)</span></div>
+      <div class="git-detail-row"><span class="git-label">unstaged</span><span>○2 (2M)</span></div>
+      <div class="git-detail-row"><span class="git-label">untracked</span><span>?1</span></div>
+      <div class="git-detail-row"><span class="git-label">diff</span><span style="color:#6a8a5a">+84</span> <span style="color:var(--rust)">-12</span></div>
+      <div class="git-detail-row"><span class="git-label">commit</span><span>2m ago</span></div>
+    </div>`;
+  }
+
+  // ─── Render ───
+  function renderPreview() {
+    const chromeClass = `chrome-${state.chrome}`;
+    const radiusClass = state.radius === 'inset' ? 'radius-inset' : `radius-${state.radius}`;
+    const marginClass = `margin-${state.margin}`;
+    const classes = `${chromeClass} ${radiusClass} ${marginClass}`;
+
+    // Corners
+    ['tl', 'tr', 'bl', 'br'].forEach(pos => {
+      const el = document.getElementById(`hud-${pos}`);
+      const widget = state[`corner${pos.toUpperCase()}`] || state[`corner${pos.charAt(0).toUpperCase()}${pos.charAt(1)}`];
+      const key = pos === 'tl' ? state.cornerTL : pos === 'tr' ? state.cornerTR : pos === 'bl' ? state.cornerBL : state.cornerBR;
+      const content = renderWidget(key);
+      el.innerHTML = content ? `<div class="${classes}">${content}</div>` : '';
+      el.style.opacity = state.opacity / 100;
+    });
+
+    // Edges
+    ['top', 'bottom'].forEach(pos => {
+      const el = document.getElementById(`hud-edge-${pos}`);
+      const key = pos === 'top' ? state.edgeTop : state.edgeBottom;
+      const content = renderWidget(key);
+      el.innerHTML = content ? `<div class="${classes}">${content}</div>` : '';
+      el.style.opacity = state.opacity / 100;
+    });
+
+    // Hover reveal
+    const preview = document.getElementById('preview');
+    if (state.hoverReveal) {
+      document.querySelectorAll('.hud-corner, .hud-edge').forEach(el => {
+        el.style.opacity = '0.3';
+        el.style.transition = 'opacity 300ms';
+      });
+      preview.onmouseenter = () => {
+        document.querySelectorAll('.hud-corner, .hud-edge').forEach(el => {
+          el.style.opacity = String(state.opacity / 100);
+        });
+      };
+      preview.onmouseleave = () => {
+        document.querySelectorAll('.hud-corner, .hud-edge').forEach(el => {
+          el.style.opacity = '0.3';
+        });
+      };
+    } else {
+      preview.onmouseenter = null;
+      preview.onmouseleave = null;
+    }
+
+    // Annotations
+    preview.classList.toggle('show-annotations', state.showAnnotations);
+  }
+
+  function updatePrompt() {
+    const parts = [];
+
+    // Layout description
+    const placements = [];
+    if (state.cornerTL !== 'none') placements.push(`${widgetLabel(state.cornerTL)} in top-left`);
+    if (state.cornerTR !== 'none') placements.push(`${widgetLabel(state.cornerTR)} in top-right`);
+    if (state.cornerBL !== 'none') placements.push(`${widgetLabel(state.cornerBL)} in bottom-left`);
+    if (state.cornerBR !== 'none') placements.push(`${widgetLabel(state.cornerBR)} in bottom-right`);
+    if (state.edgeTop !== 'none') placements.push(`${widgetLabel(state.edgeTop)} along top edge`);
+    if (state.edgeBottom !== 'none') placements.push(`${widgetLabel(state.edgeBottom)} along bottom edge`);
+
+    parts.push(`Redesign the CityPanel as a Civ-style corner HUD overlay instead of a side panel. Place: ${placements.join('; ')}.`);
+
+    // Chrome
+    const chromeDesc = {
+      glass: 'Use frosted glass (backdrop-filter: blur) with semi-transparent parchment background',
+      parchment: 'Use opaque parchment surfaces with subtle shadow',
+      vellum: 'Use semi-transparent vellum with thin borders and inner glow',
+      borderless: 'No background chrome — text floats directly over the map',
+    };
+    parts.push(chromeDesc[state.chrome] + '.');
+
+    // Corners
+    if (state.radius === 'inset') {
+      parts.push('Round only the exposed inner corner of each widget (the corner facing the map center).');
+    } else if (state.radius !== DEFAULTS.radius) {
+      parts.push(`Border radius: ${state.radius === 'none' ? 'sharp corners' : state.radius === 'subtle' ? '4px' : '8px'}.`);
+    }
+
+    // Margin
+    if (state.margin !== DEFAULTS.margin) {
+      parts.push(`Widgets ${state.margin === 'inset' ? 'inset 12px from edges' : 'breathe 20px from edges'}.`);
+    }
+
+    // Identity
+    if (state.nameSize !== DEFAULTS.nameSize) {
+      parts.push(`City name at ${state.nameSize}px.`);
+    }
+    if (!state.showPath) parts.push('Hide the file path.');
+    if (!state.showGitInline) parts.push('Separate git status into its own widget instead of inline.');
+
+    // Fibers
+    if (state.fiberCount !== DEFAULTS.fiberCount) {
+      parts.push(`Show up to ${state.fiberCount} fibers.`);
+    }
+    if (!state.fiberKinds) parts.push('Hide fiber kind badges.');
+    if (state.fiberClosed) parts.push('Include recently closed fibers.');
+
+    // Opacity
+    if (state.opacity < 100) {
+      parts.push(`HUD opacity at ${state.opacity}%${state.hoverReveal ? ', revealing fully on hover' : ''}.`);
+    }
+
+    document.getElementById('prompt-output').textContent = parts.join('\n\n');
+  }
+
+  function widgetLabel(type) {
+    const labels = {
+      identity: 'city identity (name, path, git)',
+      fibers: 'fiber list',
+      actions: 'action buttons (new worker, search, claims)',
+      search: 'search bar',
+      workers: 'worker status list',
+      git: 'detailed git status',
+    };
+    return labels[type] || type;
+  }
+
+  function updateAll() {
+    renderPreview();
+    updatePrompt();
+  }
+
+  // ─── Sync Controls ↔ State ───
+  function readControls() {
+    state.cornerTL = document.getElementById('corner-tl').value;
+    state.cornerTR = document.getElementById('corner-tr').value;
+    state.cornerBL = document.getElementById('corner-bl').value;
+    state.cornerBR = document.getElementById('corner-br').value;
+    state.edgeTop = document.getElementById('edge-top').value;
+    state.edgeBottom = document.getElementById('edge-bottom').value;
+    state.chrome = document.getElementById('chrome-style').value;
+    state.radius = document.getElementById('radius-mode').value;
+    state.margin = document.getElementById('margin-mode').value;
+    state.nameSize = parseInt(document.getElementById('name-size').value);
+    state.smallCaps = document.getElementById('small-caps').checked;
+    state.showPath = document.getElementById('show-path').checked;
+    state.showGitInline = document.getElementById('show-git-inline').checked;
+    state.fiberCount = parseInt(document.getElementById('fiber-count').value);
+    state.fiberKinds = document.getElementById('fiber-kinds').checked;
+    state.fiberClosed = document.getElementById('fiber-closed').checked;
+    state.opacity = parseInt(document.getElementById('hud-opacity').value);
+    state.hoverReveal = document.getElementById('hover-reveal').checked;
+    state.showAnnotations = document.getElementById('show-annotations').checked;
+
+    // Update value displays
+    document.getElementById('fiber-count-val').textContent = state.fiberCount;
+    document.getElementById('hud-opacity-val').textContent = state.opacity;
+  }
+
+  function writeControls() {
+    document.getElementById('corner-tl').value = state.cornerTL;
+    document.getElementById('corner-tr').value = state.cornerTR;
+    document.getElementById('corner-bl').value = state.cornerBL;
+    document.getElementById('corner-br').value = state.cornerBR;
+    document.getElementById('edge-top').value = state.edgeTop;
+    document.getElementById('edge-bottom').value = state.edgeBottom;
+    document.getElementById('chrome-style').value = state.chrome;
+    document.getElementById('radius-mode').value = state.radius;
+    document.getElementById('margin-mode').value = state.margin;
+    document.getElementById('name-size').value = String(state.nameSize);
+    document.getElementById('small-caps').checked = state.smallCaps;
+    document.getElementById('show-path').checked = state.showPath;
+    document.getElementById('show-git-inline').checked = state.showGitInline;
+    document.getElementById('fiber-count').value = String(state.fiberCount);
+    document.getElementById('fiber-kinds').checked = state.fiberKinds;
+    document.getElementById('fiber-closed').checked = state.fiberClosed;
+    document.getElementById('hud-opacity').value = String(state.opacity);
+    document.getElementById('hover-reveal').checked = state.hoverReveal;
+    document.getElementById('show-annotations').checked = state.showAnnotations;
+
+    document.getElementById('fiber-count-val').textContent = state.fiberCount;
+    document.getElementById('hud-opacity-val').textContent = state.opacity;
+  }
+
+  // ─── Events ───
+  document.querySelectorAll('select, input').forEach(el => {
+    el.addEventListener('change', () => { readControls(); updateAll(); });
+    el.addEventListener('input', () => { readControls(); updateAll(); });
+  });
+
+  // Presets
+  document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const preset = PRESETS[btn.dataset.preset];
+      if (!preset) return;
+
+      Object.assign(state, preset);
+      writeControls();
+      updateAll();
+
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Copy
+  document.getElementById('copy-btn').addEventListener('click', () => {
+    const text = document.getElementById('prompt-output').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
+    });
+  });
+
+  // ─── Init ───
+  updateAll();
+</script>
+</body>
+</html>

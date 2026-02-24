@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portolan Combined</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      grid-template-rows: 1fr auto;
+    }
+
+    .controls {
+      background: #242424;
+      padding: 20px;
+      overflow-y: auto;
+      border-right: 1px solid #333;
+    }
+
+    h1 {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .section {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 16px;
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .control {
+      margin-bottom: 12px;
+    }
+
+    .control label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #aaa;
+      margin-bottom: 4px;
+    }
+
+    .control label span.value {
+      font-family: 'SF Mono', 'Consolas', monospace;
+      font-size: 11px;
+      color: #888;
+    }
+
+    .control .hint {
+      font-size: 10px;
+      color: #555;
+      margin-top: 2px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 4px;
+      -webkit-appearance: none;
+      background: #333;
+      border-radius: 2px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      background: #8a7a5a;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    input[type="color"] {
+      width: 60px;
+      height: 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background: #333;
+    }
+
+    .presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .preset {
+      padding: 6px 10px;
+      font-size: 11px;
+      background: #333;
+      border: 1px solid #444;
+      border-radius: 4px;
+      color: #aaa;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .preset:hover {
+      background: #3a3a3a;
+      border-color: #555;
+      color: #ddd;
+    }
+
+    .preset.active {
+      background: #3a352a;
+      border-color: #6a5a3a;
+      color: #d4c4a8;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .checkbox-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #8a7a5a;
+    }
+
+    .checkbox-row label {
+      font-size: 12px;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .seed-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .seed-btn {
+      flex: 1;
+      padding: 6px;
+      font-size: 11px;
+      background: #333;
+      border: 1px solid #444;
+      border-radius: 4px;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .seed-btn:hover {
+      background: #3a3a3a;
+      color: #aaa;
+    }
+
+    .seed-display {
+      font-family: 'SF Mono', monospace;
+      font-size: 12px;
+      color: #8a7a5a;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .preview {
+      background: #2a2622;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .canvas-stack {
+      position: relative;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+
+    #vellumCanvas {
+      display: block;
+    }
+
+    #overlayCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .prompt-output {
+      grid-column: 1 / -1;
+      background: #1e1e1e;
+      border-top: 1px solid #333;
+      padding: 12px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .prompt-text {
+      flex: 1;
+      font-family: 'SF Mono', 'Consolas', monospace;
+      font-size: 10px;
+      line-height: 1.4;
+      color: #aaa;
+      white-space: pre-wrap;
+    }
+
+    .copy-btn {
+      padding: 8px 16px;
+      font-size: 12px;
+      background: #333;
+      border: 1px solid #444;
+      border-radius: 4px;
+      color: #aaa;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .copy-btn:hover {
+      background: #3a3a3a;
+      color: #ddd;
+    }
+
+    .copy-btn.copied {
+      background: #2a3a2a;
+      border-color: #4a6a4a;
+      color: #8a8;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <h1>Portolan Combined</h1>
+    <p class="subtitle">All layers: vellum + rhumb lines + coastline + land</p>
+
+    <div class="presets">
+      <button class="preset active" data-preset="authentic">Authentic</button>
+      <button class="preset" data-preset="dense">Dense</button>
+      <button class="preset" data-preset="sparse">Sparse</button>
+      <button class="preset" data-preset="dramatic">Dramatic</button>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Seed</div>
+      <div class="seed-display" id="seedDisplay">Seed: 42</div>
+      <div class="seed-row">
+        <button class="seed-btn" id="prevSeed">&larr;</button>
+        <button class="seed-btn" id="randomSeed">Random</button>
+        <button class="seed-btn" id="nextSeed">&rarr;</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Layer Visibility</div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showVellum" checked>
+        <label for="showVellum">Vellum background</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showRhumb" checked>
+        <label for="showRhumb">Rhumb lines</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showLand" checked>
+        <label for="showLand">Land fill</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showCoastline" checked>
+        <label for="showCoastline">Coastline</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showRoses" checked>
+        <label for="showRoses">Compass roses</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showIslands" checked>
+        <label for="showIslands">Islands</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showLabels" checked>
+        <label for="showLabels">Coastline labels</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showHatching" checked>
+        <label for="showHatching">Coastline hatching</label>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showMountains" checked>
+        <label for="showMountains">Inland mountains</label>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Vellum</div>
+      <div class="control">
+        <label>Warmth <span class="value" id="warmthVal">0.12</span></label>
+        <input type="range" id="warmth" min="0" max="0.3" step="0.01" value="0.12">
+      </div>
+      <div class="control">
+        <label>Edge Darkening <span class="value" id="edgeDarkVal">0.25</span></label>
+        <input type="range" id="edgeDark" min="0" max="0.5" step="0.01" value="0.25">
+      </div>
+      <div class="control">
+        <label>Cloud Intensity <span class="value" id="cloudIntVal">0.12</span></label>
+        <input type="range" id="cloudInt" min="0" max="0.3" step="0.01" value="0.12">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Rhumb Lines</div>
+      <div class="control">
+        <label>Primary Roses <span class="value" id="primaryRosesVal">2</span></label>
+        <input type="range" id="primaryRoses" min="1" max="4" step="1" value="2">
+      </div>
+      <div class="control">
+        <label>Secondary Roses <span class="value" id="secondaryRosesVal">6</span></label>
+        <input type="range" id="secondaryRoses" min="0" max="12" step="1" value="6">
+      </div>
+      <div class="control">
+        <label>Primary Opacity <span class="value" id="rhumbPrimaryOpacityVal">0.45</span></label>
+        <input type="range" id="rhumbPrimaryOpacity" min="0.1" max="0.8" step="0.05" value="0.45">
+      </div>
+      <div class="control">
+        <label>Secondary Opacity <span class="value" id="rhumbSecondaryOpacityVal">0.25</span></label>
+        <input type="range" id="rhumbSecondaryOpacity" min="0.05" max="0.5" step="0.05" value="0.25">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Coastline</div>
+      <div class="control">
+        <label>Feature Scale <span class="value" id="featureScaleVal">2.5</span></label>
+        <input type="range" id="featureScale" min="1" max="6" step="0.1" value="2.5">
+      </div>
+      <div class="control">
+        <label>Displacement <span class="value" id="displacementVal">0.35</span></label>
+        <input type="range" id="displacement" min="0.1" max="0.6" step="0.01" value="0.35">
+      </div>
+      <div class="control">
+        <label>Smoothing <span class="value" id="smoothingVal">3</span></label>
+        <input type="range" id="smoothing" min="0" max="5" step="1" value="3">
+      </div>
+      <div class="control">
+        <label>Line Width <span class="value" id="lineWidthVal">1.6</span></label>
+        <input type="range" id="lineWidth" min="0.5" max="4" step="0.1" value="1.6">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Land</div>
+      <div class="control">
+        <label>Fill Opacity <span class="value" id="landOpacityVal">0.15</span></label>
+        <input type="range" id="landOpacity" min="0" max="0.4" step="0.01" value="0.15">
+      </div>
+      <div class="control">
+        <label>Tint <span class="value" id="landTintVal"></span></label>
+        <input type="color" id="landTint" value="#3a6a4a">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Coastline Labels</div>
+      <div class="control">
+        <label>Label Density <span class="value" id="labelDensityVal">18</span></label>
+        <input type="range" id="labelDensity" min="4" max="30" step="1" value="18">
+      </div>
+      <div class="control">
+        <label>Font Size <span class="value" id="labelFontSizeVal">7</span></label>
+        <input type="range" id="labelFontSize" min="5" max="14" step="1" value="7">
+      </div>
+      <div class="control">
+        <label>Label Offset <span class="value" id="labelOffsetVal">4</span></label>
+        <input type="range" id="labelOffset" min="2" max="15" step="1" value="4">
+        <div class="hint">Distance from coastline (px)</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Islands</div>
+      <div class="control">
+        <label>Count <span class="value" id="islandCountVal">4</span></label>
+        <input type="range" id="islandCount" min="0" max="8" step="1" value="4">
+      </div>
+      <div class="control">
+        <label>Min Size <span class="value" id="islandSizeMinVal">0.03</span></label>
+        <input type="range" id="islandSizeMin" min="0.01" max="0.08" step="0.005" value="0.03">
+      </div>
+      <div class="control">
+        <label>Max Size <span class="value" id="islandSizeMaxVal">0.12</span></label>
+        <input type="range" id="islandSizeMax" min="0.06" max="0.25" step="0.01" value="0.12">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Inland Mountains</div>
+      <div class="control">
+        <label>Mountain Rows <span class="value" id="mountainRowsVal">3</span></label>
+        <input type="range" id="mountainRows" min="1" max="6" step="1" value="3">
+        <div class="hint">Number of mountain chain rows</div>
+      </div>
+      <div class="control">
+        <label>Mountains Per Row <span class="value" id="mountainsPerRowVal">12</span></label>
+        <input type="range" id="mountainsPerRow" min="4" max="24" step="1" value="12">
+      </div>
+      <div class="control">
+        <label>Mountain Height <span class="value" id="mountainHeightVal">25</span></label>
+        <input type="range" id="mountainHeight" min="10" max="50" step="2" value="25">
+        <div class="hint">Peak height in pixels</div>
+      </div>
+      <div class="control">
+        <label>Mountain Width <span class="value" id="mountainWidthVal">18</span></label>
+        <input type="range" id="mountainWidth" min="8" max="35" step="1" value="18">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Coastline Hatching</div>
+      <div class="control">
+        <label>Hatch Density <span class="value" id="hatchDensityVal">80</span></label>
+        <input type="range" id="hatchDensity" min="20" max="200" step="5" value="80">
+        <div class="hint">Number of tick marks along coast</div>
+      </div>
+      <div class="control">
+        <label>Hatch Length <span class="value" id="hatchLengthVal">4</span></label>
+        <input type="range" id="hatchLength" min="2" max="12" step="0.5" value="4">
+        <div class="hint">Length of tick marks (px)</div>
+      </div>
+      <div class="control">
+        <label>Hatch Width <span class="value" id="hatchWidthVal">0.5</span></label>
+        <input type="range" id="hatchWidth" min="0.2" max="1.5" step="0.1" value="0.5">
+      </div>
+      <div class="control">
+        <label>Hatch Opacity <span class="value" id="hatchOpacityVal">0.6</span></label>
+        <input type="range" id="hatchOpacity" min="0.2" max="1" step="0.05" value="0.6">
+      </div>
+    </div>
+  </div>
+
+  <div class="preview">
+    <div class="canvas-stack">
+      <canvas id="vellumCanvas" width="1000" height="700"></canvas>
+      <canvas id="overlayCanvas" width="1000" height="700"></canvas>
+    </div>
+  </div>
+
+  <div class="prompt-output">
+    <div class="prompt-text" id="promptText">Combined portolan with all layers.</div>
+    <button class="copy-btn" id="copyBtn">Copy</button>
+  </div>
+
+  <script>
+    // ============ SEEDED RANDOM ============
+    function mulberry32(a) {
+      return function() {
+        var t = a += 0x6D2B79F5;
+        t = Math.imul(t ^ t >>> 15, t | 1);
+        t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      }
+    }
+
+    let rng = mulberry32(42);
+
+    // ============ STATE ============
+    const DEFAULTS = {
+      seed: 42,
+      // Visibility
+      showVellum: true,
+      showRhumb: true,
+      showLand: true,
+      showCoastline: true,
+      showRoses: true,
+      showIslands: true,
+      // Vellum
+      warmth: 0.12,
+      edgeDark: 0.25,
+      cloudInt: 0.12,
+      // Rhumb
+      primaryRoses: 2,
+      secondaryRoses: 6,
+      rhumbPrimaryOpacity: 0.45,
+      rhumbSecondaryOpacity: 0.25,
+      // Coastline
+      featureScale: 2.5,
+      displacement: 0.35,
+      smoothing: 3,
+      lineWidth: 1.6,
+      // Land
+      landOpacity: 0.15,
+      landTint: '#3a6a4a',
+      // Islands
+      islandCount: 4,
+      islandSizeMin: 0.03,
+      islandSizeMax: 0.12,
+      // Labels
+      showLabels: true,
+      labelDensity: 18,
+      labelFontSize: 7,
+      labelOffset: 4,
+      // Hatching (comb teeth)
+      showHatching: true,
+      hatchDensity: 80,
+      hatchLength: 4,
+      hatchWidth: 0.5,
+      hatchOpacity: 0.6,
+      // Mountains
+      showMountains: true,
+      mountainRows: 3,
+      mountainsPerRow: 12,
+      mountainHeight: 25,
+      mountainWidth: 18
+    };
+
+    const PRESETS = {
+      authentic: { ...DEFAULTS },
+      dense: {
+        ...DEFAULTS,
+        primaryRoses: 3,
+        secondaryRoses: 10,
+        rhumbPrimaryOpacity: 0.35,
+        rhumbSecondaryOpacity: 0.18,
+        featureScale: 3.0,
+        landOpacity: 0.12,
+        islandCount: 6,
+        labelDensity: 25,
+        labelFontSize: 6,
+        labelOffset: 3,
+        hatchDensity: 150,
+        hatchLength: 3,
+        hatchWidth: 0.4,
+        hatchOpacity: 0.5,
+        mountainRows: 4,
+        mountainsPerRow: 18,
+        mountainHeight: 20,
+        mountainWidth: 14
+      },
+      sparse: {
+        ...DEFAULTS,
+        primaryRoses: 1,
+        secondaryRoses: 4,
+        rhumbPrimaryOpacity: 0.55,
+        rhumbSecondaryOpacity: 0.30,
+        featureScale: 2.0,
+        landOpacity: 0.18,
+        islandCount: 2,
+        labelDensity: 10,
+        labelFontSize: 9,
+        labelOffset: 5,
+        hatchDensity: 40,
+        hatchLength: 5,
+        hatchWidth: 0.6,
+        hatchOpacity: 0.7,
+        mountainRows: 2,
+        mountainsPerRow: 8,
+        mountainHeight: 30,
+        mountainWidth: 22
+      },
+      dramatic: {
+        ...DEFAULTS,
+        warmth: 0.18,
+        edgeDark: 0.35,
+        cloudInt: 0.18,
+        primaryRoses: 2,
+        secondaryRoses: 8,
+        rhumbPrimaryOpacity: 0.55,
+        rhumbSecondaryOpacity: 0.30,
+        featureScale: 3.5,
+        displacement: 0.42,
+        landOpacity: 0.20,
+        landTint: '#2a5a3a',
+        islandCount: 5,
+        islandSizeMax: 0.15,
+        labelDensity: 20,
+        labelFontSize: 8,
+        labelOffset: 4,
+        hatchDensity: 100,
+        hatchLength: 5,
+        hatchWidth: 0.5,
+        hatchOpacity: 0.65,
+        mountainRows: 4,
+        mountainsPerRow: 14,
+        mountainHeight: 32,
+        mountainWidth: 20
+      }
+    };
+
+    const state = { ...DEFAULTS };
+    let rosePositions = [];
+    let coastlinePoints = [];
+    let islands = []; // Array of island point arrays
+    let coastlineLabels = []; // Array of {x, y, angle, name} for port labels
+
+    // Portolan-style place names (Mediterranean/Italian flavor)
+    const PORT_NAMES = [
+      'Civita', 'Portofino', 'Ancona', 'Ravenna', 'Piran', 'Rimini',
+      'Pescara', 'Bari', 'Brindisi', 'Otranto', 'Taranto', 'Crotone',
+      'Reggio', 'Messina', 'Siracusa', 'Catania', 'Trapani', 'Palermo',
+      'Cagliari', 'Olbia', 'Livorno', 'Genova', 'Savona', 'Nizza',
+      'Marsiglia', 'Tolone', 'Barcellona', 'Valencia', 'Alicante', 'Cartagena',
+      'Malaga', 'Cadiz', 'Lisboa', 'Porto', 'Coruña', 'Bilbao',
+      'Venezia', 'Trieste', 'Spalato', 'Ragusa', 'Durazzo', 'Valona',
+      'Corfù', 'Zante', 'Modon', 'Navarino', 'Coron', 'Patrasso',
+      'Lepanto', 'Atene', 'Negroponte', 'Salonicco', 'Gallipoli', 'Costantinopoli',
+      'Trebisonda', 'Sinope', 'Caffa', 'Tana', 'Alessandria', 'Damietta',
+      'Giaffa', 'Acri', 'Beirut', 'Tripoli', 'Famagosta', 'Candia',
+      'Rodi', 'Scio', 'Mitilene', 'Smirne', 'Focea', 'Efeso'
+    ];
+
+    // ============ CANVASES ============
+    const vellumCanvas = document.getElementById('vellumCanvas');
+    const overlayCanvas = document.getElementById('overlayCanvas');
+    const gl = vellumCanvas.getContext('webgl');
+    const ctx = overlayCanvas.getContext('2d');
+
+    // ============ VELLUM WEBGL SHADER ============
+    const vertexSource = `
+      attribute vec2 a_position;
+      varying vec2 v_uv;
+      void main() {
+        v_uv = a_position * 0.5 + 0.5;
+        gl_Position = vec4(a_position, 0.0, 1.0);
+      }
+    `;
+
+    const fragmentSource = `
+      precision highp float;
+      varying vec2 v_uv;
+
+      uniform vec3 u_centerColor;
+      uniform float u_warmth;
+      uniform float u_edgeDark;
+      uniform float u_cloudInt;
+
+      vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+      vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+      vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
+
+      float snoise(vec2 v) {
+        const vec4 C = vec4(0.211324865405187, 0.366025403784439,
+                           -0.577350269189626, 0.024390243902439);
+        vec2 i  = floor(v + dot(v, C.yy));
+        vec2 x0 = v -   i + dot(i, C.xx);
+        vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+        vec4 x12 = x0.xyxy + C.xxzz;
+        x12.xy -= i1;
+        i = mod289(i);
+        vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0))
+                                + i.x + vec3(0.0, i1.x, 1.0));
+        vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy),
+                                dot(x12.zw,x12.zw)), 0.0);
+        m = m*m; m = m*m;
+        vec3 x = 2.0 * fract(p * C.www) - 1.0;
+        vec3 h = abs(x) - 0.5;
+        vec3 ox = floor(x + 0.5);
+        vec3 a0 = x - ox;
+        m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+        vec3 g;
+        g.x = a0.x * x0.x + h.x * x0.y;
+        g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+        return 130.0 * dot(m, g);
+      }
+
+      float fbm(vec2 p, float scale) {
+        float f = 0.0;
+        float amp = 0.5;
+        vec2 pp = p * scale;
+        for (int i = 0; i < 4; i++) {
+          f += amp * snoise(pp);
+          pp *= 2.0;
+          amp *= 0.5;
+        }
+        return f;
+      }
+
+      float hash(vec2 p) {
+        return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+      }
+
+      void main() {
+        vec2 uv = v_uv;
+        vec2 aspect = vec2(1.43, 1.0);
+
+        float cloud = fbm(uv * aspect, 3.0) * 0.5 + 0.5;
+        float warmCloud = fbm(uv * aspect + 10.0, 2.1) * 0.5 + 0.5;
+
+        vec2 edgeDist = min(uv, 1.0 - uv);
+        float edge = min(edgeDist.x, edgeDist.y);
+        float wobble = snoise(uv * 8.0) * 0.02;
+        edge += wobble;
+        float edgeFade = smoothstep(0.0, 0.15, edge);
+        float edgeEffect = (1.0 - edgeFade) * u_edgeDark;
+
+        float cornerDist = min(
+          min(length(uv), length(uv - vec2(1.0, 0.0))),
+          min(length(uv - vec2(0.0, 1.0)), length(uv - vec2(1.0, 1.0)))
+        );
+        float cornerEffect = exp(-cornerDist * 4.0) * 0.10;
+
+        float grain = (hash(uv * 1000.0) - 0.5) * 0.03;
+
+        float darkness =
+          cloud * u_cloudInt +
+          warmCloud * u_warmth +
+          edgeEffect +
+          cornerEffect +
+          grain;
+
+        vec3 edgeColor = u_centerColor * vec3(0.85, 0.80, 0.72);
+        vec3 color = mix(u_centerColor, edgeColor, darkness);
+        color.r += darkness * 0.03;
+        color.g += darkness * 0.015;
+
+        gl_FragColor = vec4(color, 1.0);
+      }
+    `;
+
+    function createShader(gl, type, source) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        console.error(gl.getShaderInfoLog(shader));
+        return null;
+      }
+      return shader;
+    }
+
+    const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexSource);
+    const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentSource);
+    const program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+
+    const positions = new Float32Array([-1,-1, 1,-1, -1,1, 1,1]);
+    const buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
+
+    const positionLoc = gl.getAttribLocation(program, 'a_position');
+    gl.enableVertexAttribArray(positionLoc);
+    gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
+
+    const uniforms = {
+      centerColor: gl.getUniformLocation(program, 'u_centerColor'),
+      warmth: gl.getUniformLocation(program, 'u_warmth'),
+      edgeDark: gl.getUniformLocation(program, 'u_edgeDark'),
+      cloudInt: gl.getUniformLocation(program, 'u_cloudInt')
+    };
+
+    function hexToRgb(hex) {
+      const r = parseInt(hex.slice(1, 3), 16) / 255;
+      const g = parseInt(hex.slice(3, 5), 16) / 255;
+      const b = parseInt(hex.slice(5, 7), 16) / 255;
+      return [r, g, b];
+    }
+
+    function renderVellum() {
+      if (!state.showVellum) {
+        gl.clearColor(0.96, 0.93, 0.88, 1);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        return;
+      }
+
+      gl.viewport(0, 0, vellumCanvas.width, vellumCanvas.height);
+      gl.useProgram(program);
+
+      const rgb = hexToRgb('#f5eee1');
+      gl.uniform3f(uniforms.centerColor, rgb[0], rgb[1], rgb[2]);
+      gl.uniform1f(uniforms.warmth, state.warmth);
+      gl.uniform1f(uniforms.edgeDark, state.edgeDark);
+      gl.uniform1f(uniforms.cloudInt, state.cloudInt);
+
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    }
+
+    // ============ RHUMB LINES ============
+    function generateRosePositions() {
+      rng = mulberry32(state.seed);
+      rosePositions = [];
+
+      const cw = overlayCanvas.width;
+      const ch = overlayCanvas.height;
+      const centerX = cw / 2;
+      const centerY = ch / 2;
+      const maxRadius = Math.min(cw, ch) * 0.35;
+
+      for (let i = 0; i < state.primaryRoses; i++) {
+        const angle = (i / state.primaryRoses) * Math.PI * 2 + rng() * 0.3;
+        const radius = maxRadius * (0.35 + rng() * 0.35);
+        rosePositions.push({
+          x: centerX + Math.cos(angle) * radius,
+          y: centerY + Math.sin(angle) * radius,
+          isPrimary: true
+        });
+      }
+
+      for (let i = 0; i < state.secondaryRoses; i++) {
+        const angle = rng() * Math.PI * 2;
+        const radius = maxRadius * (0.25 + rng() * 0.75);
+        let x = centerX + Math.cos(angle) * radius;
+        let y = centerY + Math.sin(angle) * radius;
+
+        let attempts = 0;
+        while (attempts < 10) {
+          let tooClose = false;
+          for (const rose of rosePositions) {
+            const dx = rose.x - x;
+            const dy = rose.y - y;
+            if (Math.sqrt(dx*dx + dy*dy) < 70) {
+              tooClose = true;
+              break;
+            }
+          }
+          if (!tooClose) break;
+          const newAngle = rng() * Math.PI * 2;
+          const newRadius = maxRadius * (0.25 + rng() * 0.75);
+          x = centerX + Math.cos(newAngle) * newRadius;
+          y = centerY + Math.sin(newAngle) * newRadius;
+          attempts++;
+        }
+
+        rosePositions.push({ x, y, isPrimary: false });
+      }
+    }
+
+    function hexToRgba(hex, alpha) {
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    function drawRhumbLines() {
+      if (!state.showRhumb) return;
+
+      const cw = overlayCanvas.width;
+      const ch = overlayCanvas.height;
+      const maxLen = Math.sqrt(cw * cw + ch * ch);
+
+      const primaryColor = '#8B4513';
+      const secondaryColor = '#6B4423';
+      const accentColor = '#2A5A2A';
+
+      for (const rose of rosePositions) {
+        const directions = rose.isPrimary ? 16 : 8;
+        const width = rose.isPrimary ? 0.7 : 0.35;
+        const opacity = rose.isPrimary ? state.rhumbPrimaryOpacity : state.rhumbSecondaryOpacity;
+        const baseColor = rose.isPrimary ? primaryColor : secondaryColor;
+
+        for (let i = 0; i < directions; i++) {
+          const angle = (i / directions) * Math.PI * 2;
+          const isAccent = i % (directions / 4) === 0;
+          const color = isAccent ? accentColor : baseColor;
+          const lineOpacity = isAccent ? Math.min(1, opacity * 1.2) : opacity;
+
+          ctx.beginPath();
+          ctx.moveTo(rose.x, rose.y);
+          ctx.lineTo(
+            rose.x + Math.cos(angle) * maxLen,
+            rose.y + Math.sin(angle) * maxLen
+          );
+          ctx.strokeStyle = hexToRgba(color, lineOpacity);
+          ctx.lineWidth = isAccent ? width * 1.3 : width;
+          ctx.stroke();
+        }
+      }
+    }
+
+    function drawCompassRoses() {
+      if (!state.showRoses) return;
+
+      for (const rose of rosePositions) {
+        const size = rose.isPrimary ? 28 : 16;
+
+        ctx.save();
+        ctx.translate(rose.x, rose.y);
+
+        // Draw elaborate multi-ring compass rose
+        drawElaborateRose(ctx, size, rose.isPrimary);
+
+        ctx.restore();
+      }
+    }
+
+    function drawElaborateRose(ctx, size, isPrimary) {
+      // Color scheme from authentic portolan charts
+      const colors = {
+        cardinal: '#2A5A2A',      // Green for N/S/E/W
+        intercardinal: '#8B4513', // Sienna for NE/SE/SW/NW
+        intermediate: '#6B4423',  // Darker brown for 16-point
+        tertiary: '#C8A878',      // Light tan for 32-point
+        vellum: '#f5eee1',
+        outline: '#3a3020',
+        gold: '#9A7B35'
+      };
+
+      const numPoints = isPrimary ? 32 : 16;
+
+      // Outer decorative ring
+      ctx.beginPath();
+      ctx.arc(0, 0, size, 0, Math.PI * 2);
+      ctx.strokeStyle = colors.outline;
+      ctx.lineWidth = isPrimary ? 1.2 : 0.8;
+      ctx.stroke();
+
+      // Inner decorative ring
+      ctx.beginPath();
+      ctx.arc(0, 0, size * 0.85, 0, Math.PI * 2);
+      ctx.strokeStyle = colors.outline;
+      ctx.lineWidth = isPrimary ? 0.8 : 0.5;
+      ctx.stroke();
+
+      // Draw directional points in layers (back to front)
+      // Layer 1: 32-point (tertiary) - shortest, thinnest
+      if (numPoints >= 32) {
+        for (let i = 0; i < 32; i++) {
+          if (i % 2 !== 0) { // Only odd indices (between 16-point directions)
+            const angle = (i / 32) * Math.PI * 2 - Math.PI / 2; // Start from North
+            drawRosePoint(ctx, angle, size * 0.55, size * 0.08, colors.tertiary, colors.vellum);
+          }
+        }
+      }
+
+      // Layer 2: 16-point (intermediate) - medium length
+      if (numPoints >= 16) {
+        for (let i = 0; i < 16; i++) {
+          if (i % 2 !== 0) { // Only odd indices (between 8-point directions)
+            const angle = (i / 16) * Math.PI * 2 - Math.PI / 2;
+            drawRosePoint(ctx, angle, size * 0.70, size * 0.10, colors.intermediate, colors.vellum);
+          }
+        }
+      }
+
+      // Layer 3: 8-point (intercardinal) - longer
+      for (let i = 0; i < 8; i++) {
+        if (i % 2 !== 0) { // NE, SE, SW, NW
+          const angle = (i / 8) * Math.PI * 2 - Math.PI / 2;
+          drawRosePoint(ctx, angle, size * 0.85, size * 0.12, colors.intercardinal, colors.vellum);
+        }
+      }
+
+      // Layer 4: 4-point (cardinal) - longest, most prominent
+      for (let i = 0; i < 4; i++) {
+        const angle = (i / 4) * Math.PI * 2 - Math.PI / 2; // N, E, S, W
+        drawRosePoint(ctx, angle, size * 1.0, size * 0.14, colors.cardinal, colors.vellum, true);
+      }
+
+      // Central ornament - concentric circles
+      ctx.beginPath();
+      ctx.arc(0, 0, size * 0.25, 0, Math.PI * 2);
+      ctx.fillStyle = colors.vellum;
+      ctx.fill();
+      ctx.strokeStyle = colors.outline;
+      ctx.lineWidth = isPrimary ? 0.8 : 0.5;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(0, 0, size * 0.18, 0, Math.PI * 2);
+      ctx.fillStyle = colors.intercardinal;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(0, 0, size * 0.10, 0, Math.PI * 2);
+      ctx.fillStyle = colors.gold;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(0, 0, size * 0.05, 0, Math.PI * 2);
+      ctx.fillStyle = colors.vellum;
+      ctx.fill();
+
+      // Add decorative dots between major points on outer ring
+      if (isPrimary) {
+        for (let i = 0; i < 8; i++) {
+          const angle = (i / 8) * Math.PI * 2 - Math.PI / 2 + Math.PI / 16;
+          const x = Math.cos(angle) * size * 0.925;
+          const y = Math.sin(angle) * size * 0.925;
+          ctx.beginPath();
+          ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+          ctx.fillStyle = colors.intercardinal;
+          ctx.fill();
+        }
+      }
+    }
+
+    function drawRosePoint(ctx, angle, length, baseWidth, fillColor, altColor, isCardinal = false) {
+      const tipX = Math.cos(angle) * length;
+      const tipY = Math.sin(angle) * length;
+
+      // Perpendicular direction for base width
+      const perpAngle = angle + Math.PI / 2;
+      const baseX1 = Math.cos(perpAngle) * baseWidth;
+      const baseY1 = Math.sin(perpAngle) * baseWidth;
+
+      // Diamond/kite shape - two triangles
+      // First half (colored)
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(baseX1, baseY1);
+      ctx.lineTo(tipX, tipY);
+      ctx.closePath();
+      ctx.fillStyle = fillColor;
+      ctx.fill();
+
+      // Second half (alternating color for depth)
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(-baseX1, -baseY1);
+      ctx.lineTo(tipX, tipY);
+      ctx.closePath();
+      ctx.fillStyle = altColor;
+      ctx.fill();
+
+      // Outline for definition
+      ctx.beginPath();
+      ctx.moveTo(-baseX1, -baseY1);
+      ctx.lineTo(tipX, tipY);
+      ctx.lineTo(baseX1, baseY1);
+      ctx.strokeStyle = 'rgba(58, 48, 32, 0.4)';
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+
+      // Cardinal points get extra flourish
+      if (isCardinal) {
+        // Small inner triangle accent
+        const innerLen = length * 0.35;
+        const innerTipX = Math.cos(angle) * innerLen;
+        const innerTipY = Math.sin(angle) * innerLen;
+        const innerBaseW = baseWidth * 0.5;
+        const innerBaseX = Math.cos(perpAngle) * innerBaseW;
+        const innerBaseY = Math.sin(perpAngle) * innerBaseW;
+
+        ctx.beginPath();
+        ctx.moveTo(innerBaseX * 0.3, innerBaseY * 0.3);
+        ctx.lineTo(innerTipX, innerTipY);
+        ctx.lineTo(-innerBaseX * 0.3, -innerBaseY * 0.3);
+        ctx.closePath();
+        ctx.fillStyle = fillColor;
+        ctx.fill();
+      }
+    }
+
+    // ============ COASTLINE ============
+    function noise1D(x, seed) {
+      const n = Math.sin(x * 12.9898 + seed * 78.233) * 43758.5453;
+      return n - Math.floor(n);
+    }
+
+    function smoothNoise(x, freq, seed) {
+      const scaledX = x * freq;
+      const x0 = Math.floor(scaledX);
+      const t = scaledX - x0;
+      const smooth = t * t * (3 - 2 * t);
+      return noise1D(x0, seed) + (noise1D(x0 + 1, seed) - noise1D(x0, seed)) * smooth;
+    }
+
+    function fractalNoise(x, freq, octaves, seed) {
+      let value = 0, amp = 1, totalAmp = 0;
+      for (let i = 0; i < octaves; i++) {
+        value += smoothNoise(x, freq * Math.pow(2, i), seed + i * 100) * amp;
+        totalAmp += amp;
+        amp *= 0.5;
+      }
+      return value / totalAmp;
+    }
+
+    function smoothPoints(points, windowSize) {
+      if (windowSize <= 1) return points;
+      const half = Math.floor(windowSize / 2);
+      const result = [];
+      for (let i = 0; i < points.length; i++) {
+        let sumX = 0, sumY = 0, sumT = 0, count = 0;
+        for (let j = -half; j <= half; j++) {
+          const idx = Math.max(0, Math.min(points.length - 1, i + j));
+          const weight = 1 - Math.abs(j) / (half + 1);
+          sumX += points[idx].x * weight;
+          sumY += points[idx].y * weight;
+          sumT += points[idx].t * weight;
+          count += weight;
+        }
+        result.push({ x: sumX/count, y: sumY/count, t: sumT/count });
+      }
+      return result;
+    }
+
+    function generateCoastline() {
+      rng = mulberry32(state.seed + 1000);
+      const points = [];
+      const numInitial = 80;
+
+      for (let i = 0; i <= numInitial; i++) {
+        const t = i / numInitial;
+        const largeFeature = fractalNoise(t, state.featureScale, 3, state.seed) - 0.5;
+        const baseY = 0.42 + largeFeature * 0.12 * 2;
+        points.push({ x: t, y: baseY, t });
+      }
+
+      let current = points;
+      const iterations = 4;
+
+      for (let iter = 0; iter < iterations; iter++) {
+        const next = [];
+        const iterDisp = state.displacement * Math.pow(0.58, iter);
+
+        for (let i = 0; i < current.length - 1; i++) {
+          const p1 = current[i];
+          const p2 = current[i + 1];
+          next.push(p1);
+
+          const midX = (p1.x + p2.x) / 2;
+          const midY = (p1.y + p2.y) / 2;
+          const midT = (p1.t + p2.t) / 2;
+
+          const dx = p2.x - p1.x;
+          const dy = p2.y - p1.y;
+          const len = Math.sqrt(dx*dx + dy*dy);
+          const perpX = -dy / len;
+          const perpY = dx / len;
+
+          const localRough = 0.5 + (fractalNoise(midT, 3.0, 2, state.seed + 500) - 0.5) * 0.6;
+          const randDisp = (rng() - 0.5 + 0.15 * 0.5) * iterDisp * localRough * len * 4;
+
+          next.push({
+            x: midX + perpX * randDisp,
+            y: midY + perpY * randDisp,
+            t: midT
+          });
+        }
+        next.push(current[current.length - 1]);
+        current = next;
+      }
+
+      if (state.smoothing > 0) {
+        const windowSize = Math.max(3, Math.floor(current.length * 0.01 * Math.pow(2, state.smoothing - 1)));
+        current = smoothPoints(current, windowSize);
+      }
+
+      coastlinePoints = current;
+    }
+
+    // ============ ISLANDS ============
+    function generateIslandShape(centerX, centerY, size, seed) {
+      const islandRng = mulberry32(seed);
+      const points = [];
+      const numPoints = 24; // Base resolution
+
+      // Generate irregular closed shape
+      for (let i = 0; i < numPoints; i++) {
+        const baseAngle = (i / numPoints) * Math.PI * 2;
+        // Vary radius with multiple frequencies for organic shape
+        const r1 = fractalNoise(baseAngle / (Math.PI * 2), 3, 2, seed) - 0.5;
+        const r2 = fractalNoise(baseAngle / (Math.PI * 2), 6, 2, seed + 100) - 0.5;
+        const radiusVar = 1 + r1 * 0.4 + r2 * 0.15;
+        const radius = size * radiusVar * (0.85 + islandRng() * 0.3);
+
+        // Add slight angle perturbation
+        const angleNoise = (islandRng() - 0.5) * 0.15;
+        const angle = baseAngle + angleNoise;
+
+        points.push({
+          x: centerX + Math.cos(angle) * radius,
+          y: centerY + Math.sin(angle) * radius,
+          t: i / numPoints
+        });
+      }
+
+      // Apply midpoint displacement for detail
+      let current = points;
+      for (let iter = 0; iter < 2; iter++) {
+        const next = [];
+        const iterDisp = 0.15 * Math.pow(0.5, iter);
+
+        for (let i = 0; i < current.length; i++) {
+          const p1 = current[i];
+          const p2 = current[(i + 1) % current.length];
+          next.push(p1);
+
+          const midX = (p1.x + p2.x) / 2;
+          const midY = (p1.y + p2.y) / 2;
+
+          const dx = p2.x - p1.x;
+          const dy = p2.y - p1.y;
+          const len = Math.sqrt(dx*dx + dy*dy);
+          if (len < 0.001) continue;
+
+          const perpX = -dy / len;
+          const perpY = dx / len;
+
+          const disp = (islandRng() - 0.5) * iterDisp * size;
+          next.push({
+            x: midX + perpX * disp,
+            y: midY + perpY * disp,
+            t: (p1.t + p2.t) / 2
+          });
+        }
+        current = next;
+      }
+
+      // Apply smoothing
+      if (state.smoothing > 0) {
+        const windowSize = Math.max(3, Math.floor(current.length * 0.015 * Math.pow(2, state.smoothing - 1)));
+        // Smooth closed shape - wrap around
+        const extended = [...current, ...current.slice(0, windowSize)];
+        const smoothed = smoothPoints(extended, windowSize);
+        current = smoothed.slice(0, current.length);
+      }
+
+      return current;
+    }
+
+    function generateIslands() {
+      islands = [];
+      if (state.islandCount === 0) return;
+
+      const islandRng = mulberry32(state.seed + 2000);
+
+      // Get average coastline Y to know where "sea" starts
+      const avgCoastY = coastlinePoints.reduce((sum, p) => sum + p.y, 0) / coastlinePoints.length;
+
+      // Generate island positions avoiding overlap
+      const islandCenters = [];
+      const minSeparation = state.islandSizeMax * 1.8; // Tighter packing for archipelago feel
+
+      for (let i = 0; i < state.islandCount; i++) {
+        let attempts = 0;
+        let x, y, size;
+
+        while (attempts < 20) {
+          // Place islands in the sea area (below coastline)
+          x = 0.1 + islandRng() * 0.8;
+          y = avgCoastY + 0.12 + islandRng() * (0.85 - avgCoastY - 0.15);
+          size = state.islandSizeMin + islandRng() * (state.islandSizeMax - state.islandSizeMin);
+
+          // Check separation from other islands
+          let valid = true;
+          for (const center of islandCenters) {
+            const dx = center.x - x;
+            const dy = center.y - y;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < minSeparation) {
+              valid = false;
+              break;
+            }
+          }
+
+          // Check not too close to coastline
+          if (valid) {
+            for (const cp of coastlinePoints) {
+              const dx = cp.x - x;
+              const dy = cp.y - y;
+              const dist = Math.sqrt(dx*dx + dy*dy);
+              if (dist < size * 1.5) {
+                valid = false;
+                break;
+              }
+            }
+          }
+
+          if (valid) break;
+          attempts++;
+        }
+
+        if (attempts < 20) {
+          islandCenters.push({ x, y, size });
+          const islandPoints = generateIslandShape(x, y, size, state.seed + 3000 + i * 100);
+          islands.push(islandPoints);
+        }
+      }
+    }
+
+    // ============ COASTLINE LABELS ============
+    function generateCoastlineLabels() {
+      coastlineLabels = [];
+      if (coastlinePoints.length < 10) return;
+
+      const labelRng = mulberry32(state.seed + 4000);
+      const numLabels = state.labelDensity;
+      const usedNames = new Set();
+
+      // Evenly distribute labels along coastline with some variation
+      for (let i = 0; i < numLabels; i++) {
+        // Base position along coastline (0-1) with slight randomization
+        const baseT = (i + 0.5) / numLabels;
+        const jitter = (labelRng() - 0.5) * 0.5 / numLabels;
+        const t = Math.max(0.02, Math.min(0.98, baseT + jitter));
+
+        // Find the coastline point nearest to this t value
+        const targetIdx = Math.floor(t * (coastlinePoints.length - 1));
+        const idx = Math.max(1, Math.min(coastlinePoints.length - 2, targetIdx));
+
+        const p = coastlinePoints[idx];
+
+        // Calculate normal (perpendicular to coastline tangent)
+        // Use points before and after for smoother tangent
+        const lookAhead = Math.min(10, Math.floor(coastlinePoints.length * 0.02));
+        const p0 = coastlinePoints[Math.max(0, idx - lookAhead)];
+        const p1 = coastlinePoints[Math.min(coastlinePoints.length - 1, idx + lookAhead)];
+
+        const dx = p1.x - p0.x;
+        const dy = p1.y - p0.y;
+        const len = Math.sqrt(dx * dx + dy * dy);
+
+        if (len < 0.001) continue;
+
+        // Normal pointing into the land (upward on canvas, so negative Y)
+        // Tangent is (dx, dy), normal is (-dy, dx) or (dy, -dx)
+        // In portolan charts, labels radiate FROM the coastline INTO the land
+        let normalX = -dy / len;
+        let normalY = dx / len;
+
+        // Ensure normal points into land (generally upward, y < coastline)
+        if (normalY > 0) {
+          normalX = -normalX;
+          normalY = -normalY;
+        }
+
+        // Angle for text rotation (perpendicular to coast, radiating outward)
+        // Text baseline should be tangent to coast, text goes away from coast
+        let angle = Math.atan2(normalY, normalX);
+
+        // Pick a name (avoid duplicates)
+        let name;
+        let attempts = 0;
+        do {
+          const nameIdx = Math.floor(labelRng() * PORT_NAMES.length);
+          name = PORT_NAMES[nameIdx];
+          attempts++;
+        } while (usedNames.has(name) && attempts < 20);
+        usedNames.add(name);
+
+        coastlineLabels.push({
+          x: p.x,
+          y: p.y,
+          normalX,
+          normalY,
+          angle,
+          name
+        });
+      }
+    }
+
+    function drawCoastlineLabels() {
+      if (!state.showLabels || coastlineLabels.length === 0) return;
+
+      const cw = overlayCanvas.width;
+      const ch = overlayCanvas.height;
+
+      // Manuscript red - the characteristic portolan label color
+      // See https://gwern.net/red for aesthetic reference
+      const labelColor = '#8B2323'; // Deep manuscript red
+
+      ctx.save();
+      ctx.font = `${state.labelFontSize}px "EB Garamond", "Garamond", "Times New Roman", serif`;
+      ctx.fillStyle = labelColor;
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+
+      for (const label of coastlineLabels) {
+        const x = label.x * cw;
+        const y = label.y * ch;
+
+        // Offset from coastline along normal
+        const offsetX = label.normalX * state.labelOffset;
+        const offsetY = label.normalY * state.labelOffset;
+
+        ctx.save();
+        ctx.translate(x + offsetX, y + offsetY);
+
+        // Rotate to be perpendicular to coastline
+        // Adjust angle so text reads naturally (not upside down)
+        let textAngle = label.angle;
+
+        // If text would be upside down (pointing left), flip it
+        if (textAngle > Math.PI / 2) {
+          textAngle -= Math.PI;
+        } else if (textAngle < -Math.PI / 2) {
+          textAngle += Math.PI;
+        }
+
+        ctx.rotate(textAngle);
+        ctx.fillText(label.name, 0, 0);
+        ctx.restore();
+      }
+
+      ctx.restore();
+    }
+
+    // ============ COASTLINE HATCHING (COMB TEETH) ============
+    // The signature textural element of portolan charts: dense perpendicular
+    // tick marks along the entire coastline creating a "fringe" effect
+    function drawCoastlineHatching(points, isIsland = false) {
+      if (!state.showHatching || points.length < 3) return;
+
+      const cw = overlayCanvas.width;
+      const ch = overlayCanvas.height;
+
+      // Hatching color - dark brown matching coastline
+      const hatchColor = `rgba(42, 36, 32, ${state.hatchOpacity})`;
+
+      ctx.save();
+      ctx.strokeStyle = hatchColor;
+      ctx.lineWidth = state.hatchWidth;
+      ctx.lineCap = 'round';
+
+      // Calculate total path length
+      let totalLength = 0;
+      for (let i = 1; i < points.length; i++) {
+        const dx = (points[i].x - points[i-1].x) * cw;
+        const dy = (points[i].y - points[i-1].y) * ch;
+        totalLength += Math.sqrt(dx * dx + dy * dy);
+      }
+
+      // Scale density based on coastline length relative to canvas
+      const effectiveDensity = isIsland
+        ? Math.max(15, Math.floor(state.hatchDensity * totalLength / (cw * 0.8)))
+        : state.hatchDensity;
+
+      // Distribute hatches evenly along the path
+      const spacing = totalLength / effectiveDensity;
+      let accumulated = 0;
+      let currentSegment = 0;
+      let segmentProgress = 0;
+
+      // Slight variation seed for organic feel
+      const hatchRng = mulberry32(state.seed + 5000);
+
+      for (let h = 0; h < effectiveDensity; h++) {
+        const targetDist = h * spacing + (hatchRng() - 0.5) * spacing * 0.3; // Slight jitter
+
+        // Walk along path to find position
+        while (currentSegment < points.length - 1) {
+          const p1 = points[currentSegment];
+          const p2 = points[currentSegment + 1];
+          const dx = (p2.x - p1.x) * cw;
+          const dy = (p2.y - p1.y) * ch;
+          const segLen = Math.sqrt(dx * dx + dy * dy);
+
+          if (accumulated + segLen >= targetDist) {
+            // Found the segment
+            const localT = (targetDist - accumulated) / segLen;
+            const x = p1.x * cw + dx * localT;
+            const y = p1.y * ch + dy * localT;
+
+            // Calculate normal (perpendicular to tangent)
+            const len = segLen > 0.001 ? segLen : 1;
+            let normalX = -dy / len;
+            let normalY = dx / len;
+
+            // For mainland, hatches go into land (upward)
+            // For islands, hatches go outward from center
+            if (!isIsland) {
+              // Ensure hatches point toward land (negative Y direction)
+              if (normalY > 0) {
+                normalX = -normalX;
+                normalY = -normalY;
+              }
+            } else {
+              // For islands, point outward (away from center)
+              const centerX = points.reduce((s, p) => s + p.x, 0) / points.length * cw;
+              const centerY = points.reduce((s, p) => s + p.y, 0) / points.length * ch;
+              const toCenterX = centerX - x;
+              const toCenterY = centerY - y;
+              // If normal points toward center, flip it
+              if (normalX * toCenterX + normalY * toCenterY > 0) {
+                normalX = -normalX;
+                normalY = -normalY;
+              }
+            }
+
+            // Vary hatch length slightly for organic look
+            const lengthVar = state.hatchLength * (0.7 + hatchRng() * 0.6);
+
+            // Draw the hatch mark
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + normalX * lengthVar, y + normalY * lengthVar);
+            ctx.stroke();
+
+            break;
+          }
+
+          accumulated += segLen;
+          currentSegment++;
+        }
+      }
+
+      ctx.restore();
+    }
+
+    // ============ INLAND MOUNTAINS ============
+    // Stylized mountain ranges characteristic of portolan charts
+    // In authentic charts, mountains are drawn as overlapping triangular peaks
+    // forming continuous chains across the land area, with a distinctive
+    // two-tone coloring (shadow/light) and fine ink outlines
+    function drawInlandMountains() {
+      if (!state.showMountains || coastlinePoints.length < 3) return;
+
+      const cw = overlayCanvas.width;
+      const ch = overlayCanvas.height;
+      const mountainRng = mulberry32(state.seed + 6000);
+
+      // Authentic portolan mountain colors
+      // Reference charts show olive-green to brown-green mountains
+      const colors = {
+        shadow: '#4a6a3a',        // Darker olive for shadow side
+        light: '#6a8a5a',         // Lighter green for lit side
+        outline: '#3a4a2a',       // Dark outline
+        base: '#5a7a4a'           // Base/ground connection
+      };
+
+      // Find the land boundary
+      const coastYs = coastlinePoints.map(p => p.y * ch);
+      const avgCoastY = coastYs.reduce((a, b) => a + b, 0) / coastYs.length;
+
+      // Mountains fill from top of canvas down to coastline
+      const landTop = 15;
+      const landBottom = avgCoastY - 20;
+      const availableHeight = landBottom - landTop;
+
+      if (availableHeight < 40) return;
+
+      ctx.save();
+
+      // Draw mountain rows from back (top) to front (bottom)
+      for (let row = 0; row < state.mountainRows; row++) {
+        const rowProgress = row / Math.max(1, state.mountainRows - 1);
+        // Rows closer to coastline are slightly larger (foreground)
+        const perspectiveScale = 0.7 + rowProgress * 0.3;
+        const rowHeight = state.mountainHeight * perspectiveScale;
+        const rowWidth = state.mountainWidth * perspectiveScale;
+
+        // Stagger row position with some randomness
+        const rowBaseY = landTop + (availableHeight * 0.15) + (availableHeight * 0.7) * rowProgress;
+
+        // Mountains overlap more for continuous chain effect
+        const overlap = rowWidth * 0.4;
+        const effectiveWidth = rowWidth - overlap;
+        const numMountains = Math.ceil(cw / effectiveWidth) + 2;
+
+        // Offset every other row for natural staggering
+        const rowOffset = (row % 2) * effectiveWidth * 0.5;
+
+        for (let m = -1; m < numMountains; m++) {
+          const baseX = m * effectiveWidth + rowOffset;
+
+          // Add jitter for organic feel
+          const jitterX = (mountainRng() - 0.5) * effectiveWidth * 0.3;
+          const jitterY = (mountainRng() - 0.5) * rowHeight * 0.15;
+          const x = baseX + jitterX;
+          const y = rowBaseY + jitterY;
+
+          // Check if over land
+          const normalizedX = Math.max(0, Math.min(1, x / cw));
+          let coastYAtX = avgCoastY;
+          for (let i = 0; i < coastlinePoints.length - 1; i++) {
+            if (coastlinePoints[i].x <= normalizedX && coastlinePoints[i + 1].x >= normalizedX) {
+              const t = (normalizedX - coastlinePoints[i].x) / (coastlinePoints[i + 1].x - coastlinePoints[i].x);
+              coastYAtX = (coastlinePoints[i].y * (1 - t) + coastlinePoints[i + 1].y * t) * ch;
+              break;
+            }
+          }
+
+          // Only draw if on land
+          if (y > coastYAtX - 25) continue;
+
+          // Size variation
+          const sizeVar = 0.75 + mountainRng() * 0.5;
+          const h = rowHeight * sizeVar;
+          const w = rowWidth * sizeVar;
+
+          drawStylizedMountain(ctx, x, y, w, h, colors, mountainRng);
+        }
+      }
+
+      ctx.restore();
+    }
+
+    function drawStylizedMountain(ctx, x, baseY, width, height, colors, rng) {
+      // Peak position with slight asymmetry
+      const peakOffset = (rng() - 0.5) * width * 0.1;
+      const peakX = x + peakOffset;
+      const peakY = baseY - height;
+
+      // Base extends slightly below baseY for overlap
+      const leftX = x - width / 2;
+      const rightX = x + width / 2;
+      const baseExtend = height * 0.1;
+
+      // Shadow side (left) - darker
+      ctx.beginPath();
+      ctx.moveTo(leftX, baseY + baseExtend);
+      ctx.lineTo(peakX, peakY);
+      ctx.lineTo(x, baseY + baseExtend);
+      ctx.closePath();
+      ctx.fillStyle = colors.shadow;
+      ctx.fill();
+
+      // Light side (right) - lighter
+      ctx.beginPath();
+      ctx.moveTo(x, baseY + baseExtend);
+      ctx.lineTo(peakX, peakY);
+      ctx.lineTo(rightX, baseY + baseExtend);
+      ctx.closePath();
+      ctx.fillStyle = colors.light;
+      ctx.fill();
+
+      // Fine outline - characteristic of portolan style
+      ctx.beginPath();
+      ctx.moveTo(leftX, baseY + baseExtend);
+      ctx.lineTo(peakX, peakY);
+      ctx.lineTo(rightX, baseY + baseExtend);
+      ctx.strokeStyle = colors.outline;
+      ctx.lineWidth = 0.6;
+      ctx.stroke();
+
+      // Central ridge line for depth
+      ctx.beginPath();
+      ctx.moveTo(x, baseY + baseExtend);
+      ctx.lineTo(peakX, peakY);
+      ctx.strokeStyle = colors.outline;
+      ctx.lineWidth = 0.4;
+      ctx.stroke();
+    }
+
+    // ============ ISLAND COLORS ============
+    // Authentic portolan charts color-code islands with distinct hues
+    // for identification. These colors are drawn from actual medieval charts:
+    // vermillion red, turquoise/teal, ochre/gold, olive green, sienna brown
+    const ISLAND_COLORS = [
+      { fill: '#C85450', name: 'vermillion' },   // Red - prominent islands
+      { fill: '#4A8B8B', name: 'turquoise' },    // Teal/turquoise
+      { fill: '#B8963C', name: 'ochre' },        // Gold/ochre
+      { fill: '#5A7B4A', name: 'olive' },        // Olive green
+      { fill: '#8B6B4A', name: 'sienna' },       // Brown/sienna
+      { fill: '#6B5A8B', name: 'mauve' },        // Muted purple (rare)
+      { fill: '#7B8B5A', name: 'sage' },         // Sage green
+      { fill: '#8B5A5A', name: 'russet' }        // Russet/brick
+    ];
+
+    function drawIslands() {
+      if (!state.showIslands || islands.length === 0) return;
+
+      const cw = overlayCanvas.width;
+      const ch = overlayCanvas.height;
+
+      // Use seeded random for consistent color assignment per seed
+      const colorRng = mulberry32(state.seed + 7000);
+
+      // Shuffle color indices for variety
+      const colorIndices = ISLAND_COLORS.map((_, i) => i);
+      for (let i = colorIndices.length - 1; i > 0; i--) {
+        const j = Math.floor(colorRng() * (i + 1));
+        [colorIndices[i], colorIndices[j]] = [colorIndices[j], colorIndices[i]];
+      }
+
+      islands.forEach((island, idx) => {
+        // Each island gets a unique color from the palette
+        const colorIdx = colorIndices[idx % colorIndices.length];
+        const islandColor = ISLAND_COLORS[colorIdx];
+
+        // Parse the fill color and apply island-specific opacity
+        // Islands are more saturated than mainland - use higher opacity
+        const fillRgb = hexToRgb(islandColor.fill);
+        const islandOpacity = Math.min(0.85, state.landOpacity * 3.5); // More opaque than mainland
+        const fillStyle = `rgba(${Math.floor(fillRgb[0]*255)}, ${Math.floor(fillRgb[1]*255)}, ${Math.floor(fillRgb[2]*255)}, ${islandOpacity})`;
+
+        // Fill
+        ctx.beginPath();
+        ctx.moveTo(island[0].x * cw, island[0].y * ch);
+        for (let i = 1; i < island.length; i++) {
+          ctx.lineTo(island[i].x * cw, island[i].y * ch);
+        }
+        ctx.closePath();
+        ctx.fillStyle = fillStyle;
+        ctx.fill();
+
+        // Stroke - slightly darker version of island color for cohesion
+        ctx.beginPath();
+        ctx.moveTo(island[0].x * cw, island[0].y * ch);
+        for (let i = 1; i < island.length; i++) {
+          ctx.lineTo(island[i].x * cw, island[i].y * ch);
+        }
+        ctx.closePath();
+        ctx.strokeStyle = '#2a2420';
+        ctx.lineWidth = state.lineWidth * 0.85; // Slightly thinner than mainland
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+      });
+    }
+
+    function drawLand() {
+      if (!state.showLand) return;
+
+      const cw = overlayCanvas.width;
+      const ch = overlayCanvas.height;
+
+      ctx.beginPath();
+      ctx.moveTo(-10, -10);
+      ctx.lineTo(coastlinePoints[0].x * cw, coastlinePoints[0].y * ch);
+
+      for (let i = 1; i < coastlinePoints.length; i++) {
+        ctx.lineTo(coastlinePoints[i].x * cw, coastlinePoints[i].y * ch);
+      }
+
+      ctx.lineTo(cw + 10, -10);
+      ctx.closePath();
+
+      const tintRgb = hexToRgb(state.landTint);
+      ctx.fillStyle = `rgba(${Math.floor(tintRgb[0]*255)}, ${Math.floor(tintRgb[1]*255)}, ${Math.floor(tintRgb[2]*255)}, ${state.landOpacity})`;
+      ctx.fill();
+    }
+
+    function drawCoastline() {
+      if (!state.showCoastline) return;
+
+      const cw = overlayCanvas.width;
+      const ch = overlayCanvas.height;
+
+      ctx.beginPath();
+      ctx.moveTo(coastlinePoints[0].x * cw, coastlinePoints[0].y * ch);
+
+      for (let i = 1; i < coastlinePoints.length; i++) {
+        ctx.lineTo(coastlinePoints[i].x * cw, coastlinePoints[i].y * ch);
+      }
+
+      ctx.strokeStyle = '#2a2420';
+      ctx.lineWidth = state.lineWidth;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.stroke();
+    }
+
+    // ============ MAIN RENDER ============
+    function render() {
+      renderVellum();
+
+      ctx.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+
+      drawRhumbLines();
+      drawLand();
+      drawInlandMountains();
+      drawIslands();
+      drawCoastline();
+      // Hatching goes on top of coastline stroke, under labels
+      drawCoastlineHatching(coastlinePoints, false);
+      for (const island of islands) {
+        drawCoastlineHatching(island, true);
+      }
+      drawCoastlineLabels();
+      drawCompassRoses();
+    }
+
+    function updatePrompt() {
+      let text = 'Combined portolan: ';
+      const layers = [];
+      if (state.showVellum) layers.push('vellum');
+      if (state.showRhumb) layers.push(`${state.primaryRoses}+${state.secondaryRoses} roses`);
+      if (state.showLand) layers.push('land fill');
+      if (state.showCoastline) layers.push('coastline');
+      text += layers.join(', ') + '.';
+
+      text += `\n\nSeed: ${state.seed}, Vellum: {warmth: ${state.warmth}, edgeDark: ${state.edgeDark}, cloudInt: ${state.cloudInt}}, `;
+      text += `Coastline: {featureScale: ${state.featureScale}, displacement: ${state.displacement}, smoothing: ${state.smoothing}}`;
+
+      document.getElementById('promptText').textContent = text;
+    }
+
+    function updateAll() {
+      document.getElementById('seedDisplay').textContent = `Seed: ${state.seed}`;
+      document.getElementById('warmthVal').textContent = state.warmth.toFixed(2);
+      document.getElementById('edgeDarkVal').textContent = state.edgeDark.toFixed(2);
+      document.getElementById('cloudIntVal').textContent = state.cloudInt.toFixed(2);
+      document.getElementById('primaryRosesVal').textContent = state.primaryRoses;
+      document.getElementById('secondaryRosesVal').textContent = state.secondaryRoses;
+      document.getElementById('rhumbPrimaryOpacityVal').textContent = state.rhumbPrimaryOpacity.toFixed(2);
+      document.getElementById('rhumbSecondaryOpacityVal').textContent = state.rhumbSecondaryOpacity.toFixed(2);
+      document.getElementById('featureScaleVal').textContent = state.featureScale.toFixed(1);
+      document.getElementById('displacementVal').textContent = state.displacement.toFixed(2);
+      document.getElementById('smoothingVal').textContent = state.smoothing;
+      document.getElementById('lineWidthVal').textContent = state.lineWidth.toFixed(1);
+      document.getElementById('landOpacityVal').textContent = state.landOpacity.toFixed(2);
+      document.getElementById('islandCountVal').textContent = state.islandCount;
+      document.getElementById('islandSizeMinVal').textContent = state.islandSizeMin.toFixed(3);
+      document.getElementById('islandSizeMaxVal').textContent = state.islandSizeMax.toFixed(2);
+      document.getElementById('labelDensityVal').textContent = state.labelDensity;
+      document.getElementById('labelFontSizeVal').textContent = state.labelFontSize;
+      document.getElementById('labelOffsetVal').textContent = state.labelOffset;
+      document.getElementById('hatchDensityVal').textContent = state.hatchDensity;
+      document.getElementById('hatchLengthVal').textContent = state.hatchLength;
+      document.getElementById('hatchWidthVal').textContent = state.hatchWidth.toFixed(1);
+      document.getElementById('hatchOpacityVal').textContent = state.hatchOpacity.toFixed(2);
+      document.getElementById('mountainRowsVal').textContent = state.mountainRows;
+      document.getElementById('mountainsPerRowVal').textContent = state.mountainsPerRow;
+      document.getElementById('mountainHeightVal').textContent = state.mountainHeight;
+      document.getElementById('mountainWidthVal').textContent = state.mountainWidth;
+
+      render();
+      updatePrompt();
+    }
+
+    // ============ EVENT BINDINGS ============
+    ['warmth', 'edgeDark', 'cloudInt', 'rhumbPrimaryOpacity', 'rhumbSecondaryOpacity',
+     'featureScale', 'displacement', 'smoothing', 'lineWidth', 'landOpacity'].forEach(id => {
+      document.getElementById(id).addEventListener('input', e => {
+        state[id] = parseFloat(e.target.value);
+        updateAll();
+      });
+    });
+
+    ['primaryRoses', 'secondaryRoses'].forEach(id => {
+      document.getElementById(id).addEventListener('input', e => {
+        state[id] = parseInt(e.target.value);
+        generateRosePositions();
+        updateAll();
+      });
+    });
+
+    document.getElementById('landTint').addEventListener('input', e => {
+      state.landTint = e.target.value;
+      updateAll();
+    });
+
+    ['showVellum', 'showRhumb', 'showLand', 'showCoastline', 'showRoses', 'showIslands', 'showLabels', 'showHatching', 'showMountains'].forEach(id => {
+      document.getElementById(id).addEventListener('change', e => {
+        state[id] = e.target.checked;
+        updateAll();
+      });
+    });
+
+    ['hatchDensity', 'hatchLength'].forEach(id => {
+      document.getElementById(id).addEventListener('input', e => {
+        state[id] = parseFloat(e.target.value);
+        updateAll();
+      });
+    });
+
+    ['mountainRows', 'mountainsPerRow', 'mountainHeight', 'mountainWidth'].forEach(id => {
+      document.getElementById(id).addEventListener('input', e => {
+        state[id] = parseInt(e.target.value);
+        updateAll();
+      });
+    });
+
+    ['hatchWidth', 'hatchOpacity'].forEach(id => {
+      document.getElementById(id).addEventListener('input', e => {
+        state[id] = parseFloat(e.target.value);
+        updateAll();
+      });
+    });
+
+    ['labelDensity', 'labelFontSize', 'labelOffset'].forEach(id => {
+      document.getElementById(id).addEventListener('input', e => {
+        state[id] = parseInt(e.target.value);
+        if (id === 'labelDensity') {
+          generateCoastlineLabels();
+        }
+        updateAll();
+      });
+    });
+
+    ['islandSizeMin', 'islandSizeMax'].forEach(id => {
+      document.getElementById(id).addEventListener('input', e => {
+        state[id] = parseFloat(e.target.value);
+        generateIslands();
+        updateAll();
+      });
+    });
+
+    document.getElementById('islandCount').addEventListener('input', e => {
+      state.islandCount = parseInt(e.target.value);
+      generateIslands();
+      updateAll();
+    });
+
+    document.getElementById('prevSeed').addEventListener('click', () => {
+      state.seed = Math.max(1, state.seed - 1);
+      generateRosePositions();
+      generateCoastline();
+      generateIslands();
+      generateCoastlineLabels();
+      updateAll();
+    });
+
+    document.getElementById('nextSeed').addEventListener('click', () => {
+      state.seed++;
+      generateRosePositions();
+      generateCoastline();
+      generateIslands();
+      generateCoastlineLabels();
+      updateAll();
+    });
+
+    document.getElementById('randomSeed').addEventListener('click', () => {
+      state.seed = Math.floor(Math.random() * 100000);
+      generateRosePositions();
+      generateCoastline();
+      generateIslands();
+      generateCoastlineLabels();
+      updateAll();
+    });
+
+    document.querySelectorAll('.preset').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const preset = PRESETS[btn.dataset.preset];
+        Object.assign(state, preset);
+
+        // Update form elements
+        document.getElementById('warmth').value = state.warmth;
+        document.getElementById('edgeDark').value = state.edgeDark;
+        document.getElementById('cloudInt').value = state.cloudInt;
+        document.getElementById('primaryRoses').value = state.primaryRoses;
+        document.getElementById('secondaryRoses').value = state.secondaryRoses;
+        document.getElementById('rhumbPrimaryOpacity').value = state.rhumbPrimaryOpacity;
+        document.getElementById('rhumbSecondaryOpacity').value = state.rhumbSecondaryOpacity;
+        document.getElementById('featureScale').value = state.featureScale;
+        document.getElementById('displacement').value = state.displacement;
+        document.getElementById('smoothing').value = state.smoothing;
+        document.getElementById('lineWidth').value = state.lineWidth;
+        document.getElementById('landOpacity').value = state.landOpacity;
+        document.getElementById('landTint').value = state.landTint;
+        document.getElementById('islandCount').value = state.islandCount;
+        document.getElementById('islandSizeMin').value = state.islandSizeMin;
+        document.getElementById('islandSizeMax').value = state.islandSizeMax;
+        document.getElementById('showVellum').checked = state.showVellum;
+        document.getElementById('showRhumb').checked = state.showRhumb;
+        document.getElementById('showLand').checked = state.showLand;
+        document.getElementById('showCoastline').checked = state.showCoastline;
+        document.getElementById('showRoses').checked = state.showRoses;
+        document.getElementById('showIslands').checked = state.showIslands;
+
+        document.getElementById('showLabels').checked = state.showLabels;
+        document.getElementById('labelDensity').value = state.labelDensity;
+        document.getElementById('labelFontSize').value = state.labelFontSize;
+        document.getElementById('labelOffset').value = state.labelOffset;
+        document.getElementById('showHatching').checked = state.showHatching;
+        document.getElementById('hatchDensity').value = state.hatchDensity;
+        document.getElementById('hatchLength').value = state.hatchLength;
+        document.getElementById('hatchWidth').value = state.hatchWidth;
+        document.getElementById('hatchOpacity').value = state.hatchOpacity;
+        document.getElementById('showMountains').checked = state.showMountains;
+        document.getElementById('mountainRows').value = state.mountainRows;
+        document.getElementById('mountainsPerRow').value = state.mountainsPerRow;
+        document.getElementById('mountainHeight').value = state.mountainHeight;
+        document.getElementById('mountainWidth').value = state.mountainWidth;
+
+        document.querySelectorAll('.preset').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        generateRosePositions();
+        generateCoastline();
+        generateIslands();
+        generateCoastlineLabels();
+        updateAll();
+      });
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      const text = document.getElementById('promptText').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 1500);
+      });
+    });
+
+    // ============ INIT ============
+    generateRosePositions();
+    generateCoastline();
+    generateIslands();
+    generateCoastlineLabels();
+    updateAll();
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+% Auto-generated results tables for Euclid x CMB-kappa cross-correlation
+% Source: generate_results_table.py
+% Generated: 2026-02-16T07:46:41.463545+00:00
+
+\begin{table*}
+\centering
+\caption{Cross-correlation detection significance and theory comparison. S/N$_\mathrm{raw}$ is the diagonal Knox sum over 6 tomographic bins $\times$ 20 bandpowers. S/N$_\mathrm{marg}$ accounts for template marginalization of 5 systematic maps via joint Fisher fit. $A$ is the best-fit amplitude relative to fiducial theory ($A=1$ means perfect agreement). $A_\mathrm{van}$: vanilla Planck 2018. $A_\mathrm{lens}$: Planck 2018 + NLA intrinsic alignment ($A_\mathrm{IA}=1.72$, $\eta_\mathrm{IA}=-0.41$). $A_\mathrm{lens}^\mathrm{marg}$: IA + systematic template marginalization. $\chi^2/\nu$ and PTE evaluate joint goodness-of-fit across all bins and bandpowers ($\nu = 119$ for IA, $\nu = 115$ for marginalized).}
+\label{tab:detection}
+\begin{tabular}{ll cc ccc cc cc}
+\toprule
+Method & CMB & S/N$_\mathrm{raw}$ & S/N$_\mathrm{marg}$ & $A_\mathrm{van}$ & $A_\mathrm{lens}$ & $A_\mathrm{lens}^\mathrm{marg}$ & $\chi^2/\nu_\mathrm{IA}$ & PTE$_\mathrm{IA}$ & $\chi^2/\nu_\mathrm{marg}$ & PTE$_\mathrm{marg}$ \\
+\midrule
+  \textsc{lensmc} & ACT DR6 & $19.8$ & $15.0$ & $0.84 \pm 0.05$ & $0.93 \pm 0.06$ & $0.86 \pm 0.06$ & $0.88$ & $0.82$ & $0.75$ & $0.98$ \\
+  \textsc{lensmc} & SPT-3G GMV & $21.0$ & $14.1$ & $0.69 \pm 0.04$ & $0.76 \pm 0.05$ & $0.75 \pm 0.05$ & $1.88$ & $0.00$ & $1.63$ & $0.00$ \\
+  \textsc{metacal} & ACT DR6 & $18.8$ & $13.4$ & $0.81 \pm 0.05$ & $0.89 \pm 0.06$ & $0.82 \pm 0.06$ & $0.96$ & $0.60$ & $0.82$ & $0.92$ \\
+  \textsc{metacal} & SPT-3G GMV & $19.6$ & $13.5$ & $0.70 \pm 0.05$ & $0.76 \pm 0.05$ & $0.75 \pm 0.06$ & $1.67$ & $0.00$ & $1.54$ & $0.00$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table}
+\centering
+\caption{Per-bin detection significance and amplitude fits for \textsc{lensmc}. S/N is Knox diagonal. $A_\mathrm{lens}$ is the best-fit amplitude relative to Planck 2018 + NLA IA theory per bin (independent fits, 20 bandpowers each). $\chi^2/\nu$ evaluates the theory shape at the best-fit amplitude per bin ($\nu = 19$). ``All'' row shows the joint fit across all bins ($\nu = 119$).}
+\label{tab:perbin}
+\begin{tabular}{c cc cc cc cc}
+\toprule
+Bin & \multicolumn{2}{c}{S/N (Knox)} & \multicolumn{2}{c}{$A_\mathrm{lens}$} & \multicolumn{2}{c}{ACT $\chi^2/\nu$ vs theory} & \multicolumn{2}{c}{SPT $\chi^2/\nu$ vs theory} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
+ & ACT & SPT & ACT & SPT & $\chi^2/\nu$ & PTE & $\chi^2/\nu$ & PTE \\
+\midrule
+  1 & $5.5$ & $6.0$ & $1.07 \pm 0.38$ & $0.67 \pm 0.37$ & $1.18$ & $0.26$ & $1.72$ & $0.03$ \\
+  2 & $5.0$ & $7.6$ & $0.91 \pm 0.29$ & $0.74 \pm 0.28$ & $0.78$ & $0.73$ & $2.70$ & $0.00$ \\
+  3 & $6.2$ & $7.0$ & $0.79 \pm 0.23$ & $0.73 \pm 0.21$ & $1.39$ & $0.12$ & $1.95$ & $0.01$ \\
+  4 & $8.1$ & $8.6$ & $1.18 \pm 0.16$ & $0.99 \pm 0.15$ & $0.72$ & $0.80$ & $1.56$ & $0.06$ \\
+  5 & $9.9$ & $9.2$ & $1.03 \pm 0.11$ & $0.78 \pm 0.10$ & $0.56$ & $0.94$ & $1.24$ & $0.21$ \\
+  6 & $11.6$ & $11.7$ & $0.84 \pm 0.08$ & $0.72 \pm 0.07$ & $0.59$ & $0.92$ & $1.35$ & $0.14$ \\
+  \midrule
+  All & $19.8$ & $21.0$ & $0.93 \pm 0.06$ & $0.76 \pm 0.05$ & $0.88$ & $0.83$ & $1.71$ & $0.00$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}
+\centering
+\caption{Validation tests summary. ``Consistency'' tests compare independent measurements of the same cross-correlation signal (passing = agreement at 5\% significance). ``Null'' tests check that signals expected to vanish are consistent with zero. The bias budget quantifies the harmonic-space contamination metric $X^f_S(\ell) = C^{\kappa S}_\ell \cdot C^{fS}_\ell / C^{SS}_\ell$ (2203.12440, Eq.~A.4.1) integrated over bandpowers. All $\chi^2/\nu$ use Knox diagonal covariance.}
+\label{tab:validation}
+\begin{tabular}{llcccc}
+\toprule
+Test & Type & Pass/Total & Med.\ $\chi^2/\nu$ & Med.\ PTE & Verdict \\
+\midrule
+  ACT vs SPT & Consistency & 14/14 & $0.86$ & $0.64$ & \checkmark \\
+  lensmc vs metacal & Consistency & 35/35 & $0.14$ & $1.00$ & \checkmark \\
+  SPT estimators & Consistency & 14/14 & --- & $0.98$ & \checkmark \\
+  Catalog vs map & Consistency & 6/6 & --- & $r = 0.998$ & \checkmark \\
+  Jackknife sign-flip & Null & 24/24 & $0.88$ & $0.62$ & \checkmark \\
+  Sim null (SPT $\kappa$ sims) & Null & 65/66 & $0.92$ & $0.56$ & 1 fail \\
+  Spatial ($\ell > 100$) & Null & 6/6 & $1.34$ & $0.16$ & \checkmark \\
+  $C^{\gamma S}_\ell$ systematics & Null & 54/70 & $1.69$ & $0.17$ & 16 fail \\
+  $B \times \kappa$ null & Null & 12/12 & $0.89$ & $0.90$ & \checkmark \\
+  $\ell$-range stability (ACT) & Robustness & 6/6 & --- & max $1.5\sigma$ & \checkmark \\
+  $\ell$-range stability (SPT) & Robustness & 5/6 & --- & max $2.7\sigma$ & $2.7\sigma$ (bin 2) \\
+  Bias budget (ACT) & Bias & --- & --- & --- & max $4.4\sigma$ (stellar density) \\
+\bottomrule
+\end{tabular}
+\end{table}

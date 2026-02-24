@@ -1,0 +1,51 @@
+{
+  "id": "plot_overlap_comparison",
+  "generated": "2026-02-18T04:45:29.701873+00:00",
+  "input": {
+    "overlap_npzs": "results/.../overlap/lensmc_bin*_x_{cmbk}_cls.npz",
+    "overlap_summary": "results/.../masks/overlap_summary.json"
+  },
+  "output": {
+    "png": "overlap_act_vs_spt.png",
+    "evidence": "evidence.json"
+  },
+  "params": {},
+  "evidence": {
+    "fsky_overlap": 0.002649,
+    "n_overlap_pixels": 133334,
+    "n_comparisons": 6,
+    "median_chi2_dof": 0.901,
+    "median_pte": 0.585,
+    "n_failures_5pct": 1,
+    "joint_chi2": 121.0,
+    "joint_dof": 120,
+    "joint_chi2_dof": 1.009,
+    "joint_pte": 0.456,
+    "per_bin": {
+      "1": {
+        "chi2_dof": 0.643,
+        "pte": 0.883
+      },
+      "2": {
+        "chi2_dof": 0.714,
+        "pte": 0.816
+      },
+      "3": {
+        "chi2_dof": 1.065,
+        "pte": 0.38
+      },
+      "4": {
+        "chi2_dof": 0.738,
+        "pte": 0.791
+      },
+      "5": {
+        "chi2_dof": 1.157,
+        "pte": 0.282
+      },
+      "6": {
+        "chi2_dof": 1.735,
+        "pte": 0.022
+      }
+    }
+  }
+}

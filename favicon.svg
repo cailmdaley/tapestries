@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- Parchment gradient -->
+    <linearGradient id="parchment" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5F0E6"/>
+      <stop offset="50%" style="stop-color:#EDE8E0"/>
+      <stop offset="100%" style="stop-color:#D8D0C4"/>
+    </linearGradient>
+    <!-- Subtle inner shadow -->
+    <filter id="inset" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feOffset dx="1" dy="2" result="offsetBlur"/>
+      <feComposite in="SourceGraphic" in2="offsetBlur" operator="over"/>
+    </filter>
+  </defs>
+  <!-- Pointy-top hex: 6 vertices at 30°, 90°, 150°, 210°, 270°, 330° -->
+  <!-- Center at 50,50, radius 45 -->
+  <polygon
+    points="50,5 88.97,27.5 88.97,72.5 50,95 11.03,72.5 11.03,27.5"
+    fill="url(#parchment)"
+    stroke="#9A7B35"
+    stroke-width="3"
+    filter="url(#inset)"
+  />
+  <!-- Inner hex for depth -->
+  <polygon
+    points="50,15 80.31,32.5 80.31,67.5 50,85 19.69,67.5 19.69,32.5"
+    fill="none"
+    stroke="#C8B8A8"
+    stroke-width="1"
+    opacity="0.5"
+  />
+</svg>

@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portolan — Research Tapestry</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <style>
+      @font-face {
+        font-family: 'EB Garamond';
+        src: url('./fonts/EBGaramond-Regular.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'EB Garamond';
+        src: url('./fonts/EBGaramond-Italic.otf') format('opentype');
+        font-weight: 400;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'EB Garamond';
+        src: url('./fonts/EBGaramond-Medium.otf') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'EB Garamond';
+        src: url('./fonts/EBGaramond-SemiBold.otf') format('opentype');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'EB Garamond';
+        src: url('./fonts/EBGaramond-Bold.otf') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-yaml.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-latex.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --font-main: 'EB Garamond', Garamond, serif;
+        --font-mono: 'JetBrains Mono', monospace;
+        --bg-primary: #C8B8A8;
+        --bg-card: #EDE8E0;
+        --bg-elevated: #FDFCFA;
+        --text-primary: #2E2A26;
+        --text-secondary: #4A4540;
+        --text-muted: #7A7368;
+        --border: #A89888;
+        --border-light: #C8BBA8;
+        --accent: #5A7B7B;
+        --gold: #9A7B35;
+        --gold-light: #C4A86A;
+        --green: #6B8B6B;
+        --red: #A87070;
+
+        --parchment-base: #D8CBBA;
+        --parchment-light: #E5D9C8;
+        --parchment-dark: #C9BAA5;
+        --parchment-edge: #BBA890;
+        --ink-dark: #2A2520;
+        --ink-body: #3D3630;
+        --ink-light: #5A524A;
+        --ink-faded: #7A7068;
+        --sepia-accent: #8A6B2A;
+        --sepia-muted: #A08858;
+        --verdigris: #4A6258;
+        --rust: #8A5548;
+        --ui-dark: var(--parchment-base);
+        --ui-dark-elevated: var(--parchment-light);
+        --ui-dark-surface: var(--parchment-dark);
+        --ui-border: #B8A890;
+        --ui-border-light: #C8B8A0;
+        --ui-gold: var(--sepia-accent);
+        --ui-gold-muted: var(--sepia-muted);
+        --ui-text: var(--ink-body);
+        --ui-text-secondary: var(--ink-light);
+        --ui-text-muted: var(--ink-faded);
+        --ui-accent: var(--verdigris);
+        --ui-green: #5A6B50;
+        --ui-red: var(--rust);
+        --ui-purple: #6A5868;
+        --ui-teal: var(--verdigris);
+      }
+      body {
+        overflow: hidden;
+        background: var(--ui-dark);
+        font-family: var(--font-main);
+      }
+
+      /* ── Static overrides ── */
+      .tapestry-view {
+        position: fixed;
+        inset: 0;
+        background: var(--ui-dark);
+        z-index: 1500;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 300ms ease;
+      }
+      .tapestry-view.visible {
+        pointer-events: auto;
+        opacity: 1;
+      }
+
+      .tapestry-close { display: none; }
+
+      .tapestry-body {
+        display: flex;
+        position: absolute;
+        inset: 0;
+      }
+      .tapestry-main {
+        flex: 1;
+        display: flex;
+        min-width: 0;
+        position: relative;
+      }
+      .tapestry-dag-wrapper {
+        flex: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .tapestry-dag {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        background: radial-gradient(
+          ellipse at 50% 45%,
+          #EDE8DC 0%,
+          #E8DDD0 40%,
+          #DCCFBA 80%,
+          #D4C3A8 100%
+        );
+      }
+      .tapestry-svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .tapestry-loading,
+      .tapestry-empty {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--ui-text-muted);
+        font-family: var(--font-main);
+        font-size: 1rem;
+        font-style: italic;
+      }
+      .tapestry-loading {
+        animation: subtlePulse 1.5s ease-in-out infinite;
+        z-index: 5;
+      }
+      .tapestry-loading.error {
+        color: var(--ui-red);
+        animation: none;
+        font-style: normal;
+      }
+      @keyframes subtlePulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+
+      /* ── DAG nodes ── */
+      .tapestry-node { cursor: grab; }
+      .tapestry-node:hover path { filter: brightness(1.15); }
+      .tapestry-node.selected path:first-child { stroke-width: 2.5 !important; }
+      .tapestry-node.search-match path:first-child { stroke-width: 2.5 !important; filter: brightness(1.2); }
+      .tapestry-node-label {
+        font-family: var(--font-main);
+        fill: var(--ui-text);
+        pointer-events: none;
+      }
+      .tapestry-hover-tooltip {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        max-width: 280px;
+        padding: 0.45rem 0.65rem;
+        background: #F5F0E8;
+        border: 1px solid #C4B89A;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        font-family: var(--font-main);
+        font-size: 13px;
+        line-height: 1.45;
+        color: var(--ui-text);
+        pointer-events: none;
+      }
+      .tooltip-title {
+        display: block;
+        font-weight: 600;
+        color: var(--ui-text);
+        margin-bottom: 0;
+      }
+      .tooltip-divider {
+        border: none;
+        border-top: 1px solid #C4B89A;
+        margin: 0.35rem 0;
+      }
+      .tooltip-outcome {
+        color: #7A7368;
+        font-style: italic;
+      }
+      .tapestry-link {
+        fill: none;
+        transition: stroke-opacity 0.15s ease;
+      }
+
+      /* ── Search ── */
+      .tapestry-search {
+        padding: 0.5rem 1rem;
+        border-top: 1px solid var(--ui-border);
+        flex-shrink: 0;
+      }
+      .tapestry-search input {
+        width: 100%;
+        font-family: var(--font-main);
+        font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+        border: 1px solid var(--ui-border);
+        border-radius: 3px;
+        background: var(--ui-dark-surface);
+        color: var(--ui-text);
+      }
+      .tapestry-search input:focus { outline: none; border-color: var(--ui-teal); }
+      .tapestry-search input::placeholder { color: var(--ui-text-muted); font-style: italic; }
+      .tapestry-search-results { margin-top: 0.4rem; max-height: 120px; overflow-y: auto; }
+      .tapestry-search-results .search-result {
+        padding: 0.3rem 0.4rem;
+        font-size: 0.8rem;
+        cursor: pointer;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--ui-text);
+        font-family: var(--font-main);
+      }
+      .tapestry-search-results .search-result:hover { background: var(--ui-dark-surface); }
+      .tapestry-search-results .search-result-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+      .tapestry-search-results .search-result-name { font-style: normal; }
+      .tapestry-search-results .search-result-match {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--ui-text-muted);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .tapestry-search-results .search-no-results {
+        font-size: 0.8rem;
+        color: var(--ui-text-muted);
+        font-style: italic;
+        padding: 0.2rem 0;
+      }
+
+      /* ── Sidebar ── */
+      .tapestry-sidebar {
+        position: absolute; right: 0; top: 0; bottom: 0;
+        width: 20vw; min-width: 200px;
+        border-left: 1px solid var(--ui-border); background: var(--ui-dark-elevated);
+        display: flex; flex-direction: column; overflow: hidden;
+        transition: width 200ms ease; z-index: 10;
+        box-shadow: -3px 0 12px rgba(0,0,0,0.18);
+      }
+      .tapestry-sidebar.expanded { width: 40vw; min-width: 300px; }
+      .tapestry-sidebar-resize {
+        position: absolute; left: -6px; top: 0; bottom: 0; width: 12px;
+        cursor: col-resize; z-index: 11; display: none; align-items: center; justify-content: center;
+      }
+      .tapestry-sidebar-resize::after {
+        content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
+        background: var(--ui-border); opacity: 0.5;
+        transition: opacity 150ms, width 150ms, background 150ms; pointer-events: none;
+      }
+      .tapestry-sidebar.expanded .tapestry-sidebar-resize { display: flex; }
+      .tapestry-sidebar-resize:hover::after, .tapestry-sidebar-resize:active::after {
+        width: 2px; background: var(--ui-gold); opacity: 0.6;
+      }
+
+      /* Static file viewer modal */
+      .tapestry-file-modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; }
+      .tapestry-file-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+      .tapestry-file-content {
+        position: relative; width: 82vw; height: 88vh; min-width: 400px;
+        background: #EEE8DC; border: 1px solid var(--ui-border); border-radius: 6px;
+        display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      }
+      .tapestry-file-resize {
+        position: absolute; top: 0; bottom: 0; width: 12px; cursor: col-resize; z-index: 10;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .tapestry-file-resize-left { left: -6px; }
+      .tapestry-file-resize-right { right: -6px; }
+      .tapestry-file-resize::after {
+        content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
+        background: var(--ui-border); opacity: 0.5;
+        transition: opacity 150ms, width 150ms, background 150ms; pointer-events: none;
+      }
+      .tapestry-file-resize:hover::after, .tapestry-file-resize:active::after {
+        width: 2px; background: var(--ui-gold); opacity: 0.6;
+      }
+      .tapestry-file-header {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--ui-border);
+        font-family: var(--font-mono); font-size: 0.8rem; color: var(--ui-text-muted);
+      }
+      .tapestry-file-close { background: none; border: none; color: var(--ui-text-muted); font-size: 1.2rem; cursor: pointer; padding: 0 0.3rem; }
+      .tapestry-file-close:hover { color: var(--ui-text); }
+      .tapestry-file-body { flex: 1; overflow: auto; }
+      .tapestry-file-markdown { padding: 1.2rem 1.5rem; font-family: var(--font-main); font-size: 0.9rem; line-height: 1.6; color: var(--ui-text); }
+      .tapestry-file-markdown h1, .tapestry-file-markdown h2, .tapestry-file-markdown h3 { color: var(--ui-gold); margin-top: 1.5em; }
+      .tapestry-file-code { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.5; }
+      .tapestry-file-code table { border-collapse: collapse; width: 100%; }
+      .tapestry-file-code .line-num { padding: 0 0.8rem 0 0.6rem; text-align: right; color: var(--ui-text-muted); opacity: 0.4; user-select: none; white-space: nowrap; vertical-align: top; }
+      .tapestry-file-code .line-content { padding: 0 0.6rem; white-space: pre-wrap; word-break: break-all; }
+      .tapestry-file-code .highlighted-line { background: rgba(90,123,123,0.15); }
+      .tapestry-file-code .highlighted-line .line-num { color: var(--ui-teal); opacity: 1; }
+      .tapestry-file-code .token.comment, .tapestry-file-code .token.prolog, .tapestry-file-code .token.doctype { color: var(--ink-faded); font-style: italic; }
+      .tapestry-file-code .token.keyword, .tapestry-file-code .token.selector, .tapestry-file-code .token.important { color: var(--verdigris); font-weight: 600; }
+      .tapestry-file-code .token.string, .tapestry-file-code .token.attr-value, .tapestry-file-code .token.regex { color: #4A6A35; }
+      .tapestry-file-code .token.function, .tapestry-file-code .token.class-name { color: var(--sepia-accent); }
+      .tapestry-file-code .token.number, .tapestry-file-code .token.boolean, .tapestry-file-code .token.constant { color: var(--rust); }
+      .tapestry-file-code .token.operator, .tapestry-file-code .token.punctuation { color: var(--ink-light); }
+      .tapestry-file-code .token.property, .tapestry-file-code .token.tag { color: #5A6B2A; }
+      .tapestry-file-code .token.builtin, .tapestry-file-code .token.symbol { color: var(--sepia-muted); }
+      .tapestry-fiber-list { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+      .tapestry-fiber-list.hidden { display: none; }
+      .tapestry-fiber-list .tapestry-search { border-top: none; border-bottom: 1px solid var(--ui-border); }
+      .tapestry-fiber-results { flex: 1; overflow-y: auto; padding: 0.2rem 0; }
+      .fiber-item {
+        display: flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.8rem;
+        cursor: pointer; font-family: var(--font-main); font-size: 0.82rem; color: var(--ui-text);
+        transition: background 150ms;
+      }
+      .fiber-item:hover { background: var(--ui-dark-surface); }
+      .fiber-item-rule { border-left: 2px solid var(--ui-teal); }
+      .fiber-item .fiber-status { flex-shrink: 0; font-size: 0.7rem; color: var(--ui-text-muted); }
+      .fiber-item .fiber-staleness { flex-shrink: 0; font-size: 0.55rem; }
+      .fiber-item .fiber-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .fiber-item .fiber-dot { flex-shrink: 0; font-size: 0.65rem; }
+      .fiber-item .fiber-kind {
+        flex-shrink: 0; font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase;
+        letter-spacing: 0.05em; padding: 0.1rem 0.3rem; border-radius: 2px;
+        background: var(--ui-dark-surface); color: var(--ui-text-muted);
+      }
+      .fiber-item .fiber-tag {
+        flex-shrink: 0; font-family: var(--font-mono); font-size: 0.55rem;
+        padding: 0.05rem 0.25rem; border-radius: 2px;
+        background: var(--ui-dark-surface); color: var(--ui-text-muted); border: 1px solid var(--ui-border);
+      }
+      .tapestry-legend {
+        flex-shrink: 0; padding: 0.4rem 0.8rem; border-top: 1px solid var(--ui-border);
+        display: flex; flex-wrap: wrap; gap: 0.5rem;
+        font-family: var(--font-main); font-size: 0.7rem; color: var(--ui-text-muted);
+      }
+      .legend-item { white-space: nowrap; }
+      .legend-sep { color: var(--ui-border); }
+      .tapestry-detail-outcome { font-size: 0.82rem; color: var(--ui-text); margin-bottom: 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--ui-border); line-height: 1.45; }
+      .tapestry-detail-outcome p { margin: 0.2rem 0; }
+      .tapestry-detail-outcome p:first-of-type { display: inline; }
+      .outcome-label { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ui-text-muted); margin-right: 0.4em; }
+      .tapestry-detail-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.5rem; }
+      .fiber-tag { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ui-text-muted); background: var(--ui-dark-surface); padding: 0.1rem 0.4rem; border-radius: 3px; }
+      .kind-badge { font-family: var(--font-mono); font-size: 0.68rem; color: var(--ui-text-muted); background: var(--ui-dark-surface); padding: 0.1rem 0.35rem; border-radius: 3px; text-transform: lowercase; flex-shrink: 0; }
+
+      /* ── Detail panel ── */
+      .tapestry-detail {
+        flex: 1; flex-shrink: 0;
+        background: var(--ui-dark-elevated);
+        display: flex; flex-direction: column; overflow: hidden; position: relative;
+      }
+      .tapestry-detail.hidden { display: none; }
+      .tapestry-detail-resize {
+        position: absolute; left: 0; top: 0; bottom: 0;
+        width: 4px; cursor: col-resize; z-index: 10; background: transparent;
+      }
+      .tapestry-detail-resize:hover, .tapestry-detail-resize:active { background: var(--accent-gold); opacity: 0.4; }
+      .tapestry-detail-header {
+        display: flex; align-items: flex-start; justify-content: space-between;
+        padding: 0.6rem 0.8rem 0.2rem; flex-shrink: 0;
+      }
+      .tapestry-detail-title { display: flex; align-items: center; gap: 0.4rem; min-width: 0; }
+      .staleness-badge { font-size: 0.85rem; flex-shrink: 0; }
+      .detail-name {
+        font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500;
+        color: var(--ui-text);
+      }
+      .tapestry-detail-meta {
+        display: flex; align-items: center; flex-wrap: wrap;
+        gap: 0.2rem 0.5rem; padding: 0 0.8rem 0.5rem;
+        font: 0.7rem/1.2 var(--font-mono); color: var(--ui-text-muted);
+        border-bottom: 1px solid var(--ui-border); flex-shrink: 0;
+      }
+      .tapestry-detail-meta .detail-status {
+        text-transform: uppercase; letter-spacing: 0.05em;
+        padding: 0.1rem 0.35rem; border-radius: 2px;
+        background: var(--ui-dark-surface);
+      }
+      .tapestry-detail-meta .tapestry-detail-tags { display: contents; }
+      .detail-meta-spacer { flex: 1; }
+      .tapestry-detail-close {
+        background: none; border: none; color: var(--ui-text-muted);
+        font-size: 1.2rem; cursor: pointer; padding: 0.1rem 0.3rem; line-height: 1; flex-shrink: 0;
+      }
+      .tapestry-detail-close:hover { color: var(--ui-text); }
+      .tapestry-detail-content { flex: 1; overflow-y: auto; padding: 0.8rem; }
+
+      /* Detail: graph */
+      .tapestry-detail-graph {
+        display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem;
+        padding-bottom: 0.6rem; margin-bottom: 0.6rem; border-bottom: 1px solid var(--ui-border);
+      }
+      .graph-arrow { color: var(--ui-text-muted); font-size: 0.75rem; opacity: 0.6; }
+      .graph-sep { color: var(--ui-text-muted); font-size: 0.75rem; opacity: 0.4; margin: 0 0.15rem; }
+      .dep-tag {
+        font-family: var(--font-mono); font-size: 0.7rem;
+        background: var(--ui-dark-surface); padding: 0.15rem 0.4rem;
+        border-radius: 2px; border: 1px solid var(--ui-border);
+        color: var(--ui-text-muted); cursor: pointer; transition: all 150ms;
+      }
+      .dep-tag:hover { border-color: var(--ui-teal); color: var(--ui-teal); }
+
+      /* Detail: artifact viewer */
+      .tapestry-artifact-viewer { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.8rem; }
+      .tapestry-artifact { flex: 1; }
+      .tapestry-artifact .artifact-label {
+        display: block; font-family: var(--font-mono); font-size: 0.65rem;
+        color: var(--ui-text-muted); margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em;
+      }
+      .tapestry-artifact img { width: 100%; border-radius: 2px; border: 1px solid var(--ui-border); cursor: pointer; transition: border-color 0.2s; }
+      .tapestry-artifact img:hover { border-color: var(--ui-teal); }
+      .tapestry-artifact-viewer .artifact-nav { font-size: 1.2rem; color: var(--ui-text-muted); cursor: pointer; padding: 0.4rem; user-select: none; }
+      .tapestry-artifact-viewer .artifact-nav:hover { color: var(--ui-teal); }
+
+      /* Detail: body (markdown) */
+      .tapestry-detail-body { font-family: var(--font-main); font-size: 0.85rem; color: var(--ui-text); line-height: 1.6; margin-bottom: 0.8rem; }
+      .tapestry-detail-body h1 { font-size: 1.1rem; margin: 0.8rem 0 0.4rem; }
+      .tapestry-detail-body h2 { font-size: 0.95rem; margin: 0.6rem 0 0.3rem; color: var(--ui-gold); font-variant: small-caps; letter-spacing: 0.05em; }
+      .tapestry-detail-body h3 { font-size: 0.85rem; margin: 0.5rem 0 0.2rem; }
+      .tapestry-detail-body p { margin: 0.2rem 0; }
+      .tapestry-detail-body ul, .tapestry-detail-body ol { margin: 0.2rem 0 0.2rem 1.5rem; padding: 0; }
+      .tapestry-detail-body li { margin: 0.1rem 0; }
+      .tapestry-detail-body code { font-family: var(--font-mono); font-size: 0.8em; background: var(--ui-dark-surface); padding: 0.1rem 0.25rem; border-radius: 2px; }
+      .config-resolved { color: var(--ui-teal); font-weight: 500; }
+      /* Inline code path links */
+      .md-inline-code { font-family: var(--font-mono); font-size: 0.85em; background: var(--ui-dark-surface); padding: 0.1rem 0.25rem; border-radius: 2px; }
+      .md-inline-code[title], .tapestry-detail-body .md-inline-code[title] { color: var(--ui-teal); text-decoration: underline dotted; cursor: pointer; }
+      .tapestry-detail-body pre { background: var(--ui-dark-surface); border: 1px solid var(--ui-border); border-radius: 3px; padding: 0.5rem 0.7rem; overflow-x: auto; margin: 0.4rem 0; }
+      .tapestry-detail-body pre code { background: none; padding: 0; font-size: 0.78rem; line-height: 1.5; }
+      .tapestry-detail-body blockquote { border-left: 2px solid var(--ui-teal); padding-left: 0.7rem; margin: 0.4rem 0; color: var(--ui-text-muted); font-style: italic; }
+      .tapestry-detail-body a, .tapestry-detail-body td a, .tapestry-detail-outcome a { color: var(--ui-teal) !important; text-decoration: underline dotted; }
+      .tapestry-detail-body a:hover, .tapestry-detail-body td a:hover, .tapestry-detail-outcome a:hover { text-decoration: underline; }
+      .tapestry-detail-body table { width: 100%; border-collapse: collapse; margin: 0.4rem 0; font-size: 0.8rem; }
+      .tapestry-detail-body th, .tapestry-detail-body td { padding: 0.3rem 0.5rem; border: 1px solid var(--ui-border); text-align: left; }
+      .tapestry-detail-body th { background: var(--ui-dark-surface); font-weight: 600; }
+
+      /* Detail: evidence (code block) */
+      .tapestry-evidence-section { margin-top: 0.8rem; }
+      .tapestry-evidence { background: var(--ui-dark-surface); border-radius: 2px; padding: 0.5rem; max-height: 400px; overflow-y: auto; }
+      .tapestry-evidence .evidence-item { display: flex; justify-content: space-between; padding: 0.2rem 0; font-size: 0.78rem; }
+      .tapestry-evidence .evidence-key { font-family: var(--font-mono); color: var(--ui-text-muted); }
+      .tapestry-evidence .evidence-value { font-family: var(--font-mono); color: var(--ui-text); }
+
+      /* ── Annotation panel (hidden in static mode) ── */
+      .tapestry-annotation-panel { display: none; }
+
+      /* ── Lightbox ── */
+      .tapestry-lightbox {
+        position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9);
+        z-index: 2000; display: flex; align-items: center; justify-content: center; cursor: pointer;
+      }
+      .tapestry-lightbox img { max-width: 95%; max-height: 95%; border-radius: 2px; }
+      .tapestry-lightbox-close {
+        position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none;
+        color: rgba(255,255,255,0.7); font-size: 2rem; cursor: pointer; z-index: 2001;
+      }
+      .tapestry-lightbox-close:hover { color: white; }
+      .tapestry-lightbox-label {
+        position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+        font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255, 255, 255, 0.6);
+        background: rgba(0, 0, 0, 0.5); padding: 0.3rem 0.8rem; border-radius: 3px; pointer-events: none;
+      }
+
+      /* ── Toast ── */
+      .portolan-toast {
+        position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px);
+        background: #1a1a1a; color: #f5f5f0; padding: 12px 20px; border-radius: 8px;
+        display: flex; align-items: center; gap: 10px; font-family: var(--font-main);
+        font-size: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 10000; opacity: 0;
+        animation: toast-in 0.3s ease forwards;
+      }
+      @keyframes toast-in {
+        from { opacity: 0; transform: translateX(-50%) translateY(100px); }
+        to { opacity: 1; transform: translateX(-50%) translateY(0); }
+      }
+    </style>
+    <script type="module" crossorigin src="/tapestries/assets/index-D3k5Hwu1.js"></script>
+    <link rel="stylesheet" crossorigin href="/tapestries/assets/index-DRKxklZO.css">
+  </head>
+  <body>
+  </body>
+</html>

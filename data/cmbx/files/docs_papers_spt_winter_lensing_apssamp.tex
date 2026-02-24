@@ -1,0 +1,2126 @@
+c% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.2 distribution.
+%   Version 4.2a of REVTeX, December 2014
+%
+%   Copyright (c) 2014 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.2
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[%
+ reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%preprintnumbers,
+nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-2}
+
+\usepackage{upgreek}
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[mathlines]{lineno}% Enable numbering 
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage[normalem]{ulem}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{empheq}
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{color, colortbl,booktabs}
+\definecolor{grey}{gray}{0.9}
+\usepackage{float}
+
+\definecolor{sptcol}{HTML}{386A7A}
+\hypersetup{
+  linkcolor=sptcol,    % section, equation, figure refs
+  citecolor=sptcol,
+  urlcolor=sptcol
+}
+%of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+\newcommand{\agora}{\textsc{Agora}}
+\newcommand{\camb}{\textsc{CAMB}}
+\newcommand{\nhat}{\hat{n}}
+\newcommand{\nside}{N_{\rm side}}
+\newcommand{\planck}{{\it Planck}}
+\newcommand{\sqdeg}{{\rm deg}^{2}}
+\newcommand{\ukam}{\mu {\rm K}\textnormal{-}{\rm arcmin}}
+\newcommand{\uk}{\mu {\rm K}}
+\newcommand{\lmax}{\ell_{\rm max}}
+\newcommand{\som}{\sigma_{8}\Omega_{\rm m}^{0.25}}
+\newcommand{\summnu}{\sum m_{\nu}}
+\newcommand{\tne}{T\!/\!E}
+\newcommand{\lcdm}{\Lambda {\rm CDM}}
+
+
+
+% USER COMMENTS
+\newcommand{\kw}[1]{\textcolor{purple}{#1}}
+\newcommand{\KW}[1]{\textcolor{purple}{(KW:#1)}}
+\newcommand{\YO}[1]{\textcolor{teal}{(YO:#1)}}
+
+
+
+
+\begin{document}
+
+\preprint{APS/123-QED}
+
+\title{Curved-sky  lensing reconstruction using the 2019-2020 data from the SPT-3G instrument}% Force line breaks with \\
+\thanks{A footnote to the article title}%
+
+\author{Ann Author}
+ \altaffiliation[Also at ]{Physics Department, XYZ University.}%Lines break automatically or can be forced with \\
+\author{Second Author}%
+ \email{Second.Author@institution.edu}
+\affiliation{%
+ Authors' institution and/or address\\
+ This line break forced with \textbackslash\textbackslash
+}%
+
+\collaboration{MUSO Collaboration}%\noaffiliation
+
+\author{Charlie Author}
+ \homepage{http://www.Second.institution.edu/~Charlie.Author}
+\affiliation{
+ Second institution and/or address\\
+ This line break forced% with \\
+}%
+\affiliation{
+ Third institution, the second for Charlie Author
+}%
+\author{Delta Author}
+\affiliation{%
+ Authors' institution and/or address\\
+ This line break forced with \textbackslash\textbackslash
+}%
+
+\collaboration{CLEO Collaboration}%\noaffiliation
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\begin{abstract}
+We present a map of the CMB lensing potential reconstructed from the SPT-3G D1 dataset comprised of the data taken during the 2019–2020 season over the SPT-3G Main field covering 1500 ${\rm deg}^{2}$, using multi-frequency temperature and polarization data to build a minimum-variance quadratic estimator of the lensing convergence. Rigorous data processing, calibration, and null tests are performed following the D1 power-spectrum analysis framework, and we validate the reconstruction with internal consistency checks and external cross-correlations. From the lensing auto-spectrum we measure the amplitude of lensing relative to a fiducial $\Lambda$CDM model to be $A^{\phi\phi}=X\pm Y$ and we infer the structure-growth parameter $S_{8}^{\rm CMB}\equiv\sigma_{8}\Omega_{\rm m}^{0.25}=Z\pm W$. When combined with BAO dataset from DESI, we obtain $S_{8}^{\rm CMB}\equiv\sigma_{8}\Omega_{\rm m}^{0.25}=Z\pm W$. When opening our model to include $w$ we obtain $X$ which is X$\sigma$ consistent with constraints from U. All results are consistent with the amplitude and growth predicted by the \planck{} 2018 $\Lambda $CDM cosmology, providing an independent confirmation of the standard model with ground-based data over a complementary sky area and with different systematics. These measurements demonstrate the power of SPT-3G D1 data for precision lensing cosmology and set the stage for tighter constraints with the full SPT-3G data set.
+
+\end{abstract}
+
+%\keywords{Suggested keywords}%Use showkeys class option if keyword
+                              %display desired
+\maketitle
+
+\tableofcontents
+
+\input{sec1_intro.tex}
+\input{sec2_data.tex}
+\input{sec3_simulations.tex}
+\input{sec4_lensing.tex}
+
+%In this work we use the data from the 2019 \& 2020 observation seasons. We exclude data from the 2018 half-season due to differences in the calibration and the processing of data.  
+%\section{Data}\label{sec:data}
+%\KW{reference Quan et al for base calibration; we additionally apply TT/TE/EE best-fit Tcal/Pcal on the data maps and noise realizations.}
+
+%\noindent {\bf Absolute calibration:} we determine and apply the absolute calibration factors determined separately on the individual fields and coadd the four sub-fields to produce the full-field maps. The absolute calibration factors are determined by cross-correlating the SPT-3G maps with observations from \planck{} since $\planck{}$ is able to directly pin down the absolute calibration based on the measured dipole amplitude.
+
+%\rowcolors{3}{green!25}{yellow!50}
+%\setlength{\tabcolsep}{1em}
+%\begin{table}
+%\begin{tabular}{cc}    \toprule
+%Frequency [GHz] & $n_{\rm lev}^{T(P)}\ [\mu {\rm K}$-${\rm arcmin}$]   \\\midrule
+%90  & 5.5 (8.6)     \\ 
+%150 & 4.5 (6.8)  \\ 
+%220 & 16.4 (27.2)  \\\bottomrule
+%\end{tabular}
+%\end{table}
+
+
+%Lensing alone is relatively insensitive to beam profiles compare to analyses studying the primary spectra since their effects get factored out and renormalized in the lensing reconstruction procedure. Therefore we directly use the results from our companion TTEETE analysis  analysis\cite{camphuis2025}.\\ 
+
+
+%\section{Processing}\label{sec:processing}
+%\subsection{Time stream filtering}
+%\subsection{Transfer function}
+%Observational signal passed through the telescope optics and processing becomes convolved with  XXXX. This transfromation, which we call  transfer function, must be estimated and deconvolved in our analysis to estimate the true sky signal.  
+
+%The transfer function is estimated using mock observations:  a simulated map (Section \ref{sec:simulations} ) is passed through a pipeline that mimics telescope pointings and optics which results in a realistic map. Since the input is a simulated map and is known exactly, we are able to compare with the mockobservation outsputs to measure the transfer function. In practice:
+%\begin{equation}
+%\mathcal{T}_{\ell m} = \left\langle\frac{a_{\ell m}^{\rm out} (a_{\ell m}^{\rm in})^{*} } {  a_{\ell m}^{\rm in}(a_{\ell m}^{\rm in})^{*} }\right\rangle
+%\end{equation}
+%where the average is taken over 500 realizations.
+
+
+%Once we calibrate the SPT/\planck{} 150/143GHz combination, we use a similar procedure to calibrate 90 and 220 based on the relative amplitudes between the frequency channels. The advantage of this is that the internal calibration has higher signal-to-noise ratio and therefore we are able to obtain tighter constraints on these calibration parameters compared to crossing with {\it Planck}'s 90/217 GHz maps \textcolor{red}{throw in numbers here}. We use the same approach to calibrate our amplitude with \planck{}, with one small additional calibration factor. In planck2018 an additional factor was obtained by taking\kw{minimizing} 
+%\begin{align}
+%\chi^2(c_{\nu}^{PP})=\vec{d}_{P}\Sigma_{\ell\ell'}^{-1}\vec{d}_{P}
+%\end{align}
+%where $\vec{d}_{P}=\left( C_{\ell}^{EE,{\rm meas}}c_{\nu}^{PP}-C_{\ell}^{EE,{\rm bestfit\textnormal{-}model}}\right)$, and the best-fit model is based on the $TT$ data alone. $C_{143}^{PP}$ was determined to be $0.966\pm0.010$, and hence a calibration factor of $\sqrt{0.966}$ is applied to the polarization maps when calibrating the SPT polarization maps. \KW{make eqn 3 inline or remove it since it is not something we compute; can describe in words where that come from and put in planck paper+section reference.}
+
+
+
+
+
+
+%One interesting question we may ask is the relative contributions from the temperature-only ($TT$) reconstruction and polarization-only ($EE$+$EB$) lensing reconstruction. The relative noise levels of these the contributions are shown in Figure X. We find that the \textcolor{red}{contributions are approximately equal on average although polarization-only lensing reconstruction dominates at large scales and temperature-only lensing reconstruction dominates at small scales, for our fiducial choice of $\ell_{\rm max}^{T}=3500$ for temperature and $\ell_{\rm max}^{P}=5000$}.
+
+
+
+%uses an approximate inverse-variance weighting $V_{L}^{-1} \propto (2L+1)f_{\rm sky}R_{L}^{2}/[2L^4(L+1)^{4}]$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Blinding
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{sec5_validation}
+
+\input{sec6_blinding}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Inference framework and validation
+%%%%%%%%%%%%%%%%%%%%%%%%
+ \section{Inference framework and validation}\label{sec:constraints}
+We introduce and validate the cosmological inference pipeline used in this work.
+%In this section, we explore the cosmological implications of the SPT-3G 2019+2020 lensing power spectrum and discuss the constraints on $\Lambda$CDM cosmological parameters and several one- and two-parameter extensions.
+%We remind the reader we base our cosmological analysis on the CMB lensing convergence bandpowers obtained from the GMV estimator as discussed in Sec.~\ref{sec:autospectra}.
+
+
+%\section{Systematics Modeling in likelihood}\label{sec:modeling}
+%\KW{mvoe as part of likelihood}
+%\subsection{Instrumental effects}
+
+%\noindent{{\it Beam:}}\vspace{0.3cm}
+
+
+%\noindent{{\it Absolute calibration:}}
+
+%Calibration factors are needed to convert raw instrumental signal to physical temperature measurements.
+%Satellite experiments such as \planck{} measures the dipole to high accuracy, which is caused by the motion of the observer with respect to the CMB. This allows them to calibrate their signal in an absolute sense.  Ground base experiments such as SPT are not able to directly measure the dipole but we are able to calibrate our temperature maps by comparing maps that cover the same area of the sky.\vspace{0.3cm}
+
+
+%\noindent{{\it Polarization calibration:}}
+%\vspace{0.3cm}
+
+%\noindent{{\it T-to-P leakage:}}
+%\vspace{0.3cm}
+
+
+\subsection{Cosmological inference framework}
+Our baseline cosmology is a $\Lambda$CDM model that includes a single family of massive neutrinos with a total mass of $\sum m_{\nu} = 60$ meV.\footnote{Massless neutrino species contribute to the total effective number of relativistic species with $N_{\rm eff}=2.044$.} This model is based on purely adiabatic scalar fluctuations and includes six parameters: the physical density of baryons ($\Omega_{\rm b}h^2$), the physical density of cold dark matter ($\Omega_{\rm c} h^2$), the approximate angular size of the sound horizon at recombination ($\theta_{\rm MC}$), the optical depth at reionization ($\tau$), the amplitude of curvature perturbations at $k=0.05$ Mpc$^{-1}$ ($A_{\rm s}$), and the spectral index ($n_{\rm s}$) of the power law power spectrum of primordial scalar fluctuations.
+
+Additionally, we report constraints on derived parameters, such as $\sigma_8$, the square root of the variance of the density field smoothed by a spherical top hat kernel with a radius of 8 Mpc/$h$, calculated in linear perturbation theory \citep{peebles80}, and the Hubble constant $H_0$. 
+Finally, we examine a series of $\Lambda$CDM extensions, including the sum of the neutrino masses $\sum m_{\nu}$, the spatial curvature $\Omega_{K}$, and the dark energy equation of state $w$.
+
+The lensed CMB and CMB lensing potential power spectra are calculated using the \texttt{CAMB}\footnote{\url{https://camb.info} (\texttt{v1.4.1}). We use the Mead model \citep{mead20} to account for the impact of non-linearities on the small-scale matter power spectrum $P_{\delta\delta}(k)$. The accuracy settings of \texttt{CAMB} are configured to \texttt{lens\_potential\_accuracy=4; lens\_margin = 1250; AccuracyBoost = 1.0; lSampleBoost = 1.0; and lAccuracyBoost = 1.0}, which are sufficiently precise for current sensitivities while enabling efficient MCMC runs (see \citet{qu23, madhavacheril23}, and references therein).} Boltzmann code.
+
+We sample the posterior space and infer cosmological parameter constraints using the Metropolis-Hastings sampler with adaptive covariance learning provided by the Markov Chain Monte Carlo (MCMC) \texttt{Cobaya}\footnote{\url{https://github.com/CobayaSampler/cobaya}} package.
+
+
+\subsection{Lensing likelihood}\label{sec:lensing_like}
+Similar to previous SPT lensing analyses, we assume the uncertainties of $\hat{C}_{b}^{\kappa \kappa}$ to be Gaussian and model the CMB lensing log-likelihood as
+\begin{equation}
+\label{eq:cmblike}
+\begin{aligned}
+& -2 \ln \mathcal{L}_\kappa(\boldsymbol{\Theta})= \\
+& \qquad \sum_{bb'}\left[\hat{C}_{b}^{\kappa \kappa}-C_{b}^{\kappa \kappa,\mathrm{model}}(\boldsymbol{\Theta})\right] \mathbb{C}_{bb'}^{-1}\left[\hat{C}_{b'}^{\kappa \kappa}-C_{b'}^{\kappa \kappa, \mathrm{model}}(\boldsymbol{\Theta})\right],
+\end{aligned}
+\end{equation}
+where  $\hat{C}_{b}^{\kappa \kappa}$ is the measured lensing power spectrum, 
+$C_{b}^{\kappa \kappa,\mathrm{model}}(\boldsymbol{\Theta})$ is the binned model lensing convergence spectrum evaluated at the position $\boldsymbol{\Theta}$ in the parameter space, %(as given by the Einstein-Boltzmann solver), 
+and $\mathbb{C}_{bb'}$ is the bandpower covariance matrix.
+We form  $\mathbb{C}_{bb'}$ by computing the covariance from 498 simulation reconstructed lensing spectra.
+We apply the Hartlap factor ... and do not further condition the covariance matrix
+given that we have sufficient number of simulations to estimate 17 $\times$ 17 elements.
+We find $\lesssim 0.7 \sigma$ differences in cosmological parameter parameter recovery with two other versions of conditioned covariance matrix (see App~\ref{app:bpcm_cond}). 
+In this analysis, $\boldsymbol{\Theta}$ constitutes cosmological $\boldsymbol{\theta^c}$, foreground $\boldsymbol{\theta^f}$, and systematics $\boldsymbol{\theta^s}$ parameters. 
+
+The cosmological dependence of the lensing model spectrum is given by
+%The lensing potential power spectrum estimate depends on cosmology through the response function $\mathcal{R}_L$ and on the $N^1_L$ bias as
+\begin{equation}
+C_L^{\kappa \kappa, \mathrm{c}} (\boldsymbol{\theta^c})=\frac{\mathcal{R}_L^2(\boldsymbol{\theta^c})}{\mathcal{R}_L^2(\boldsymbol{\theta^c}_{\rm fid})} C_L^{\kappa \kappa} ({\boldsymbol{\theta^c}})+ N_L^1(\boldsymbol{\theta^c}) - N_L^1(\boldsymbol{\theta^c}_{\rm fid}),
+\end{equation}
+where $\boldsymbol{\theta^c}_{\rm fid}$ denotes the fiducial cosmology assumed to perform the lensing reconstruction.
+By applying the ratio of the response functions $\mathcal{R}_L$ evaluated at $\boldsymbol{\theta^c}$ and at the fiducial cosmology and the difference in $N^1_L$ at the two cosmologies, 
+the CAMB output $C_L^{\kappa \kappa} ({\boldsymbol{\theta^c}})$ is shifted to look like the measured $\hat{C}_{b}^{\kappa \kappa}$ if $\boldsymbol{\theta^c} \equiv \boldsymbol{\theta^{data}}$ with $\hat{C}_{b}^{\kappa \kappa}$ normalized and debiased by $\mathcal{R}_L$ and $N^1_L$ evaludated at the fiducial cosmology.
+
+Following previous lensing works~\cite{spt, act, planck}, we account for the changes in $\mathcal{R}_L$ and $N^1_L$ by linearly perturbing them around the fiducial cosmology $\boldsymbol{\theta^c}$.
+We compute derivatives of $\mathcal{R}_L$ and $N^1_L$ with respect to the primary CMB spectra (TT, TE, EE) and to the lensing spectrum, respectively. 
+These derivatives are then stored in $M_{b\ell}^x$ matrices, with $x \in [TT, TE, EE, \kappa\kappa]$. 
+The cosmological dependence of the model spectrum is computed as 
+\begin{equation}
+\label{eq:lincorr}
+\begin{aligned}
+C_b^{\kappa \kappa, \mathrm{c}}({\boldsymbol{\theta^c}}) &= C_b^{\kappa \kappa}({\boldsymbol{\theta^c}}) \\ %+ A_{\rm fg} C_b^{\phi\phi,\rm fg} \\
+&+ \sum_{x\in \{TT,TE,EE\phi\phi\}} M^{x}_{b\ell} \left(C_{\ell}^{x}(\boldsymbol{\theta^c})-C_{\ell}^{x}(\boldsymbol{\theta^c}_{\rm fid})\right),
+\end{aligned}
+\end{equation}
+
+The model lensing spectrum depends on foreground and systematics parameters as well as cosmological parameters.
+Its dependence on foreground parameters is modeled through an emulator we train on Agora simulations (Sec.~\ref{ssec:emulator_train}).
+Its dependence on instrumental systematics is included through their impact on $\mathcal{R}_L$ via the model primary CMB spectra
+$C_{\ell}^{x} \rightarrow C_{\ell}^{x}(\boldsymbol{\theta^c},\boldsymbol{\theta^s})$, as well as through the emulator. 
+We have two complete models for the lensing spectrum: one with the systematics modeled as part of the emulator and one with the systematics propagated through the primary CMB spectra. 
+The complete expression of the model spectrum for the first case is
+\begin{equation}
+\begin{aligned}
+C_{b}^{\kappa \kappa,\mathrm{model}}(\boldsymbol{\Theta}) & = C_b^{\kappa \kappa}({\boldsymbol{\theta^c}}) \frac{C_b^{\kappa \kappa}({\boldsymbol{\theta^c}_{\rm fid}}, \boldsymbol{\theta^f, \theta^s})}{C_b^{\kappa \kappa}({\boldsymbol{\theta^c}_{\rm fid}})} \\
+ &+ \sum_{x\in \{TT,TE,EE,\kappa\kappa\}} M^{x}_{b\ell} \left(C_{\ell}^{x}(\boldsymbol{\theta^c})-C_{\ell}^{x}(\boldsymbol{\theta^c}_{\rm fid})\right),
+\end{aligned}
+\end{equation}
+The complete expression of the model spectrum for the second case is
+\begin{equation}\label{eqn:modelspec_full}
+\begin{aligned}
+C_{b}^{\kappa \kappa,\mathrm{model}}(\boldsymbol{\Theta}) & = C_b^{\kappa \kappa}({\boldsymbol{\theta^c}}) \frac{C_b^{\kappa \kappa}({\boldsymbol{\theta^c}_{\rm fid}}, \boldsymbol{\theta^f})}{C_b^{\kappa \kappa}({\boldsymbol{\theta^c}_{\rm fid}})} \\
+ &+ \sum_{x\in \{TT,TE,EE}} M^{x}_{b\ell} \left(C_{\ell}^{x}(\boldsymbol{\theta^c}, \boldsymbol{\theta^s})-C_{\ell}^{x}(\boldsymbol{\theta^c}_{\rm fid})\right) \\
+ &+ M^{\kappa\kappa}_{b\ell} \left(C_{\ell}^{\kappa\kappa}(\boldsymbol{\theta^c})-C_{\ell}^{\kappa\kappa}(\boldsymbol{\theta^c}_{\rm fid})\right)
+\end{aligned}
+\end{equation}
+The ratio multiplied to the CAMB output $C_b^{\kappa \kappa}({\boldsymbol{\theta^c}})$ is the output of the emulator.
+We detail the construction and validation of the emulator in Sec.~\ref{ssec:emulator_train}.
+We next discuss the modification to the primary CMB spectra by instrumental systematics. 
+
+\subsubsection{Modeling impact of instrumental systematics on the lensing response}
+The instrumental systematics considered in this work include temperature and polarization calibration, 
+temperature beam uncertainties, and polarized beam shape cuased by the depolarization of sidelobes. 
+These are effects that modify the shape of measured CMB primary spectra.
+Therefore, their impact to the measured lensing spectrum enters through the change of the response function $\mathcal{R}_L$
+evaluated at different instrumental systematic parameter values.  
+
+%                M_correction += jnp.dot(
+%                   np.transpose(self.M_matrices[mode][: self.lmaxCMBpk[mode]]),
+%                    jnp.block(
+%                       sample_params["Dl"][mode][: self.lmaxCMBpk[mode]]
+%                        / cal_fac[mode]
+%                        * beam_fac[mode] )
+%                )
+At the sampled beam and calibration parameters, the primary CMB model spectra transform as
+\begin{equation}
+	C_{\ell}^{XY} \rightarrow C_{\ell}^{XY} \mathcal{B}_{\ell}^{XY} / \mathcal{C}^{XY},
+\end{equation}
+where $XY \in [TT, TE, EE]$, $\mathcal{B}_{\ell}$ and $\mathcal{C}$ denote beam and calibration factors.
+The beam factors are functions of ratios of the ILC-weighted perturbed beam to the fiducial beam in temperature $b_{\ell}^{T}$ and in polarization $b_{\ell}^{E}$: 
+\begin{equation}
+\begin{aligned}
+	b_{\ell}^{T} & =\frac{ \sum_{\nu} w^{T, \nu}_{\ell} (B_{\ell}^{T, \nu} + \sum_{i=1..4} \beta_i dB_{\ell, i}^{T, \nu}) } { \sum_{\nu} w^{T, \nu}_{\ell} B_{\ell}^{T, \nu}},  \\ 
+	B_{\ell}^{P, \nu} & = \frac { B_{\ell}^{{\rm main}, \nu} +\beta_{\rm pol}^{\nu} (B_{\ell}^{T, \nu}-B_{\ell}^{{\rm main}, \nu}) } { B_{800}^{{\rm main}, \nu} +\beta_{\rm pol}^{\nu} (B_{800}^{T, \nu}-B_{800}^{{\rm main}, \nu})},  \\ 
+	b_{\ell}^{E} & = \frac{ \sum_{\nu} w^{E, \nu}_{\ell} B_{\ell}^{P, \nu} (\beta_{\rm pol}^{\nu})} { \sum_{\nu} w^{E, \nu}_{\ell} B_{\ell}^{P, \nu} (\beta_{\rm pol, fid}^{\nu})}, \\ 
+\end{aligned}
+\end{equation}
+where $\nu$ denotes the frequency band, $w^{\nu}_{\ell}$ denotes the ILC weights, $B_{\ell}^{T, \nu}$ is the temperature beam, $dB_{\ell,i}^{T, \nu}$ denotes the $i$th eigenmode of the temperature beam uncertainty. ($\beta_i$ has no $\nu$ dependence because it's the same number applied to all three frequencies). 
+The beam factors are then
+\begin{equation}
+\mathcal{B}_{\ell}^{XY} = b_{\ell}^{X} b_{\ell}^{Y}. 
+\end{equation}
+The calibration factors are
+\begin{equation}
+\begin{aligned}
+\mathcal{C}^{TT} &= T_{cal}  T_{cal}, \\ 
+\mathcal{C}^{TE} &= T_{cal}  T_{cal}  P_{cal}, \\ 
+\mathcal{C}^{EE} &= T_{cal}  T_{cal} P_{cal} P_{cal}.\\ 
+\end{aligned}
+\end{equation}
+\KW{paraphrasing Yuuki's lists}
+Specifically, for calibration, we vary the absolute temperature and poladization calibration at 150 GHz, ${\bf T_{\rm cal}}$ and ${\bf P_{\rm cal}}$. 
+The interfrequency temperature calibration are fixed to the fiducial values since their uncertainties are smaller (11\% and 33\% for 95 and 220 GHz) than that of the absolute calibration.
+Similarly, for the polarization calibration only the 150 GHz is varied here, which is determined through cross-correlation with ${\it Planck}$ (the calibration for 90 and 220 GHz are determined though internal calibration by calibrating with 150 GHz), which dominates our uncertainty budget \textcolor{red}{say how much bigger the uncertainties are for internal relative to external}.
+For beam parameters, we vary the first 4 (to 6) eigenmodes of the temperature beam uncertainty covariance matrix by sampling $\beta_i$.
+We vary the polarization beam is modeled as Equation \eqref{eq:betapol}.  We apply a \kw{tophat [0,1]} prior on each $\beta_{\rm pol^{\nu} }$ parameters.
+
+\subsubsection{Emulator describing the pertubation to the lensing spectrum from foregrounds and instrument systematic parameters}
+\KW{Yuuki probably wants to edit this to make the flow better}
+Observational data at a given frequency channel is not excusively a map of the CMB and has contributions from galactic and extragalactic foregrounds. Since these foregrounds are not Gaussian distributed and isotropic, their signatures are picked up as false lensing signal and biases the reconstructed lensing map. These biases are often challenging to disentangle because the foreground distribution is correlated with the cosmic density field, which is also correlated with the CMB lensing signal.
+
+In particular there are four contributions we must be cautious of: the thermal Sunyaev Zel'dovich effect, kinetic Sunyaev Zel'dovich effect, cosmic infrared background and radio sources. These astrophysical sources have different redshift distributions, clustering properties, frequency dependence and their physical profiles on the sky.
+
+We construct an emulator to model the expected bias to the lensing spectrum given the Agora foreground maps.
+%\noindent {\bf Extragalactic Foreground amplitudes}: Marginalizing over the full modeling uncertainty of extragalactic foreground is computationally challenging. In this study, 
+We construct the input maps by 
+taking the amplitudes of the foreground templates and scale them by an amplitude parameter:
+\begin{align}
+\mathbb{M}^{\nu} &= C\left[\mathbb{M}_{\rm CMB} + \sum(A_{\alpha}^{\nu} \mathbb{M}_{\alpha}^{\nu})
+\right]B,\end{align}
+where $\alpha$ sums over the three different types of astrophysical foregrounds tSZ, CIB and radio. 
+Additionally, we model instrumental systematic effects in the map by applying $C = T_{\rm cal}$ or $T_{\rm cal}P_{\rm cal}$ and beam perturbations $B$. \KW{the equations can be made explicit/exact on its T/P dependence.}
+%$C = T_{\rm cal}$ or $T_{\rm cal}P_{\rm cal}$ depending on whether the map is temperature or polarization map, likewise for the beam $B$.
+The frequency maps are multiplied by our fiducial frequency weights to produce the our minimum variance CMB map, and the lensing recontruction is performed on those maps. 
+
+We select 100 points in the 14 parameter space using a Latin-Hypercube settings spanning the parameter space listed in \ref{tab:emulprior}.
+At parameter point $\theta_{i}$ we treat the perturbed map as the data map and perform fullsky noiseless lensing reconstruction , computing $C_{L}^{\hat{\kappa}\hat{\kappa}}$ and $N_{L}^{RD,(0)}$. We repeat this 5 times and average the spectra to reduce the realization-to-realization scatter.
+Since the reconstruction is done without noise, there is a mismatch in response compared to our fiducial reconstruction, which manifests as incorrect weighting when forming the minimum variance estimator. We therefore correct for this by taking the ratios of the response functions.
+\begin{equation}
+\hat{\kappa}^{\rm MV}=\Xi\frac{\sum_{i} \bar{\phi} \frac{\mathcal{R_{\rm fid}}}{\mathcal{R_{\rm noiseless}}  }}{\sum_{i} \mathcal{\bar{R}}_{\rm fid} } 
+\end{equation}
+where $\mathcal{R}_{\rm noiseless}$ represents the simulation-based response function constructed from noiseless simulation where as the $\mathcal{R}_{\rm fid}$ is the fiducial response function, and $\Xi\equiv(L(L+1)/2)^{2}$.
+
+Next we use \texttt{GPJax} to construct an emulator based on the parameters $\theta$ and train on the ratio\footnote{ Since the lensing reconstruction is based on the same input CMB realization, this allows us to reduce the sample variance.} $C_{L}/C_{L}^{\rm nofg}$, where $C_{L}^{\rm nofg}$ assumes the fiducial calibration and beam parameters and {\it no} foregrounds. We multiply this ratio to the purely theoretical lensing spectra:
+
+\begin{equation}
+C_{L}^{\rm model} = C_{L}^{\rm CAMB} \underbracket[0.1ex][0.5ex]{  \frac{C_{L}^{\kappa\kappa}(\theta_{i}) }{C_{L}^{\kappa\kappa}(\theta_{0})}  }_\text{emulated}
+\end{equation}
+where $\theta_{0}=\{T_{\rm cal}=0.999$, $P_{\rm cal}=1.008$, $\eta^{1,2,3,4}=0$, $\beta^{90}_{\rm pol}=0.536$, $\beta^{150}_{\rm pol}= 0.685$, $\beta^{220}_{\rm pol}=0.658$, $A_{\rm tSZ}=0$ , $A_{\rm CIB}=0$, $A_{\rm rad}=0 \}$.
+
+We generate 50 test samples drawn from the same range but different locations to test the accuracy of the emulator by taking the ratio of the predicted and true perturbed lensing spectra. we reach an accuracy of X\%, corresponding to X$\sigma$ of our statistical uncertainties, which we deem negligible. We additionally compare the perturbed lensing spectra form the emulator with those from the anaytical marginalization and test for 4 different perturbation $T_{\rm cal}=T_{\rm cal}^{\rm fid}\pm\epsilon$ and $P_{\rm cal}=P_{\rm cal}^{\rm fid}\pm\epsilon$ and compare each of those with reconstruction assuming the fiducial values.
+
+%\textcolor{red}{We parameterize the residual foreground components as XXX and marginalize over the amplitude.}
+
+\begin{figure*}
+\includegraphics[width=1.00\linewidth]{Figures/emul.pdf} 
+\caption{Changes to the theory spectrum by varying one parameter at a time. Top panels are for polarization-only case, which are unaffected by foregrounds where as the lower panels for minimum variance, which are additionally affected by foreground amplitudes. }
+\end{figure*}
+
+
+
+%\subsubsection{Systematic Marginalization}\label{sec:sysmarg}
+%Unlike previous lensing analyses where we fixed the systematic effects, in this analysis we marginalize over the known effects. The following effects are included in the analysis:\\
+%\noindent ${\bf T_{\rm cal}}$:
+%{\bf Absolute temperature} ${\bf T_{\rm cal}}$: The absolute calibration factor at 150 GHz. The interfrequency calibration are fixed to the fiducial values since their uncertainties are smaller (11\% and 33\% for 95 and 220 GHz) than that of the absolute calibration.\\
+%\noindent {\bf Absolute polarization calibration $P_{\rm cal$}: Uncertainty on the polarization efficiency at 150 GHz. While at the map level, the three frequency channels are calibrated individually, only the 150 GHz is varied here, which is determined through cross-correlation with ${\it Planck}$ (the calibration for 90 and 220 GHz are determined though internal calibration by calibrating with 150 GHz), which dominates our uncertainty budget \textcolor{red}{say how much bigger the uncertainties are for internal relative to external}. \\
+%\noindent {\bf Temperature beam eigenmodes} \\
+%\noindent {\bf  $\beta_{\rm pol}$} As described in Section, the Polarization beam is modeled as Equation \eqref{eq:betapol}.  We apply a Gaussian prior on each $\beta_{\rm pol^{\nu} }$ parameters.\\
+%\noindent {\bf Extragalactic Foreground amplitudes}: Marginalizing over the full modeling uncertainty of extragalactic foreground is computationally challenging. In this study, we take the amplitudes of the foreground templates and scale them by an amplitude parameter.
+%\begin{align}
+%\mathbb{M}^{\nu} &= C\left[\mathbb{M}_{\rm CMB} + \sum(A_{\alpha}^{\nu} \mathbb{M}_{\alpha}^{\nu})
+%\right]B,\end{align}
+%where $\alpha$ sums over the three different types of astrophysical foregrounds tSZ, CIB and radio. $C = T_{\rm cal}$ or $T_{\rm cal}P_{\rm cal}$ depending on whether the map is temperature or polarization map, likewise for the beam $B$.
+%The frequency maps are multiplied by our fiducial frequency weights to produce the our minimum variance CMB map, and the lensing recontruction is performed on those maps. 
+
+\begin{table}\label{tab:emulprior}
+\begin{tabular}{c|c}
+\hline
+\toprule
+Parameter & prior \\ 
+\midrule
+$T_{\rm cal}$ & $\mathcal{N}(0.998,0.01)$   \\
+$P_{\rm cal}$ & $\mathcal{N}(1.008,0.01)$  \\
+$\eta$ & $\mathcal{U}(-3,3)$  \\
+$\beta_{\rm pol}^{\nu}$ & $\mathcal{U}(0,1)$ \\
+$A_{\rm tSZ}$ & $\mathcal{U}(0,1.3)$ \\
+$A_{\rm CIB}^{150,220}$ & $\mathcal{U}(0,1.3)$ \\
+$A_{\rm radio}^{90,150}$ & $\mathcal{U}(0,1.3)$ \\
+\bottomrule
+\end{tabular}%
+\end{table}
+
+We next discuss specific implimentations of the likelihood for the lensing-only case and for the lensing and primary CMB case.
+
+\subsubsection{Lensing-only likelihood}
+%\KW{Discuss (1) CMBmarg, (2) replace model CMB with data CMB bandpowers, (3) vary only N1; (4) what beam param to vary}
+For the lensing-only likelihood, we do not include the corrections from the change in the response $\mathcal{R}_L$ at each sampled $\boldsymbol{\Theta}$ 
+because we do not have the corresponding primary CMB data spectra and likelihood to inform the best-fit $C_{\ell}^{XY}$ and their variance.
+To account for the expected shift in $\mathcal{R}_L$ at the best-fit $C_{\ell}^{XY}$ and the increase in the lensing covariance from the uncertainties of the primary CMB power spectra, 
+we modify the the likelihood by replacing the model $C_{\ell}^{x}(\boldsymbol{\theta^c}, \boldsymbol{\theta^s})$
+in Eqn.~\ref{eqn:modelspec_full} by the {\it Lite} bandpowers $\hat{C}_{\ell}^{x}$ from SPT-D1~\cite{camphuis25} and 
+by including an extra ``CMB-marg" term in the lensing bandpower covariance. 
+%\YO{ For the lensing-only likelihood, the response $\mathcal{R}_L$ fluctuates rapidly without any constraints on the primary CMB data spectra. To keep our inference tractable, we inform this term by providing the {\it Lite} bandpowers $\hat{C}_{\ell}^{x}$ from SPT-D1~\cite{camphuis25}.}
+
+The SPT-3G {\it Lite} bandpowers have all systematics marginalized except for the calibration parameters, thus the change in the likelihood is
+\begin{equation}
+\begin{aligned}
+	&\sum_{x\in \{TT,TE,EE\}} M^{x}_{b\ell} \left(C_{\ell}^{x}(\boldsymbol{\theta^c}, \boldsymbol{\theta^s})-C_{\ell}^{x}(\boldsymbol{\theta^c}_{\rm fid})\right)
+	\\  \rightarrow 
+	&\sum_{x\in \{TT,TE,EE\}} M^{x}_{b\ell} \left(\hat{C}_{\ell}^{x}(T_{\rm cal}, P_{\rm cal})-C_{\ell}^{x}(\boldsymbol{\theta^c}_{\rm fid})\right).
+\end{aligned}
+\end{equation}
+This term modifies the model spectrum by the expected shift in the data spectrum from the mismatch in $\mathcal{R}_L$ between the best-fit and the fiducial primary CMB spectra.
+%This term shifts the model spectrum to match the bias in the measured lensing spectrum given the difference in the response of the best-fit CMB spectra and the fiducial CMB spectra. 
+%\YO{This term corrects for the bias in the model spectra due to the the mismatch between the best-fit and the fiducial primary CMB spectra.}
+The sampled $T_{\rm cal}$ and $P_{\rm cal}$ parameters effectively enlarges the bandpower covariance matrix in the likelihood leading to increased cosmological parameter uncertainties. 
+
+We account for the uncertainties in the primary CMB spectra by explicitly adding a ``CMB-marg" term to the covariance matrix, 
+\begin{equation}\label{eqn:cmb_marg}
+	\mathbb{C}_{bb'} \rightarrow \mathbb{C}_{bb'} + \Delta_{\ell_b} M^{\alpha}_{b\ell_b} \, \Sigma^{\rm CMB; \alpha\beta}_{\ell_b \ell'_b} M^{\beta}_{\ell'_b b'} \Delta_{\ell'_b} , 
+\end{equation}
+where $\Sigma^{\rm CMB}$ denotes the binned primary CMB spectrum covariance, $\alpha, \beta \in [TT, TE, EE]$, $\Delta_{\ell_b}$ represents the size of the bin, and repeated indices are summed. 
+To approximate the uncertainties of the primary CMB spectrum measurements when jointly sampling the lensing likelihood with primary CMB datasets from {\it Planck PR3}~\cite{}, ACT DR6~\cite{}\footnote{https://github.com/ACTCollaboration/DR6-ACT-lite}, and SPT-3G D1~\cite{camphuis25}, we construct $ \Sigma^{\rm CMB}$ as a concatenation of the {\it lite}/CMB-only versions of each dataset's convariance matrix.
+We concatenate the covariance matrices at the following $\ell$s such that the diagonals of the resultant matrix is the smallest of the three individual matrix: 
+\begin{itemize}
+\item TT: {\it Planck} for $\ell < 1500$ and ACT otherwise; 
+\item TE: {\it Planck} for $\ell < 1000$, ACT for $\ell = [1000, 2000]$, and SPT for $\ell > 2000$;
+\item EE: {\it Planck} for $\ell < 800$, ACT for $\ell = [800, 2300]$, and SPT for $\ell > 2300$. 
+\end{itemize}
+We note that SPT does not contribute to the TT covariance block because its {\it lite} covariance is enlarged compared to the full covariance mainly due to foreground marginalization.
+We ignore the small lensing signal covariance between experiments. 
+We show the size of this term in App.~\ref{app:cmb_marg}.
+
+
+\kw{vary beam? }
+
+
+\subsubsection{Lensing+primary CMB likelihood}
+%\KW{Discuss (1) omitting covariance between lensing and primary, (2) beam params }
+When combining with primary CMB, we neglect the correlations between the primary CMB bandpowers and the lensing bandpowers as their inclusion does not impact cosmological parameter uncertainties at the current noise levels~\cite{}.
+Therefore, we simply add the lensing and the primary CMB log-likelihoods during inference. 
+We use {\it Planck} PR3, ACT DR6, and SPT-3G D1 TT/TE/EE data sets as the primary CMB.
+For SPT-3G D1, we use the {\it Lite} likelihood which has data bandpowers and covariance with foregrounds and all-except-calibration instrument systematics marginalized.
+Since the impact of beam systematics on the power spectrum is accounted for in the lite likelihood, we do not vary the beam parameters in the lensing+primary CMB likelihood.
+
+The priors for the cosmological, foreground, and instrumental systematic parameters for the lensing-only and lensing+primary CMB case are listed in Table~\ref{tab:priors}. \KW{add fg and sys priors in table} 
+%P-ACT lite likelihood at https://github.com/ACTCollaboration/DR6-ACT-lite/blob/main/yamls/p-act-lcdm.yaml
+
+%\begin{equation}
+%\begin{aligned}
+ %  C_{L_b}^{\kappa \kappa, \operatorname{th}}(\boldsymbol{\theta})&=\frac{\left[\mathcal{R}_{L_b}^{-1}\left(\boldsymbol{\theta}_0^{\rm c}\right)\right]^2}{\left[\mathcal{R}_{L_b}^{-1}(\boldsymbol{\theta}^{\rm c})\right]^2} C_{L_b}^{\kappa \kappa}(\boldsymbol{\theta}^{\rm c})-
+%N_{L_b}^1\left(\boldsymbol{\theta}_0^{\rm c}\right)\left[1-\frac{N_{L_b}^1(\boldsymbol{\theta}^{\rm c})}{N_{L_b}^1\left(\boldsymbol{\theta}_0^{\rm c}\right)} \right ]\\
+%&+ C_{L_b}^{\kappa\kappa, \rm FG}(\boldsymbol{\theta}^{\rm a}) 
+%+ \Delta C_{L_b}^{\kappa\kappa,\rm syst}(\boldsymbol{\theta}^{\rm s}) 
+%\end{aligned}
+%\end{equation}
+
+\begin{table}[t]
+\centering
+\caption{(Taken from 2018 lensing) Priors imposed on the cosmological parameters investigated in this work, when considering either lensing-only datasets or also including primary CMB measurements. Parameters that are fixed are reported by a single number. $\mathcal{U}(a,b)$ denotes a uniform distribution between $[a,b]$, while $\mathcal{N}(\mu,\sigma^2)$ indicates a Gaussian distribution with mean $\mu$ and variance $\sigma^2$. }
+
+\label{tab:priors}
+\begin{tabular}{c|c|c}
+\hline
+\toprule
+Parameter               & Lensing only  (+ BAO)                 & Lensing +  CMB      \\ 
+\midrule
+$\Omega_b h^2$          & $\mathcal{N}(0.0222,0.0005^2)$ & $\mathcal{U}(0.005,0.1)$     \\
+$\Omega_c h^2$          & $\mathcal{U}(0.001,0.99)$      & $\mathcal{U}(0.001,0.99)$    \\
+$H_0$ [km/s/Mpc]                & $\mathcal{U}(40,100)$          & $\mathcal{U}(40,100)$        \\
+$\tau$                  & 0.055                          & $\mathcal{U}(0.01,0.8)$      \\
+$n_s$                   & $\mathcal{N}(0.96,0.02^2)$     & $\mathcal{U}(0.8,1.2)$       \\
+$\ln (10^{10}A_s)$        & $\mathcal{U}(1.61,3.91)$       & $\mathcal{U}(1.61,3.91)$     \\
+$\sum m_{\nu}$ {[}eV{]} & 0.06                           & 0.06 or $\mathcal{U}(0,5)$   \\
+$\Omega_K$              & 0                              & 0 or $\mathcal{U}(-0.3,0.3)$ \\
+$A_L$                   & 1                              & 1 or $\mathcal{U}(0,10)$     \\
+$A_L^{\phi\phi}$        & 1                              & 1 or $\mathcal{U}(0,10)$ \\
+\midrule
+$Beam_{1,2,3,4}$ & \                           & 0.06 or $\mathcal{U}(0,5)$   \\
+$\beta_{\rm pol}^{90,150,220}$              & 0                              & 0 or $\mathcal{U}(-0.3,0.3)$ \\
+$\beta_{\rm pol}^{90,150,220}$              & 0                              & 0 or $\mathcal{U}(-0.3,0.3)$ \\
+
+\end{tabular}%
+\end{table}
+
+%We can integrate out $C^{\rm CMB}$, which then becomes 
+%\begin{equation}
+%\Sigma_{ij}= \Sigma_{ij} +M_{\ell,\ell'}^{X,\ell'} \Sigma_{\rm CMB}^{}M_{\ell,\ell'}^{X,\ell'},
+%\end{equation}
+%which is to say that we get an extra term from the variance of the CMB.
+
+%Depending on whether we are running an lensing only analysis or lensing + primary analysis, the treatment of the uncertainty due to the beams will be slightly different.
+
+%\subsection{Lensing-only}
+%Lensing only chains still requires the knowledge of the CMB since we need some assumption went into building the response function and that must be varied. There are two approaches that can be taken: (a) marginalizing this analytically using taking a compressed form of lensing a as done in \cite{planck2018lens} and,(b) calculating the variance of the response function based on known constraints on  the CMB primary and adding this contribution to the covariance matrix. While in principle these two approaches should return similar results, one subtle distinction is that the latter must assume a cosmological model to make compute the $C^{TT}_{\ell}$, $C^{TE}_{\ell}$, $C^{TE}_{\ell}$, and therefore the procedure i snot completely agnostic to the cosmological model, whereas the former approach allows us to to write a likelihood without making any assumption about the cosmological model. For this reason we proceed with the former approach. 
+
+
+%We use the primary constraints from the combination of SPT, {\it Planck}, and ACT-DR6 (`CMBall') for this. Since SPT only constitutes some fraction of the total constraining power, we can marginalize over the beam uncertainty in the lensing analysis. 
+
+%\subsection{Lensing + primary}
+%For lensing +primary analysis, we combine the likelihood from CMBall. We take the SPT-3G lite likelihood where the foregrounds and beam parameters are marginalized and the Tcal and Pcal values are sampled over. Since the beam uncertainties are taken into account, if we marginalize over those parameters, their contributions will be over estimate. The foregroud parameters  are not impacted by this since the foreground power is not propagated though the $M_{\ell,ell'}$ response matrix by changing $C_{\ell}^{TT}, C_{\ell}^{TE}, C_{\ell}^{EE}$
+
+
+
+
+
+
+\subsection{Validation}
+In this section we both do a bandpower level consistency check test as well as a parameter level shift test. The band power level shift test we conduct using PPD, and the parameter level test we  check the consistency with both Mahalanbois distance and using \texttt{tensionomter}. From \texttt{tensionometer} we use two different approaches; one is the so called parameter differences in updated form $Q_{\rm UDM}$ and the other is the exact parameter shift.
+
+
+\subsubsection{Consistency}
+
+In this section we test the consistency between quadratic estimators as well as consistency with MUSE. We do this using the \cite{gratton19} framework, assuming that one dataset is a subset of the other.     
+
+\begin{figure}
+\includegraphics[width=1.00\linewidth]{Figures/clkk_qest_consistency.pdf} 
+\caption{}
+\label{fig:clkk_main}
+\end{figure}
+
+
+\subsubsection{Agora test}\label{sssec:agora_test}
+We run two types of test using the \textsc{Agora} mock simulations: (1) consistency of the posteriors with the truth, and (2) consistency between input and posteriors.
+For the former we compute the Gaussian parameter shift in $S_{8}^{\rm CMB}\equiv \Omega_{\rm m}\sigma_{8}^{0.25}$:
+\begin{equation}
+D = (\theta_{\rm true} -\theta_{i})^{\top} \Sigma_{\theta}^{-1} (\theta_{\rm true} -\theta_{i}),
+\end{equation}
+where the parameter covariance $\Sigma_{\theta}$ is obtained from running a chain in \texttt{Cobaya} (see Section \ref{sec:inference}).
+
+\begin{table}
+\caption{ssss}
+\begin{tabular}{c|c|c|c}
+\toprule
+ seed   &      MAP &     mean &      $\sigma$ \\
+\midrule
+ 5001   & 0.610364 & 0.607302 & 0.0121662  \\
+ 5002   & 0.614872 & 0.604977 & 0.0113207  \\
+ 5003   & 0.599318 & 0.601097 & 0.0116353  \\
+ 5004   & 0.594713 & 0.600739 & 0.0109887  \\
+ 5005   & 0.607063 & 0.599821 & 0.0116585  \\
+ 5006   & 0.601889 & 0.600062 & 0.013762   \\
+ 5007   & 0.603527 & 0.598899 & 0.0117732  \\
+ 5008   & 0.605983 & 0.591749 & 0.011866   \\
+ 5009   & 0.606506 & 0.609446 & 0.0117542  \\
+ 5010   & 0.604056 & 0.601461 & 0.0116925  \\ \midrule
+ all    & 0.599941 & 0.602853 & 0.00885901 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{figure}
+\includegraphics[width=1.00\linewidth]{Figures/fig_chain_agora_freecalfg} 
+\caption{Comparison of the lensing auto-spectrum from \textsc{MUSE} (grey), and our polarization-only lensing spectrum (SQE PP). Note that the bandpower window functions are different for MUSE and our reconstruction which manifests as a horizontal shift, which is visible on larger scales. {\bf Lower:} the difference between the two band powers forcing the same band power window function on our measurements. }
+\end{figure}
+
+
+
+
+\begin{figure}
+\includegraphics[width=1.00\linewidth]{Figures/clkk_muse_comparison.pdf} 
+\caption{Comparison of the lensing auto-spectrum from \textsc{MUSE} (grey), and our polarization-only lensing spectrum (SQE PP). Note that the bandpower window functions are different for MUSE and our reconstruction which manifests as a horizontal shift, which is visible on larger scales. {\bf Lower:} the difference between the two band powers forcing the same band power window function on our measurements. }
+\end{figure}
+
+
+
+For the latter we run a nested test as described in \cite{gratton2019}. We treat the noisy measurement as the ``subset" and the noiseless datavector as the ``full" data vector. In this scenario we use:
+\begin{equation}
+\Sigma_{\theta,\Delta} = \Sigma_{\theta,{\rm noisy}}-\Sigma_{\theta,{\rm noiseless}}
+\end{equation}
+and therefore:
+
+\begin{equation}
+\chi^{2}_{\Delta}=(\hat{p}_{\rm noisy} - \hat{p}_{\rm noiseless} ) \Sigma_{\theta,\Delta} (\hat{p}_{\rm noisy} - \hat{p}_{\rm noiseless} )
+\end{equation}
+
+
+\subsubsection{Alternate cosmology test}
+Instead of analyzing data, we can analyze simulated data map with different underlying cosmology, and test whether the pipeline recovers the input cosmology faithfully. For this we pick a point that lies within 5$\sigma$ from the best-fit of \cite{apslens} in the $\Omega_{\rm m}/\sigma_{8}\Omega_{\rm m}^{0.25}$ plane: ($\sigma_{8}=0.773$, $\Omega_{\rm m}=0.305$). We generate 10 CMB realizations and add foreground ignoring the any cosmological dependence and pass the maps through the same mock observations as the fiducial set of simulations, and finally add a realization of sign flip noise.
+
+Lensing reconstruction are performed treating these maps as the data map, and each $N_{L}^{RD,0}$ are computed for all the realizations by crossing with 498 standard simulation realizations. The lensing reconstruction band powers for the 10 realizations as well as their means are shown in Figure X.
+
+We run inference using the band powers and covariance matrix varying both instrumental and foreground systematics. One modification we have to make in order to obtain an reasonable solution is assume the fiducial cosmology:
+
+\begin{align}
+&\mathcal{B}_{L}C_{L}^{\kappa\kappa,{\rm th}}(\theta_{i})  \sim\nonumber\\
+&(\mathcal{B}_{L}^{i}+M_{L})C_{L}^{\kappa\kappa}(\theta_{i})-M_{L}^{\phi,i}C_{L}^{\kappa\kappa}(\theta_{\rm alt})+M_{L}^{i}(C_{\ell}^{\alpha}-C_{\ell}^{\alpha}(\theta_{\rm alt}) ),
+\end{align}
+where the $\theta_{\rm alt}$ corresponds to the $\sigma_{8}=0.773$, $\Omega_{\rm m}=0.305$ cosmology, and $\alpha=\{TT,EE,TE,\kappa\kappa\}$ Without such a correction, the shift in cosmology comes from both the lensing reconstruction it self as well as the effect of the primary CMB spectra that is assumed.
+
+The distribution of best-fit MAP values are shown in Figure X as well as the combined posterior of the 10 realizations. The Gaussian parameter-shift distance of the truth from the posterior mean are summarized in Table X.
+
+
+
+
+\subsection{Consistency with MUSE parameters}
+\textcolor{red}{Run minimizer for all 100 sims for MUSE and check best fit values.}
+
+
+
+
+\subsection{Cosmological datasets}
+
+\section{Results}
+
+In this section we present the measured lensing band powers as well as the cosmological constraints that we obtain.
+\subsection{Lensing amplitude $A_{\rm rec}$ (fixed cosmology)}
+
+
+We report the lensing amplitude $A_{\rm recon}$ relative to the expected $C_L^{\kappa\kappa}$ spectrum given the
+best-fit LCDM parameters from the SPA $T\!/\!E$ data sets~\cite{camphuis2025}.
+For this fit, we fix all the nuisance parameters: 
+the instrumental systematic parameters to the best-fit from the SPT-3G D1 $T\!/\!E$ data set \cite{camphuis2025} 
+and the foreground parameters are set to the best-fit values from fitting our foreground templates high-$\ell$ portion of the $TT$ power spectrum (see Appendix~\ref{appendix:fgfit}).
+We take the lensing bandpower covariance matrix \emph{without} including the CMB-marginalization term (the additional term in Equation \ref{eqn:cmb_marg}) for this quantity to have the closest correspondence to the SNR quantities in recent CMB lensing results~\cite{planck2022lens, qu2023, apslens}.
+We obtain:
+\begin{equation}
+A_{\rm rec}=1.021 \pm 0.023\hspace{0.2cm} (\kappa_{\rm GMV},\ {\rm sys.\, fixed}),\nonumber
+\end{equation}
+corresponding to a measurement SNR\footnote{We use the definition SNR=$\sqrt{\chi^{2}-N_{\rm d.o.f}}$} of 45. 
+The lensing amplitude inferred from the lensing spectrum measurement is consistent with the primary CMB inferred
+lensing amplitude $A_{\rm rec}=1$ to within 1~$\sigma$. 
+}
+
+We show in Fig.~\ref{fig:clkk_main} the lensing bandpowers from the standard GMV reconstruction, 
+which forms the basis of our cosmological results.
+%In addition, we include lensing bandpowers that have the best-fit foreground template corrected and those
+%from the profile hardened GMV reconstruction for comparison.
+%We see that, as expected from our previous difference tests, the foreground bias is small compared to the size of the errorbars.
+%For reference, when we fix the foreground amplitudes to 0 or 1, which correspond to there being no foreground in the input CMB maps
+%and with foreground levels matching what is in the simulations, respectively, 
+%the lensing amplitudes are $A_{\rm recon}= 0.980 \pm 0.022$ and $A_{\rm recon}= 1.023 \pm 0.023$. 
+We summarize the reconstructed lensing amplitudes relative to SPA best-fit model for polarization-only and profile hardened GMV reconstruction results as well as results from {\it Planck} and ACT in Table~\ref{table:Akk}. All the reconstructions are consistent with $A_{\rm recon}=1$ to within $1\sigma$. As a comparison, we also test the setup where the foregrounds are fixed to 0 (no foreground) and 1 (fiducial amplitude), and find $A_{\rm recon}=0.980\pm0.022$ and $1.023\pm0.022$ respectively, which is $~1\sigma $consistent with the SPA cosmoslogy.
+
+%\KW{Not including the fg=0/1 numbers anymore?}
+
+%For cosmological parameters, instead of fixing the foreground amplitudes, we include priors to the foreground amplitudes
+%in order to marginalize over their impact to the inference.
+}
+
+
+%Our fiducial results using the standard GMV reconstruction is shown in Figure \ref{fig:clkk_main}. The fiducial band powers \emph{are expected to be contaminated} by extragalactic foreground, mainly from the ${\rm tSZ} -\kappa_{\rm CMB}$ correlation. We marginalize over this effect in our cosmological inference.  For this reason, we additionally plot the profile hardened variant which mitigates the foreground effect at the band power level. 
+
+
+%We first measure the amplitude of the lensing spectrum $A_{\rm recon}$ relative to a reference lensing spectrum computed assuming the SPA $T\!/\!E$ cosmology while fixing the nuisance parameters.  We obtain:
+%\begin{equation}
+%A_{\rm recon}=1.019 \pm 0.025\hspace{0.2cm} (\kappa_{\rm GMV},\ {\rm sys.\, fixed}).\nonumber
+%\end{equation}
+%Here the foreground is amplitudes are set the best-fit values from fitting our foreground templates to the $T\!T$ subset of the analysis from \cite{camphuis2025}, for which the procedure is described in Appendix \ref{appendix:fgfit}. This corresponds to a SNR of $41\sigma$. 
+%In this particular setup of fixing all the systmatics parameters, the choice of foreground amplitude directly manifests in the lensing amplitude: 
+%\begin{align}
+%A_{\rm recon}=0.983 \pm 0.024\hspace{0.2cm} (\kappa_{\rm GMV},\  A_{\rm fg}=0),\nonumber\\
+%A_{\rm recon}=1.028 \pm 0.024\hspace{0.2cm} (\kappa_{\rm GMV},\  A_{\rm fg}=1),\nonumber
+%\end{align}
+%from which it is evident that the foreground amplitudes lies between those ranges. In practice however, the amplitude of foregrounds become absorbed in either systematic parameters and does not lead to any impact on the amplitude or the uncertainties.
+%We summarize the polarization-only and profile hardened GMV reconstruction results as well as results from Planck and ACT in Table X.
+
+
+\begin{table}
+\begin{tabular}{ccc}
+\toprule
+ Dataset   &  $A_{\rm rec}/{\rm CMB}\textnormal{-}{\rm SPA}$ \\
+\midrule
+SPT3G-D1 $\kappa_{\rm GMV}\ (A_{\rm fg}={\rm fit})$   & $1.021\pm0.023$ \\
+SPT3G-D1 $\kappa_{\rm PP}$    & $1.022 \pm 0.030$ \\
+SPT3G-D1 $\kappa_{\rm GMVph}$ & $1.003 \pm 0.023$ \\
+MUSE $\phi\phi$               & $1.020 \pm 0.026$ \\
+\planck{}-PR4                 & $1.001 \pm 0.021$  \\
+ACT-DR6                       & $1.013 \pm 0.023$  \\
+\bottomrule
+\end{tabular}
+\caption{Table summarizing the best-fit lensing amplitude relative to CMB-SPA cosmology.
+}}
+\label{table:Akk}
+\end{table}
+
+
+
+
+\begin{figure*}
+\includegraphics[width=1.00\linewidth]{Figures/fig_mainbandpowers.pdf} 
+\caption{Measured lensing power spectrum for raw GMV (open blue), foreground marginalized GMV (filled blue) and profile hardened GMV (orange) compared with measurements from \planck{}-PR4 \citep{carron2022} (gray triangle) and ACT-DR6 \citep{qu2023} (gray circles). The solid line is the fiducial model assumed from SPA best-fit cosmology (no-lensing), and the low panel shows the ratio between the points and the best-fit fiducial model. }
+\label{fig:clkk_main}
+\end{figure*}
+
+
+
+
+%\subsubsection{Comparison with \textsc{MUSE} lensing}
+%\KW{I edited this section and added a couple of sentence at the end.}
+
+We compare our polarization-only reconstruction with the lensing bandpowers from the MUSE analysis~\cite{ge2025}.
+The MUSE analysis used the same input CMB maps as the polarization-only reconstruction, with slight differences in masking and pixelization.
+The key difference between the two analyses is that the MUSE approach allows for more optimal extraction of the lensing information by using all the higher-order information of the lensing field and by forward modeling the lensed CMB field from unlensed CMB field.
+Our polarization-only lensing amplitude is
+\begin{equation}
+A_{\rm rec}=1.022 \pm 0.030\hspace{0.2cm} (\kappa_{\rm PP}), \nonumber
+\end{equation}
+consistent with that from the MUSE lensing bandpowers~\cite{apslens}
+\begin{equation}
+A_{\rm rec}=1.020 \pm 0.026\hspace{0.2cm} (\rm{MUSE}  \,\kappa_{\rm PP}). \nonumber
+\end{equation}
+%Additionally, we check for consistency by directly differencing the bandpowers and computing: 
+%\begin{equation}
+%\chi^{2} = (\Delta d)^\top (\Sigma^{\rm PP}-\Sigma^{\rm MUSE})^{-1} (\Delta d).
+%\end{equation}
+%We find a $p = 0.340$, demonstrating good consistency between the two.  
+%We show in Fig.~\ref{fig:muse_bpdiff} the MUSE lensing bandpowers alongside with our
+%polarization-only QE bandpowers as well as the difference bandpowers.
+The polarization-only measurement achieves an SNR of 32, lower than the value of 38 obtained with MUSE, as expected. 
+From this, it could be concluded that GMV remains indispensable for the current data set, especially in characterizing the small angular scales.
+
+
+
+%The SNR of the polarization-only measurement is 32, which is lower than MUSE's 38, as expected.
+%We note that when including temperature data, as in the GMV, the SNR significantly increases to 45. 
+%This means that temperature data still play an indispensible role in this current data set.
+%In particular, as we will see, the small scale lensing information comes mainly from the temperature reconstruction.
+
+
+\begin{figure}
+\includegraphics[width=1.00\linewidth]{Figures/clkk_muse_comparison.pdf} 
+\caption{Comparison of the lensing auto-spectrum from \textsc{MUSE} (grey), and our polarization-only lensing spectrum (SQE PP). Note that the bandpower window functions are different for MUSE and our reconstruction which manifests as a horizontal shift, which is visible on larger scales. {\bf Lower:} the difference between the two band powers forcing the same band power window function on our measurements. }
+\label{fig:muse_bpdiff}
+\end{figure}
+
+
+
+
+\subsection{Constraints: CMB lensing alone}\label{sec:ResultsLensingonly}
+
+
+We examine the cosmological constraints derived from our CMB lensing–only analysis. Since lensing is a measure of integrated mass, it receives contributions from a weighted sum of the matter power spectrum across a wide range of redshifts implying that it is sensitive to the amplitude of fluctuations ($\sigma_{8}$), the amount of mass in the universe $\Omega_{\rm m}$ and also mildly the redshift-distance relation ($H_{0}$). In particular, it is particularly sensitive to the combination:
+\begin{equation}
+S^{\alpha}_{8}\equiv\sigma_{8}\Omega_{\rm m}^{\alpha},
+\end{equation}
+where $\alpha$ is the degeneracy slope, for which the optimal direction is $\alpha\!\sim\!0.25$ for CMB lensing and $\sim\!0.5$ for galaxy lensing (depending on the tomograhic binning and sensitivity to nonlinear scale power).
+
+For our fiducial reconstruction of using the GMV estimator with beam and foreground marginalized, we obtain: 
+\begin{align}
+\som&=0.605\pm0.010 \hspace{0.3cm} (\kappa_{\rm GMV}),
+\end{align}
+which is a 1.6\% constraint on this parameter and is the tightest constrain achieved on the lensing parameter from a single experiment to date. To test the sensitivity to the chosen foreground priors, we also test a setup where the width of the priors for the foreground parameters are set three times fiducial width and obtain $\Delta(\som)=0.010$ (see Appendix \ref{appendix:fgfit} for how the priors were chosen), which shows that our results are not sensitive to chosen foreground priors.
+We also cross-check our results with our constraints from polarization-only reconstruction, which is expected to be high in noisy but minimally contaminated by extragalactic foregrounds, as well as the profile hardened reconstruction, which explicitly projects sources with a given profile that matches with extra galactic sources. We obtain:
+$$
+\som=
+\begin{cases}
+0.602\pm0.014 \hspace{0.3cm} (\kappa_{\rm PP})\\[0.1cm]
+0.597\pm0.009 \hspace{0.3cm} (\kappa_{\rm GMVph}),\nonumber \\[0.1cm]
+\end{cases}
+$$which are both consistent with our fiducial result. For P-only constraints we check the parameter space consistency check using the approach described in \cite{gratton2020}, which is necessary due to the nested nature of the dataset (i.e., P-only is a subset of GMV). Specifically in the  $\Omega_{\rm m}$-$\som$ parameter space we find a consistency of $0.11\sigma\ (p=0.92)$, which is highly consistent. 
+
+Since it is challenging to characterize the foreground residual for the case of profile-hardened GMV (the profile distribution must match data), these results are not marginalized over foregrounds and therefore small contamination is expected (contamination from foreground in P-only lensing reconstruction is also assumed to be negligible with our masking threshold.) 
+\textcolor{red}{also do the same test for GMVph and also the consistency between P and GMVph}
+
+\subsubsection{Comaprison with  MUSE}\label{sec:ResultsLensingonly}
+We have presented the consistency check between $P$-only reconstruction and MUSE P-only reconstruction at the band power level in Section \ref{sec:}. In addition we also check the consistency with MUSE at the cosmological parameter level. 
+We do this by running a minimizer for the first 100 simulations realizations and comparing their distributions. We do this in two parameters $A^{\kappa\kappa}$ and $\som$
+
+
+
+
+
+While one would  expect the correlation between the polarization-only lensing reconstruction in this work to be very correlated with that from MUSE, it turns out that the correlation is low ($\sim10\%$) on very large scales and mild ($\sim60-70\%$) at intermediate scales. Nonetheless, we treat the dataset to be correlated and use the metric from \citep{raveri2020} to evaluate
+the consistency and obtain $p=X,Y$ between MUSE and P-only and GMV reconstruction respectively, which are in \textcolor{red}{good/bad} agreement. \textcolor{red}{still need to do this}
+
+\KW{quantify tension/consistency in cosmological parameter space between MUSE phiphi and GMV, using proper covariance between the two measurements. Important for comparison in extended parameter space in later sections.}
+
+\subsubsection{Comparison with other CMB lensing measurements }\label{sec:ResultsLensingonly}
+
+\begin{figure}
+\includegraphics[width=1.00\linewidth]{Figures/fig_lensonly_som_noph.pdf} 
+\caption{Summary of constraints on $\som$, using CMB lensing only measurements. CMB-SPA measurement only include the primary information without lensing.}
+\end{figure}
+
+%{\it Planck} has produced some of the most statistically powerful measurements of the CMB lensing potential to date. Using the final {\it Planck} maps (PR4/NPIPE) with optimal filtering and quadratic estimators, the lensing power spectrum is detected at high significance. While the signal-to-noise per mode is relatively low compared to SPT and ACT, due to to the sky coverage, the lensing spectrum can be measured to high significance.
+%rom the {\it Planck}-PR4 CMB lensing reconstruction alone, the parameter combination $\som$ is constrained to be $0.598 \pm   0.017$ under a baseline $\lcdm{}$ cosmology.
+
+%More recently, ACT released a complementary results of the CMB lensing measurement using 9400 ${\rm deg}^{2}$ with deep temperature and polarization data. While the sky coverage is smaller than that of {\it Planck}, the lower instrumental noise compensates, and the resulting signal-to-noise ratio is similar with the constraint $\som=0.604 \pm 0.016$. 
+
+%These numbers can also be compared with those obtained from \planck{}-PR4 ($0.598 \pm   0.017$) and ACT-DR6 ($0.604 \pm 0.016$) CMB lensing-only analyses. The combination of these two datasets results in $0.601 \pm 0.013$, which is unsurprisingly consistent with our fiducial result. The degree of consistency between these datasets can also be computed using \texttt{tensiometer} \citep{raveri2021} for which the number we obtain are summarized in Table \ref{table:s8}; we find agreement of better than $\Delta\sigma<0.03$ in the $\Omega_{\rm m}$--$\som$--$H_{0}$ parameter-space.
+
+
+%\subsection{Comparison with other CMB lensing results}
+In this section we compare our results with those from ${\it Planck}$-PR3 and -PR4~\cite{planck2018lens,planck2022lens},  ACT-DR6~\cite{madhavacheril2023}, and SPT-3G MUSE~\cite{ge2025}. For the two {\it Planck} releases the constraints obtained are:
+%(e.g., \( \Omega_{\rm m} = 0.315 \pm 0.007\), \( \sigma_{8} = 0.811 \pm 0.006\) for base \(\Lambda\)CDM) \citep{Aghanim:2020}.
+%\begin{align}
+%\som&=0.589\pm0.020 \hspace{0.3cm} ({\it Planck}\textnormal{-}{\rm PR3}) \\
+%\som&=0.599\pm0.016 \hspace{0.3cm} ({\it Planck}\textnormal{-}{\rm PR4}) 
+%\end{align}
+$$
+\som=
+\begin{cases}
+0.589\pm0.020 \hspace{0.3cm} ({\it Planck}\textnormal{-}{\rm PR3}) \\[0.1cm]
+0.599\pm0.016 \hspace{0.3cm} ({\it Planck}\textnormal{-}{\rm PR4})\, \nonumber
+\end{cases}
+$$
+which are in good agreement with our baseline results, despite the bulk of signal-to-noise ratio coming from very different scales, as well as the relative contribution from temperature and polarization due to the depth of our input CMB maps. Similarly, recent analyses from ACT using CMB lensing report values %such as \( S_{8} = 0.813 \pm 0.021 \) from ACT DR6 \citep{Farren:2023}%,
+\begin{equation}
+\som=0.604\pm0.016 \hspace{0.5cm} ({\rm ACT\textnormal{-}DR6}) 
+\end{equation}
+which are also in excellent agreement with our results.  Consequently, our measurement lies between these two independent probes, thereby offering a valuable cross‐check of the consistency of structure growth across cosmic time and scale.  
+
+We can compare out results from MUSE for which the constraints are:
+\begin{equation}
+\som=0.612\pm0.011 \hspace{0.5cm} ({\rm MUSE}).
+\end{equation}
+This is marginally higher than our fiducial results derived from GMV reconstruction, but is in perfect agreement with our polarization-only reconstruction measurement,
+\begin{equation}
+\som&=0.606\pm0.015 \hspace{0.55cm} (P\textnormal{-}{\rm only}).
+\end{equation}
+which is MUSE is based on. It should be noted that while the starting point of this work and MUSE are the same, the pipeline and machinery used is very different. Moreover MUSE is an joint inference between the unlensed CMB and the lensing potential whereas our work is reconstructing the lensing potential only. 
+%Our previous results \cite{pan2022} using the half season of data from 2018 found  $\som=0.595pm0.026$, a 4.4\% precision measurement on the amplitude fluctuation. This old measurement is perfectly consistent with our new measurement, albeit with larger uncertainties.
+
+
+We can also compare our results with previous results from SPT, \cite{simard2018}, \cite{bianchini2020}, and \cite{pan2023}, which utilized the SPT-SZ, SPTpol and half-season data from 2018 respectively, for which we obtained:
+$$
+\som=
+\begin{cases}
+0.598\pm0.024 \hspace{1cm} ({\rm SPT\textnormal{-}SZ}) \\[0.1cm]
+0.593\pm0.025 \hspace{1cm} ({\rm SPTpol}) \\[0.1cm]
+0.595\pm0.026 \hspace{1cm} ({\rm SPT3G}\textnormal{-}2018),\nonumber
+\end{cases}
+$$
+corresponding to a 4-4.5\% relative uncertainty on the amplitude of fluctuations. Comparing to these constraints, it is evident that our new measurement is perfectly consistent with our old measurements, but see a significant improvement on the precision, reaching 1.8\%.
+
+
+
+\textcolor{red}{Because ACT and {\it Planck} are consistent, the two can be combined to result in  powerful data vector that spans from large to intermediate scale, which results in a constrain of $\som=0.601 \pm 0.013$. Furthermore, ACT-DR6, Planck-PR4 and MUSE can be combined to obtain the constraint 0.825  \KW{translate to $\som$, this is in S8cmb.}  In particular, we use the \planck{}-PR4 + ACT-DR6 combined likelihood where the covariance due to the overlapping sky footprint is considered, and combine with our lensing reconstruction in this work with the assumption that the cross-covariance, which was num}
+\begin{figure}
+\includegraphics[width=1.00\linewidth]{Figures/errorbudget.pdf} 
+\caption{Summary of constraints on $\som$, while freeing some of the systematic for GMV estimator. }
+\end{figure}
+
+$$
+\som=
+\begin{cases}
+0.602\pm0.024 \hspace{0.3cm} ({\rm \kappa_{\rm GMV} + ACT\textnormal{-}DR6 + Planck\textnormal{-}PR4 })\\[0.1cm]
+0.602\pm0.024 \hspace{0.3cm} ({\rm MUSE + ACT\textnormal{-}DR6 + Planck\textnormal{-}PR4 })\\[0.1cm]
+\end{cases}
+$$
+
+
+
+
+\begin{table}
+\caption{Table summarizing the consistency between different lens datasets in the $\Omega_{\rm m}$ - $\som$ - $H_{0}$.}
+\label{table:s8}
+\begin{tabular}{ccc}
+\toprule
+ Dataset   &  $\Delta\sigma$ \\
+\midrule
+SPT3G-D1 vs \planck{}-PR4           & $0.026$ \\
+SPT3G-D1 vs ACT-DR6              & $0.010$ \\
+\planck{}-PR4 vs ACT-DR6            & $0.008$ \\
+SPT3G-D1 vs \planck{}-PR4+ACT-DR6   & $0.017$ \\
+ \bottomrule
+\end{tabular}
+\end{table}
+
+
+Finally, 
+
+%\begin{align}
+%N_{\sigma} = 0.026 \hspace{0.3cm} (\kappa_{\rm GMV} vs {\it Planck}\textnormal{-}{\rm PR4})
+%\som&=0.604\pm0.01 \hspace{0.3cm} (\kappa_{\rm GMVph})
+%\end{align}
+
+
+%\subsection{Impact of Baryons}
+%\KW{move out of systematics modeling to part of the results section}
+%One of the biggest concerns for optical weak lensing surveys is the effect of baryonic effects on the total matter power spectrum. Since CMB weak lensing, although sensitive to different redshfts,  are physically the same effect, we investigate whether this effect can impact our results. We test this by comparing the difference between a Baryonic effect contaminated data vector and comparing that with the statistical uncertainties. It can be seen that the effect is negligible relative to our statistical uncertainties even when considering the most extreme scenario of OWLS-AGN. 
+
+%\begin{figure}
+%\includegraphics[width=0.98\linewidth]{Figures/clkk_baryons_ratio.pdf} 
+%\caption{The effect of baryonic effects on the matter power spectrum and hence the CMB lensing power spectrum.  This is compared to the statistical uncertainties of our fiducial measurements. \textcolor{red}{maybe add Flamingo}}
+%\end{figure}
+
+
+
+%We test the sensitivity of our cosmological constraints to the choice of baryon modeling in the modeling of dark matter in \textsc{CAMB} on mock \textsc{Agora}. We test both \texttt{mead2016} and \texttt{mead2020} (both fixing  and freeing the $T_{\rm AGN}$ parameter), and find $\Delta S_{8}^{\rm CMB}=\textcolor{red}{XX}$ and $\textcolor{red}{YY}$ for \texttt{mead2016} and \texttt{mead2020} with $T_{\rm AGN}$ free, relative to the fiducial case of \texttt{mead2020} with fixed $T_{\rm AGN}$. We perform this on data in Section \ref{sec:ResultsLensingonly}.
+
+
+\subsection{CMB lensing + BAO}
+\KW{probably also make sense to report $\sigma_8$ and $\Omega_m$ individually; Can also report $H_0$.}
+CMB lensing alone constrains a narrow slither of parameter space that spans $\Omega_{\rm m}$, $\sigma_{8}$, and $H_{0}$. To break this degeneracy one needs a probe that tightly pins down the late-time geometry---most cleanly, the baryon acoustic oscillation (BAO). BAO measurements at different redshifts constrain  $E(z)\equiv H(z)/H_{0}$ and hence constrain $\Omega_{\rm m}$ (and, in extensions, curvature or $w$), while the overall scale is proportional to $(H_{0}r_{d})^{-1}$. We baseline our results on the combination with Dark Energy Spectroscopic Instrument data release 2 (DESI-DR2; \citealp{abdulkarim2025}) measurements.  it is known that under $\Lambda$CDM, this dataset prefers a lower $\Omega_{\rm m}$ and a higher
+hrd than CMB $T\!/\!E$ as well as previous BAO constraints.
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l c c c c}
+\toprule
+Lensing 
+& $\sigma_{8}\Omega_{\rm m}^{0.25}$ 
+& $\Omega_{\rm m}$ 
+& $\sigma_{8}$ 
+& $H_{0}$ \\
+\midrule
+GMV  & $0.610 \pm 0.008$ & $0.294 \pm 0.008$ & $0.828 \pm 0.012$ & $68.61 \pm 0.56$ \\
+PP   & $0.611 \pm 0.012$ & $0.295 \pm 0.008$ & $0.828 \pm 0.016$ & $68.65 \pm 0.56$ \\
+\midrule
+MUSE & $0.615 \pm 0.008$ & $0.299 \pm 0.008$ & $0.832 \pm 0.012$ & $68.76 \pm 0.56$ \\
+ACT  & $0.610 \pm 0.008$ & $0.294 \pm 0.008$ & $0.828 \pm 0.012$ & $68.61 \pm 0.56$ \\
+Planck & $0.615 \pm 0.008$ & $0.299 \pm 0.008$ & $0.832 \pm 0.012$ & $68.76 \pm 0.56$ \\
+\midrule
+AP+MUSE & $0.615 \pm 0.008$ & $0.299 \pm 0.008$ & $0.832 \pm 0.012$ & $68.76 \pm 0.56$ \\
+AP+GMV  & $0.610 \pm 0.008$ & $0.294 \pm 0.008$ & $0.828 \pm 0.012$ & $68.61 \pm 0.56$ \\
+\bottomrule
+\end{tabular}
+\caption{
+Cosmological constraints from CMB lensing reconstructions combined with BAO measurements from DESI DR2.
+Quoted uncertainties correspond to $68\%$ confidence intervals.
+}
+\label{table:results_lens_bao}
+\end{table}
+
+
+
+
+
+
+for which we obtain: 
+\begin{align}
+\som&=0.605\pm0.01 \hspace{0.3cm} ({\rm +DESI\textnormal{-}DR2})
+\end{align}
+We additionally combine with BAO dataset from th combination of 6dFGS (Beutler et al. 2011), SDSS DR7 Main Galaxy Sample (MGS; Ross et al. 2015), BOSS DR12 luminous red galaxies (LRGs; Alam et al. 2017), and eBOSS DR16 LRGs (Alam et al. 2021), using the likelihood implemeneted in \texttt{Cobaya} to make fair comparison with previos results that used this combination and obtain:
+\begin{align}
+\som&=0.604\pm0.01 \hspace{0.3cm} ({\rm +6dFGS+SDSS\textnormal{-}DR7+SDSS\textnormal{-}DR12+eBOSS\textnormal{-}DR16}) 
+\end{align}
+
+We additionally test the combination using $P$-only and GMV profile hardened reconstruction (assuming no foreground) and obtain
+
+$$
+\som=
+\begin{cases}
+0.615\pm0.013 \hspace{0.3cm} (\kappa_{\rm PP}+{\rm DESI}\textnormal{-}{\rm DR2}),\nonumber\\[0.1cm]
+0.604\pm0.010 \hspace{0.3cm} (\kappa_{\rm GMVph}+{\rm DESI}\textnormal{-}{\rm DR2}),\nonumber\\[0.1cm]
+\end{cases}
+$$
+
+
+
+
+\subsection{CMB lensing + CMB primary}
+Combining our constraints on $\Omega_{\rm m}$ and $S_{8}$ with those derived from primary cosmic microwave background (CMB) anisotropies is highly advantageous for several reasons.  First, the primary CMB probes the early Universe near the surface of last scattering, providing a precise measurement of the primordial fluctuation amplitude, matter‐energy content, and geometry of the Universe.  Meanwhile, our measurement (via weak lensing / structure growth) samples the lower‐redshift Universe, where non‐linear evolution, baryonic feedback and late‐time growth effects become important.  By jointly analysing both the early‐ and late‐time probes, we gain the ability to break parameter degeneracies inherent in each probe individually, and to test the consistency of structure growth across cosmic time.  A mismatch between the two could indicate either un-modelled systematic effects (for instance in lensing tomography, photometric redshifts or non‐linear modelling) or truly new physics (such as modifications of gravity or dark-sector interactions).  In our context, merging our findings with primary CMB results thus allows a more stringent test of the standard $\Lambda$CDM framework, reduces uncertainties by leveraging complementarity of redshift and scale sensitivity, and improves the robustness of cosmological parameter constraints.
+
+We combine with 3 different CMB primary datasets: SPT3G-D1 dataset from \citep{camphuis2025}, which uses the same temperature and polarization map as this work, and \planck{}, which is a standard benchmark dataset as well as the combination of SPT3G-D1, \planck{} and ACT-DR6 (SPA). In all three cases, the SRoll low-$\ell$ $E\!E$ likelihood \citep{delouis2019} is used to constrain $\tau$. The results are show in Figure \ref{fig:lens_cmb} and the best-fit values are summarized in Table \ref{table:lens_cmb_s8om0p25}: we find that the addition of SPT3G-D1 GMV to the constraints from  SPT3G-D1 T/E alone gives us a constraint that is 35\% tighter. In the case of SPA, we obtain constraints that are 1.5\% tighter than T/E alone.
+
+We measure the non-Gaussian tension metric using \texttt{tensiometer} between SPT3G-D1 GMV and the three primary data sets and find a difference of 0.848, 0.909, X $\sigma$ respectively, in the $\Omega_{\rm m}$-$\som$-$H_{0}$ parameter space.
+
+
+
+
+
+
+\begin{figure*}[t]
+\centering
+
+\begin{minipage}[t]{0.62\textwidth}\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Figures/fig_chain_lens_cmb.pdf}
+\end{minipage}%  <-- no newline or space after this percent
+%\hfill
+\hspace{-0.0cm}
+\begin{minipage}[t]{0.36\textwidth}\vspace{0pt}
+\centering
+\small
+\vspace{1.5cm}
+\captionof{table}{Summary: $\som$}
+\label{tab:s8omegamp25_summary}
+\begin{tabular}{lc}
+\toprule
+Dataset & $\som$  \\
+\midrule
+SDSS & $0.748 \pm 0.283$  \\
+PP & $0.606 \pm 0.015$  \\
+PP + SDSS & $0.614 \pm 0.014$  \\
+GMV & $0.599 \pm 0.011$  \\
+GMV + SDSS & $0.604 \pm 0.010$  \\
+SPA $T\!/\!E$ & $0.614 \pm 0.006$  \\
+\bottomrule
+\end{tabular}
+
+\medskip
+
+\captionof{table}{Consistency: $\Omega_{\rm m}$-$\som$-$H_{0}$}
+\label{tab:consistency_omegam_s8omegamp25_H0}
+\begin{tabular}{lr}
+\toprule
+Dataset & $N_{\sigma}$ \\
+\midrule
+PP vs SDSS & 1.046 \\
+PP + SDSS vs SPA $T\!/\!E$ & 0.254 \\
+GMV vs SDSS & 1.262 \\
+GMV + SDSS vs SPA $T\!/\!E$ & 0.739 \\
+\bottomrule
+\end{tabular}
+
+\end{minipage}
+
+\end{figure*}
+
+
+
+
+
+
+
+
+\begin{figure*}[t]
+\centering
+
+\begin{minipage}[t]{0.62\textwidth}\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Figures/fig_chain_lens_desi-dr2.pdf}
+\end{minipage}%  <-- no newline or space after this percent
+%\hfill
+\hspace{-0.0cm}
+\begin{minipage}[t]{0.36\textwidth}\vspace{0pt}
+\centering
+\small
+\vspace{1.5cm}
+\captionof{table}{Summary: $\som$}
+\label{tab:s8omegamp25_summary}
+\begin{tabular}{lc}
+\toprule
+Dataset & $\som$  \\
+\midrule
+SDSS & $0.748 \pm 0.283$  \\
+PP & $0.606 \pm 0.015$  \\
+PP + SDSS & $0.614 \pm 0.014$  \\
+GMV & $0.599 \pm 0.011$  \\
+GMV + SDSS & $0.604 \pm 0.010$  \\
+SPA $T\!/\!E$ & $0.614 \pm 0.006$  \\
+\bottomrule
+\end{tabular}
+
+\medskip
+
+\captionof{table}{Consistency: $\Omega_{\rm m}$-$\som$-$H_{0}$}
+\label{tab:consistency_omegam_s8omegamp25_H0}
+\begin{tabular}{lr}
+\toprule
+Dataset & $N_{\sigma}$ \\
+\midrule
+PP vs SDSS & 1.046 \\
+PP + SDSS vs SPA $T\!/\!E$ & 0.254 \\
+GMV vs SDSS & 1.262 \\
+GMV + SDSS vs SPA $T\!/\!E$ & 0.739 \\
+\bottomrule
+\end{tabular}
+
+\end{minipage}
+
+
+\centering
+
+\begin{minipage}[t]{0.62\textwidth}\vspace{0pt}
+\centering
+\includegraphics[width=\linewidth]{Figures/fig_chain_lens_sdss.pdf}
+\end{minipage}%  <-- no newline or space after this percent
+%\hfill
+\hspace{-0.0cm}
+\begin{minipage}[t]{0.36\textwidth}\vspace{0pt}
+\centering
+\small
+\vspace{1.5cm}
+\captionof{table}{Summary: $\som$}
+\label{tab:s8omegamp25_summary}
+\begin{tabular}{lc}
+\toprule
+Dataset & $\som$  \\
+\midrule
+DESI-DR2 & $0.748 \pm 0.283$  \\
+PP & $0.606 \pm 0.015$  \\
+PP + DESI-DR2 & $0.614 \pm 0.014$  \\
+GMV & $0.599 \pm 0.011$  \\
+GMV + DESI-DR2 & $0.604 \pm 0.010$  \\
+SPA $T\!/\!E$ & $0.614 \pm 0.006$  \\
+\bottomrule
+\end{tabular}
+
+\medskip
+
+\captionof{table}{Consistency: $\Omega_{\rm m}$-$\som$-$H_{0}$}
+\label{tab:consistency_omegam_s8omegamp25_H0}
+\begin{tabular}{lr}
+\toprule
+Dataset & $N_{\sigma}$ \\
+\midrule
+PP vs DESI-DR2 & 1.046 \\
+PP + DESI-DR2 vs SPA $T\!/\!E$ & 0.254 \\
+GMV vs DESI-DR2 & 1.262 \\
+GMV + DESI-DR2 vs SPA $T\!/\!E$ & 0.739 \\
+\bottomrule
+\end{tabular}
+
+\end{minipage}
+
+\caption{Plot caption.}
+\label{fig:myplot}
+
+\end{figure*}
+
+
+
+
+
+% Although this measurement carried substantially larger uncertainty than the present work, it is entirely consistent with the new result. Consequently, the earlier value serves as a valid benchmark, and the current analysis strengthens the constraint while preserving agreement in the central value.
+
+
+Overall, by placing our constraint in the context of both the early-Universe (Planck) and late-time (ACT) probes, we verify that our result is neither an outlier nor artificially driven by a single data set; rather it reinforces the global picture of cosmological parameter consistency (or highlights a mild tension if present) in the \(\Lambda\)CDM framework.
+
+
+
+
+
+
+\subsection{Comparison with other optical lensing and multi-probe results.}
+\label{sec:LSScomparison}
+In this section we compare our constrains on the matter density $\Omega_{\rm m}$ and amplitude of matter fluctuation $S_{8}$ from with those obtained recently by the Dark Energy Survey (DES; \cite{flaugher2015,des2016,des2018} ), Kilo-Degree Survey (KiDS; \cite{kuijken2015}), the Hyper Suprime-Cam Strategic S Program (HSC-SSP; \cite{hsc}) and  Dark Energy Camera All Data Everywhere (DECADE; \cite{anbajagane2025}) project. 
+
+
+Although the underlying gravitational physics that produces weak lensing is identical for galaxies and for the CMB, the two probes differ fundamentally in the nature and redshift distribution of their background sources: for galaxy weak lensing, the observed distortions are measured from the shapes of galaxies that span a broad redshift range, typically extending up to $z \sim 2$, rather than from a single, well defined source plane as in CMB lensing. Because the lensing kernel is most sensitive to structures located roughly halfway between the observer and the sources, galaxy weak lensing is most sensitive to large scale structure at $z\sim0.5$. In addition, the lower characteristic source redshifts shift the dominant signal toward slightly smaller angular scales compared to CMB lensing. As a result, galaxy weak lensing provides a complementary view of structure formation, focusing on the late time Universe and the mildly to strongly nonlinear regime, while CMB lensing primarily probes the integrated mass distribution along a much longer line of sight extending back to the last scattering surface.
+
+\textcolor{red}{For this comparison we change the modeling slightly: we assume three species of mass less neutrino. We adopt the \texttt{mead2020} model without varying the $T_{\rm AGN}$, and sample directly in $H_{0}$ intead of $\theta_{\rm MC}$. } 
+As noted previously, the tightest degeneracy direction the the CMB lensing auto-spectrum measures is $\som$, while cosmic shear measurements probe a steeper slope due to its sensitivity to a narrower range of redshift as well as nonlinear scales.
+
+The amplitude of structure fluctuation is typically parameterized\footnote{While the exponent of 0.5 is a standarized convention it is typically not the most constraining direction as it depends on the redshift and scale that the dataset is sensitive to.} as $S_{8}\equiv \sigma_{8}(\Omega_{\rm m}/0.3)^{0.5}$ for which we obtain:
+\begin{equation}
+S_{8}=0.810\pm0.088\hspace{0.3cm} (\kappa_{\rm GMV}). \nonumber
+\end{equation}
+
+Galaxy weak lensing measurements result in lower $S_{8}$ constraints compared to constraints from primary CMB observations and previous CMB weak lensing measurements:
+$$
+S_{8}=
+\begin{cases}
+0.773^{+0.036}_{-0.036} \hspace{0.5cm} ({\rm DES\textnormal{-}Y3},\ {\rm cosmic\ shear}),\nonumber\\[0.1cm]
+0.770^{+0.029}_{-0.029} \hspace{0.5cm} ({\rm KiDS\textnormal{-}1000},\ {\rm cosmic\ shear}),\nonumber\\[0.1cm]
+\textcolor{red}{0.649^{+0.074}_{-0.074}} \hspace{0.5cm} ({\rm HSC},\ {\rm cosmic\ shear}),\nonumber\\[0.1cm]
+0.820^{+0.023}_{-0.023} \hspace{0.5cm} ({\rm DECADE},\ {\rm cosmic\ shear}).\nonumber
+
+\end{cases}
+$$
+We measure the tension between these results with that from GMV in $\Omega_{\rm m} - S_{\rm 8}$ parameter space\footnote{While CMB lensing is mildly sensitive to $H_{0}$, galaxy weak lensing has negligible sensitivity to this parameter due to its degeneracy with other cosmological and systematic parameters.} and find tension ranging from \textcolor{red}{X$\sigma$ to Y$\sigma$}. While several reasons has been postulated including baryonic effects, nonlinear modeling, photometric redshifts and intrinsic alignment (and likely the combination of all),  a concrete evidence has not been put forward.
+
+
+
+
+\begin{figure}[H]
+\includegraphics[width=0.99\linewidth]{Figures/fig_lss.pdf} 
+\includegraphics[width=0.99\linewidth]{Figures/fig_gmv_vs_3x2pt.pdf} 
+\caption{Constraints on $\Omega_{\rm m}$ and $S_{8}$, from HSC (gray), DES cosmic shear (orange), KiDS-1000 (green), DECADE-13k (light blue) and our fiducial GMV results (dark blue).}
+\end{figure}
+
+We additionally compare our results form those from the multi-probe analysis using the combination of galaxy clustering, cosmic shear and galaxy-galaxy lensing (namely $3\!\times\!2$pt analyses) from DES~\citep{desy3_3x2}. Taking such combinations allow for degeneracy breaking of nuisance parameters such as photometric redshift uncertainties, shear calibration bias, intrinsic alignment and  and allows for more robust cosmological constraints. These studies obtain: 
+\begin{align}
+S_{8}= 0.776^{+0.017}_{-0.017} \hspace{0.5cm} ({\rm DES\textnormal{-}Y3},\  3\!\times\!2{\rm pt})
+\end{align}
+%$$
+%S_{8}=
+%\begin{cases}
+%0.776^{+0.017}_{-0.017} \hspace{0.5cm} ({\rm DES\textnormal{-}Y3},\  3\!\times\!2{\rm pt}),\nonumber\\[0.1cm]
+%0.766^{+0.020}_{-0.014} \hspace{0.5cm} ({\rm KiDS\textnormal{-}1000},\  3\!\times\!2{\rm pt}),\nonumber\\[0.1cm]
+%0.775^{+0.043}_{-0.038} \hspace{0.5cm} ({\rm HSC},\  3\!\times\!2{\rm pt}),\nonumber
+%\end{cases}
+%$$
+
+
+We additionally have the full constraint of combining $3\!\times\!2$pt, with CMB lensing (so-called $6\!\times\!2$pt), for which more systematics are nulled:
+\begin{align}
+S_{8}&=0.792^{+0.012}_{-0.012} \hspace{0.5cm} ({\rm DES\textnormal{-}Y3+SPT\textnormal{-}SZ},\  6\!\times\!2{\rm pt}),\nonumber
+\end{align}
+
+\begin{figure}
+\includegraphics[width=0.99\linewidth]{Figures/fig_k_vs_z.pdf} 
+\caption{Sensitivity of this work in $k$ and $z$, compared with other CMB experiments and LSS surveys.\textcolor{red}{Add DES/kids/HSC} }
+\end{figure}
+
+We summarize the measured constraints in  Table \ref{table:s8}
+
+
+
+\begin{table}
+\centering
+\begin{tabular}{l l c c}
+\toprule
+Group & Dataset & $S_{8}$ \\
+\midrule
+CMB lensing & GMV & $0.810^{+0.088}_{-0.088}$ & -- \\
+CMB lensing+BAO & GMV & $0.810^{+0.088}_{-0.088}$ & -- \\
+
+\midrule
+
+\multirow{4}{*}{Cosmic shear only}
+  & DES-Y3     & $0.773^{+0.036}_{-0.036}$ & $X\sigma$ \\
+  & KiDS-1000  & $0.770^{+0.029}_{-0.029}$ & $X\sigma$ \\
+  & HSC-Y3     & $0.649^{+0.074}_{-0.074}$ & $X\sigma$ \\
+  & DECADE-13k & $0.820^{+0.023}_{-0.023}$ & $X\sigma$ \\
+\midrule
+
+\multirow{4}{*}{Cosmic shear + BAO}
+  & DES-Y3     & $0.776^{+0.017}_{-0.017}$ & $X\sigma$ \\
+  & KiDS-1000  & $0.766^{+0.020}_{-0.014}$ & $X\sigma$ \\
+  & HSC-Y3     & $0.755^{+0.043}_{-0.038}$ & $X\sigma$ \\
+  & DECADE-13k & $0.805^{+0.019}_{-0.019}$ & $X\sigma$ \\
+\midrule
+
+{3$\times$2pt}
+  & DES-Y3     & \textcolor{red}{$0.776^{+0.017}_{-0.017}$} & $X\sigma$ \\
+  %& KiDS-1000  & $0.766^{+0.020}_{-0.014}$ & $X\sigma$ \\
+  %& HSC-Y3     & $0.755^{+0.043}_{-0.038}$ & $X\sigma$ \\
+\midrule
+{3$\times$2pt + GMV}
+  & DES-Y3     & \textcolor{red}{$0.776^{+0.017}_{-0.017}$} & $X\sigma$ \\
+  %& KiDS-1000  & $0.766^{+0.020}_{-0.014}$ & $X\sigma$ \\
+  %& HSC-Y3     & $0.755^{+0.043}_{-0.038}$ & $X\sigma$ \\
+
+\bottomrule
+\end{tabular}
+\caption{Table summarizing $S_{8}$ constraints from optical weak lensing surveys.}
+\label{table:s8}
+\end{table}
+
+
+
+
+
+
+\subsection{Combined constraints: CMB T/E + lensing + BAO}
+Finally, we report constraints from the joint analysis of CMB lensing, primary CMB, and BAO data. For our fiducial results of combining GMV, SPA $T/E$ and DESI-DR2 we find:
+\begin{center}
+\left.
+\begin{array}{l}
+  \Omega_{\rm m} = 0.301^{+0.004}_{-0.004} \\[0.1cm]
+  H_{0} \hspace{0.05cm}= 68.36^{+0.26}_{-0.26}\\[0.1cm]
+  \sigma_{8} \hspace{0.15cm} = 0.810^{+0.005}_{-0.005}
+  
+\end{array}\right\}
+\quad
+\begin{array}{@{}c@{}}
+  \kappa_{\rm GMV}  +\ {\rm SPA}_{T\!/\!E}
+  +\ {\rm DESI}\textnormal{-}{\rm DR2}.
+\end{array}\\
+\end{center}
+Switching the CMB primary dataset to SPT-3G or {\it Planck} does not significantly shift these results.
+The difference between GMV, MUSE and SQE PP is also minimal as summarized in Table \ref{table:results_lens_cmb_bao}. We also measure the consistency between CMB lensing, $T\!/\!E$ and BAO. We measure the consistency using all combinations.  For lensing + $T\!/\!E$ vs DESI-DR2, we measure the consistency at
+$0.603 \sigma$ and $1.152 \sigma$ if we use the SPT3G-D1 or SPA best-fit respectively, in the $\Omega_{\rm m}$ -- $\som$ -- $H_{0}$ parameter space. The tension seen here is less than that of measure by the combination of MUSE + SPA T/E vs DESI-DR2, although we somewhat find similar tensions when instead use polarization-only reconstruction. Conversely, in the tension between lensing +DESI-DR2 vs CMB $T\!/\!E$ is found to be 0.44 and 1.443 $\sigma$ for SPT3G-D1 or SPA best-fit respectively.
+Likewise the tensiio n can be measureed in the parameter-space more suited directly for BAO in the $\Omega_{\rm m}$--$hr_{\rm drag}$ parameter space. In this space we find that for lensing + $T\!/\!E$ vs DESI-DR2, we measure the consistency at
+$0.604 \sigma$ and $1.518 \sigma$ if we use the SPT3G-D1 or SPA best-fit respectively, and 
+lensing +DESI-DR2 vs CMB $T\!/\!E$ is found to be 0.904 and 1.991 $\sigma$ for SPT3G-D1 or SPA best-fit respectively, which is still consistent. In comparison, MUSE PP + SPA TTEETE vs DESI-DR2 
+ is measured to be 2.7$\sigma$ in the parameters space.\\
+%### Consistency: omegam_s8omegamp25_H0
+%Dataset                                     Nsigma
+%------------------------------------------  --------
+%SPT3G-D1 GMV + SPT3G-D1 TTEETE vs DESI-DR2  0.603
+%SPT3G-D1 GMV + DESI-DR2 vs SPT3G-D1 TTEETE  0.44
+%SPT3G-D1 GMV + SPA TTEETE vs DESI-DR2       1.152
+%SPT3G-D1 GMV + DESI-DR2 vs SPA TTEETE       1.443
+%MUSE PP + SPA TTEETE vs DESI-DR2            1.832
+ 
+%### Consistency: omegam_hrdrag
+%Dataset                                     Nsigma
+%------------------------------------------  --------
+%SPT3G-D1 GMV + SPT3G-D1 TTEETE vs DESI-DR2  0.604
+%SPT3G-D1 GMV + DESI-DR2 vs SPT3G-D1 TTEETE  0.904
+%SPT3G-D1 GMV + SPA TTEETE vs DESI-DR2       1.518
+%SPT3G-D1 GMV + DESI-DR2 vs SPA TTEETE       1.991
+%MUSE PP + SPA TTEETE vs DESI-DR2            2.703
+
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l c c c c}
+\toprule
+Lensing & CMB 
+& $\Omega_{\rm m}$ 
+& $\sigma_{8}$ 
+& $H_{0}$ \\
+\midrule
+%GMV  & {\it Planck}  & $0.302 \pm 0.004$ & $0.813 \pm 0.005$ & $68.34 \pm 0.29$ \\
+%MUSE & {\it Planck}  & $0.303 \pm 0.004$ & $0.815 \pm 0.006$ & $68.29 \pm 0.29$ \\
+%PP   & {\it Planck} & $0.301 \pm 0.004$ & $0.812 \pm 0.006$ & $68.38 \pm 0.29$ \\
+%\midrule
+%GMV  & SPT &  $0.298 \pm 0.004$ & $0.805 \pm 0.005$ & $68.43 \pm 0.31$ \\
+%MUSE & SPT &  $0.302 \pm 0.004$ & $0.815 \pm 0.006$ & $68.20 \pm 0.30$ \\
+%PP   & SPT &  $0.298 \pm 0.004$ & $0.806 \pm 0.006$ & $68.42 \pm 0.32$ \\
+%\midrule
+GMV  & SPA &  $0.301 \pm 0.004$ & $0.810 \pm 0.005$ & $68.36 \pm 0.26$ \\
+MUSE & SPA &  $0.303 \pm 0.003$ & $0.819 \pm 0.005$ & $68.23 \pm 0.26$ \\
+PP   & SPA &  $0.301 \pm 0.004$ & $0.813 \pm 0.005$ & $68.35 \pm 0.26$ \\
+\bottomrule
+\end{tabular}
+\caption{
+Cosmological constraints from CMB lensing reconstructions combined with CMB primary and BAO (DESI-DR2) constaints. Quoted uncertainties correspond to $68\%$ confidence intervals.
+}
+\label{table:results_lens_cmb_bao}
+\end{table}
+
+
+
+ 
+
+%\section{Cosmological implications}
+\subsection{Constraints on $A^{\phi\phi}$}
+\KW{the info in this section is covered in VIII A. Can remove?}
+To compare our lensing amplitude with other studies, we use the fiducial cosmology and infer $A_{\rm lens}=A_{L}^{\kappa\kappa}$, marginalizing over all the systematics including calibration and foreground parameters. For our fiducial case of free-ing foreground, we find an amplitude of $A^{\kappa\kappa} =X\pm Y$, which is consistent with 1 from SPA-cosmology. Llikewise if we adopt the constraints from SPT-3G D1 $TT$-only, fitting the full \textsc{Agora} template model we obtain $A^{\kappa\kappa}=1.019\pm0.025$.  
+
+We also test two different scenarios fixing all the foreground parameters $A_{tSZ}$, $A_{\rm CIB}^{\nu}$, $A_{rad}^{\nu}$ to 0 and 1, for which we obtain $A^{\kappa\kappa} =0.983\pm 0.024$ and $A^{\kappa\kappa} =1.028\pm 0.024$ respectively, which are again consitent with the the fiducial cosmological model. Interestingly, here we see a shift in the best-fit amplitude, and this is because the foreground amplitude does not get absorbed by other systematics. For profile hardened and polarization-only reconstructions we find $1.005\pm 0.024$ and $1.055\pm 0.025$ respectively. 
+
+
+
+\subsection{Constraints on $A_{\rm lens}$, $A_{\rm 2pt}$ and $A_{\rm recon}$}
+Following \cite{ge2025}, we investigate whether we see excess lensing power claimed by \cite{craig} by looking into three different lensing parameters: (a) $A_{\rm lens}$ which simultaneously controls the amount of peak smoothing in the power spectra and lensing power spectra amplitude (b) $A_{\rm 2pt}$ which controls the peak smoothing of primary powerspectra \citep{lewis2006} only, and (c) $A_{\rm recon}$ which describes the amplitude of lensing reconstruction power spectrum only.  We use the combination of CMB primary measurements from \cite{camphuis2025} and SPA as well as measurements from DESI-DR2 BAO. For the $A_{\rm lens}$ we find:
+$$
+A_{\rm lens}=
+\begin{cases}
+0.969 \pm 0.087\hspace{0.3cm} (\kappa_{\rm GMV}+ {\rm SPT3G}\textnormal{-}{\rm D1\ T/E})\nonumber\\
+0.969 \pm 0.087\hspace{0.3cm} (\kappa_{\rm GMV}+ {\rm SPA}\  {\rm T/E})\nonumber\\
+\end{cases}
+$$
+
+
+
+
+$A_{\rm 2pt}=1.08\pm0.05$ and $A_{\rm recon}=0.99\pm0.05$, whereas for the combination with SPA we find  $A_{\rm 2pt}=1.09\pm0.03$ and $A_{\rm recon}=0.99\pm0.04$, which are consistent with previous results in but marginally lower in $A_{\rm recon}$.
+
+
+
+\textcolor{red}{We additionally combine with Planck-PR3, and find consistently higher $A_{\rm 2pt}$ -- sometimes referred to as the ``$A_{\rm lens}$" anomaly. Fill this i after running Planck PR3 + BAO + GMV chains }
+
+
+\begin{table}
+\caption{Constraints on lesing amplitudes}
+\label{table:s8}
+\begin{tabular}{ccc}
+\toprule
+ Dataset   & $A_{\rm 2pt}$ &  $A_{\rm recon}$ \\
+\midrule
+  $\kappa_{\rm GMV}$\ +\ SPT3G-D1\ (T/E)   & $1.01\pm0.09$ & $0.92\pm0.09$    \\
++\ DESI-DR2                                         & $1.08\pm0.05$ &  $0.99\pm0.06$ \\
+  $\kappa_{\rm GMV}$\ +\ SPA\ (T/E)         & $1.06\pm0.04$ &  $0.97\pm0.05$ \\
++\ DESI-DR2                                         & $1.09\pm0.03$ &  $0.99\pm0.04$ \\
+ $\kappa_{\rm GMV}$\ +\ {\it Planck}\ (T/E)   &  & -   \\
++\ DESI-DR2   &  &  $X\sigma$ \\
+ \bottomrule
+\end{tabular}
+\end{table}
+
+
+
+
+
+\begin{figure}
+\includegraphics[width=0.99\linewidth]{Figures/fig_A2ptArecon_data.pdf} 
+\caption{Constraints on $A_{\rm 2pt}$, $A_{\rm lens}$, from the combined results of lensing reconstruction, DESI-DR2. and CMB T/E (SPT3G-D1 in gray and SPA in teal). }
+\end{figure}
+
+
+\subsection{Massive Neutrinos}
+%In the standard $\Lambda$CDM model, neutrinos are included as a component of the cosmic energy density, but their properties are fixed to the minimal values consistent with particle physics experiments rather than being treated as free cosmological parameters. Specifically the total mass of all three neutrino species is fixed to the minimal value allowed by oscillation data $\sum m_{\nu}=0.058{\rm eV}$. 
+
+
+%As neutrinos move at high thermal velocities, they free-stream out of overdense regions and fail to cluster below their characteristic free-streaming scale. This reduces the amplitude of matter fluctuations on scales smaller than roughly a few tens of Mpc, and therefore leads to a reduction in $C_{L}^{\kappa\kappa}$ at intermediate and high multipoles. This distinct scale dependent matter suppression can be measured directly and also allows to break degeneracy with other cosmological parameters  such as $\Omega_{m}$ and $A_{\rm s}$ that govern the amplitude of the spectrum.  For a review of neutrino physics and its cosmological significance see \cite{Lesgourgues_Mangano_Miele_Pastor_2013}.
+%\textcolor{red}{some disscussion of scale dependence from MUSE}.
+
+%with updated A_fg bestfit and uncertainties
+%data_camb_gmvspafg_spatteete_mnu2
+%mnu 0.68% lower: 0.000 upper: 0.132 (one tail upper limit)
+%mnu 0.95% lower: 0.000 upper: 0.264 (one tail upper limit)
+%mnu 0.99% lower: 0.000 upper: 0.354 (one tail upper limit)
+%data_camb_gmvspafg_spatteete_planckactlensbase_mnu2
+%mnu 0.68% lower: 0.000 upper: 0.131 (one tail upper limit)
+%mnu 0.95% lower: 0.000 upper: 0.258 (one tail upper limit)
+%mnu 0.99% lower: 0.000 upper: 0.337 (one tail upper limit)
+%data_camb_gmvspafg_spatteete_desidr2_mnu2
+%mnu 0.68% lower: 0.000 upper: 0.036 (one tail upper limit)
+%mnu 0.95% lower: 0.000 upper: 0.074 (one tail upper limit)
+%mnu 0.99% lower: 0.000 upper: 0.104 (one tail upper limit)
+%data_camb_gmvspafg_spatteete_desidr2_planckactlensbase_mnu2
+%mnu 0.68% lower: 0.000 upper: 0.033 (one tail upper limit)
+%mnu 0.95% lower: 0.000 upper: 0.072 (one tail upper limit)
+%mnu 0.99% lower: 0.000 upper: 0.097 (one tail upper limit)
+%data_camb_spatteete_desidr2_mnu
+%mnu 0.68% lower: 0.000 upper: 0.030 (one tail upper limit)
+%mnu 0.95% lower: 0.000 upper: 0.065 (one tail upper limit)
+%mnu 0.99% lower: 0.000 upper: 0.090 (one tail upper limit)
+%data_camb_spatteete_desidr2_planckactlensbase_mnu
+%mnu 0.68% lower: 0.000 upper: 0.030 (one tail upper limit)
+%mnu 0.95% lower: 0.000 upper: 0.066 (one tail upper limit)
+%mnu 0.99% lower: 0.000 upper: 0.090 (one tail upper limit)
+
+
+
+Massive neutrinos suppress structure growth below their free-streaming scales, which translates to a suppressed CMB lensing power spectrum relative to the zero neutrino mass scenario.
+Therefore, CMB lensing is useful for constraining the sum of neutrino mass.
+In this section, we first report the constraint on the sum of neutrino mass using SPA primary CMB and our fiducial lensing spectrum measurement, we then include CMB lensing measurements from Planck PR4~\cite{} and ACT DR6~\cite{} to provide a neutrino mass constraint from the latest CMB data sets.
+We do not include the correlations between the GMV lensing measurement and the Planck and ACT lensing measurements because of the small overlap in sky area and lensing modes~\cite{apslensing}.
+As noted in a series of papers~\cite{camphui25, ge24, apslensing, green_meyer, loverde_weiner}, combining CMB (primary and lensing) with DESI BAO data produces very tight upper limit on the sum of neutrino masses. 
+After the CMB-only results, we show the result from combining the SPA TT/TE/EE and CMB lensing likelihoods with the DESI DR2 likelihood.
+In particular, we highlight the role of CMB lensing by comparing the upper limit without CMB lensing from SPA T\&E + DESI DR2 with that from CMB lensing + SPA T\&E + DESI DR2. 
+We show that adding CMB lensing data loosen the upper limit on the sum of neutrino mass. 
+
+
+%The constsraints on $\sum m_{\nu}$ when the lensing measurements are combine with a selection of primary CMB measurements with and without DESI-DR2 are summarized in Table X.   
+Our fiducial result from combining SPA T\&E and GMV lensing yields
+\begin{equation}
+\summnu < 0.264 {\rm eV}\ (\rm{95\% C.L.; GMV + SPA \, T\&E}).
+\end{equation}
+Including CMB lensing from Planck PR4~\cite{} and ACT DR6~\cite{} yields 
+\begin{equation}
+\summnu < 0.258 {\rm eV}\ (\rm{95\% C.L.; GMV + PACT \, lensing + SPA\, T\&E}).
+\end{equation}
+The slightly higher upper limit on $\summnu$ using GMV lensing is correlated with its slightly lower $\som$ compared to Planck and ACT lensing in $\Lamda$CDM.
+Since neutrino mass suppresses lensing amplitude, lower $\som$ in $\Lambda$CDM can translate to higher neutrino mass in $\Lambda$CDM+$\summnu$.
+%This shows that our lensing measurement, with its sensitivity to $L > 700$ modes, drives the constraint.\footnote{Similar behavior is observed when combining the MUSE lensing spectrum measurement with P-ACT lensing: the upper limit on the sum of neutrino mass does not change much when adding P-ACT lensing.}
+
+Before combining the primary CMB + CMB lensing with DESI-DR2 BAO, we note the $\summnu$ upper limit from SPA primary CMB + DESI BAO alone:
+\begin{equation}
+\summnu < 0.065 {\rm eV}\ (\rm{95\% C.L.; SPA \,T&E + DESI}).
+\end{equation}
+This tight upper limit is driven by the 2$\sigma$ difference in the matter density between primary CMB and DESI BAO~\cite{lynch_knox2025}.
+
+
+When combining SPA T\&E and CMB lensing with DESI-DR2 BAO, we obtain 
+\begin{equation}
+\summnu < 0.074 {\rm eV}\ (\rm{95\% C.L.; GMV + SPA \,T&E + DESI}), 
+\end{equation}
+and 
+\begin{equation}
+\summnu < 0.072 {\rm eV}\ (\rm{95\% C.L.; GMV + PACT\, lensing \\+ SPA\, T&E + DESI}),
+\end{equation}
+when including Planck and ACT lensing. 
+Without GMV lensing, the upper limit reduces to
+\begin{equation}
+\summnu < 0.066 {\rm eV}\ (\rm{95\% C.L.; PACT\, lensing \\+ SPA\, T&E + DESI}).
+\end{equation}
+Thus, we conclude that GMV lensing drives the loosening of the neutrino mass upper limit.
+We show in Fig.~\ref{fig:mnu_1d} the marginalized 1D probability densities of $\summnu$ for the cases considered. 
+\begin{figure}
+\includegraphics[width=1.00\linewidth]{Figures/mnu_1d.pdf} 
+\caption{Upper limits on the sum of neutrino masses from different combinations of data sets: all cases include SPA T\&E.
+As described in the text, adding the combined lensing measurements from GMV and P-ACT lensing, to SPA T\&E and DESI BAO, 
+the upper limit loosen from $\summnu < 0.065 {\rm eV}$ to $\summnu < 0.072 {\rm eV}$. }
+\label{fig:mnu_1d}
+\end{figure}
+\begin{figure}
+\includegraphics[width=1.00\linewidth]{Figures/omegacb_mnu_2d.pdf} 
+\caption{This figure illustrates the degeneracy direction in the $\omega_{cb} \equiv \omega_{cdm} + \omega_b$ vs $\summnu$ ($\propto \omega_{\nu}$) plane for SPA T\&E + CMB lensing vs SPA T\&E + CMB lensing + BAO. 
+When the two sets differ more in their $\omega_m$ in $\Lambda$CDM, the space for overlap in $\summnu$ is reduced.
+SPA T\&E + GMV is less in tension with DESI's $\omega_m$, causing the upper limit to not tighten as much as, e.g., SPA T\&E + MUSE $\phi\phi$ + DESI.
+In addition, GMV lensing has $A^{\rm recon} \lesssim 1$ in $\Lambda$CDM when jointly fitting with SPA T\&E and DESI BAO (at fixed $A^{\rm 2pt} = 1$), preferring a higher $\summnu$.}
+\label{fig:omegacb_mnu_2d}
+\end{figure}
+
+The loosening of the $\summnu$ upper limit when combining GMV lensing (and P-ACT lensing) with SPA T\&E and DESI BAO is driven by two effects.
+The first is the less inconsistent $\omega_m$ between the CMB (primary + lensing) data sets and DESI in $\Lambda$CDM.\footnote{This can also be seen in $\Lambda$CDM when computing the distance between GMV lensing + SPA T\&E vs DESI BAO in the $\Omega_m$-$r_d h$ plane: the distance is 1.5$\sigma$. \KW{update 1.5 sigma with number from new bestfit A_fg runs}}
+More discrepant $\omega_m$ leads to tighter upper limits on $\summnu$~\cite{lynch_knox2025}.
+To break this down, $\omega_m \equiv \omega_{cdm} + \omega_{b} + \omega_{\nu}$, in the parameter posterior plane of $\omega_{cdm} + \omega_b$ vs $\omega_{\nu}$ ($\propto \summnu$), the degeneracy directions of the contours from CMB lensing + SPA T\&E vs DESI BAO + SPA T\&E are opposite to each other, as illustrated in Fig.~\ref{fig:omegacb_mnu_2d}. 
+More consistent $\omega_m$ means more overlap between the GMV+P-ACT lensing + SPA T\&E and the SPA T\&E + DESI BAO contours, which, for the specific data sets, does not further tighten the upper limit from the degeneracy breaking when combined.
+%, as seen in the current case.
+To see that the upper limit increases going from  SPA T\&E + DESI BAO to GMV+P-ACT lensing + SPA T\&E + DESI BAO, we probe the lensing spectrum amplitude $A^{recon}$ given the $\Lambda$CDM parameters fit to  SPA T\&E + DESI BAO and the shape (not amplitude) of the lensing spectrum at fixed $\summnu = 0 \mathrm{eV}$.\footnote{I.e. we run chains for the CMB lensing + SPA T\&E + DESI data sets freeing $\Lambda$CDM+$A^{recon}$ parameters with $\summnu$ fixed to 0 eV with the standard set of priors. $A^{2pt}$ is fixed to 1. The $\Lambda$CDM parameters should be very close to those from fitting $\Lambda$CDM ($\summnu$=0 eV) parameters to SPA T\&E + DESI BAO data sets, except for the negligible effect from the shape of the lensing spectrum.}
+This answers the question of what value of $A^{recon}$ best fit the lensing data sets relative to the cosmology of SPA T\&E+DESI BAO. 
+If $A^{recon}$ is larger than 1, there is excess lensing, and vice versa.
+With the same data set, when fit to $\Lambda$CDM+$\summnu$, excess lensing will translate to a tighter upper limit on $\summnu$.
+For both GMV lensing and GMV+P-ACT lensing, $A^{recon}$ are less than 1. 
+As a result, fitting the combined GMV(+P-ACT) lensing + SPA T\&E + DESI BAO data set to the \Lambda$CDM+$\summnu$ model acquires loosened neutrino mass upper limits. 
+
+We further note that the GMV+P-ACT lensing + SPA T\&E + DESI BAO upper limit on the sum of neutrino mass is 50\% higher than the one when replacing GMV lensing with MUSE $\phi\phi$, which gives~\cite{camphuis25}
+\begin{equation}
+\summnu < 0.048 {\rm eV}\ (\rm{95\% C.L.; MUSE $\phi\phi$ + PACT\, lensing + SPA\, T&E + DESI}).
+\end{equation}
+This can be understood using the same line of reasoning above.
+In the MUSE $\phi\phi$ case, the more inconsistent $\omega_m$ tightens the $\summnu$ upper limit through degeneracy breaking,
+as is seen from the smaller overlap between MUSE $\phi\phi$ + P-ACT lensing + SPA T&E contours and SPA T&E + DESI contours in Fig.~\ref{fig:omegacb_mnu_2d}.
+The $A^{recon}$ is larger than 1 and thus further shifting the upper limit down.
+%\KW{conclude with some statements about whether the difference between GMV lensing and MUSE lensing is surprising.}
+The difference in the upper limit is a reflection of the both the tension between the CMB (primary + lensing) and the DESI data set and the \kw{(statistically unsurprising)} difference in lensing amplitude between the lensing measurements. 
+
+Compared to the SPA (CMB primary+lensing) +DESI results in SPT-3G D1 of~\citet{camphuis25}, the smaller difference between GMV+P-ACT lensing + SPA T\&E and DESI BAO ($1.5\sigma$ \KW{update} in $\Labmda$CDM $\Omega_m$-$r_d h$ plane) translates to less drastic shifts in $\Lambda$CDM extension parameter constraints when combining CMB with DESI BAO. 
+Nonetheless, as more data from both CMB and BAO experiments are available, the difference/tension between these two measurements within $\Lambda$CDM can be further sharpened. 
+
+
+\begin{table*}
+\label{table:s8}
+\begin{tabular}{cccc}
+\toprule
+ Dataset   & $A_{\rm lens}$ &  $\summnu$ &  100$\Omega_{\rm K}$\\
+\midrule
+ $\kappa_{\rm GMV}$\ +\ {\it Planck}\ (T/E)& $0.134\pm0.108$  &               & \\
++\ DESI-DR2                                & $0.048\pm0.049$  &               & \\
+  $\kappa_{\rm GMV}$\ +\ SPT3G-D1\ (T/E)   & $0.274\pm0.181$  & $0.92\pm0.09$ & $-0.902 \pm 0.152$\\
++\ DESI-DR2                                & $ 0.055\pm0.042$ & $0.99\pm0.06$ & $-0.548 \pm 0.239$\\
+  $\kappa_{\rm GMV}$\ +\ SPA\ (T/E)        & $0.105\pm0.082$  & $0.97\pm0.05$ & $-0.894 \pm 0.064$\\
++\ DESI-DR2                                & $0.040\pm0.045$  & $0.99\pm0.04$ & $-0.850 \pm 0.133$\\
+
+ \bottomrule
+\end{tabular}
+\caption{Constraints on extensions \textcolor{red}{strange results? Fill missing numbers}}
+\end{table*}
+
+\subsection{Constraints on the growth of structure}
+
+\KW{Comments after reading this section: In Section \ref{sec:LSScomparison} (in its current form), there's no discrepancy in the S8 parameter between CMB lensing and cosmic shear; so the first sentence of this section is misleading. The takeaway of Section \ref{sec:LSScomparison}  is that cosmic shear's S8 is low compared to primary CMB predictions, whereas CMB lensing's $\sigma_8\Omega_m^{0.25}$ is consistent with primary CMB. \\
+So one way to motivate measuring $\alpha(k)$ for CMB lensing (IMO, measuring $\alpha(k)$ for cosmic shear makes sense because we can then know if there are specific scales that drives the lower S8 compared to what primary CMB expects) is to see if there's any scale-dependent deviation from $\alpha(k)=0$ even if $\sigma_8\Omega_m^{0.25}$ is consistent with primary CMB to motivate, e.g. maybe whatever driving cosmic shear to have $\alpha(k)<0$ is already showing up at higher redshifts in CMB lensing. \\
+If we take the bestfit $\alpha(k)$ from cosmic shear measurements and then compute what the Clkk with the $\alpha(k)*P(k,z)$ look like, how different would that be compared with the GMV measured points? Perhaps then we can quantify the tension in that space.\\
+Perhaps from the writing perspective, you can emphasize more of why this $\alpha(k)$ measurement is interesting/important? } 
+
+In Section \ref{sec:LSScomparison}, we presented the discrepancy between CMB lensing and galaxy weak-lensing measurements, driven by the suppression in the inferred amplitude of matter fluctuations. To investigate whether this suppression varies with scale without imposing a specific functional form, we adopt the binned reconstruction approach introduced by \cite{doux2025}, which allows the deviation to be directly inferred from the data in a model-independent manner.
+
+The lensing (both CMB and galaxy) signal can be written as 
+\begin{equation}\label{eq:limber_cmbkappa}
+C_{\ell}^{ab}=\int d\chi\frac{W_{a}(\chi)W_{b}(\chi)}{\chi^{2}}P\left(k=\frac{\ell+1/2}{\chi},z(\chi) \right),
+\end{equation}
+where $\chi$ is the radial comoving distance, $q_{a/b}$ are the kernel window function which is
+\begin{equation}
+W_{\rm CMB}(\chi)=\frac{3\Omega_{\rm m}H_{0}^{2} }{2c^2}\frac{\chi}{a(\chi)}\frac{\chi-\chi_{*}}{\chi_{*}}
+\end{equation}
+for CMB lensing and 
+\begin{equation}
+W_{\kappa_g}^i(\chi)
+=
+\frac{3\,\Omega_{\rm m} H_0^2}{2c^2}\,
+\frac{\chi}{a(\chi)}
+\int_{\chi}^{\chi_{\rm H}} d\chi_s \, n_i(\chi_s)\,
+\frac{\chi_s-\chi}{\chi_s} 
+\end{equation}
+for galaxy lensing, where $n_i(\chi_s)$ is the (normalized) source-galaxy distribution in bin $i$,
+$\int_0^{\chi_{\rm H}} d\chi\, n_i(\chi)=1$, and $\chi_H$ is the horizon distance.
+
+Next, a free-form perturbed power specturm defined as :
+\begin{equation}
+P(k,z)=[1+\alpha(k)]P_{\rm fid}(k,z),
+\end{equation}
+is introduced, where $P_{\rm fid}(k,z)$ is the nonlinear matter power spectrum computed using the SPA best-fit $\Lambda$CDM cosmology using the \texttt{mead2020} halomodel prescription, and $\alpha(k)$ is the perturbative parameter.
+
+
+
+We perform a change of variable $k=(\ell+1/2)/\chi$ and transform to $\log k$, which allows us to write Equation \eqref{eq:limber_cmbkappa} as a sum, with the integrant rewritten as:
+\begin{equation}
+\mathbf{ W}_{\ell,k_{i}}^{ab}=\Delta_{{\rm log} k}}\frac{q_{a}(\chi_{\ell}^{i}) q_{b}(\chi_{\ell}^{i}) }{\chi_{\ell}^{i}}P_{\rm fid}(k_{i},z(\chi_{\ell}^{i}) )
+\end{equation}
+%In other words, the model can then be written as 
+%\begin{equation}
+%\mathbf{C^{ab}}=\mathbf{W^{ab}}(1+{\alpha})
+%\end{equation}
+Figure \ref{fig:alpha_K} shows the constraints using $n_{k}=24$ logarithmically spaced $k$-bins, in the range $10^{-3}$ Mpc$^{-1}$ to $10^2$ Mpc$^{-1}$, showing both with and without smoothing of $\sigma_{\rm s}=0.3$ (defined as a Gaussian prior on the difference between adjacent bins), which is the default setting adopted in \cite{doux2025}.  The valid range of scales used as valid (shown in gray) is set by selecting bins in which the variance of the posterior distribution is less than 1/6.\footnote{This stems from the fact that a uniform prior of [-1,+1] is applied to each bin, for which the variance is 1/3, and we take half of that}
+
+
+Since this is a bandpower based test without accounting of systematic marginalization, we apply a correction to the bandpowers based on the best-fit values for the amplitudes of foregrounds and calibration. The consistency between the systematic corrected GMV and the matter powerspectrum based on SPA best-fit is in good agreement at $0.73\sigma$ over the valid range of $k$ modes.  In comparison, the CMB lensing measurement from ACT-DR6 are consistent at the $0.15\sigma$ level, whereas galaxy weak lensing measurements from DES-Y3, HSC-Y3,  and KiDS-1000 are consistent at  1.7, 0.9, 2.7$\sigma$ respectively \cite{doux2025}.   Once the constraints from the 3 surveys are combined, the tension measured relative to null is $7.3\sigma$, which is significantly discrepant that the results our baseline lensing results.  This is consistent with current picture that CMB lensing measurements are more consistent with CMB primary measurements whereas galaxy weak lensing measurements measure suppressed structure growth.   
+
+\begin{figure}[H]
+\includegraphics[width=0.98\linewidth]{Figures/fig_cls2pk.pdf} 
+\caption{$\alpha(k)$ measured from systematic corrected GMV band powers. The closed orange rectangles show the measurement for the combination of DES+HSC and KiDS-1000. and the open rectangles show the measurement from ACT-DR6.  }
+\label{fig:alpha_K}
+\end{figure}
+
+
+\subsubsection{Dependence on nonlinear scale modeling on $T_{\rm AGN}$}
+
+Historically, nonlinear matter power spectrum corrections in cosmological analyses were commonly modeled using the \cite{takahashi2012} revision of \texttt{halofit}, which provided an updated calibration to dark matter only $N$-body simulations and became the default choice in many Boltzmann codes. While accurate for gravity only simulations over a wide range of scales and redshifts, the Takahashi prescription does not account for baryonic feedback effects that modify structure on small and intermediate scales. More recent work has therefore shifted toward the \texttt{HMCode} framework, in particular the \cite{mead2016} and its updated \cite{mead2021} versions, which incorporates physically motivated parameters to model the impact of baryons such as AGN feedback on the nonlinear power spectrum. As data have reached higher precision and smaller scales, analyses increasingly adopt \texttt{mead2020} to incorporate baryonic effects in a flexible and self consistent way rather than relying solely on gravity only calibrations.
+
+Our fiducial model adopts the \texttt{mead2020} prescription with fixed feedback strength, set to the fiducial value $T_{\rm AGN}=7.8$. To investigate whether the data can constrain this parameter, we switch to the \texttt{mead2020\_feedback} variant and allow $T_{\rm AGN}$ to vary over the range $7.6$ to $8.5$. In this framework, $T_{\rm AGN}$ represents the effective heating temperature, in units of $\log_{10}(T/{\rm K})$, associated with AGN feedback in the halo model calibration. Larger values correspond to more energetic feedback that expels gas more efficiently from halo centers, lowers the central matter density of halos, and suppresses the nonlinear matter power spectrum at intermediate and small scales.
+
+This parameterization has been widely adopted in the literature as a phenomenological approach to marginalize over baryonic uncertainties in cosmological analyses without explicitly running hydrodynamical simulations. The \texttt{mead2020} model is calibrated against suites of hydrodynamical simulations with different feedback strengths, effectively mapping complex subgrid prescriptions onto a continuous parameter $T_{\rm AGN}$. Sampling over this parameter therefore provides a physically motivated and computationally efficient way to propagate baryonic modeling uncertainty into weak lensing, galaxy clustering, and CMB lensing analyses.
+
+However, CMB lensing is not expected to place strong constraints on $T_{\rm AGN}$. The CMB lensing kernel peaks at redshifts $z \sim 2$ and is broad over $1 \lesssim z \lesssim 5$, whereas baryonic feedback effects are most pronounced for structures at $z<1$. It is therefore not surprising that our CMB lensing measurements do not significantly constrain $T_{\rm AGN}$, and the posterior remains largely prior dominated over the explored range.
+
+For the lensing-only constraints we find very little difference on the final constraints on $\som$ regardless of which version of the \texttt{HMcode} is used, as well as whether the phenomenological $T_{\rm AGN}$ parameter is marginalized or not. However, we do see a $\sim 0.5\sigma$ shift when using the revised Halofit prescription. This shift is also noted in the joint analysis of DES-Y3 and KiDS-1000 \cite{deskids2023}.
+
+$$
+\som=
+\begin{cases}
+0.605\pm0.010 \hspace{1cm} \texttt{HMcode2020}\ {\RM (fiducial)} \\[0.05cm]
+0.601\pm0.010 \hspace{1cm} \texttt{Halofit} \\[0.05cm]
+0.605\pm0.010 \hspace{1cm} \texttt{HMcode2016} \\[0.05cm]
+0.606\pm0.010 \hspace{1cm} \texttt{HMcode2020}\ {\rm w/ feedback},\nonumber
+\end{cases}
+$$
+
+
+
+\includegraphics[width=0.98\linewidth]{Figures/fig_Tagn.pdf} 
+\caption{$\alpha(k)$ measured from systematic corrected GMV band powers. The closed orange rectangles show the measurement for the combination of DES+HSC and KiDS-1000. and the open rectangles show the measurement from ACT-DR6.  }
+\label{fig:alpha_K}
+\end{figure}
+
+
+
+\section{Summary}\label{sec:summary}
+In this work, we presented both the lensing map and the inferred cosmological parameters from the auto-spectrum of this map. We have described how the lensing maps were reconstructed starting from the datamaps to the quadratic estimator techniques used, the inference pipelines and teh various tests that were performed to ensure that the results are accurate and unbiased.
+
+Beyond the cosmological constraints obtained using the auto-spectrum of the CMB lensing map, one key scientific use of this derived lensing map is for the purpose of delensing the deep $B$-mode obseration taken by the BICEP/{\it Keck} Collaboration.
+
+This lensing map will be used for cross-correlation studies with large-scale structure such, with observational probes such as galaxy over-density and galaxy weak lensing from surveys such as the Dark Energy Survey (DES; ), LSST and {\it Euclid}. In addition, one coudl correlate these lensing maps with other CMB secondaries such as the CIB and Compton-$y$ maps to study astrophysical quantities such as the cosmic starformation rate, as well as properties of thermal gas in galaxy clusters.
+
+Looking ahead, CMB lensing can also be correlated with emerging large-scale structure tracers such as line-intensity mapping (LIM) and 21 cm surveys, which probe the distribution of matter at even higher redshifts than traditional optical surveys. The powerspectrum of these high-redshift signals are challenging to measure directly due to instrumental and foreground systematics, but their cross-correlation with CMB lensing provides a robust and bias-independent means of detecting and characterizing structure formation in the early Universe, which optical galaxy surveys can not provide.
+
+\begin{acknowledgments}
+
+%\input acknowledgments.tex
+We gratefully acknowledge the computing resources provided on Crossover, a high-performance computing cluster operated by the Laboratory Computing Resource Center at Argonne National Laboratory. This work has made use of the Infinity Cluster hosted by Institut d'Astrophysique de Paris. We thank Stephane Rouberol for smoothly running this cluster for us.
+The CAPS authors are supported by the Center for AstroPhysical Surveys (CAPS) at the National Center for Supercomputing Applications (NCSA), University of Illinois Urbana-Champaign. 
+This work made use of the Illinois Campus Cluster, a computing resource that is operated by the Illinois Campus Cluster Program (ICCP) in conjunction with the National Center for Supercomputing Applications (NCSA) and which is supported by funds from the University of Illinois at Urbana-Champaign. 
+This work relied on the \texttt{NumPy} library for numerical computations~\citep{numpy}, the \texttt{SciPy} library for scientific computing~\citep{scipy}, the \texttt{JAX} library for automatic differentiation and GPU/TPU acceleration~\citep{jax18}, and the \texttt{Matplotlib} library for plotting~\citep{matplotlib}.
+Posterior sampling analysis and plotting were performed using the \texttt{GetDist} package~\citep{Lewis_getdist}.
+
+
+\end{acknowledgments}
+
+\clearpage
+\onecolumngrid
+\appendix
+%\section{Appendixes}
+
+
+\section*{declination dependent $m$-cut}
+SPT-3G takes constant elevation scan with time-stream high-pass/polynomial filtering applied to kill atmospheric 1/f noise and other undesired noise. This suppress modes along the scan direction. The same physical longitudinal wavenumber corresponds to different $m$ at different declinations because lines separated by the same angle becomes close towards the poles. 
+
+
+\section*{Validation tests}
+
+
+\begin{figure}
+\centering
+\begin{minipage}{0.33\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{Figures/clkk_lmaxt.pdf} 
+  \caption{Caption for the first figure. \KW{make these $\Delta/\sigma$ plots}}
+  \label{fig:fig1}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.33\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{Figures/clkk_lmaxp.pdf} 
+  \caption{Caption for the second figure.}
+  \label{fig:fig2}
+\end{minipage}
+\hfill
+\begin{minipage}{0.33\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{Figures/clkk_lmin.pdf} 
+  \caption{Caption for the second figure.}
+  \label{fig:fig2}
+\end{minipage}
+\end{figure}
+
+
+
+\begin{figure}
+\centering
+\begin{minipage}{0.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{Figures/clww_baseline.pdf} 
+  \caption{Caption for the first figure.}
+  \label{fig:fig1}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.48\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{Figures/clww_baseline.pdf} 
+  \caption{Caption for the second figure.}
+  \label{fig:fig2}
+\end{minipage}
+\end{figure}
+
+
+
+
+
+\section*{CMB--marginalization in the Planck lensing likelihood (lensing--only case)}
+
+\subsection*{1. Linearized model for the lensing bandpowers}
+
+Let $\hat{\bm b}$ denote the vector of measured (binned) lensing bandpowers and 
+$\bm \Sigma$ their Monte Carlo covariance (from reconstructions at the fiducial cosmology).  
+
+Planck linearizes the prediction for these bandpowers around the fiducial cosmology:
+\begin{align}
+\bm\mu(\theta, \bm c)
+&= \underbrace{\mathbf B \, \bm C^{\phi\phi}(\theta)}_{\text{binning of theory }C^{\phi\phi}}
++ \underbrace{\mathbf M_\phi \big(\bm C^{\phi\phi}(\theta) - \bm C^{\phi\phi}_{\rm fid}\big)}_{\text{linear resp.\ to }C^{\phi\phi}} 
++ \underbrace{\mathbf M_X \big(\bm c - \bm c_{\rm fid}\big)}_{\text{linear resp.\ to CMB TT,TE,EE}}.
+\end{align}
+
+Here
+\begin{itemize}
+  \item $\bm c$ stacks the CMB spectra $C_\ell^{TT}, C_\ell^{TE}, C_\ell^{EE}$, 
+  \item $\mathbf B$ bins the lensing spectrum,
+  \item $\mathbf M_\phi$ and $\mathbf M_X$ are precomputed derivative matrices evaluated at the fiducial cosmology.
+\end{itemize}
+
+It is convenient to absorb the $\mathbf M_\phi$ term:
+\begin{align}
+\bm\mu_0(\theta)
+&\equiv (\mathbf B + \mathbf M_\phi)\,\bm C^{\phi\phi}(\theta) - \mathbf M_\phi \,\bm C^{\phi\phi}_{\rm fid}, \\
+\Rightarrow \quad
+\bm\mu(\theta, \bm c)
+&= \bm\mu_0(\theta) + \mathbf M_X (\bm c - \bm c_{\rm fid}).
+\end{align}
+
+Thus the likelihood before marginalization is
+\begin{align}
+\hat{\bm b} \mid \theta, \bm c
+\;\sim\;
+\mathcal N\!\left(\,\bm\mu_0(\theta) + \mathbf M_X(\bm c - \bm c_{\rm fid}),\; \bm\Sigma \,\right).
+\end{align}
+
+\subsection*{2. Gaussian prior from Plik\_lite}
+
+Plik\_lite provides a Gaussian summary of the CMB spectra:
+\begin{align}
+\bm c \;\sim\; \mathcal N\!\left(\hat{\bm c}, \; \mathbf C_{\rm CMB}\right),
+\qquad
+\text{equivalently}\quad
+\bm c - \bm c_{\rm fid} \;\sim\;
+\mathcal N\!\left(\hat{\bm c} - \bm c_{\rm fid}, \; \mathbf C_{\rm CMB}\right).
+\end{align}
+
+This is the Gaussian assumption (Eq.\,(3) in the discussion).
+
+\subsection*{3. Marginalization over CMB spectra: intuitive argument}
+
+We can now write
+\begin{align}
+\hat{\bm b}
+&= \bm\mu_0(\theta) + \mathbf M_X (\bm c - \bm c_{\rm fid}) + \bm\epsilon,
+\qquad
+\bm\epsilon \sim \mathcal N(0,\bm\Sigma).
+\end{align}
+
+Since $(\bm c - \bm c_{\rm fid})$ is Gaussian and the model is affine, the marginalized distribution is also Gaussian:
+\begin{align}
+\hat{\bm b} \mid \theta
+\;\sim\;
+\mathcal N\!\left(\bm\mu_0(\theta) + \mathbf M_X(\hat{\bm c} - \bm c_{\rm fid}), \;\bm\Sigma + \mathbf M_X \mathbf C_{\rm CMB}\mathbf M_X^{\!\top}\right).
+\end{align}
+
+\subsection*{4. Explicit derivation by completing the square}
+
+Define $\delta \bm c \equiv \bm c - \bm c_{\rm fid}$ and $\bar{\bm c} \equiv \hat{\bm c} - \bm c_{\rm fid}$.
+The joint density is
+\begin{align}
+-2\ln p(\hat{\bm b}, \bm c\mid \theta)
+&= \big(\hat{\bm b} - \bm\mu_0 - \mathbf M_X \delta \bm c\big)^{\!\top}\bm\Sigma^{-1}\big(\hat{\bm b} - \bm\mu_0 - \mathbf M_X \delta \bm c\big) 
++ \big(\delta \bm c - \bar{\bm c}\big)^{\!\top}\mathbf C_{\rm CMB}^{-1}\big(\delta \bm c - \bar{\bm c}\big).
+\end{align}
+
+Completing the square and integrating over $\delta \bm c$ (Gaussian integral) yields the marginalized likelihood:
+\begin{align}
+-2\ln \mathcal L(\theta)
+= \big(\hat{\bm b} - [\bm\mu_0(\theta) + \mathbf M_X \bar{\bm c}]\big)^{\!\top}
+\big(\bm\Sigma + \mathbf M_X \mathbf C_{\rm CMB}\mathbf M_X^{\!\top}\big)^{-1}
+\big(\hat{\bm b} - [\bm\mu_0(\theta) + \mathbf M_X \bar{\bm c}]\big) + \text{const}.
+\end{align}
+
+\subsection*{5. Final results}
+
+Thus we identify:
+\begin{align}
+\boxed{\;\bar{\bm\Sigma} = \bm\Sigma + \mathbf M_X \mathbf C_{\rm CMB}\mathbf M_X^{\!\top}\;}
+\tag{4}
+\\[1ex]
+\boxed{\;\mathbf B\,\bar{\bm C}^{\phi\phi}_{\rm th}
+= (\mathbf B + \mathbf M_\phi)\,\bm C^{\phi\phi}(\theta) - \mathbf M_\phi \,\bm C^{\phi\phi}_{\rm fid}
++ \mathbf M_X \big(\hat{\bm c} - \bm c_{\rm fid}\big)\;}
+\tag{5}
+\end{align}
+
+\subsection*{6. Interpretation}
+
+\begin{itemize}
+  \item Eq.\,(4): the covariance of the lensing bandpowers is inflated by 
+  $\mathbf M_X \mathbf C_{\rm CMB}\mathbf M_X^{\!\top}$, i.e.\ uncertainty in the primary CMB propagates into the lensing likelihood.
+  \item Eq.\,(5): the theory vector is shifted so that the fiducial CMB spectra are replaced by the observed Plik\_lite spectra.
+\end{itemize}
+
+
+
+
+\section{Calibration of simulations}\label{sec:sim_calibration}
+Small discrepancies between the observational data and \agora{} simulation are expected. We apply small calibration factors to the raw simulation products so that the power spectrum amplitudes at high-$\ell$. The single frequency maps are generated using:
+
+\begin{equation}
+\mathbb{M}_{\nu}=\left(\mathbb{M}^{\rm CMB}+\mathbb{M}^{\rm kSZ}\right)+ A^{\rm tSZ}\mathbb{M}^{\rm tSZ}_{\nu}+A^{\rm CIB}_{\nu}\mathbb{M}^{\rm CIB}_{\nu}+A^{\rm rad}_{\nu}\mathbb{M}^{\rm rad}_{\nu}.
+\end{equation}
+The first term in the bracket, CMB and kSZ, are independent of teh frequency channel. For tSZ, the scaling is applied to Compton-$y$ map instead of temperature map and hence is captured as a single number independent of the frequency channel. Finally for both CIB and radio sources, the amplitudes are varied per frequency channel.
+
+\begin{figure}
+	\includegraphics[width=0.5\columnwidth]{Figures/simcalibration.pdf}
+    \caption{Best-fit values for the foreground calibration parameters to fit \agora{} and SPT-3G at high-$\ell$. }
+    \label{fig:ilcweights}
+\end{figure}
+
+
+\newpage
+\normalsize
+\section{Bandpower covariance matrix}\label{app:bpcm_cond}
+In the baseline analysis, we construct the bandpower covariance matrix (BPCM) $ \mathbb{C}_{bb'}$ by
+\begin{equation}
+	 \mathbb{C}_{bb'} = \frac{1}{N-1} \Sum^N_{i=1} ( \hat{C}^i_{b} -  \bar{\hat{C}}_{b} ) (  \hat{C}^i_{b'} -  \bar{\hat{C}}_{b'} ), 
+\end{equation}
+where $\hat{C}^i_{b}$ denotes the semi-analytic-N0-debiased lensing bandpower at bin $b$ from simulation $i$,  
+$\bar{\hat{C}}_{b'}$ is the mean of the debiased bandpowers across all $N = 498$ simulation realizations.
+Fig.~\ref{fig:bpcm_corr} shows the bandpower correlation matrix.
+%% make figure and put here
+It shows mild (\kw{$\lesssim$20\%}) correlations between bandpowers relatively far off from the diagonal, with coherent positive 
+correlation among the high-$L$ bins.
+The eigenvalue spectrum and the condition number of the covariance matrix suggest that there are no noisy modes to be disgarded.
+We thus conclude that the correlations are real and retain the entire covariance structure. 
+
+%details in https://docs.google.com/presentation/d/18hHfgETpRO11NE2EmtrWIuDX4Ks9KMNab_WVeBfueNY/edit?slide=id.g3889cbc8004_0_13&pli=1#slide=id.g3889cbc8004_0_13
+To see the impact of these off-diagonal correlations on parameter constraints, 
+we construct two variants of BPCMs that have elements far from the diagonal 
+smoothed and zeroed, replace the baseline BPCM with them, and run MCMC chains on simulated bandpowers using these
+BPCM variants.
+In the first variant, we zero all elements in the correlation matrix that are 9+ bins away from the diagaonl, smooth the elements using nearest-4-neighbor average
+for elements 4+ bins away from the diagonal, and keep the rest of the elements as is. 
+In the second variant, we zero all the elements that are 4+ bins away from the diagonal. 
+From the modified correlation matrix, we reconstruct the BPCM variants. 
+
+We run MCMC chains sampling only cosmological parameters (fixing instrumental and foreground systematics)
+on lensing bandpowers from one simulation. 
+The chain mean and MAP values of $\sigma_8\Omega_m^{0.25}$ across the baseline and the two variants are 
+within 0.15$\sigma$ of each other, where $\sigma$ denotes the 1-$\sigma$ uncertainty on $\sigma_8\Omega_m^{0.25}$
+sampling only cosmological parameters. 
+This difference, when cast to the uncertainties including systematics parameters, would further reduce to \kw{0.0X $\sigma$}. 
+Furthermore, the uncertainties on $\sigma_8\Omega_m^{0.25}$ across the three cases are within 3\% of each other,
+effectively unchanged. 
+From this check, we conclude that our key cosmological parameter is not sensitive to small perturbations to the BPCM.
+
+\section{CMB marginalization in BPCM for lensing-only chains}\label{app:cmb_marg}
+In this section, we show the size of the CMB marginalization term that is added to the base BPCM when we run
+lensing-only chains for both the baseline case and for an alternate prescription that is cosmology dependent. 
+
+Recall that we add the ``CMB-marg" term to the base BPCM 
+\begin{equation}
+	\mathbb{C}_{bb'} \rightarrow \mathbb{C}_{bb'} + \mathbb{C}^{\rm CMBmarg}_{bb'}.
+	%+ \Delta_{\ell_b} M^{\alpha}_{b\ell_b} \, \Sigma^{\rm CMB; \alpha\beta}_{\ell_b \ell'_b} M^{\beta}_{\ell'_b b'} \Delta_{\ell'_b} , 
+\end{equation}
+In the baseline case, we construct $\mathbb{C}^{\rm CMBmarg}_{bb'}$ by projecting the primary CMB bandpowers' uncertainties
+and their correlations onto the lensing bandpower space using the $M^x$ matrices, where $x \in [TT, TE, EE]$, which encodes the
+change in the lensing response with respect to changes in the primary CMB spectrum: 
+\begin{equation}
+	 \mathbb{C}^{\rm CMBmarg}_{bb'} = M^{\alpha}_{b\ell} \, \Sigma^{\rm CMB; \alpha\beta}_{\ell \ell'} M^{\beta}_{\ell' b'} , 
+\end{equation}
+where $\Sigma^{\rm CMB}$ denotes a primary CMB spectrum covariance and $\alpha, \beta \in [TT, TE, EE]$. 
+When the CMB covariance matrix is binned, this term can be approximated by Eqn.~\ref{eqn:cmb_marg}, as is done for this analysis. 
+Here $\Sigma^{\rm CMB}$ is cosmology agnostic---the {\it Lite} covariances from {\it Planck} PR3, ACT DR6, and SPT-3G D1 were
+constructed requiring the CMB component to be the same across all frequencies without imposing a cosmological model.
+We show in Fig.~\ref{fig:cmbmarg_ratio} the ratio of the square root of the diagaonl of the CMB-marg term and the base BPCM.
+Around $L$ of 100, the square root of the baseline CMB-marg term is up to 4\% of that of the base BPCM. 
+Above $L$ of about 300, the increase in the square root of the BPCM diagonal is at most 1\%. 
+
+An alternative prescription~\cite{actdr6lensing} to construct the CMB-marg term is to estimate $\Sigma^{\rm CMB}$ from the spread of 
+CMB TT/TE/EE spectra generated by LCDM parameters sampled from their posterior distributions given the
+ {\it Planck} PR3, ACT DR6, and SPT-3G D1 TT/TE/EE data. 
+We draw 5000 random samples of LCDM parameters from the {\it Planck}, ACT, and SPT-3G TT/TE/EE chains, 
+compute $C_{\ell}^{TT}$, $C_{\ell}^{TE}$, and $C_{\ell}^{EE}$ using Cosmopower~\cite{}, and form  $\mathbb{C}^{\rm CMBmarg}_{bb'}$  by
+\begin{equation}
+	 \mathbb{C}^{\rm CMBmarg}_{bb'} = cov( \sum_{\alpha} M^{\alpha}_{b\ell} C_{\ell}^{\alpha} ),
+\end{equation}
+where $\alpha$ runs through TT/TE/EE. 
+We neglect the $\Sigma^{\rm CMB; \alpha\beta}$ blocks where $\alpha \neq \beta$ in this formulation as they contribute negligibly. 
+This prescription, rather than marginalizing over the uncertainty of the primary CMB bandpowers, marginalizes over the spread of the allowed
+primary CMB spectra given LCDM parameters that fit all three data sets. 
+Therefore, it is cosmological-model dependent and is more constrained than the baseline approach---reflected from the minimal increase ($< 1\%$) in the square root of the BPCM diagonal when adding this term (see Fig.~\ref{fig:cmbmarg_ratio}).
+In order to be cosmology-agnostic, we choose our baseline approach in building the CMB-marg term. 
+
+
+\section{Inference pipeline validation}\label{app:pipe_vad}
+In this section, we show that our cosmological inference pipeline is unbiased at intermediate steps when not 
+all of the parameters are freed.
+In particular, we test in the lensing-only cases, that by freeing (1) only cosmological parameters, (2) cosmology 
+and calibration parameters, (3) cosmology and all instrumental systematics parameters, the recovered mean
+MAP point for $\sigma_8\Omega_m^{0.25}$ across many simulation realizations are consistent with the 
+input truth. For these tests, we use the set of simulations with Gaussian foregrounds. 
+%Because there is no foreground biases from this set of simulations, testing the full case in which all parameters, cosmological, instrumental systematics, and foreground systematics, are freed would pile the posterior samples on the foreground parameters towards zero and result in biased mean $\sigma_8\Omega_m^{0.25}$ recovery. 
+For the full case in which all parameters (cosmology, instrumental, and foreground) are freed, we test on the {\tt Agora} set of sims, as detailed in~\ref{sssec:agora_test}.
+
+We perform each test by running minimizers on 100 debiased simulation lensing spectra using the exact same
+settings in the Cobaya sampler as all other runs on simulations besides changing the subset of free vs fixed parameters.
+The settings for the CAMB theory computation have the accuracies set identical to the data runs. 
+The input lensing power spectrum for the simulations computed with extra high accuracies ({\tt l\_accuracy\_boost = 4} and {\tt accuracy\_boost = 4}) and using the default setting of 2016 HMCode. 
+In order for the theory CAMB output to match the input simulations spectrum without going to the extra high accuracies (which incurs significant computation time), for the simulation validation runs, we set the HMCode parameters {\tt  HMCode\_A\_baryon = 3.23} and {\tt HMCode\_eta\_baryon = 0.592} and {\tt mnu = 0.059} to match the simulation input lensing power spectrum to within 0.05\%.
+% see https://docs.google.com/presentation/d/18hHfgETpRO11NE2EmtrWIuDX4Ks9KMNab_WVeBfueNY/edit?slide=id.g378a31cc231_0_5&pli=1#slide=id.g378a31cc231_0_5
+%    extra_args:
+%      AccuracyBoost: 1
+%      HMCode_A_baryon: 3.23
+%      HMCode_eta_baryon: 0.592
+%      bbn_predictor: PArthENoPE_880.2_standard.dat
+%      halofit_version: mead2016
+%      lAccuracyBoost: 1
+%      lSampleBoost: 1
+%      lens_margin: 1250
+%      lens_potential_accuracy: 4
+%      nnu: 3.046
+%      num_massive_neutrinos: 1
+%      theta_H0_range:
+We deem the pipeline to be unbiased if the mean of the 100 MAP $\sigma_8\Omega_m^{0.25}$ values are within
+2 $\sigma_m$ with $\sigma_m \equiv \frac{\sigma}{\sqrt{N_{sims}}}$ and $\sigma$ from the mean of the 1-$\sigma$
+uncertainties on $\sigma_8\Omega_m^{0.25}$ of the baseline chains (freeing cosmology, calibration, and foreground parameters) on data.
+
+\begin{figure}
+\includegraphics[width=0.48\linewidth]{Figures/pipe_val.pdf} 
+\caption{ Inference pipeline validation at intermediate steps. 
+We show the 
+mean, standard error $\sigma_m$ (darker shade), and measurement error $\sigma$ (lighter shade)
+on $\sigma_8\Omega_m^{0.25}$ for freeing (top) cosmology-only, (middle) cosmology and calibration parameters, 
+and (bottom) cosmology and all instrumental systematic  parameters.
+For the cases where instrumental systematic parameters are freed, we include the case where the systematics are
+modeled through the analytic (orange) and the emulator (teal) formulations.
+In all cases, the mean $\sigma_8\Omega_m^{0.25}$ values are within 2 $\sigma_m$ of the input $\sigma_8\Omega_m^{0.25}$ value.
+We conclude that the inference pipeline is unbiased for these cases. }
+\label{fig:pipe_val}
+\end{figure}
+
+We show in Fig.~\ref{fig:pipe_val} the mean, $\sigma_m$, and $\sigma$ of $\sigma_8\Omega_m^{0.25}$ for all three cases.
+For the cosmology-only case, the mean is 0.6 $\sigma_m$ from the input truth.
+For the cosmology and calibration parameters cases, the means are 1.1$\sigma_m$ and 1.4$\sigma_m$ from the input for the analytic and emulator formulation of the bias, respectively.
+For the cosmology and all systematics cases, the means are 0.9$\sigma_m$ and 0.9$\sigma_m$ from the input for the analytic and emulator formulation of the bias, respectively.
+We conclude that our inference pipeline are unbiased at these intermediate steps. 
+%numbers from fig_inference_pipe_validation/plot_pipe_val.py
+
+
+\section{Lensing-only results when freeing beam parameters}\label{app:free_beam}
+Our baseline lensing-only results do not free beam parameters for reasons stated in the main text. 
+In this appendix, we show the  $\sigma_8\Omega_m^{0.25}$ constraint when we also vary beam parameters in the MCMC. 
+
+
+
+
+
+\section{Comparison of systematic marginalization}
+
+The theory spectrum from \textsc{CAMB} is modified to match realistic spectra by multiplying it with the emulated response:
+\begin{equation}\label{eq:emulratio}
+C^{\kappa\kappa,{\rm model}}_{L}= {C}^{\kappa\kappa,{\rm CAMB}}_{L}\left[\frac{\hat{C}_{L}^{\kappa\kappa}(d_{fg=X},f_{fg=1},T_{\rm cal}=(1+\epsilon)...)}{\hat{C}_{L}^{\kappa\kappa}(d_{fg=0},f_{fg=1},T_{\rm cal}=1...)}\right],
+\end{equation}
+where $f_{fg=1}$ means that the Gaussian realizations include foreground power of $A=1$, which directly enters the $N_{L}^{(0)}$ and response calculations. The denominator of this ratio approximately recovers $C^{\kappa\kappa,{\rm model}}_{L}$ (even though the filtering is suboptimal), but when taking the ratio, has the benefit that it suppresses sample variance since the lensing reconstruction is computed on the same CMB and noise realizations (which makes it easier to emulate).
+
+
+Let us start with a data-like simulation with foregrounds $d_{fg=0}\equiv d_{0}$ with $T_{\rm cal}=1$. The debiased CMB lensing auto-spectrum can be written as: 
+
+\begin{align}
+\hat{C}^{\kappa\kappa}_{L}&=d_{0}d_{0}d_{0}d_{0}-\widetilde{N}_{L}^{(0)}-N_{L}^{(1)} \\
+&=d_{0}d_{0}d_{0}d_{0}-\bigl[xd_{0}xd_{0}+xd_{0}d_{0}x+d_{0}xd_{0}x+d_{0}xxd_{0} - N_{L,fg=1}^{(0)}\bigl]-N_{L,fg=1}^{(1)} 
+\end{align}
+where $x$ is a Gaussian simulation. This is exactly the denominator of Equation \ref{eq:emulratio}. If the map has a small mis-calibration $d'_{0}=(1+\epsilon)d_{0}$, then:  
+\begin{align}\label{eq:bias2}
+\hat{C}^{\kappa\kappa'}_{L}&=(1+\epsilon)^{4}d_{0}d_{0}d_{0}d_{0}-\bigl[ (1+\epsilon)^{2}(xd_{0}xd_{0}+xd_{0}d_{0}x+d_{0}xd_{0}x+d_{0}xxd_{0}) - N_{L,fg=1}^{(0)}\bigl]-N_{L,fg=1}^{(1)}.
+%&=(1+\epsilon)^{4}dddd-\bigl[ N_{L}^{(0)}(2(1+\epsilon)^{2}-1) \bigl]-N_{L}^{(1)}
+\end{align}
+This is equivalent to setting $X=0$ and $T_{\rm cal}=1+\epsilon$ in the numerator of Equation \ref{eq:emulratio}. On very large scales, the first term dominates so
+\begin{equation}
+\frac{\hat{C}^{\kappa\kappa'}_{L}}{\hat{C}^{\kappa\kappa}_{L}}= \frac{(1+\epsilon)^{4}d_{0}d_{0}d_{0}d_{0}}{d_{0}d_{0}d_{0}d_{0}}=(1+\epsilon)^{4},
+\end{equation}
+and therefore we expect the ratio to be flat regardless of the shape of that spectrum ({\emph i.e., even when $d_{fg=1}\equiv d_{1}$}). \\[0.5cm]
+On intermediate scales, we need to consider both the first and the second terms, which is where we start to see the interaction between the choice of $f_{fg=1}$ and $T_{\rm cal}$. Let us Taylor expand Equation \ref{eq:bias2}:
+\begin{align}
+\hat{C}^{\kappa\kappa'}_{L}&=(1+4\epsilon+6\epsilon^2+...)d_{0}d_{0}d_{0}d_{0}-\bigl[ (1+2\epsilon+\epsilon^2+...)(xd_{0}xd_{0}+xd_{0}d_{0}x+d_{0}xd_{0}x+d_{0}xxd_{0}) - N_{L,fg=1}^{(0)}\bigl]-N_{L,fg=1}^{(1)}.
+%&=(1+\epsilon)^{4}dddd-\bigl[ N_{L}^{(0)}(2(1+\epsilon)^{2}-1) \bigl]-N_{L}^{(1)}
+\end{align}
+The difference between this and the non-perturbed case is 
+\begin{align}
+\Delta\hat{C}^{\kappa\kappa}_{L}&=4\epsilon(d_{0}d_{0}d_{0}d_{0})-2\epsilon(xd_{0}xd_{0}+xd_{0}d_{0}x+d_{0}xd_{0}x+d_{0}xxd_{0}) +\mathcal{O}(\epsilon^{2})
+\end{align}
+then
+\begin{equation}
+\frac{\hat{C}^{\kappa\kappa'}_{L}}{\hat{C}^{\kappa\kappa}_{L}}=1+\epsilon\frac{4d_{0}d_{0}d_{0}d_{0}-2(xd_{0}xd_{0}+xd_{0}d_{0}x+d_{0}xd_{0}x+d_{0}xxd_{0}) }{\hat{C}^{\kappa\kappa}_{L}}+\mathcal{O}(\epsilon^{2})
+%\frac{C^{\kappa\kappa}_{L}+\Delta\hat{C}^{\kappa\kappa}_{L}}{\frac{C^{\kappa\kappa}_{L}}=
+\end{equation}
+if we replace $d_{0}\rightarrow d_{1}$ then we know that this term cancels out approximately, and we are left with a $\mathcal{O}(\epsilon^{2})$ term. In our case this leading term does not disappear. We can plot this explicitly to check that it matches with what we observe.
+
+
+\begin{figure*}[t]
+  \centering
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/biasratio_dfg0_ffg1_Tcal.pdf}
+    \caption{m}
+    \label{fig:first}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Figures/biasratio_dfg1_ffg1_Tcal.pdf}
+    \caption{s}
+    \label{fig:second}
+  \end{minipage}
+\end{figure*}
+
+For polarization, we already assume $f_{fg=0}$, which matches with $d_{fg=0}$ and therefore we do not observe the crossover behavior.
+
+
+
+\begin{equation}
+C_{b}^{\kappa \kappa,\mathrm{model}}(\boldsymbol{\Theta})  = C_b^{\kappa \kappa}({\boldsymbol{\theta^c}}) \frac{C_b^{\kappa \kappa}({\boldsymbol{\theta^c}_{\rm fid}}, \boldsymbol{\theta^f, \theta^s})}{C_b^{\kappa \kappa}({\boldsymbol{\theta^c}_{\rm fid}})} 
+ + \sum_{x\in \{TT,TE,EE,\kappa\kappa\}} M^{x}_{b\ell} \left(C_{\ell}^{x}(\boldsymbol{\theta^c})-C_{\ell}^{x}(\boldsymbol{\theta^c}_{\rm fid})\right),
+\end{equation}
+
+
+\begin{equation}\label{eqn:modelspec_full}
+\begin{aligned}
+C_{b}^{\kappa \kappa,\mathrm{model}}(\boldsymbol{\Theta}) & = C_b^{\kappa \kappa}({\boldsymbol{\theta^c}}) \frac{C_b^{\kappa \kappa}({\boldsymbol{\theta^c}_{\rm fid}}, \boldsymbol{\theta^f})}{C_b^{\kappa \kappa}({\boldsymbol{\theta^c}_{\rm fid}})} 
+ + \sum_{x\in \{TT,TE,EE\}} M^{x}_{b\ell} \left(C_{\ell}^{x}(\boldsymbol{\theta^c}, \boldsymbol{\theta^s})-C_{\ell}^{x}(\boldsymbol{\theta^c}_{\rm fid})\right) 
+ + M^{\kappa\kappa}_{b\ell} \left(C_{\ell}^{\kappa\kappa}(\boldsymbol{\theta^c})-C_{\ell}^{\kappa\kappa}(\boldsymbol{\theta^c}_{\rm fid})\right)
+\end{aligned}
+\end{equation}
+
+
+
+\begin{equation}
+\begin{aligned}
+C_b^{\kappa \kappa, \mathrm{c}}({\boldsymbol{\theta^c}}) = C_b^{\kappa \kappa}({\boldsymbol{\theta^c}}) + \sum_{x\in \{TT,TE,EE\phi\phi\}} M^{x}_{b\ell} \left(C_{\ell}^{x}(\boldsymbol{\theta^c})-C_{\ell}^{x}(\boldsymbol{\theta^c}_{\rm fid})\right),
+\end{aligned}
+\end{equation}
+
+%In the usual case when we are near $d_{fg=1}$ we have
+%\begin{align}
+%\widetilde{N}_{L}^{(0)}&=\bigl[ (1+\epsilon)^{2}(xd_{1}xd_{1}+xd_{1}d_{1}x+d_{1}xd_{1}x+d_{1}xxd_{1}) - N_{L,fg=1}^{(0)}\bigl]\\
+%\sim \bigl[ (1+\epsilon)^{2}(xyxy+xyyx+yxyx+yxxy) - (xyyx+xyyx)\bigl],\\
+%\hat{C}^{\kappa\kappa'}_{L}=(1+\epsilon)^{4}d_{0}d_{0}d_{0}d_{0}-\bigl[ (1+\epsilon)^{2}(xyxy+xyyx+yxyx+yxxy) - (xyyx+xyyx)\bigl],\\
+%\end{align}
+
+%but if we have $d_{fg=0}$ we have an additional bias factor $\Lambda \mathcal{O}(20\%)$, then that leading order subtraction fails.
+
+%\begin{align}
+%\hat{C}^{\kappa\kappa'}_{L}=\Lambda^2(1+\epsilon)^{4}d_{0}d_{0}d_{0}d_{0}-\bigl[ \Lambda(1+\epsilon)^{2}(xyxy+xyyx+yxyx+yxxy) - (xyyx+xyyx)\bigl],\\
+%\end{align}
+
+
+%It can be seen that if $\epsilon>0$, then the whole $\widetilde{N}_{L}^{0}$ term (in square brackets) is larger and it therefore \emph{subtracts more}, therefore leads to a \emph{lower} debiased amplitude. If  $\epsilon<0$, then the $\widetilde{N}_{L}^{0}$ term is smaller and it therefore \emph{subtracts less}, and leads to a \emph{higher} debiased amplitude.
+
+%The analytic marginalization on the other hand doesnt know anything about foregrounds. 
+%\begin{equation}
+%(1+\epsilon)^{4}dddd-( (1+\epsilon)^2(xdxd-xddx-dxdx-dxxd)-N0)-N1 
+%\end{equation}
+
+\begin{equation}
+\theta_{0}=\{T_{\rm cal}=0.999, P_{\rm cal}=1.008, \eta^{1,2,3,4}=0, \beta^{90}_{\rm pol}=0.536, \beta^{150}_{\rm pol}= 0.685, \beta^{220}_{\rm pol}=0.658, A_{\rm tSZ}=0 , A^{150/220}_{\rm CIB}=0, A^{90/150}_{\rm rad}=0 \}.
+\end{equation}
+
+
+
+\section{Choice of foreground prior}\label{appendix:fgfit}
+The foreground emulator used in this work is based on templates derived from \textsc{Agora} simulation. As default we let these templates float in the range $(0<A_{\rm fg}^{\nu}<1.3)$. Ideally these parameters would have tight priors derived from high-$\ell$ portion of the $TT$ spectrum. While such an analysis is underway for this analysis We instead use the $TT$ spectrum from the subset from \cite{camphuis2025} . We fix the cosmology to that of SPA best-fit cosmology and only marginalize over $T_{\rm cal}$, $P_{\rm cal}$, $\beta_{\rm pol}^{\nu}$, $A_{\rm tSZ}$, $A_{\rm CIB}^{\nu}$, $A_{\rm rad}^{\nu}$. The full posteriors are shown in Figure \ref{fig:foregroundfitTT}. We also verify that our choice of fiducial cosmology does not affect the foreground amplitudes significantly by running a chain assuming SPT-3G D1 cosmology in parallel. The difference in teh bes-fit values is less than $X\sigma$, which makes sense foregrounds are more impacted by high-$\ell$ component of the spectrum. The best-fit amplitude of the tSZ amplitude is found to be $A_{\rm tSZ}^{2}=0.44\pm0.08$, which is surpringly low especially compared to other studies that measure the Compton-$y$ auto-spectrum, although the exact amplitude is challenging to pin down directly due to the various astrophysical foregrounds that heavily impact the amplitude like CIB and radio sources.
+
+
+
+
+\begin{figure}
+	\includegraphics[width=0.5\columnwidth]{Figures/fig_fitfgtempTT.pdf }
+    \caption{Best-fit values for the foreground calibration parameters to fit \agora{} and SPT-3G at high-$\ell$. }
+    \label{fig:foregroundfitTT}
+\end{figure}
+
+
+
+
+\section{Additive or multiplicative bias }\label{appendix:bias}
+Maybe a few words on this?
+
+
+
+\nocite{*}
+
+\bibliography{apssamp}% Produces the bibliography via BibTeX.
+
+\end{document}
+%
+% ****** End of file apssamp.tex ******

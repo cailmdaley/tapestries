@@ -1,0 +1,53 @@
+h1. 2025-06-25: Validation Test Proposals 
+
+With work progressing RR2, we thought it would be a good time to start defining a set of consistency checks, null tests, conditional tests, etc. that will eventually be used for DR1. We have taken inspiration from the tests performed in the "DES x SPT":https://arxiv.org/abs/2203.12440 and Q1 cross-correlation analyses.
+
+h3. Q1 tests
+
+# Building jackknives maps from random split of the RR2 sample  (null galaxy clustering signal maps) and use them as signal to compute their auto-correlation and CMB lensing cross-correlation.
+# Cross-correlation between RR2 sample and CMB lensing maps for which we expect to have no or detectable cosmological signal (ACT curl mode map or ACT diff 150GHz - 90 GHz)
+# Cross-correlation of RR2 sample with CMB lensing maps derived with different type of lensing reconstruction estimators that have different sensitivity to Galactic and extragalactic foregrounds. 
+
+"Slides from Giulio on Q1 validation tests":https://docs.google.com/presentation/d/1sxCQnp2zRyyd5Zz-Si0FJz7kpVjmUlOjq1iaQYkstO0/edit?slide=id.g36c87a7ff49_0_50#slide=id.g36c87a7ff49_0_50
+
+h3. DES x SPT tests
+
+# Survey property (i.e. systematic) map cross-correlations.
+If we are worried about a given systematic affecting both tracers and thus contributing to the cross-correlation, can make a map that probes this systematic and cross correlate it with each tracer, and potentially deproject a systematics template if the contamination is significant. In the DES x SPT analysis, they do make survey property maps of stellar density, extinction, PSF ellipticity errors, and PSF size errors.
+# Cross-shear $\gamma_x$. 
+In the DES x SPT analysis the shear catalog is cross-correlated directly with the CMB lensing map without producing an intermediate shear map. This is done by taking the *tangential* component of each galaxy's ellipticity relative to each $\kappa_{\rm CMB}$ pixel to form $\langle \gamma_t \kappa_{\rm CMB} \rangle$. If instead the component of the galaxy shear oriented 45º relative to each $\kappa_{\rm CMB}$ pixel is taken one can form $\langle \gamma_t \kappa_{\rm CMB} \rangle$ which should be consistent with zero. At least until lensing curl from post-Born effects is detectable..
+# Effect of $\delta_g$ weights on $\langle \delta_g \kappa_{\rm CMB} \rangle$.
+Application of galaxy position weights is intended to reduce systematics, so this isn't exactly a null test. But performing the cross-correlation with and without the weights can give a sense of how big the weight correction is, and can be propagated to cosmological parameters.
+# Point-source masking in $\kappa_{\rm CMB}$.
+To make sure the inpainting of point sources in the CMB temperature maps is not biasing the lensing reconstruction, they try simply masking these point sources instead. Not clear if they mask the original CMB maps, or just the lensing construction.
+# Spatial variations in $\kappa_{\rm CMB}$.
+They split their $\kappa_{\rm CMB}$ maps into northern and southern patches, and then cross-correlate both with an external tracer (e.g. CIB). The two cross-correlations should be consistent. This is mostly a test of the lensing maps, but if you saw inconsistency between spatial splits of $\langle \gamma_t \kappa_{\rm CMB} \rangle$ or $\langle \delta_g \kappa_{\rm CMB} \rangle$, this would help tease out whether the problem is on the CMB or galaxy side.
+
+h3. Other
+
+# Sample selection cuts (magnitude, shear weights, etc.). Will require recalibration of shear?
+# Consistency between tracers—
+##  $\kappa_{\rm CMB}$: ACT vs. SPT vs. Planck, MV vs Pol reconstruction, bias hardening...
+## $\gamma$: Metacal vs. Lensmc
+## $\delta_g$: only one tracer?
+# Null shear & galaxy maps
+
+h3. RR2 validation tests proposal [16  July 2025]
+
+Linked to task #31817 
+
+Following Q1 analysis, we can perform catalog based, spatial based, and CMB lensing null tests and validation
+The tests we can do for RR2 depends on the availability of external data (for CMB lensing side), Euclid data and correlated simulations. We do not plan to have correlated simulations with foreground contaminations for RR2 but that is something we should aim for DR1 (eg Agora sims). 
+
+# Cross correlation with jackknives maps from random split of the RR2 sample, nulling galaxy clustering signal 
+# Cross correlation with CMB lensing maps with no signal (curl map, frequency difference maps)
+** TODO: list available lensing maps for Planck, ACT and SPT
+# Cross correlation with CMB lensing maps obtained with different estimators (tSZ cleaned leg in the quadratic estimator, different masking, T only versus Pol only versus MV)
+** TODO: list available lensing maps for Planck, ACT and SPT
+# Check consistency of cross-correlations with Planck vs ACT vs SPT
+# Survey property (i.e. systematic) map cross-correlations, following DESxSPT analysis, needs 
+** TODO: get extinction and stellar density maps (from Gaia data, or Euclid internal)
+** TODO: PSF error map
+# Cross-shear $\gamma_x$
+** TODO: this test is designed in real space, check if correspondence in multipole space is to use mode B lensing maps
+# Spatial variation: In RR2 we have two patches in the south only. We can further divide the large one into two smaller patches

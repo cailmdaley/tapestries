@@ -1,0 +1,21 @@
+binning1: &doux_22
+  # same binning as Doux et al 2022
+  # 32 sqrt-spaced bins between 8 and 2048
+  bpw_edges: [7.5, 17.5, 30.5, 46.5, 66.5, 89.5, 116.5, 146.5, 180.5, 217.5, 258.5,
+              303.5, 351.5, 402.5, 457.5, 516.5, 578.5, 643.5, 712.5, 785.5, 861.5,
+              940.5, 1023.5, 1110.5, 1200.5, 1294.5, 1391.5, 1491.5, 1596.5, 1703.5,
+              1815.5, 1929.5, 2048.5]
+
+binning2: &wl_highell
+  # linear between 20 and 260, log between 260 and 4000, 27 total bins
+  bpw_edges: [  20.,   50.,   80.,  110.,  140.,  170.,  200.,  230.,  260.,
+               300.,  347.,  400.,  462.,  534.,  616.,  712.,  822.,  949.,
+              1096., 1265., 1461., 1687., 1948., 2250., 2598., 3000., 3464.,
+              4000.]
+
+binning3: &ck_cross
+  # 24 linear bins for use in cross-corrs with CMB lensing
+  kind: linear
+  ell_min: 30
+  ell_max: 3500
+  nbpws: 24
