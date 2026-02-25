@@ -463,8 +463,28 @@
         display: block; font-family: var(--font-mono); font-size: 0.65rem;
         color: var(--ui-text-muted); margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em;
       }
-      .tapestry-artifact img { width: 100%; border-radius: 2px; border: 1px solid var(--ui-border); cursor: pointer; transition: border-color 0.2s; }
-      .tapestry-artifact img:hover { border-color: var(--ui-teal); }
+      .tapestry-artifact .artifact-media { width: 100%; border-radius: 2px; border: 1px solid var(--ui-border); transition: border-color 0.2s; overflow: hidden; }
+      .tapestry-artifact .artifact-media:hover { border-color: var(--ui-teal); }
+      .tapestry-artifact .artifact-media.image img { width: 100%; display: block; cursor: pointer; border: none; opacity: 1; transition: opacity 120ms ease; }
+      .tapestry-artifact .artifact-media.image.loading img { opacity: 0; }
+      .tapestry-artifact .artifact-media.pdf {
+        --pdf-aspect-ratio: 0.7727;
+        position: relative;
+        width: 100%;
+        aspect-ratio: var(--pdf-aspect-ratio);
+        margin: 0 auto;
+        background: var(--ui-dark-surface);
+      }
+      .tapestry-artifact .artifact-media.pdf canvas { width: 100%; height: 100%; display: block; background: transparent; opacity: 1; transition: opacity 120ms ease; }
+      .tapestry-artifact .artifact-media.pdf.loading canvas { opacity: 0; }
+      .tapestry-artifact .artifact-open-overlay {
+        position: absolute;
+        inset: 0;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 2;
+      }
       .tapestry-artifact-viewer .artifact-nav { font-size: 1.2rem; color: var(--ui-text-muted); cursor: pointer; padding: 0.4rem; user-select: none; }
       .tapestry-artifact-viewer .artifact-nav:hover { color: var(--ui-teal); }
 
@@ -505,7 +525,8 @@
         position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9);
         z-index: 2000; display: flex; align-items: center; justify-content: center; cursor: pointer;
       }
-      .tapestry-lightbox img { max-width: 95%; max-height: 95%; border-radius: 2px; }
+      .tapestry-lightbox img { max-width: 95%; max-height: 95%; border-radius: 2px; cursor: crosshair; }
+      .tapestry-lightbox iframe { width: min(95vw, 1200px); height: 95vh; border: none; border-radius: 2px; background: white; }
       .tapestry-lightbox-close {
         position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none;
         color: rgba(255,255,255,0.7); font-size: 2rem; cursor: pointer; z-index: 2001;
@@ -530,7 +551,7 @@
         to { opacity: 1; transform: translateX(-50%) translateY(0); }
       }
     </style>
-    <script type="module" crossorigin src="/tapestries/assets/index-D3k5Hwu1.js"></script>
+    <script type="module" crossorigin src="/tapestries/assets/index-D7sa75rL.js"></script>
     <link rel="stylesheet" crossorigin href="/tapestries/assets/index-DRKxklZO.css">
   </head>
   <body>
