@@ -1,0 +1,171 @@
+{
+  "id": "plot_systematic_maps",
+  "generated": "2026-02-26T12:25:26.153382+00:00",
+  "input": {
+    "sys_maps": [
+      "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPSTARNUMBERDENSITY-CONCAT-20251010T161050.084446Z_0.12.fits",
+      "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPGALACTICEXTINCTION-CONCAT-20251030T131741.792086Z_0.12.fits",
+      "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPEXPOSURES-CONCAT-20251030T104214.652212Z_0.12.fits",
+      "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPZODIACALLIGHT-CONCAT-20251113T092614.809773Z_0.12.fits",
+      "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPSAA-CONCAT-20251031T140423.958666Z_0.12.fits",
+      "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPPSF-CONCAT-20251031T130403.465679Z_0.12.fits",
+      "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPNOISE-CONCAT-20251031T132119.202709Z_0.12.fits",
+      "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPPERSISTENCE-CONCAT-20251031T135230.746984Z_0.12.fits",
+      "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPSTARBRIGHTNESSMEAN-CONCAT-20251010T162225.737416Z_0.12.fits",
+      "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPGALAXYNUMBERDENSITY-CONCAT-20251113T124910.674609Z_0.13.fits",
+      "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPGALAXYRELPHZSEVENTYMEAN-CONCAT-20251112T134749.454598Z_0.13.fits"
+    ],
+    "shear_pkl": "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/maps/rr2_v2_1_wl_031224/wl_lensmc/rr2_v2_1_wl_031224_lensmc_maps.pkl"
+  },
+  "output": {
+    "systematic_map_stellar_density": "systematic_map_stellar_density.png",
+    "systematic_map_galactic_extinction": "systematic_map_galactic_extinction.png",
+    "systematic_map_exposures": "systematic_map_exposures.png",
+    "systematic_map_zodiacal_light": "systematic_map_zodiacal_light.png",
+    "systematic_map_saa": "systematic_map_saa.png",
+    "systematic_map_psf": "systematic_map_psf.png",
+    "systematic_map_noise": "systematic_map_noise.png",
+    "systematic_map_persistence": "systematic_map_persistence.png",
+    "systematic_map_star_brightness_mean": "systematic_map_star_brightness_mean.png",
+    "systematic_map_galaxy_number_density": "systematic_map_galaxy_number_density.png",
+    "systematic_map_phz_quality": "systematic_map_phz_quality.png",
+    "evidence": "evidence.json"
+  },
+  "params": {
+    "nside": 2048,
+    "n_maps": 11,
+    "map_keys": [
+      "stellar_density",
+      "galactic_extinction",
+      "exposures",
+      "zodiacal_light",
+      "saa",
+      "psf",
+      "noise",
+      "persistence",
+      "star_brightness_mean",
+      "galaxy_number_density",
+      "phz_quality"
+    ]
+  },
+  "evidence": {
+    "maps": {
+      "stellar_density": {
+        "median": 0.046875,
+        "p10": 0.015625,
+        "p90": 0.09375,
+        "frac_nonzero": 0.787481916432644
+      },
+      "galactic_extinction": {
+        "median": 0.016289973631501198,
+        "p10": 0.01001930795609951,
+        "p90": 0.03005599044263363,
+        "frac_nonzero": 0.8311760701216918
+      },
+      "exposures": {
+        "median": 2462.176986694336,
+        "p10": 2260.8038482666016,
+        "p90": 4011.2514572143555,
+        "frac_nonzero": 0.8278891158199302
+      },
+      "zodiacal_light": {
+        "median": 1.5805724872825895e-18,
+        "p10": 1.5136321546572412e-18,
+        "p90": 1.6356413959830087e-18,
+        "frac_nonzero": 0.8311760701216918
+      },
+      "saa": {
+        "median": 92.50914907455444,
+        "p10": 91.3510981798172,
+        "p90": 94.29638957977295,
+        "frac_nonzero": 0.8278891158199302
+      },
+      "psf": {
+        "median": 0.5141978145111352,
+        "p10": 0.5107855976559221,
+        "p90": 0.5169939996208995,
+        "frac_nonzero": 0.7958556718577142
+      },
+      "noise": {
+        "median": 0.003783939406275749,
+        "p10": 0.0030292728690255897,
+        "p90": 0.004175209801178426,
+        "frac_nonzero": 0.8149774487277679
+      },
+      "persistence": {
+        "median": 0.21313028025906533,
+        "p10": 0.10737101680133491,
+        "p90": 0.3779251041822137,
+        "frac_nonzero": 0.7956663262701047
+      },
+      "star_brightness_mean": {
+        "median": 58.195162415504456,
+        "p10": 5.406636762619019,
+        "p90": 985.0881041407582,
+        "frac_nonzero": 0.7869287720194026
+      },
+      "galaxy_number_density": {
+        "median": 16.375,
+        "p10": 10.1875,
+        "p90": 27.5,
+        "frac_nonzero": 0.7270657816356055
+      },
+      "phz_quality": {
+        "median": 0.2696657180786133,
+        "p10": 0.24685591459274292,
+        "p90": 0.5422896444797516,
+        "frac_nonzero": 0.7232852523189516
+      }
+    }
+  },
+  "provenance": {
+    "input": {
+      "sys_maps": [
+        "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPSTARNUMBERDENSITY-CONCAT-20251010T161050.084446Z_0.12.fits",
+        "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPGALACTICEXTINCTION-CONCAT-20251030T131741.792086Z_0.12.fits",
+        "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPEXPOSURES-CONCAT-20251030T104214.652212Z_0.12.fits",
+        "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPZODIACALLIGHT-CONCAT-20251113T092614.809773Z_0.12.fits",
+        "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPSAA-CONCAT-20251031T140423.958666Z_0.12.fits",
+        "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPPSF-CONCAT-20251031T130403.465679Z_0.12.fits",
+        "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPNOISE-CONCAT-20251031T132119.202709Z_0.12.fits",
+        "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPPERSISTENCE-CONCAT-20251031T135230.746984Z_0.12.fits",
+        "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPSTARBRIGHTNESSMEAN-CONCAT-20251010T162225.737416Z_0.12.fits",
+        "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPGALAXYNUMBERDENSITY-CONCAT-20251113T124910.674609Z_0.13.fits",
+        "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/tr1_pic/VMPZ_ID/MOSAIC_MASKS/EUC_LE3_VMPZ-ID_HPGALAXYRELPHZSEVENTYMEAN-CONCAT-20251112T134749.454598Z_0.13.fits"
+      ],
+      "shear_pkl": "/leonardo_work/EUHPC_E05_083/cmbx/inputs/euclid/maps/rr2_v2_1_wl_031224/wl_lensmc/rr2_v2_1_wl_031224_lensmc_maps.pkl"
+    },
+    "output": {
+      "pngs": [
+        "results/claims/plot_systematic_maps/systematic_map_stellar_density.png",
+        "results/claims/plot_systematic_maps/systematic_map_galactic_extinction.png",
+        "results/claims/plot_systematic_maps/systematic_map_exposures.png",
+        "results/claims/plot_systematic_maps/systematic_map_zodiacal_light.png",
+        "results/claims/plot_systematic_maps/systematic_map_saa.png",
+        "results/claims/plot_systematic_maps/systematic_map_psf.png",
+        "results/claims/plot_systematic_maps/systematic_map_noise.png",
+        "results/claims/plot_systematic_maps/systematic_map_persistence.png",
+        "results/claims/plot_systematic_maps/systematic_map_star_brightness_mean.png",
+        "results/claims/plot_systematic_maps/systematic_map_galaxy_number_density.png",
+        "results/claims/plot_systematic_maps/systematic_map_phz_quality.png"
+      ],
+      "evidence": "results/claims/plot_systematic_maps/evidence.json"
+    },
+    "params": {
+      "all_bin_idx": 6,
+      "sys_map_keys": [
+        "stellar_density",
+        "galactic_extinction",
+        "exposures",
+        "zodiacal_light",
+        "saa",
+        "psf",
+        "noise",
+        "persistence",
+        "star_brightness_mean",
+        "galaxy_number_density",
+        "phz_quality"
+      ]
+    }
+  }
+}

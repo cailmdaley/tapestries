@@ -20,9 +20,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-from dr1_notebooks.scratch.cdaley.plot_utils import FW, FH, setup_theme, COLORS, LABELS, BIN_PALETTE, TOM_BINS
+from dr1_notebooks.scratch.cdaley.plot_utils import FW, FH, setup_theme, COLORS, LABELS, BIN_PALETTE, TOM_BINS, save_evidence
 from dr1_notebooks.scratch.cdaley.spectrum_utils import load_cross_spectrum
-from dr1_notebooks.scratch.cdaley.nmt_utils import extract_covariance_diagonal
+from dr1_cmbx.eDR1data.spectra import extract_covariance_block
 
 
 # Snakemake always provides this
@@ -63,7 +63,7 @@ for method in ["density", "lensmc"]:
         nbins = len(ells)
 
         # Extract NaMaster diagonal (handles interleaving for spin-2)
-        var_nmt = extract_covariance_diagonal(cov, nbins)
+        var_nmt = np.diag(extract_covariance_block(cov, nbins))
 
         good = (knox_var > 0) & (var_nmt > 0)
         if not np.any(good):
@@ -121,7 +121,7 @@ for ax, method_label, method_key, ylabel in [
     ax.set_xscale("log")
     ax.set_xlabel(r"$\ell$")
     ax.set_ylabel(ylabel)
-    ax.set_title(f"NaMaster/Knox ratio ({method_label} × CMB κ)", fontsize=11)
+    ax.set_title(f"NaMaster/Knox ratio ({method_label} $\\times$ CMB $\\kappa$)", fontsize=11)
 
     handles, _ = ax.get_legend_handles_labels()
     if len(cmbk_list) > 1:

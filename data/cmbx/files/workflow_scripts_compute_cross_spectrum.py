@@ -6,7 +6,11 @@ the results to an individual NPZ file with accompanying evidence.json.
 Conventions:
   - Weight-based mask: apodize(weight > 0, aposcale, "C2") * weight
   - CMB mask: apodize(cmb_mask, aposcale, "C2")  [gctools pattern]
-  - Shear map/catalog values are handled in a shared IAU convention path
+  - Ellipticity convention: Euclid catalogs define position angle from West
+    toward North, which differs from both standard IAU (North) and HEALPix
+    COSMO (South). The library handles this via pol_conv="EUCLID" in
+    make_field, which applies [-e1, +e2] to convert to NaMaster convention.
+    See fiber shear-e1-e2-healpix-q-u-sign-ec695758.
   - Explicit spin=2 for shear fields
   - n_iter=1, lmax=3000, lmax_mask=lmax
 """
@@ -15,16 +19,19 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+import pickle
+
+import healpy as hp
 import numpy as np
 import pymaster as nmt
-from nx2pt.maps import read_healpix_map
-from nx2pt.namaster_tools import get_workspace, get_cov_workspace
 from scipy.stats import chi2 as chi2_dist
 
 from dr1_notebooks.scratch.cdaley.snakemake_helpers import snakemake_log
+from dr1_notebooks.scratch.cdaley.nmt_utils import read_healpix_map
 from dr1_cmbx.eDR1data.spectra import (
     make_mask, make_field, make_catalog_field, make_bins,
     compute_knox_variance, extract_covariance_block,
+    get_workspace, get_cov_workspace,
 )
 
 import polars as pl
@@ -32,6 +39,17 @@ import polars as pl
 
 # Snakemake always provides this
 snakemake = snakemake  # type: ignore # noqa: F821
+
+
+# ---------------------------------------------------------------------------
+# Pickle loader
+# ---------------------------------------------------------------------------
+def _load_from_pkl(pkl_path, bin_idx):
+    """Load one bin from pickle, return bin dict with sparse arrays."""
+    with open(pkl_path, "rb") as f:
+        data = pickle.load(f)
+    bin_key = next(k for k in data if k.endswith("bin"))
+    return data[bin_key][f"bin{bin_idx}"]
 
 
 # ---------------------------------------------------------------------------
@@ -50,7 +68,7 @@ def make_convergence_mask(mask_map, aposcale):
 
 
 def make_shear_field(e1, e2, mask, lmax=3000, lmax_mask=None, n_iter=1):
-    return make_field([e1, e2], mask, spin=2, pol_conv="IAU",
+    return make_field([e1, e2], mask, spin=2, pol_conv="EUCLID",
                       lmax=lmax, lmax_mask=lmax_mask, n_iter=n_iter)
 
 
@@ -61,7 +79,7 @@ def make_scalar_field(map_data, mask, lmax=3000, lmax_mask=None, n_iter=1):
 
 def make_shear_catalog_field(lon_deg, lat_deg, weights, e1, e2, lmax):
     pos = np.array([lon_deg, lat_deg])
-    return make_catalog_field(pos, weights, [e1, e2], lmax, spin=2, pol_conv="IAU")
+    return make_catalog_field(pos, weights, [e1, e2], lmax, spin=2, pol_conv="EUCLID")
 
 
 # ---------------------------------------------------------------------------
@@ -78,6 +96,8 @@ cmbk_mask_path = Path(snakemake.input.cmbk_mask)
 
 output_npz = Path(snakemake.output.npz)
 evidence_path = Path(snakemake.output.evidence)
+
+bin_idx = int(snakemake.params.bin_idx)
 
 nside = int(snakemake.params.nside)
 lmin = int(snakemake.params.lmin)
@@ -101,7 +121,7 @@ euclid_apod_mask_path = getattr(snakemake.input, "euclid_apod_mask", None)
 cmbk_apod_mask_path = getattr(snakemake.input, "cmbk_apod_mask", None)
 patch_mask = None
 if patch_mask_path is not None:
-    from nx2pt.maps import read_healpix_map as read_map
+    from dr1_notebooks.scratch.cdaley.nmt_utils import read_healpix_map as read_map
     patch_mask = read_map(str(patch_mask_path))
 
 # Optional theory+noise for improved Gaussian covariance guess spectra.
@@ -205,35 +225,38 @@ elif is_shear and estimator == "catalog":
     # NmtFieldCatalog.get_mask() raises ValueError, so covariance workspace
     # requires a map-based NmtField. The covariance is valid because it depends
     # on mask geometry and auto-spectra, not the spectrum measurement method.
-    euclid_map_path = Path(snakemake.input.map)
-    euclid_mask_path = Path(snakemake.input.mask)
-    shear_maps_cov = np.atleast_2d(read_healpix_map(str(euclid_map_path)))
+    pkl_path = Path(snakemake.input.maps_pkl)
+    bd = _load_from_pkl(str(pkl_path), bin_idx)
+    npix = hp.nside2npix(nside)
+    e1_cov = np.zeros(npix); e1_cov[bd["ipix"]] = bd["e1"]
+    e2_cov = np.zeros(npix); e2_cov[bd["ipix"]] = bd["e2"]
+    weight_map_cov = np.zeros(npix); weight_map_cov[bd["ipix"]] = bd["sum_weights"]
     if patch_mask_path is None and euclid_apod_mask_path is not None:
         euclid_mask = read_healpix_map(str(euclid_apod_mask_path))
         snakemake_log(snakemake, f"  Using official apodized mask: {euclid_apod_mask_path}")
     else:
-        weight_map_cov = read_healpix_map(str(euclid_mask_path))
         euclid_mask = make_shear_mask(weight_map_cov, aposcale)
         del weight_map_cov
     euclid_field_for_cov = make_shear_field(
-        shear_maps_cov[0], shear_maps_cov[1], euclid_mask,
+        e1_cov, e2_cov, euclid_mask,
         lmax=lmax, n_iter=n_iter,
-    )
-    del shear_maps_cov
+    )  # make_shear_field handles sign internally
+    del e1_cov, e2_cov
     snakemake_log(snakemake, f"  Map-based field for covariance: fsky={np.mean(euclid_mask > 0):.4f}")
 
 elif is_shear:
-    # Map-based shear
-    euclid_map_path = Path(snakemake.input.map)
-    euclid_mask_path = Path(snakemake.input.mask)
-    snakemake_log(snakemake, f"  Euclid map: {euclid_map_path}")
-    shear_maps = np.atleast_2d(read_healpix_map(str(euclid_map_path)))
-    e1, e2 = shear_maps[0], shear_maps[1]
+    # Map-based shear: load from pickle
+    pkl_path = Path(snakemake.input.maps_pkl)
+    snakemake_log(snakemake, f"  Euclid pkl: {pkl_path}")
+    bd = _load_from_pkl(str(pkl_path), bin_idx)
+    npix = hp.nside2npix(nside)
+    e1 = np.zeros(npix); e1[bd["ipix"]] = bd["e1"]
+    e2 = np.zeros(npix); e2[bd["ipix"]] = bd["e2"]
+    weight_map = np.zeros(npix); weight_map[bd["ipix"]] = bd["sum_weights"]
     if patch_mask_path is None and euclid_apod_mask_path is not None:
         euclid_mask = read_healpix_map(str(euclid_apod_mask_path))
         snakemake_log(snakemake, f"  Using official apodized mask: {euclid_apod_mask_path}")
     else:
-        weight_map = read_healpix_map(str(euclid_mask_path))
         # Apply spatial patch mask if provided (spatial variation test)
         if patch_mask_path is not None:
             weight_map = weight_map * patch_mask
@@ -244,16 +267,17 @@ elif is_shear:
     snakemake_log(snakemake, f"  Shear mask fsky: {np.mean(euclid_mask > 0):.4f}")
 
 else:
-    # SKS or density: always map-based scalar maps
-    euclid_map_path = Path(snakemake.input.map)
-    euclid_mask_path = Path(snakemake.input.mask)
-    snakemake_log(snakemake, f"  Euclid map: {euclid_map_path}")
-    euclid_map = read_healpix_map(str(euclid_map_path))
+    # Density: load from pickle
+    pkl_path = Path(snakemake.input.maps_pkl)
+    snakemake_log(snakemake, f"  Euclid pkl: {pkl_path}")
+    bd = _load_from_pkl(str(pkl_path), bin_idx)
+    npix = hp.nside2npix(nside)
+    euclid_map = np.zeros(npix); euclid_map[bd["ipix"]] = bd["map"]
     if patch_mask_path is None and euclid_apod_mask_path is not None:
         euclid_mask = read_healpix_map(str(euclid_apod_mask_path))
         snakemake_log(snakemake, f"  Using official apodized mask: {euclid_apod_mask_path}")
     else:
-        euclid_mask_raw = read_healpix_map(str(euclid_mask_path))
+        euclid_mask_raw = np.zeros(npix); euclid_mask_raw[bd["ipix"]] = bd["mask"]
         euclid_mask = make_convergence_mask(euclid_mask_raw, aposcale)
     euclid_field = make_scalar_field(euclid_map, euclid_mask, lmax=lmax, n_iter=n_iter)
 
@@ -408,10 +432,8 @@ if compute_cov:
             nl_cmb = np.zeros(lmax + 1)
             snakemake_log(snakemake, "  CMB N_L: none provided (theory-only for kappa auto)")
 
-        # Shape noise from FITS header (flat per-component noise)
-        import astropy.io.fits as fits
-        with fits.open(str(euclid_map_path)) as hdul:
-            noise_cl = float(hdul[1].header.get("NOISE_CL", 0.0))
+        # Shape noise from pickle bin dict (flat per-component noise)
+        noise_cl = float(bd.get("noise_cl", 0.0))
         snakemake_log(snakemake, f"  Shape noise NOISE_CL = {noise_cl:.3e}")
 
         # Construct guess spectra arrays with correct shapes.
@@ -443,10 +465,11 @@ if compute_cov:
             guess_22 = knox_result["pcl_22"]
             guess_12 = nmt.compute_coupled_cell(_cov_euclid_field, cmbk_field) / np.mean(m_euclid * m_cmb)
         else:
-            # Catalog estimator Knox proxy has no pseudo-Cl — skip NaMaster covariance.
-            # Regenerate theory files (compute_theory_cls) to enable proper covariance.
-            snakemake_log(snakemake, "  WARNING: No theory or pseudo-Cl for covariance — skipping NaMaster Gaussian")
-            compute_cov = False
+            raise RuntimeError(
+                "NaMaster Gaussian covariance requested but no theory or pseudo-Cl "
+                "guess spectra available. Ensure theory_npz and cmb_noise_curve are "
+                "passed as snakemake params (run compute_theory_cls first)."
+            )
 
     # Mode-coupling workspace for covariance: must use the same fields
     # as the covariance workspace. For catalog mode, build from map-based field.
@@ -535,9 +558,9 @@ if cov is not None:
     var_nmt = np.diag(cov_nmt) if np.ndim(cov_nmt) == 2 else np.asarray(cov_nmt)
     good_nmt = var_nmt > 0
     if np.any(good_nmt):
-        snr = float(np.sqrt(np.sum(cl_signal[good_nmt] ** 2 / var_nmt[good_nmt])))
         dof = int(np.sum(good_nmt))
         chi2_null = float(np.sum(cl_signal[good_nmt] ** 2 / var_nmt[good_nmt]))
+        snr = float((chi2_null - dof) / np.sqrt(2 * dof))
         pte_null = float(1.0 - chi2_dist.cdf(chi2_null, dof))
         evidence["evidence"] = {
             "snr": round(snr, 2),
@@ -558,7 +581,7 @@ if knox_var is not None:
         dof_knox = int(np.sum(good_knox))
         chi2_knox = float(np.sum(cl_signal[good_knox] ** 2 / knox_var[good_knox]))
         pte_knox = float(1.0 - chi2_dist.cdf(chi2_knox, dof_knox))
-        snr_knox = float(np.sqrt(chi2_knox))
+        snr_knox = float((chi2_knox - dof_knox) / np.sqrt(2 * dof_knox))
         evidence["evidence_knox"] = {
             "snr": round(snr_knox, 2),
             "chi2_null": round(chi2_knox, 1),

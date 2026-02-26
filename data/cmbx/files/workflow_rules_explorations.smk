@@ -3,7 +3,7 @@ Snakemake workflow for research explorations and analysis exercises.
 Separate from main production pipeline for systematic investigations.
 """
 
-localrules: compare_nz_fiducial, plot_shear_maps_fiducial, animate_shear_maps_fiducial, plot_all_shear_cross_spectra, plot_all_mass_cross_spectra, plot_all_cross_spectra, compute_all_catalog_cross_spectra, plot_all_catalog_vs_map_comparisons, plot_catalog_validation_summary, plot_all_act_vs_spt, plot_all_redshift_trends, plot_all_theory_comparisons, plot_all_theory_residual_analyses, plot_systematic_spectra, plot_all_systematic_spectra, plot_all_contamination_metrics, plot_all_contamination_composites, plot_all_systematic_budgets, plot_all_deprojected_spectra, plot_all_spt_estimator_composites, compute_all_jackknife_null_spectra, plot_all_jackknife_null_tests, plot_all_bmode_null_tests, compute_all_cmb_noise_curves, compute_all_sim_null_spectra, plot_all_sim_null_tests, plot_all_signal_overviews, build_all_likelihood_inputs, evaluate_all_fiducial_likelihoods, evaluate_all_deprojected_likelihoods, compute_all_patch_cross_spectra, plot_all_spatial_variations, compute_all_overlap_cross_spectra, plot_all_ell_range_robustness_spt_variants, plot_all_ell_range_robustness, compute_all_kappa_spectra, plot_euclid_nz_overview
+localrules: compare_nz_fiducial, plot_shear_maps_fiducial, animate_shear_maps_fiducial, plot_all_shear_cross_spectra, plot_all_mass_cross_spectra, plot_all_cross_spectra, compute_all_catalog_cross_spectra, plot_all_catalog_vs_map_comparisons, plot_catalog_validation_summary, plot_all_catalog_vs_map_composites, plot_act_vs_spt_composite, plot_all_redshift_trends, plot_all_theory_comparisons, plot_all_theory_residual_analyses, plot_systematic_spectra, plot_all_systematic_spectra, plot_all_contamination_metrics, plot_contamination_metric, plot_all_contamination_composites, plot_contamination_composite, plot_contamination_overview, plot_pte_heatmap, plot_all_systematic_budgets, plot_all_deprojected_spectra, plot_all_spt_estimator_composites, compute_all_jackknife_null_spectra, plot_all_jackknife_null_tests, plot_bmode_null_test, plot_all_bmode_null_tests, compute_all_cmb_noise_curves, compute_all_sim_null_spectra, plot_all_sim_null_tests, plot_signal_overview, plot_all_signal_overviews, build_all_likelihood_inputs, evaluate_all_fiducial_likelihoods, evaluate_all_deprojected_likelihoods, compute_all_patch_cross_spectra, plot_all_spatial_variations, compute_all_overlap_cross_spectra, plot_all_ell_range_robustness_spt_variants, plot_all_ell_range_robustness, compute_all_kappa_spectra, plot_euclid_nz_overview, plot_analysis_summary, plot_method_comparison_composite, plot_catalog_vs_map_composite, plot_covariance_validation
 
 map_dir_str = str(map_dir)
 
@@ -52,22 +52,13 @@ rule compare_nz_fiducial:
 rule compute_global_vlims:
     """Compute global color limits across bins 1-6 for consistent scaling."""
     input:
-        shear_maps=lambda wildcards: expand(
-            map_dir_str + f"/wl_{wildcards.method}/" + f"{vcat}_method={wildcards.method}_bin={{binid}}_shear_maps.fits",
-            binid=tom_bins
-        ),
-        sum_weights_maps=lambda wildcards: expand(
-            map_dir_str + f"/wl_{wildcards.method}/" + f"{vcat}_method={wildcards.method}_bin={{binid}}_sum_weights_map.fits",
-            binid=tom_bins
-        ),
-        neff_maps=lambda wildcards: expand(
-            map_dir_str + f"/wl_{wildcards.method}/" + f"{vcat}_method={wildcards.method}_bin={{binid}}_neff_map.fits",
-            binid=tom_bins
-        ),
+        maps_pkl=lambda w: _shear_pkl(w.method),
     output:
         str(out_dir / "explorations" / "shear_maps" / "global_vlims_method={method}.json")
     log:
         "workflow/logs/compute_global_vlims_method={method}.log"
+    params:
+        nside=config["nside"],
     script:
         "../scripts/compute_global_vlims.py"
 
@@ -75,15 +66,7 @@ rule compute_global_vlims:
 rule plot_shear_maps:
     """Create diagnostic plots for shear maps."""
     input:
-        shear_maps=map_dir_str
-        + "/wl_{method}/"
-        + f"{vcat}_method={{method}}_bin={{bin}}_shear_maps.fits",
-        sum_weights_map=map_dir_str
-        + "/wl_{method}/"
-        + f"{vcat}_method={{method}}_bin={{bin}}_sum_weights_map.fits",
-        neff_map=map_dir_str
-        + "/wl_{method}/"
-        + f"{vcat}_method={{method}}_bin={{bin}}_neff_map.fits",
+        maps_pkl=lambda w: _shear_pkl(w.method),
         global_vlims=out_dir / "explorations" / "shear_maps" / "global_vlims_method={method}.json",
     output:
         sum_weights_plot=out_dir / "explorations" / "shear_maps" / "sum_weights_method={method}_bin={bin}.png",
@@ -93,7 +76,9 @@ rule plot_shear_maps:
     log:
         "workflow/logs/plot_shear_maps_method={method}_bin={bin}.log",
     params:
-        global_vlims=lambda wildcards, input: __import__("json").load(open(input.global_vlims))
+        nside=config["nside"],
+        bin_idx=lambda w: _bin_to_idx(w.bin),
+        global_vlims=lambda wildcards, input: __import__("json").load(open(input.global_vlims)),
     script:
         "../scripts/plot_shear_maps.py"
 
@@ -240,9 +225,13 @@ rule compute_catalog_cross_spectrum:
         compute_cov=config["cross_correlation"]["covariance"]["compute"],
         estimator="catalog",
         bad_tiles=config.get("quality_cuts", {}).get("bad_tiles", []),
+        bin_idx=lambda w: _bin_to_idx(w.bin),
+        # Theory+noise guess spectra for Gaussian covariance (same as map rule).
+        theory_npz=lambda w: str(out_dir / "theory" / f"theory_cls_{w.method}_x_{w.cmbk}.npz"),
+        cmb_noise_curve=lambda w: get_cmb_noise_curve_path(w.cmbk),
     threads: 16
     resources:
-        mem_mb=64000
+        mem_mb=10000
     script:
         "../scripts/compute_cross_spectrum.py"
 
@@ -282,62 +271,37 @@ rule plot_all_catalog_vs_map_comparisons:
         ),
 
 
-rule plot_catalog_validation_summary:
-    """Compact summary heatmap: correlation + RMS for all 28 catalog vs map comparisons."""
+rule plot_catalog_vs_map_composite:
+    """Catalog vs map estimator comparison: all-bin E+B cross-spectra."""
     input:
-        cat_dir=out_dir / "cross_correlations" / "catalog_validation",
-        map_dir=out_dir / "cross_correlations" / "individual",
-        upstream_ev=claims_dir / "plot_catalog_vs_map_comparison" / "evidence.json",
+        map_npz=out_dir / "cross_correlations" / "individual" / "{method}_binall_x_act_cls.npz",
+        cat_npz=out_dir / "cross_correlations" / "catalog_validation" / "{method}_binall_x_act_cat_cls.npz",
     output:
-        png=claims_dir / "plot_catalog_validation_summary" / "catalog_validation_summary.png",
-        evidence=claims_dir / "plot_catalog_validation_summary" / "evidence.json",
+        png=claims_dir / "plot_catalog_vs_map_comparison" / "catalog_vs_map_{method}.png",
+        evidence=claims_dir / "plot_catalog_vs_map_comparison" / "catalog_vs_map_{method}_evidence.json",
     log:
-        "workflow/logs/plot_catalog_validation_summary.log",
-    params:
-        snr_min_for_frac=config.get("catalog_validation", {}).get("snr_min_for_frac", 1.0),
+        "workflow/logs/plot_catalog_vs_map_composite_{method}.log",
     script:
-        "../scripts/plot_catalog_validation_summary.py"
+        "../scripts/plot_catalog_vs_map_composite.py"
+
+
+rule plot_all_catalog_vs_map_composites:
+    input:
+        expand(
+            claims_dir / "plot_catalog_vs_map_comparison" / "catalog_vs_map_{method}.png",
+            method=["lensmc", "metacal"],
+        ),
 
 
 # ---------------------------------------------------------------------------
 # Comparison plots: ACT vs SPT, redshift trend, method comparison
 # ---------------------------------------------------------------------------
 
-rule plot_act_vs_spt:
-    """Compare ACT and SPT-GMV cross-spectra for the same method+bin."""
-    input:
-        npz_files=expand(
-            out_dir / "cross_correlations" / "individual" / "{{method}}_bin{{bin}}_x_{cmbk}_cls.npz",
-            cmbk=cmbk_baseline,
-        ),
-    output:
-        png=claims_dir / "plot_act_vs_spt" / "act_vs_spt_{method}_bin{bin}.png",
-        evidence=claims_dir / "plot_act_vs_spt" / "act_vs_spt_{method}_bin{bin}_evidence.json",
-    log:
-        "workflow/logs/plot_act_vs_spt_{method}_bin{bin}.log",
-    script:
-        "../scripts/plot_act_vs_spt.py"
-
-
-rule plot_all_act_vs_spt:
-    """All ACT vs SPT comparison plots (shear + density)."""
-    input:
-        expand(
-            claims_dir / "plot_act_vs_spt" / "act_vs_spt_{method}_bin{bin}.png",
-            method=all_methods,
-            bin=all_bins,
-        ),
-
-
 rule plot_act_vs_spt_composite:
-    """Spectral overlay: ACT vs SPT for both probes (γκ top, δκ bottom)."""
+    """ACT vs SPT composite with theory overlay (γκ + δκ, self-contained)."""
     input:
         data_dir=out_dir / "cross_correlations" / "individual",
-        individual_evidence=expand(
-            claims_dir / "plot_act_vs_spt" / "act_vs_spt_{method}_bin{bin}_evidence.json",
-            method=all_methods,
-            bin=tom_bins,
-        ),
+        theory_dir=out_dir / "theory",
     output:
         png=claims_dir / "plot_act_vs_spt" / "act_vs_spt_composite.png",
         evidence=claims_dir / "plot_act_vs_spt" / "act_vs_spt_composite_evidence.json",
@@ -491,49 +455,50 @@ rule plot_all_theory_residual_analyses:
 rule plot_systematic_spectra:
     """Raw C^{fS}, C^{κS}, C^{SS} spectra per systematic map.
 
-    Shows the three cross-spectra that compose X^f_S(ℓ), allowing inspection
-    of which ingredient drives contamination and whether C^{SS} is noisy.
+    Shows the three cross-spectra that compose X^f_S(ℓ), one figure per
+    systematic. All three tracer methods (lensmc, metacal, density) are
+    overlaid in the top panel using the all-bin spectrum. C^{κS} and C^{SS}
+    are shown for ACT and SPT in the middle/bottom panels.
     """
     input:
         sys_dir=out_dir / "cross_correlations" / "systematics",
         cmbk_sys_dir=out_dir / "cross_correlations" / "cmbk_systematics",
-        # Ensure compute jobs have run for this systematic and method
+        # Ensure compute jobs have run — all-bin spectra for each method
         fS_npz=expand(
-            out_dir / "cross_correlations" / "systematics" / "{{sysmap}}_x_{{method}}_bin{bin}_cls.npz",
-            bin=tom_bins,
+            out_dir / "cross_correlations" / "systematics" / "{{sysmap}}_x_{method}_binall_cls.npz",
+            method=all_methods,
         ),
         kS_npz=expand(
             out_dir / "cross_correlations" / "cmbk_systematics" / "{{sysmap}}_x_{cmbk}_cls.npz",
             cmbk=cmbk_baseline,
         ),
     output:
-        png=claims_dir / "plot_systematic_spectra" / "systematic_spectra_{sysmap}_{method}.png",
-        evidence=claims_dir / "plot_systematic_spectra" / "systematic_spectra_{sysmap}_{method}_evidence.json",
+        png=claims_dir / "plot_systematic_spectra" / "systematic_spectra_{sysmap}.png",
+        evidence=claims_dir / "plot_systematic_spectra" / "systematic_spectra_{sysmap}_evidence.json",
     log:
-        "workflow/logs/plot_systematic_spectra_{sysmap}_{method}.log",
+        "workflow/logs/plot_systematic_spectra_{sysmap}.log",
     params:
         cmbk_experiments=cmbk_baseline,
+        methods=all_methods,
     script:
         "../scripts/plot_systematic_spectra.py"
 
 
 rule plot_all_systematic_spectra:
-    """All systematic spectra ingredient plots."""
+    """All systematic spectra ingredient plots (one per systematic map)."""
     input:
         expand(
-            claims_dir / "plot_systematic_spectra" / "systematic_spectra_{sysmap}_{method}.png",
+            claims_dir / "plot_systematic_spectra" / "systematic_spectra_{sysmap}.png",
             sysmap=sysmap_list,
-            method=all_methods,
         ),
 
 
 rule aggregate_systematic_spectra_evidence:
-    """Aggregate systematic spectra evidence across all sysmaps × methods."""
+    """Aggregate systematic spectra evidence across all sysmaps."""
     input:
         evidence_files=expand(
-            claims_dir / "plot_systematic_spectra" / "systematic_spectra_{sysmap}_{method}_evidence.json",
+            claims_dir / "plot_systematic_spectra" / "systematic_spectra_{sysmap}_evidence.json",
             sysmap=sysmap_list,
-            method=all_methods,
         ),
     output:
         evidence=claims_dir / "plot_systematic_spectra" / "evidence.json",
@@ -541,8 +506,63 @@ rule aggregate_systematic_spectra_evidence:
         "../scripts/aggregate_evidence.py"
 
 
+rule plot_contamination_overview:
+    """2×11 contamination overview: X^f_S per sysmap, density vs shear columns.
+
+    Shows X = C^{κS}·C^{fS}/C^{SS} with propagated Knox error bars.
+    Left column: density (ACT + SPT). Right column: shear (lensmc/metacal × ACT/SPT).
+    """
+    input:
+        sys_dir=out_dir / "cross_correlations" / "systematics",
+        cmbk_sys_dir=out_dir / "cross_correlations" / "cmbk_systematics",
+        fS_npz=expand(
+            out_dir / "cross_correlations" / "systematics" / "{sysmap}_x_{method}_binall_cls.npz",
+            sysmap=sysmap_list, method=all_methods,
+        ),
+        kS_npz=expand(
+            out_dir / "cross_correlations" / "cmbk_systematics" / "{sysmap}_x_{cmbk}_cls.npz",
+            sysmap=sysmap_list, cmbk=cmbk_baseline,
+        ),
+    output:
+        png=claims_dir / "plot_contamination_overview" / "contamination_overview.png",
+        evidence=claims_dir / "plot_contamination_overview" / "evidence.json",
+    log:
+        f"workflow/logs/plot_contamination_overview_{vcat}.log",
+    params:
+        cmbk_experiments=cmbk_baseline,
+        shear_methods=shear_methods,
+        sys_map_keys=sysmap_list,
+    script:
+        "../scripts/plot_contamination_overview.py"
+
+
+rule plot_pte_heatmap:
+    """PTE heatmap: 11x18 matshow of systematic null test PTE per sysmap × tracer × bin.
+
+    Rows = systematic maps, columns = density(1-6) + lensmc(1-6) + metacal(1-6).
+    Preliminary diagnostic — error bars not yet validated.
+    """
+    input:
+        sys_dir=out_dir / "cross_correlations" / "systematics",
+        evidence_files=expand(
+            out_dir / "cross_correlations" / "systematics" / "{sysmap}_x_{method}_bin{bin}_evidence.json",
+            sysmap=sysmap_list, method=all_methods, bin=tom_bins,
+        ),
+    output:
+        png=claims_dir / "plot_pte_heatmap" / "pte_heatmap.png",
+        evidence=claims_dir / "plot_pte_heatmap" / "evidence.json",
+    log:
+        f"workflow/logs/plot_pte_heatmap_{vcat}.log",
+    params:
+        methods=all_methods,
+        sys_map_keys=sysmap_list,
+        tom_bins=tom_bins,
+    script:
+        "../scripts/plot_pte_heatmap.py"
+
+
 # ---------------------------------------------------------------------------
-# Contamination metric: DES×SPT-style X^f_S(ℓ) diagnostic
+# Contamination metric: DES×SPT-style X^f_S(ℓ) diagnostic (per-sysmap)
 # ---------------------------------------------------------------------------
 
 rule plot_contamination_metric:
@@ -553,8 +573,11 @@ rule plot_contamination_metric:
     """
     input:
         cmbk_sys_npz=out_dir / "cross_correlations" / "cmbk_systematics" / "{sysmap}_x_{cmbk}_cls.npz",
-        sys_dir=out_dir / "cross_correlations" / "systematics",
-        signal_dir=out_dir / "cross_correlations" / "individual",
+        sys_npz_files=expand(
+            out_dir / "cross_correlations" / "systematics" / "{{sysmap}}_x_{{method}}_bin{bin}_cls.npz",
+            bin=tom_bins,
+        ),
+        signal_ref=out_dir / "cross_correlations" / "individual" / "{method}_bin3_x_{cmbk}_cls.npz",
     output:
         png=claims_dir / "plot_contamination_metric" / "contamination_{sysmap}_{method}_x_{cmbk}.png",
         evidence=claims_dir / "plot_contamination_metric" / "contamination_{sysmap}_{method}_x_{cmbk}_evidence.json",
@@ -585,9 +608,20 @@ rule plot_contamination_composite:
     Replaces 50 individual per-wildcard plots with a single overview per method.
     """
     input:
-        cmbk_sys_dir=out_dir / "cross_correlations" / "cmbk_systematics",
-        sys_dir=out_dir / "cross_correlations" / "systematics",
-        signal_dir=out_dir / "cross_correlations" / "individual",
+        cmbk_sys_npz=expand(
+            out_dir / "cross_correlations" / "cmbk_systematics" / "{sysmap}_x_{cmbk}_cls.npz",
+            sysmap=["stellar_density", "galactic_extinction", "exposures", "zodiacal_light", "saa"],
+            cmbk=cmbk_baseline,
+        ),
+        sys_npz=expand(
+            out_dir / "cross_correlations" / "systematics" / "{sysmap}_x_{{method}}_bin{bin}_cls.npz",
+            sysmap=["stellar_density", "galactic_extinction", "exposures", "zodiacal_light", "saa"],
+            bin=tom_bins,
+        ),
+        signal_ref=expand(
+            out_dir / "cross_correlations" / "individual" / "{{method}}_bin3_x_{cmbk}_cls.npz",
+            cmbk=cmbk_baseline,
+        ),
         individual_evidence=expand(
             claims_dir / "plot_contamination_metric" / "contamination_{sysmap}_{{method}}_x_{cmbk}_evidence.json",
             sysmap=sysmap_list,
@@ -743,16 +777,18 @@ rule build_jackknife_null_maps:
     """Build null shear maps via random sign flip of galaxy ellipticities.
 
     Destroys coherent cosmological signal while preserving noise properties.
-    Cross-correlating with CMB kappa tests for galaxy-side systematics.
+    One pickle per method, all bins nested (matches build_maps pattern).
     """
     input:
         catalog=catalog_dir / f"{vcat}.parquet",
     output:
-        null_shear_maps=jk_dir / "maps" / "{method}_bin{bin}_jk_null_shear_maps.fits",
+        null_maps_pkl=jk_dir / "maps" / "{method}_jk_null_maps.pkl",
     log:
-        f"workflow/logs/build_jackknife_null_maps_{vcat}_{{method}}_bin{{bin}}.log",
+        f"workflow/logs/build_jackknife_null_maps_{vcat}_{{method}}.log",
+    params:
+        method="{method}",
     resources:
-        mem_mb=16000,
+        mem_mb=24000,
     script:
         "../scripts/build_jackknife_null_maps.py"
 
@@ -761,16 +797,18 @@ rule compute_jackknife_null_spectrum:
     """Cross-correlate jackknife null shear maps with CMB kappa.
 
     Under H0 (no galaxy-side systematics), the null spectrum should be
-    consistent with zero. Uses the regular weight maps for masking -- only
-    the shear values are randomized.
+    consistent with zero. Uses pre-built apodized masks from production.
 
     Reuses compute_cross_spectrum.py: same input names, same params.
     """
     input:
-        map=jk_dir / "maps" / "{method}_bin{bin}_jk_null_shear_maps.fits",
-        mask=map_dir / "wl_{method}" / f"{vcat}_method={{method}}_bin={{bin}}_sum_weights_map.fits",
+        maps_pkl=jk_dir / "maps" / "{method}_jk_null_maps.pkl",
         cmbk_map=lambda w: data_dir / cmb_experiments[w.cmbk]["kappa_map"],
         cmbk_mask=lambda w: data_dir / cmb_experiments[w.cmbk]["mask"],
+        euclid_apod_mask=out_dir / "masks" / "apodized_pairs" / "{method}_bin{bin}_x_{cmbk}" / "euclid_apod_mask.fits",
+        cmbk_apod_mask=out_dir / "masks" / "apodized_pairs" / "{method}_bin{bin}_x_{cmbk}" / "cmbk_apod_mask.fits",
+        overlap_apod_mask=out_dir / "masks" / "apodized_pairs" / "{method}_bin{bin}_x_{cmbk}" / "overlap_apod_mask.fits",
+        mask_summary=out_dir / "masks" / "apodized_pairs" / "{method}_bin{bin}_x_{cmbk}" / "summary.json",
     output:
         npz=jk_dir / "{method}_bin{bin}_x_{cmbk}_jk_null_cls.npz",
         evidence=jk_dir / "{method}_bin{bin}_x_{cmbk}_jk_null_evidence.json",
@@ -785,6 +823,7 @@ rule compute_jackknife_null_spectrum:
         n_iter=config["cross_correlation"]["n_iter"],
         wksp_cache=str(WORKSPACE_DIR),
         compute_cov=config["cross_correlation"]["covariance"]["compute"],
+        bin_idx=lambda w: _bin_to_idx(w.bin),
     threads: 16
     resources:
         mem_mb=7000,
@@ -1003,10 +1042,13 @@ rule compute_sim_null_spectrum:
     Workspace cache reuse: same masks → same coupling matrix → fast recomputation.
     """
     input:
-        map=map_dir / "wl_{method}" / f"{vcat}_method={{method}}_bin={{bin}}_shear_maps.fits",
-        mask=map_dir / "wl_{method}" / f"{vcat}_method={{method}}_bin={{bin}}_sum_weights_map.fits",
+        unpack(get_euclid_map_files_always_map),
         cmbk_map=lambda w: data_dir / sim_null_config[w.cmbk]["kappa_pattern"].format(sim_id=w.sim_id),
         cmbk_mask=lambda w: data_dir / sim_null_config[w.cmbk]["mask"],
+        euclid_apod_mask=out_dir / "masks" / "apodized_pairs" / "{method}_bin{bin}_x_{cmbk}" / "euclid_apod_mask.fits",
+        cmbk_apod_mask=out_dir / "masks" / "apodized_pairs" / "{method}_bin{bin}_x_{cmbk}" / "cmbk_apod_mask.fits",
+        overlap_apod_mask=out_dir / "masks" / "apodized_pairs" / "{method}_bin{bin}_x_{cmbk}" / "overlap_apod_mask.fits",
+        mask_summary=out_dir / "masks" / "apodized_pairs" / "{method}_bin{bin}_x_{cmbk}" / "summary.json",
     output:
         npz=sim_dir / "{cmbk}" / "{method}_bin{bin}_x_{cmbk}_sim{sim_id}_cls.npz",
         evidence=sim_dir / "{cmbk}" / "{method}_bin{bin}_x_{cmbk}_sim{sim_id}_evidence.json",
@@ -1021,6 +1063,7 @@ rule compute_sim_null_spectrum:
         n_iter=config["cross_correlation"]["n_iter"],
         wksp_cache=str(WORKSPACE_DIR),
         compute_cov=config["cross_correlation"]["covariance"]["compute"],
+        bin_idx=lambda w: _bin_to_idx(w.bin),
     threads: 16
     resources:
         mem_mb=7000,
@@ -1087,12 +1130,14 @@ rule plot_shared_map_conventions:
     input:
         act_mask=data_dir / cmb_experiments["act"]["mask"],
         spt_mask=data_dir / cmb_experiments["spt_winter_gmv"]["mask"],
-        shear_weights=map_dir / "wl_lensmc" / f"{vcat}_method=lensmc_bin=all_sum_weights_map.fits",
+        shear_pkl=_shear_pkl("lensmc"),
     output:
         png=claims_dir / "shared_map_conventions" / "shared_map_conventions.png",
         evidence=claims_dir / "shared_map_conventions" / "evidence.json",
     log:
         "workflow/logs/plot_shared_map_conventions.log",
+    params:
+        all_bin_idx=_bin_to_idx("all"),
     resources:
         mem_mb=16000,
     script:
@@ -1106,12 +1151,14 @@ rule plot_cmb_lensing_maps:
         act_mask=data_dir / cmb_experiments["act"]["mask"],
         spt_kappa=data_dir / cmb_experiments["spt_winter_gmv"]["kappa_map"],
         spt_mask=data_dir / cmb_experiments["spt_winter_gmv"]["mask"],
-        shear_weights=map_dir / "wl_lensmc" / f"{vcat}_method=lensmc_bin=all_sum_weights_map.fits",
+        shear_pkl=_shear_pkl("lensmc"),
     output:
         png=claims_dir / "cmb_lensing_maps" / "cmb_lensing_maps.png",
         evidence=claims_dir / "cmb_lensing_maps" / "evidence.json",
     log:
         "workflow/logs/plot_cmb_lensing_maps.log",
+    params:
+        all_bin_idx=_bin_to_idx("all"),
     resources:
         mem_mb=16000,
     script:
@@ -1123,7 +1170,7 @@ rule plot_act_dr6_lensing:
     input:
         kappa=data_dir / cmb_experiments["act"]["kappa_map"],
         mask=data_dir / cmb_experiments["act"]["mask"],
-        shear_weights=map_dir / "wl_lensmc" / f"{vcat}_method=lensmc_bin=all_sum_weights_map.fits",
+        shear_pkl=_shear_pkl("lensmc"),
     output:
         png_map=claims_dir / "act_dr6_lensing" / "act_dr6_lensing_map.png",
         png_mask=claims_dir / "act_dr6_lensing" / "act_dr6_lensing_apodized.png",
@@ -1131,6 +1178,7 @@ rule plot_act_dr6_lensing:
     log:
         "workflow/logs/plot_act_dr6_lensing.log",
     params:
+        all_bin_idx=_bin_to_idx("all"),
         claim_id="act_dr6_lensing",
         experiment_name="ACT DR6",
         experiment_short="ACT",
@@ -1145,7 +1193,7 @@ rule plot_spt_winter_lensing:
     input:
         kappa=data_dir / cmb_experiments["spt_winter_gmv"]["kappa_map"],
         mask=data_dir / cmb_experiments["spt_winter_gmv"]["mask"],
-        shear_weights=map_dir / "wl_lensmc" / f"{vcat}_method=lensmc_bin=all_sum_weights_map.fits",
+        shear_pkl=_shear_pkl("lensmc"),
     output:
         png_map=claims_dir / "spt_winter_lensing" / "spt_winter_lensing_map.png",
         png_mask=claims_dir / "spt_winter_lensing" / "spt_winter_lensing_apodized.png",
@@ -1153,6 +1201,7 @@ rule plot_spt_winter_lensing:
     log:
         "workflow/logs/plot_spt_winter_lensing.log",
     params:
+        all_bin_idx=_bin_to_idx("all"),
         claim_id="spt_winter_lensing",
         experiment_name="SPT-3G GMV",
         experiment_short="SPT",
@@ -1163,17 +1212,19 @@ rule plot_spt_winter_lensing:
 
 
 rule plot_wiener_filter_validation:
-    """Wiener filter validation: W(ℓ) and power spectra for ACT/SPT κ.
+    """Wiener filter validation: C_ℓ^map and W(ℓ) for ACT/SPT κ.
 
-    Shows the empirical signal/noise decomposition and resulting filter,
-    compared against Planck 2018 C_ℓ^{κκ} theory. Validates the adopted
-    theory-informed filtering choice for map visualization.
+    Panel (a): ACT/SPT map auto-spectra, residuals after theory subtraction,
+    and Planck 2018 C_ℓ^{κκ}. Panel (b): theory-informed Wiener filter
+    W(ℓ) = C_ℓ^{κκ,theory} / (C_ℓ^{κκ,theory} + N_ℓ) using known noise curves.
     """
     input:
         act_kappa=data_dir / cmb_experiments["act"]["kappa_map"],
         act_mask=data_dir / cmb_experiments["act"]["mask"],
         spt_kappa=data_dir / cmb_experiments["spt_winter_gmv"]["kappa_map"],
         spt_mask=data_dir / cmb_experiments["spt_winter_gmv"]["mask"],
+        act_noise=data_dir / cmb_experiments["act"]["noise_curve"],
+        spt_noise=out_dir / "noise_curves" / "spt_winter_gmv_N0.txt",
     output:
         png=claims_dir / "wiener_filter_validation" / "wiener_filter_validation.png",
         evidence=claims_dir / "wiener_filter_validation" / "evidence.json",
@@ -1188,9 +1239,8 @@ rule plot_wiener_filter_validation:
 rule plot_systematic_maps:
     """All VMPZ-ID systematic maps on the RR2 footprint.
 
-    Complete inventory: stellar density, galactic extinction, exposures,
-    zodiacal light, SAA, PSF, noise, persistence, star brightness, galaxy
-    number density, photo-z quality. VMPZ-ID sparse FITS at nside 16384,
+    One figure per map (north/south patches). 11 individual PNGs (~1MB each)
+    instead of one 13MB composite. VMPZ-ID sparse FITS at nside 16384,
     downgraded to nside 2048.
     """
     input:
@@ -1198,16 +1248,20 @@ rule plot_systematic_maps:
             data_dir / "{path}",
             path=systematic_map_paths,
         ),
-        shear_weights=map_dir / "wl_lensmc" / f"{vcat}_method=lensmc_bin=all_sum_weights_map.fits",
+        shear_pkl=_shear_pkl("lensmc"),
     output:
-        png=claims_dir / "plot_systematic_maps" / "systematic_maps.png",
+        pngs=expand(
+            claims_dir / "plot_systematic_maps" / "systematic_map_{sysmap}.png",
+            sysmap=sysmap_list,
+        ),
         evidence=claims_dir / "plot_systematic_maps" / "evidence.json",
     log:
         "workflow/logs/plot_systematic_maps.log",
     params:
+        all_bin_idx=_bin_to_idx("all"),
         sys_map_keys=sysmap_list,
     resources:
-        mem_mb=7000,
+        mem_mb=8000,
     script:
         "../scripts/plot_systematic_maps.py"
 
@@ -1287,7 +1341,6 @@ rule build_likelihood_input:
             allow_missing=True,
         ),
         nz_fits=get_likelihood_nz_file,
-        upstream_ev=claims_dir / "compute_cross_spectrum" / "evidence.json",
     output:
         pkl=out_dir / "likelihood" / "{method}_x_{cmbk}_likelihood_input.pkl",
         evidence=claims_dir / "build_likelihood_input" / "{method}_x_{cmbk}_evidence.json",
@@ -1494,7 +1547,7 @@ rule build_overlap_masks:
     input:
         act_mask=data_dir / cmb_experiments["act"]["mask"],
         spt_mask=data_dir / cmb_experiments["spt_winter_gmv"]["mask"],
-        shear_mask=map_dir / f"wl_lensmc" / f"{vcat}_method=lensmc_bin=1_sum_weights_map.fits",
+        shear_pkl=_shear_pkl("lensmc"),
     output:
         act_only=overlap_dir / "masks" / "act_only_mask.fits",
         overlap=overlap_dir / "masks" / "overlap_mask.fits",
@@ -1503,6 +1556,7 @@ rule build_overlap_masks:
     log:
         "workflow/logs/build_overlap_masks.log",
     params:
+        bin_idx=_bin_to_idx("1"),
         nside=config["nside"],
     resources:
         mem_mb=8000,
@@ -1677,6 +1731,37 @@ rule generate_results_table:
         claims_dir=claims_dir,
     script:
         "../scripts/generate_results_table.py"
+
+
+# ---------------------------------------------------------------------------
+# Analysis synthesis (one-page summary)
+# ---------------------------------------------------------------------------
+
+rule plot_analysis_summary:
+    """One-page synthesis of all key findings.
+
+    Reads evidence.json from claims directories and composes a four-panel
+    summary: detection S/N, A_lens per tracer, consistency, null tests.
+    """
+    input:
+        claims_dir=claims_dir,
+        xspec_evidence=claims_dir / "compute_cross_spectrum" / "evidence.json",
+        fiducial_evidence=claims_dir / "evaluate_fiducial_likelihood" / "evidence.json",
+        act_spt_evidence=claims_dir / "plot_act_vs_spt" / "evidence.json",
+        method_evidence=claims_dir / "plot_method_comparison" / "evidence.json",
+        catalog_evidence=claims_dir / "plot_catalog_validation_summary" / "evidence.json",
+        systematic_evidence=claims_dir / "plot_systematic_null_tests" / "evidence.json",
+        jackknife_evidence=claims_dir / "plot_jackknife_null_test" / "evidence.json",
+        sim_null_evidence=claims_dir / "plot_sim_null_test" / "evidence.json",
+    output:
+        png=claims_dir / "plot_analysis_summary" / "analysis_summary.png",
+        evidence=claims_dir / "plot_analysis_summary" / "evidence.json",
+    log:
+        "workflow/logs/plot_analysis_summary.log",
+    params:
+        xspec_dir=out_dir / "cross_correlations" / "individual",
+    script:
+        "../scripts/plot_analysis_summary.py"
 
 
 # ---------------------------------------------------------------------------
@@ -1985,7 +2070,7 @@ rule diagnose_coupling_matrix:
     suspicious SPT ℓ≈100 spike.
     """
     input:
-        shear_weights=map_dir / "wl_lensmc" / f"{vcat}_method=lensmc_bin=all_sum_weights_map.fits",
+        shear_pkl=_shear_pkl("lensmc"),
         cmbk_masks=[
             data_dir / cmb_experiments["act"]["mask"],
             data_dir / cmb_experiments["spt_winter_gmv"]["mask"],
@@ -1995,6 +2080,7 @@ rule diagnose_coupling_matrix:
         png=claims_dir / "diagnose_coupling_matrix" / "coupling_matrix_diagnostics.png",
         evidence=claims_dir / "diagnose_coupling_matrix" / "evidence.json",
     params:
+        all_bin_idx=_bin_to_idx("all"),
         nside=config["nside"],
         lmin=config["cross_correlation"]["binning"]["lmin"],
         lmax=config["cross_correlation"]["binning"]["lmax"],
@@ -2033,3 +2119,52 @@ rule plot_euclid_nz_overview:
         "workflow/logs/plot_euclid_nz_overview.log",
     script:
         "../scripts/plot_euclid_nz_overview.py"
+
+
+# ---------------------------------------------------------------------------
+# Mass map cross-correlation rules (exploratory — not part of main pipeline)
+# ---------------------------------------------------------------------------
+
+rule combine_mass_cross_spectra:
+    input:
+        npz_files=[
+            out_dir / "cross_correlations" / "individual" / "sks_binall_x_{cmbk}_cls.npz",
+        ] + expand(
+            out_dir / "cross_correlations" / "individual" / "sksp_bin{bin}_x_{{cmbk}}_cls.npz",
+            bin=tom_bins,
+        ),
+    output:
+        sacc=out_dir / "cross_correlations" / "combined" / f"euclid_{{cmbk}}_mass_x_cmbk_cls_nside{config['nside']}.sacc",
+    log:
+        f"workflow/logs/combine_mass_cross_spectra_{vcat}_{{cmbk}}.log",
+    params:
+        description=lambda w: f"Euclid RR2 mass maps x {w.cmbk.upper()} CMB lensing cross-correlations",
+        methods="Kaiser-Squires reconstruction",
+        bins="SKS (1 bin), SKSP (bins 1-6)",
+    script:
+        "../scripts/combine_cross_spectra.py"
+
+
+rule compute_all_mass_cross_spectra:
+    """Compute all mass x CMB-k cross-spectra across all CMB experiments."""
+    input:
+        expand(
+            out_dir / "cross_correlations" / "individual" / "{method}_bin{bin}_x_{cmbk}_cls.npz",
+            method=["sks"],
+            bin=["all"],
+            cmbk=cmbk_list,
+        ) + expand(
+            out_dir / "cross_correlations" / "individual" / "sksp_bin{bin}_x_{cmbk}_cls.npz",
+            bin=tom_bins,
+            cmbk=cmbk_list,
+        ),
+
+
+rule compute_allbin_cross_spectra:
+    """Compute all-bin cross-spectra for lensmc, metacal, and SKS mass map."""
+    input:
+        expand(
+            out_dir / "cross_correlations" / "individual" / "{method}_binall_x_{cmbk}_cls.npz",
+            method=["lensmc", "metacal", "sks"],
+            cmbk=cmbk_list,
+        ),

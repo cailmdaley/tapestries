@@ -8,23 +8,23 @@ They are downgraded to the analysis NSIDE and cross-correlated with the
 Euclid shear (spin-2) or convergence (spin-0) field.
 
 Follows the same NaMaster conventions as compute_cross_spectrum.py.
+Shear sign: pol_conv="EUCLID" (library handles [-e1, +e2] conversion).
 """
 
 import json
+import pickle
 from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
-from nx2pt.maps import read_healpix_map
-from nx2pt.namaster_tools import get_workspace
 from scipy.stats import chi2 as chi2_dist
 
+import pymaster as nmt
 from dr1_notebooks.scratch.cdaley.snakemake_helpers import snakemake_log
-from dr1_notebooks.scratch.cdaley.nmt_utils import (
-    make_shear_mask, make_convergence_mask,
-    make_shear_field, make_scalar_field, compute_knox_variance,
-    make_bins, load_systematic_map, extract_covariance_diagonal,
-    apodize_mask, compute_coupled_cell, gaussian_covariance,
+from dr1_notebooks.scratch.cdaley.nmt_utils import read_healpix_map, load_systematic_map
+from dr1_cmbx.eDR1data.spectra import (
+    make_mask, make_field, make_bins, compute_knox_variance, extract_covariance_block,
+    get_workspace,
 )
 
 
@@ -41,8 +41,8 @@ method = snakemake.wildcards.method
 bin_id = snakemake.wildcards.bin
 
 sysmap_path = Path(snakemake.input.sysmap)
-euclid_map_path = Path(snakemake.input.map)
-euclid_mask_path = Path(snakemake.input.mask)
+maps_pkl_path = Path(snakemake.input.maps_pkl)
+bin_idx = int(snakemake.params.bin_idx)
 
 output_npz = Path(snakemake.output.npz)
 evidence_path = Path(snakemake.output.evidence)
@@ -62,32 +62,48 @@ spec_id = f"{sysmap_name}_x_{method}_bin{bin_id}"
 
 snakemake_log(snakemake, f"Systematic cross-spectrum: {spec_id}")
 snakemake_log(snakemake, f"  Sysmap: {sysmap_path}")
-snakemake_log(snakemake, f"  Euclid: {euclid_map_path}")
+snakemake_log(snakemake, f"  Euclid pkl: {maps_pkl_path} (bin_idx={bin_idx})")
 
 # --- Load systematic map (gctools reader handles sparse FITS + downgrade) ---
 snakemake_log(snakemake, f"  Loading systematic map (target nside={nside})...")
 sysmap = load_systematic_map(sysmap_path, nside,
                              log_fn=lambda msg: snakemake_log(snakemake, msg))
 
-# --- Load Euclid tracer ---
+# --- Load Euclid tracer from pickle ---
+snakemake_log(snakemake, f"  Loading Euclid maps from pickle...")
+with open(maps_pkl_path, "rb") as f:
+    data = pickle.load(f)
+bin_key = next(k for k in data if k.endswith("bin"))
+bd = data[bin_key][f"bin{bin_idx}"]
+del data
+
+npix = 12 * nside ** 2
+
 if is_shear:
-    shear_maps = np.atleast_2d(read_healpix_map(str(euclid_map_path)))
-    e1, e2 = shear_maps[0], shear_maps[1]
-    weight_map = read_healpix_map(str(euclid_mask_path))
-    euclid_mask = make_shear_mask(weight_map, aposcale)
-    euclid_field = make_shear_field(e1, e2, euclid_mask, lmax=lmax, n_iter=n_iter)
+    e1_sparse = bd["e1"]
+    e2_sparse = bd["e2"]
+    sw_sparse = bd["sum_weights"]
+    ipix = bd["ipix"]
+    e1 = np.zeros(npix)
+    e2 = np.zeros(npix)
+    weight_map = np.zeros(npix)
+    e1[ipix] = e1_sparse
+    e2[ipix] = e2_sparse
+    weight_map[ipix] = sw_sparse
+    euclid_mask = make_mask(weight_map, aposcale=aposcale, weights=[weight_map])
+    euclid_field = make_field([e1, e2], euclid_mask, spin=2, pol_conv="EUCLID", lmax=lmax, n_iter=n_iter)
     snakemake_log(snakemake, f"  Shear mask fsky: {np.mean(euclid_mask > 0):.4f}")
-elif method == "sksp":
-    kappa_ext = f"KAPPA_ZBIN_{int(bin_id) - 1}"
-    euclid_map = read_healpix_map(str(euclid_map_path), field=kappa_ext)
-    euclid_mask_raw = read_healpix_map(str(euclid_mask_path), field="MASK")
-    euclid_mask = make_convergence_mask(euclid_mask_raw, aposcale)
-    euclid_field = make_scalar_field(euclid_map, euclid_mask, lmax=lmax, n_iter=n_iter)
 else:
-    euclid_map = read_healpix_map(str(euclid_map_path))
-    euclid_mask_raw = read_healpix_map(str(euclid_mask_path))
-    euclid_mask = make_convergence_mask(euclid_mask_raw, aposcale)
-    euclid_field = make_scalar_field(euclid_map, euclid_mask, lmax=lmax, n_iter=n_iter)
+    # density (and any other spin-0 tracer stored in pickle)
+    delta_sparse = bd["map"]
+    mask_sparse = bd["mask"]
+    ipix = bd["ipix"]
+    euclid_map = np.zeros(npix)
+    euclid_mask_raw = np.zeros(npix)
+    euclid_map[ipix] = delta_sparse
+    euclid_mask_raw[ipix] = mask_sparse
+    euclid_mask = make_mask(euclid_mask_raw, aposcale=aposcale, weights=[euclid_mask_raw])
+    euclid_field = make_field(euclid_map, euclid_mask, spin=0, lmax=lmax, n_iter=n_iter)
 
 # --- Create sysmap field ---
 # Mask: intersection of sysmap coverage and survey footprint (from Euclid mask)
@@ -96,10 +112,10 @@ sysmap_footprint = (sysmap != 0).astype(np.float64)
 common_footprint = survey_footprint * sysmap_footprint
 
 # Apodize the common mask
-sysmap_mask = apodize_mask(common_footprint, aposcale, "C2")
+sysmap_mask = nmt.mask_apodization(common_footprint, aposcale, "C2")
 snakemake_log(snakemake, f"  Common mask fsky: {np.mean(sysmap_mask > 0):.4f}")
 
-sysmap_field = make_scalar_field(sysmap, sysmap_mask, lmax=lmax, n_iter=n_iter)
+sysmap_field = make_field(sysmap, sysmap_mask, spin=0, lmax=lmax, n_iter=n_iter)
 
 # --- Binning ---
 bins, bpw_edges = make_bins(lmin, lmax, nells)
@@ -113,7 +129,7 @@ wksp = get_workspace(
 )
 
 snakemake_log(snakemake, "Computing coupled C_l...")
-pcl = compute_coupled_cell(sysmap_field, euclid_field)
+pcl = nmt.compute_coupled_cell(sysmap_field, euclid_field)
 
 snakemake_log(snakemake, "Decoupling...")
 cl = wksp.decouple_cell(pcl)
@@ -125,7 +141,7 @@ snakemake_log(snakemake, f"  cl shape: {cl.shape}")
 
 # --- Covariance ---
 snakemake_log(snakemake, "Computing covariance...")
-from nx2pt.namaster_tools import get_cov_workspace
+from dr1_cmbx.eDR1data.spectra import get_cov_workspace
 
 # Knox variance (shared utility)
 knox_result = compute_knox_variance(sysmap_field, euclid_field, bins)
@@ -142,16 +158,16 @@ m_sys = sysmap_field.get_mask()
 m_euclid = euclid_field.get_mask()
 pcl_11 = knox_result["pcl_11"]
 pcl_22 = knox_result["pcl_22"]
-pcl_12 = compute_coupled_cell(sysmap_field, euclid_field) / np.mean(m_sys * m_euclid)
+pcl_12 = nmt.compute_coupled_cell(sysmap_field, euclid_field) / np.mean(m_sys * m_euclid)
 
 cov_wksp = get_cov_workspace(
     sysmap_field, euclid_field, sysmap_field, euclid_field,
     wksp_cache=str(wksp_cache) if wksp_cache else None,
 )
 
-cov = gaussian_covariance(
+cov = nmt.gaussian_covariance(
     cov_wksp, sys_spin, euclid_spin, sys_spin, euclid_spin,
-    pcl_11, pcl_12, pcl_12, pcl_22, wksp, wksp,
+    pcl_11, pcl_12, pcl_12, pcl_22, wksp, wb=wksp,
 )
 
 snakemake_log(snakemake, f"  NaMaster covariance shape: {cov.shape}")
@@ -187,8 +203,8 @@ nbins = len(ell_eff)
 cl_signal = cl[0]  # First component (E-cross for spin-2, only for spin-0)
 
 # NaMaster covariance variance for the first component.
-# extract_covariance_diagonal returns the component covariance block (nbins, nbins).
-var_nmt = np.diag(extract_covariance_diagonal(cov, nbins))
+# extract_covariance_block returns the component covariance block (nbins, nbins).
+var_nmt = np.diag(extract_covariance_block(cov, nbins))
 
 evidence = {
     "id": spec_id,

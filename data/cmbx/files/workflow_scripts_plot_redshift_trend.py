@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from dr1_notebooks.scratch.cdaley.snakemake_helpers import snakemake_log
-from dr1_notebooks.scratch.cdaley.plot_utils import FW, FH, setup_theme, LABELS, BIN_PALETTE, TOM_BINS
+from dr1_notebooks.scratch.cdaley.plot_utils import FW, FH, setup_theme, LABELS, BIN_PALETTE, TOM_BINS, save_evidence
 from dr1_notebooks.scratch.cdaley.spectrum_utils import load_cross_spectrum, load_evidence
 
 
@@ -87,7 +87,7 @@ if has_ia_theory:
 
 method_label = LABELS.get(method, method)
 cmbk_label = LABELS.get(cmbk, cmbk.upper())
-ax.set_title(f"{method_label} × {cmbk_label}: redshift trend", fontsize=13)
+ax.set_title(f"{method_label} $\\times$ {cmbk_label}: redshift trend", fontsize=13)
 ylabel = r"$\ell\, C_\ell^{\kappa\delta}$" if method == "density" else r"$\ell\, C_\ell^{\kappa E}$"
 ax.set_ylabel(ylabel)
 ax.set_xlabel(r"Multipole $\ell$")

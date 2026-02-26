@@ -16,13 +16,15 @@ snakemake = snakemake  # type: ignore # noqa: F821
 
 
 evidence_files = [Path(f) for f in snakemake.input.evidence_files]
+# Also load any other input groups (e.g. composite_ev)
+all_input_files = [Path(f) for f in snakemake.input if str(f).endswith("evidence.json")]
 output_path = Path(snakemake.output.evidence)
 
 # Rule name from output path
 rule_name = output_path.parent.name
 
 records = []
-for ef in evidence_files:
+for ef in all_input_files:
     try:
         with open(ef) as f:
             doc = json.load(f)
@@ -74,18 +76,22 @@ elif rule_name == "compute_systematic_cross_spectrum":
         evidence["nmt_n_fail_5pct"] = sum(1 for p in ptes_nmt if p < 0.05)
 
 elif rule_name == "plot_act_vs_spt":
-    # ACT vs SPT consistency: chi2/PTE for difference consistent with zero
-    ptes = [r["evidence"]["pte"] for r in records if "evidence" in r and "pte" in r["evidence"]]
-    chi2s = [r["evidence"]["chi2"] for r in records if "evidence" in r and "chi2" in r["evidence"]]
-    dofs = [r["evidence"]["dof"] for r in records if "evidence" in r and "dof" in r["evidence"]]
-
+    # ACT vs SPT: composite-only. Pass through summary.
+    comp = records[0].get("evidence", {}) if records else {}
+    ptes, chi2_dofs = [], []
+    for probe in ("shear_lensmc", "density"):
+        for bid, vals in comp.get(probe, {}).get("per_bin", {}).items():
+            ptes.append(vals["pte"])
+            chi2_dofs.append(vals["chi2"] / vals["dof"])
     evidence = {
-        "n_comparisons": len(records),
+        "n_comparisons": len(ptes),
         "n_with_pte": len(ptes),
         "n_consistent_5pct": sum(1 for p in ptes if p >= 0.05),
         "median_pte": round(float(np.median(ptes)), 3) if ptes else None,
         "min_pte": round(float(np.min(ptes)), 4) if ptes else None,
-        "median_chi2_per_dof": round(float(np.median([c/d for c, d in zip(chi2s, dofs)])), 2) if chi2s else None,
+        "median_chi2_per_dof": round(float(np.median(chi2_dofs)), 2) if chi2_dofs else None,
+        "shear_lensmc": comp.get("shear_lensmc", {}),
+        "density": comp.get("density", {}),
     }
 
 elif rule_name == "plot_method_comparison":
@@ -290,7 +296,7 @@ elif rule_name == "evaluate_deprojected_likelihood":
             prefix = f"{label}_{method}"
             for key in ["original_detection_snr", "marginalized_snr", "marginalized_A_hat",
                         "marginalized_A_sigma", "marginalized_chi2_dof", "marginalized_pte",
-                        "original_ia_chi2_dof", "original_ia_pte", "original_ia_A_hat"]:
+                        "original_ia_chi2_dof", "original_ia_pte", "original_A_lens_with_IA"]:
                 if key in ev:
                     val = ev[key]
                     if isinstance(val, float):
@@ -364,23 +370,23 @@ elif rule_name == "evaluate_fiducial_likelihood":
         snrs = [r["evidence"]["detection_snr"] for r in subset if "detection_snr" in r.get("evidence", {})]
         ia_chi2 = [r["evidence"]["ia_chi2_dof"] for r in subset if "ia_chi2_dof" in r.get("evidence", {})]
         ia_pte = [r["evidence"]["ia_pte"] for r in subset if "ia_pte" in r.get("evidence", {})]
-        ia_A = [r["evidence"]["ia_A_hat"] for r in subset if "ia_A_hat" in r.get("evidence", {})]
-        ia_sigma = [r["evidence"]["ia_A_sigma"] for r in subset if "ia_A_sigma" in r.get("evidence", {})]
+        ia_A = [r["evidence"]["A_lens_with_IA"] for r in subset if "A_lens_with_IA" in r.get("evidence", {})]
+        ia_sigma = [r["evidence"]["A_lens_with_IA_sigma"] for r in subset if "A_lens_with_IA_sigma" in r.get("evidence", {})]
         # Cross-method means
         evidence[f"{label}_mean_detection_snr"] = round(float(np.mean(snrs)), 1) if snrs else None
         evidence[f"{label}_mean_ia_chi2_dof"] = round(float(np.mean(ia_chi2)), 2) if ia_chi2 else None
         evidence[f"{label}_mean_ia_pte"] = round(float(np.mean(ia_pte)), 2) if ia_pte else None
-        evidence[f"{label}_mean_ia_A_hat"] = round(float(np.mean(ia_A)), 3) if ia_A else None
-        evidence[f"{label}_mean_ia_A_sigma"] = round(float(np.mean(ia_sigma)), 3) if ia_sigma else None
+        evidence[f"{label}_mean_A_lens_with_IA"] = round(float(np.mean(ia_A)), 3) if ia_A else None
+        evidence[f"{label}_mean_A_lens_with_IA_sigma"] = round(float(np.mean(ia_sigma)), 3) if ia_sigma else None
 
         # Per-method breakdowns (lensmc is baseline)
         for r in subset:
             ev = r.get("evidence", {})
             method = ev.get("method", "unknown")
             prefix = f"{label}_{method}"
-            for key in ["detection_snr", "ia_chi2_dof", "ia_pte", "ia_A_hat",
-                        "ia_A_sigma", "ia_shape_chi2_dof", "ia_shape_pte",
-                        "vanilla_A_hat", "vanilla_A_sigma"]:
+            for key in ["detection_snr", "ia_chi2_dof", "ia_pte", "A_lens_with_IA",
+                        "A_lens_with_IA_sigma", "ia_shape_chi2_dof", "ia_shape_pte",
+                        "A_lens", "A_lens_sigma"]:
                 if key in ev:
                     val = ev[key]
                     if isinstance(val, float):
@@ -409,26 +415,26 @@ elif rule_name == "build_likelihood_input":
 elif rule_name == "plot_theory_residual_analysis":
     # Theory residual: weighted mean amplitude per CMB experiment
     act_A_hats = []
-    act_ia_A_hats = []
+    act_A_lens_with_IA = []
     spt_A_hats = []
-    spt_ia_A_hats = []
+    spt_A_lens_with_IA = []
     for r in records:
         ev = r.get("evidence", {})
         for b in ev.get("act", {}).get("per_bin", []):
             act_A_hats.append(b.get("A_hat", 0))
-            act_ia_A_hats.append(b.get("ia_A_hat", 0))
+            act_A_lens_with_IA.append(b.get("A_lens_with_IA", 0))
         for b in ev.get("spt_winter_gmv", ev.get("spt", {})).get("per_bin", []):
             spt_A_hats.append(b.get("A_hat", 0))
-            spt_ia_A_hats.append(b.get("ia_A_hat", 0))
+            spt_A_lens_with_IA.append(b.get("A_lens_with_IA", 0))
 
     evidence = {
         "n_methods": len(records),
-        "act_mean_A_hat_vanilla": round(float(np.mean(act_A_hats)), 3) if act_A_hats else None,
-        "act_mean_A_hat_ia": round(float(np.mean(act_ia_A_hats)), 3) if act_ia_A_hats else None,
-        "spt_mean_A_hat_vanilla": round(float(np.mean(spt_A_hats)), 3) if spt_A_hats else None,
-        "spt_mean_A_hat_ia": round(float(np.mean(spt_ia_A_hats)), 3) if spt_ia_A_hats else None,
-        "act_deficit_ia": "consistent" if act_ia_A_hats and abs(np.mean(act_ia_A_hats) - 1) < 0.15 else "deficit",
-        "spt_deficit_ia": "deficit" if spt_ia_A_hats and np.mean(spt_ia_A_hats) < 0.85 else "consistent",
+        "act_mean_A_lens": round(float(np.mean(act_A_hats)), 3) if act_A_hats else None,
+        "act_mean_A_lens_with_IA": round(float(np.mean(act_A_lens_with_IA)), 3) if act_A_lens_with_IA else None,
+        "spt_mean_A_lens": round(float(np.mean(spt_A_hats)), 3) if spt_A_hats else None,
+        "spt_mean_A_lens_with_IA": round(float(np.mean(spt_A_lens_with_IA)), 3) if spt_A_lens_with_IA else None,
+        "act_deficit_with_IA": "consistent" if act_A_lens_with_IA and abs(np.mean(act_A_lens_with_IA) - 1) < 0.15 else "deficit",
+        "spt_deficit_with_IA": "deficit" if spt_A_lens_with_IA and np.mean(spt_A_lens_with_IA) < 0.85 else "consistent",
     }
 
 elif rule_name == "plot_systematic_spectra":
@@ -516,12 +522,27 @@ else:
     # Generic: just count
     evidence = {"n_records": len(records)}
 
-# Auto-detect plots produced by the rule
-claims_dir = output_path.parent
+# Collect outputs declared by individual evidence records (not glob)
+MAX_OUTPUTS = 20
 output_dict = {}
-for ext in (".png", ".pdf", ".jpg", ".jpeg"):
-    for f in sorted(claims_dir.glob(f"*{ext}")):
-        output_dict[f.stem] = f.name
+for rec in records:
+    # Check both top-level "output" and "provenance.output"
+    rec_output = rec.get("output", {})
+    if not rec_output:
+        rec_output = rec.get("provenance", {}).get("output", {})
+    for key, val in rec_output.items():
+        if key == "evidence":
+            continue  # skip evidence.json self-references
+        fname = Path(val).name
+        output_dict[Path(fname).stem] = fname
+
+# If too many per-wildcard outputs, keep only composites/summaries
+if len(output_dict) > MAX_OUTPUTS:
+    summary_keys = {k for k in output_dict
+                    if any(s in k for s in ("composite", "overview", "summary"))}
+    if summary_keys:
+        output_dict = {k: output_dict[k] for k in summary_keys}
+
 output_dict["evidence"] = "evidence.json"
 
 # Build the summary

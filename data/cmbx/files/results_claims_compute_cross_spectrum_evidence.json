@@ -1,6 +1,6 @@
 {
   "id": "compute_cross_spectrum",
-  "generated": "2026-02-23T03:29:29.517908+00:00",
+  "generated": "2026-02-26T12:22:55.448342+00:00",
   "input": {},
   "output": {
     "evidence": "evidence.json"
@@ -9,14 +9,14 @@
   "evidence": {
     "n_spectra": 70,
     "n_with_snr": 70,
-    "median_snr": 3.19,
-    "max_snr": 51.75,
-    "n_detected_3sigma": 45,
-    "n_detected_5sigma": 12,
-    "knox_median_snr": 4.56,
-    "knox_max_snr": 5.81,
-    "knox_n_detected_3sigma": 70,
-    "knox_n_detected_5sigma": 11
+    "median_snr": 2.7,
+    "max_snr": 115.62,
+    "n_detected_3sigma": 31,
+    "n_detected_5sigma": 23,
+    "knox_median_snr": 6.24,
+    "knox_max_snr": 18.69,
+    "knox_n_detected_3sigma": 56,
+    "knox_n_detected_5sigma": 40
   },
   "artifacts": {
     "individual_evidence": [

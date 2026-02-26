@@ -117,7 +117,7 @@ for ic, cmbk in enumerate(cmbk_experiments):
         for ibin in range(n_bins):
             val = data[isys, ibin]
             if np.isnan(val):
-                ax.text(ibin, isys, "—", ha="center", va="center", fontsize=8, color="0.5")
+                ax.text(ibin, isys, "---", ha="center", va="center", fontsize=8, color="0.5")
             else:
                 color = "white" if val > vmax * 0.6 else "black"
                 ax.text(ibin, isys, f"{val:.1f}", ha="center", va="center",

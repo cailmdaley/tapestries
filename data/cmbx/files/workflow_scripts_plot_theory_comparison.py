@@ -16,7 +16,7 @@ import seaborn as sns
 from scipy import stats
 
 from dr1_notebooks.scratch.cdaley.snakemake_helpers import snakemake_log
-from dr1_notebooks.scratch.cdaley.plot_utils import FW, FH, setup_theme, LABELS, BIN_PALETTE, TOM_BINS
+from dr1_notebooks.scratch.cdaley.plot_utils import FW, FH, setup_theme, LABELS, BIN_PALETTE, TOM_BINS, save_evidence
 from dr1_notebooks.scratch.cdaley.spectrum_utils import load_cross_spectrum, load_evidence
 
 
@@ -63,13 +63,18 @@ for i, bin_id in enumerate(TOM_BINS):
     spec = load_cross_spectrum(data_npz_path)
     ells = spec["ells"]
     cl_e = spec["cl_e"]
-    err = spec["err"]
-    snr = load_evidence(data_npz_path).get("snr")
+    knox_var = spec["knox_var"]
+    knox_err = (
+        np.sqrt(np.maximum(knox_var[:len(ells)], 0))
+        if knox_var is not None else spec["err"]
+    )
+    ev = load_evidence(data_npz_path)
+    snr = ev.get("snr")
 
-    # Plot measured
+    # Plot measured (Knox error bars — NaMaster diagonal has artifact at ℓ≈2700)
     prefactor = ells
     y = prefactor * cl_e
-    yerr = prefactor * err if err is not None else None
+    yerr = prefactor * knox_err if knox_err is not None else None
 
     ax.errorbar(
         ells, y, yerr=yerr,
@@ -123,13 +128,14 @@ for i, bin_id in enumerate(TOM_BINS):
 
     ax.axhline(0, color="gray", ls="--", lw=0.6, alpha=0.4)
 
-    # Compute chi2 vs vanilla theory (Knox variance)
+    # Compute chi2 vs vanilla theory using Knox variance
+    # (NaMaster diagonal has near-zero artifact at ℓ≈2700)
     chi2_str = ""
-    if key_ells in theory_data and key_cl in theory_data and err is not None:
+    if key_ells in theory_data and key_cl in theory_data and knox_err is not None:
         cl_th_binned = theory_data[key_cl]
         n_common = min(len(cl_e), len(cl_th_binned))
         residual = cl_e[:n_common] - cl_th_binned[:n_common]
-        var = err[:n_common] ** 2
+        var = knox_err[:n_common] ** 2
         good = var > 0
         if np.sum(good) > 0:
             chi2_v = float(np.sum(residual[good] ** 2 / var[good]))
@@ -141,13 +147,13 @@ for i, bin_id in enumerate(TOM_BINS):
                 "dof": dof_v, "pte": round(pte_v, 4),
             })
 
-    # Compute chi2 vs IA theory
+    # Compute chi2 vs IA theory (also Knox variance)
     chi2_ia_str = ""
-    if has_ia and key_ia_cl in theory_data and err is not None:
+    if has_ia and key_ia_cl in theory_data and knox_err is not None:
         cl_ia_binned = theory_data[key_ia_cl]
         n_common = min(len(cl_e), len(cl_ia_binned))
         residual_ia = cl_e[:n_common] - cl_ia_binned[:n_common]
-        var = err[:n_common] ** 2
+        var = knox_err[:n_common] ** 2
         good = var > 0
         if np.sum(good) > 0:
             chi2_ia = float(np.sum(residual_ia[good] ** 2 / var[good]))
@@ -189,7 +195,7 @@ for i, bin_id in enumerate(TOM_BINS):
 method_label = LABELS.get(method, method)
 cmbk_label = LABELS.get(cmbk, cmbk.upper())
 fig.suptitle(
-    f"{method_label} × {cmbk_label}: data vs theory",
+    f"{method_label} $\\times$ {cmbk_label}: data vs theory",
     fontsize=14, y=0.98,
 )
 

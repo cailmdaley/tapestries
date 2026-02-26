@@ -72,7 +72,7 @@ ax.plot(ells_cat, ell_cl_cat, "s", label="Catalog-based", ms=4, alpha=0.8)
 ax.axhline(0, color="gray", ls="--", alpha=0.5)
 ax.set_ylabel(r"$\ell \, C_\ell^{E\kappa}$")
 ax.set_xscale("log")
-ax.set_title(f"{method} bin{bin_id} × {cmbk}: map vs catalog ({n_gal:,} galaxies)" if isinstance(n_gal, int) else f"{method} bin{bin_id} × {cmbk}: map vs catalog")
+ax.set_title(f"{method} bin{bin_id} $\\times$ {cmbk}: map vs catalog ({n_gal:,} galaxies)" if isinstance(n_gal, int) else f"{method} bin{bin_id} $\\times$ {cmbk}: map vs catalog")
 ax.legend()
 
 # --- Lower panel: fractional difference ---
@@ -83,9 +83,9 @@ frac_diff[good] = (cl_E_cat[good] - cl_E_map[good]) / cl_E_map[good]
 
 ax.plot(ells_map, frac_diff, "ko", ms=4)
 ax.axhline(0, color="gray", ls="--", alpha=0.5)
-ax.axhspan(-0.1, 0.1, color="gray", alpha=0.1, label="±10%")
+ax.axhspan(-0.1, 0.1, color="gray", alpha=0.1, label=r"$\pm$10\%")
 ax.set_xlabel(r"$\ell$")
-ax.set_ylabel("Fractional difference\n(cat − map) / map")
+ax.set_ylabel("Fractional difference\n(cat $-$ map) / map")
 ax.set_xscale("log")
 ax.set_ylim(-0.5, 0.5)
 ax.legend(fontsize=8)
@@ -98,7 +98,7 @@ if np.any(good):
     snakemake_log(snakemake, f"  Max fractional difference: {max_frac:.4f}")
     ax.text(
         0.98, 0.95,
-        f"RMS: {rms_frac:.1%}\nMax: {max_frac:.1%}",
+        f"RMS: {rms_frac*100:.1f}\\%\nMax: {max_frac*100:.1f}\\%",
         transform=ax.transAxes, ha="right", va="top",
         fontsize=9, bbox=dict(boxstyle="round", fc="white", alpha=0.8),
     )

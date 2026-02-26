@@ -18,13 +18,13 @@ from pathlib import Path
 
 import healpy as hp
 import numpy as np
-from nx2pt.namaster_tools import get_workspace
 from scipy.stats import chi2 as chi2_dist
 
+import pymaster as nmt
 from dr1_notebooks.scratch.cdaley.snakemake_helpers import snakemake_log
-from dr1_notebooks.scratch.cdaley.nmt_utils import (
-    compute_knox_variance, make_cmb_mask, make_scalar_field,
-    make_bins, load_systematic_map, apodize_mask, compute_coupled_cell,
+from dr1_notebooks.scratch.cdaley.nmt_utils import load_systematic_map
+from dr1_cmbx.eDR1data.spectra import (
+    make_field, make_bins, compute_knox_variance, get_workspace,
 )
 
 
@@ -69,11 +69,11 @@ sysmap = load_systematic_map(sysmap_path, nside,
 snakemake_log(snakemake, "  Loading CMB kappa map and mask...")
 kappa_map = hp.read_map(str(cmbk_map_path))
 mask_map = hp.read_map(str(cmbk_mask_path))
-cmbk_mask = make_cmb_mask(mask_map, aposcale)
+cmbk_mask = nmt.mask_apodization(mask_map, aposcale, "C2")
 snakemake_log(snakemake, f"  CMBk mask fsky: {np.mean(cmbk_mask > 0):.4f}")
 
 # CMB κ field (spin-0)
-cmbk_field = make_scalar_field(kappa_map, cmbk_mask, lmax=lmax, n_iter=n_iter)
+cmbk_field = make_field(kappa_map, cmbk_mask, spin=0, lmax=lmax, n_iter=n_iter)
 
 # --- Create sysmap field ---
 # Mask: intersection of sysmap coverage and CMBk footprint
@@ -81,10 +81,10 @@ cmbk_footprint = (cmbk_mask > 0).astype(np.float64)
 sysmap_footprint = (sysmap != 0).astype(np.float64)
 common_footprint = cmbk_footprint * sysmap_footprint
 
-sysmap_mask = apodize_mask(common_footprint, aposcale, "C2")
+sysmap_mask = nmt.mask_apodization(common_footprint, aposcale, "C2")
 snakemake_log(snakemake, f"  Common mask fsky: {np.mean(sysmap_mask > 0):.4f}")
 
-sysmap_field = make_scalar_field(sysmap, sysmap_mask, lmax=lmax, n_iter=n_iter)
+sysmap_field = make_field(sysmap, sysmap_mask, spin=0, lmax=lmax, n_iter=n_iter)
 
 # --- Binning ---
 bins, bpw_edges = make_bins(lmin, lmax, nells)
@@ -98,7 +98,7 @@ wksp = get_workspace(
 )
 
 snakemake_log(snakemake, "Computing coupled C_l...")
-pcl = compute_coupled_cell(sysmap_field, cmbk_field)
+pcl = nmt.compute_coupled_cell(sysmap_field, cmbk_field)
 
 snakemake_log(snakemake, "Decoupling...")
 cl = wksp.decouple_cell(pcl)
