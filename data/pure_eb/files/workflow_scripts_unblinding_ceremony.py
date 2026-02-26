@@ -4,6 +4,7 @@
 Usage (standalone)
 ------------------
 app python workflow/scripts/unblinding_ceremony.py A
+app python workflow/scripts/unblinding_ceremony.py A --output-dir /path/to/output
 
 Usage (snakemake)
 -----------------
@@ -13,9 +14,14 @@ snakemake unblinding_ceremony --config ceremony_blind=A
 import argparse
 import json
 import shutil
+import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+
+_SCRIPT_DIR = Path(__file__).resolve().parent
+if str(_SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_DIR))
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -785,14 +791,18 @@ def _config_from_cli() -> CeremonyConfig:
     Uses the exact data vectors from inference (Lisa's xi_pm, Sasha's pseudo-Cl
     and CosmoSIS FITS) — the same files the chains were fit to.
     """
+    _PROJECT_ROOT = _SCRIPT_DIR.parent.parent
+
     parser = argparse.ArgumentParser(description="Run the UNIONS unblinding ceremony plot sequence.")
     parser.add_argument("blind", choices=["A", "B", "C"], help="Revealed blind letter")
     parser.add_argument("--chain-version", default=_DEFAULT_CHAIN_VERSION, help="Chain version (default: %(default)s)")
+    parser.add_argument("--output-dir", type=Path, default=None, help="Output directory for results (default: <project_root>/results/unblinding)")
     args = parser.parse_args()
 
     blind = args.blind
     chain_version = args.chain_version
     chain_prefix = f"SP_{chain_version}_leak_corr"
+    output_dir = args.output_dir or (_PROJECT_ROOT / "results" / "unblinding")
 
     xi_data_path = _require_path(
         _COSMOSIS_DATA_DIR / f"{chain_prefix}_{blind}" / f"cosmosis_{chain_prefix}_{blind}.fits",
@@ -825,11 +835,11 @@ def _config_from_cli() -> CeremonyConfig:
         chain_prefix=chain_prefix,
         chain_root_dir=_CHAIN_ROOT_DIR,
         external_root_dir=_CHAIN_ROOT_DIR / "ext_data",
-        results_dir=Path("results/unblinding"),
-        evidence_dir=Path("results/claims/unblinding_ceremony"),
+        results_dir=output_dir,
+        evidence_dir=output_dir / "claims" / "unblinding_ceremony",
         xi_data_path=xi_data_path,
         pure_eb_path=_require_path(
-            Path(f"results/paper_plots/intermediate/{chain_prefix}_{blind}_pure_eb_semianalytic.npz"),
+            _PROJECT_ROOT / "results" / "paper_plots" / "intermediate" / f"{chain_prefix}_{blind}_pure_eb_semianalytic.npz",
             f"Pure E/B file for blind {blind}",
         ),
         pseudo_cl_path=pseudo_cl_path,
