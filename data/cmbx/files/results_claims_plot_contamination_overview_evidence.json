@@ -1,0 +1,376 @@
+{
+  "id": "plot_contamination_overview",
+  "generated": "2026-02-26T11:37:15.008523+00:00",
+  "output": {
+    "png": "contamination_overview.png"
+  },
+  "evidence": {
+    "n_sysmaps": 11,
+    "cmbk_experiments": [
+      "act",
+      "spt_winter_gmv"
+    ],
+    "shear_methods": [
+      "lensmc",
+      "metacal"
+    ],
+    "per_combination": {
+      "stellar_density_density_act": {
+        "max_abs_X_Dl": 0.0005662018,
+        "mean_abs_X_Dl": 8.00974e-05
+      },
+      "stellar_density_density_spt_winter_gmv": {
+        "max_abs_X_Dl": 0.0001063152,
+        "mean_abs_X_Dl": 3.10768e-05
+      },
+      "stellar_density_lensmc_act": {
+        "max_abs_X_Dl": 1.38941e-05,
+        "mean_abs_X_Dl": 1.8293e-06
+      },
+      "stellar_density_lensmc_spt_winter_gmv": {
+        "max_abs_X_Dl": 2.9909e-06,
+        "mean_abs_X_Dl": 7.456e-07
+      },
+      "stellar_density_metacal_act": {
+        "max_abs_X_Dl": 1.64651e-05,
+        "mean_abs_X_Dl": 1.8855e-06
+      },
+      "stellar_density_metacal_spt_winter_gmv": {
+        "max_abs_X_Dl": 3.0916e-06,
+        "mean_abs_X_Dl": 8.763e-07
+      },
+      "galactic_extinction_density_act": {
+        "max_abs_X_Dl": 0.000892011,
+        "mean_abs_X_Dl": 0.0002766311
+      },
+      "galactic_extinction_density_spt_winter_gmv": {
+        "max_abs_X_Dl": 0.0003660469,
+        "mean_abs_X_Dl": 0.0001218152
+      },
+      "galactic_extinction_lensmc_act": {
+        "max_abs_X_Dl": 2.2004e-05,
+        "mean_abs_X_Dl": 6.5373e-06
+      },
+      "galactic_extinction_lensmc_spt_winter_gmv": {
+        "max_abs_X_Dl": 9.526e-06,
+        "mean_abs_X_Dl": 3.013e-06
+      },
+      "galactic_extinction_metacal_act": {
+        "max_abs_X_Dl": 2.57699e-05,
+        "mean_abs_X_Dl": 6.9532e-06
+      },
+      "galactic_extinction_metacal_spt_winter_gmv": {
+        "max_abs_X_Dl": 1.0575e-05,
+        "mean_abs_X_Dl": 3.085e-06
+      },
+      "exposures_density_act": {
+        "max_abs_X_Dl": 0.0003929139,
+        "mean_abs_X_Dl": 5.15644e-05
+      },
+      "exposures_density_spt_winter_gmv": {
+        "max_abs_X_Dl": 6.64252e-05,
+        "mean_abs_X_Dl": 1.9261e-05
+      },
+      "exposures_lensmc_act": {
+        "max_abs_X_Dl": 1.944e-06,
+        "mean_abs_X_Dl": 4.995e-07
+      },
+      "exposures_lensmc_spt_winter_gmv": {
+        "max_abs_X_Dl": 8.582e-07,
+        "mean_abs_X_Dl": 2.822e-07
+      },
+      "exposures_metacal_act": {
+        "max_abs_X_Dl": 3.7825e-06,
+        "mean_abs_X_Dl": 5.62e-07
+      },
+      "exposures_metacal_spt_winter_gmv": {
+        "max_abs_X_Dl": 6.395e-07,
+        "mean_abs_X_Dl": 2.025e-07
+      },
+      "zodiacal_light_density_act": {
+        "max_abs_X_Dl": 0.0004233255,
+        "mean_abs_X_Dl": 6.56672e-05
+      },
+      "zodiacal_light_density_spt_winter_gmv": {
+        "max_abs_X_Dl": 9.20288e-05,
+        "mean_abs_X_Dl": 1.95937e-05
+      },
+      "zodiacal_light_lensmc_act": {
+        "max_abs_X_Dl": 1.62e-06,
+        "mean_abs_X_Dl": 5.986e-07
+      },
+      "zodiacal_light_lensmc_spt_winter_gmv": {
+        "max_abs_X_Dl": 1.5644e-06,
+        "mean_abs_X_Dl": 2.348e-07
+      },
+      "zodiacal_light_metacal_act": {
+        "max_abs_X_Dl": 3.493e-06,
+        "mean_abs_X_Dl": 7.75e-07
+      },
+      "zodiacal_light_metacal_spt_winter_gmv": {
+        "max_abs_X_Dl": 1.3687e-06,
+        "mean_abs_X_Dl": 2.961e-07
+      },
+      "saa_density_act": {
+        "max_abs_X_Dl": 0.0004016682,
+        "mean_abs_X_Dl": 6.12635e-05
+      },
+      "saa_density_spt_winter_gmv": {
+        "max_abs_X_Dl": 7.70146e-05,
+        "mean_abs_X_Dl": 1.73848e-05
+      },
+      "saa_lensmc_act": {
+        "max_abs_X_Dl": 1.8972e-06,
+        "mean_abs_X_Dl": 4.88e-07
+      },
+      "saa_lensmc_spt_winter_gmv": {
+        "max_abs_X_Dl": 1.0861e-06,
+        "mean_abs_X_Dl": 2.242e-07
+      },
+      "saa_metacal_act": {
+        "max_abs_X_Dl": 3.4575e-06,
+        "mean_abs_X_Dl": 7.332e-07
+      },
+      "saa_metacal_spt_winter_gmv": {
+        "max_abs_X_Dl": 9.526e-07,
+        "mean_abs_X_Dl": 2.67e-07
+      },
+      "psf_density_act": {
+        "max_abs_X_Dl": 0.0010478528,
+        "mean_abs_X_Dl": 0.0001899804
+      },
+      "psf_density_spt_winter_gmv": {
+        "max_abs_X_Dl": 0.0004066952,
+        "mean_abs_X_Dl": 8.38681e-05
+      },
+      "psf_lensmc_act": {
+        "max_abs_X_Dl": 7.7917e-06,
+        "mean_abs_X_Dl": 1.0192e-06
+      },
+      "psf_lensmc_spt_winter_gmv": {
+        "max_abs_X_Dl": 2.5429e-06,
+        "mean_abs_X_Dl": 3.859e-07
+      },
+      "psf_metacal_act": {
+        "max_abs_X_Dl": 1.31691e-05,
+        "mean_abs_X_Dl": 1.5735e-06
+      },
+      "psf_metacal_spt_winter_gmv": {
+        "max_abs_X_Dl": 4.2978e-06,
+        "mean_abs_X_Dl": 6.412e-07
+      },
+      "noise_density_act": {
+        "max_abs_X_Dl": 0.00049485,
+        "mean_abs_X_Dl": 8.39337e-05
+      },
+      "noise_density_spt_winter_gmv": {
+        "max_abs_X_Dl": 0.0002764401,
+        "mean_abs_X_Dl": 4.05453e-05
+      },
+      "noise_lensmc_act": {
+        "max_abs_X_Dl": 2.6454e-06,
+        "mean_abs_X_Dl": 6.557e-07
+      },
+      "noise_lensmc_spt_winter_gmv": {
+        "max_abs_X_Dl": 1.5293e-06,
+        "mean_abs_X_Dl": 2.434e-07
+      },
+      "noise_metacal_act": {
+        "max_abs_X_Dl": 4.7932e-06,
+        "mean_abs_X_Dl": 7.61e-07
+      },
+      "noise_metacal_spt_winter_gmv": {
+        "max_abs_X_Dl": 1.3561e-06,
+        "mean_abs_X_Dl": 2.857e-07
+      },
+      "persistence_density_act": {
+        "max_abs_X_Dl": 0.000451958,
+        "mean_abs_X_Dl": 0.0001179677
+      },
+      "persistence_density_spt_winter_gmv": {
+        "max_abs_X_Dl": 0.0004011229,
+        "mean_abs_X_Dl": 7.0849e-05
+      },
+      "persistence_lensmc_act": {
+        "max_abs_X_Dl": 3.3487e-06,
+        "mean_abs_X_Dl": 8.978e-07
+      },
+      "persistence_lensmc_spt_winter_gmv": {
+        "max_abs_X_Dl": 4.2604e-06,
+        "mean_abs_X_Dl": 5.656e-07
+      },
+      "persistence_metacal_act": {
+        "max_abs_X_Dl": 3.9829e-06,
+        "mean_abs_X_Dl": 1.2228e-06
+      },
+      "persistence_metacal_spt_winter_gmv": {
+        "max_abs_X_Dl": 4.467e-06,
+        "mean_abs_X_Dl": 7.104e-07
+      },
+      "star_brightness_mean_density_act": {
+        "max_abs_X_Dl": 0.0003358904,
+        "mean_abs_X_Dl": 4.5415e-05
+      },
+      "star_brightness_mean_density_spt_winter_gmv": {
+        "max_abs_X_Dl": 0.0001755256,
+        "mean_abs_X_Dl": 1.89164e-05
+      },
+      "star_brightness_mean_lensmc_act": {
+        "max_abs_X_Dl": 9.8697e-06,
+        "mean_abs_X_Dl": 9.796e-07
+      },
+      "star_brightness_mean_lensmc_spt_winter_gmv": {
+        "max_abs_X_Dl": 5.1576e-06,
+        "mean_abs_X_Dl": 5.834e-07
+      },
+      "star_brightness_mean_metacal_act": {
+        "max_abs_X_Dl": 1.02873e-05,
+        "mean_abs_X_Dl": 9.383e-07
+      },
+      "star_brightness_mean_metacal_spt_winter_gmv": {
+        "max_abs_X_Dl": 5.3758e-06,
+        "mean_abs_X_Dl": 5.67e-07
+      },
+      "galaxy_number_density_density_act": {
+        "max_abs_X_Dl": 0.0021651587,
+        "mean_abs_X_Dl": 0.0003456957
+      },
+      "galaxy_number_density_density_spt_winter_gmv": {
+        "max_abs_X_Dl": 0.001523828,
+        "mean_abs_X_Dl": 0.0002492414
+      },
+      "galaxy_number_density_lensmc_act": {
+        "max_abs_X_Dl": 2.0176e-05,
+        "mean_abs_X_Dl": 4.4385e-06
+      },
+      "galaxy_number_density_lensmc_spt_winter_gmv": {
+        "max_abs_X_Dl": 1.59521e-05,
+        "mean_abs_X_Dl": 3.2752e-06
+      },
+      "galaxy_number_density_metacal_act": {
+        "max_abs_X_Dl": 1.99025e-05,
+        "mean_abs_X_Dl": 4.2348e-06
+      },
+      "galaxy_number_density_metacal_spt_winter_gmv": {
+        "max_abs_X_Dl": 1.67717e-05,
+        "mean_abs_X_Dl": 3.2547e-06
+      },
+      "phz_quality_density_act": {
+        "max_abs_X_Dl": 0.0002853075,
+        "mean_abs_X_Dl": 5.14724e-05
+      },
+      "phz_quality_density_spt_winter_gmv": {
+        "max_abs_X_Dl": 4.07917e-05,
+        "mean_abs_X_Dl": 1.04623e-05
+      },
+      "phz_quality_lensmc_act": {
+        "max_abs_X_Dl": 8.3805e-06,
+        "mean_abs_X_Dl": 1.6202e-06
+      },
+      "phz_quality_lensmc_spt_winter_gmv": {
+        "max_abs_X_Dl": 1.4979e-06,
+        "mean_abs_X_Dl": 3.292e-07
+      },
+      "phz_quality_metacal_act": {
+        "max_abs_X_Dl": 7.3715e-06,
+        "mean_abs_X_Dl": 1.466e-06
+      },
+      "phz_quality_metacal_spt_winter_gmv": {
+        "max_abs_X_Dl": 1.289e-06,
+        "mean_abs_X_Dl": 2.667e-07
+      }
+    }
+  },
+  "provenance": {
+    "input": {
+      "sys_dir": "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics",
+      "cmbk_sys_dir": "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics",
+      "fS_npz": [
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/stellar_density_x_lensmc_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/stellar_density_x_metacal_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/stellar_density_x_density_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/galactic_extinction_x_lensmc_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/galactic_extinction_x_metacal_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/galactic_extinction_x_density_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/exposures_x_lensmc_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/exposures_x_metacal_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/exposures_x_density_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/zodiacal_light_x_lensmc_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/zodiacal_light_x_metacal_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/zodiacal_light_x_density_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/saa_x_lensmc_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/saa_x_metacal_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/saa_x_density_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/psf_x_lensmc_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/psf_x_metacal_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/psf_x_density_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/noise_x_lensmc_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/noise_x_metacal_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/noise_x_density_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/persistence_x_lensmc_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/persistence_x_metacal_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/persistence_x_density_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/star_brightness_mean_x_lensmc_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/star_brightness_mean_x_metacal_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/star_brightness_mean_x_density_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/galaxy_number_density_x_lensmc_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/galaxy_number_density_x_metacal_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/galaxy_number_density_x_density_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/phz_quality_x_lensmc_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/phz_quality_x_metacal_binall_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/systematics/phz_quality_x_density_binall_cls.npz"
+      ],
+      "kS_npz": [
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/stellar_density_x_act_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/stellar_density_x_spt_winter_gmv_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/galactic_extinction_x_act_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/galactic_extinction_x_spt_winter_gmv_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/exposures_x_act_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/exposures_x_spt_winter_gmv_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/zodiacal_light_x_act_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/zodiacal_light_x_spt_winter_gmv_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/saa_x_act_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/saa_x_spt_winter_gmv_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/psf_x_act_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/psf_x_spt_winter_gmv_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/noise_x_act_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/noise_x_spt_winter_gmv_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/persistence_x_act_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/persistence_x_spt_winter_gmv_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/star_brightness_mean_x_act_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/star_brightness_mean_x_spt_winter_gmv_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/galaxy_number_density_x_act_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/galaxy_number_density_x_spt_winter_gmv_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/phz_quality_x_act_cls.npz",
+        "results/rr2_v2_1_wl_031224-v0.0/cross_correlations/cmbk_systematics/phz_quality_x_spt_winter_gmv_cls.npz"
+      ]
+    },
+    "output": {
+      "png": "results/claims/plot_contamination_overview/contamination_overview.png",
+      "evidence": "results/claims/plot_contamination_overview/evidence.json"
+    },
+    "params": {
+      "cmbk_experiments": [
+        "act",
+        "spt_winter_gmv"
+      ],
+      "shear_methods": [
+        "lensmc",
+        "metacal"
+      ],
+      "sys_map_keys": [
+        "stellar_density",
+        "galactic_extinction",
+        "exposures",
+        "zodiacal_light",
+        "saa",
+        "psf",
+        "noise",
+        "persistence",
+        "star_brightness_mean",
+        "galaxy_number_density",
+        "phz_quality"
+      ]
+    }
+  }
+}

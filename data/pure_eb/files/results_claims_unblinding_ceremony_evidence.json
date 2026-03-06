@@ -1,0 +1,36 @@
+{
+  "id": "unblinding_ceremony",
+  "spec_id": "unblinding_ceremony",
+  "generated": "2026-02-25T21:48:40+00:00",
+  "input": {
+    "xi_data": "/home/guerrini/sp_validation/cosmo_inference/data/SP_v1.4.6_leak_corr_A/cosmosis_SP_v1.4.6_leak_corr_A.fits",
+    "pure_eb_data": "results/paper_plots/intermediate/SP_v1.4.6_leak_corr_A_pure_eb_semianalytic.npz",
+    "pseudo_cl": "/home/guerrini/sp_validation/notebooks/cosmo_val/output/pseudo_cl_SP_v1.4.6_leak_corr.fits",
+    "pseudo_cl_cov": "/home/guerrini/sp_validation/notebooks/cosmo_val/output/pseudo_cl_cov_SP_v1.4.6_leak_corr.fits",
+    "cosmosis_cell_fits": "/home/guerrini/sp_validation/cosmo_inference/data/SP_v1.4.6_leak_corr_A_fid/cosmosis_SP_v1.4.6_leak_corr_A_fid_cell.fits",
+    "harmonic_chains": "/n09data/guerrini/output_chains/SP_v1.4.6_leak_corr_{A,B,C}_lmin=300_lmax=1600_cell",
+    "config_chains": "/n09data/guerrini/output_chains/SP_v1.4.6_leak_corr_{A,B,C}_10_80",
+    "external_chains": "/n09data/guerrini/output_chains/ext_data/{Planck18,DES_Y3,KiDS-1000,HSC_Y3}"
+  },
+  "output": {
+    "01_xi_pm_data": "01_xi_pm_data.pdf",
+    "02_cell_ee_data": "02_cell_ee_data.pdf",
+    "03_xi_bestfit_blind_A": "03_xi_bestfit_blind_A.pdf",
+    "04_cell_ee_bestfit_blind_A": "04_cell_ee_bestfit_blind_A.pdf",
+    "05_consistency_blind_A": "05_consistency_blind_A.pdf",
+    "06_triangle_cosmo_blind_A": "06_triangle_cosmo_blind_A.pdf",
+    "07_triangle_full_blind_A": "07_triangle_full_blind_A.pdf",
+    "08_s8_whisker_blind_A": "08_s8_whisker_blind_A.pdf"
+  },
+  "params": {
+    "chain_version": "v1.4.6",
+    "blind": "A",
+    "scale_cut_arcmin": "12-83",
+    "ell_range": "300-1600",
+    "n_figures": 8
+  },
+  "evidence": {
+    "ceremony_date": "2026-02-27",
+    "script": "workflow/scripts/unblinding_ceremony.py"
+  }
+}

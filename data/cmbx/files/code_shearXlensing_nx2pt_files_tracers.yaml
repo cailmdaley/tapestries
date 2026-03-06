@@ -1,0 +1,93 @@
+## Weak lensing
+- &wl_desy3
+  name: "DES-Y3 shear maps"
+  bins: 4
+  data_dir: "/projects/caps/aaronjo2/shearXlensing/data/des_y3/maps"
+  beam: pixwin
+  healpix:
+    map: "DESY3_zbin{bin}_nside{nside}_shearmaps.fits"
+    mask: "DESY3_zbin{bin}_nside{nside}_mask.fits"
+  correct_qu_sign: True
+
+- &wl_desy3_cat
+  name: "DES-Y3 shear catalogs"
+  bins: 4
+  data_dir: "/projects/caps/aaronjo2/shearXlensing/data/des_y3/calibrated_catalogs"
+  catalog:
+    file: "DESY3_shearcat_zbin{bin}.fits"
+    fields: ["g_1", "g_2"]
+  correct_qu_sign: True
+
+- &wl_desy3_blue
+  name: "DES-Y3 blue shear maps"
+  bins: 4
+  data_dir: "/projects/ncsa/caps/aaronjo2/shearXlensing/data/des_y3/blue_shear/maps/blue_updated"
+  beam: pixwin
+  healpix:
+    map: "DESY3_zbin{bin}_nside{nside}_shearmaps.fits"
+    mask: "DESY3_zbin{bin}_nside{nside}_mask.fits"
+    #noise_est: [1.515477e-4, 1.153470e-4, 6.384750e-5, 6.442807e-5]  # 1024
+    noise_est: [9.2709847e-06, 7.2196136e-06, 4.0251078e-06, 4.1756022e-06]  # 2048
+    #noise_est: [5.7943654e-07, 4.5122585e-07, 2.5156924e-07, 2.6097514e-07]  # 4096
+  correct_qu_sign: True
+
+- &wl_desy3_blue_cat
+  name: "DES-Y3 blue shear catalogs"
+  bins: 4
+  data_dir: "/projects/ncsa/caps/aaronjo2/shearXlensing/data/des_y3/blue_shear/catalogs/blue_updated"
+  catalog:
+    file: "DESY3_shearcat_zbin{bin}.fits"
+    fields: ["g_1", "g_2"]
+  correct_qu_sign: True
+
+## CMB lensing
+- &ck_spt3g_mv
+  name: "SPT-3G CMB convergence (MV)"
+  data_dir: "/projects/caps/aaronjo2/shearXlensing/data/spt"
+  healpix:
+    map: "kmapxx_0_mfhalf1_{nside}.fits"
+    mask: "mask{nside}_border_apod_mask.fits"
+  # square mask for CMB lensing field
+  use_mask_squared: True
+
+- &ck_spt3g_pol
+  name: "SPT-3G CMB convergence (pol-only)"
+  data_dir: "/projects/caps/aaronjo2/shearXlensing/data/spt"
+  healpix:
+    map: "kmapxx_kPP_0_mfhalf1_{nside}.fits"
+    mask: "mask{nside}_border_apod_mask.fits"
+  use_mask_squared: True
+
+- &ck_actdr6_mv
+  name: "ACT-DR6 CMB convergence (MV)"
+  data_dir: "/projects/caps/aaronjo2/shearXlensing/data/act_dr6_lensing/maps/baseline"
+  healpix:
+    map: "kappa_map_nside{nside}.fits"
+    mask: "kappa_mask_nside{nside}.fits"
+  use_mask_squared: True
+
+- &ck_actdr6_pol
+  name: "ACT-DR6 pol-only CMB convergence (pol-only)"
+  data_dir: "/projects/caps/aaronjo2/shearXlensing/data/act_dr6_lensing/maps/polonly"
+  healpix:
+    map: "kappa_map_nside{nside}.fits"
+    mask: "kappa_mask_nside{nside}.fits"
+  use_mask_squared: True
+
+## Galaxy density
+- &gal_desy3_maglim
+  name: "DES-Y3 maglim galaxy maps"
+  bins: 6
+  data_dir: "/projects/ncsa/caps/aaronjo2/shearXlensing/data/des_y3/maglim/maps"
+  healpix:
+    map: "delta_zbin{bin}_nside{nside}.fits"
+    mask: "mask_zbin{bin}_nside{nside}.fits"
+
+- &gal_desi_lrg_extended
+  name: "DESI LRGs extended sample"
+  bins: 4
+  bins_one_indexed: True
+  data_dir: "/projects/ncsa/caps/aaronjo2/knn-cross-correlations/data/desi-lrg/v1/maps/extended_lrg"
+  healpix:
+    map: "lrg_s{bin:02}_del.hpx2048.fits.gz"
+    mask: "lrg_s{bin:02}_msk.hpx2048.fits.gz"

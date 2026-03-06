@@ -1,0 +1,72 @@
+catalog_version: rr2_v2_1_wl_031224
+pipeline_version: v0.0
+
+nside: 2048
+
+# Tomographic binning
+tomography:
+  n_bins: 6
+  bin_ids: [1, 2, 3, 4, 5, 6]
+
+# NLA intrinsic alignment model parameters (fixed nuisance)
+# A_IA(z) = A_IA * (1+z)^eta_IA; CCL handles C_1*rho_cr*Omega_m/D(z) via use_A_ia=True
+intrinsic_alignment:
+  model: NLA-z
+  A_IA: 1.72
+  eta_IA: -0.41
+  C_IA: 0.013
+  beta_IA: 2.17
+
+gc_tom_bins: [1, 2, 3, 4, 5, 6]  # tomographic bins for density cross-correlation
+
+cross_correlation:
+  estimator: map  # Production compute_cross_spectrum is map-based; catalog estimator is validation-only (compute_catalog_cross_spectrum)
+  binning:
+    lmin: 40
+    lmax: 3000
+    nells: 20
+    log_spacing: true
+  covariance:
+    compute: true
+    # Note: Only diagonal (variance) computed per spectrum for now
+    # Off-diagonal covariances between bins not yet implemented
+  # NaMaster parameters (gctools conventions)
+  aposcale: 0.15   # C2 apodization scale in degrees
+  n_iter: 1        # SHT iterations for purification
+
+# Spatial variation test: two-patch split of RR2 footprint
+# Patches identified from weight map coverage, separated by ~7° in declination
+spatial_patches:
+  north:
+    ra_min: 63.8
+    ra_max: 77.2
+    dec_min: -37.0
+    dec_max: -26.5
+  south:
+    ra_min: 32.0
+    ra_max: 70.0
+    dec_min: -63.5
+    dec_max: -44.0
+
+quality_cuts:
+  bad_tiles:
+    - 102016422
+    - 102016856
+    - 102016857
+    - 102016423
+    - 102016424
+    - 102017297
+    - 102016858
+    - 102019131
+    - 102018674
+    - 102018672
+    - 102019596
+    - 102019132
+    - 102018673
+    - 102019133
+    - 102042322
+    - 102041693
+    - 102041070
+    - 102041069
+    - 102041695
+    - 102041694

@@ -1,0 +1,11 @@
+{
+  "id": "validate_sacc",
+  "generated": "2026-02-15T13:23:52.470896+00:00",
+  "evidence": {
+    "n_sacc_files": 2,
+    "all_pass": true,
+    "total_tracers": 30,
+    "total_data_points": 1120,
+    "has_covariance": true
+  }
+}

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portolan Rhumb Lines</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      grid-template-rows: 1fr auto;
+    }
+
+    .controls {
+      background: #242424;
+      padding: 20px;
+      overflow-y: auto;
+      border-right: 1px solid #333;
+    }
+
+    h1 {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .control {
+      margin-bottom: 14px;
+    }
+
+    .control label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+
+    .control label span.value {
+      font-family: 'SF Mono', 'Consolas', monospace;
+      font-size: 11px;
+      color: #888;
+    }
+
+    .control .hint {
+      font-size: 10px;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 4px;
+      -webkit-appearance: none;
+      background: #333;
+      border-radius: 2px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      background: #8a7a5a;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    input[type="color"] {
+      width: 100%;
+      height: 28px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background: #333;
+    }
+
+    .color-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .color-row input[type="color"] {
+      flex: 1;
+    }
+
+    .presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .preset {
+      padding: 6px 10px;
+      font-size: 11px;
+      background: #333;
+      border: 1px solid #444;
+      border-radius: 4px;
+      color: #aaa;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .preset:hover {
+      background: #3a3a3a;
+      border-color: #555;
+      color: #ddd;
+    }
+
+    .preset.active {
+      background: #3a352a;
+      border-color: #6a5a3a;
+      color: #d4c4a8;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .checkbox-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #8a7a5a;
+    }
+
+    .checkbox-row label {
+      font-size: 12px;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      font-size: 12px;
+      background: #333;
+      border: 1px solid #444;
+      border-radius: 4px;
+      color: #aaa;
+      cursor: pointer;
+      transition: all 0.15s;
+      margin-bottom: 8px;
+    }
+
+    .btn:hover {
+      background: #3a3a3a;
+      color: #ddd;
+    }
+
+    .preview {
+      background: #2a2622;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #canvas {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+
+    .prompt-output {
+      grid-column: 1 / -1;
+      background: #1e1e1e;
+      border-top: 1px solid #333;
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .prompt-text {
+      flex: 1;
+      font-family: 'SF Mono', 'Consolas', monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      color: #aaa;
+      white-space: pre-wrap;
+    }
+
+    .copy-btn {
+      padding: 8px 16px;
+      font-size: 12px;
+      background: #333;
+      border: 1px solid #444;
+      border-radius: 4px;
+      color: #aaa;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .copy-btn:hover {
+      background: #3a3a3a;
+      color: #ddd;
+    }
+
+    .copy-btn.copied {
+      background: #2a3a2a;
+      border-color: #4a6a4a;
+      color: #8a8;
+    }
+
+    .seed-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .seed-btn {
+      flex: 1;
+      padding: 8px;
+      font-size: 11px;
+      background: #333;
+      border: 1px solid #444;
+      border-radius: 4px;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .seed-btn:hover {
+      background: #3a3a3a;
+      color: #aaa;
+    }
+
+    .seed-display {
+      font-family: 'SF Mono', monospace;
+      font-size: 12px;
+      color: #8a7a5a;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <h1>Portolan Rhumb Lines</h1>
+    <p class="subtitle">Navigation lines radiating from compass roses</p>
+
+    <div class="presets">
+      <button class="preset active" data-preset="classic">Classic</button>
+      <button class="preset" data-preset="dense">Dense</button>
+      <button class="preset" data-preset="sparse">Sparse</button>
+      <button class="preset" data-preset="modern">Modern</button>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Seed</div>
+      <div class="seed-display" id="seedDisplay">Seed: 42</div>
+      <div class="seed-row">
+        <button class="seed-btn" id="prevSeed">&larr; Prev</button>
+        <button class="seed-btn" id="randomSeed">Random</button>
+        <button class="seed-btn" id="nextSeed">Next &rarr;</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Rose Layout</div>
+
+      <div class="control">
+        <label>Primary Roses <span class="value" id="primaryRosesVal">2</span></label>
+        <input type="range" id="primaryRoses" min="1" max="4" step="1" value="2">
+        <div class="hint">Main navigation centers</div>
+      </div>
+
+      <div class="control">
+        <label>Secondary Roses <span class="value" id="secondaryRosesVal">6</span></label>
+        <input type="range" id="secondaryRoses" min="0" max="12" step="1" value="6">
+        <div class="hint">Smaller surrounding roses</div>
+      </div>
+
+      <div class="control">
+        <label>Rose Spread <span class="value" id="roseSpreadVal">0.7</span></label>
+        <input type="range" id="roseSpread" min="0.3" max="1.0" step="0.05" value="0.7">
+        <div class="hint">How far from center</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Line Directions</div>
+
+      <div class="control">
+        <label>Primary Directions <span class="value" id="primaryDirectionsVal">16</span></label>
+        <input type="range" id="primaryDirections" min="8" max="32" step="8" value="16">
+        <div class="hint">Lines from main roses</div>
+      </div>
+
+      <div class="control">
+        <label>Secondary Directions <span class="value" id="secondaryDirectionsVal">8</span></label>
+        <input type="range" id="secondaryDirections" min="4" max="16" step="4" value="8">
+        <div class="hint">Lines from smaller roses</div>
+      </div>
+
+      <div class="control">
+        <label>Angle Offset <span class="value" id="angleOffsetVal">0</span>&deg;</label>
+        <input type="range" id="angleOffset" min="0" max="22.5" step="0.5" value="0">
+        <div class="hint">Rotate all lines</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Line Style</div>
+
+      <div class="control">
+        <label>Primary Width <span class="value" id="primaryWidthVal">0.8</span></label>
+        <input type="range" id="primaryWidth" min="0.3" max="2.0" step="0.1" value="0.8">
+      </div>
+
+      <div class="control">
+        <label>Secondary Width <span class="value" id="secondaryWidthVal">0.4</span></label>
+        <input type="range" id="secondaryWidth" min="0.2" max="1.0" step="0.1" value="0.4">
+      </div>
+
+      <div class="control">
+        <label>Primary Opacity <span class="value" id="primaryOpacityVal">0.6</span></label>
+        <input type="range" id="primaryOpacity" min="0.2" max="1.0" step="0.05" value="0.6">
+      </div>
+
+      <div class="control">
+        <label>Secondary Opacity <span class="value" id="secondaryOpacityVal">0.35</span></label>
+        <input type="range" id="secondaryOpacity" min="0.1" max="0.6" step="0.05" value="0.35">
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Colors</div>
+
+      <div class="control">
+        <label>Primary Color</label>
+        <input type="color" id="primaryColor" value="#8B4513">
+      </div>
+
+      <div class="control">
+        <label>Secondary Color</label>
+        <input type="color" id="secondaryColor" value="#6B4423">
+      </div>
+
+      <div class="control">
+        <label>Accent Color</label>
+        <input type="color" id="accentColor" value="#2A5A2A">
+        <div class="hint">Every 4th line (cardinal/intercardinal)</div>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="showAccents" checked>
+        <label for="showAccents">Show accent lines</label>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Rose Markers</div>
+
+      <div class="control">
+        <label>Rose Size <span class="value" id="roseSizeVal">8</span></label>
+        <input type="range" id="roseSize" min="4" max="20" step="1" value="8">
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="showRoses" checked>
+        <label for="showRoses">Show compass roses</label>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="decorateRoses">
+        <label for="decorateRoses">Elaborate roses</label>
+      </div>
+    </div>
+
+    <button class="btn" id="regenerate">Regenerate Layout</button>
+  </div>
+
+  <div class="preview">
+    <canvas id="canvas" width="1200" height="800"></canvas>
+  </div>
+
+  <div class="prompt-output">
+    <div class="prompt-text" id="promptText">Rhumb lines with default settings.</div>
+    <button class="copy-btn" id="copyBtn">Copy</button>
+  </div>
+
+  <script>
+    // Seeded random
+    function mulberry32(a) {
+      return function() {
+        var t = a += 0x6D2B79F5;
+        t = Math.imul(t ^ t >>> 15, t | 1);
+        t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      }
+    }
+
+    let rng = mulberry32(42);
+
+    // State
+    const DEFAULTS = {
+      seed: 42,
+      primaryRoses: 2,
+      secondaryRoses: 6,
+      roseSpread: 0.7,
+      primaryDirections: 16,
+      secondaryDirections: 8,
+      angleOffset: 0,
+      primaryWidth: 0.8,
+      secondaryWidth: 0.4,
+      primaryOpacity: 0.6,
+      secondaryOpacity: 0.35,
+      primaryColor: '#8B4513',
+      secondaryColor: '#6B4423',
+      accentColor: '#2A5A2A',
+      showAccents: true,
+      roseSize: 8,
+      showRoses: true,
+      decorateRoses: false
+    };
+
+    const PRESETS = {
+      classic: { ...DEFAULTS },
+      dense: {
+        ...DEFAULTS,
+        primaryRoses: 3,
+        secondaryRoses: 10,
+        roseSpread: 0.8,
+        primaryDirections: 32,
+        secondaryDirections: 16,
+        primaryWidth: 0.6,
+        secondaryWidth: 0.3,
+        primaryOpacity: 0.5,
+        secondaryOpacity: 0.25
+      },
+      sparse: {
+        ...DEFAULTS,
+        primaryRoses: 1,
+        secondaryRoses: 4,
+        roseSpread: 0.6,
+        primaryDirections: 16,
+        secondaryDirections: 8,
+        primaryWidth: 1.0,
+        secondaryWidth: 0.5,
+        primaryOpacity: 0.7,
+        secondaryOpacity: 0.4
+      },
+      modern: {
+        ...DEFAULTS,
+        primaryRoses: 2,
+        secondaryRoses: 4,
+        primaryDirections: 8,
+        secondaryDirections: 8,
+        primaryWidth: 1.2,
+        secondaryWidth: 0.6,
+        primaryColor: '#4A3A2A',
+        secondaryColor: '#5A4A3A',
+        accentColor: '#3A4A5A',
+        showAccents: true,
+        decorateRoses: true
+      }
+    };
+
+    const state = { ...DEFAULTS };
+    let rosePositions = [];
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Generate rose positions
+    function generateRosePositions() {
+      rng = mulberry32(state.seed);
+      rosePositions = [];
+
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      const maxRadius = Math.min(canvas.width, canvas.height) * 0.4 * state.roseSpread;
+
+      // Primary roses - evenly distributed in a ring
+      for (let i = 0; i < state.primaryRoses; i++) {
+        const angle = (i / state.primaryRoses) * Math.PI * 2 + rng() * 0.3;
+        const radius = maxRadius * (0.4 + rng() * 0.3);
+        rosePositions.push({
+          x: centerX + Math.cos(angle) * radius,
+          y: centerY + Math.sin(angle) * radius,
+          isPrimary: true
+        });
+      }
+
+      // Secondary roses - scattered around
+      for (let i = 0; i < state.secondaryRoses; i++) {
+        const angle = rng() * Math.PI * 2;
+        const radius = maxRadius * (0.3 + rng() * 0.7);
+
+        // Avoid placing too close to existing roses
+        let x = centerX + Math.cos(angle) * radius;
+        let y = centerY + Math.sin(angle) * radius;
+
+        // Jitter if too close
+        let attempts = 0;
+        while (attempts < 10) {
+          let tooClose = false;
+          for (const rose of rosePositions) {
+            const dx = rose.x - x;
+            const dy = rose.y - y;
+            if (Math.sqrt(dx*dx + dy*dy) < 80) {
+              tooClose = true;
+              break;
+            }
+          }
+          if (!tooClose) break;
+
+          const newAngle = rng() * Math.PI * 2;
+          const newRadius = maxRadius * (0.3 + rng() * 0.7);
+          x = centerX + Math.cos(newAngle) * newRadius;
+          y = centerY + Math.sin(newAngle) * newRadius;
+          attempts++;
+        }
+
+        rosePositions.push({
+          x,
+          y,
+          isPrimary: false
+        });
+      }
+    }
+
+    // Draw vellum background
+    function drawVellum() {
+      // Base color
+      ctx.fillStyle = '#f5eee1';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Radial gradient for subtle variation
+      const gradient = ctx.createRadialGradient(
+        canvas.width * 0.5, canvas.height * 0.4, 0,
+        canvas.width * 0.5, canvas.height * 0.5, canvas.width * 0.8
+      );
+      gradient.addColorStop(0, 'rgba(250, 245, 235, 0.4)');
+      gradient.addColorStop(0.5, 'rgba(240, 232, 218, 0.2)');
+      gradient.addColorStop(1, 'rgba(210, 195, 168, 0.35)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Edge darkening
+      const edgeGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      edgeGrad.addColorStop(0, 'rgba(180, 165, 140, 0.15)');
+      edgeGrad.addColorStop(0.15, 'rgba(180, 165, 140, 0)');
+      edgeGrad.addColorStop(0.85, 'rgba(180, 165, 140, 0)');
+      edgeGrad.addColorStop(1, 'rgba(180, 165, 140, 0.2)');
+      ctx.fillStyle = edgeGrad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Side edges
+      const leftGrad = ctx.createLinearGradient(0, 0, canvas.width * 0.1, 0);
+      leftGrad.addColorStop(0, 'rgba(180, 165, 140, 0.2)');
+      leftGrad.addColorStop(1, 'rgba(180, 165, 140, 0)');
+      ctx.fillStyle = leftGrad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const rightGrad = ctx.createLinearGradient(canvas.width, 0, canvas.width * 0.9, 0);
+      rightGrad.addColorStop(0, 'rgba(180, 165, 140, 0.2)');
+      rightGrad.addColorStop(1, 'rgba(180, 165, 140, 0)');
+      ctx.fillStyle = rightGrad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Convert hex color to rgba
+    function hexToRgba(hex, alpha) {
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    // Draw rhumb lines from a rose
+    function drawRhumbLines(rose) {
+      const directions = rose.isPrimary ? state.primaryDirections : state.secondaryDirections;
+      const width = rose.isPrimary ? state.primaryWidth : state.secondaryWidth;
+      const opacity = rose.isPrimary ? state.primaryOpacity : state.secondaryOpacity;
+      const baseColor = rose.isPrimary ? state.primaryColor : state.secondaryColor;
+
+      const offsetRad = (state.angleOffset * Math.PI) / 180;
+
+      // Calculate line length to reach canvas edges
+      const maxLen = Math.sqrt(canvas.width * canvas.width + canvas.height * canvas.height);
+
+      for (let i = 0; i < directions; i++) {
+        const angle = (i / directions) * Math.PI * 2 + offsetRad;
+
+        // Every 4th line (cardinal/intercardinal) gets accent color
+        const isAccent = state.showAccents && (i % (directions / 4) === 0);
+        const color = isAccent ? state.accentColor : baseColor;
+        const lineOpacity = isAccent ? Math.min(1, opacity * 1.2) : opacity;
+
+        ctx.beginPath();
+        ctx.moveTo(rose.x, rose.y);
+        ctx.lineTo(
+          rose.x + Math.cos(angle) * maxLen,
+          rose.y + Math.sin(angle) * maxLen
+        );
+
+        ctx.strokeStyle = hexToRgba(color, lineOpacity);
+        ctx.lineWidth = isAccent ? width * 1.3 : width;
+        ctx.stroke();
+      }
+    }
+
+    // Draw a simple compass rose
+    function drawSimpleRose(rose) {
+      const size = rose.isPrimary ? state.roseSize : state.roseSize * 0.7;
+
+      ctx.fillStyle = rose.isPrimary ? state.primaryColor : state.secondaryColor;
+      ctx.beginPath();
+      ctx.arc(rose.x, rose.y, size, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Inner highlight
+      ctx.fillStyle = '#f5eee1';
+      ctx.beginPath();
+      ctx.arc(rose.x, rose.y, size * 0.4, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Draw an elaborate compass rose
+    function drawElaborateRose(rose) {
+      const size = rose.isPrimary ? state.roseSize * 2 : state.roseSize * 1.4;
+      const points = rose.isPrimary ? 16 : 8;
+
+      ctx.save();
+      ctx.translate(rose.x, rose.y);
+
+      // Outer rays
+      for (let i = 0; i < points; i++) {
+        const angle = (i / points) * Math.PI * 2;
+        const isCardinal = i % (points / 4) === 0;
+        const rayLen = isCardinal ? size * 1.5 : size;
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+
+        const tipX = Math.cos(angle) * rayLen;
+        const tipY = Math.sin(angle) * rayLen;
+
+        // Diamond shape
+        const spread = Math.PI / points;
+        const baseLen = rayLen * 0.3;
+
+        ctx.lineTo(
+          Math.cos(angle - spread) * baseLen,
+          Math.sin(angle - spread) * baseLen
+        );
+        ctx.lineTo(tipX, tipY);
+        ctx.lineTo(
+          Math.cos(angle + spread) * baseLen,
+          Math.sin(angle + spread) * baseLen
+        );
+        ctx.closePath();
+
+        // Alternate colors
+        if (isCardinal) {
+          ctx.fillStyle = state.accentColor;
+        } else if (i % 2 === 0) {
+          ctx.fillStyle = state.primaryColor;
+        } else {
+          ctx.fillStyle = '#f5eee1';
+          ctx.strokeStyle = state.secondaryColor;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+        ctx.fill();
+      }
+
+      // Center circle
+      ctx.beginPath();
+      ctx.arc(0, 0, size * 0.25, 0, Math.PI * 2);
+      ctx.fillStyle = state.primaryColor;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(0, 0, size * 0.15, 0, Math.PI * 2);
+      ctx.fillStyle = '#f5eee1';
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    // Main render
+    function render() {
+      drawVellum();
+
+      // Draw all rhumb lines first (behind roses)
+      for (const rose of rosePositions) {
+        drawRhumbLines(rose);
+      }
+
+      // Draw roses on top
+      if (state.showRoses) {
+        for (const rose of rosePositions) {
+          if (state.decorateRoses) {
+            drawElaborateRose(rose);
+          } else {
+            drawSimpleRose(rose);
+          }
+        }
+      }
+    }
+
+    // Update prompt
+    function updatePrompt() {
+      const parts = [];
+
+      parts.push(`${state.primaryRoses} primary + ${state.secondaryRoses} secondary roses`);
+      parts.push(`${state.primaryDirections}/${state.secondaryDirections} directions`);
+
+      if (state.showAccents) {
+        parts.push('accent lines on cardinals');
+      }
+
+      if (state.decorateRoses) {
+        parts.push('elaborate rose markers');
+      }
+
+      let text = `Rhumb lines: ${parts.join(', ')}.`;
+
+      text += `\n\nParameters: { primaryRoses: ${state.primaryRoses}, secondaryRoses: ${state.secondaryRoses}, roseSpread: ${state.roseSpread}, primaryDirections: ${state.primaryDirections}, secondaryDirections: ${state.secondaryDirections}, primaryWidth: ${state.primaryWidth}, secondaryWidth: ${state.secondaryWidth}, primaryOpacity: ${state.primaryOpacity}, secondaryOpacity: ${state.secondaryOpacity} }`;
+
+      document.getElementById('promptText').textContent = text;
+    }
+
+    // Update all
+    function updateAll() {
+      document.getElementById('seedDisplay').textContent = `Seed: ${state.seed}`;
+      document.getElementById('primaryRosesVal').textContent = state.primaryRoses;
+      document.getElementById('secondaryRosesVal').textContent = state.secondaryRoses;
+      document.getElementById('roseSpreadVal').textContent = state.roseSpread.toFixed(2);
+      document.getElementById('primaryDirectionsVal').textContent = state.primaryDirections;
+      document.getElementById('secondaryDirectionsVal').textContent = state.secondaryDirections;
+      document.getElementById('angleOffsetVal').textContent = state.angleOffset.toFixed(1);
+      document.getElementById('primaryWidthVal').textContent = state.primaryWidth.toFixed(1);
+      document.getElementById('secondaryWidthVal').textContent = state.secondaryWidth.toFixed(1);
+      document.getElementById('primaryOpacityVal').textContent = state.primaryOpacity.toFixed(2);
+      document.getElementById('secondaryOpacityVal').textContent = state.secondaryOpacity.toFixed(2);
+      document.getElementById('roseSizeVal').textContent = state.roseSize;
+
+      render();
+      updatePrompt();
+    }
+
+    // Bind range controls
+    ['primaryRoses', 'secondaryRoses', 'roseSpread', 'primaryDirections', 'secondaryDirections', 'angleOffset', 'primaryWidth', 'secondaryWidth', 'primaryOpacity', 'secondaryOpacity', 'roseSize'].forEach(id => {
+      document.getElementById(id).addEventListener('input', e => {
+        state[id] = parseFloat(e.target.value);
+        if (['primaryRoses', 'secondaryRoses', 'roseSpread'].includes(id)) {
+          generateRosePositions();
+        }
+        updateAll();
+      });
+    });
+
+    // Color controls
+    ['primaryColor', 'secondaryColor', 'accentColor'].forEach(id => {
+      document.getElementById(id).addEventListener('input', e => {
+        state[id] = e.target.value;
+        updateAll();
+      });
+    });
+
+    // Checkbox controls
+    ['showAccents', 'showRoses', 'decorateRoses'].forEach(id => {
+      document.getElementById(id).addEventListener('change', e => {
+        state[id] = e.target.checked;
+        updateAll();
+      });
+    });
+
+    // Seed controls
+    document.getElementById('prevSeed').addEventListener('click', () => {
+      state.seed = Math.max(1, state.seed - 1);
+      generateRosePositions();
+      updateAll();
+    });
+
+    document.getElementById('nextSeed').addEventListener('click', () => {
+      state.seed++;
+      generateRosePositions();
+      updateAll();
+    });
+
+    document.getElementById('randomSeed').addEventListener('click', () => {
+      state.seed = Math.floor(Math.random() * 100000);
+      generateRosePositions();
+      updateAll();
+    });
+
+    document.getElementById('regenerate').addEventListener('click', () => {
+      state.seed = Math.floor(Math.random() * 100000);
+      generateRosePositions();
+      updateAll();
+    });
+
+    // Presets
+    document.querySelectorAll('.preset').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const preset = PRESETS[btn.dataset.preset];
+        Object.assign(state, preset);
+
+        // Update all form elements
+        document.getElementById('primaryRoses').value = state.primaryRoses;
+        document.getElementById('secondaryRoses').value = state.secondaryRoses;
+        document.getElementById('roseSpread').value = state.roseSpread;
+        document.getElementById('primaryDirections').value = state.primaryDirections;
+        document.getElementById('secondaryDirections').value = state.secondaryDirections;
+        document.getElementById('angleOffset').value = state.angleOffset;
+        document.getElementById('primaryWidth').value = state.primaryWidth;
+        document.getElementById('secondaryWidth').value = state.secondaryWidth;
+        document.getElementById('primaryOpacity').value = state.primaryOpacity;
+        document.getElementById('secondaryOpacity').value = state.secondaryOpacity;
+        document.getElementById('primaryColor').value = state.primaryColor;
+        document.getElementById('secondaryColor').value = state.secondaryColor;
+        document.getElementById('accentColor').value = state.accentColor;
+        document.getElementById('showAccents').checked = state.showAccents;
+        document.getElementById('roseSize').value = state.roseSize;
+        document.getElementById('showRoses').checked = state.showRoses;
+        document.getElementById('decorateRoses').checked = state.decorateRoses;
+
+        document.querySelectorAll('.preset').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        generateRosePositions();
+        updateAll();
+      });
+    });
+
+    // Copy button
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      const text = document.getElementById('promptText').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 1500);
+      });
+    });
+
+    // Initial render
+    generateRosePositions();
+    updateAll();
+  </script>
+</body>
+</html>

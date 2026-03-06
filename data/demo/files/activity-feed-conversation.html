@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity Feed: Conversation View</title>
+  <style>
+    /* Porch Morning palette — warm, antiquarian, cartographic */
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      /* Backgrounds */
+      --bg-primary: #C8B8A8;      /* Map ground */
+      --bg-card: #EDE8E0;         /* Panel background */
+      --bg-elevated: #FDFCFA;     /* Elevated elements */
+
+      /* Text */
+      --text-primary: #2E2A26;
+      --text-secondary: #4A4540;
+      --text-muted: #7A7368;
+
+      /* Accents */
+      --gold: #9A7B35;            /* User messages, cities */
+      --accent: #5A7B7B;          /* Teal — working state */
+
+      /* Semantic */
+      --border: rgba(46, 42, 38, 0.15);
+      --border-strong: rgba(46, 42, 38, 0.25);
+      --accent-dim: rgba(154, 123, 53, 0.15);
+
+      /* Messages */
+      --user-bg: rgba(154, 123, 53, 0.12);
+      --assistant-bg: var(--bg-elevated);
+      --thinking-color: var(--text-muted);
+      --tool-color: var(--text-secondary);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .controls {
+      width: 320px;
+      min-width: 320px;
+      background: var(--bg-card);
+      padding: 20px;
+      border-right: 1px solid var(--border-strong);
+      overflow-y: auto;
+      max-height: 100vh;
+    }
+
+    .controls h1 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+    }
+
+    .control-group {
+      margin-bottom: 24px;
+    }
+
+    .control-group h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .control {
+      margin-bottom: 12px;
+    }
+
+    .control label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: var(--text-secondary);
+    }
+
+    .control input[type="range"] {
+      width: 100%;
+      accent-color: var(--gold);
+    }
+
+    .control input[type="checkbox"] {
+      accent-color: var(--gold);
+    }
+
+    .slider-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      float: right;
+    }
+
+    .presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .preset-btn {
+      padding: 6px 12px;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 13px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .preset-btn:hover {
+      border-color: var(--gold);
+      background: var(--accent-dim);
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .preview-area {
+      flex: 1;
+      padding: 24px;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .preview-container {
+      width: 100%;
+      max-width: 500px;
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 16px;
+      height: fit-content;
+      border: 1px solid var(--border);
+    }
+
+    .preview-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .worker-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .worker-name {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .worker-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    /* Conversation items */
+    .conv-item {
+      margin-bottom: 8px;
+      transition: all 0.15s;
+    }
+
+    .conv-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* User message — brass/gold feel */
+    .user-msg {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .user-badge {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: var(--gold);
+      color: var(--bg-elevated);
+      flex-shrink: 0;
+    }
+
+    .user-content {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-primary);
+    }
+
+    /* Assistant message — parchment feel */
+    .assistant-msg {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .assistant-badge {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .assistant-content {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-primary);
+    }
+
+    /* Expandable message content */
+    .msg-wrapper {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .msg-content {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-primary);
+    }
+
+    .msg-wrapper.truncated {
+      cursor: pointer;
+    }
+
+    .msg-wrapper.truncated:hover .msg-content {
+      color: var(--text-primary);
+    }
+
+    .msg-wrapper.truncated::after {
+      content: ' [more]';
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .msg-wrapper.truncated:hover::after {
+      color: var(--gold);
+    }
+
+    .msg-wrapper.expanded::after {
+      content: none;
+    }
+
+    /* Thinking block — like pencil notes, faded */
+    .thinking-block {
+      cursor: pointer;
+    }
+
+    .thinking-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      background: rgba(122, 115, 104, 0.08);
+      border-radius: 4px;
+      border-left: 2px solid var(--thinking-color);
+    }
+
+    .thinking-icon {
+      font-size: 12px;
+      color: var(--thinking-color);
+      transition: transform 0.2s;
+    }
+
+    .thinking-label {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 12px;
+      color: var(--thinking-color);
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    .thinking-preview {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 12px;
+      color: var(--text-muted);
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-style: italic;
+    }
+
+    .thinking-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      padding-left: 10px;
+      border-left: 2px solid var(--thinking-color);
+      margin-left: 8px;
+      margin-top: 0;
+      font-style: italic;
+    }
+
+    .thinking-block.expanded .thinking-icon {
+      transform: rotate(90deg);
+    }
+
+    .thinking-block.expanded .thinking-content {
+      max-height: 200px;
+      margin-top: 8px;
+      padding: 8px 12px;
+      overflow-y: auto;
+    }
+
+    /* Tool use — subtle, not attention-grabbing */
+    .tool-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0;
+    }
+
+    .tool-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: rgba(74, 69, 64, 0.1);
+      color: var(--tool-color);
+    }
+
+    .tool-summary {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Streaming indicator */
+    .streaming-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 0;
+    }
+
+    .streaming-dots {
+      display: flex;
+      gap: 3px;
+    }
+
+    .streaming-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    .streaming-dot:nth-child(2) { animation-delay: 0.2s; }
+    .streaming-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes pulse {
+      0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+      40% { opacity: 1; transform: scale(1); }
+    }
+
+    .streaming-text {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Prompt output */
+    .prompt-area {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-strong);
+      padding: 16px 24px;
+    }
+
+    .prompt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .prompt-label {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    .copy-btn {
+      padding: 4px 12px;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 13px;
+      background: var(--gold);
+      border: none;
+      color: var(--bg-elevated);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .copy-btn:hover {
+      opacity: 0.9;
+    }
+
+    .prompt-text {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-primary);
+      background: var(--bg-elevated);
+      padding: 12px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      min-height: 60px;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    /* Layout variants */
+    .preview-container.compact .conv-item {
+      margin-bottom: 4px;
+    }
+
+    .preview-container.compact .msg-content {
+      font-size: 12px;
+    }
+
+    .preview-container.spacious .conv-item {
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Alignment: chat style */
+    .preview-container.align-chat .user-msg {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    .preview-container.align-chat .user-msg .msg-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .preview-container.align-chat .user-msg .msg-content {
+      background: var(--user-bg);
+      padding: 6px 10px;
+      border-radius: 12px 12px 4px 12px;
+      max-width: 85%;
+    }
+
+    .preview-container.align-chat .assistant-msg .msg-content {
+      background: var(--assistant-bg);
+      padding: 6px 10px;
+      border-radius: 12px 12px 12px 4px;
+      max-width: 85%;
+      border: 1px solid var(--border);
+    }
+
+    .preview-container.align-chat .tool-item,
+    .preview-container.align-chat .thinking-block {
+      margin-left: 24px;
+    }
+
+    /* Badge style variants */
+    .preview-container.badges-minimal .user-badge,
+    .preview-container.badges-minimal .assistant-badge {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0;
+      font-size: 12px;
+    }
+
+    .preview-container.badges-icon .user-badge,
+    .preview-container.badges-icon .assistant-badge {
+      background: transparent;
+      border: none;
+      padding: 0;
+      font-size: 12px;
+    }
+
+    .preview-container.badges-icon .user-badge {
+      color: var(--gold);
+    }
+
+    .preview-container.badges-icon .user-badge::before {
+      content: '›';
+      margin-right: 4px;
+      font-weight: bold;
+    }
+
+    .preview-container.badges-icon .assistant-badge {
+      color: var(--text-secondary);
+    }
+
+    .preview-container.badges-icon .assistant-badge::before {
+      content: '‹';
+      margin-right: 4px;
+      font-weight: bold;
+    }
+
+    /* Thinking style variants */
+    .preview-container.thinking-inline .thinking-block .thinking-header {
+      background: transparent;
+      border-left: none;
+      padding: 0;
+    }
+
+    .preview-container.thinking-inline .thinking-block .thinking-content {
+      border-left: none;
+      margin-left: 0;
+    }
+
+    .preview-container.thinking-dimmed .thinking-block {
+      opacity: 0.6;
+    }
+
+    .preview-container.thinking-dimmed .thinking-block:hover,
+    .preview-container.thinking-dimmed .thinking-block.expanded {
+      opacity: 1;
+    }
+
+    /* Timestamp variants */
+    .conv-item .timestamp {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-left: 8px;
+      flex-shrink: 0;
+    }
+
+    .preview-container:not(.timestamps-all):not(.timestamps-hover) .timestamp {
+      display: none;
+    }
+
+    .preview-container.timestamps-hover .timestamp {
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .preview-container.timestamps-hover .conv-item:hover .timestamp {
+      opacity: 1;
+    }
+
+    /* Toggle group */
+    .toggle-group {
+      display: flex;
+      gap: 4px;
+    }
+
+    .toggle-btn {
+      flex: 1;
+      padding: 6px 8px;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 12px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .toggle-btn:first-child {
+      border-radius: 4px 0 0 4px;
+    }
+
+    .toggle-btn:last-child {
+      border-radius: 0 4px 4px 0;
+    }
+
+    .toggle-btn.active {
+      background: var(--accent-dim);
+      border-color: var(--gold);
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <h1>Conversation Feed</h1>
+
+    <div class="presets">
+      <button class="preset-btn" onclick="applyPreset('compact')">Compact</button>
+      <button class="preset-btn" onclick="applyPreset('chat')">Chat</button>
+      <button class="preset-btn" onclick="applyPreset('minimal')">Minimal</button>
+      <button class="preset-btn" onclick="applyPreset('verbose')">Verbose</button>
+    </div>
+
+    <div class="control-group">
+      <h2>Layout</h2>
+      <div class="control">
+        <label>Density</label>
+        <div class="toggle-group">
+          <button class="toggle-btn" data-value="compact" onclick="setState('density', 'compact')">Compact</button>
+          <button class="toggle-btn active" data-value="normal" onclick="setState('density', 'normal')">Normal</button>
+          <button class="toggle-btn" data-value="spacious" onclick="setState('density', 'spacious')">Spacious</button>
+        </div>
+      </div>
+      <div class="control">
+        <label>Alignment</label>
+        <div class="toggle-group">
+          <button class="toggle-btn" data-value="left" onclick="setState('alignment', 'left')">All Left</button>
+          <button class="toggle-btn active" data-value="chat" onclick="setState('alignment', 'chat')">Chat Style</button>
+        </div>
+      </div>
+      <div class="control">
+        <label>Max Width <span class="slider-value" id="maxWidthValue">500px</span></label>
+        <input type="range" min="300" max="700" value="500" oninput="setState('maxWidth', this.value)">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <h2>Messages</h2>
+      <div class="control">
+        <label>Badge Style</label>
+        <div class="toggle-group">
+          <button class="toggle-btn" data-value="filled" onclick="setState('badgeStyle', 'filled')">Filled</button>
+          <button class="toggle-btn" data-value="minimal" onclick="setState('badgeStyle', 'minimal')">Minimal</button>
+          <button class="toggle-btn active" data-value="icon" onclick="setState('badgeStyle', 'icon')">Icon</button>
+        </div>
+      </div>
+      <div class="control">
+        <label>
+          <input type="checkbox" checked onchange="setState('showUserMessages', this.checked)">
+          Show user messages
+        </label>
+      </div>
+      <div class="control">
+        <label>
+          <input type="checkbox" checked onchange="setState('showAssistantMessages', this.checked)">
+          Show assistant messages
+        </label>
+      </div>
+      <div class="control">
+        <label>Truncation <span class="slider-value" id="truncationValue">200</span></label>
+        <input type="range" min="50" max="500" value="200" oninput="setState('truncation', this.value)">
+      </div>
+      <div class="control">
+        <label>
+          <input type="checkbox" checked onchange="setState('expandableMessages', this.checked)">
+          Click to expand truncated
+        </label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <h2>Thinking Blocks</h2>
+      <div class="control">
+        <label>
+          <input type="checkbox" checked onchange="setState('showThinking', this.checked)">
+          Show thinking blocks
+        </label>
+      </div>
+      <div class="control">
+        <label>Style</label>
+        <div class="toggle-group">
+          <button class="toggle-btn" data-value="bordered" onclick="setState('thinkingStyle', 'bordered')">Bordered</button>
+          <button class="toggle-btn" data-value="inline" onclick="setState('thinkingStyle', 'inline')">Inline</button>
+          <button class="toggle-btn active" data-value="dimmed" onclick="setState('thinkingStyle', 'dimmed')">Dimmed</button>
+        </div>
+      </div>
+      <div class="control">
+        <label>
+          <input type="checkbox" checked onchange="setState('thinkingCollapsible', this.checked)">
+          Collapsible (click to expand)
+        </label>
+      </div>
+      <div class="control">
+        <label>
+          <input type="checkbox" checked onchange="setState('thinkingPreview', this.checked)">
+          Show preview when collapsed
+        </label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <h2>Tool Use</h2>
+      <div class="control">
+        <label>
+          <input type="checkbox" checked onchange="setState('showTools', this.checked)">
+          Show tool calls
+        </label>
+      </div>
+      <div class="control">
+        <label>
+          <input type="checkbox" onchange="setState('groupConsecutiveTools', this.checked)">
+          Group consecutive tools
+        </label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <h2>Timestamps</h2>
+      <div class="control">
+        <label>Display</label>
+        <div class="toggle-group">
+          <button class="toggle-btn" data-value="none" onclick="setState('timestamps', 'none')">None</button>
+          <button class="toggle-btn" data-value="hover" onclick="setState('timestamps', 'hover')">Hover</button>
+          <button class="toggle-btn active" data-value="all" onclick="setState('timestamps', 'all')">All</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <h2>Streaming</h2>
+      <div class="control">
+        <label>
+          <input type="checkbox" onchange="setState('showStreaming', this.checked)">
+          Show streaming indicator
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="preview-area">
+      <div class="preview-container" id="preview">
+        <div class="preview-header">
+          <div class="worker-indicator"></div>
+          <span class="worker-name">hexarchy-main</span>
+          <span class="worker-time">2m ago</span>
+        </div>
+        <div class="conversation" id="conversation">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <div class="prompt-area">
+      <div class="prompt-header">
+        <span class="prompt-label">Generated Prompt</span>
+        <button class="copy-btn" onclick="copyPrompt()">Copy</button>
+      </div>
+      <div class="prompt-text" id="prompt"></div>
+    </div>
+  </div>
+
+  <script>
+    const DEFAULTS = {
+      density: 'normal',
+      alignment: 'chat',
+      maxWidth: 500,
+      badgeStyle: 'icon',
+      showUserMessages: true,
+      showAssistantMessages: true,
+      truncation: 200,
+      expandableMessages: true,
+      showThinking: true,
+      thinkingStyle: 'dimmed',
+      thinkingCollapsible: true,
+      thinkingPreview: true,
+      showTools: true,
+      groupConsecutiveTools: false,
+      timestamps: 'all',
+      showStreaming: false
+    };
+
+    const state = { ...DEFAULTS };
+
+    const sampleConversation = [
+      { type: 'user', content: 'Can you help me implement a caching layer for the API responses? I need something that handles TTL, invalidation, and works well with our existing Redis setup.' },
+      { type: 'thinking', content: 'The user wants to add caching to their API. I should consider what type of caching would be most appropriate - in-memory, Redis, or file-based. Given this appears to be a web application with an existing Redis setup, I\'ll suggest extending their Redis configuration with a caching abstraction layer. I should look at their current Redis client implementation first.', preview: 'Considering cache types...' },
+      { type: 'tool', tool: 'Read', summary: 'src/api/client.ts' },
+      { type: 'tool', tool: 'Read', summary: 'src/services/redis.ts' },
+      { type: 'assistant', content: 'I\'ve looked at your API client and Redis setup. I\'d suggest creating a CacheService class that wraps your existing Redis client with TTL support and pattern-based invalidation. Here\'s the approach: we\'ll add methods for get/set with automatic serialization, and invalidateByPattern for cache busting.' },
+      { type: 'user', content: 'That looks good. Can you also add cache invalidation that triggers when we update related data?' },
+      { type: 'thinking', content: 'Cache invalidation is one of the hard problems in CS. For this use case, I\'ll implement both time-based expiry and event-driven invalidation. They mentioned "related data" which suggests they want cascading invalidation - when entity A changes, caches that depend on A should also be cleared.', preview: 'Planning invalidation strategy...' },
+      { type: 'tool', tool: 'Edit', summary: 'src/services/cache.ts' },
+      { type: 'assistant', content: 'Done! I\'ve added invalidation methods: invalidate(key), invalidatePattern(regex), and clearAll(). I also added a dependency tracking system - you can declare cache dependencies and they\'ll cascade on invalidation.' }
+    ];
+
+    function setState(key, value) {
+      state[key] = value;
+      updateAll();
+    }
+
+    function applyPreset(name) {
+      const presets = {
+        compact: {
+          density: 'compact',
+          alignment: 'left',
+          badgeStyle: 'minimal',
+          truncation: 80,
+          thinkingStyle: 'dimmed',
+          thinkingPreview: true,
+          timestamps: 'none',
+          showStreaming: false
+        },
+        chat: {
+          density: 'normal',
+          alignment: 'chat',
+          badgeStyle: 'icon',
+          truncation: 200,
+          expandableMessages: true,
+          thinkingStyle: 'dimmed',
+          thinkingPreview: true,
+          timestamps: 'all',
+          showStreaming: false
+        },
+        minimal: {
+          density: 'compact',
+          alignment: 'left',
+          badgeStyle: 'minimal',
+          showThinking: false,
+          showTools: false,
+          truncation: 100,
+          timestamps: 'none'
+        },
+        verbose: {
+          density: 'spacious',
+          alignment: 'chat',
+          badgeStyle: 'filled',
+          showThinking: true,
+          thinkingStyle: 'bordered',
+          thinkingCollapsible: false,
+          thinkingPreview: true,
+          truncation: 500,
+          showTools: true,
+          timestamps: 'hover'
+        }
+      };
+
+      Object.assign(state, DEFAULTS, presets[name]);
+      updateAll();
+    }
+
+    function truncateText(text, len) {
+      if (text.length <= len) return { text, truncated: false };
+      return { text: text.slice(0, len) + '...', truncated: true, full: text };
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function renderConversation() {
+      const container = document.getElementById('conversation');
+      const preview = document.getElementById('preview');
+
+      // Apply classes
+      preview.className = 'preview-container';
+      if (state.density === 'compact') preview.classList.add('compact');
+      if (state.density === 'spacious') preview.classList.add('spacious');
+      if (state.alignment === 'chat') preview.classList.add('align-chat');
+      if (state.badgeStyle === 'minimal') preview.classList.add('badges-minimal');
+      if (state.badgeStyle === 'icon') preview.classList.add('badges-icon');
+      if (state.thinkingStyle === 'inline') preview.classList.add('thinking-inline');
+      if (state.thinkingStyle === 'dimmed') preview.classList.add('thinking-dimmed');
+      if (state.timestamps === 'all') preview.classList.add('timestamps-all');
+      if (state.timestamps === 'hover') preview.classList.add('timestamps-hover');
+
+      preview.style.maxWidth = state.maxWidth + 'px';
+
+      let html = '';
+      const times = ['5m ago', '5m ago', '4m ago', '4m ago', '3m ago', '2m ago', '2m ago', '1m ago', '1m ago'];
+
+      sampleConversation.forEach((item, i) => {
+        const time = times[i] || '1m ago';
+
+        if (item.type === 'user' && state.showUserMessages) {
+          const { text, truncated, full } = truncateText(item.content, state.truncation);
+          const expandable = truncated && state.expandableMessages;
+          const wrapperClass = expandable ? 'msg-wrapper truncated' : 'msg-wrapper';
+          const clickHandler = expandable ? `onclick="toggleExpand(this, '${escapeHtml(full).replace(/'/g, "\\'")}')"` : '';
+
+          html += `
+            <div class="conv-item user-msg">
+              <span class="user-badge">You</span>
+              <div class="${wrapperClass}" ${clickHandler}>
+                <span class="msg-content">${escapeHtml(text)}</span>
+              </div>
+              <span class="timestamp">${time}</span>
+            </div>
+          `;
+        }
+
+        if (item.type === 'assistant' && state.showAssistantMessages) {
+          const { text, truncated, full } = truncateText(item.content, state.truncation);
+          const expandable = truncated && state.expandableMessages;
+          const wrapperClass = expandable ? 'msg-wrapper truncated' : 'msg-wrapper';
+          const clickHandler = expandable ? `onclick="toggleExpand(this, '${escapeHtml(full).replace(/'/g, "\\'")}')"` : '';
+
+          html += `
+            <div class="conv-item assistant-msg">
+              <span class="assistant-badge">Claude</span>
+              <div class="${wrapperClass}" ${clickHandler}>
+                <span class="msg-content">${escapeHtml(text)}</span>
+              </div>
+              <span class="timestamp">${time}</span>
+            </div>
+          `;
+        }
+
+        if (item.type === 'thinking' && state.showThinking) {
+          const collapsible = state.thinkingCollapsible ? 'onclick="this.classList.toggle(\'expanded\')"' : 'class="expanded"';
+          html += `
+            <div class="conv-item thinking-block" ${collapsible}>
+              <div class="thinking-header">
+                <span class="thinking-icon">▶</span>
+                <span class="thinking-label">Thinking</span>
+                ${state.thinkingPreview ? `<span class="thinking-preview">${escapeHtml(item.preview)}</span>` : ''}
+              </div>
+              <div class="thinking-content">${escapeHtml(item.content)}</div>
+              <span class="timestamp">${time}</span>
+            </div>
+          `;
+        }
+
+        if (item.type === 'tool' && state.showTools) {
+          html += `
+            <div class="conv-item tool-item">
+              <span class="tool-badge">${item.tool}</span>
+              <span class="tool-summary">${escapeHtml(item.summary)}</span>
+              <span class="timestamp">${time}</span>
+            </div>
+          `;
+        }
+      });
+
+      if (state.showStreaming) {
+        html += `
+          <div class="streaming-indicator">
+            <div class="streaming-dots">
+              <div class="streaming-dot"></div>
+              <div class="streaming-dot"></div>
+              <div class="streaming-dot"></div>
+            </div>
+            <span class="streaming-text">Claude is thinking...</span>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    function toggleExpand(el, fullText) {
+      if (el.classList.contains('expanded')) {
+        // Collapse - restore truncated text
+        el.classList.remove('expanded');
+        el.classList.add('truncated');
+        const truncated = truncateText(fullText, state.truncation);
+        el.querySelector('.msg-content').textContent = truncated.text;
+      } else {
+        // Expand
+        el.classList.remove('truncated');
+        el.classList.add('expanded');
+        el.querySelector('.msg-content').textContent = fullText;
+      }
+    }
+
+    function updatePrompt() {
+      const parts = [];
+
+      // Layout
+      if (state.density !== DEFAULTS.density) {
+        parts.push(`${state.density} density`);
+      }
+      if (state.alignment !== DEFAULTS.alignment) {
+        parts.push(state.alignment === 'chat' ? 'chat-style alignment (user right, Claude left)' : 'all messages left-aligned');
+      }
+      if (state.maxWidth !== DEFAULTS.maxWidth) {
+        parts.push(`${state.maxWidth}px max width`);
+      }
+
+      // Messages
+      if (state.badgeStyle !== DEFAULTS.badgeStyle) {
+        parts.push(`${state.badgeStyle} badge style`);
+      }
+      if (!state.showUserMessages) parts.push('hide user messages');
+      if (!state.showAssistantMessages) parts.push('hide assistant responses');
+      if (state.truncation !== DEFAULTS.truncation) {
+        parts.push(`truncate messages at ${state.truncation} chars`);
+      }
+      if (!state.expandableMessages) {
+        parts.push('messages not expandable');
+      }
+
+      // Thinking
+      if (!state.showThinking) {
+        parts.push('hide thinking blocks');
+      } else {
+        if (state.thinkingStyle !== DEFAULTS.thinkingStyle) {
+          parts.push(`${state.thinkingStyle} thinking style`);
+        }
+        if (!state.thinkingCollapsible) parts.push('thinking always expanded');
+        if (state.thinkingPreview !== DEFAULTS.thinkingPreview) {
+          parts.push(state.thinkingPreview ? 'show thinking preview when collapsed' : 'no thinking preview when collapsed');
+        }
+      }
+
+      // Tools
+      if (!state.showTools) {
+        parts.push('hide tool calls');
+      } else if (state.groupConsecutiveTools) {
+        parts.push('group consecutive tool calls');
+      }
+
+      // Timestamps
+      if (state.timestamps !== DEFAULTS.timestamps) {
+        if (state.timestamps === 'none') parts.push('hide timestamps');
+        else if (state.timestamps === 'hover') parts.push('show timestamps on hover');
+      }
+
+      // Streaming
+      if (state.showStreaming) parts.push('show streaming indicator');
+
+      const prompt = document.getElementById('prompt');
+      if (parts.length === 0) {
+        prompt.textContent = 'Build a conversation activity feed with chat-style alignment (user messages right, Claude left). Show user messages, assistant responses, dimmed collapsible thinking blocks with preview, and tool calls. Messages truncate at 200 chars and expand on click. Timestamps always visible. Icon-style badges.';
+      } else {
+        prompt.textContent = `Build a conversation activity feed. Configure with: ${parts.join(', ')}.`;
+      }
+    }
+
+    function updateControls() {
+      // Update slider values
+      document.getElementById('maxWidthValue').textContent = state.maxWidth + 'px';
+      document.getElementById('truncationValue').textContent = state.truncation;
+
+      // Update toggle buttons
+      document.querySelectorAll('.toggle-group').forEach(group => {
+        group.querySelectorAll('.toggle-btn').forEach(btn => {
+          const value = btn.dataset.value;
+
+          // Find which state key this toggle group controls
+          let stateKey;
+          const label = btn.parentElement.previousElementSibling?.textContent;
+          if (label === 'Density') stateKey = 'density';
+          else if (label === 'Alignment') stateKey = 'alignment';
+          else if (label === 'Badge Style') stateKey = 'badgeStyle';
+          else if (label === 'Style') stateKey = 'thinkingStyle';
+          else if (label === 'Display') stateKey = 'timestamps';
+
+          if (stateKey) {
+            btn.classList.toggle('active', state[stateKey] === value);
+          }
+        });
+      });
+
+      // Update checkboxes
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        const label = cb.parentElement.textContent.trim();
+        if (label.includes('user messages')) cb.checked = state.showUserMessages;
+        if (label.includes('assistant messages')) cb.checked = state.showAssistantMessages;
+        if (label.includes('expand truncated')) cb.checked = state.expandableMessages;
+        if (label.includes('thinking blocks')) cb.checked = state.showThinking;
+        if (label.includes('Collapsible')) cb.checked = state.thinkingCollapsible;
+        if (label.includes('preview')) cb.checked = state.thinkingPreview;
+        if (label.includes('tool calls')) cb.checked = state.showTools;
+        if (label.includes('Group')) cb.checked = state.groupConsecutiveTools;
+        if (label.includes('streaming')) cb.checked = state.showStreaming;
+      });
+
+      // Update sliders
+      document.querySelectorAll('input[type="range"]').forEach(slider => {
+        const label = slider.previousElementSibling?.textContent || '';
+        if (label.includes('Max Width')) slider.value = state.maxWidth;
+        if (label.includes('Truncation')) slider.value = state.truncation;
+      });
+    }
+
+    function updateAll() {
+      renderConversation();
+      updatePrompt();
+      updateControls();
+    }
+
+    function copyPrompt() {
+      const text = document.getElementById('prompt').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 1500);
+      });
+    }
+
+    // Initial render
+    updateAll();
+  </script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+\section{SPT-3G data}\label{sec:data}
+\noindent\textcolor{red}{SPT-instrument description}\\
+The South Pole Telescope (SPT; \cite{carlstrom2011}) is a 10-meter telescope located at the National Science Foundation Amundsen-Scott South Pole Station in Antarctica.
+The SPT-3G instrument \citep{benson2014}, the third-generation camera on the SPT has been in operation since 2018 and marks a substantial performance leap over its predecessor camera SPTpol. It features over 16,000 superconducting transition-edge sensor (TES) bolometers, organised into trichroic, dual-polarization pixels that observe simultaneously in three frequency bands centred at approximately 95 GHz, 150 GHz and 220 GHz. The combination of large detector count, multi-band sensitivity and $\sim1'$ angular resolution provides the high mapping speed and sensitivity required to generate high-signal-to-noise CMB lensing maps.
+
+\noindent\textcolor{red}{Dataset description}\\
+In this analysis, we use data from observations made during the 2019 and 2020 winter seasons. The main SPT-3G survey field covers a 1,500~deg$^2$ patch of sky extending in right ascension
+from  $20^\textrm{h}40^\textrm{m}0^\textrm{s}$ to $3^\textrm{h}20^\textrm{m}0^\textrm{s}$
+and from $-42^\circ$ to $-70^\circ$ in declination.
+The survey fields are divided into four sub-fields centered
+at $-44.75^\circ$, $-52.25^\circ$, $-59.75^\circ$, and $-67.25^\circ$. The noise levels are significantly deeper in comparison to the 2018 data set reaching 5, 4 and 16 $\mu$K-arcmin at 90/150/220 GHz respectively (shown in Figure \ref{fig:noiselevels}), which pushes us into a new regime for CMB lensing, in which the sensitivity of the polarization channels become more important for the reconstructed lensing map onlarge angular scales. The descriptions of map making procedure and data processing are described in detail in \cite{quan2025}. We also refer the readers to the $\tne{}$ power spectrum analysis \cite{camphuis2025} (hereafter C26), in which the same $T/Q/U$ maps were utilized and null tests were performed, as well as \cite{ge2025} in which a Bayesian forward modeling approach was used to jointly infer the delensed $EE$ spectra as well as the lensing potential map where comparison between the two different approaches have been described. Below we describe the key points from those papers as well as additional calibration steps and simulations that are specific to this lensing analysis.\\
+
+\begin{figure}
+	\includegraphics[width=\columnwidth]{Figures/noiselevels.pdf}
+    \caption{Noise levels in temperature (solid) and polarization (dashed) in 90 (teal), 150 (orange), 220 (purple) GHz channels. The fiducial $C_{\ell}^{TT}$, $C_{\ell}^{EE}$, $C_{\ell}^{BB}$ spectra from \planck{} 2018 best-fit are shown in the background (gray solid and dashed lines). }
+    \label{fig:noiselevels}
+\end{figure}
+
+\subsection{Beam}\label{sec:beams}
+We refer the reader to \citet{huang2025} for a detailed description of the SPT-3G beam characterization procedure, and summarize only the key aspects here. The angular resolution of the SPT is fundamentally limited by diffraction from its 10-meter primary mirror. The telescope beam (often referred to as the point-spread function) acts to smooth the observed sky signal, suppressing power on small angular scales. Accurate knowledge of the beam profile is therefore essential for recovering the true sky power spectra and for ensuring unbiased measurements of small-scale anisotropies. In this analysis the beam for the temperature maps are derived separately.
+
+\begin{itemize}[leftmargin=0.7em]
+\item[-] {\it Temperature:} The fiducial temperature beam is characterized using observations of both planets and bright compact sources, the majority of which are active galactic nuclei (AGNs). These two classes of sources probe complementary angular regimes of the beam. The high brightness of planets enables precise measurement of the outer beam profile over large angular scales (tens of arcminutes), but their cores saturate the detectors, preventing accurate characterization of the inner regions. Conversely, AGNs, being much fainter and effectively point-like, allow detailed measurement of the inner beam core. The two measurements are then combined to construct a composite beam profile spanning from the central core to the outer sidelobes \citep{huang2025}. %\textcolor{red}{The beam file actually goes down to $\ell=0$. How are we characterizing anything below $\ell<100$ if we are only measuring out to few tens of arcminutes?}\textcolor{red}{XXX}. \\
+
+\item[-] {\it Polarization:} The polarization-based beam is formulated as  \cite{ge2025,camphuis2025}:
+\begin{equation}\label{eq:betapol}
+B_{\ell}^{P}=B_{\ell}^{\rm main} +\beta_{\rm pol} (B_{\ell}^{T}-B_{\ell}^{\rm main}),
+\end{equation}
+where $B_{\ell}^{\rm main}$ is the main-lobe beam; a physically motivated beam profile based on the telescope optics, that is fit to the temperature-based beam profile at $R<0'.75$, and $\beta_{\rm pol}$ is a free scaling parameter that is fit for in \cite{ge2025,camphuis2025}. We use fiducial values of 0.44, 0.60 and 0.51 at 90, 150 and 220 GHz respectively obtained from C25 as our baseline model.
+\end{itemize}
+
+%\begin{figure}
+%	\includegraphics[width=\columnwidth]{Figures/Beams.pdf}
+%    \caption{Beam profiles for 90,150 and 220 GHz channels. The beam amplitudes are normalized such that the% amplitude is unity at $\ell=800$.}
+%    \label{fig:ilcweights}
+%\end{figure}
+
+\KW{Should we take Tijmen's $\beta_{pol}$ measurements and compare how different our results would be? This can go in the footnote, similar to the rc5 T beam check, or an appendix.}
+
+
+\subsection{Calibration}
+\subsubsection{Absolute calibration}\label{sec:tcal}
+%For a ground based telescope, the absolute brightness of a source in the sky is challenging to pin down directly due to atmospheric effects that absorb incoming photons. On the other hand, satellites such as {\it Planck} is able to measure the dipole due to the orbital motion. Given the motion of the Earth around the Sun, this dipole pattern on the sky changes slightly over the course of a year. This effect is predictable based on the known orbit of Earth. By observing this modulation, {\it Planck} was able to calibrate its instruments to an absolute standard, i.e., the known dipole anisotropy, with high precision. \KW{I'm not sure if we need this previous paragraph; this section seems perfectly fine to start with the next paragraph.}
+We obtain the absolute temperature calibration at 150 GHz by taking the cross-correlation with {\it Planck} 2018 (PR3\footnote{We use the Planck 2018 (PR3) 143 GHz maps because they are the mission’s legacy, standard-validated products (and the basis of the commonly used Planck likelihoods and calibration model)}) temperature and polarization maps at 143 GHz. Schematically we compute:
+\begin{equation}
+\zeta_{150}^{T}=\biggl\langle\frac{C_{\ell}(a_{\ell m}^{T,{\rm S150}}, a_{\ell m}^{T,{P143}})}{ C_{\ell}(a_{\ell m}^{T,{\rm S150/1}}, a_{\ell m}^{T,{\rm S150/2}})}\biggl\rangle_{500<\ell<1200}
+\end{equation}
+where $a_{\ell m}^{\rm S150}$ is the spherical harmonic coefficients for the uncalibrated full depth coadd for a particular sub-field,  $a_{\ell m}^{\rm S150/1}$ and $a_{\ell m}^{\rm S150/2}$ are the equivalent but half-depth coadds, and $a_{\ell m}^{P143}$ is the $\planck{}$ 143 GHz map. In computing the $a_{\ell m}$, we apply a mask that is the product of an apodized boundary mask and a point source/cluster mask, with masking radii determined for SPT, multiplied by a factor of X, which is the ratio between the FWHM of {\it Planck} 100 GHz and SPT 90 GHz maps. 
+
+Once the absolute calibration is obtained at 150 GHz, the  $\nu=90, 220$ GHz calibrations factors are obtained through internal SPT cross-frequency spectra:
+\begin{equation}
+\zeta_{150\rightarrow\nu}^{T}=\biggl\langle \frac{C_{\ell}(a_{\ell m}^{T,{\rm S150}} ,a_{\ell m}^{T,{S\nu}})}{ C_{\ell}(a_{\ell m}^{T,{\rm S}\nu/1}, a_{\ell m}^{T,{\rm S}\nu/2})} \biggl\rangle_{500<\ell<1200} 
+\end{equation}
+which leverages the lower noise properties of SPT frequency channel maps, and improves the overall calibration by \textcolor{red}{X\%} over calibrating directly against \planck{} individually. 
+%These calibrations are then applied to the raw frequency maps to produce calibrated maps:
+%\begin{align}
+%\mathbb{M}_{150}^{\rm calib} &= \zeta^{T\!/\!E\!/\!B}_{150} \mathbb{M}_{150}^{\rm raw}\\
+%\mathbb{M}_{90}^{\rm calib} &= \zeta^{T\!/\!E\!/\!B}_{150} \zeta^{T\!/\!E\!/\!B}_{90} \mathbb{M}_{90}^{\rm raw}\\
+%\mathbb{M}_{220}^{\rm calib} &= \zeta^{T\!/\!E\!/\!B}_{150} \zeta^{T\!/\!E\!/\!B}_{220} %\mathbb{M}_{220}^{\rm raw}
+%\end{align}
+%\textcolor{double check ranges}
+%\KW{specify the range of ells that the ratio is computed from; also write eqn 2 such that it's the ratio of power spectrum, as opposed to ratios of products of alms. Also define how this factor is applied (e.g. $\zeta_T m^{SPT} = {\rm calibrated \, SPT}$)}
+
+
+
+\subsubsection{$T$-to-$P$ and $E$-to-$B$ leakage} \label{sec:t2pleak}
+A small fraction of temperature signal could leak into polarization signal due to effects such as gain mismatch between detectors and differential beam shapes \cite{dutcher2021}. In this study, we utilize the same procedure as \cite{dutcher2021} and remove a scaled $T$ map from $Q/U$ maps:
+
+\begin{align}
+C_{\ell,{\rm data}}^{TQ} &= \epsilon^{Q,TT} C_{\ell,{\rm data}}^{TT}+\epsilon^{Q,TQ}C_{\ell,{\rm sim}}^{TQ}\\
+C_{\ell,{\rm data}}^{TU} &= \epsilon^{U,TT} C_{\ell,{\rm data}}^{TT}+\epsilon^{U,TU}C_{\ell,{\rm sim}}^{TU}
+\end{align}
+
+%44.75,52.25,59.75,67.25
+%\setlength{\tabcolsep}{0.5em}
+%\begin{table}
+%\footnotesize
+%\begin{tabular}{cccc}    \toprule
+%&  95\ GHz & 150\ GHz &  220 GHz   \\\midrule
+%{\bf ra0hdec-44.75} & & & \\
+%$\zeta_{T}$       & $1.058\pm0.004$ & $1.013\pm0.004$ & $0.986\pm0.009$ \\ 
+%$\zeta_{P}$       & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ 
+%$\epsilon^{Q,TT}$ & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ 
+%$\epsilon^{U,TT}$ & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ 
+%$\Delta \psi$     & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ \bottomrule
+% {\bf ra0hdec-52.25} & & & \\
+%$\zeta_{T}$       & $1.068\pm0.003$ & $1.033\pm0.003$ & $0.999\pm0.008$ \\ 
+%$\zeta_{P}$       & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}%{$0.005\pm0.002$} \\ 
+%$\epsilon^{Q,TT}$ & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ 
+%$\epsilon^{U,TT}$ & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ 
+%$\Delta \psi$     & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ \bottomrule
+%{\bf ra0hdec-59.75} & & & \\
+%$\zeta_{T}$       & $1.071\pm0.003$ & $1.001\pm0.004$ & $1.002\pm0.007$ \\ 
+%$\zeta_{P}$       & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}%{$0.005\pm0.002$} \\ 
+%$\epsilon^{Q,TT}$ & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ 
+%$\epsilon^{U,TT}$ & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ 
+%$\Delta \psi$     & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ \bottomrule
+%{\bf ra0hdec-67.25} & & & \\
+%$\zeta_{T}$       & $1.081\pm0.007$ & $1.014\pm0.008$ & $1.007\pm0.009$ \\ 
+%$\zeta_{P}$       & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ 
+%$\epsilon^{Q,TT}$ & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ 
+%$\epsilon^{U,TT}$ & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} \\ 
+%$\Delta \psi$     & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}{$0.005\pm0.002$} & \textcolor{red}%{$0.005\pm0.002$} \\ \bottomrule
+%\end{tabular}
+%\caption{Obtained best-fit values for the leakage parameters $\epsilon^{Q,TT}$ and  $\epsilon^{U,TT}$ and $\Delta \psi$.} 
+%\label{tab:calibration}
+%\end{table}
+
+A small difference in the detector's polarization angle $\Delta \psi$ rotates the primordial Stokes parameters $Q/U$ is related to the true $\tilde{Q}/\tilde{U}$ by 
+\begin{equation}
+Q(\nhat)\pm iU(\nhat) = e^{2i\Delta\psi}(\tilde{Q}(\nhat)\pm i \tilde{U}(\nhat)).
+\end{equation}
+As a result, an artificial correlation between $E$ and $B$-modes are introduced \cite{keating2013}:
+\begin{equation}
+C_{\ell}^{EB}=\frac{1}{2}\sin(4\Delta\psi)(\tilde{C}_{\ell}^{BB}-\tilde{C}_{\ell}^{EE})
+\end{equation}
+Since the expected correlation between $E$ and $B$-modes are 0, we are able to determine the offset angle $\Delta\psi$ and rotate back our observed $Q/U$ maps by applying $e^{-2i\Delta\psi}$. We simultaneously marginalize over these parameters and find the best-fit values summarized in \ref{tab:calibration}.
+
+One peculiar behavior we observe is the rotation angle dependence of the field: we see that the best-fit values for ra0h-59.75/ra0h-67.25 and ra0h-59.75/ra0h-67.25 are different for 220 GHz (although they are consistent for 90 and 150 GHz). This discrepancy is of unknown origin, and there is no reason for these values to be different. Therefore, we take the average of the for fields and apply that number to all four fields.  This characteristic has also been identified in the MUSE pipeline as well.
+
+
+
+
+
+\subsubsection{Polarization calibration}\label{sec:pcal}
+After the $T$-to-$P$ leakage is deprojected and $E$-to-$B$ leakage is corrected for, we compute the polarization calibration factors by again crossing with \planck{} maps, as done with temperature maps:
+
+\begin{align}
+\zeta_{150}^{E}\hspace{0.2cm}=&\biggl\langle\frac{C_{\ell}(a_{\ell m}^{E,{\rm S150}}, a_{\ell m}^{E,{P143}})}{ C_{\ell}(a_{\ell m}^{E,{\rm S150/1}}, a_{\ell m}^{T,{\rm S150/2}})}\biggl\rangle_{500<\ell<1200}\sqrt{0.966},\\
+\zeta_{150\rightarrow\nu}^{E}=&\biggl\langle \frac{C_{\ell}(a_{\ell m}^{E,{\rm S150}} ,a_{\ell m}^{E,{S\nu}})}{ C_{\ell}(a_{\ell m}^{E,{\rm S}\nu/1}, a_{\ell m}^{E,{\rm S}\nu/2})} \biggl\rangle_{500<\ell<1200}, 
+\end{align}
+where $\sqrt{0.966}$ is a frequency–cross-spectrum calibration factor applied in the \planck{} high-$\ell$ likelihood which corrects residual gain/efficiency mismatches between frequency channels \citep{planck2018_likelihood} and is not applied to the publicly release frequency channel maps. These calibration factors, along with those derived for temperature in  Section \ref{sec:tcal} are multiplied directly to the individual frequency maps as follows: 
+\begin{align}
+X_{150}^{\rm calib} &= \zeta_{150} X_{150}^{\rm raw},\\
+X_{90}^{\rm calib} &= \zeta_{150} \zeta_{150\rightarrow90} X_{90}^{\rm raw},\\
+X_{220}^{\rm calib} &= \zeta_{150} \zeta_{150\rightarrow220} X_{220}^{\rm raw},
+\end{align}
+where $\mathbb{M}=\{T,E,B\}$.
+
+
+
+
+%\subsection{Inpainting}
+%The raw frequency maps contain various astrophysical sources such as dusty star forming galaxies, radio galaxies and clusters. For sources that are isolated and detected at high significance, the most straight forward approach to remove them from the maps is to apply a mask. However, apply a complicated mask induces mode coupling, which complciated the extraction of a biased lensing map.  
+
+%\subsection{Noise}
+%The noise levels in 90/150/220 GHz channels are 5.5, 4.5 and 16.4 $\mu$K-arcmin at 90, 150 and 220 GHz respectively.
+
+
+
+
+\subsection{Model-informed linear combination}
+
+We combine all three frequency channels to form a single map of the CMB by appropriately weighting each frequency channel. This is often done by performing a internal linear combination (ILC) reconstruction where the weights are chosen so that the linear weights preserves the component of interest (CMB in this case) and either minimizes the variance of the output map or suppresses foregrounds and noise statistically. However, this data-driven approach introduced a well-known realization dependent bias due to the the fact that the same realization of the sky is used to construct the weights and applied to, and chance correlation between the target signal contamination can over bias the output maps.
+
+In contrast, the linear-combination (LC) approach adopted in \cite{bleem2022} employs weights that are determined a priori from simulations, instrument noise models, or broad sky averages and are then held fixed during map construction. Because these weights do not depend on the specific realization in a given region, the realization-dependent cancellation that affects ILC is avoided, and the resulting maps are unbiased with respect to the target signal under correct spectral and calibration assumptions. This leads to slight suboptimal component separation as it does not use the exact information from the data map, but is advantageous when preservation of unbiased power.
+
+We use three variants of model-informed linear combinations: 
+
+\begin{itemize}[leftmargin=2pt,labelsep=0.6em]
+\item[-]{\it Minimum variance}: We form a CMB map from linearly combining 95/150/220 GHz maps that enforces unit response to the CMB while minimizing the variance from noise and foregrounds. At each scale, we estimate the inter-frequency covariance and compute weights that solve the constrained minimization, yielding the cleaned CMB coadd. 
+\item[-]{\it tSZ de-projected}:  We form a map that keeps the response to CMB but explicitly project out the thermal SZ spectral signature using the constrained LC approach described in \cite{remazeilles2011}. This constraint robustly suppresses cluster tSZ contamination in the inputs to the lensing estimator, at the cost of somewhat higher noise than minimum variance.
+\item[-]{\it CIB de-projected}:
+Unlike the tSZ effect, the emission from infrared galaxies that make up the cosmic infrared background (CIB) can not be characterized by a single SED since the it is composed of galaxies with a range of properties across a wide range of redshift.  To deproject the CIB from our maps, we adopt a composite SED made up of two effective\footnote{The spectra index and the dust temperatures of these effective SEDs are non-physical on their own.} modified black body SEDs:
+\begin{equation}
+B_{\nu}(T_{\rm d})=\frac{2h\nu^3}{c^2}\frac{\nu^{\beta}}{\exp(h\nu/k_{\rm B}T_{\rm d})-1}
+\end{equation}
+with $\beta,T_{d}=(3.00,32)$ and $(2.20,10)$, which were chosen by running a grid search on those two parameters that leaves minimal CIB residuals based on \textsc{Agora} simulations (see section \ref{sec:Agora}) \YO{Check with Srini if it was minimized for CIB only or total residuals}. The weights are derived based using the total foreground spectra measured from the \textsc{Agora} simulations and the measured auto- and cross- noise spectra between frequency channels, and are derived per mode in $\ell,m$ space. 
+
+
+\end{itemize}
+
+Before applying these weights to the data maps in harmonic space, bright point sources are inpainted using a simple interpolation scheme to avoid ringing artifacts due to band-limited spherical harmonic transforms. Further more, this weighting is performed without deconvolving the transfer function to preserve some mode that are otherwise challenging to characterize.
+
+\begin{equation}
+X_{\rm LC}=\sum_{\nu}w_{\nu}X^{\rm calib}_{\nu}
+\end{equation}
+
+Pairs of these linearly combined maps are used as inputs to lensing reconstruction to produce lensing maps with different characterstics. For temperature, we adopt the minimum variance - minimum variance combination as the fiducial choice, although we also use the minimum variance - tSZ deprojected combination (\citep{madhavacheril2018}; gradient cleaning) as well as the tSZ deprojected - CIB deprojected combination (\citep{raghunathan2023}; cross-ILC).  
+
+
+\begin{figure}
+	\includegraphics[width=\columnwidth]{Figures/ilcweights}
+    \caption{Weights for the 90/150/220 GHz channels in forming the minimum variance, tSZ-nulled and CIB-nulled combinations.}
+    \label{fig:ilcweights}
+\end{figure}
+
+\subsection{Source masking}
+We generate a source mask from our fiducial list containing point sources (infrared and radio galaxies) and clusters detected above 6 mJy at 150 GHz and 10$\sigma$ respectively. The fiducial mask is constructed by convolving the known point source flux with the beam and measuring the radius at which the profile hits the signal-to-noise ratio of 1. The binary mask is then apodized with a Gaussian kernel of $3'$. This results in masking 2116 sources and 537 clusters, with fractional area lost due to this point source mask is $4$\%. We will refer to this mask as the analysis mask, and is the fiducial mask used to compute the final power spectrum.
+
+Additionally we produce a slightly more aggressive mask for the purpose of processing maps, specifically when applying the $C^{-1}$ filtering (described in the following section). For temperature, we measure the profiles of point sources and clusters by taking the difference between inpainted and non-inpainted maps and choose a radius such that the profile falls below $30\, \mu {\rm K}$. Because the number of polarized point sources is relatively small, using a mask derived from temperature detections excessively removes area. Instead, we take our fiducial source catalog containing sources brighter than $6\,\mathrm{mJy}$ in total intensity and measure the peak $Q$ and $U$ values in the $90\,\mathrm{GHz}$ map. Simultaneously we produce $Q/U$ maps with those sources inpainted. Sources are flagged as polarized if the difference in either $Q$ or $U$ exceeds $50\,\mu\mathrm{K}$. This criterion identifies 137 sources, substantially fewer than those masked in temperature, providing a more targeted and less conservative mask that better reflects the population of sources detectable in polarization. 
+
+
+
+
+%\KW{Include differences between masking thresholds of T map and Q/U maps.}\YO{The different mask is used in Cinv filtering step only, the full mask is applied when computing the power spectra}
+
+
+\subsection{$C^{-1}$ filtering}
+%The linearly combined maps $\mathbb{M}_{\rm LC}$ are filtered prior to applying the quadratic estimator to suppress excess residual variance. An optimal filter to apply to the map is using the covariance matrix, which includes the statistical properties of the CMB, noise and foregrounds.
+
+%To this end, we inverse-variance filter the input maps, where the variance consists of both noise (instrumental and atmospheric) as well as astrophysical foregrounds. We first write the input maps as :
+%\begin{equation}
+%X^{j}=\sum \mathcal{U}^{j}_{\rm \ell m} X^{j}_{\rm \ell m} + \sum \mathcal{U}_{\ell m}^{j}N_{\ell m}+n_{j},
+%\end{equation}
+%where $X_{\ell m}$ is raw sky signal, $N_{\ell m}$ is the atmospheric and instrumental noise, $\mathcal{U}$ represents the operation of convolving the transfer function and a spherical harmonic transform.
+
+Before applying the quadratic estimator, the linearly combined map $\mathbb{M}_{\rm LC}$ is inverse-variance filtered to optimally suppress modes dominated by noise or residual foregrounds. In the context of CMB lensing, this procedure is commonly referred to as $C^{-1}$ filtering, implements the minimum-variance weighting of sky modes based on their total covariance, which includes contributions from the CMB signal, instrumental and atmospheric noise, and astrophysical foregrounds.
+
+The observed map can be modeled as
+\begin{equation}
+X_{\rm LC}(\hat{n}) = U \otimes 
+\left[ X_{\rm CMB}(\hat{n}) + F(\hat{n}) \right] + n(\hat{n}),
+\end{equation}
+where $U$ denotes the transfer function (including the effective beam), $F$ represents residual foreground emission, and $n$ is the combined instrumental and atmospheric noise. In harmonic space, this becomes
+\begin{equation}
+X_{{\rm LC},\,\ell m}
+= \mathcal{U}_{\ell}\left(s_{\ell m}+f_{\ell m}\right) + n_{\ell m},
+\end{equation}
+where $\mathcal{U}_{\ell}$ is the equivalent of $U$ in harmonic-space.  
+The total covariance of the harmonic coefficients is then
+\begin{equation}
+C_{\ell m,\ell' m'} = 
+\langle X_{{\rm LC},\,\ell m}
+X_{{\rm LC},\,\ell' m'}^{*} \rangle
+= \delta_{\ell\ell'}\delta_{mm'}
+\left[\mathcal{U}_{\ell}^{2} C_{\ell}^{\rm CMB} + N_{\ell}\right],
+\end{equation}
+with $C_{\ell}^{\rm CMB}$ the theoretical CMB power spectrum and $N_{\ell}$ the noise-plus-foreground power.
+
+The inverse-variance–filtered map is obtained by applying the inverse of the total covariance to the linearly combined map,
+\begin{equation}
+\bar{X}_{\ell m} = 
+\sum_{\ell' m'} (C^{-1})_{\ell m,\ell' m'}\,
+X_{{\rm LC},\,\ell' m'},
+\end{equation}
+which downweights modes with large variance and yields a near-optimal estimate of the underlying CMB fluctuations. 
+Equivalently, in operator form the inverse-variance filtering can be expressed as
+\begin{equation}\label{eq:cinvcore}
+\bar{X} =
+S^{-1}\!\left[S^{-1}+\mathcal{U}^{\dagger}N^{-1}\mathcal{U}\right]^{-1}
+\mathcal{U}^{\dagger}N^{-1}X,
+\end{equation}
+where $\mathcal{U}$ encodes the beam and transfer function, and $S$ and $N$ denote the signal and noise covariances, respectively. 
+The signal covariance includes contributions from the CMB, astrophysical foregrounds, and residual noise,
+\begin{equation}
+S = C_{\ell}^{\mathrm{CMB},XX} + C_{\ell}^{\mathrm{fg},XX} + N_{\ell}^{XX}.
+\end{equation}
+%This operator formulation makes explicit that the filtering corresponds to the Wiener-filter solution that yields the minimum-variance linear estimate of the true sky signal given the statistical properties of the data.
+
+In practice, directly evaluating Equation \eqref{eq:cinvcore} is computationally prohibitive, as it formally couples all pixels and harmonic modes through the beam and noise properties of the experiment.  
+Instead, we exploit the separable structure of the covariance matrices: the CMB signal covariance $S$ is diagonal in harmonic space, while the noise covariance $N$ is (approximately) diagonal in map space.  
+This allows the $C^{-1}$ operation to be implemented efficiently by alternating between these two domains, applying each factor where it is simplest.
+
+Specifically, the filtering is solved iteratively using a preconditioned conjugate-gradient, which requires only the ability to apply the operators $S^{-1}$ and $N^{-1}$ to a map.  
+At each iteration, multiplications by $S^{-1}$ are performed in harmonic space—where each mode $(\ell,m)$ is weighted by the inverse of its expected CMB variance—while multiplications by $N^{-1}$ are carried out in map space, where the noise is approximately uncorrelated between pixels.  
+This alternating procedure yields an efficient realization of the full inverse-variance weighting implied by the formal expression above, without explicitly constructing or inverting the full covariance matrix.
+
+
+%The foreground spectra $C_{\ell}^{\rm fg}$ is generated by generating 1000 realizations of foreground simulations and taking the spherical harmonic transform of the map after applying an apodized mask. 
+%The noise spectra are computed from 500 sign-flip noise realizations (i.e., produced by dividing the list of observations into half and subtracting one from the other).
+
+In practice, we bundle the noise and foreground components, and split the contribution into an isotropic pixel-space component and a harmonic space component to capture both the scale dependence as well as spatial variation:
+\begin{equation}\label{eq:ninv}
+N^{\rm total} =  \underbrace{\frac{\mathbb{M}^{\rm b}\mathbb{M}^{\rm ps}}{\sigma(p)}}_\text{pixel space} +  \underbrace{N_{\ell}}_\text{harmonic\\ space}
+\end{equation}
+The first term is the pixel-space component and can be constructed by dividing the product of the binary boundary mask $\mathbb{M}^{\rm b}$ and binary point source mask $\mathbb{M}^{\rm ps}$ with the expected pixel variance, for which we assume 5.0 and 4.2 $\ukam{}$ for temperature and polarization respectively.\footnote{The expected variance for temperature is expected to be higher here due to contributions from foregrounds.} %\footnote{This is different from the analytical prescription $\sigma_{p}= (n_{\rm lev}^{T/P})^2$, where $n_{\rm lev}^{T/P}$ is the noise level in \ukam{} units, which is not a valid treatment for band limited maps.} 
+The second term $N_{\ell}$ is modeled as diagonal in harmonic-space, which is combined with the signal component. This procedure approaches that of a diagonal harmonic-space filter in the limit of assuming all the noise is in the harmonic-space component.
+
+
+%\begin{equation}\label{eq:ninv}
+%N^{\rm total} =  \underbrace{\frac{\mathbb{M}^{\rm b}\mathbb{M}^{\rm p}}{\sigma(p)}}_\text{pixel space} +  \underbrace{N_{\ell}}_\text{harmonic\\ space}
+%\end{equation}
+
+%Conceptually, this “split” implementation combines global weighting of well-measured angular modes through $S^{-1}$ with local down-weighting of noisy or contaminated regions through $N^{-1}$.  
+%It provides a practical means of achieving true inverse-variance filtering, ensuring that the resulting field $X^{\rm IVF}$ retains unbiased response to the CMB while approaching the minimum-variance weighting achievable under realistic, spatially varying noise and beam conditions.
+
+%\textcolor{red}{For the transfer function we apply a declination dependent $m$-cut described Section \ref{appendix:mtheta}.}
+
+%We split the total residual power (noise+foreground) into isotropic pixel-space component and a harmonic space component.
+%\begin{equation}\label{eq:ninv}
+%N^{\rm total} =  \underbrace{\frac{\mathbb{M}^{\rm b}\mathbb{M}^{\rm p}}{\sigma(p)}}_\text{pixel space} +  \underbrace{N_{\ell}}_\text{harmonic\\ space}
+%\end{equation}
+%The first term is the pixel-space component and can be approximated from the binary boundary mask $\mathbb{M}^{\rm b}$, binary pointsource mask $\mathbb{M}^{\rm p}$ and the expected pixel variance, which is calculated from generating a noise map from an analytical noise powers spectra assuming .65/5.12 \ukam{} respectively for temperature and polarization.\footnote{This is different from the analytical prescription $\sigma_{p}= (n_{\rm lev}^{T/P})^2$, where $n_{\rm lev}^{T/P}$ is the noise level in \ukam{} units, which is not a valid treatment for band limited maps.} 
+%The second term $N_{\ell}$ is modeled as diagonal in harmonic-space, which is combined with the signal component. This procedure approaches that of a diagonal harmonic-space filter in the limit of assuming all the noise is in the harmonic-space component.
+
+
+%Inverting the covariance matrix $C^{-1}$ is computationally challenging since it would require an calculation of order $\mathcal{O}(N^{3})$, where $N$ is the number of modes for SPT, going up to $\ell_{\rm max}=3500$ is approximately $X$). We therefore instead using iterative conjugate gradient descent to solve the invert the equation which is more computationally tractable.
+
+%We then iterate through using a conjugate gradient descent to find the maximum likelihood solution \textcolor{red}{(check language)}.
+
+
+%The noise spectra are computed from 500 sign-flip noise realizations (i.e., produced by dividing the list of observations into half and subtracting one from the other). The foreground component $Z_{\ell}$ is generated by generating 1000 realizations of foreground simulations and taking the spherical harmonic transform of the map after applying an apodized mask. 
+
+We additionally generate a filtered map  using Equation \eqref{eq:ninv} {\it without} the point source mask for the purpose of computing an unbiased response function, which maybe introduced when the $C^{-1}$ filtering does not perfectly recover the statistical properties of the lensed CMB in the masked regions.
+
+
+The filtered map $\bar{X}$ is then used as input to the quadratic estimator, ensuring that the lensing reconstruction attains close to optimal performance under realistic noise and foreground modeling.
+
+
+%\begin{figure}
+%	\includegraphics[width=\columnwidth]{Figures/ninv.pdf}
+%    \caption{Observationally derived inverse variance maps obtained by taking the variance of noise maps for temperature and polarization (bottom).}
+%    \label{fig:ninv}
+%\end{figure}
+
+
+

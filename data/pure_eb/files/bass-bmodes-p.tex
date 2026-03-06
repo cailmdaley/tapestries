@@ -1,0 +1,1070 @@
+%                                                                 aa.dem
+% AA vers. 9.1, LaTeX class for Astronomy & Astrophysics
+% demonstration file
+%                                                       (c) EDP Sciences
+%-----------------------------------------------------------------------
+%
+%\documentclass[referee]{aa} % for a referee version
+%\documentclass[onecolumn]{aa} % for a paper on 1 column  
+%\documentclass[longauth]{aa} % for the long lists of affiliations 
+%\documentclass[letter]{aa} % for the letters 
+%\documentclass[bibyear]{aa} % if the references are not structured 
+%                              according to the author-year natbib style
+
+%
+\documentclass{aa}  
+
+%
+\usepackage{graphicx}
+%\usepackage[hidelinks]{hyperref}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[nameinlink,capitalize]{cleveref}
+
+% For lowercase references (e.g., with \cref)
+\crefformat{section}{Sect.~#2#1#3}
+\crefmultiformat{section}{Sect.~#2#1#3}{ and~#2#1#3}{, #2#1#3}{ and~#2#1#3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{txfonts}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+
+% Suppress natbib's spurious "multiply defined" warnings
+% (aa.cls loads natbib which tests for changed citations at \AtEndDocument,
+%  but reports false positives because bibcite exists in both aux and bbl)
+\usepackage{silence}
+\WarningFilter{natbib}{Citation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[options]{hyperref}
+% To add links in your PDF file, use the package "hyperref"
+% with options according to your LaTeX or PDFLaTeX drivers.
+%
+
+% Authors comment command
+\newcommand{\sg}[1]{\textcolor{blue}{#1}}
+\newcommand{\sgsout}[1]{\sg{\sout{#1}}}
+\newcommand{\SG}[1]{\textcolor{blue}{[SG: #1]}}
+
+\newcommand{\mk}[1]{\textcolor{magenta}{#1}}
+\newcommand{\mksout}[1]{\mk{\sout{#1}}}
+\newcommand{\MK}[1]{\mk{[MK: #1]}}
+
+\newcommand{\CD}[1]{\textcolor{teal}{#1}}
+
+
+\newcommand{\oldm}[1]{%
+  \ensuremath{%
+    {\renewcommand{\CancelColor}{\color{red}}%
+    \cancel{\color{red} #1}}%
+  }%
+}
+% For blue, wavy underlined math (typeset in text mode)
+\newcommand{\newm}[1]{\ensuremath{\textcolor{blue}{\uwave{\ensuremath{#1}}}}}
+
+
+
+\input{macro}
+
+\begin{document} 
+
+
+   \title{UNIONS-3500: a weak lensing catalogue for the northern sky}
+
+   %\subtitle{Subtitle}
+
+   \author{%
+    Fabian Hervas-Peters
+    \inst{1}
+    \and
+    Sacha Guerrini
+    \inst{2}
+    \and
+    Martin Kilbinger
+    \inst{1}
+    \and
+    others
+    \inst{2}\fnmsep\thanks{Just to show the usage
+    of the elements in the author field}
+    }
+
+   \institute{%
+   AIM, CEA, CNRS, Universit\'e Paris-Saclay, Universit\'e de Paris, F-91191 Gif-sur-Yvette, France \\
+   \email{martin.kilbinger@cea.fr}
+   \and
+   Other place
+    }
+
+   \date{Received; accepted}
+
+% \abstract{}{}{}{}{} 
+% 5 {} token are mandatory
+ 
+  \abstract
+  % context heading (optional)
+  % {} leave it empty if necessary  
+   { Over the last two decades, weak lensing has become a widely used technique to characterise the dark matter distribution in the large-scale structure of the Universe. It is particularly used due to its unbiased nature as it purely relies on gravitational effects and bypasses any assumption connecting dark and luminous matter. 
+   }
+  % aims heading (mandatory)
+   {%
+   In this work, we present the first weak gravitational lensing catalogue for cosmological constraints with cosmic shear
+   of the Ultraviolet Near Infrared Optical Northern Survey (UNIONS). We use $3,500$ square degrees of sky
+   area in the Northern Hemisphere, observed in the $r$-band by MegaCAM on the Canada-France Hawai'i Telescope, achieving a pristine median seeing of \CD{0.7~arcsec}.
+   }
+  % methods heading (mandatory)
+   {%
+   Starting from images calibrated for astrometry and photometry, we describe the steps from image processing to catalogue creation. These steps include masking, source detection and selection, star selection, PSF modelling, shape measurement and calibration. We conduct extensive validation tests, particularly to assess and mitigate the leakage of PSF ellipticity into galaxy shapes. We demonstrate the robustness of the catalogue through the absence of correlation with other observational variables and structural elements, such as position in the image or proximity to bright stars. 
+   }
+  % results heading (mandatory)
+   {%
+   The final galaxy catalogue contains $XX$ million galaxies, corresponding to a source density of $x$ arcmin$^{-2}$. The ellipticity dispersion, commonly referred to as shape noise is $\sigma_\epsilon=$. By covering the northern sky, it offers a large overlap with spectroscopy of the Sloan Digital Sky Survey and the Dark Energy Spectroscopic Instrument.
+   }
+  % conclusions heading (optional), leave it empty if necessary 
+   {Initiating the first major cosmological analysis by the UNIONS collaboration, this is the first in a series of five papers which cover the various aspects of a robust cosmic shear analysis. Two companion papers discuss the robustness of the catalogue, one through the level of $B$-mode contamination and another by producing and analysing dedicated image simulations for shear calibration.
+   }
+
+   \keywords{
+    Cosmology -- Large scale structure -- Weak lensing
+    -- Imaging systematics -- Shape Measurement
+    }
+
+   \maketitle
+%
+%-------------------------------------------------------------------
+ 
+\section{Introduction}
+
+% Cosmological parameters, models. Recent tensions: Hubble, Normalisation, Dark Energy.
+
+Cosmic shear denotes the coherent distortion of galaxy images by the intervening large-scale structure through the effect of gravitational lensing. Since it is sensitive to the total matter content, this technique is of primary interest to map the matter distribution in the Universe, which is dominated by dark matter. Cosmic shear probes both the evolution of structure and the geometry of the Universe. Over the last two decades, it has become a main probe of cosmological parameters such as the matter density parameter $\Omegam$, the matter density power-spectrum normalisation $\sigma_8$, or the dark-energy parameter of state $w$. For reviews, see \cite[e.g.,][]{kilbingerCosmologyCosmicShear2015,mandelbaumWeakLensingPrecision2018,pratWeakGravitationalLensing2026}.
+
+While the standard goal of a wide shear catalogue is \CD{a} cosmological cosmic shear \CD{analysis}, multiple measurements are enabled when probing the lensing field.  These include  the mass and profile measurement of different objects such as haloes \citep[e.g.,][]{Li_halomass_2024}, galaxies \citep[e.g.,][]{Huang_galaxy_mass_2020} , the detection of filaments \citep[e.g.,][]{Xia_filaments_2019}, the study of voids distributions and profiles \citep[e.g.,][]{Melchior_voids_2013}, intrinsic alignments of galaxies \citep[e.g.,][]{singhIntrinsicAlignmentsSDSSIII2015} and mass maps \citep[e.g.,][]{Jeffrey_mass_map_2021_DES}  to name some examples. This plethora of applications has made weak lensing catalogues \CD{a particularly rich and sought-after source} of cosmological and astrophysical information. 
+
+% When it comes to shear measurements, the community has seen a rich development in the past two decades meant to address different sources of biases. One can broadly classify methods into two camps: some algorithms rely on a moments-based approach, simply integrationg the surface-brigthness profile \cite{KSB_1995,BJ02,hirata_seljak2003}. This does not require strong assumptions about the galaxy profile but can reintroduce a model choice by applying a Gaussian weighting function with a varying radius. Other methods fit a model, which rests on assumptions about the galaxy shape, optimizing for a number of parameters. The most commonly used model is the Sérsic profile \cite{Sersic_1963}, used either as a single profile or as a combination of two profiles (bulge+disk), as implemented in \textit{lensfit} \cite{miller_bayesian_2013}, which is used in the Kilo-Degree Survey \cite{giblin_kids-1000_2021}, or in \texttt{im3shape} \cite{Zuntz_2013} used in DES Y1 \cite{jarvis_science_2016,Zuntz_2018}. A more recent method based on a bulge+disk approach using MCMC sampling, called \texttt{LensMC} is the fiducial shape measurement algorithm for \textit{Euclid} \cite{Congedo_2024}. A profile which recently found a lot of application is a mixture of gaussians due to it's simplicity. While the Gaussian approximation is a poor approximation of a galaxie's shape, referred to one can use modern calibration techniques such as \texttt{Metacalibration} \cite{huffMetacalibrationDirectSelfCalibration2017,sheldonPracticalWeaklensingShear2017} to quantify the amount of bias introduced. Looking ahead methods to get a handle of blends \cite{metdetection}, fitting the shear in a field bypassing individual galaxies, or analyticcaly , making shear measurement and callibration an active field of reseach
+
+Galaxy shape measurement algorithms have evolved significantly in the past two decades in response to the  biases affecting weak-lensing shear estimation. Broadly, existing approaches fall into two categories: moments-based methods and model-fitting techniques. Moments-based estimators compute weighted integrals of the light distribution involving powers of the spatial coordinates  and therefore avoid strong assumptions about galaxy morphology \citep{KSB_1995,BJ02,HSM_2003}. In contrast, model-fitting approaches assume a parametric description of galaxy structure and optimize parameters against pixel data; the Sérsic profile \citep{Sersic_1963}, either single-component or bulge–disk decomposed, remains the most widely adopted model, forming the basis of algorithms such as \textit{lensfit} \citep{miller_bayesian_2013} used in the Kilo-Degree Survey \citep{giblin_kids-1000_2021} and \texttt{im3shape} \citep{Zuntz_2013} employed in DES Y1 analyses \citep{jarvisScienceVerificationWeak2016,Zuntz_2018}. More recently, \texttt{LensMC} uses \CD{an MCMC-based inference framework} for \textit{Euclid} \citep{Congedo_2024}. While some works tried to reach minimally biased estimators, the field has progressively shifted toward calibration-driven strategies \citep{Mandelbaum_great_handbook_2014,Mandelbaum_great_2014}, either through realistic simulations or data-driven corrections. Modern surveys increasingly adopt self-calibrating techniques: in the Dark Energy Survey, \texttt{Metacalibration} \citep{huffMetacalibrationDirectSelfCalibration2017,sheldonPracticalWeaklensingShear2017,gattiDarkEnergySurvey2021} and \texttt{Metadetection} \citep{Sheldon_2019,Yamamoto_2025} estimate shear responses directly from the data by artificially shearing observed images, leveraging the simplicity of Gaussian profile convolutions \citep{Hogg_2013}. The Kilo-Degree Survey recently applied \texttt{Metacalibration} with a \CD{moments-based} approach \citep{Yoon_metacal_kids_2025}. Following  the logic of the Dark Energy Survey Y3 \citep{gattiDarkEnergySurvey2021}, we use a Gaussian mixture model \texttt{ngmix} \citep{sheldonNGMIXGaussianMixture2015} with \texttt{Metacalibration} in this work. 
+
+% The data-set presented in this work has already served in studying void profiles \citep{martinLensingMassMatter2025}, AGN masses \citep{liBlackHoleHalo2024}, intrinsic alginements \citep{hervaspetersUNIONSDirectMeasurement2025}, the splashback radius of cluster \citep{mpethaCosmologyUNIONSWeak2025} and their dynamical state \citep{Ahad_clusters_Unions_2025}, as well as the measurement of galaxy mergers \citep{chengUnionsUNIONSUsing2025}. Depending on the scientific question being addressed, different levels of precision are required. Cosmic shear, through is sole reliance on shape measurement and it's very weak subbtle effect, is particularly sensitive to various systematic effects producing even subtle correlations between neighbouring galaxies on the sky. In the course of the creation of this shape catalogue, two works \citep{zhangPointSpreadFunction2024,guerriniGalaxyPointSpread2025} developed specific diagnostic and mitigation tools to handle subtle contamination of the ellipticity of the Point Spread Function (PSF), contaminating the galaxy ellipticity, a phenomena referred to as PSF-leakage.  
+
+This paper is the first in a series of five publications. This first paper presents the UNIONS galaxy catalogue and provides an overview of weak lensing image processing and overall calibration with \texttt{ShapePipe }\citep{farrensShapePipeModularWeaklensing2022}. The second paper in the series focuses on validation of the shear calibration with image simulations \citep{milli-vanilli}. Paper III \citep{bebop} validates the catalogue using B-mode tests and derives scale cuts. Papers IV and V present cosmological constraints in configuration space \citep{melody} and harmonic space \citep{harmony}, respectively.
+
+UNIONS is a very unique dataset for cosmology in many respects. The Northern Hemisphere has been rather neglected by photometric surveys. In terms of the combination of depth, area, and image quality, UNIONS images are unprecedented: They are deeper than the Sloan Digital Sky Survey \citep{yorkSloanDigitalSky2000} and the Pan-STARRS $3\pi$ survey \citet{chambersPanSTARRS1Surveys2019}, and cover significantly more area than Subaru Strategic Program (SSP) survey with the Hyper Suprime-Cam \cite[HSC;][]{liHyperSuprimeCamYear2023}. Narrow-band optical images from UNIONS images will remain state-of-the-art for many years to come.
+
+With observations in the $r$-band having started in 2017, UNIONS is the last of the stage-III surveys.
+Other weak-lensing Stage-III surveys, notably KiDS, DES, and HSC, have recently published results that build on previous iterations and data releases; in part, they correspond to joint analyses
+\citep{desandkidscollaborationY3KiDS1000Consistent2023,jeffersonReanalysisStageIIICosmic2025}. The UNIONS results presented here and in the companion papers are completely independent of those other surveys, and correspond to new constraints on cosmological parameters.
+
+The wide-field imager MegaCAM \cite{bouladeMegaCamNewCanadaFranceHawaii2003} on the Canada-France Hawai'i Telescope (CFHT) remains, despite its age, one of the best optical cameras in the world. The CFHT has a long history of providing data for weak gravitational lensing measurements, including the first cosmic shear detection \cite{vanwaerbekeDetectionCorrelatedGalaxy2000}. Dedicated cosmic shear surveys were CFHTLS \cite{hoekstraFirstCosmicShear2006}, and, using the same data, CFHTLenS \cite{heymansCFHTLenSCanadaFranceHawaiiTelescope2012}. CFHTLS published cosmic shear results just after the quest of dark energy was placed into stage \cite{albrechtReportDarkEnergy2006}, and can therefore be considered as one of the first Stage-II surveys. UNIONS, as coming out at the dawn of the next-generation surveys such as Euclid, LSST, and Roman, can be seen as the last of the Stage-III surveys.
+
+\begin{table*}[]
+    \centering
+    \sidecaption
+    \begin{tabular}{l|c|c|c|c}
+        Survey & Area & $n_\textrm{eff}$ & $\sigma_\epsilon$ & PSF FWHM   \\
+        & [deg$^2$] & [arcmin$^{-2}$]  & & [arcsec] \\
+        \hline
+        KiDS-Legacy & 1,347 &  8.94  & 0.255& 0.7 ($r$)\\
+        DES-Y3  &  4,143 & 5.59& 0.261 & 0.98 ($r$) -- 0.85 ($z$) \\
+        DES-Y6 &  4,422 & 8.22 &  0.29 & 0.95 ($r$) -- 0.83 ($z$) \\
+        HSC-Y3 & 433 &  22.9& 0.236 & 0.59 ($i$) \\ 
+        DECADE & 5,412 &4.59& 0.254 & \\ 
+        UNIONS-v0  &  1,700  & 6.8 & 0.35 & 0.65 ($r$) \\ 
+        UNIONS-3500 & & & & 0.65 ($r$) \\ 
+    \end{tabular}
+    \caption{Recent weak-lensing surveys and their key properties. Information is taken from \cite{Wright_data_2024,Wright_cosmo_2025} for KiDS legacy , \cite{Sevilla_Noarbe_des_2021,abbott_dark_2021,Yamamoto_2025} for DES-Y3 $\&$ Y6, \cite{Li_HSC_2021}  for HSC, \cite{Anbajagane_decades_2025} for DECADE, and \cite{guinotShapePipeNewShape2022} for UNIONS v0.}
+    \label{tab:survey_recap}
+\end{table*}
+
+
+
+The first weak-lensing analysis of UNIONS data was presented in \citet{guinotShapePipeNewShape2022}, which analysed $1,600$ square degrees of sky area in the $r$-band. Further, processing of a larger area of around $3,200$ deg$^2$ was used in \cite{liBlackHoleHalo2024}. The present paper corresponds to the analysis of $3,500$ deg$^2$.
+
+This paper is organised as follows. \Cref{sec:data} gives an overview of the UNIONS data and weak-lensing processing. \Cref{sec:shapes} discusses shape measurement, shear estimation and calibration. In \Cref{seq:PSF validation} the effect of the point-spread function (PSF) is quantified.
+
+
+
+\section{UNIONS data}
+\label{sec:data}
+
+% Show table with numbers (area, density, number of galaxies, seeing etc.) compared to DES, HSC, KiDS.
+The targetting of UNIONS, as described in \cite{gwynUNIONSUltravioletNearInfrared2025} can be initially traced back to the CFHT $u$-band survey driven by near field cosmology. When the need for complementary optical coverage for \textit{Euclid} became more pressing, the targetting was extended according to principles described in \cite{euclidcollaborationEuclidPreparationDR12025}. The target area was selected to be minimally contaminated by the galactic plane; objects from the solar system and zodiacal light. This means that at the end of the survey, UNIONS will have observed a large fraction of the darkest extragalactic sky available, least subject to galactic extinction. The survey was designed with a strong homogeneity target, which was particularly successful for the $r$-band when considering the spread of the point source depth distribution and both the median and width of the FWHM distribution of point sources. 
+% Survey homogeneity; low-extinction regions (selected for Euclid).
+
+% Airmass, seeing, etc. histograms.
+%FHP: I think that for data quality the wyn is elaborate enough
+
+
+\subsection{Catalogue versions}
+
+Three weak-lensing processing campaigns of UNIONS $r$-band data have been
+undertaken and published to date. A first catalogue (v0.1) covering $1,600$
+deg$^2$ was created in $2020$, published in \citep{guinotShapePipeNewShape2022}
+and used subsequently for cosmological constraints from peak counts
+\cite{aycoberryUNIONSImpactSystematic2023}, and measuring group halo shapes
+\citet{robisonShapeDarkMatter2023}.
+
+A second campaign (v1.0 and sub-flavours v1.1. v1.3) using $3,200$ deg$^2$ and
+thus nearly doubling the previous area was run in 2022. The PSF model was
+switched to MCCD \cite{liaudatMultiCCDModellingPoint2021}. The changes compared
+to v0.1 are discussed in \cite{liBlackHoleHalo2024}. Version v1.0 was released
+internally to the UNIONS collaboration, but not used in publications. Additional
+cuts were applied to create a more robust catalogue. The subsequent flavours of
+that catalogue are, first, v1.1, used for a direct measurement of intrinsic
+alignment \cite{hervaspetersUNIONSDirectMeasurement2025}. This catalogue includes objects that \textsc{SExtractor} flagged as blends (\texttt{FLAGS=2}).
+Second, with more conservative cuts on object size v1.3 was defined, used in a
+number of publications: \cite{liBlackHoleHalo2024} measured the black hole to
+halo mass relation from weak lensing; \cite{guerriniGalaxyPointSpread2025}
+developed and measured PSF systematics for cosmic shear;
+\cite{zhangPointSpreadFunction2024} quantified additive biases from PSF
+systematics for lensing-density cross-correlations.
+\cite{mpethaCosmologyUNIONSWeak2025} derived cosmological constraints from
+lensing cluster profiles, whereas \cite{chengUnionsUNIONSUsing2025} measured the
+lensing to probe the dark-matter environment of merger galaxies.
+\cite{martinLensingMassMatter2025} measured void properties from lensing by
+underdense regions. In  \cite{Ahad_clusters_Unions_2025} the lensing profile of clusters was used to classify their dynamical state.
+
+A re-processing campaign was run in 2023-2024 to recover lower leakage. A small number of previously
+failed tiles were added, bringing the area to $3,500$ deg$^2$. The PSF model was
+switched back to the well established \textsc{psfex} \cite{bertinAutomatedMorphometrySExtractor2011}. This
+catalogue (v1.4) is used in the present work and in the companion papers. The difference between \textsc{psfex} and \textsc{MCCD} performances are presented in Appendix \ref{append:Psfex_MCCD}. To demonstrate the footprint we show the conver
+
+\begin{figure}
+%\centering
+\hspace{-1cm}
+\includegraphics[width=1.2\linewidth]{plots/sky_map_kappaE_healpix.pdf}
+    \caption{Map of the convergence $\kappa$ from the 3500 deg$^2$ of data presented in this release.}
+    \label{fig:convergence}
+\end{figure}
+
+
+\begin{table*}[t]
+\centering
+\caption{\texttt{ShapePipe} catalogue versions and survey properties. $A_\mathrm{obs}$ is the total observed footprint; $A_\mathrm{eff}$ is the effective area after masking (v1.4 variants only).}
+\label{tab:v14_survey_properties}
+\begin{tabular}{lrrrrrllp{0.25\textwidth}}
+\hline\hline
+Version & $A_\mathrm{obs}$ & $A_\mathrm{eff}$ & $n_\mathrm{gal}$ & $n_\mathrm{eff}$ & $\sigma_e$ & PSF & Notes & Reference \\
+ & (deg$^2$) & (deg$^2$) & ($10^6$) & (arcmin$^{-2}$) & & & & \\
+\hline
+0.1   & $1{,}500$ & \multicolumn{1}{c}{---} & $40$  & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & PSFex &
+  P3 patch & \citet{guinotShapePipeNewShape2022}; \cite{aycoberryUNIONSImpactSystematic2023,robisonShapeDarkMatter2023} \\
+%1.0  & $3{,}200$ & \multicolumn{1}{c}{---} & $95$  & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & MCCD  & internal CFIS release & \\
+1.1   & $3{,}200$ & \multicolumn{1}{c}{---} & $128$ & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & MCCD  & FLAGS=2 & \cite{hervaspetersUNIONSDirectMeasurement2025} \\
+1.3   & $3{,}200$ & \multicolumn{1}{c}{---} & $84$  & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & MCCD  & + cuts & \cite{liHyperSuprimeCamYear2023,guerriniGalaxyPointSpread2025,zhangPointSpreadFunction2024} \\
+\hline
+v1.4.5    & $3{,}200$ & $2{,}894$ & $85.0$ & $6.48$ & $0.28$ & PSFex & Initial & \cite{bass} (this work); \cite{milli-vanilli,bebop,melody,harmony} \\
+v1.4.6.3  & $3{,}200$ & $2{,}894$ & $61.4$ & $4.96$ & $0.27$ & PSFex & Size cut (fiducial) & \\
+v1.4.8    & $3{,}200$ & $2{,}517$ & $53.9$ & $4.98$ & $0.27$ & PSFex & + star-halo mask & \\
+v1.4.11.3 & $3{,}200$ & $2{,}894$ & $78.2$ & $6.26$ & $0.27$ & PSFex & + FLAGS $\le$ 2 & \\
+\hline
+\end{tabular}
+\tablefoot{$n_\mathrm{eff}$ follows \citet{heymansCFHTLenSCanadaFranceHawaiiTelescope2012}; $\sigma_e$ is the per-component ellipticity dispersion. Both use metacalibration-weighted galaxy samples. v1.4.11.3 relaxes the \textsc{SExtractor} flag criterion to \texttt{FLAGS} $\le 2$, admitting objects with neighbour-biased photometry (1) or deblending (2). Versions v1.4.5, v1.4.6.3, and v1.4.11.3 share the same footprint (Section~\ref{sec:masking}); v1.4.8 adds stellar-halo masking.}
+\end{table*}
+
+% We split the $3,500$ deg$^2$ total observed area into $7$ patches. P1 - P7.
+% Their sky coverage is shown in Fig.~\ref{fig:survey_area}. Patches P1, P2, P3, and P4
+% were used in \cite{UNIONS_Guinot_SP}; note however that since then tiles were added to these patches,
+% such that their observed area is not identical.`
+
+
+
+\subsection{SExtractor}
+
+To identify sources, \texttt{ShapePipe} uses the widely adopted \texttt{SExtractor} library \cite{Bertin_1996}. The detections are done at the tile level. The detected objects  will all be subject to the shape measurement process. Due to cuts, only $\thicksim25\%$ objects will be part of the final catalog. The precise fraction of objects which are detected and which make it into the final catalogue can be inferred from Fig.~\ref{fig:cuts_histo}.  Our detection process is very conservative and exhaustive, which minimizes detection biases, i.e. any correlation between the shear of an object and the likelihood of it being detected. We rely on \texttt{SExtractor} for deblending and further masking. We then propagate the segmentation map of objects detected by \texttt{SExtractor} to remove neighbouring objects during the shape measurement process. The parameters for deblending are shown in Table \ref{tab:sex}; they have been lowered compared to \cite{guinotShapePipeNewShape2022}. 
+%Parallelly more conservative cuts where applied based on size-ratio. 
+
+% Main differences:
+% \begin{itemize}
+%     \item DR3, TODO: check whether improvements in data pre-processing happened.
+%     \item Minimum area for detection with \texttt{SExtractor} reduced from 10 to 3.
+%     Less conservative, more detected objects, potentially smaller detection bias.
+%     \item New PSF model using MCCD.
+%     Improved weight computation in exposure.
+%     \item Post-processing:
+%     (Check) different SNR and size cuts. These are performed on the metacalibration catalogues, so in principle captures by the selection response matrix.
+% \end{itemize}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Parameter}       & \textbf{Value}          \\
+\hline
+\texttt{THRESH\_TYPE}          & RELATIVE                \\
+\texttt{DETECT\_THRESH}          & 1.5                     \\
+\texttt{DETECT\_MINAREA }          & 5                       \\
+\texttt{FILTER}         & Y                       \\
+\texttt{FILTER\_NAME}        & default.conv            \\
+\texttt{DEBLEND\_NTHRESH }       & 32                      \\
+\texttt{DEBLEND\_MINCONT }      & 0.0005                  \\
+\hline
+\end{tabular}
+\caption{\texttt{SExtractor} parametrisation. All other parameters are kept to their default values, following \cite{guinot_shapepipe_2022}.}
+\label{tab:sex}
+\end{table}
+
+\subsection{Data processing}
+
+\subsubsection{Masking}\label{sec:masking}
+
+We apply different types of masking that defines the final shear catalogue.
+Mask information is created before, during, and after processing of
+\texttt{ShapePipe}. The first, pre-processing masks are generated during MegaCam
+processing \citep{Marmo_weight_2008}, and mask chip defects and cosmic rays.
+
+The second masks are generated by \texttt{ShapePipe}. This includes flags generated by
+\texttt{SExtractor} and
+\texttt{ngmix}. These masks are defined by the following criteria. The \texttt{SExtractor} flags
+are
+%
+\begin{itemize}
+  \item $\mbox{FLAGS} = 0$, removing blended objects;
+  \item $\mbox{IMA\_FLAGS} = 0$, removing objects masked by the \texttt{mask\_runner} module
+    of \texttt{ShapePipe}. This includes bright stars, Messier and NGC objects, diffraction spikes,
+    and reflection halos. The parameters of these masks are based on \texttt{THELI} pipeline; to mask bright stars we use the Guide Star Catalogue \cite[GSC, version 2.2;][]{gsc:01}. We mask stellar halos (diffraction spikes) for stars brighter than magnitude $13$ ($18$), where we use the mean magnitude over all bands available in the GSC.
+\end{itemize}
+
+The general \texttt{ShapePipe} selection criteria are
+%
+\begin{itemize}
+  \item $n_\textrm{ep} \ge 2$, keeping objects observed during at least two epochs;
+\end{itemize}
+
+Next, we apply flags generated by \texttt{ngmix} shape measurement. These indicate a failed moment calculation to set the initial guess for the fit, and an invalid PSF model at galaxy position.
+
+Additionally, we remove duplicate objects in the border regions of tiles. These duplicate
+objects are due to the small overlapping area between neighbouring tiles.
+
+The third kind of masks are applied in post-processing. These are both pixel-based
+and area-based masks. The pixel-based masks are generated by the
+neural-network based software \texttt{maximask} \citep{Maximask_2020}, and contain masks for various contaminants such as cosmic
+rays, residual fringe pattern, diffraction spikes and saturated pixels among others.
+
+After processing, we noticed that the \texttt{ShapePipe} masks were not large enough to mask some NGC objects entirely, resulting in many fake detections in the outskirts of those objects.
+We therefore applied additional pixel-based masks from the \texttt{THELI} pipeline
+to conservatively mask bright stars, Messier, and NGC objects.
+We also identify regions around stars, sorted in two magnitude bins, that show a faint halo-like emission. These regions can however safely be used for most purposes: Shapes of galaxies falling in these regions can be well measured, and we do not apply this very conservative mask for our shear catalogue, following \cite{Erben_cfhtlens_2013}. \textcolor{red}{Fabian:is this final?}
+
+The area-based masks indicate the core region of each tile, thus removing
+overlapping regions between neighbours. An additional criterium concerns the
+overall exposure coverage. A rough exposure count map is created and only areas
+with $n_\textrm{pointing} \ge 3$ are kept. This selection is complementary to
+the above-defined $n_\textrm{ep} \ge 2$ criterium. It is useful to homogenize the coverage map. Finally, a tile-based flag
+indicates whether the tile has been observed and processed in the $r$ band.
+This flag is currently redundant, but will be used with corresponding flags for
+the $u$, $i$, and $z$ band for upcoming multi-band shear tomography catalogues.
+
+The pixel-based masks are transformed into \texttt{healsparse} area maps, and
+then the \texttt{healsparse} pixel values are attributed to each catalogue object.
+
+\CD{Galaxy-property cuts (size, magnitude, shape measurement quality) do not enter the footprint definition; only spatially defined criteria do (tile coverage, image quality flags, and star and artifact masks), reducing the full $3{,}500~\mathrm{deg}^2$ imaging area to an effective footprint. We compute this footprint by counting \texttt{HEALPix} pixels at $N_{\mathrm{side}} = 4096$ occupied by at least one source in the detection catalog before galaxy-property cuts, giving $A_{\mathrm{eff}} = N_{\mathrm{pix}} \times 0.74~\mathrm{arcmin}^2$. The standard footprint covers $2{,}894~\mathrm{deg}^2$ (versions v1.4.5, v1.4.6.3, v1.4.11.3); the stellar-halo-masked variant (v1.4.8) covers $2{,}517~\mathrm{deg}^2$.}
+
+\subsubsection{Galaxy selection}
+
+The following criteria define the galaxy sample of the shear catalogue.
+
+\begin{itemize}
+  \item $15 \le r \le 30$, where the $r$-band magnitude is measured via \texttt{SExtractor};
+  \item $10 \le \nu \le 500$, where $\nu$ is the signal-to-noise ratio, defined as
+  the ratio of flux and flux error as measured during the \texttt{ngmix} modelling. 
+  \item $0.707 \le r_\textrm{h} / r_\textrm{h, psf} \le 3$, with $r_\textrm{h}$ being the galaxy half-light radius of the original
+  (deconvolved) galaxy image, and $r_\textrm{h, psf}$ the PSF half-light radius;
+\end{itemize}
+
+The latter two selections are applied during \texttt{Metacalibration}, and thus
+determine the selection response matrix. The cut on the relative size of small
+objects is identical to the one used by DES \cite{gattiDarkEnergySurvey2021}; our numerical value is larger
+by a factor of $\sqrt{2}$ \CD{because we use the half-light radius $r_\textrm{h}$,
+whereas DES defines size as the area $T \propto r_\textrm{h}^2$.}
+
+
+
+\subsubsection{Weights}
+
+A first estimate of galaxy weights are inverse-variance weights, which depend on the properties of individual galaxies. The weight for the $i^\textrm{th}$ galaxy is given by
+%
+\begin{equation}
+    w_i = \frac 1 {\sigma_e^2 + \sigma_{i, 1}^2 + \sigma_{i, 2}^2},
+    \label{eq:w_iv}
+\end{equation}
+%
+where $\sigma_e = 0.34$ is the estimated sample ellipticity dispersion, and $\sigma_{i, j}$ is the shape measurement error associated with component $j=1, 2$. The total variance is thus the sum of intrinsic and measurement variance. The latter is the trace of the measurement error covariance that \texttt{ngmix} computes.
+
+%
+A shear estimator as the mean over the shapes of galaxies (or any linear combination thereof) has a minimum variance by using the weights given by
+Eq.~\eqref{eq:w_iv}.
+
+We further compute weights that are less sensitive to noise in the estimated measurement errors. Following \cite{gattiDarkEnergySurvey2021}, we compute the weights as piecewise constant values in bins of relative size and signal-to-noise ratio. These two quantities are good predictors of galaxy weight. 
+
+\begin{align}\label{equ:weights}
+w(r_{\mathrm{gal}}/r_{\mathrm{PSF}},\nu)=\sigma_\gamma^{-2}(r_{\mathrm{gal}}/r_{\mathrm{PSF}},\nu)\\
+=[\sigma_\epsilon\langle R_\gamma\rangle ]^{-2} (r_{\mathrm{gal}}/r_{\mathrm{PSF}},\nu) \ . \nonumber
+\end{align}
+The shear dispersion $\sigma_\gamma$ is rewritten as the product of the ellipticity dispersion $\sigma_\epsilon$ and the shear response. 
+The motivation to introduce this weight was to decouple weight from ellipticity, since the shape measurement error in Eq.~\ref{eq:w_iv} can correlate with shear. The distribution of these weights as a function of SNR and size-ratio is shown in Fig.~\ref{fig:2d_histograms}. \CD{Most galaxies lie in the small-size, low-SNR regime, where weights are small.} \CD{The weight distribution shows a complex pattern.} In particular the top left corner could be affected by blended galaxies, i.e. large diffuse objects, which seem to be strongly down-weighted. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{plots/magnitude_histograms.png}
+    \caption{\textcolor{red}{FHP: This plot feels to deep to me, metacal galaxies don't go down to 26, but are lost by 25 I believe}. Histogram of the $r$-band magnitude of detected objects with various additive selection criteria: %
+     all unmasked objects with valid shapes (blue); %
+     with $n_\textrm{ep} \geq 2$ (orange); %
+     with $n_\textrm{pointing} \geq 3$ (green); %
+     with size and SNR cuts performed during metacalibration (brown).}
+     \label{fig:cuts_histo}
+\end{figure}
+
+
+\subsubsection{v1.3}
+
+Tile-by-tile processing. \textcolor{red}{Fabian: How far do we want to bring this comparison and how much do we want to talk about v1.3? Messaging is also important}
+
+\subsubsection{v1.4}
+
+Of the $14,596$ tiles, $9$ ($0.06\%$) failed to finish processing, for the following reasons. $2$ tiles had zero weight everywhere, due to some quirk in the CFHT pipeline. Three tiles had exceptionally large number ($\sim 10$ times the mean) of \texttt{SExtractor} detections due to its vicinity to a nearby Messier galaxy. Since all those detections fall into the masked regions, we removed those tiles from further processing. Finally, processing of $4$ tiles failed after multiple re-tries for unknown reasons.
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/weighted_bins.pdf}
+    \caption{Raw averages of galaxies in bins of ratios of galaxy to PSF size ($y$-axis) and galaxy signal-to-noise ratios ($x$-axis). The binned quantities, indicated by the color bars, are number counts (\emph{upper left}), weights (\emph{upper right}), shear response matrix diagonal (\emph{lower left}), and per-component shape noise (\emph{lower right}).}
+    \label{fig:2d_histograms}
+\end{figure*}
+
+
+\section{Shapes, shears, and calibration}
+\label{sec:shapes}
+
+\subsection{Number density}
+We compute the number density using the Heymans 2012 definition
+
+\begin{equation}
+    N_{\mathrm{eff}}=\frac 1 A \frac{\left(\sum_{i} w_i\right)^2}{\sum_{i} w^2_i}
+\end{equation}
+where $w_i$ is the shear weight per galaxy and A the area of the survey. In Fig.\ref{fig:n_eff_sigma_maps} the distribution of the effective number density is shown across the survey footprint. The mask has been subtracted from the area in each pixel. This is key since the raw number density correlates strongly with right ascension due to the stellar density increasing towards the galactic plane as shown in Fig.~\ref{fig:star_density}. The spread of $N_{\mathrm{eff}}$ seems to be well constrained. This can be attributed to the homogeneous data in the $r$-band shown in \cite{gwynUNIONSUltravioletNearInfrared2025}. A small decrease towards the galactic plane can hypothetically be attributed to dust extinction.
+
+
+\begin{figure*}
+  \begin{center}
+    \includegraphics[width=0.40 \hsize]{plots/sky_map_neff.png}
+     \includegraphics[width=0.49 \hsize]{plots/sky_map_shape_noise_healpix.pdf}
+  \end{center}
+
+  \caption{Footprint over the Northern Galactic sky in $N_{\mathrm{eff}}$ and $\sigma_\epsilon$. }
+
+  \label{fig:survey_area}
+  \label{fig:n_eff_sigma_maps}
+\end{figure*}
+
+\subsection{Additive bias}
+
+\Cref{tab:c} shows the mean and R.M.S. \MK{todo} of the additive bias $c_1$ and $c_2$.  We remove these values from each ellipticity component to empirically account for the additive bias. \CD{These values are relatively small and} well aligned with other stage-III surveys. In DES Y3 (DES Y6) the reported values are $c_1=3.5\times10^{-4} \ (1.9\times10^{-4})$ and $c_2=0.6\times10^{-4} \ (-0.3\times10^{-4})$ This places our average shear at the same magnitudes. During our work on PSF contamination mitigation subtraction, no indication appeared that this global calibration was in conflict with the leakage correction. 
+
+Note that the \textit{Euclid} requirements \cite{Cropper_bias_2013} are not obtained through the raw values, but ones removed the desirable requirement is achieved through empirical calibration. \textcolor{red}{Fabian: writing this I realised that the Euclid requirements are on the errors on c at tleast in the Cropper and Kitching so it would be nice to have them for comparison. They used to be computed automatically i believe?}
+
+\begin{table}[ht!]
+
+\caption{Additive bias components $c_1$ and $c_2$, for different weightings.}
+
+\input c_non_tomographic_SP_v1.4.6_uncal_SP_v1.4.6_uncal_w_iv_SP_v1.4.6_uncal_w_1
+
+\input c_non_tomographic_SP_v1.4.5_uncal_SP_v1.4.6_uncal_SP_v1.4.7_uncal_SP_v1.4.8_uncal
+
+\label{tab:c}
+
+\end{table}
+
+% \subsection{Mutiplicative bias}
+
+% \paragraph{$\Delta m$ as 1D and 2D functions}
+
+% \subsection{Ellipticity distributions}
+
+% Plot histogram of $\varepsilon_i$. Other quantities such as magnitude, SNR, ...
+%FHP I suggest we leave those to the shear calibration paper to save space here. 
+
+
+\subsubsection{Metacalibration shear and selection response}
+
+As mentioned in the introduction, multiple shape measurements methods have been explored by the weak lensing community in the past decade. Some rely on estimating moments of the surface brightness profiles, others try fitting a parametric profile to the galaxies, such as a mixture of Gaussians or a bulge+disk model using Sérsic profiles. While each of this methods has their own advantages and biases, a method that has been widely employed in recent years to estimate model, noise and selection biases is \texttt{Metacalibration}. This technique quantifies capacity of a given shape measurement method to recover a known shear $\Delta \gamma$ that is applied to the data directly \citep{huffMetacalibrationDirectSelfCalibration2017,sheldonPracticalWeaklensingShear2017}. This is done by first deconvolving the image from the PSF model, shearing the deconvolved image and then reconvolving it by a slightly dilated PSF to suppress high frequency modes. During the shearing process, correlated noise can appear, causing in the recovered shear. To cancel out the effect of correlated noise, artificial noise is introduced, referred to as \textit{fixnoise}. This artificial noise causes an approximate 20\% loss in signal-to-noise ratio. Some techniques leveraging deep fields \cite{Zhang_deep_2022} have been investigated to reduce this loss by relying on the higher signal to noise of galaxies in these regions. From a theoretical point of view the shear response is obtained by Taylor expanding the ellipticity around a small variation in shear:
+\begin{equation}
+    e= e|_{\gamma=0}+\left.\frac{\partial e}{\partial \gamma}\right|_{\gamma=0}\ \gamma+ ...
+\end{equation}
+This leads to define at first order the shear response matrix R as
+\begin{equation}
+    R=\left.\frac{\partial e}{\partial \gamma}\right|_{\gamma=0}\
+\end{equation}
+\CD{The response matrix is commonly split into a shear response $R_\gamma$ and selection response $R_s$.} The shear response can be estimated per galaxy as
+\begin{equation}\label{equ:r_gamma}
+    R_\gamma \equiv R_{ij}=\frac{ e_i^+- e_j^-}{2 \Delta \gamma},
+\end{equation}
+where the $i,j$ indices refer to the ellipticity components. The selection responses can only be defined for a global population, since the goal is to quantify how cuts affect the mean ellipticity
+\begin{equation}\label{equ:m_sel}
+    R_\mathrm{sel}=\frac{\langle e_i^\mathrm{NS}\rangle^{S_+}-\langle e_i^\mathrm{NS}\rangle^{S_-}}{2 \Delta \gamma} \ .
+\end{equation}
+The superscript $S_\pm$ refers to the artificially sheared galaxy branch the selection cuts are applied to. The NS indices indicate the "No Shear" branch. Calibrated ellipticities are obtained by averaging over shear responses, since individual realisations can be very noisy. We only use the off-diagonal elements and hence $e_{\mathrm{cal},i}=e_{\mathrm{meas},i}/\langle R_{ii}\rangle$. Weights need to be applied consistently in the numerator and denominator when taking these averages. 
+While splitting these two responses gives control and interpretability, Eq.~\ref{equ:m_sel} can be noisy. \CD{With restricted statistics, inferring both jointly is more robust:}
+\begin{equation}\label{equ:m_sel_joint}
+    R_\mathrm{tot}=\frac{\langle e_i^\mathrm{+}\rangle^{S_+}-\langle e_i^\mathrm{-}\rangle^{S_-}}{2 \Delta \gamma} \ ,
+\end{equation}
+This method has been applied in \cite{Anbajagane_decades_2025} and Paper V, where the error on the selection response estimated separately was of a similar order as the total error on the multiplicative bias estimate. 
+The selection response in our case is $R_{s,1}=$ and  $R_{s,2}$= . \CD{While the total shear response is typically below 1, the selection response can be positive or negative, meaning selection effects can dilute or boost the total shear. \citet{Zuntz_2018} show that cutting on SNR creates a positive selection response while cutting on size causes a negative one.}  
+
+In practice \texttt{ShapePipe} uses \texttt{ngmix} to measure shapes with Gaussian mixtures. The details of the pipeline are laid out in \cite{guinotShapePipeNewShape2022}. In brief, a guess is made based on a fast moment computation using the HSM algorithm \cite{hirata_2003}. The minimiser uses regularization priors and 6 parameters are fitted to each galaxy: [$\Delta x, \,   \Delta y \, , \,e_1, \, e_2, \, r_{50}, \,F$] where $\Delta x \Delta y$ represent a global offset accounting for some distance between the \texttt{SExtractor} detection centre and the best fit one. The ellipticity components are $e_1,e_2$, $r_{50}$ is the half-light radius and $F$ is the flux. All epochs are then fitted at once, each with their specific PSF. An issue was discovered during the pipeline validation process, which was the lack of coherent offsetting between the different epochs. This issue is described in detail in paper II and its consequences are studied using image simulations. 
+
+\CD{The shear response distributions in Fig.~\ref{fig:shear_response} show that the galaxy shear responses are very consistent for $R_{11}$ and $R_{22}$.} The distribution peaks around 1 but has a larger tail towards the left hand side, leading to the mean values $R_{11}$= $R_{22}$= . The origin of the slight discrepancy between $R_{11}$ and $R_{22}$ is unclear, but one hypothesis is that our 51$\times$51 pixel postage stamp can cause some slight asymmetry between the horizontal and vertical axis propagating into $e_1$ and $e_2$ respectively. The large non-zero shear response in our star sample is directly explainable by the offset problem mentioned in the previous paragraph. Stars are point-like objects and their shear response should average to 0. \CD{Paper II describes how this issue was both reproduced and corrected in simulated images by fixing the lack of coherent offsetting.} This improvement will be applied in upcoming improved UNIONS shape measurements processing. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.95\linewidth]{plots/R_ngmix_diag.pdf}
+    \caption{Shear response of stars and galaxies. See text for a detailed discussion of the non-zero shear response in stars.}
+    \label{fig:shear_response}
+\end{figure}
+
+\subsubsection{Residual multiplicative bias from image simulations}\label{sec:m_bias}
+
+In \CD{Paper II}, an extensive set of simulated images are built to validate the shape measurement pipeline and to quantify residual multiplicative \CD{biases} tied to blends. These simulations use a realistic catalogue of galaxies based on N-body simulations in \cite{liKiDSLegacyCalibrationUnifying2023} and galaxy properties are assigned via a semi-analytic model \cite{Lagos_Shark_2018}. The observation strategy of UNIONS in the $r$-band is reproduced with high fidelity and \CD{PSFs} are directly drawn from the model estimated on the data. Galaxies are then placed in two different \CD{configurations}. \CD{First,} they are placed on a grid, since from the literature, no bias source exceeding $m=0.005$ is expected when using \texttt{Metacalibration} on isolated galaxies. This serves as a dual validation of our shape measurement pipeline and of the image simulations. While it is possible that two errors compensate, the fact that we interface \CD{a validated} image simulation suite developed by the Kilo Degree Survey collaboration with a \CD{well-tested} shape measurement code mainly used by the Dark Energy Survey gives us confidence that cancelling-out errors are unlikely, in particular at the relatively coarse precision of $\sigma_m \thicksim(10^{-2})$ we currently try to achieve. This step revealed two shortcomings of the pipeline which require corrective multiplicative bias calibrations.  The total shear bias when galaxies are placed on a grid is found to be, indicating a trustworthy implementation of the \texttt{Metacalibration} method. Due to the size of \CD{these} error bars, an uncertainty on the multiplicative bias of $\sigma_m =0.01(?)$ is included in the cosmological analyses of \CD{Papers IV \& V}.
+
+\subsubsection{PSF leakage calibration}\label{seq:object-wise leakage calibration}
+
+In addition to the weighted additive and multiplicative biases, \CD{residual PSF leakage remains in the measured ellipticity.} This will be quantified in \Cref{seq:PSF validation} using various validation techniques to assess the amplitude of the PSF leakage. Here, we review the method to correct PSF leakage at the object level following \cite{liKiDSLegacyCalibrationUnifying2023}. We define the measured ellipticity of each object $i$ as follows,
+%
+\begin{align}\label{eq:definition leakage}
+    e^\mathrm{obs}_i = \epsilon^\mathrm{s}_i + \gamma_i + \alpha e^\mathrm{PSF}_i,
+\end{align}
+%
+where $\epsilon^\mathrm{s}_i$ corresponds to the stochastic component of the ellipticity, $\gamma_i$ is the shear component, $e^\mathrm{PSF}_i$ is the interpolated) PSF ellipticity at the position of object $i$ and $\alpha$ is the associated leakage coefficient. All three terms are complex spin-2 complex quantities. We model the leakage $\alpha_i$ as a single scalar for both ellipticity components, which corresponds to the PSF leakage contribution as a simple rescaling of the PSF ellipticity.
+
+The correction of leakage consists of two consecutive steps to estimate $\alpha_i$ for each object. A first step consists of binning the galaxies by
+and signal-to-noise ratio, $\snr$,
+and
+resolution,
+%
+%$\size = r^\mathrm{PSF} / (r^\mathrm{PSF}+r^\mathrm{obs})$$,
+%
+\begin{equation}
+\size = \frac{r^\mathrm{PSF}}{r^\mathrm{PSF}+r^\mathrm{obs}},
+\label{eq:resolution_R}
+\end{equation}
+%
+where $r^\mathrm{PSF} (r^\mathrm{obs})$ is the PSF (galaxy) half-light radius,
+%
+We build a $20 \times 20$ grid in ($\snr, \size$) and compute the PSF leakage coefficient $\alpha$ using a linear regression in each bin. Fig.~\ref{fig:alpha_leakage_bin} shows the binned $\alpha$ parameter. Faint and small galaxies tend to have a negative leakage contribution.
+
+Next, we estimate the global leakage trend in the $(\snr, \size)$ plane by fitting the regressed and binned $\alpha$ with the fitting function
+%
+\begin{align}
+    \alpha_\mathrm{trend}(\snr, \size) = a_0 + a_1 \snr^{-2} + a_2 \snr^{-3} + b_1 \size + c_1 \size \snr^{-2}.
+\end{align}
+%
+We then correct the observed ellipticities by subtracting the fitted leakage,
+%
+\begin{align}\label{eq:remove leakage}
+    e^\mathrm{obs, tmp}_i = e^\mathrm{obs}_i - \alpha_\mathrm{trend}(\nu_{\mathrm{SNR}, i}, \size_i) e^\mathrm{PSF}_i.
+\end{align}
+%
+After that first correction, some residual leakage might remain.
+To remove this residual leakage further, we perform another suite of linear regressions to estimate, per bin, the residual leakage $\alpha_\mathrm{res}$. We then remove for each object its residual leakage based on the bin it is assigned to, similar to Eq.~\eqref{eq:remove leakage}. The overall leakage removed per object writes
+%
+\begin{align}
+    \alpha_i = \alpha_\mathrm{trend}(\nu_{\mathrm{SNR}, i}, \size_i) + \alpha_{\mathrm{res}, i},
+\end{align}
+%
+% \MK{Why not write the residual leakage with the SNR and size arguments as well?
+% Maybe both regressions can be summarized as one method.}
+where $\alpha_{\mathrm{res}, i}$ is the value of the residual leakage in the $(\size, \snr)$ bin of object $i$. By construction, the measured leakage per bin is close to zero after subtraction. \CD{\Cref{seq:PSF validation}} will show the impact of this correction on the leakage using different estimators.
+%
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{plots/alpha_leakage_bin.png}
+    \caption{PSF leakage in the measured galaxy ellipticities as a function of SNR and resolution $\size$ \cref{eq:resolution_R}.}
+    \label{fig:alpha_leakage_bin}
+\end{figure}
+% 
+\subsubsection{Size, flux, and other biases}
+
+To test the robustness of the shear estimate we perform a simple linear regression as a function of observable parameters. In Fig.~\ref{fig:Clara_m} the multiplicative factor $b$ is represented $\gamma_{\mathrm{obs}}=b  \,  \langle\epsilon_{\mathrm{obs}}\rangle+c$ . While $b$ can be interpreted as a multiplicative bias with respect to a given observable quantity, we use the notation $b$ to distinguish it from the global calibrated bias determined from image simulations described in \ref{sec:m_bias}. \CD{For most quantities — magnitude, SNR, and RA/DEC — the ellipticity does not correlate.} The weights $w$ also do not correlate with ellipticities, a positive consequence of the use of gridded weights from Eq.~\ref{equ:weights}. The input PSF size, whether measured with moments (fwhm\_PSF) or as the Gaussianized PSF size from \texttt{ngmix} used for the reconvolution, lightly anti-correlates with the ellipticity components at the 1$\sigma$ level. Galaxy size estimated from the Gaussian profile during shape measurement, by contrast, correlates with ellipticity at the $XX\sigma$ level with a small but non-negligible value. Unfortunately the image simulations do not have the statistical power to inform on this trend. \citet{gattiDarkEnergySurvey2021} found similar trends in DES-Y3, albeit with a different size dependence: large galaxies appear more affected in UNIONS, while smaller galaxies show boosted shear in DES-Y3. 
+%FHP: I don't think we properly corrected for selection effects when doing this investigation, tbd
+The correlation for PSF ellipticities are particularly strong.  We describe different ways to recover and correct for this PSF-leakage in \ref{sec:psf_conta}. The values are respectively XX YY, indicating strong deviations from 0. 
+%FHP: In my thesis i measured the corss components to be 0 (e1gal-e2psf and e2gal-e1psf), I hope that my thesis is right because if this plot is right this strong effect is currently not captured and this is a problem. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.\linewidth]{plots/clara_m_e1_e2.png}
+    \caption{Bias when fitting a linear relation $e_{i}(X)=b \, e_{i}(X)+d$  where $X$ represents \textcolor{red}{FHP: plot needs better label (also we could reserve the name m and c bias to the calibratable bias and call these something else? (Gatti chose b for m)}}
+    \label{fig:Clara_m}
+\end{figure}
+
+
+
+\subsection{Tile and CCD diagnostics}
+
+To gain confidence in the absence of systematics a common diagnostic is to look at the ellipticity distributions as a function of the core processing units. In our case the core levels are the focal plane, where the image is taken, and the tile, when the exposures are combined for detection. We start by looking at the average ellipticity binned in focal plane position and tile position in Figs.\ref{fig:foc_plane_avg}\&\ref{fig:tile_avg}. In the case of the focal plane, each galaxy contributes to multiple pixels, appearing at various positions across different exposures. Qualitatively no pattern seems to emerge in either of the plots. When looking at the structure of the PSF in \CD{\ref{fig:foc_plane_psf}} and the level of leakage, one could have imagined seeing some trends related to the PSF field. The scatter on each plot also appears under control.
+\CD{Having found no global trends visually, we estimate the reduced $\chi^2$ for each histogram as a quantitative check. Assuming pure Poisson noise and testing consistency with zero, the reduced $\chi^2$ values are}
+\begin{itemize}
+\item CCD level: $\chi^2(e_1)/$d.o.f.=20525.7/18000=1.140    \\  $\chi^2(e_2)/$d.o.f.=20175.1/18000=1.121
+\item Tile level: $\chi^2(e_1)/$d.o.f.=2565.6/2500=1.026   \\  $\chi^2(e_2)/$d.o.f.=2450.4/2500=0.980 .
+\end{itemize}
+\CD{At the tile level the reduced $\chi^2$ values are close to 1, while at the CCD level they differ slightly.} We attribute this to the PSF-leakage, as the PSF displays a coherent pattern across the focal plane, as shown in Fig.~\ref{fig:foc_plane_psf}. Therefore this small excess should be captured by the PSF-leakage scheme detailed in \Cref{sec:psf_conta}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.95\linewidth]{plots/focal_plane_gal.png}
+    \caption{Average calibrated ellipticity components ($e_1$,$e_2$) as a function of position on the focal plane. Due to the complex dither pattern, each galaxy appears at multiple positions on the focal plane. The spread is small and no pattern emerges. \textcolor{red}{FHP: need for quantitative chi2?} }
+    \label{fig:foc_plane_avg}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.4\linewidth{}]{plots/e1_tile_mean.pdf}
+    \includegraphics[width=0.4\linewidth{}]{plots/e2_tile_mean.pdf}
+    \caption{Mean ellipticity components ($e_1$,$e_2$) as a function of position on the tile. No complex pattern emerges indicating an absence of additive systematic at the tile level. }
+    \label{fig:tile_avg}
+\end{figure*}
+
+\section{Position-shape correlation function null tests}
+
+\subsection{Tangential shear around processing units}
+
+A common additional null-test is to investigate the galaxy-galaxy lensing signal around processing-unit centres. \CD{Figure~\ref{fig:ggl_tile_ccd} shows $\gamma_t$ and $\gamma_\times$ around tile and CCD centres. The reduced $\chi^2$ values are consistent with unity, and no spatial pattern is visible, indicating an absence of additive systematics at the tile and CCD level.} The error bars are shot-noise only for the tile-centred correlation functions; the CCD-centred ones use a jackknife process to account for survey-wide variability.
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.48\linewidth{}]{plots/theta_gamma_t_x_tile.pdf}
+    \includegraphics[width=0.45\linewidth{}]{plots/theta_times_gamma_ccd_centers.png}
+    \caption{Galaxy-galaxy lensing signal around tile centers (left) and CCD centers (right). All reduced $\chi^2$ indicate compatibility with the null hypothesis, indicating \CD{that} the data-set passes this null \CD{test}. }
+    \label{fig:ggl_tile_ccd}
+\end{figure*}
+
+\subsection{Tangential shear around stars}
+
+
+Stars form a very bright class of objects present across the whole sky. While they are necessary to calibrate the PSF-model, \CD{their} intense \CD{brightness} can \CD{result} in halos around them. While the effect of inclusion or exclusion of galaxies from these halo-regions can be tested with masking, a good verification is to compute the galaxy-galaxy lensing signal around stars. This \CD{allows us to test whether} any unsubtracted light from the stars coherently affected galaxies during the shape measurement process. In Figs.~\ref{fig:gammat_gal_stars_GAIA} \& \ref{fig:gamma_gal_stars_PSFval_} we compute the tangential and cross signal around GAIA \cite{} selected stars and around our own PSF selected stars. What 
+%need chi^2, also would put them in sam units both, 
+
+We measure the tangential and \CD{cross-component} shear around stars, as null tests. First, 
+we use the UNIONS PSF validation stars as position sample. The shear around this sample is shown in
+\Cref{fig:gamma_gal_stars_PSFval_}. 
+
+Next, we consider GAIA star samples, split up into three magnitude bins. The result is shown in \cref{fig:gammat_gal_stars_GAIA}.
+
+% Shear around tile centers, pointing centers, stars, etc.
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/gammat_around_stars_lin_non_tomographic_SP_v1.4.6_SP_v1.4.6_leak_corr.png}
+\caption{Tangential (\emph{top panel}) and cross-component (\emph{bottom}) shear of galaxies around UNIONS PSF validation stars.}
+\label{fig:gamma_gal_stars_PSFval_}
+\end{figure}
+
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/gammat_around_stars_log_GAIA.png}
+\caption{Tangential (\emph{top panel}) and cross-component (\emph{bottom}) shear of galaxies around GAIA stars.}
+\label{fig:gammat_gal_stars_GAIA}
+\end{figure}
+
+\subsection{\CD{Stars around galaxies}}
+
+In \cite{zhangPointSpreadFunction2024}, a framework is developed to capture the additive bias f
+This can not be understood as a null test since its result will most likely deviate from 0. Indeed
+
+
+
+\begin{figure}
+\includegraphics[width=\linewidth]{plots/gammat_stars_around_galaxies_lin_non_tomographic_SP_v1.4.6_wo_rand_subtr.png}
+\caption{Tangential (\emph{top panel}) and cross-component (\emph{bottom}) shear of UNIONS PSF validation stars around galaxies.}
+\label{fig:gamma_gal_stars_PSFval}
+\end{figure}
+
+
+\section{PSF estimation and leakage quantification}
+\label{seq:PSF}
+\label{seq:PSF validation}
+
+
+\CD{We validate the PSF model, assess PSF leakage, quantify the impact of the object-wise leakage correction (Section~\ref{seq:object-wise leakage calibration}), and estimate the amplitude of the PSF systematics additive bias on the two-point correlation function.}
+
+
+\subsection{PSF stars}
+
+\subsubsection{Star sample selection and properties}\label{sec:star_sel}
+To identify stars we rely on the size-magnitude space, using the mode of the size distribution with a $\pm 0.2$ pixel tolerance. Objects with an apparent magnitude $m_r\in[18,22]$ are kept in the star sample. The lower cut excludes objects which can be affected by the brighter-fatter effect, while the upper bound is meant to exclude slightly \CD{extended, fainter} galaxies. Due to the noisiness of the shape measurement process, some stars make it into the final galaxy sample, biasing the shear measurements. The induced shear bias is quantified in Paper II.  The stars are split into two samples, the training sample on which the PSF model is built contains 80\% while the validation makes up the remaining 20\% which are used for the diagnostic work below.
+
+Figure~\ref{fig:psf_star_properties} shows the distribution of PSF model residuals at reserved star positions. The ellipticity residuals are centred on zero with a small spread. The size residuals, while also peaking at zero, are skewed towards negative values, corresponding to an overestimation of the PSF size. \cite{zhangGeneralFrameworkRemoving2023} introduces those moments to quantify PSF model errors beyond ellipticity and size. It is computed from higher-order moments computed on the PSF and star postage stamps following
+%
+\begin{align}
+  M_{pq} = \frac{
+    \int \mathrm{d} x \, \mathrm{d} y \, u^p v^q \,
+        \omega(x, y) I(x, y)
+    }{\mathrm{d} x \, \mathrm{d} y \,
+        \omega(x, y) I(x, y)
+    },
+    \label{eq:m_pq}
+\end{align}
+%
+where $(x, y)$ are pixel coordinates, and $(u, v)$ are standardised coordinates, defined in a coordinate system where the second-moment covariance is the identity matrix. This transformation de-correlates higher-order from second-order moments. See \cite{zhangGeneralFrameworkRemoving2023} for details. Additionally, $\omega(x, y)$ is a Gaussian weight function matched to the PSF size, and $I(x,y)$ is the light profile in the image coordinate system. A spin-2 quantity can be built from fourth-order moments as
+%
+\begin{align}
+\label{eq:fourth_moment_psf}
+  M^{(4)} = \left( M_{40} - M_{04} \right) + 2 \textrm{i} \left( M_{13} + M_{31} \right).
+\end{align}
+%
+The distributions of both fourth-order moment components are centred on zero with a small spread, \CD{with} the second component showing a larger variance than the first one. Overall, the PSF model appears to perform well on reserved stars.
+
+
+% \begin{itemize}
+%     \item Stellar branch(es)
+%     \item Response matrix
+%     \item \sgsout{Ellipticity}
+% \end{itemize}
+
+% Discuss brighter-fatter effect: Not deep depleted CCD, cut off bright objects from star sample.
+
+As explained in \ref{sec:star_sel}, stars are selected in a precise magnitude range $r\in[18,22]$. One common issue for weak lensing surveys when choosing calibration stars is the brighter-fatter effect: as more charges are trapped in a given pixel, the pixel gets electrically charged and electrons are repelled to neighboring pixels, effectively changing the potential lines and making the central pixels smaller. On Megacam this effect is fairly small \cite{Astier_SNLS_2013,Guyonnet_megacam_2015} since the thinned CCD's are back-illuminated. \CD{The magnitude–radius plot in \cite{guinotShapePipeNewShape2022} shows a very constant stellar locus down to $r\thicksim 16.5$.}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{plots/residual_star_properties.pdf}
+    \caption{Residuals of the PSF evaluated at reserved star positions, shown as histograms. \emph{Top left panels:} First and second ellipticity components. \emph{Top right panels:} First and second fourth-moment components, defined in \cref{eq:fourth_moment_psf}. \emph{Bottom panel:} Normalised size $\delta \tilde{T}^\mathrm{PSF} = (T^* - T^\mathrm{PSF})/T^\mathrm{PSF}$. \MK{I guess the size is hlr? Change in plot.}}
+    \label{fig:psf_star_properties}
+\end{figure}
+
+\subsection{PSF contamination of galaxy shapes}\label{sec:psf_conta}
+
+As in \cref{seq:object-wise leakage calibration}, we model PSF contamination to galaxy shear estimates as additive, linear biases. In addition to the leakage $\alpha$ term introduced in \cref{eq:definition leakage}, we quantify contributions related to PSF mismodeling with residuals in ellipticity, $\delta \ep = \estar - \ep$, and in normalised size, $\delta \tilde{T}^\mathrm{PSF} = (\Tstar - \Tp)/\Tp$. Here, quantities with the superscript `$*$' denote measurements on stars, while `PSF' refers to PSF model predictions at the position of the star. \CD{The star and PSF quantities must be measured with the same methods;} otherwise, the residuals mix PSF mismodelling with potential ellipticity and size mismatches between shape measurement techniques. We use adaptive moments with the \texttt{galsim} HSM implementation for both.
+
+Our linear model for the PSF systematic ellipticity is
+%
+\begin{align}\label{eq:define_e_sys}
+    \esup{PSF, sys} = \alpha \ep + \beta \, \delta \ep + \eta \, \delta \Tp,
+\end{align}
+%
+such that
+%
+\begin{align}\label{eq:definition_eobs}
+    \esup{obs} = \epsilon^\mathrm{s} + \gamma + \esup{PSF, sys}.
+\end{align}
+%
+The parameters $\alpha$, $\beta$ and $\eta$ modulate the three PSF systematics terms. \CD{Following \citep{paulin-henrikssonPointSpreadFunction2008}, the PSF size is redefined as $\delta \Tp = \ep \delta \tilde{T}^\mathrm{PSF}$.} The ellipticity factor makes $\delta \Tp$ a spin-2 field, and \cref{eq:definition_eobs} is thus well-defined.
+
+
+\subsubsection{Galaxy-PSF correlation functions}\label{seq:galaxy-PSF correlations}
+
+
+Galaxy-PSF cross-correlation functions are powerful tools for validating the PSF model and the shape measurement process. These cross-correlations vanish in an ideal case; in practice, they are routinely used to estimate the amplitude of the additive bias in the shear correlation function due to PSF systematics. With the error model from \cref{eq:define_e_sys} they can be used to distinguish between leakage and mismodelling.
+
+A first step is to compute PSF \mk{and PSF residual} correlations at star positions, known as $\rho-$statistics \citep{roweImprovingPSFModelling2010,jarvisScienceVerificationWeak2016,gattiDarkEnergySurvey2021}. They allow for the comparison of the performance of different PSF models. Here we use them to estimate the amplitude of the leakage bias. Figure~\ref{fig:rho_stats} shows the different $\rho_i$ with $i \in [0,..., 5]$ corresponding to the different cross-correlations in Eq.~\eqref{eq:define_e_sys}. The shaded region corresponds to $0.5\delta \xisys{+}$. We estimate the amplitude from $\xi_+(\vartheta)$ and its signal-to-noise ratio following \cite{mandelbaumFirstyearShearCatalog2018}. \CD{The $\rho$-statistics associated to leakage tend to exceed those requirements on large scales, and $\rho_2$ shows an excess on small scales. The excess is modelled in Paper IV's configuration-space cosmological analysis.}
+%FHP: maye not need the individual correlation fucntions
+The different $\rho$ correlation functions are:
+\begin{align}
+\rho_{0}(\vartheta) &= \left\langle e^{\mathrm{PSF}} e^{\mathrm{PSF}} \right\rangle(\vartheta); 
+& \rho_{1}(\vartheta) &= \left\langle \delta e^{\mathrm{PSF}} \, \delta e^{\mathrm{PSF}} \right\rangle(\vartheta); \\[6pt]
+\rho_{2}(\vartheta) &= \left\langle e^{\mathrm{PSF}} \, \delta e^{\mathrm{PSF}} \right\rangle(\vartheta); 
+& \rho_{3}(\vartheta) &= \left\langle \delta T^{\mathrm{PSF}} \, \delta T^{\mathrm{PSF}} \right\rangle(\vartheta); \\[6pt]
+\rho_{4}(\vartheta) &= \left\langle \delta e^{\mathrm{PSF}} \, \delta T^{\mathrm{PSF}} \right\rangle(\vartheta); 
+& \rho_{5}(\vartheta) &= \left\langle e^{\mathrm{PSF}} \, \delta T^{\mathrm{PSF}} \right\rangle(\vartheta).
+\end{align}
+
+Despite these excesses, the amplitude of the correlations alone does not reveal the contribution of each $\rho-$statistic to the PSF systematic bias. One must first estimate the values of $\alpha$, $\beta$, and $\eta$.
+We perform this estimation introducing Galaxy-PSF correlations also known as $\tau-$statistics \citep{hamanaCosmologicalConstraintsCosmic2020,giblinKiDS1000CatalogueWeak2021,gattiDarkEnergySurvey2021, zhangGeneralFrameworkRemoving2023,guerriniGalaxyPointSpread2025}. They are defined as
+\begin{align}
+\tau_{0}(\vartheta) &= \left\langle e^{\mathrm{gal}} \, e^{\mathrm{PSF}} \right\rangle(\vartheta); 
+& \tau_{2}(\vartheta) &= \left\langle e^{\mathrm{gal}} \, \delta e^{\mathrm{PSF}} \right\rangle(\vartheta); \\
+ \tau_{5}(\vartheta) &= \left\langle e^{\mathrm{gal}} \, \delta T^{\mathrm{PSF}} \right\rangle(\vartheta).
+\end{align}
+Figure~\ref{fig:tau_stats} shows the three $\tau$-statistics with and without applying the object-wise leakage correction described in Section~\ref{seq:object-wise leakage calibration}. The object-wise correction reduces the amplitude of $\tau_0$ and $\tau_5$, which is expected. $\tau_0$ directly relates to the amount of leakage and $\tau_5$ is strongly correlated with $\tau_0$. This correlation becomes clear in the constraints on $\alpha$, $\beta$, and $\eta$ below.\\
+The measurement of those two types of correlation functions allows us to estimate the parameters of the PSF ellipticity error model $\Omega = (\alpha, \beta, \eta)^T$. Using notations from \cite{guerriniGalaxyPointSpread2025}, we perform it solving:
+%
+\begin{align}
+    \tau = R \Omega + \Sigma,
+\end{align}
+%
+where $\tau$ is the flattened data vector of the three $\tau-$statistics and $R$ is a matrix built from $\rho-$statistics.  These quantities are related via the relations
+\begin{align}
+\tau_{0}(\vartheta) &= \alpha \, \rho_{0}(\vartheta) + \beta \, \rho_{2}(\vartheta) + \eta \, \rho_{5}(\vartheta); \\[6pt]
+\tau_{2}(\vartheta) &= \alpha \, \rho_{2}(\vartheta) + \beta \, \rho_{1}(\vartheta) + \eta \, \rho_{4}(\vartheta); \\[6pt]
+\tau_{5}(\vartheta) &= \alpha \, \rho_{5}(\vartheta) + \beta \, \rho_{4}(\vartheta) + \eta \, \rho_{3}(\vartheta).
+\end{align}
+We apply the methodology developed in \cite{guerriniGalaxyPointSpread2025} and estimate $\Omega$ using a semi-analytical covariance matrix and sampling with a least-square estimator. Constraints on $\Omega$ are shown in Figure~\ref{fig:psf_leakage_params}. \CD{The object-wise correction again reduces} the $\alpha$ parameter. The $(\alpha, \eta)$-plane shows a strong degeneracy between those parameters. This relates to the multiplication by $\ep$ in the definition of the size residuals. This correlates the leakage and size error terms in such a way that a quantitative measurement of the leakage must be evaluated in the $(\alpha,\eta)$-plane rather than using the 1D posterior on $\alpha$. [SG: Should we add a plot of the uncorrelated fit to quote a value for the leakage?]\\
+\CD{We propagate} these estimates to assess the amplitude of the additive bias due to PSF systematics \CD{contributing} to the two-point correlation functions $\xi_\pm(\theta)$. We refer to this additive systematic bias as $\xisys{\pm}(\theta)$. It is estimated from the previously established [$\alpha,\beta,\eta$] coefficients as 
+\begin{align}
+\xi_{\mathrm{PSF, sys}}(\vartheta) = 
+\alpha^{2} \, \rho_{0}(\vartheta) 
++ \beta^{2} \, \rho_{1}(\vartheta) 
++ \eta^{2} \, \rho_{3}(\vartheta) \ +   \\ 2 \alpha \beta \, \rho_{2}(\vartheta) 
++ 2 \alpha \eta \, \rho_{5}(\vartheta) 
++ 2 \beta \eta \, \rho_{4}(\vartheta). \nonumber 
+\end{align}
+\CD{This additive contribution should be negligible compared to the cosmological signal. We assess it from the ratio $\xisys{\pm}(\theta) / \xi_\pm(\theta)$, selecting scales where the cosmological signal dominates.} Figure~\ref{fig:xi_sys_over_xi_plus} shows the ratio of the systematic contribution, $\xisys{+}(\theta)$, with respect to the cosmological signal. \CD{With a threshold of 10\%, the leakage correction clearly reduces the PSF systematic contribution to $\xi_+(\theta)$ on all scales.}
+
+
+\begin{figure*}[th]
+    \centering
+    \includegraphics[width=\linewidth]{plots/rho_stats.pdf}
+    \caption{\sg{$\rho$-statistics measured on the reserved stars of the fiducial lensing sample. Shaded regions correspond to requirements derived following \cite{mandelbaumFirstyearShearCatalog2018}. Excess on large scales create PSF leakage quantified in Section~\ref{seq:galaxy-PSF correlations}.}}
+    \label{fig:rho_stats}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{plots/tau_stats.pdf}
+    \caption{\sg{$\tau$-statistics measured on the fiducial weak lensing sample (SP\_v1.4.6). Blue curve corresponds to the measurement before the object-wise leakage correction is applied. Yellow curve is obtained with the same objects after applying the object-wise correction described in Section~\ref{seq:object-wise leakage calibration}.}}
+    \label{fig:tau_stats}
+\end{figure*}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{plots/psf_leakage_params.pdf}
+    \caption{Constraints on PSF parameters $\alpha$, $\beta$ and $\eta$ obtained using a semi-analytical covariance matrix and a least-square estimator. Dark (light) shaded colours indicate $68.3\%$ ($95.5$\%) confidence regions.}
+    \label{fig:psf_leakage_params}
+\end{figure}
+
+
+
+\subsubsection{Object-wise PSF leakage}
+
+% \begin{figure*}
+%     \centering
+%     \includegraphics[width=0.5\linewidth]{plots/PSF_e_vs_e_gal_order-lin_mix-True.png}
+%     \caption{Object-wise PSF leakage. \textcolor{red}{FHP: I would have added only Clara's summary plot and done an e1(XYZ) plot in the sim paper to compare all quantities}}
+%     \label{fig:enter-label}
+% \end{figure*}
+
+
+% TODO (author): dependence on arbitrary quantities — subsection placement to be decided.
+
+\subsubsection{Scale-dependent PSF leakage}
+
+\CD{Omitting the $\beta$ and $\eta$ PSF residual terms from Eq.~\eqref{eq:define_e_sys}, the scale-dependent leakage is estimated from $\tau_0(\vartheta)$ and $\rho(\vartheta)$ as}
+%
+\begin{align}
+    \alpha(\vartheta) = \frac{\tau_0(\vartheta)}{\rho_0(\vartheta)}.
+\end{align}
+%
+This function was \CD{introduced} in \cite{baconJointCosmicShear2003} as a PSF diagnostic function.
+Following Section~\ref{seq:galaxy-PSF correlations}, the PSF systematic additive contribution to the two-point correlation function is
+%
+\begin{align}
+    \xisys{\pm}(\vartheta) = \alpha^2(\vartheta)\rho_{0}(\vartheta) = \frac{\tau_0^2(\vartheta)}{\rho_0(\vartheta)}.
+\end{align}
+%
+Figures~\CD{\ref{fig:scale_dependent_leakage}} and \ref{fig:scale_dependent_xi_sys} show, respectively, the scale-dependent leakage and the resulting systematic additive bias. % TODO: fig:scale_dependent_leakage is commented out (lines 849-854); prose references a missing figure -- revise or restore.
+The scale-dependence of the leakage parameter is very mild, remaining mostly constant across scales. \CD{This estimator also shows a reduced systematic contribution from leakage after} the object-wise correction. Figure~\ref{fig:xi_sys_comparison} compares the predicted systematic additive bias estimated with the scale-dependent leakage and from $\rho-$ and $\tau-$statistics of Section~\ref{seq:galaxy-PSF correlations}. \CD{The two estimates match on large scales.} The discrepancy on small scales is due to the unmodeled $\beta$ term in the scale-dependent estimator. \CD{The scale-dependent estimator is therefore incomplete, but yields consistent leakage amplitude and impact on the two-point correlation function on large scales.}
+
+%Takes place and information is in the 2d histogram
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=\linewidth]{plots/scale_dependent_alpha.pdf}
+%     \caption{\sg{Scale-dependent leakage}}
+%     \label{fig:scale_dependent_leakage}
+% \end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{plots/xi_sys_over_xi_plus.pdf}
+    \caption{Ratio of the PSF systematic additive bias $\xisys{+}(\vartheta)$ and $\xi_+(\vartheta)$ for the object-wise corrected (\emph{blue points}) and uncorrected (\emph{orange}) catalogs.}
+    \label{fig:xi_sys_over_xi_plus}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{plots/scale_dependent_xi_sys.pdf}
+    \caption{PSF systematic additive bias estimated from the scale-dependent leakage. Blue (pink) points show the case without (with) object-wise leakage correction; error bars are jackknife estimates.}
+    \label{fig:scale_dependent_xi_sys}
+\end{figure}
+
+
+
+\paragraph{Magnitude-dependence}
+
+The leakage function $\alpha(\theta)$ depends on galaxy magnitude. For a faint sample, the leakage is negative, cancelling out some of the leakage of brighter galaxies. \CD{UNIONS and DES show very similar behaviour.}
+% FHP: I would argue these plots do not add to the comprehension, take place and are already included in the 2d histogram
+% \begin{figure}
+%   \begin{center}
+%     \includegraphics[width=\hsize]{plots/alpha_theta_mag_v1.3.png}
+%   \end{center}
+
+%   \caption{Scale-dependent leakage for different magnitude ranges, for SP v1.3.}
+
+%   \label{fig:alpha_theta_mag_v1.3}
+% \end{figure}
+
+% \begin{figure}
+%   \begin{center}
+%     \includegraphics[width=\hsize]{plots/alpha_theta_mag_DES.png}
+%   \end{center}
+
+%   \caption{Scale-dependent leakage for different magnitude ranges, for DES.}
+
+%   \label{fig:alpha_theta_mag_DES}
+% \end{figure}
+
+
+
+% \subsubsection{$\xi_\textrm{sys}$}
+
+% \SG{Maybe this subsection is not necessary of the leakage bias is presented above.}
+
+\subsection{Magnitude dependence}
+
+\SG{I will produce those plots as soon as possible. (At least $\tau_0$). There is still the question of whether we have to recompute the weights and calibration for each magnitude/size bin? I would say that we don't as we are making a claim on the specific version of ShapePipe we are validating.}
+
+Plot of PSF residuals with magnitude, see Gatti Fig. 6.
+
+$\tau$-statistics with different magnitude cuts.
+
+\subsection{Size dependence}
+
+\SG{I added this plot in a previous section where I describe the object-wise leakage correction.}
+2D plot of object-wise leakage as function of size and SNR/magnitude, as in KiDS+DES paper.
+
+
+
+% \subsection{LE3}
+
+% \subsubsection{B-modes}
+
+% \subsubsection{Maps}
+%FHP do we want to show kappa maps? At the risk of someone else doing them, doesn't Andreas wnat a dedciated paper or someone? 
+
+\section{Conclusions}
+\CD{We present a robust weak lensing catalogue built on the excellent imaging data of \cite{gwynUNIONSUltravioletNearInfrared2025}, following the methodology of \cite{guinotShapePipeNewShape2022} and using the \texttt{ShapePipe} pipeline \citep{farrensShapePipeModularWeaklensing2022}.} This release covers imaging from 3500 deg$^2$ of the sky resulting in an effective area $A_\mathrm{eff}=2{,}894~\mathrm{deg}^2$ and effective number density $n_\mathrm{eff}=4.96~\mathrm{arcmin}^{-2}$ for the fiducial v1.4.6.3 catalog.
+We initially described the pipeline and its different components. To give an understanding of the different UNIONS lensing papers published so far we detail the versioning process adopted by the collaboration, with the key difference being the PSF model used, with \texttt{MCCD} applied to v1.3 and \texttt{PSFEx} used in v1.4. Inspecting the ellipticity dependence on various observational quantities \CD{revealed strong PSF leakage.} In Sect.~\ref{seq:PSF} we lay out the star selection and discuss an involved method based on star-star correlations ($\rho$-statistics) and star-galaxy correlation functions ($\tau$-statistics) to evaluate a systematic contamination to the two-point galaxy-galaxy ($\xi_sys$). This \CD{allows us to} propagate the additional PSF signal into the correlation function and determine scale-cuts to use in a cosmological analysis to keep the PSF contributions below an acceptable threshold.
+To further verify the robustness of the catalogue, we run a suite of null tests. The ellipticity distribution in the two core processing units, tiles \& CCDs, \CD{shows no correlation with position.} Similarly the galaxy-galaxy lensing around tile and CCD centres is consistent with zero.
+To verify that bright stars do not leave a coherent imprint on galaxy shapes we compute the galaxy-galaxy lensing signal around our selected stars as well as GAIA stars for an independent sample. \CD{All are consistent with the null hypothesis,} indicating that problematic regions have been masked out. 
+In modern weak lensing surveys the detection of B-modes often serves as a key systematic test to \CD{indicate the presence} of spurious signals, since no physical signal is known to produce curl-like correlation functions at the precision levels at which stage-III surveys operate. A dedicated paper (Paper III) explores these B-mode correlations using pure-mode correlation functions $\xi_\pm^{\mathrm{E/B}}(\theta)$, COSEBIS, and harmonic-space angular power spectra $C_\ell^{BB}$. \textcolor{red}{FHP: need one or two sentences summarising the paper, should this go into the body of text?}.
+
+This paper is the first in a suite of works aimed at using this data to obtain cosmological constraints, in particular on the lensing amplitude $S_8$. \CD{Each companion paper contributes to this effort:}
+\begin{itemize}
+\item Paper II details the calibration efforts for both shear and redshift, relying on external simulations to validate the methodology and estimate residual biases.
+\item Paper III presents detailed B-mode calculations, further validating this data-set and exploring the scales on which a robust cosmological analysis is feasible.
+\item Paper IV shows the first application of this data set to constrain cosmological parameters using cosmic shear measurements.
+\item Paper V presents harmonic-space cosmological constraints from this catalogue.
+\end{itemize}
+
+While some published works already used this data set, many 
+This catalogue offers strong possibilities of synergies with data sets in the northern sky. The anticipated DESI-DR2 catalog should offer unprecedented overlap with UNIONS.
+Similarly J-Plus \cite and Jpas
+While it can be expected that \textit{Euclid} DR2 supersedes this catalogue on the same area in the spring of 2029, according to the current schedule, this leaves an interesting gap to explore cosmological and astrophysical questions relying on lensing data.
+To extract the full cosmological constraining power from the UNIONS data, it is necessary to add photometric redshifts to gain some insight on the line-of-sight distances of galaxies. These efforts are currently in progress to allow a full tomographical analysis.
+\begin{acknowledgements}
+This work was made possible by utilising the CANDIDE cluster at the Institut d’Astrophysique de Paris. The cluster was funded through grants from the PNCG, CNES, DIM-ACAV, the Euclid Consortium, and the Danish National Research Foundation Cosmic Dawn Center (DNRF140). It is maintained by Stephane Rouberol. FHP acknowledges support from CNES.
+\end{acknowledgements}
+
+\bibliographystyle{aa}
+\bibliography{unions-2d-cosmic-shear-bass,unions-2d-cosmic-shear-temp}
+
+\begin{appendix}
+
+% \section{Patches}
+
+% \Cref{fig:patches} shows the distribution on the sky of the seven patches, which have been processed independently.
+
+%FHP I feel like patches is our very private processing unit, I am not sure of the added value of sharing this accounting scheme is
+% \begin{figure}
+%   \begin{center}
+%     \includegraphics[width=\hsize]{plots/CFIS.png}
+%   \end{center}
+
+%   \caption{The observed area split into $7$ patches.}
+
+%   \label{fig:patches}
+% \end{figure}
+
+\section{Star \& PSF related maps}
+Here we present the sky-coverage of different \CD{quantities} from our final selected galaxy and star sample
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.\linewidth]{plots/sky_map_n_eff_stars_healpix.pdf}
+    \caption{Distribution of stars detected in the survey. The density increases towards the galactic plane as expected. This map appears correlated with the PSF diagnostic maps presented below. }
+    \label{fig:star_density}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.\linewidth]{plots/sky_map_delta_t_star_psf_healpix.pdf}
+    \caption{Distribution of star size residuals from the PSF model estimated on reserve stars. }
+    \label{fig:star_residual_map}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.\linewidth]{plots/proj_fwhm_psf.pdf}
+    \caption{Caption}
+    \label{fig:fwhm_psf_map}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.\linewidth]{plots/proj_mag.pdf}
+    \caption{Caption}
+    \label{fig:mag_map}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.\linewidth]{plots/proj_e1.pdf}
+    \caption{Caption}
+    \label{fig:e1_map}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.\linewidth]{plots/proj_e2.pdf}
+    \caption{Caption}
+    \label{fig:e2_map}
+\end{figure}
+
+
+\section{Comparing PSF modelling using \texttt{MCCD} to \texttt{PSFEx}} 
+\label{append:Psfex_MCCD}
+
+%\subsection{PSFEx and MCCD}
+
+\texttt{PSFEx} is a well-established PSF model widely used in the astronomical community \cite{Bertin_2011}. It represents the PSF as a combination of basis vectors estimated directly from stars, known as eigenPSFs. Separate models are constructed for each CCD in the focal plane. The approach relies on matrix factorisation: one matrix captures the fundamental PSF patterns, while the other provides coefficients describing how these patterns combine. Each observed PSF is expressed as a weighted sum of these features. This \CD{allows us to obtain} a PSF model for \CD{any} position on the CCD.
+
+\texttt{MCCD}, described in \cite{Tobias,guinot,tobias_review}\CD{,} also relies on eigenPSFs. The model is optimised on the full focal plane. This means the model can be built with more stars, at the cost of an increased complexity, as it needs to capture cross-CCD effects. \CD{\citet{Liauda_2021} show from simulations that \texttt{MCCD} improves on \texttt{PSFEx} by ${\sim}50\%$ in pixel RMSE and ${\sim}25\%$ in the prediction of $e_1$ and $e_2$.}
+
+To ensure the robustness of our PSF estimation, we created one shear catalogue with \texttt{MCCD} (v.1.3) and one with \texttt{PSFEx} (v1.4). Below we compare PSF model performances and PSF-leakage estimation.
+%FHP: the story we want to sell here needs some discussion
+\begin{figure}
+    \centering
+    \includegraphics[width=1.\linewidth]{plots/PSFEx_MCCD_focal_plane.png}
+    \caption{A comparison of the \texttt{PSFEx} and \texttt{MCCD} models on the focal plane. One can distinguish complex patterns linked to the }
+    \label{fig:foc_plane_psf}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.\linewidth]{plots/PSFEx_MCCD_residuals.png}
+    \caption{A comparison of the \texttt{PSFEx} and \texttt{MCCD} model residuals on the focal plane. \CD{Complex features that neither model could capture are visible.} See text for details.}
+    \label{fig:foc_plane_psf_residuals}
+\end{figure}
+
+
+
+\section{User-defined catalogues}
+
+\CD{We} create a comprehensive catalogue with all tile detections and all mask entries. The user
+can then apply any mask and galaxy selection criteria they desire. After applying all cuts, the user
+needs to calibrate the sample using the \texttt{metacalibration} method and compute the DES-like sample
+weights. We provide code to carry out those steps.
+
+\section{Comparison of $\rho$ \& $\tau$ derived leakage vs. scale-dependent $\alpha$ }
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{plots/scale_dependent_xi_sys_comparison.pdf}
+    \caption{\sg{Comparison of the PSF systematic additive bias estimated from $\rho-$ and $\tau-$statistics and from scale-dependent leakage.}}
+    \label{fig:xi_sys_comparison}
+\end{figure}
+
+
+
+\end{appendix}
+
+\end{document}
