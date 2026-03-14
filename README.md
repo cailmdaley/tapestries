@@ -7,7 +7,7 @@ This repo is a GitHub template. Clone it, export your tapestry data with `felt t
 ## Quick Start
 
 ```bash
-git clone https://github.com/cailmdaley/tapestries.git
+git clone --depth 1 https://github.com/cailmdaley/tapestries.git
 cd tapestries
 npx serve .
 ```
