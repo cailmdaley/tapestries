@@ -9,7 +9,7 @@ This repo is a GitHub template. Clone it, export your tapestry data with `felt t
 ```bash
 git clone --depth 1 https://github.com/cailmdaley/tapestries.git
 cd tapestries
-npx serve .
+npx serve -s .
 ```
 
 Open `http://localhost:3000` — the demo tapestry loads automatically.
