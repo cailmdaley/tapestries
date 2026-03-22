@@ -308,6 +308,55 @@
         width: 2px; background: var(--ui-gold); opacity: 0.6;
       }
 
+      /* ── Collapsed sidebar ── */
+      .tapestry-sidebar.collapsed {
+        top: auto; width: auto; min-width: 0;
+        border-left: none; background: transparent;
+        box-shadow: none; overflow: visible;
+      }
+      .tapestry-sidebar.collapsed .tapestry-fiber-list { flex: none; overflow: visible; }
+      .tapestry-sidebar.collapsed .tapestry-fiber-results,
+      .tapestry-sidebar.collapsed .tapestry-legend,
+      .tapestry-sidebar.collapsed .tapestry-sidebar-resize { display: none !important; }
+      .tapestry-sidebar.collapsed .tapestry-fiber-list .tapestry-search { border-bottom: none; }
+      .tapestry-sidebar.collapsed .tapestry-search { position: relative; }
+      .tapestry-sidebar.collapsed .tapestry-search input {
+        width: 180px; border-radius: 16px; padding: 0.45rem 0.8rem;
+        background: var(--ui-dark-elevated); box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      }
+      .tapestry-sidebar.collapsed .tapestry-search-results {
+        position: absolute; right: 0; bottom: 100%; width: 280px; max-height: 200px;
+        background: var(--ui-dark-elevated); border: 1px solid var(--ui-border);
+        border-radius: 4px; box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+        margin-bottom: 0.3rem; margin-top: 0; z-index: 20;
+      }
+
+      /* ── Mobile responsive ── */
+      @media (max-width: 768px) {
+        .tapestry-sidebar {
+          top: auto; left: 0; right: 0; width: 100% !important; min-width: 0;
+          max-height: 50vh; border-left: none; border-top: 1px solid var(--ui-border);
+          box-shadow: 0 -3px 12px rgba(0,0,0,0.18);
+        }
+        .tapestry-sidebar.collapsed { max-height: none; border-top: none; }
+        .tapestry-sidebar.collapsed .tapestry-search { padding: 0.5rem 0.8rem; }
+        .tapestry-sidebar.collapsed .tapestry-search input { width: 100%; border-radius: 8px; }
+        .tapestry-sidebar.collapsed .tapestry-search-results { width: 100%; left: 0; right: 0; }
+        .tapestry-sidebar.expanded {
+          inset: 0; top: 0; width: 100% !important; min-width: 0;
+          max-height: none; border-top: none;
+        }
+        .tapestry-detail-close {
+          font-size: 0 !important; padding: 0.3rem 0.6rem !important; min-width: 4rem;
+        }
+        .tapestry-detail-close::before {
+          content: '← Back'; font-size: 0.85rem;
+          font-family: var(--font-main); color: var(--ui-text-muted);
+        }
+        .tapestry-detail-close:hover::before { color: var(--ui-text); }
+        .tapestry-sidebar-resize { display: none !important; }
+      }
+
       /* Static file viewer modal */
       .tapestry-file-modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; }
       .tapestry-file-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
@@ -553,7 +602,7 @@
         to { opacity: 1; transform: translateX(-50%) translateY(0); }
       }
     </style>
-    <script type="module" crossorigin src="/tapestries/assets/index-D5z8MptA.js"></script>
+    <script type="module" crossorigin src="/tapestries/assets/index-BO5eW4qq.js"></script>
     <link rel="stylesheet" crossorigin href="/tapestries/assets/index-DRKxklZO.css">
   </head>
   <body>
