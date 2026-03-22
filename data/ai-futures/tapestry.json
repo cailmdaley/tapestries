@@ -44,7 +44,7 @@
       "kind": "",
       "status": "",
       "body": "Must propose ≥2 CNRS labs as hosts. Contact lab directors. Explain alignment in the 5pp.\n\nClusterAI alignment is \"encouraged\" but not required — it's a narrative bonus. Choose host labs for actual fit; frame cluster alignment in the text.\n\n**Host labs (decided 2026-03-14):**\n- **IAS** (Institut d'Astrophysique Spatiale, Orsay) — CNRS/Université Paris-Saclay. Giulio Fabbian (supportive, WhatsApp 2026-03-12). Group leaders: Laura \u0026 Adélie. Director: Frédéric Auchère.\n- **CosmoStat** (CEA Saclay) — everyone already on board re AI future\n\n**Previous candidate (dropped):**\n- ~~IAP~~ (Institut d'Astrophysique de Paris) — Kumiko Kotera contacted 2026-03-07, Galli/McCracken supportive. Replaced by IAS for stronger personal connection (Giulio) and Saclay ecosystem coherence.\n\n**ClusterAI:** see sub-fiber. DATAIA (Saclay) is the strongest narrative fit — both IAS and CosmoStat are in the Saclay ecosystem.\n\n**Applications aligning with ClusterAI institutes or related local projects are encouraged** — but the cluster connection lives in the 5pp text, not the org chart.\n\n**⚠ INS2I question (2026-03-16).** Sabouret raised concern that the call may prefer or require host labs affiliated with INS2I (CNRS informatics unit). Neither CosmoStat (CEA) nor IAS are INS2I labs. Two inquiries in flight: Nicolas asking a contact, and we're emailing Choose France. If confirmed, need to identify INS2I labs with cosmology/AI-for-science fit. See `ins2i-lab-eligibility-b6a8d8c0`.",
-      "outcome": "Two host labs: CosmoStat/DAp (CEA Paris-Saclay, UMR AIM) and IAP (Sorbonne, UMR 7095). Contacts made: Stéphane Mathis (DAp director, emailed 2026-03-07), Kumiko Kotera (IAP director, emailed 2026-03-07), Nicolas Sabouret (DATAIA, emailed 2026-03-10 via Michelle Lochner). ClusterAI alignment encouraged not required — hard requirement is ≥2 CNRS labs. Named collaborators: Starck, Kilbinger, Farrens (CosmoStat); Galli, Hivon, McCracken (IAP).",
+      "outcome": "Primary: CosmoStat/DAp (CEA Paris-Saclay, UMR AIM). Starck, Kilbinger, Farrens. Mathis (director) contacted 2026-03-07. Second lab: open question — candidates below. IAP ruled out.",
       "tags": [
         "tapestry:cnrs",
         "tier:1"
@@ -137,25 +137,6 @@
       "evidence": null
     },
     {
-      "id": "knuth-claude-s-cycles-march-2026-f4380445",
-      "title": "Knuth: Claude's Cycles (March 2026)",
-      "kind": "",
-      "status": "",
-      "body": "",
-      "outcome": "Donald Knuth wrote a 5-page paper describing how Claude Opus 4.6 solved an open combinatorial problem (Hamiltonian cycle decomposition) he'd been working on for weeks, in about an hour. Written Feb 28 / revised Mar 4, 2026. Postscript: GPT-5.3-codex solved the even case too. Cited in proposal Section 1.",
-      "tags": [
-        "tapestry:cnrs"
-      ],
-      "createdAt": "2026-03-05T17:19:42.294707834+01:00",
-      "closedAt": null,
-      "dependsOn": [
-        "track-record-47dfda29"
-      ],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
       "id": "cnrs-rising-talents-full-fcccf568",
       "title": "CNRS Rising Talents: full proposal",
       "kind": "",
@@ -171,25 +152,6 @@
         "research-program-5pp-4ec6036b",
         "track-record-47dfda29",
         "clusterai-2b0c4530"
-      ],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "aissai-research-and-details-aaa70253",
-      "title": "AISSAI: research and details",
-      "kind": "",
-      "status": "closed",
-      "body": "",
-      "outcome": "AISSAI (AI for Science and Science for AI) is a CNRS UAR (since Jan 2024), jointly supervised by INS2I and INSMI. Director: Jalal Fadili (ENSICAEN/GREYC). Programs: thematic trimesters (3-4 months each) including AI+Statistical Physics, Causality, AI+Digital Humanities, AI+Particle Physics, 'AI for the Two Infinites' (particle physics + astrophysics). Also: AstroInfo hackathon (2023, Fréjus), AI+Science Summer School (4th ed. 2025 at UChicago Paris Center), international fellows (12-24 months in CNRS labs), postdoc program (2024 call, Nov 2025 kickoff). Collaborates with IVADO (Quebec). NOTE: No program named 'Astro-ML' exists — previous draft was incorrect. Fixed to reference 'AI for the Two Infinites.' The 5pp says 'AISSAI has already hosted thematic programs relevant to astrophysics' — this is accurate via the Two Infinites program and AstroInfo hackathon.",
-      "tags": [
-        "tapestry:cnrs"
-      ],
-      "createdAt": "2026-03-06T17:58:11.590441514+01:00",
-      "closedAt": null,
-      "dependsOn": [
-        "research-program-5pp-4ec6036b"
       ],
       "specName": "cnrs",
       "staleness": "no-evidence",
@@ -217,293 +179,11 @@
       "evidence": null
     },
     {
-      "id": "email-frédéric-auchère-640deb9d",
-      "title": "email Frédéric Auchère",
-      "kind": "",
-      "status": "open",
-      "body": "IAS director. Required by call: must contact lab directors. Introduce self, explain agentic AI × cosmology program, ask for brief conversation before April 6.\n\n**Sequencing:** send after Laura Salvati \u0026 Adélie Gorce respond (so you can reference their support).\n\n---\n\n## Draft: Email to Frédéric Auchère\n\nTo: frederic.auchere@ias.u-psud.fr (verify address)\nSubject: CNRS AI Rising Talents — interest in proposing IAS as host lab\n\nDear Prof. Auchère,\n\nI'm Cail Daley, a postdoc at CEA Saclay working in observational cosmology (CMB lensing, weak lensing, large-scale structure). I'm writing because I'd like to apply for the Choose France CNRS AI Rising Talents program, and I would be interested in proposing IAS as one of my two host laboratories.\n\nMy research program is at the intersection of agentic AI and survey cosmology — using AI agents to run end-to-end scientific workflows and developing verification infrastructure for AI-mediated science. I've been in contact with Giulio Fabbian, Laura Salvati, and Adélie Gorce in the cosmology group, who have expressed their support. My second host lab would be CosmoStat at CEA Saclay, where I currently work.\n\nThe program requires candidates to contact the directors of their proposed host laboratories. Would you have time for a brief conversation before the April 6 deadline? I'd welcome the chance to explain the project and hear whether it could be a good fit for IAS.\n\nThank you and all my best,\nCail Daley",
-      "outcome": "",
-      "tags": [
-        "tapestry:cnrs",
-        "action"
-      ],
-      "createdAt": "2026-03-14T19:38:55.75189+01:00",
-      "closedAt": null,
-      "dependsOn": [
-        "host-labs-7a2b0e1e"
-      ],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "email-laura-adélie-ias-bf007014",
-      "title": "email Laura \u0026 Adélie (IAS)",
-      "kind": "",
-      "status": "open",
-      "body": "IAS cosmology group leaders. Giulio suggested reaching out as first contact. Introduce self, explain program, explore collaboration angles. Do this Monday 2026-03-16. Then contact Auchère (director) once buy-in established.\n\n**Laura Salvati** — CMB cosmology (overlap with Cail's CMB lensing)\n**Adélie Gorce** — reionization, 21cm, EoR\n\n---\n\n## Draft: Email to Laura Salvati\n\nTo: laura.salvati@ias.u-psud.fr (verify address)\nSubject: CNRS AI Rising Talents — interest in proposing IAS as host lab\n\nDear Laura,\n\nI'm Cail Daley, a postdoc at CEA Saclay working in observational cosmology — CMB lensing with SPT and Planck, weak lensing, large-scale structure. Giulio Fabbian suggested I reach out to you.\n\nI'm applying for the Choose France CNRS AI Rising Talents program (deadline April 6), which funds 4-year research positions at the intersection of AI and an application domain. My proposal is on agentic AI for survey cosmology — using AI agents to run end-to-end scientific workflows (pipeline construction, systematic cross-checks, multi-probe analysis) and developing the verification infrastructure that makes this trustworthy.\n\nThe program asks candidates to propose at least two CNRS host labs. I'd like to propose IAS alongside CosmoStat at CEA Saclay. The cosmology group at IAS — and your work on CMB in particular — would be a natural environment for this kind of research, and the proximity to Saclay makes genuine cross-lab collaboration practical.\n\nWould you be open to a brief conversation about whether this could be a good fit? I'm happy to share the draft research program. I'll also be at Moriond next week if that's easier.\n\nAll my best,\nCail Daley\n\n---\n\n## Draft: Email to Adélie Gorce\n\nTo: adelie.gorce@ias.u-psud.fr (verify address)\nSubject: CNRS AI Rising Talents — interest in proposing IAS as host lab\n\nDear Adélie,\n\nI'm Cail Daley, a postdoc at CEA Saclay working in observational cosmology — CMB lensing with SPT and Planck, weak lensing, large-scale structure. Giulio Fabbian suggested I reach out to you.\n\nI'm applying for the Choose France CNRS AI Rising Talents program (deadline April 6), which funds 4-year research positions at the intersection of AI and an application domain. My proposal is on agentic AI for survey cosmology — using AI agents to run end-to-end scientific workflows (pipeline construction, systematic cross-checks, multi-probe analysis) and developing the verification infrastructure that makes this trustworthy.\n\nThe program asks candidates to propose at least two CNRS host labs. I'd like to propose IAS alongside CosmoStat at CEA Saclay. Giulio mentioned you and Laura Salvati as the cosmology group leaders, and I wanted to introduce myself and the project before reaching out to the lab director.\n\nWould you be open to a brief conversation? I'm happy to share the draft research program. I'll also be at Moriond next week.\n\nAll my best,\nCail Daley",
-      "outcome": "",
-      "tags": [
-        "tapestry:cnrs",
-        "action"
-      ],
-      "createdAt": "2026-03-14T19:38:57.330587+01:00",
-      "closedAt": null,
-      "dependsOn": [
-        "host-labs-7a2b0e1e"
-      ],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "sabouret-lunch-debrief-fc846327",
-      "title": "Sabouret lunch debrief",
-      "kind": "",
-      "status": "closed",
-      "body": "Lunch at Pizzeria F0, Gif-sur-Yvette, 2026-03-16.\n\n## What landed\n\nSabouret found the proposal idea compelling. Liked the framing of developing practices and sharing them — positioning diffusion as a service to the French research community (increasing AI literacy and frontier science capability). Strongly endorsed proposing benchmarks as a concrete deliverable.\n\n## Risks raised\n\n**INS2I lab preference.** Sabouret thinks the call may be intended for labs associated with INS2I (the CNRS informatics unit). CosmoStat (CEA) and possibly IAS may not qualify. This is the biggest structural risk — it could mean the host lab choice needs to change entirely. Nicolas is checking with a contact; we're also emailing Choose France directly.\n\n**Weak research track record.** Two dimensions:\n1. Short publication list — mitigated by the nature of observational cosmology: collaborations of hundreds, 5+ year timelines for frontier results. Involved in three frontier collaborations, active in each.\n2. No ML publications — not proposing ML methods, so the committee may see this as outside their scope. Not much to do except frame the different angle as generative.\n\n## Suggestions\n\n**Community service framing.** Frame diffusion not as an afterthought but as service: I'm doing this to increase the AI literacy and frontier capability of French researchers. This resonates with CNRS's mission.\n\n**Benchmarks.** Name them as a deliverable. Include budget line for running and making available to community. Argue cosmology is ideal for realistic scientific benchmarks (taste, multi-criteria judgment, interconnected decisions). We've touched this in the 5pp but Sabouret wants it more concrete.\n\n**Sovereignty tension.** Acknowledge French AI objectives (sovereignty, frugality, interpretability). Commit to using Mistral. But also argue for comparing frontier models against sovereign ones — understanding the gap in science applications matters. Cite METR. Frame: these values AND state of the art, not either/or.",
-      "outcome": "Compelling proposal per Sabouret. Key risks: INS2I lab preference (CosmoStat may not qualify), weak ML track record. Key suggestions: community service framing (diffusion as service to French research), propose benchmarks (budget line + cosmology rationale), sovereignty tension (use Mistral + compare frontier models, cite METR gap). Nicolas checking INS2I question with a contact.",
-      "tags": [
-        "tapestry:cnrs"
-      ],
-      "createdAt": "2026-03-16T13:00:58.915035+01:00",
-      "closedAt": null,
-      "dependsOn": [],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "email-choose-france-eligibility-d389a52c",
-      "title": "Email Choose France: eligibility",
-      "kind": "",
-      "status": "closed",
-      "body": "Email the Choose France contact listed on the call. Two questions: (1) Am I eligible as a postdoc \u003c2 years after PhD? Previous Choose France calls reportedly required permanent positions. (2) Is there a preference or requirement for host labs affiliated with INS2I (the CNRS informatics unit)? Context: CosmoStat is CEA/IRFU, not INS2I.\n\n## Comments\n**2026-03-16 16:02** — Sent 2026-03-16 from Paris-Saclay account. Final version mentions DAp AIM co-tutelle CEA/CNRS (stronger than just 'CosmoStat, CEA'). Two questions: postdoc eligibility + INS2I/CEA lab preference.",
-      "outcome": "Reply from Jalal Fadili (délégué scientifique INS2I, directeur AISSAI) same day. (1) Postdocs eligible — this is a CNRS AI program, not the ministry Choose France stricto sensu. (2) Host lab must have CNRS as tutelle, but need not be INS2I. A lab with exclusively CEA tutelle cannot be a host. DAp/AIM co-tutelle status needs verification.",
-      "tags": [
-        "tapestry:cnrs",
-        "action"
-      ],
-      "createdAt": "2026-03-16T13:01:10.914564+01:00",
-      "closedAt": "2026-03-16T22:20:07.927246+01:00",
-      "dependsOn": [
-        "sabouret-lunch-debrief-fc846327"
-      ],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "ins2i-lab-eligibility-b6a8d8c0",
-      "title": "INS2I lab eligibility",
-      "kind": "",
-      "status": "closed",
-      "body": "Sabouret raised concern that the call may prefer or require host labs associated with INS2I (Institut des Sciences de l'Information et de leurs Interactions), the CNRS informatics unit. CosmoStat (CEA) and IAS may not be INS2I labs. If true, need to identify INS2I-affiliated labs with cosmology or AI-for-science fit. Nicolas is also checking with a contact. Two tracks: his inquiry + our email to Choose France.\n\n## Comments\n**2026-03-16 22:20** — Resolved by Fadili reply: no INS2I requirement. CNRS tutelle required, not INS2I specifically. CosmoStat as pure CEA may not qualify, but DAp/AIM under CNRS co-tutelle may. IAS (UMR 8617) is fine. Key question now: does AIM's CNRS co-tutelle make CosmoStat eligible, or do we need to name AIM/DAp explicitly?\n**2026-03-16 22:45** — Correction: CosmoStat is NOT pure CEA. It sits within AIM (UMR 7158, CNRS/CEA/Université Paris Cité). CNRS is tutelle. Both host labs qualify: CosmoStat via AIM UMR 7158, IAS UMR 8617. No lab eligibility issue.",
-      "outcome": "Resolved. No INS2I requirement (Fadili). Both labs have CNRS tutelle: CosmoStat (AIM, UMR 7158) and IAS (UMR 8617). No eligibility issue.",
-      "tags": [
-        "tapestry:cnrs"
-      ],
-      "createdAt": "2026-03-16T13:01:10.923348+01:00",
-      "closedAt": "2026-03-16T22:45:41.416451+01:00",
-      "dependsOn": [
-        "sabouret-lunch-debrief-fc846327"
-      ],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "benchmarks-proposal-45b9ddfa",
-      "title": "Benchmarks proposal",
-      "kind": "",
-      "status": "open",
-      "body": "Sabouret strongly endorsed proposing realistic scientific benchmarks. Include in budget (compute for running + making available to community). Argue cosmology is ideal: multi-criteria judgment, taste, percent-level precision, interconnected decisions. Already touched on in 5pp but should be more concrete — named deliverable, not just motivation. Connect to METR-style evaluations but for science.",
-      "outcome": "",
-      "tags": [
-        "tapestry:cnrs"
-      ],
-      "createdAt": "2026-03-16T13:01:21.765233+01:00",
-      "closedAt": null,
-      "dependsOn": [
-        "sabouret-lunch-debrief-fc846327"
-      ],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "sovereignty-frontier-tension-2dfce015",
-      "title": "Sovereignty-frontier tension",
-      "kind": "",
-      "status": "open",
-      "body": "Sabouret's advice: acknowledge alignment with French AI objectives (sovereignty, frugality, interpretability, verification) and commit to using Mistral. But also argue for comparing frontier models against sovereign ones in science applications — understanding the gap matters. Cite METR results showing performance gap (Claude/GPT vs Mistral). Frame: I care about these values AND need to push state of the art for fundamental science. Already partially addressed in 5pp but needs sharper framing.",
-      "outcome": "",
-      "tags": [
-        "tapestry:cnrs"
-      ],
-      "createdAt": "2026-03-16T13:01:21.776942+01:00",
-      "closedAt": null,
-      "dependsOn": [
-        "sabouret-lunch-debrief-fc846327"
-      ],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "sam-5pp-review-f48b5cb5",
-      "title": "Sam 5pp review",
-      "kind": "",
-      "status": "closed",
-      "body": "",
-      "outcome": "Very well written, central argument strong. Four detail-level notes: (1) make tangible deliverables + timelines clearer, (2) some parts too anecdotal, (3) AI jargon at opening needs rewording for non-specialists (METR sentence), (4) mention HDR co-supervision for PhD students. Converges with Sabouret on benchmarks (#1) and accessibility (#3).",
-      "tags": [
-        "tapestry:cnrs"
-      ],
-      "createdAt": "2026-03-16T23:12:50.009013+01:00",
-      "closedAt": null,
-      "dependsOn": [
-        "sabouret-lunch-debrief-fc846327"
-      ],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "researchgym-paper-c61da993",
-      "title": "ResearchGym paper",
-      "kind": "",
-      "status": "open",
-      "body": "ResearchGym (2602.15112, Garikaparthi et al.) — benchmark for closed-loop AI research agents. Closest existing work to what we're proposing for cosmology.\n\n**What's relevant:**\n- Task construction: skeleton repos with method removed, grading scripts, contamination-aware (post-cutoff papers). This is the template for cosmology benchmark tasks.\n- Execution-based grading, not LLM judges — aligns with our emphasis on rigor.\n- Found capability-reliability gap: agents occasionally hit SOTA but only 1/15 runs improved over baseline. The gap IS the research question.\n- Failure modes (overconfidence, optimization myopia, context degradation) map directly to what we'd expect in cosmology pipelines.\n- Single GPU, 24hr budget — accessible by design.\n\n**What's missing (our opportunity):**\n- All tasks are ML/NLP — no physical science tasks, no cosmology.\n- No multi-criteria judgment or taste — their tasks have single metrics. Cosmology requires balancing systematics budgets, model choices, blinding.\n- No long-horizon pipeline work (their longest is 24hr). Survey cosmology analyses take months of iteration.\n- No domain knowledge evaluation — do agents understand the physics, or just optimize code?\n\n**Connection to our proposal:** We should cite this as the state of the art and frame cosmology benchmarks as the next frontier — where the analysis complexity, precision requirements, and multi-step decision-making far exceed current ML engineering benchmarks.",
-      "outcome": "",
-      "tags": [
-        "research",
-        "tapestry:cnrs"
-      ],
-      "createdAt": "2026-03-18T17:00:34.345158+01:00",
-      "closedAt": null,
-      "dependsOn": [
-        "benchmarks-proposal-45b9ddfa"
-      ],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "pleias-consortium-5bc853d7",
-      "title": "Pleias consortium",
-      "kind": "",
-      "status": "open",
-      "body": "Anastasia Stasenko (CEO, Pleias) responded 2026-03-18 to Dec 2025 outreach from GenerationAI. Pleias is partner in EU consortium developing AI use cases, including LLM-based verification of scientific claims. Three-stage pipeline: claim extraction, evidence retrieval, claim verification (support/refute/NEI). Current partners 'not really that advanced' — Pleias wants something innovative, not just fine-tuning. Proposes collaboration + potential paper.\n\nStrategic landscape: three complementary approaches to the same problem.\n- Pleias/consortium: fine-tune smaller LLMs for verification pipeline\n- Lightcone (François): scientific insights DB + reproducibility + agentic layer (ASTRA schema)\n- Cail: agentic frontier models, verification as process infrastructure\n\nNatural experiment: can fine-tuned domain models beat frontier models at verification? Cail's thesis says frontier + agentic \u003e specialized + pipeline.\n\nFor CNRS proposal: French AI startup with govt partnerships + EU consortium = strong evidence for verification pillar. Light or deep mention both strengthen application.\n\nBlocked on: conversation with François (2026-03-19) re: whether he wants to be looped in or sees Pleias as Lightcone competitor. Reply to Anastasia after that conversation.\n\nKey idea from Cail: Pleias could adopt ASTRA schema for their claims and literature index — interoperability between Lightcone and Pleias infrastructure.",
-      "outcome": "",
-      "tags": [
-        "tapestry:cnrs"
-      ],
-      "createdAt": "2026-03-18T20:09:25.367725+01:00",
-      "closedAt": null,
-      "dependsOn": [],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "talk-to-jean-luc-b8a8af72",
-      "title": "Talk to Jean-Luc",
-      "kind": "",
-      "status": "closed",
-      "body": "Haven't yet discussed Rising Talents application with Jean-Luc Starck (CosmoStat director). Two reasons to do this soon:\n\n1. Jean-Luc is close with Jalal Fadili (délégué scientifique INS2I, directeur AISSAI) — who already replied helpfully to our eligibility email. Jean-Luc likely has tacit knowledge about how the program works, what the committee values, how proposals are read.\n\n2. As a non-French applicant, working the institutional network matters. The CNRS system runs on relationships and informal channels. Jean-Luc is the most natural bridge.\n\nThis is separate from the letter of support he'd write as lab director — this is about gathering intelligence on the program itself.",
-      "outcome": "Already spoke to Jean-Luc early in the process — he's supportive of the application. Doesn't know about the Fadili connection. Still a channel for program intelligence if needed later.",
-      "tags": [
-        "tapestry:cnrs",
-        "action"
-      ],
-      "createdAt": "2026-03-18T20:13:57.924781+01:00",
-      "closedAt": "2026-03-18T20:41:59.158023+01:00",
-      "dependsOn": [
-        "email-choose-france-eligibility-d389a52c",
-        "host-labs-7a2b0e1e"
-      ],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "fix-cosmostat-naming-8f88d002",
-      "title": "Fix CosmoStat naming",
-      "kind": "",
-      "status": "closed",
-      "body": "Must not mention CosmoStat in proposal — the lab is UMR AIM, DAp (Département d'Astrophysique). CosmoStat is a sub-team. Stéphane Mathis and CNRS people dislike it being referenced as if it's the lab. Audit 5pp and fix all references. Once at most, preferably zero.",
-      "outcome": "Done. One CosmoStat mention remains (lab integration section, line 222). All others replaced with UMR AIM or removed. Also rewrote UMR AIM description to accurately reflect the lab's breadth (not just cosmology).",
-      "tags": [
-        "tapestry:cnrs"
-      ],
-      "createdAt": "2026-03-19T15:02:30.597764+01:00",
-      "closedAt": "2026-03-20T18:13:21.200542+01:00",
-      "dependsOn": [],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "follow-up-stéphane-mathis-eac24142",
-      "title": "Follow up Stéphane Mathis",
-      "kind": "",
-      "status": "open",
-      "body": "Emailed 2026-03-07, no reply after 12 days. Need his sign-off as DAp director. Per François, hosts need to actively want you — so this isn't just a formality. Plan: send him the 5pp (not full dossier) to give him less to sort through. Fix naming first.",
-      "outcome": "",
-      "tags": [
-        "tapestry:cnrs",
-        "action"
-      ],
-      "createdAt": "2026-03-19T15:02:30.611992+01:00",
-      "closedAt": null,
-      "dependsOn": [],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "email-nicolas-ins2i-resolved-498eede2",
-      "title": "Email Nicolas: INS2I resolved",
-      "kind": "",
-      "status": "open",
-      "body": "Thank Nicolas for raising INS2I question at lunch. Share good news: Fadili confirmed no INS2I requirement, both labs have CNRS tutelle. Keep door warm for potential LISN as second host (don't mention this yet).",
-      "outcome": "",
-      "tags": [
-        "tapestry:cnrs",
-        "action"
-      ],
-      "createdAt": "2026-03-19T15:02:30.624675+01:00",
-      "closedAt": null,
-      "dependsOn": [],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "email-ias-lab-heads-c7f679d3",
-      "title": "Email IAS lab heads",
-      "kind": "",
-      "status": "open",
-      "body": "Push harder on IAS as second host lab. Need to email Laura and Adélie.",
-      "outcome": "",
-      "tags": [
-        "tapestry:cnrs",
-        "action"
-      ],
-      "createdAt": "2026-03-19T15:02:30.637205+01:00",
-      "closedAt": null,
-      "dependsOn": [],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
       "id": "second-host-lab-ias-or-lisn-8d23152c",
       "title": "Second host lab: IAS or LISN",
       "kind": "",
       "status": "open",
-      "body": "IAP removed from 5pp. Considering IAS (UMR 8617, CNRS) or LISN (Nicolas Sabouret's lab) as second host. IAS has survey cosmology depth (Euclid, SPT connections). LISN has AI/CS strength and Sabouret's endorsement. Haven't decided yet — proposal currently only mentions AIM.",
+      "body": "The open question: which second CNRS host lab alongside CosmoStat/DAp?\n\n**INS2I requirement:** Resolved — no INS2I requirement per Fadili. Both labs have CNRS tutelle.\n\n**Sabouret feedback (2026-03-14 lunch):** Proposal is compelling. Key risks: INS2I lab preference (mitigated), weak ML track record. Suggested: community service framing, benchmarks as budget line, sovereignty tension (Mistral + frontier models). Sabouret checking INS2I question → confirmed non-issue.\n\n**Two candidates below.** IAS offers science depth (Fabbian is an exact match). LISN offers AI institutional credibility. The question is whether the committee values domain coherence or methodological bridge more.",
       "outcome": "",
       "tags": [
         "tapestry:cnrs"
@@ -529,42 +209,8 @@
       ],
       "createdAt": "2026-03-21T21:42:07.407413+01:00",
       "closedAt": null,
-      "dependsOn": [],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "5pp-over-page-limit-3e1d57a8",
-      "title": "5pp over page limit",
-      "kind": "",
-      "status": "open",
-      "body": "After refocus edits, proposal compiles to ~6 pages of content + 1 page refs. Need to cut ~1 page. Lab integration section (ecosystem connections: DATAIA, AISSAI, PostGenAI) is the main candidate for compression. Verification/diffusion section also substantial.",
-      "outcome": "",
-      "tags": [
-        "tapestry:cnrs"
-      ],
-      "createdAt": "2026-03-21T21:42:07.41252+01:00",
-      "closedAt": null,
-      "dependsOn": [],
-      "specName": "cnrs",
-      "staleness": "no-evidence",
-      "evidence": null
-    },
-    {
-      "id": "survey-metrics-0be9c8b9",
-      "title": "Survey metrics",
-      "kind": "",
-      "status": "closed",
-      "body": "",
-      "outcome": "Author counts: DES Y3 3×2pt = 170 (Abbott+ 2022). KiDS-1000 3×2pt = 34 (Heymans+ 2021). KiDS-Legacy shear = 38 (Wright+ 2025). HSC Y3 shear = 38 (Dalal+ 2023). Euclid consortium ~2600 members (overview paper 2957 authors, Mellier+ 2024). UNIONS overview = 89 (Gwyn+ 2025). Euclid DR schedule: Q2 June 2026, DR1 Oct 2026, DR2 March 2029, DR3 Oct 2031. Moriond Cosmology 2026: March 22-29, La Thuile.",
-      "tags": [
-        "tapestry:cnrs"
-      ],
-      "createdAt": "2026-03-21T21:42:18.895151+01:00",
-      "closedAt": null,
       "dependsOn": [
-        "flagship-unions-euclid-cmbx-b462389e"
+        "research-program-5pp-4ec6036b"
       ],
       "specName": "cnrs",
       "staleness": "no-evidence",
@@ -588,13 +234,66 @@
       "specName": "cnrs",
       "staleness": "no-evidence",
       "evidence": null
+    },
+    {
+      "id": "cosmostat-dap-df2d0d70",
+      "title": "CosmoStat / DAp",
+      "kind": "",
+      "status": "closed",
+      "body": "UMR AIM (CEA/CNRS/UPCité/UPSaclay), CEA Paris-Saclay. CosmoStat is the cosmological statistics group within DAp. Director: Stéphane Mathis (contacted 2026-03-07).\n\nNamed collaborators: Jean-Luc Starck (founder, sparse methods for cosmology), Martin Kilbinger (weak lensing, Euclid), Samuel Farrens (pipelines, ShapePipe). François Lanusse (CMBAgent, Lightcone) now at Flatiron but maintains CosmoStat ties.\n\nWhy primary: direct cosmology match, existing collaborations (SPT, Euclid, UNIONS), AI-forward culture, Paris-Saclay ecosystem (DATAIA, AISSAI).",
+      "outcome": "Primary host lab. Strong cosmology + AI fit. Director contacted.",
+      "tags": [
+        "tapestry:cnrs"
+      ],
+      "createdAt": "2026-03-22T07:43:40.933959183+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "host-labs-7a2b0e1e"
+      ],
+      "specName": "cnrs",
+      "staleness": "no-evidence",
+      "evidence": null
+    },
+    {
+      "id": "ias-6d4ea034",
+      "title": "IAS",
+      "kind": "",
+      "status": "",
+      "body": "UMR 8617, CNRS/Université Paris-Saclay. Orsay campus, 15 min from CEA Saclay.\n\n**Cosmology group (~29 members).** Planck heritage (Puget was HFI PI). Now: Euclid, Simons Observatory, LiteBIRD, CMB-S4.\n\n**Key people:**\n- **Giulio Fabbian** (CNRS CR) — CMB lensing, CMB×LSS cross-correlations, post-Born effects. Co-leads SO lensing WG and Euclid CMBX SWG. Direct science overlap with the proposal.\n- **Nabila Aghanim** (CNRS DR) — CMB, galaxy clusters, tSZ/kSZ, ERC ByoPiC. Senior presence.\n- **Tony Bonnaire** (CNRS AI researcher, arrived Oct 2025) — generative AI (diffusion models) for cosmology. Nature Comms paper on why diffusion models generalize. Natural AI interlocutor.\n- **Marian Douspis** — Planck SZ, ML y-maps, CMB-Euclid cross-correlations.\n- **Laura Salvati** — CMB cosmology, team co-leader.\n- **Adélie Gorce** — Epoch of Reionization, kSZ, team co-leader.\n\n**Operates IDOC** — data center for Planck, Herschel, Euclid catalogs.\n\n**Fit:** Fabbian co-leads the exact working groups where the proposed science publishes. Bonnaire brings an AI researcher doing cosmology with modern methods. Both CosmoStat and IAS are Paris-Saclay — coherent DATAIA/ClusterAI narrative. \n\n**INS2I concern:** Resolved — Fadili confirmed no INS2I requirement. Both labs have CNRS tutelle.",
+      "outcome": "",
+      "tags": [
+        "tapestry:cnrs"
+      ],
+      "createdAt": "2026-03-22T07:49:30.836696025+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "second-host-lab-ias-or-lisn-8d23152c"
+      ],
+      "specName": "cnrs",
+      "staleness": "no-evidence",
+      "evidence": null
+    },
+    {
+      "id": "lisn-e17f1fa9",
+      "title": "LISN",
+      "kind": "",
+      "status": "",
+      "body": "UMR 9015, CNRS/Université Paris-Saclay/INRIA/CentraleSupélec. Orsay + Gif-sur-Yvette. ~400 people, 5 departments, 17 teams.\n\n**INS2I lab** — strongest AI narrative for the call.\n\n**Key people:**\n- **Guillaume Charpiat** (INRIA) — Head of Data Science dept. Deep learning for PDE/numerical simulations. Leads 'Large Physics Models' exploratory action (transformers for simulations).\n- **Cyril Furtlehner** (INRIA) — TAU team leader. Statistical physics × ML. Restricted Boltzmann machines, belief propagation.\n- **François Landes** (Assoc. Prof) — ML for physics: glassy dynamics, earthquake prediction with ML. Physics-trained.\n- **Nicolas Sabouret** (Prof, CPU team) — multi-agent systems (behavioral, not scientific). Supportive of application; already contacted.\n\n**DATAIA connections:** Chevallier on executive committee, Furtlehner on governance board. Marc Schoenauer (emeritus) co-piloted PEPR-IA nationally.\n\n**Fit:** Pure AI/CS credential. Sabouret endorsement. DATAIA wiring. Saclay ecosystem.\n**Gap:** Zero cosmology or astrophysics. Nobody works on agentic AI for science in the LLM-agent sense. The connection is methodological only — you'd be a cosmologist in a CS lab with no domain context.",
+      "outcome": "",
+      "tags": [
+        "tapestry:cnrs"
+      ],
+      "createdAt": "2026-03-22T07:49:46.148294182+01:00",
+      "closedAt": null,
+      "dependsOn": [
+        "second-host-lab-ias-or-lisn-8d23152c"
+      ],
+      "specName": "cnrs",
+      "staleness": "no-evidence",
+      "evidence": null
     }
   ],
   "links": [
-    {
-      "source": "benchmarks-proposal-45b9ddfa",
-      "target": "researchgym-paper-c61da993"
-    },
     {
       "source": "call-requirements-e67445bf",
       "target": "host-labs-7a2b0e1e"
@@ -616,32 +315,16 @@
       "target": "application-snapshot-march-2026-8eb46775"
     },
     {
-      "source": "email-choose-france-eligibility-d389a52c",
-      "target": "talk-to-jean-luc-b8a8af72"
-    },
-    {
-      "source": "flagship-unions-euclid-cmbx-b462389e",
-      "target": "survey-metrics-0be9c8b9"
-    },
-    {
       "source": "host-labs-7a2b0e1e",
       "target": "clusterai-2b0c4530"
     },
     {
       "source": "host-labs-7a2b0e1e",
-      "target": "email-frédéric-auchère-640deb9d"
-    },
-    {
-      "source": "host-labs-7a2b0e1e",
-      "target": "email-laura-adélie-ias-bf007014"
+      "target": "cosmostat-dap-df2d0d70"
     },
     {
       "source": "host-labs-7a2b0e1e",
       "target": "second-host-lab-ias-or-lisn-8d23152c"
-    },
-    {
-      "source": "host-labs-7a2b0e1e",
-      "target": "talk-to-jean-luc-b8a8af72"
     },
     {
       "source": "research-program-5pp-4ec6036b",
@@ -649,11 +332,11 @@
     },
     {
       "source": "research-program-5pp-4ec6036b",
-      "target": "aissai-research-and-details-aaa70253"
+      "target": "cnrs-rising-talents-full-fcccf568"
     },
     {
       "source": "research-program-5pp-4ec6036b",
-      "target": "cnrs-rising-talents-full-fcccf568"
+      "target": "flagship-unions-euclid-cmbx-b462389e"
     },
     {
       "source": "research-program-83cc4069",
@@ -664,24 +347,12 @@
       "target": "research-program-5pp-4ec6036b"
     },
     {
-      "source": "sabouret-lunch-debrief-fc846327",
-      "target": "benchmarks-proposal-45b9ddfa"
+      "source": "second-host-lab-ias-or-lisn-8d23152c",
+      "target": "ias-6d4ea034"
     },
     {
-      "source": "sabouret-lunch-debrief-fc846327",
-      "target": "email-choose-france-eligibility-d389a52c"
-    },
-    {
-      "source": "sabouret-lunch-debrief-fc846327",
-      "target": "ins2i-lab-eligibility-b6a8d8c0"
-    },
-    {
-      "source": "sabouret-lunch-debrief-fc846327",
-      "target": "sam-5pp-review-f48b5cb5"
-    },
-    {
-      "source": "sabouret-lunch-debrief-fc846327",
-      "target": "sovereignty-frontier-tension-2dfce015"
+      "source": "second-host-lab-ias-or-lisn-8d23152c",
+      "target": "lisn-e17f1fa9"
     },
     {
       "source": "track-record-47dfda29",
@@ -689,36 +360,16 @@
     },
     {
       "source": "track-record-47dfda29",
-      "target": "knuth-claude-s-cycles-march-2026-f4380445"
-    },
-    {
-      "source": "track-record-47dfda29",
       "target": "referees-137401b6"
     }
   ],
   "downstream": {
-    "5pp-over-page-limit-3e1d57a8": [],
     "agentic-science-landscape-2025-c1289b35": [],
-    "aissai-research-and-details-aaa70253": [],
     "application-snapshot-march-2026-8eb46775": [],
-    "benchmarks-proposal-45b9ddfa": [
-      {
-        "id": "researchgym-paper-c61da993",
-        "title": "ResearchGym paper",
-        "status": "open",
-        "kind": ""
-      }
-    ],
     "call-requirements-e67445bf": [
       {
         "id": "agentic-science-landscape-2025-c1289b35",
         "title": "Agentic science landscape 2025-2026: survey of key papers, systems, and results",
-        "status": "closed",
-        "kind": ""
-      },
-      {
-        "id": "aissai-research-and-details-aaa70253",
-        "title": "AISSAI: research and details",
         "status": "closed",
         "kind": ""
       },
@@ -741,15 +392,15 @@
         "kind": ""
       },
       {
-        "id": "email-frédéric-auchère-640deb9d",
-        "title": "email Frédéric Auchère",
-        "status": "open",
+        "id": "cosmostat-dap-df2d0d70",
+        "title": "CosmoStat / DAp",
+        "status": "closed",
         "kind": ""
       },
       {
-        "id": "email-laura-adélie-ias-bf007014",
-        "title": "email Laura \u0026 Adélie (IAS)",
-        "status": "open",
+        "id": "flagship-unions-euclid-cmbx-b462389e",
+        "title": "Flagship: UNIONS + Euclid CMBX",
+        "status": "closed",
         "kind": ""
       },
       {
@@ -759,8 +410,14 @@
         "kind": ""
       },
       {
-        "id": "knuth-claude-s-cycles-march-2026-f4380445",
-        "title": "Knuth: Claude's Cycles (March 2026)",
+        "id": "ias-6d4ea034",
+        "title": "IAS",
+        "status": "",
+        "kind": ""
+      },
+      {
+        "id": "lisn-e17f1fa9",
+        "title": "LISN",
         "status": "",
         "kind": ""
       },
@@ -786,12 +443,6 @@
         "id": "second-host-lab-ias-or-lisn-8d23152c",
         "title": "Second host lab: IAS or LISN",
         "status": "open",
-        "kind": ""
-      },
-      {
-        "id": "talk-to-jean-luc-b8a8af72",
-        "title": "Talk to Jean-Luc",
-        "status": "closed",
         "kind": ""
       },
       {
@@ -823,28 +474,8 @@
         "kind": ""
       }
     ],
-    "email-choose-france-eligibility-d389a52c": [
-      {
-        "id": "talk-to-jean-luc-b8a8af72",
-        "title": "Talk to Jean-Luc",
-        "status": "closed",
-        "kind": ""
-      }
-    ],
-    "email-frédéric-auchère-640deb9d": [],
-    "email-ias-lab-heads-c7f679d3": [],
-    "email-laura-adélie-ias-bf007014": [],
-    "email-nicolas-ins2i-resolved-498eede2": [],
-    "fix-cosmostat-naming-8f88d002": [],
-    "flagship-unions-euclid-cmbx-b462389e": [
-      {
-        "id": "survey-metrics-0be9c8b9",
-        "title": "Survey metrics",
-        "status": "closed",
-        "kind": ""
-      }
-    ],
-    "follow-up-stéphane-mathis-eac24142": [],
+    "cosmostat-dap-df2d0d70": [],
+    "flagship-unions-euclid-cmbx-b462389e": [],
     "host-labs-7a2b0e1e": [
       {
         "id": "application-snapshot-march-2026-8eb46775",
@@ -865,15 +496,21 @@
         "kind": ""
       },
       {
-        "id": "email-frédéric-auchère-640deb9d",
-        "title": "email Frédéric Auchère",
-        "status": "open",
+        "id": "cosmostat-dap-df2d0d70",
+        "title": "CosmoStat / DAp",
+        "status": "closed",
         "kind": ""
       },
       {
-        "id": "email-laura-adélie-ias-bf007014",
-        "title": "email Laura \u0026 Adélie (IAS)",
-        "status": "open",
+        "id": "ias-6d4ea034",
+        "title": "IAS",
+        "status": "",
+        "kind": ""
+      },
+      {
+        "id": "lisn-e17f1fa9",
+        "title": "LISN",
+        "status": "",
         "kind": ""
       },
       {
@@ -881,28 +518,15 @@
         "title": "Second host lab: IAS or LISN",
         "status": "open",
         "kind": ""
-      },
-      {
-        "id": "talk-to-jean-luc-b8a8af72",
-        "title": "Talk to Jean-Luc",
-        "status": "closed",
-        "kind": ""
       }
     ],
-    "ins2i-lab-eligibility-b6a8d8c0": [],
-    "knuth-claude-s-cycles-march-2026-f4380445": [],
-    "pleias-consortium-5bc853d7": [],
+    "ias-6d4ea034": [],
+    "lisn-e17f1fa9": [],
     "referees-137401b6": [],
     "research-program-5pp-4ec6036b": [
       {
         "id": "agentic-science-landscape-2025-c1289b35",
         "title": "Agentic science landscape 2025-2026: survey of key papers, systems, and results",
-        "status": "closed",
-        "kind": ""
-      },
-      {
-        "id": "aissai-research-and-details-aaa70253",
-        "title": "AISSAI: research and details",
         "status": "closed",
         "kind": ""
       },
@@ -917,18 +541,18 @@
         "title": "CNRS Rising Talents: full proposal",
         "status": "active",
         "kind": ""
+      },
+      {
+        "id": "flagship-unions-euclid-cmbx-b462389e",
+        "title": "Flagship: UNIONS + Euclid CMBX",
+        "status": "closed",
+        "kind": ""
       }
     ],
     "research-program-83cc4069": [
       {
         "id": "agentic-science-landscape-2025-c1289b35",
         "title": "Agentic science landscape 2025-2026: survey of key papers, systems, and results",
-        "status": "closed",
-        "kind": ""
-      },
-      {
-        "id": "aissai-research-and-details-aaa70253",
-        "title": "AISSAI: research and details",
         "status": "closed",
         "kind": ""
       },
@@ -951,20 +575,32 @@
         "kind": ""
       },
       {
-        "id": "email-frédéric-auchère-640deb9d",
-        "title": "email Frédéric Auchère",
-        "status": "open",
+        "id": "cosmostat-dap-df2d0d70",
+        "title": "CosmoStat / DAp",
+        "status": "closed",
         "kind": ""
       },
       {
-        "id": "email-laura-adélie-ias-bf007014",
-        "title": "email Laura \u0026 Adélie (IAS)",
-        "status": "open",
+        "id": "flagship-unions-euclid-cmbx-b462389e",
+        "title": "Flagship: UNIONS + Euclid CMBX",
+        "status": "closed",
         "kind": ""
       },
       {
         "id": "host-labs-7a2b0e1e",
         "title": "labs \u0026 people",
+        "status": "",
+        "kind": ""
+      },
+      {
+        "id": "ias-6d4ea034",
+        "title": "IAS",
+        "status": "",
+        "kind": ""
+      },
+      {
+        "id": "lisn-e17f1fa9",
+        "title": "LISN",
         "status": "",
         "kind": ""
       },
@@ -979,64 +615,22 @@
         "title": "Second host lab: IAS or LISN",
         "status": "open",
         "kind": ""
+      }
+    ],
+    "second-host-lab-ias-or-lisn-8d23152c": [
+      {
+        "id": "ias-6d4ea034",
+        "title": "IAS",
+        "status": "",
+        "kind": ""
       },
       {
-        "id": "talk-to-jean-luc-b8a8af72",
-        "title": "Talk to Jean-Luc",
-        "status": "closed",
+        "id": "lisn-e17f1fa9",
+        "title": "LISN",
+        "status": "",
         "kind": ""
       }
     ],
-    "researchgym-paper-c61da993": [],
-    "sabouret-lunch-debrief-fc846327": [
-      {
-        "id": "benchmarks-proposal-45b9ddfa",
-        "title": "Benchmarks proposal",
-        "status": "open",
-        "kind": ""
-      },
-      {
-        "id": "email-choose-france-eligibility-d389a52c",
-        "title": "Email Choose France: eligibility",
-        "status": "closed",
-        "kind": ""
-      },
-      {
-        "id": "ins2i-lab-eligibility-b6a8d8c0",
-        "title": "INS2I lab eligibility",
-        "status": "closed",
-        "kind": ""
-      },
-      {
-        "id": "researchgym-paper-c61da993",
-        "title": "ResearchGym paper",
-        "status": "open",
-        "kind": ""
-      },
-      {
-        "id": "sam-5pp-review-f48b5cb5",
-        "title": "Sam 5pp review",
-        "status": "closed",
-        "kind": ""
-      },
-      {
-        "id": "sovereignty-frontier-tension-2dfce015",
-        "title": "Sovereignty-frontier tension",
-        "status": "open",
-        "kind": ""
-      },
-      {
-        "id": "talk-to-jean-luc-b8a8af72",
-        "title": "Talk to Jean-Luc",
-        "status": "closed",
-        "kind": ""
-      }
-    ],
-    "sam-5pp-review-f48b5cb5": [],
-    "second-host-lab-ias-or-lisn-8d23152c": [],
-    "sovereignty-frontier-tension-2dfce015": [],
-    "survey-metrics-0be9c8b9": [],
-    "talk-to-jean-luc-b8a8af72": [],
     "track-record-47dfda29": [
       {
         "id": "application-snapshot-march-2026-8eb46775",
@@ -1048,12 +642,6 @@
         "id": "cnrs-rising-talents-full-fcccf568",
         "title": "CNRS Rising Talents: full proposal",
         "status": "active",
-        "kind": ""
-      },
-      {
-        "id": "knuth-claude-s-cycles-march-2026-f4380445",
-        "title": "Knuth: Claude's Cycles (March 2026)",
-        "status": "",
         "kind": ""
       },
       {
