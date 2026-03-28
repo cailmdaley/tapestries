@@ -483,7 +483,7 @@
         font-size: 1.2rem; cursor: pointer; padding: 0.1rem 0.3rem; line-height: 1; flex-shrink: 0;
       }
       .tapestry-detail-close:hover { color: var(--ui-text); }
-      .tapestry-detail-content { flex: 1; overflow-y: auto; padding: 0.8rem; }
+      .tapestry-detail-content { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 0.8rem; }
 
       /* Detail: graph */
       .tapestry-detail-graph {
@@ -555,8 +555,8 @@
       .tapestry-detail-body blockquote { border-left: 2px solid var(--ui-teal); padding-left: 0.7rem; margin: 0.4rem 0; color: var(--ui-text-muted); font-style: italic; }
       .tapestry-detail-body a, .tapestry-detail-body td a, .tapestry-detail-outcome a { color: var(--ui-teal) !important; text-decoration: underline dotted; }
       .tapestry-detail-body a:hover, .tapestry-detail-body td a:hover, .tapestry-detail-outcome a:hover { text-decoration: underline; }
-      .tapestry-detail-body table { width: 100%; border-collapse: collapse; margin: 0.4rem 0; font-size: 0.8rem; }
-      .tapestry-detail-body th, .tapestry-detail-body td { padding: 0.3rem 0.5rem; border: 1px solid var(--ui-border); text-align: left; }
+      .tapestry-detail-body table { width: 100%; border-collapse: collapse; margin: 0.4rem 0; font-size: 0.8rem; table-layout: fixed; }
+      .tapestry-detail-body th, .tapestry-detail-body td { padding: 0.3rem 0.5rem; border: 1px solid var(--ui-border); text-align: left; overflow-wrap: break-word; word-break: break-word; }
       .tapestry-detail-body th { background: var(--ui-dark-surface); font-weight: 600; }
 
       /* Detail: evidence (code block) */
@@ -602,7 +602,7 @@
         to { opacity: 1; transform: translateX(-50%) translateY(0); }
       }
     </style>
-    <script type="module" crossorigin src="/tapestries/assets/index-BO5eW4qq.js"></script>
+    <script type="module" crossorigin src="/tapestries/assets/index-B1f4tVcM.js"></script>
     <link rel="stylesheet" crossorigin href="/tapestries/assets/index-DRKxklZO.css">
   </head>
   <body>
