@@ -1,0 +1,247 @@
+\documentclass[11pt, a4paper]{article}
+
+% --- Encoding & typography ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ebgaramond}
+\usepackage{raleway}
+\usepackage{microtype}
+
+% Garamond for body, Raleway for headings
+\renewcommand{\rmdefault}{EBGaramond-LF}
+\newcommand{\headingfont}{\sffamily}
+
+% --- Layout ---
+\usepackage[top=2.2cm, bottom=2.4cm, left=2.4cm, right=2.4cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+% --- Figures, links, references ---
+\usepackage{xcolor}
+\usepackage{graphicx}
+\definecolor{linkteal}{RGB}{0, 110, 120}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=linkteal, urlcolor=linkteal]{hyperref}
+\usepackage[round]{natbib}
+
+% --- Header/footer ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\small\scshape CNRS AI Rising Talents}
+\fancyhead[R]{\small\scshape Cail Daley}
+\fancyfoot[C]{\small\thepage}
+
+% Suppress header on first page, restore on subsequent
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\fancyfoot[C]{\small\thepage}}
+
+% --- Compact lists ---
+\setlist[itemize]{topsep=0.3em, itemsep=0.1em, parsep=0em, leftmargin=1.5em}
+
+% --- Section formatting ---
+\titleformat{\section}{\large\scshape}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.4em}
+
+\titleformat{\paragraph}[runin]{\bfseries\scshape}{}{0em}{}
+\titlespacing*{\paragraph}{0pt}{0.6em}{0.4em}
+
+% --- Title block ---
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{center}
+    {\LARGE\headingfont\bfseries Developing the Practice of AI-Mediated Science\par}
+    \vspace{0.3em}
+    {\large\headingfont through Observational Cosmology\par}
+    \vspace{0.6em}
+    {\normalsize\scshape Cail Daley\par}
+    \vspace{0.15em}
+    {\small\scshape March 2026}
+  \end{center}
+  \vspace{0.3em}
+  \noindent\rule{\textwidth}{0.4pt}
+  \vspace{0.8em}
+}
+\makeatother
+
+\begin{document}
+
+\thispagestyle{plain}
+\maketitle
+
+The capability of frontier AI systems is increasing exponentially, and the consequences are starting to reach my field of cosmology.
+Prominent cosmologists have argued that analyses requiring a year of graduate student effort can now be completed by AI agents in minutes \citep{dodelson26}.
+I am an observational cosmologist working in three international collaborations (Euclid, UNIONS, and the South Pole Telescope), and since mid-2025 I have conducted essentially all of my research through agentic AI.
+I propose a four-year program to develop the practice of rigorous AI-mediated science through frontier cosmological research, and to help this practice diffuse through the French research community.
+As AI reshapes how science is conducted, developing researchers who can verify, interpret, and critique AI-mediated results becomes essential to France's scientific sovereignty.
+The program's primary investment is in early-career researchers---doctoral students and postdocs who will do cosmology in this mode from the start, developing their scientific judgment and verification instincts with steady mentorship from senior cosmologists at the host laboratories.
+
+\section{The bitter lesson}
+
+In 2019, Rich Sutton distilled seventy years of artificial intelligence research into the observation that general methods leveraging computation consistently outperform approaches that encode human knowledge \citep{sutton19}.
+Researchers in chess, Go, speech recognition, and computer vision had each learned this independently.
+Hand-crafted knowledge helps in the short term but plateaus; search and learning, scaled with compute, eventually dominate---often on the timescale it took to develop the hand-crafted approaches.
+Sutton called it the bitter lesson because it is one the field has had to relearn, painfully, in every subdomain.
+
+Large language models are the most sweeping instance of this lesson.
+The organization METR tracks the duration of tasks, measured in equivalent human expert working time, that frontier models can complete autonomously \citep{metr26}.
+As of early 2026, this threshold stands at roughly 12 hours of expert effort, doubling approximately every four months, with no empirical sign of deceleration.
+These gains rest on empirical scaling laws that show no sign of saturating \citep{kaplan.etal20, hoffmann.etal22}: while pre-training may face data bottlenecks within this decade \citep{villalobos.etal22}, new scaling axes have opened, from inference-time reasoning \citep{snell.etal24} to synthetic data generation, an active area including work by the French laboratory Ple\"ias \citep{langlais.etal25}.
+If the current doubling time holds, frontier models will be roughly 2,500 times more capable in four years.
+
+I am betting that the scientific community will learn this lesson over the coming years.
+Sutton's point is not that human expertise loses its value, but that it is better spent guiding computation than encoding specific approaches.
+In science, this means the researcher's role shifts from implementation to design and verification---from writing analysis code to specifying what the analysis should do, and checking that it was done correctly.
+Major US frontier laboratories, private companies, and national laboratories are already investing heavily in agentic research.
+For France to remain competitive in fundamental science, developing the capacity to work with these systems is essential.
+CNRS's deployment of Mistral AI as a secure tool for its researchers, and Mistral's launch of a dedicated science unit, signal growing institutional recognition that AI is becoming infrastructure for science.
+
+A paper I am leading for the first UNIONS weak lensing data release, validating $B$-mode systematics for cosmic shear across three independent statistical frameworks, was produced entirely by AI agents under my direction: analysis workflow ($\sim$10,000 lines of Python), figures, and manuscript, with the broader codebase spanning over 120,000 lines across more than 120 commits.
+My role shifted from implementer to architect: from writing code to designing analyses and, critically, designing the tests and checks that verify correctness.
+The analysis required decisions about which statistics to compute, which scale cuts to explore, and how to diagnose systematic failures; an agent can implement a new systematic test in minutes that would take a human developer hours.
+
+This program works with the exponential by conducting frontier cosmological research using agentic AI, and developing the practices that the scientific community will need regardless of how capable future models become.
+The program does not depend on the extrapolation holding exactly: the cosmological analyses are independently valuable, and if capability growth accelerates, the need for verification becomes more urgent, not less.
+
+\section{Research program}
+
+If the trajectory described above continues, the boundary between what AI systems can reliably do and what requires human scientific judgment will continue to shift rapidly.
+Tasks that demand careful human attention today (managing computational workflows, implementing standard estimators, running validation suites) will become reliably autonomous, while the frontier of human decision-making moves toward higher-level questions of analysis design, interpretation, and methodology.
+Scientists who learn to work along this moving boundary will be able to push considerably further than those working alone, not because AI replaces their judgment but because it concentrates their attention on the decisions where that judgment matters most.
+This practice must evolve continuously as models improve: any fixed ``agentic science framework'' will be outpaced by the next generation of models.
+To take one concrete example, Claude Code (Anthropic's agentic coding tool, and one of the fastest-growing software products in history) has been so thoroughly reshaped by each generation of models that, according to its creator, none of the code in the product is more than three months old.
+Each capability jump changes not just what is possible but how the tools themselves are built; the same will be true for agentic science.
+What endures is not specific tooling but the judgment, taste, and methodology for working with rapidly improving systems while maintaining scientific rigor.
+
+In practice, models are extraordinarily hungry for context: the quality of their contributions scales directly with the richness of the context they can access.
+International collaborations generate enormous volumes of knowledge (analysis decisions, methodological debates, validation results) that is largely inaccessible to agents and, in practice, to most human collaborators as well.
+Making this knowledge traversable will allow agents to find inconsistencies, identify gaps, and maintain coherence across analyses at a scale that would be prohibitive for any individual researcher.
+I have developed open-source tools for this purpose.\footnote{\url{https://github.com/cailmdaley/skills}}
+
+I propose to develop this practice in observational cosmology and to help it diffuse through the French research community.
+
+\paragraph{Cosmology research.}
+My ongoing research program spans three international collaborations (Euclid, UNIONS, and the South Pole Telescope) in weak gravitational lensing, CMB lensing (the gravitational deflection of cosmic microwave background photons by intervening matter, which maps the total matter distribution), and large-scale structure.
+Cosmological surveys are grouped by statistical power into generations: Stage~III surveys (the Dark Energy Survey, the Kilo-Degree Survey, and UNIONS) have produced the field's most precise constraints on dark energy and cosmic structure over the past decade; Stage~IV surveys, led by Euclid and the Vera C.\ Rubin Observatory, will increase statistical power by an order of magnitude beginning with data releases in 2026.
+The program's primary scientific contributions center on two surveys: UNIONS, where a small team and early-stage analysis program create ideal conditions for demonstrating agentic methods, and Euclid, where CMB lensing cross-correlations will yield among the tightest constraints on dark energy and neutrino masses from the next generation of data.
+\begin{itemize}
+\item \textbf{Cosmic shear and multi-probe analyses in UNIONS.}
+UNIONS' first cosmic shear results were presented at the Rencontres de Moriond in March 2026.
+Over the program's four years, I will lead the progression to tomographic cosmic shear (dividing galaxies into distance bins, tightening constraints by a factor of several) and ultimately to a full 3$\times$2pt analysis combining cosmic shear, galaxy--galaxy lensing, and galaxy clustering---the gold standard for constraining dark energy and neutrino masses from survey data.
+UNIONS presents a distinctive opportunity: the Dark Energy Survey's 3$\times$2pt analysis listed 170 authors; the Kilo-Degree Survey's, roughly 35; UNIONS' core analysis team is an order of magnitude smaller still, and the multi-probe combinations that took those surveys years to develop are still ahead.
+A small, co-located team has far less coordination overhead than a large international collaboration, and it is straightforward to adopt agentic workflows across the entire group, making UNIONS a natural setting for the first whole-team experiment in agentic science.
+The analysis pipelines developed for the current release provide the foundation; the agentic workflow will enable the systematic exploration of methodological choices that is prohibitively labor-intensive in traditional collaborations.
+Cross-correlations with spectroscopic surveys such as the Dark Energy Spectroscopic Instrument (DESI) offer a further avenue to tighten constraints as the analysis matures.
+\item \textbf{CMB lensing $\times$ Euclid cross-correlations.}
+Cross-correlating CMB lensing maps, which trace the total matter distribution, with Euclid's galaxy surveys provides constraints that are both tighter and more robust than either dataset alone, because the two measurements have independent systematic errors.
+I am one of the principal postdocs in Euclid's CMB cross-correlations working group and lead a Memorandum of Understanding project linking the South Pole Telescope to Euclid.
+Euclid's data releases (DR1 in October 2026, DR2 in March 2029) structure the program's cross-correlation science: initial analyses with DR1 data in years~1--2, and comprehensive multi-probe cross-correlations with the substantially deeper DR2 catalog in years~3--4.
+With over 2,600 consortium members, Euclid's scientific knowledge is highly distributed across wikis, messaging channels, and shared documents; making this information traversable by agents is itself a contribution to the collaboration's infrastructure.
+As a legacy product, I will also produce CMB lensing maps of the Euclid deep fields, released publicly and useful for years as these fields grow deeper with successive data releases.
+\item \textbf{Additional research directions.}
+Beyond the flagship UNIONS and Euclid programs, I maintain active projects in kinematic lensing (measuring gravitational lensing through distortions of galaxy velocity fields rather than shapes, a fundamentally independent probe immune to the shape calibration systematics that limit traditional cosmic shear) and in CMB lensing with the South Pole Telescope.
+I have supervised multiple master's students on kinematic lensing feasibility studies.
+These complementary projects broaden the program's scientific portfolio and provide additional material for the benchmark suite.
+\end{itemize}
+Cosmology is particularly well suited as a proving ground because the required precision is extreme---cosmological parameters must be constrained at the percent level, even though systematic effects can be much larger than the signal---and many methodological choices have historically been made with an element of intuition or taste, because there has simply not been enough time to formally explore each one.
+There is also a question of timing: current AI systems already excel at research that reduces to optimizing a single metric (this is why CMBAgent won the NeurIPS weak lensing challenge), but real observational cosmology rarely reduces to a single objective.
+The practice of working with AI on research that demands multi-criteria judgment is best developed now, while the boundary between what models can and cannot do is still visible enough to study and shape.
+
+\paragraph{Benchmarks for agentic science.}
+If practices and frameworks must evolve continuously as models improve, we need a way to measure whether a new practice actually improves on the last.
+Existing agentic benchmarks---ScienceAgentBench \citep{chen.etal24}, AstaBench \citep{bragg.etal25}---evaluate model capability on isolated tasks extracted from published research; what is missing are benchmarks that capture the complexity and nuance of frontier scientific research, problems that require not just optimization of a single metric but the kind of multi-criteria judgment, iterative design, and verification that real analyses demand, and that no existing benchmark suite covers.
+I propose to develop a suite of open, standalone, runnable benchmarks drawn from observational cosmology: realistic analysis tasks with known ground truths, multiple valid approaches, and evaluation criteria that reward correctness, robustness, and inspectability rather than speed alone.
+An initial set of benchmarks, drawn from the UNIONS and cross-correlation analyses described above, will be released by the end of the first year; the suite will grow with the program, with the budget allocating dedicated computational resources for running and maintaining these benchmarks as a public community resource.
+
+\paragraph{Team.}
+I propose to invest the majority of the program's resources in assembling a team of early-career researchers, doctoral students and postdocs, who will conduct cosmological research in this AI-forward mode.
+Young researchers are best positioned for this work: they are native to these tools in a way that even early-career scientists a few years senior are not, and they are less constrained by established workflows.
+The team will do cosmology first and foremost, but in doing so will develop and refine the evolving practices, data frameworks, and verification methods that agentic science requires.
+Doctoral students will be co-supervised by senior researchers with established track records in observational cosmology---Martin Kilbinger (HDR) and Samuel Farrens (HDR), alongside Fran\c{c}ois Lanusse, all at UMR AIM, have each expressed their support for this program---ensuring that the deep domain expertise required for rigorous verification is built on a foundation of classical training, not substituted by it.
+The program's resources will be invested primarily in this team, supplemented by computational resources and access to frontier AI models.
+
+\paragraph{Timeline.}
+The four-year program follows the natural cadence of the surveys it draws on.
+\textit{Year~1:} Deliver UNIONS tomographic cosmic shear constraints and begin cross-correlation analyses with Euclid DR1 (October 2026).
+Recruit 2--3 doctoral students.
+Release the first set of agentic science benchmarks drawn from UNIONS analyses.
+\textit{Year~2:} Produce the UNIONS 3$\times$2pt analysis, the program's most ambitious single deliverable on the UNIONS side.
+Begin exploring cross-correlations with DESI spectroscopic data.
+Expand the team with 1--2 postdocs.
+\textit{Year~3:} Scale up Euclid cross-correlation science with DR2 (March 2029), which substantially deepens the available data.
+Organize a workshop at AISSAI on agentic science practices, open to the French research community.
+\textit{Year~4:} Comprehensive multi-probe Euclid cross-correlations.
+Publish consolidated methodological contributions (verification framework, open tools, benchmark suite).
+Throughout, milestones are defined by scientific deliverables---cosmological constraints, data products, verification methods---not by specific tooling, which will evolve as models improve.
+
+\section{Verification, mentorship, and the broader community}
+
+\paragraph{Verification.}
+Agentic science done carelessly weakens the results it is meant to strengthen.
+AI systems hallucinate, introduce subtle errors that pass superficial inspection, and optimize for surface plausibility over correctness.
+As the volume of AI-mediated scientific output grows, the practices and tools for checking that output (provenance tracking, systematic validation, reproducibility frameworks) must grow with it.
+
+This is a question not only of scientific rigor but of epistemic sovereignty, a core concern of the French AI Strategy.
+As the tools producing scientific output remain concentrated in a small number of private companies, the ability to independently verify, inspect, and reproduce scientific results becomes a matter of institutional capacity.
+These concerns motivate a complementary research direction: developing verification practices, provenance-tracking methods, and data frameworks that make agentic scientific work inspectable and reproducible.
+This work aligns naturally with the objectives of ClusterAI initiatives such as PostGenAI@Paris and DATAIA, which emphasize responsible AI and AI for science respectively.
+
+The core of verification infrastructure is making work traversable.
+When agents produce thousands of lines of analysis code across dozens of sessions, the record of what was decided, why, and on the basis of what evidence must be structured so that both agents and human scientists can navigate it.
+I have been developing open-source tools for this purpose.
+\texttt{felt}\footnote{\url{https://github.com/cailmdaley/felt}} is a lightweight system for tracking decisions, intermediate results, and methodological choices as a directed acyclic graph (DAG): each node records a claim or decision, its dependencies, and its outcome, so that any question of ``how did we arrive at this result?'' can be answered by walking the graph.
+Agents file nodes as they work; scientists review and close them with outcomes.
+Built on top of \texttt{felt}, \emph{tapestries} render these DAGs as interactive, browsable records of an entire analysis---from initial design decisions through to final constraints---making the full provenance of a result inspectable at a glance.\footnote{Examples: \url{https://cailmdaley.github.io/tapestries/demo/}, \url{https://cailmdaley.github.io/tapestries/pure_eb/}}
+
+This infrastructure serves verification at every level.
+Because the cost of implementation dropped dramatically, systematic checks that would previously have been impractical became routine: cross-validation tests, alternative estimators, consistency checks across data subsets.
+Each of these checks becomes a node in the DAG, linked to the claim it tests and the data it uses, so that the verification itself is as inspectable as the result.
+Done carefully, agentic science does not weaken rigor; it enables a standard of verification that human-only workflows struggle to sustain.
+The benchmarks described above close the loop: by providing realistic scientific tasks with known ground truths and multi-criteria evaluation, they allow us to measure whether a given combination of practices and models actually produces more reliable science, and to track how that changes as models improve.
+
+\paragraph{Mentorship.}
+Investing in young researchers raises a question this program will need to confront directly.
+Early research on AI-augmented productivity finds that domain experts benefit most from AI assistance precisely because they can evaluate the output, but a beginning doctoral student does not yet have that expertise.
+How to develop judgment and verification instincts alongside rather than instead of technical foundations is an open problem.
+I have supervised a master's student on kinematic lensing research where I used agentic AI to co-explore the research domain alongside the student, and am beginning a second internship in which the student will conduct the research itself in agentic mode.
+These early experiments will inform how the program's doctoral students are trained, and the question of agentic pedagogy is itself a research contribution of the program.
+
+\paragraph{Diffusion.}
+The practices described in this proposal will not spread through publication alone.
+Agentic science requires a shift in how researchers approach their work (from implementation to specification, from coding to design), and this shift is better transmitted through collaboration and apprenticeship than through papers or toolkits.
+
+Cosmological collaborations provide an unusually effective diffusion network.
+Euclid, UNIONS, and SPT collectively involve over a thousand active researchers across dozens of institutions.
+When a team member adopts agentic methods for their analysis, the practice becomes visible to every collaborator who reviews the results, asks about the workflow, or inherits the codebase.
+
+The program's diffusion strategy operates at three scales.
+Within the research team, doctoral students and postdocs trained in agentic methods will carry these practices to their subsequent positions, the most durable form of knowledge transfer in academia.
+Within the French research ecosystem, the connections to PostGenAI@Paris (AI4Science program) and DATAIA (DeMythif.AI doctoral program) provide institutional venues for teaching and collaboration that extend beyond a single research group.
+Internationally, verification frameworks and annotated code examples released openly on CNRS GitLab will allow researchers to adopt the methodology without direct mentorship, the written artifact that complements the apprenticeship.
+
+\section{Laboratory integration}
+
+This research program is designed to integrate into UMR AIM, a CNRS laboratory whose strengths align directly with the proposed research.
+
+\paragraph{D\'epartement d'Astrophysique, UMR AIM (CEA / CNRS / Universit\'e Paris Cit\'e / Universit\'e Paris-Saclay).}
+UMR AIM is one of France's major astrophysics laboratories, with research groups spanning stellar and planetary science, high-energy phenomena, star formation, and cosmology, alongside space instrumentation programs for ESA missions.
+Its CosmoStat group, which specializes in cosmological data analysis, statistical methods, and machine learning for astrophysics, is my current host and where the agentic science practices described in this proposal were developed.
+Several researchers are already actively pursuing agentic science, in particular Fran\c{c}ois Lanusse (CNRS), with whom I collaborate frequently on agentic approaches to cosmological research and who is leading a joint project with UC Berkeley on agentic AI for cosmology in which I am involved.
+The group's expertise in weak lensing, survey cosmology, and AI methods provides the ideal environment for this research program.
+Its location at Paris-Saclay places it within the DATAIA ecosystem, which includes AI for science (``e-science'') as a named research domain; DATAIA's ``Known Equations'' research pillar, which studies how physical constraints can be integrated into machine learning, connects directly to the physics-informed aspects of cosmological data analysis.
+
+UMR AIM connects naturally to AISSAI, the CNRS transverse center for AI and science.
+AISSAI has already hosted thematic programs relevant to astrophysics, including ``AI for the Two Infinites''; the agentic science practices developed in this program would extend the center's mission from AI \emph{methods} for science to AI \emph{agents} for science.
+The laboratory's position within the Parisian research ecosystem also provides connections to PostGenAI@Paris, a ClusterAI initiative whose core concept---post-generative, agentic AI---aligns directly with the research vision proposed here, and whose AI4Science program provides a natural venue for the diffusion of agentic science practices.
+Computational infrastructure (Jean Zay allocations, CEA resources, and API access to frontier models) supports the program at scale.
+
+\medskip
+\noindent
+The bet of this proposal is that what the scientific community needs most right now is not better AI methods but better AI \emph{practice}: the judgment, verification infrastructure, and institutional capacity to do rigorous science with rapidly improving AI systems.
+I have already conducted frontier cosmological research in this mode, and the results suggest that it works.
+The question is whether we can develop the practice fast enough to keep pace with the models, and whether we can help enough of the research community learn it before the gap between those who have and those who have not becomes a barrier to collaboration.
+The bitter lesson, once learned, does not have to be learned again.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

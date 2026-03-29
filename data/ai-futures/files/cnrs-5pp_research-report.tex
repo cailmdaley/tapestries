@@ -1,0 +1,77 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{natbib}
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{hyperref}
+
+\title{Research Report: Agentic Science in Observational Cosmology}
+\author{Cail M. Daley}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{CMB Lensing and SPT-3G (2019--2024)}
+
+My doctoral research at the University of Illinois focused on measurements of gravitational lensing of the cosmic microwave background (CMB) using data from the South Pole Telescope's third-generation receiver (SPT-3G).
+
+CMB lensing---the subtle bending of CMB photons by the large-scale matter distribution---is a precise probe of structure growth, with a broad lensing kernel peaking at $z \sim 2$ that complements galaxy lensing at lower redshifts. The scientific challenge is extracting the lensing signal from CMB temperature and polarization maps with $\sim$arcminute resolution, where the signal is diffuse and degeneracies with other cosmological parameters are significant.
+
+I led one of three independent lensing reconstruction pipelines, each extracting the lensing signal through different estimator choices to enable cross-validation. The reconstruction required simulation-based calibration of the estimator response across angular scales, and the covariance estimation used data-driven approaches to capture non-Gaussian correlations that analytical models missed. Cosmological parameters were extracted via Bayesian inference, marginalizing over instrumental and astrophysical nuisance parameters.
+
+The dissertation delivered the deepest CMB lensing maps made to date as of 2024, with signal-to-noise ratio $S/N > 50$ and percent-level systematic uncertainties. This work was published in collaboration papers (Dutcher et al. 2021, Balkenhol et al. 2021, Pan et al. 2023, and the SPT-3G D1 data release papers in 2025--2026).
+
+During this period, computational methods---simulations, high-dimensional parameter fitting, statistical estimator comparison---were essential, but the implementation was entirely human-driven.
+
+\section*{Kinematic Lensing and Master's Supervision (2024--2025)}
+
+At CosmoStat, I began supervising master's students on a new approach to gravitational lensing: measuring the distortions of galaxy velocity fields (kinematic lensing) rather than galaxy shapes (traditional cosmic shear). Kinematic lensing offers a fundamentally independent probe of the matter distribution, immune to the shape measurement systematics that limit cosmic shear.
+
+The challenge is methodological: extracting lensing signals from spectroscopic survey data where the velocity measurements are noisy, redshifts are uncertain, and the distortions are subtle. I supervised three students on feasibility studies using simulated data and pilot analyses on real spectroscopic surveys (GAMA, DESI early data).
+
+The methodology is statistical---developing velocity-based lensing estimators, simulating realistic survey noise, cross-validating on data sub-samples---but the later projects transitioned to agentic workflows, where students learned to design analyses and specify verification checks rather than writing every line of code themselves.
+
+\section*{The UNIONS Cosmic Shear Analysis (2025--2026): Agentic Science}
+
+The turning point came in mid-2025 when frontier language models became capable enough to autonomously implement substantial scientific analyses. I began the UNIONS cosmic shear analysis---a comprehensive measurement of weak lensing in the ultraviolet-near-infrared optical northern survey---intending to conduct it in the traditional human-implementation mode.
+
+By the second month of work, it became clear that the cost-benefit had shifted. The agentic approach was faster, more reliable for routine implementation tasks, and---crucially---enabled a depth of verification and systematic exploration that would have been infeasible if I had implemented the code myself.
+
+The UNIONS analysis involved:
+\begin{itemize}
+\item \textbf{Shape measurement calibration}: Developing photometric measurements of galaxy morphology, correcting for the point-spread function, and characterizing systematic biases in shape estimation. (\textit{~8,000 lines of code})
+\item \textbf{Photometric redshift estimation}: Training and evaluating photometric redshift models, cross-validating against spectroscopic samples, and quantifying photo-z biases as a function of magnitude and color. (\textit{~4,000 lines})
+\item \textbf{Two-point function measurement}: Computing correlation functions at multiple scales, validating against multiple independent codes (TreeCorr, NaMaster, Corrfuncs), and testing for systematic artifacts. (\textit{~6,000 lines})
+\item \textbf{Covariance estimation}: Measuring sample covariance from simulations, computing model-based covariance predictions, and testing robustness to survey geometry and clustering assumptions. (\textit{~3,000 lines})
+\item \textbf{Systematic modeling}: Implementing models for intrinsic alignments, baryonic feedback, and photometric errors; running multiple variants in parallel to assess sensitivity. (\textit{~15,000 lines})
+\item \textbf{Bayesian inference}: Constructing likelihood functions, setting priors, running MCMC chains, and extracting cosmological constraints ($\Omega_m$, $\sigma_8$, intrinsic alignment amplitude, etc.). (\textit{~8,000 lines})
+\item \textbf{Validation and visualization}: Generating hundreds of diagnostic plots, null tests on subsets of the data, consistency checks across magnitude and redshift bins. (\textit{~14,000 lines})
+\end{itemize}
+
+Total: \textasciitilde58,000 lines of Python, all verification plots, and the complete manuscript. All produced by AI agents under my supervision.
+
+The shift in my role was qualitative. Instead of implementing code and debugging failures, I designed analyses and designed the tests that would tell me if something went wrong. I specified:
+\begin{itemize}
+\item Which estimators to use and why (TreeCorr for 2PCF, NaMaster for map-based correlations)
+\item What null tests constituted evidence of systematic error (star-galaxy cross-correlations, consistency across redshift slices)
+\item How to validate each component (comparison against prior analyses, scaling with survey area, robustness to parameter choices)
+\item How much verification was enough (diminishing returns after \textasciitilde100 distinct tests)
+\end{itemize}
+
+The result is a cosmic shear analysis with verification and systematic exploration deeper than would have been feasible in a traditional 3-year postdoctoral timeline. The analysis measures weak lensing constraints on matter clustering and tests the $\Lambda$CDM model at percent-level precision.
+
+This is the concrete evidence for the proposal's central claim: agentic science does not weaken rigor. It enables rigor at scales previously infeasible.
+
+\section*{Diffusion: Adopting Agentic Workflows in Collaborations (2025--2026)}
+
+In parallel with the UNIONS work, I have been helping other researchers adopt agentic workflows. Within the SPT collaboration, I have worked with several colleagues on adopting agentic methods for CMB power spectrum analyses and CMB lensing cross-correlations with optical surveys. The workflow is straightforward: design the analysis, specify the verification checks, and let agents handle implementation and iteration.
+
+The practical experience has been consistent: end-to-end analyses that previously took 2--3 months of implementation now take 2--4 weeks, with more thorough testing because the cost of generating additional verification checks is low. The transition requires a genuine shift in how researchers approach their work---from implementing analyses to designing and specifying them---but colleagues who have made this shift report that it sharpens their scientific judgment, because the bottleneck moves from ``can I code this?'' to ``what should I check?''
+
+\section*{Looking Forward}
+
+The trajectory is clear: from human-implemented analysis with computational tools (SPT-3G), through a transitional period of supervised student work (kinematic lensing), to fully agentic scientific workflows producing publication-ready results (UNIONS). The next challenge is making this practice reproducible, verifiable, and teachable---not as a fixed toolkit but as an evolving methodology that adapts as models improve. The proposed research program addresses this through continued cosmological analyses (CMB lensing $\times$ Euclid, multi-probe weak lensing), formalization of verification practices, and training of early-career researchers who will carry these methods forward.
+
+\end{document}

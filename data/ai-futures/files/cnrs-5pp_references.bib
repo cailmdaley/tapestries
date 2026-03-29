@@ -1,0 +1,322 @@
+%% Scaling Laws & AI Capability
+%% All entries verified via NASA ADS bibtexabs endpoint (2026-03-05)
+
+@ARTICLE{kaplan.etal20,
+       author = {{Kaplan}, Jared and {McCandlish}, Sam and {Henighan}, Tom and {Brown}, Tom B. and {Chess}, Benjamin and {Child}, Rewon and {Gray}, Scott and {Radford}, Alec and {Wu}, Jeffrey and {Amodei}, Dario},
+        title = "{Scaling Laws for Neural Language Models}",
+      journal = {arXiv e-prints},
+     keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+         year = 2020,
+        month = jan,
+          eid = {arXiv:2001.08361},
+        pages = {arXiv:2001.08361},
+     abstract = "{We study empirical scaling laws for language model performance on the
+        cross-entropy loss. The loss scales as a power-law with model
+        size, dataset size, and the amount of compute used for training,
+        with some trends spanning more than seven orders of magnitude.
+        Other architectural details such as network width or depth have
+        minimal effects within a wide range. Simple equations govern the
+        dependence of overfitting on model/dataset size and the
+        dependence of training speed on model size. These relationships
+        allow us to determine the optimal allocation of a fixed compute
+        budget. Larger models are significantly more sample-efficient,
+        such that optimally compute-efficient training involves training
+        very large models on a relatively modest amount of data and
+        stopping significantly before convergence.}",
+          doi = {10.48550/arXiv.2001.08361},
+archivePrefix = {arXiv},
+       eprint = {2001.08361},
+ primaryClass = {cs.LG},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2020arXiv200108361K}
+}
+
+@ARTICLE{hoffmann.etal22,
+       author = {{Hoffmann}, Jordan and {Borgeaud}, Sebastian and {Mensch}, Arthur and {Buchatskaya}, Elena and {Cai}, Trevor and {Rutherford}, Eliza and {de Las Casas}, Diego and {Hendricks}, Lisa Anne and {Welbl}, Johannes and {Clark}, Aidan and {Hennigan}, Tom and {Noland}, Eric and {Millican}, Katie and {van den Driessche}, George and {Damoc}, Bogdan and {Guy}, Aurelia and {Osindero}, Simon and {Simonyan}, Karen and {Elsen}, Erich and {Rae}, Jack W. and {Vinyals}, Oriol and {Sifre}, Laurent},
+        title = "{Training Compute-Optimal Large Language Models}",
+      journal = {arXiv e-prints},
+     keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning},
+         year = 2022,
+        month = mar,
+          eid = {arXiv:2203.15556},
+        pages = {arXiv:2203.15556},
+     abstract = "{We investigate the optimal model size and number of tokens for training
+        a transformer language model under a given compute budget. We
+        find that current large language models are significantly
+        undertrained, a consequence of the recent focus on scaling
+        language models whilst keeping the amount of training data
+        constant. By training over 400 language models ranging from 70
+        million to over 16 billion parameters on 5 to 500 billion
+        tokens, we find that for compute-optimal training, the model
+        size and the number of training tokens should be scaled equally:
+        for every doubling of model size the number of training tokens
+        should also be doubled. We test this hypothesis by training a
+        predicted compute-optimal model, Chinchilla, that uses the same
+        compute budget as Gopher but with 70B parameters and 4$\times$
+        more more data. Chinchilla uniformly and significantly
+        outperforms Gopher (280B), GPT-3 (175B), Jurassic-1 (178B), and
+        Megatron-Turing NLG (530B) on a large range of downstream
+        evaluation tasks. This also means that Chinchilla uses
+        substantially less compute for fine-tuning and inference,
+        greatly facilitating downstream usage. As a highlight,
+        Chinchilla reaches a state-of-the-art average accuracy of 67.5\%
+        on the MMLU benchmark, greater than a 7\% improvement over
+        Gopher.}",
+          doi = {10.48550/arXiv.2203.15556},
+archivePrefix = {arXiv},
+       eprint = {2203.15556},
+ primaryClass = {cs.CL},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2022arXiv220315556H}
+}
+
+@ARTICLE{henighan.etal20,
+       author = {{Henighan}, Tom and {Kaplan}, Jared and {Katz}, Mor and {Chen}, Mark and {Hesse}, Christopher and {Jackson}, Jacob and {Jun}, Heewoo and {Brown}, Tom B. and {Dhariwal}, Prafulla and {Gray}, Scott and {Hallacy}, Chris and {Mann}, Benjamin and {Radford}, Alec and {Ramesh}, Aditya and {Ryder}, Nick and {Ziegler}, Daniel M. and {Schulman}, John and {Amodei}, Dario and {McCandlish}, Sam},
+        title = "{Scaling Laws for Autoregressive Generative Modeling}",
+      journal = {arXiv e-prints},
+     keywords = {Computer Science - Machine Learning, Computer Science - Computation and Language, Computer Science - Computer Vision and Pattern Recognition},
+         year = 2020,
+        month = oct,
+          eid = {arXiv:2010.14701},
+        pages = {arXiv:2010.14701},
+     abstract = "{We identify empirical scaling laws for the cross-entropy loss in four
+        domains: generative image modeling, video modeling, multimodal
+        image$\leftrightarrow$text models, and mathematical problem
+        solving. In all cases autoregressive Transformers smoothly
+        improve in performance as model size and compute budgets
+        increase, following a power-law plus constant scaling law. The
+        optimal model size also depends on the compute budget through a
+        power-law, with exponents that are nearly universal across all
+        data domains. The cross-entropy loss has an information
+        theoretic interpretation as $S($True$) +
+        D_{\mathrm{KL}}($True$||$Model$)$, and the empirical scaling
+        laws suggest a prediction for both the true data distribution's
+        entropy and the KL divergence between the true and model
+        distributions. With this interpretation, billion-parameter
+        Transformers are nearly perfect models of the YFCC100M image
+        distribution downsampled to an $8\times 8$ resolution, and we
+        can forecast the model size needed to achieve any given
+        reducible loss (ie $D_{\mathrm{KL}}$) in nats/image for other
+        resolutions. We find a number of additional scaling laws in
+        specific domains: (a) we identify a scaling relation for the
+        mutual information between captions and images in multimodal
+        models, and show how to answer the question ``Is a picture worth
+        a thousand words?''; (b) in the case of mathematical problem
+        solving, we identify scaling laws for model performance when
+        extrapolating beyond the training distribution; (c) we finetune
+        generative image models for ImageNet classification and find
+        smooth scaling of the classification loss and error rate, even
+        as the generative loss levels off. Taken together, these results
+        strengthen the case that scaling laws have important
+        implications for neural network performance, including on
+        downstream tasks.}",
+          doi = {10.48550/arXiv.2010.14701},
+archivePrefix = {arXiv},
+       eprint = {2010.14701},
+ primaryClass = {cs.LG},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2020arXiv201014701H}
+}
+
+@ARTICLE{bahri.etal24,
+       author = {{Bahri}, Yasaman and {Dyer}, Ethan and {Kaplan}, Jared and {Lee}, Jaehoon and {Sharma}, Utkarsh},
+        title = "{Explaining neural scaling laws}",
+      journal = {Proceedings of the National Academy of Science},
+     keywords = {Computer Science - Machine Learning, Condensed Matter - Disordered Systems and Neural Networks, Statistics - Machine Learning},
+         year = 2024,
+        month = jun,
+       volume = {121},
+       number = {27},
+          eid = {e2311878121},
+        pages = {e2311878121},
+     abstract = "{The population loss of trained deep neural networks has been empirically
+        observed to improve as a power law in a variety of large models
+        and datasets. We investigate the origins behind such ``scaling
+        laws'' and provide a taxonomy for different scaling regimes. Our
+        findings are based on derivations in linear random feature
+        models{\textemdash}which, in addition to being a simple fruitful
+        model, also describe the wide network limit of deep neural
+        networks. We further formulate and verify aspects of scaling
+        based on smoothness in interpolating a data manifold. We support
+        our theory with empirical results in realistic settings. Our
+        work provides insights into scaling laws and bridges the large
+        gap between theory and experiment in modern deep learning.}",
+          doi = {10.1073/pnas.2311878121},
+archivePrefix = {arXiv},
+       eprint = {2102.06701},
+ primaryClass = {cs.LG},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2024PNAS..12111878B}
+}
+
+@ARTICLE{villalobos.etal22,
+       author = {{Villalobos}, Pablo and {Ho}, Anson and {Sevilla}, Jaime and {Besiroglu}, Tamay and {Heim}, Lennart and {Hobbhahn}, Marius},
+        title = "{Will we run out of data? Limits of LLM scaling based on human-generated data}",
+      journal = {arXiv e-prints},
+     keywords = {Computer Science - Machine Learning, Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Computer Vision and Pattern Recognition, Computer Science - Computers and Society},
+         year = 2022,
+        month = oct,
+          eid = {arXiv:2211.04325},
+        pages = {arXiv:2211.04325},
+     abstract = "{We investigate the potential constraints on LLM scaling posed by the
+        availability of public human-generated text data. We forecast
+        the growing demand for training data based on current trends and
+        estimate the total stock of public human text data. Our findings
+        indicate that if current LLM development trends continue, models
+        will be trained on datasets roughly equal in size to the
+        available stock of public human text data between 2026 and 2032,
+        or slightly earlier if models are overtrained. We explore how
+        progress in language modeling can continue when human-generated
+        text datasets cannot be scaled any further. We argue that
+        synthetic data generation, transfer learning from data-rich
+        domains, and data efficiency improvements might support further
+        progress.}",
+          doi = {10.48550/arXiv.2211.04325},
+archivePrefix = {arXiv},
+       eprint = {2211.04325},
+ primaryClass = {cs.LG},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2022arXiv221104325V}
+}
+
+@ARTICLE{snell.etal24,
+       author = {{Snell}, Charlie and {Lee}, Jaehoon and {Xu}, Kelvin and {Kumar}, Aviral},
+        title = "{Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters}",
+      journal = {arXiv e-prints},
+     keywords = {Computer Science - Machine Learning, Computer Science - Computation and Language},
+         year = 2024,
+        month = aug,
+          eid = {arXiv:2408.03314},
+        pages = {arXiv:2408.03314},
+     abstract = "{Enabling LLMs to improve their outputs by using more test-time
+        computation is a critical step towards building generally self-
+        improving agents that can operate on open-ended natural
+        language. In this paper, we study the scaling of inference-time
+        computation in LLMs, with a focus on answering the question: if
+        an LLM is allowed to use a fixed but non-trivial amount of
+        inference-time compute, how much can it improve its performance
+        on a challenging prompt? Answering this question has
+        implications not only on the achievable performance of LLMs, but
+        also on the future of LLM pretraining and how one should
+        tradeoff inference-time and pre-training compute. Despite its
+        importance, little research attempted to understand the scaling
+        behaviors of various test-time inference methods. Moreover,
+        current work largely provides negative results for a number of
+        these strategies. In this work, we analyze two primary
+        mechanisms to scale test-time computation: (1) searching against
+        dense, process-based verifier reward models; and (2) updating
+        the model's distribution over a response adaptively, given the
+        prompt at test time. We find that in both cases, the
+        effectiveness of different approaches to scaling test-time
+        compute critically varies depending on the difficulty of the
+        prompt. This observation motivates applying a ``compute-
+        optimal'' scaling strategy, which acts to most effectively
+        allocate test-time compute adaptively per prompt. Using this
+        compute-optimal strategy, we can improve the efficiency of test-
+        time compute scaling by more than 4x compared to a best-of-N
+        baseline. Additionally, in a FLOPs-matched evaluation, we find
+        that on problems where a smaller base model attains somewhat
+        non-trivial success rates, test-time compute can be used to
+        outperform a 14x larger model.}",
+          doi = {10.48550/arXiv.2408.03314},
+archivePrefix = {arXiv},
+       eprint = {2408.03314},
+ primaryClass = {cs.LG},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2024arXiv240803314S}
+}
+
+%% Synthetic Data & Open Data
+
+@ARTICLE{langlais.etal25,
+       author = {{Langlais}, Pierre-Carl and {Rosas Hinostroza}, Carlos and {Nee}, Mattia and {Arnett}, Catherine and {Chizhov}, Pavel and {Jones}, Eliot Krzystof and {Girard}, Irene and {Mach}, David and {Stasenko}, Anastasia and {Yamshchikov}, Ivan P.},
+        title = "{Common Corpus: The Largest Collection of Ethical Data for LLM Pre-Training}",
+      journal = {arXiv e-prints},
+         year = 2025,
+        month = jun,
+          eid = {arXiv:2506.01732},
+        pages = {arXiv:2506.01732},
+          doi = {10.48550/arXiv.2506.01732},
+archivePrefix = {arXiv},
+       eprint = {2506.01732},
+ primaryClass = {cs.CL},
+         note = {ICLR 2026 (oral)}
+}
+
+%% Foundational
+
+@misc{sutton19,
+    author = {Sutton, Rich},
+    title = {The Bitter Lesson},
+    year = {2019},
+    month = {03},
+    howpublished = {\url{http://www.incompleteideas.net/IncIdeas/BitterLesson.html}},
+}
+
+%% AI in Science & Mathematics
+
+@misc{dodelson26,
+    author = {Dodelson, Scott},
+    title = {Evolving Dark Energy and {AI}},
+    year = {2026},
+    howpublished = {\url{https://scottdodelson.substack.com/p/evolving-dark-energy-and-ai}},
+}
+
+@misc{knuth26,
+    author = {Knuth, Donald E.},
+    title = {Claude's Cycles},
+    year = {2026},
+    month = {02},
+    howpublished = {\url{https://www-cs-faculty.stanford.edu/~knuth/papers/claude-cycles.pdf}},
+}
+
+@ARTICLE{laverick.etal24,
+       author = {{Laverick}, Andrew and {Surrao}, Kristen and {Zubeldia}, Inigo and {Bolliet}, Boris and {Cranmer}, Miles and {Lewis}, Antony and {Sherwin}, Blake and {Lesgourgues}, Julien},
+        title = "{Multi-Agent System for Cosmological Parameter Analysis}",
+      journal = {arXiv e-prints},
+     keywords = {Astrophysics - Instrumentation and Methods for Astrophysics, Computer Science - Artificial Intelligence},
+         year = 2024,
+        month = nov,
+          eid = {arXiv:2412.00431},
+        pages = {arXiv:2412.00431},
+          doi = {10.48550/arXiv.2412.00431},
+archivePrefix = {arXiv},
+       eprint = {2412.00431},
+ primaryClass = {astro-ph.IM},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2024arXiv241200431L}
+}
+
+%% Agentic Science Benchmarks
+
+@ARTICLE{chen.etal24,
+       author = {{Chen}, Ziru and {Chen}, Shijie and {Ning}, Yuting and {Zhang}, Qianheng and {Wang}, Boshi and {Yu}, Botao and {Li}, Yifei and {Liao}, Zeyi and {Wei}, Chen and {Lu}, Zitong and others},
+        title = "{ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery}",
+      journal = {arXiv e-prints},
+         year = 2024,
+        month = oct,
+          eid = {arXiv:2410.05080},
+        pages = {arXiv:2410.05080},
+          doi = {10.48550/arXiv.2410.05080},
+archivePrefix = {arXiv},
+       eprint = {2410.05080},
+ primaryClass = {cs.AI},
+         note = {COLM 2025}
+}
+
+@ARTICLE{bragg.etal25,
+       author = {{Bragg}, Jonathan and {D'Arcy}, Mike and {Balepur}, Nishant and {Bareket}, Dan and {Dalvi}, Bhavana and {Feldman}, Sergey and others},
+        title = "{AstaBench: Rigorous Benchmarking of AI Agents with a Scientific Research Suite}",
+      journal = {arXiv e-prints},
+         year = 2025,
+        month = oct,
+          eid = {arXiv:2510.21652},
+        pages = {arXiv:2510.21652},
+          doi = {10.48550/arXiv.2510.21652},
+archivePrefix = {arXiv},
+       eprint = {2510.21652},
+ primaryClass = {cs.AI}
+}
+
+%% Agentic AI & Capability Measurement
+
+@misc{metr26,
+    title = {Task-Completion Time Horizons of Frontier {AI} Models},
+    author = {{METR}},
+    howpublished = {\url{https://metr.org/time-horizons/}},
+    year = {2026},
+    month = {03},
+}

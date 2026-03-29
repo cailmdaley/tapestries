@@ -1,0 +1,166 @@
+\documentclass[11pt, a4paper]{article}
+
+% --- Encoding & typography ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ebgaramond}
+\usepackage{raleway}
+\usepackage{microtype}
+\usepackage{amssymb}
+
+% Garamond for body, Raleway for headings
+\renewcommand{\rmdefault}{EBGaramond-LF}
+\newcommand{\headingfont}{\sffamily}
+
+% --- Layout ---
+\usepackage[top=2.2cm, bottom=2.4cm, left=2.4cm, right=2.4cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{multicol}
+
+% --- Figures, links, references ---
+\usepackage{xcolor}
+\usepackage{graphicx}
+\definecolor{linkteal}{RGB}{0, 110, 120}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=linkteal, urlcolor=linkteal]{hyperref}
+\usepackage[backend=biber, style=authoryear, natbib=true, maxnames=1, minnames=1, uniquelist=false, dashed=false, doi=true, url=false, isbn=false]{biblatex}
+\addbibresource{references.bib}
+\addbibresource{daley_publications.bib}
+% Compact fullcite: "First et al. (Year). Title. Journal."
+\AtEveryBibitem{\clearfield{abstract}\clearfield{note}\clearfield{archiveprefix}\clearfield{primaryclass}\clearlist{keywords}}
+\ExecuteBibliographyOptions{doi=false}
+\DeclareFieldFormat[article]{title}{\mkbibquote{#1}}
+\DeclareFieldFormat[misc]{title}{\mkbibquote{#1}}
+% Categorize publication list entries so they don't print in the 5pp bibliography
+\DeclareBibliographyCategory{publist}
+\AtEveryCitekey{\iffieldequalstr{file}{daley_publications.bib}{\addtocategory{publist}{\thefield{entrykey}}}{}}
+% Simpler: just add all daley_publications keys to category at document start
+\AtBeginDocument{%
+  \addtocategory{publist}{quan.etal26,wan.etal26,maniyar.etal26,dehaan.etal26,archipley.etal26,qu.etal26,chaubal.etal26,gwyn.etal25,zebrowski.etal25,vitrier.etal25,khalife.etal25,camphuis.etal25,foster.etal25,ge.etal25,coerver.etal25,klein.etal25,chichura.etal25,tandoi.etal24,prabhu.etal24,ansarinejad.etal24,raghunathan.etal24,pan.etal23,balkenhol.etal23,schiappucci.etal23,chichura.etal22,ferguson.etal22,sobrin.etal22,montgomery.etal22,millea.etal21,balkenhol.etal21,dutcher.etal21,guns.etal21,daley.etal19,hughes.etal17,walsh.etal17,raghunathan.etal26}%
+}
+
+% --- Header/footer ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\small\scshape CNRS AI Rising Talents}
+\fancyhead[R]{\small\scshape Cail Daley}
+\fancyfoot[C]{\small\thepage}
+
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\fancyfoot[C]{\small\thepage}}
+\fancypagestyle{sectionstart}{\fancyhf{}\renewcommand{\headrulewidth}{0.4pt}\fancyhead[L]{\small\scshape CNRS AI Rising Talents}\fancyhead[R]{\small\scshape Cail Daley}\fancyfoot[C]{\small\thepage}}
+
+% --- Compact lists ---
+\setlist[itemize]{topsep=0.3em, itemsep=0.1em, parsep=0em, leftmargin=1.5em}
+
+% --- Section formatting ---
+\titleformat{\section}{\large\headingfont\bfseries\scshape}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.4em}
+
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+\titlespacing*{\subsection}{0pt}{0.8em}{0.3em}
+
+\titleformat{\paragraph}[runin]{\bfseries\scshape}{}{0em}{}
+\titlespacing*{\paragraph}{0pt}{0.6em}{0.4em}
+
+% --- Dossier part separator ---
+\newcommand{\dossiersection}[1]{%
+  \clearpage
+  \thispagestyle{sectionstart}
+  \begin{center}
+    \vspace*{1cm}
+    {\LARGE\headingfont\bfseries\scshape #1\par}
+    \vspace{0.3em}
+    {\normalsize\scshape Cail Daley\par}
+    \vspace{0.15em}
+    {\small\scshape March 2026}
+  \end{center}
+  \vspace{0.3em}
+  \noindent\rule{\textwidth}{0.4pt}
+  \vspace{0.8em}
+}
+
+\begin{document}
+
+% ===================================================================
+% TITLE & TABLE OF CONTENTS
+% ===================================================================
+\thispagestyle{plain}
+\begin{center}
+  \vspace*{2cm}
+  {\LARGE\headingfont\bfseries\scshape Application Dossier\par}
+  \vspace{0.5em}
+  {\large\scshape Cail Daley\par}
+  \vspace{0.2em}
+  {\normalsize CNRS AI Rising Talents \,·\, March 2026\par}
+\end{center}
+\vspace{1.8cm}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{1em}
+
+\noindent{\large\headingfont\bfseries\scshape Contents\par}
+\vspace{0.8em}
+
+\noindent\hyperref[sec:cv]{\textbf{I.\enspace Curriculum Vitae}}\dotfill\,\pageref{sec:cv}\\[0.15em]
+{\small Contact, research interests, education, positions, supervision, and service.}
+
+\vspace{0.6em}
+
+\noindent\hyperref[sec:report]{\textbf{II.\enspace Report on Previous Research}}\dotfill\,\pageref{sec:report}\\[0.15em]
+{\small CMB lensing with SPT-3G, cross-correlations with optical surveys, and agentic science methodology.}
+
+\vspace{0.6em}
+
+\noindent\hyperref[sec:publications]{\textbf{III.\enspace Publications and Contributions}}\dotfill\,\pageref{sec:publications}\\[0.15em]
+{\small Highlighted publications with personal contributions; comprehensive list of 40+ refereed papers.}
+
+\vspace{0.6em}
+
+\noindent\hyperref[sec:programme]{\textbf{IV.\enspace Research Programme}}\dotfill\,\pageref{sec:programme}\\[0.15em]
+{\small Developing the practice of AI-mediated science through observational cosmology (5 pages + bibliography).}
+
+\vspace{0.6em}
+
+\noindent\hyperref[sec:references]{\textbf{V.\enspace References}}\dotfill\,\pageref{sec:references}\\[0.15em]
+{\small Three referee contacts.}
+
+% ===================================================================
+% PART I: CURRICULUM VITAE
+% ===================================================================
+\dossiersection{Curriculum Vitae}
+\phantomsection\label{sec:cv}
+\thispagestyle{plain}
+\input{sections/cv}
+
+% ===================================================================
+% PART II: REPORT ON PREVIOUS WORK
+% ===================================================================
+\dossiersection{Report on Previous Research}
+\phantomsection\label{sec:report}
+\input{sections/research-report}
+
+% ===================================================================
+% PART III: PUBLICATIONS
+% ===================================================================
+\dossiersection{Publications and Contributions}
+\phantomsection\label{sec:publications}
+\input{sections/publications}
+
+% ===================================================================
+% PART IV: RESEARCH PROGRAMME (5pp)
+% ===================================================================
+\dossiersection{Developing the Practice of AI-Mediated Science\\[0.2em]{\large through Observational Cosmology}}
+\phantomsection\label{sec:programme}
+\input{sections/research-programme}
+
+\printbibliography[notcategory=publist, heading=none]
+
+% ===================================================================
+% PART V: REFERENCES
+% ===================================================================
+\dossiersection{References}
+\phantomsection\label{sec:references}
+\input{sections/references-contacts}
+
+\end{document}

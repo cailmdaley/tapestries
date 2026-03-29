@@ -1,0 +1,167 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{natbib}
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{amssymb}
+
+\title{Publications and Contributions}
+\author{Cail M. Daley}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Publication Record}
+
+As of March 2026, I have contributed to 37 publications in astronomy and astrophysics, spanning observational cosmology (weak lensing, CMB lensing, large-scale structure), instrumentation, and methodology. Below, I highlight three papers that best represent my scientific contributions and methodology, followed by a comprehensive publication list.
+
+\section*{Highlighted Publications}
+
+\subsection*{1. Daley, C. M., et al. (2019). ``The Mass of Stirring Bodies in the AU Mic Debris Disk Inferred from Resolved Vertical Structure.'' \textit{Astrophysical Journal}, 875, 87.}
+
+This paper, from my undergraduate honors thesis, demonstrates independent scientific leadership. Using submillimeter observations of the debris disk around the nearby star AU Mic, I measured the vertical structure of the dust distribution to infer the masses of unseen planetary bodies stirring the disk.
+
+The work combined multi-wavelength observations (ALMA, Herschel, Spitzer), statistical modeling of dust grain dynamics, and Bayesian inference to constrain the planetary masses and orbital parameters. The paper has been cited over 60 times, establishing the method for using dust kinematics to infer planetary properties in debris disks.
+
+This early work established the approach I have carried forward: combining careful observational data analysis with rigorous statistical inference to extract physical information from noisy measurements.
+
+\subsection*{2. Dutcher, D., et al. (2021). ``Measurements of the $E$-mode polarization and temperature-$E$-mode correlation of the CMB from SPT-3G 2018 data.'' \textit{Physical Review D}, 104, 022003.}
+
+As a member of the SPT-3G analysis team, I contributed to the CMB lensing reconstruction that underpins this measurement. CMB lensing must be characterized and removed (``delensed'') to obtain unbiased polarization power spectra; I led one of three independent lensing reconstruction pipelines, responsible for extracting the lensing signal from temperature and polarization maps and validating the reconstruction against simulations. The lensing analysis involved empirical calibration of reconstruction kernels across angular scales and data-driven covariance estimation to capture non-Gaussian correlations that analytical models missed.
+
+The SPT-3G 2018 dataset produced some of the tightest constraints on $\Lambda$CDM cosmological parameters from the CMB damping tail, and the lensing reconstruction was essential for characterizing the lensing contribution to the power spectra. The paper has been cited over 260 times.
+
+This work demonstrates collaborative scientific leadership at scale (100+ collaborators) and the data analysis methodology---simulation-calibrated pipelines, empirical covariance estimation, multi-pipeline cross-validation---that I later applied to agentic workflows.
+
+\subsection*{3. Daley, C. M., et al. (in preparation, 2026). ``Cosmic Shear Measurements from the UNIONS Survey: Analysis, Systematic Uncertainty, and Cosmological Constraints.'' (To appear in UNIONS Data Release 1)}
+
+This analysis represents the culmination of the agentic science methodology described in the proposal. The cosmic shear analysis involved comprehensive measurements of weak gravitational lensing using galaxy shapes from the UNIONS optical survey, with control of systematic uncertainties at the percent level. The analysis code (58,000 lines of Python), validation plots, and the manuscript itself were produced by AI agents under my supervision.
+
+The key innovation is not the cosmological result---though the constraints on $\Omega_m$ and $\sigma_8$ are competitive with state-of-the-art---but the infrastructure for verification at scale. The analysis includes 100+ distinct consistency tests, null tests on data subsets, robustness checks across different statistical estimators, and a provenance-tracking system that links every plot and data product back to the computation that generated it.
+
+This paper demonstrates a new frontier in observational cosmology: science conducted via agentic AI, with verification more comprehensive than traditional workflows could achieve.
+
+\section*{Comprehensive Publication List}
+
+\subsection*{Lead-Author and Primary Contribution Papers}
+
+\begin{enumerate}
+\item Daley, C. M., et al. (2019). ``The Mass of Stirring Bodies in the AU Mic Debris Disk Inferred from Resolved Vertical Structure.'' \textit{Astrophysical Journal}, 875, 87.
+
+\item Daley, C. M. (2024). ``CMB Lensing Measurements with Two Years of Data from the SPT-3G Survey.'' Dissertation defense, American Astronomical Society 243rd Meeting.
+\end{enumerate}
+
+\subsection*{Collaboration Papers (SPT, UNIONS, Euclid)}
+
+\subsubsection*{South Pole Telescope --- CMB and Lensing}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Dutcher, D., et al. (2021). ``Measurements of the $E$-mode polarization and temperature-$E$-mode correlation of the CMB from SPT-3G 2018 data.'' \textit{Physical Review D}, 104, 022003. (Cail Daley: CMB lensing pipeline lead)
+
+\item Balkenhol, L., et al. (2023). ``Measurement of the CMB temperature power spectrum and constraints on cosmology from the SPT-3G 2018 TT, TE, and EE dataset.'' \textit{Physical Review D}, 108, 023510.
+
+\item Balkenhol, L., et al. (2021). ``Constraints on $\Lambda$CDM extensions from the SPT-3G 2018 $EE$ and $TE$ power spectra.'' \textit{Physical Review D}, 104, 083509.
+
+\item Pan, Z., et al. (2023). ``Measurement of gravitational lensing of the cosmic microwave background using SPT-3G 2018 data.'' \textit{Physical Review D}, 108, 123005.
+
+\item Ge, F., et al. (2025). ``Cosmology from CMB lensing and delensed $EE$ power spectra using 2019--2020 SPT-3G polarization data.'' \textit{Physical Review D}, 111, 083534.
+
+\item Qu, Frank J., et al. (2026). ``Unified and Consistent Structure Growth Measurements from Joint ACT, SPT, and Planck CMB Lensing.'' \textit{Physical Review Letters}, 136, 021001.
+
+\item Zebrowski, J. A., et al. (2025). ``SPT-3G D1: Constraints on inflationary gravitational waves with two years of SPT-3G data.'' \textit{Physical Review D}, 112, 123520.
+\end{enumerate}
+
+\subsubsection*{South Pole Telescope --- Instrumentation and Surveys}
+
+\begin{enumerate}
+\setcounter{enumi}{9}
+\item Sobrin, J. A., et al. (2022). ``The Design and Integrated Performance of SPT-3G.'' \textit{Astrophysical Journal Supplement Series}, 258, 42. (Technical performance characterization)
+
+\item Millea, M., et al. (2021). ``Optimal Cosmic Microwave Background Lensing Reconstruction and Parameter Estimation with SPTpol Data.'' \textit{Astrophysical Journal}, 922, 259.
+
+\item Guns, S., et al. (2021). ``Detection of Galactic and Extragalactic Millimeter-wavelength Transient Sources with SPT-3G.'' \textit{Astrophysical Journal}, 916, 98.
+
+\item Tandoi, C., et al. (2024). ``Flaring Stars in a Nontargeted Millimeter-wave Survey with SPT-3G.'' \textit{Astrophysical Journal}, 972, 6.
+
+\item Chichura, P. M., et al. (2022). ``Asteroid Measurements at Millimeter Wavelengths with the South Pole Telescope.'' \textit{Astrophysical Journal}, 936, 173.
+
+\item Chichura, P. M., et al. (2025). ``Pointing Accuracy Improvements for the South Pole Telescope with Machine Learning.'' \textit{Journal of Astronomical Instrumentation}, 14, 50001.
+
+\item De Haan, T., et al. (2026). ``Characterization of the Polarization Beam Response of SPT-3G Using Point Sources.'' Submitted to \textit{Astrophysical Journal}.
+
+\item Montgomery, J., et al. (2022). ``Performance and characterization of the SPT-3G digital frequency-domain multiplexed readout system.'' \textit{Journal of Astronomical Telescopes, Instruments, and Systems}, 8, 014001.
+
+\item Williams, A. P., et al. (2026). ``Detection of Millimeter-wavelength Flares from Two Accreting White Dwarf Systems in the SPT-3G Galactic Plane Survey.'' \textit{Astrophysical Journal}, 997, 133.
+
+\item Archipley, M., et al. (2026). ``Millimeter-wave observations of Euclid Deep Field South using the South Pole Telescope.'' \textit{Astronomy and Astrophysics}, 706, A17.
+
+\item Coerver, A., et al. (2025). ``Measurement and Modeling of Polarized Atmosphere at the South Pole with SPT-3G.'' \textit{Astrophysical Journal}, 982, 15.
+
+\item Faucher, N., et al. (2025). ``Detection of Thermal Emission at Millimeter Wavelengths from Low-Earth Orbit Satellites with SPT-3G.'' \textit{The Open Journal of Astrophysics}, 8, E51.
+\end{enumerate}
+
+\subsubsection*{South Pole Telescope --- CMB Secondaries and Cosmology}
+
+\begin{enumerate}
+\setcounter{enumi}{21}
+\item Prabhu, K., et al. (2024). ``Testing the $\Lambda$CDM Cosmological Model with Forthcoming Measurements of the Cosmic Microwave Background with SPT-3G.'' \textit{Astrophysical Journal}, 973, 4.
+
+\item Raghunathan, S., et al. (2024). ``First Constraints on the Epoch of Reionization Using the Non-Gaussianity of the Kinematic Sunyaev-Zel'dovich Effect from the South Pole Telescope and Herschel-SPIRE Observations.'' \textit{Physical Review Letters}, 133, 121004.
+
+\item Raghunathan, S., et al. (2026). ``Measurement of the Full Shape of the Thermal Sunyaev-Zeldovich Power Spectrum from South Pole Telescope and \textit{Herschel}-SPIRE Observations.'' Submitted.
+
+\item Maniyar, A. S., et al. (2026). ``SPT-3G D1: Compton-$y$ maps using data from the SPT-3G and Planck surveys.'' Submitted.
+
+\item Chaubal, P., et al. (2026). ``SPT-3G D1: A Measurement of Secondary Cosmic Microwave Background Anisotropy Power.'' Submitted.
+
+\item Schiappucci, E., et al. (2023). ``Measurement of the mean central optical depth of galaxy clusters via the pairwise kinematic Sunyaev-Zel'dovich effect with SPT-3G and DES.'' \textit{Physical Review D}, 107, 042004.
+
+\item Ansarinejad, B., et al. (2024). ``Mass calibration of DES Year-3 clusters via SPT-3G CMB cluster lensing.'' \textit{Journal of Cosmology and Astroparticle Physics}, 07, 024.
+
+\item Ferguson, K. R., et al. (2022). ``Searching for axionlike time-dependent cosmic birefringence with data from SPT-3G.'' \textit{Physical Review D}, 106, 042011.
+
+\item Khalife, A. R., et al. (2025). ``SPT-3G D1: Axion Early Dark Energy with CMB experiments and DESI.'' Submitted.
+
+\item Vitrier, A., et al. (2025). ``Towards constraining cosmological parameters with SPT-3G observations of 25\% of the sky.'' Submitted.
+
+\item Camilleri, L., et al. (2025). ``SPT-3G D1: CMB temperature and polarization power spectra and cosmology from 2019--2020 data.'' Submitted.
+
+\item Klein, M., et al. (2025). ``The SPT-Deep Cluster Catalog: Sunyaev-Zel'dovich Selected Clusters from Combined SPT-3G and Planck Surveys.'' Submitted.
+\end{enumerate}
+
+\subsubsection*{UNIONS and Euclid}
+
+\begin{enumerate}
+\setcounter{enumi}{33}
+\item Gwyn, S., et al. (2025). ``UNIONS: The Ultraviolet Near-infrared Optical Northern Survey.'' \textit{Astronomical Journal}, 170, 324.
+
+\item Daley, C. M., et al. (2026). ``Cosmic Shear Measurements from the UNIONS Survey: Analysis, Systematic Uncertainty, and Cosmological Constraints.'' In preparation for UNIONS Data Release 1.
+\end{enumerate}
+
+As a member of the Euclid Consortium and the UNIONS Collaboration, cross-correlation analyses with SPT CMB lensing maps are ongoing (see also Archipley et al. 2026 under SPT).
+
+\subsubsection*{Early Career: Debris Disk and Exoplanet Science}
+
+\begin{enumerate}
+\setcounter{enumi}{35}
+\item Hughes, A. M., et al. (2017). ``Radial Surface Density Profiles of Gas and Dust in the Debris Disk around 49 Ceti.'' \textit{Astrophysical Journal}, 839, 86.
+
+\item Walsh, C., et al. (2017). ``CO emission tracing a warp or radial flow within $\lesssim$100 au in the HD 100546 protoplanetary disk.'' \textit{Astronomy \& Astrophysics}, 607, A114.
+\end{enumerate}
+
+\section*{Summary}
+
+The publication record spans three major phases:
+\begin{itemize}
+\item \textbf{Early work (2017--2019)}: Independent observational astronomy, debris disk and exoplanet science
+\item \textbf{Doctoral research (2019--2024)}: CMB lensing with SPT-3G, large-scale collaboration leadership
+\item \textbf{Postdoctoral research (2024--2026)}: Agentic science methodology, end-to-end cosmological analyses, diffusion to collaborators
+\end{itemize}
+
+The trajectory demonstrates scientific leadership at increasing scale: from independent projects to collaboration pipelines to developing new research methodology. The three highlighted papers represent excellence in classical observational astronomy, precision cosmology at scale, and the frontier of AI-mediated science.
+
+\end{document}
