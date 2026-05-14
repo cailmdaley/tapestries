@@ -1,0 +1,1231 @@
+{
+  "slug": "vellum-on-vellum",
+  "kind": "Article",
+  "mdast": {
+    "type": "root",
+    "children": [
+      {
+        "type": "heading",
+        "depth": 1,
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Vellum on Vellum",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 3,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "This is a fiber.",
+            "position": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 5,
+            "column": 1
+          },
+          "end": {
+            "line": 9,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "It lives at ",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": ".felt/vellum-on-vellum/vellum-on-vellum.md",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " inside the\n",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "link",
+            "url": "https://github.com/cailmdaley/vellum-reader",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "inlineCode",
+                "value": "vellum-reader",
+                "position": {
+                  "start": {
+                    "line": 5,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " repo, as a markdown file with YAML frontmatter, a\nshort body, and a ",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "link",
+            "url": "https://github.com/cailmdaley/felt",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "inlineCode",
+                "value": "[[wikilink]]",
+                "position": {
+                  "start": {
+                    "line": 5,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " or two. A content server reads it\nfrom disk; an adapter passes it to Vellum; Vellum renders it through\n",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "link",
+            "url": "https://mystmd.org",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "MyST",
+                "position": {
+                  "start": {
+                    "line": 5,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ", so directives and math and footnotes ",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "footnoteReference",
+            "identifier": "1",
+            "label": "1",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " all just work.",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 11,
+            "column": 1
+          },
+          "end": {
+            "line": 13,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "You are reading the rendered version of this very file. That is the joke,\nand also the test: anything the reader is capable of showing, this fiber\nshould exercise.",
+            "position": {
+              "start": {
+                "line": 11,
+                "column": 1
+              },
+              "end": {
+                "line": 11,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 15,
+            "column": 1
+          },
+          "end": {
+            "line": 15,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "What Vellum is",
+            "position": {
+              "start": {
+                "line": 15,
+                "column": 1
+              },
+              "end": {
+                "line": 15,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 17,
+            "column": 1
+          },
+          "end": {
+            "line": 17,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "A static reader for ",
+            "position": {
+              "start": {
+                "line": 17,
+                "column": 1
+              },
+              "end": {
+                "line": 17,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 17,
+                "column": 1
+              },
+              "end": {
+                "line": 17,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "felt",
+                "position": {
+                  "start": {
+                    "line": 17,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 17,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " fibers.",
+            "position": {
+              "start": {
+                "line": 17,
+                "column": 1
+              },
+              "end": {
+                "line": 17,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 19,
+            "column": 1
+          },
+          "end": {
+            "line": 24,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 19,
+                "column": 1
+              },
+              "end": {
+                "line": 20,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 19,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "felt",
+                        "position": {
+                          "start": {
+                            "line": 19,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 19,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " is the substrate: directory-contained markdown, ",
+                    "position": {
+                      "start": {
+                        "line": 19,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "[[wikilinks]]",
+                    "position": {
+                      "start": {
+                        "line": 19,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ",\nproactive filing, retroactive extraction.",
+                    "position": {
+                      "start": {
+                        "line": 19,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 21,
+                "column": 1
+              },
+              "end": {
+                "line": 24,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 21,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Vellum",
+                        "position": {
+                          "start": {
+                            "line": 21,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 21,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " is the surface: an adapter-driven React reader that consumes\nwhatever data shape a host provides and renders fibers as a navigable,\nbacklink-aware, MyST-rendered web.",
+                    "position": {
+                      "start": {
+                        "line": 21,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 25,
+            "column": 1
+          },
+          "end": {
+            "line": 27,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "The line between them is deliberate. Felt doesn’t care how its fibers are\nshown; Vellum doesn’t care where the fibers come from. The seam is the\nadapter.",
+            "position": {
+              "start": {
+                "line": 25,
+                "column": 1
+              },
+              "end": {
+                "line": 25,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 29,
+            "column": 1
+          },
+          "end": {
+            "line": 29,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "The adapter idea",
+            "position": {
+              "start": {
+                "line": 29,
+                "column": 1
+              },
+              "end": {
+                "line": 29,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 31,
+            "column": 1
+          },
+          "end": {
+            "line": 32,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Vellum’s reader components never ",
+            "position": {
+              "start": {
+                "line": 31,
+                "column": 1
+              },
+              "end": {
+                "line": 31,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "fetch",
+            "position": {
+              "start": {
+                "line": 31,
+                "column": 1
+              },
+              "end": {
+                "line": 31,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " directly. They call methods on an\n",
+            "position": {
+              "start": {
+                "line": 31,
+                "column": 1
+              },
+              "end": {
+                "line": 31,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "Adapter",
+            "position": {
+              "start": {
+                "line": 31,
+                "column": 1
+              },
+              "end": {
+                "line": 31,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " injected through React context:",
+            "position": {
+              "start": {
+                "line": 31,
+                "column": 1
+              },
+              "end": {
+                "line": 31,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "lang": "ts",
+        "value": "interface Adapter {\n  getFiberContent(slug: string): Promise<FiberContent | null>;\n  getFiberGraph(): Promise<FiberGraph>;\n  searchFibers(query: string): Promise<SearchHit[]>;\n  // ...annotations, history, raw fiber edits, etc.\n}",
+        "position": {
+          "start": {
+            "line": 34,
+            "column": 1
+          },
+          "end": {
+            "line": 41,
+            "column": 1
+          }
+        }
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 43,
+            "column": 1
+          },
+          "end": {
+            "line": 46,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "A local dev server implements one Adapter. A portolan workspace implements\nanother. A static tapestry — a snapshot of fibers baked into HTML+JSON for\nGitHub Pages — implements a read-only Adapter that throws on writes. The\nsame component tree powers all three.",
+            "position": {
+              "start": {
+                "line": 43,
+                "column": 1
+              },
+              "end": {
+                "line": 43,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 48,
+            "column": 1
+          },
+          "end": {
+            "line": 48,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "That symmetry is what makes Vellum cheap to embed and cheap to deploy.",
+            "position": {
+              "start": {
+                "line": 48,
+                "column": 1
+              },
+              "end": {
+                "line": 48,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 50,
+            "column": 1
+          },
+          "end": {
+            "line": 50,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "MyST as the rendering substrate",
+            "position": {
+              "start": {
+                "line": 50,
+                "column": 1
+              },
+              "end": {
+                "line": 50,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 52,
+            "column": 1
+          },
+          "end": {
+            "line": 53,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "A fiber’s body is MyST-flavored markdown. Vellum runs it through\n",
+            "position": {
+              "start": {
+                "line": 52,
+                "column": 1
+              },
+              "end": {
+                "line": 52,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "link",
+            "url": "https://github.com/jupyter-book/myst-theme",
+            "position": {
+              "start": {
+                "line": 52,
+                "column": 1
+              },
+              "end": {
+                "line": 52,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "inlineCode",
+                "value": "myst-to-react",
+                "position": {
+                  "start": {
+                    "line": 52,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 52,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " so:",
+            "position": {
+              "start": {
+                "line": 52,
+                "column": 1
+              },
+              "end": {
+                "line": 52,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "lang": "myst",
+        "value": ":::{note}\nDirectives compose. Math like $E = mc^2$ and footnote refs [^1] render\nthrough the same pipeline. Figures and tables are first-class.\n:::",
+        "position": {
+          "start": {
+            "line": 55,
+            "column": 1
+          },
+          "end": {
+            "line": 60,
+            "column": 1
+          }
+        }
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 62,
+            "column": 1
+          },
+          "end": {
+            "line": 63,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "…actually renders. The reader’s prose surface inherits the entire MyST\necosystem rather than reimplementing a subset.",
+            "position": {
+              "start": {
+                "line": 62,
+                "column": 1
+              },
+              "end": {
+                "line": 62,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 65,
+            "column": 1
+          },
+          "end": {
+            "line": 65,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "The tapestries story",
+            "position": {
+              "start": {
+                "line": 65,
+                "column": 1
+              },
+              "end": {
+                "line": 65,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 67,
+            "column": 1
+          },
+          "end": {
+            "line": 73,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "A ",
+            "position": {
+              "start": {
+                "line": 67,
+                "column": 1
+              },
+              "end": {
+                "line": 67,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 67,
+                "column": 1
+              },
+              "end": {
+                "line": 67,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "tapestry",
+                "position": {
+                  "start": {
+                    "line": 67,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 67,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " is a frozen, public, addressable rendering of one fiber (or\na small allowlist) — baked to static HTML and JSON, served from GitHub\nPages, viewable without the development stack running. The\n",
+            "position": {
+              "start": {
+                "line": 67,
+                "column": 1
+              },
+              "end": {
+                "line": 67,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "link",
+            "url": "https://github.com/cailmdaley/vellum-reader",
+            "position": {
+              "start": {
+                "line": 67,
+                "column": 1
+              },
+              "end": {
+                "line": 67,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "inlineCode",
+                "value": "constitution-tapestries-publish",
+                "position": {
+                  "start": {
+                    "line": 67,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 67,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " sibling defines how\ntapestries get built and shipped; once it lands, this fiber becomes the\nfirst one published, at ",
+            "position": {
+              "start": {
+                "line": 67,
+                "column": 1
+              },
+              "end": {
+                "line": 67,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "cailmdaley.github.io/tapestries/vellum-on-vellum/",
+            "position": {
+              "start": {
+                "line": 67,
+                "column": 1
+              },
+              "end": {
+                "line": 67,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": ",\nand its screenshot replaces the placeholder at the top of the ",
+            "position": {
+              "start": {
+                "line": 67,
+                "column": 1
+              },
+              "end": {
+                "line": 67,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "link",
+            "url": "../../README.md",
+            "position": {
+              "start": {
+                "line": 67,
+                "column": 1
+              },
+              "end": {
+                "line": 67,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "README",
+                "position": {
+                  "start": {
+                    "line": 67,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 67,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ".",
+            "position": {
+              "start": {
+                "line": 67,
+                "column": 1
+              },
+              "end": {
+                "line": 67,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "footnoteDefinition",
+        "identifier": "1",
+        "label": "1",
+        "position": {
+          "start": {
+            "line": 67,
+            "column": 1
+          },
+          "end": {
+            "line": 67,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "paragraph",
+            "position": {
+              "start": {
+                "line": 82,
+                "column": 1
+              },
+              "end": {
+                "line": 83,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "This is a footnote. It should render at the bottom of the rendered\npage, with a return link.",
+                "position": {
+                  "start": {
+                    "line": 82,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 82,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "frontmatter": {
+    "name": "Vellum on Vellum",
+    "status": "open",
+    "tags": [
+      "vellum",
+      "reader",
+      "introduction"
+    ],
+    "outcome": "A self-referential introduction to Vellum, rendered by Vellum. The fiber\nthis README's screenshot is captured against; the first thing the\ntapestries pipeline ever publishes.",
+    "title": "Vellum on Vellum"
+  },
+  "references": {},
+  "dependencies": []
+}

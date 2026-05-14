@@ -1,0 +1,112 @@
+{
+  "documents": [
+    {
+      "id": "constitution-tapestries-publish",
+      "title": "Tapestries: vellum-reader bake, GitHub Pages deploy",
+      "status": "active",
+      "tags": [
+        "tapestry",
+        "vellum",
+        "publish",
+        "static",
+        "constitution"
+      ],
+      "outcome": "Ready to dispatch. `vellum-reader` grows a Node `bake` CLI that walks\n`.felt/`, parses MyST, and emits a self-contained static bundle.\n`cailmdaley/tapestries` (existing repo) gets its current `main` parked\non a `legacy-graph-viewer` branch and reset to a fresh main carrying\nshared `/_vellum/` assets plus per-publication subpaths. Publishing\nis user-owned shell — felt stays pure substrate. Smoke test: bake +\npush `constitution-tapestries-publish` and serve it at\n`cailmdaley.github.io/tapestries/constitution-tapestries-publish/`,\nAND capture a screenshot of `vellum-on-vellum` for the vellum-reader\nREADME's `TAPESTRIES_SCREENSHOT` placeholder.",
+      "body": "Build the static publishing surface for fibers. vellum-reader bake <fiber> walks a .felt/ store, parses MyST via myst-parser , and emits per-fiber JSON + a Fuse search index + a tiny index.html shell into --out . Pushing the bundle to a GitHub Pages repo is the user’s shell — no built-in publish verb. Vellum-reader becomes reader and producer of its own FiberContent shape; felt grows nothing. Desired state cailmdaley/tapestries : legacy-graph-viewer branch preserves the current main untouched. main carries a fresh shell: README.md (new pitch), 404.html (SPA fallback), _vellum/ (shared vellum-reader static build), .gitignore . Per-publication subdirectories live at /<slug>/ with the publication’s content/ , search-index.json , and a tiny per-pub index.html that boots vellum from /_vellum/ . GitHub Pages serves from main:/ . vellum-reader : src/bake/ — Node CLI. cli.ts , fiber-loader.ts (adapted from mystra’s felt-loader.ts , lightcone-ui-core dropped), serialize.ts ( FeltFiber → FiberContent ), search-index.ts (Fuse over emitted bundle). src/static-adapter.ts — ReadOnlyAdapter that fetches ./content/<slug>.json and ./search-index.json relative to the publication, returns empty for annotations/history, throws on writes. src/static-main.tsx + Vite static build target producing dist-static/ with base: \"/tapestries/_vellum/\" . Bake copies this into each publication’s deploy. package.json : bin: { \"vellum-reader\": \"./dist/bake/cli.js\" } ; runtime deps add myst-parser , myst-ext-tabs , myst-ext-proof , js-yaml , fuse.js , katex . React stays peer-dep-only; bake code must not transitively import React. A tsconfig.bake.json produces dist/bake/ alongside the existing Vite browser build. npm run build runs both. felt (unchanged): no new verbs, no config, no TS subdir. Usage: vellum-reader bake <slug> [--root <path>] [--depth N] [--out <dir>] # Default --root: walks up from cwd for .felt/ # Default --depth: 1 (single fiber). 0 means \"all descendants.\" # Default --out: $XDG_CACHE_HOME/vellum-reader/<slug> URL shape: Single-fiber publication: /tapestries/<bare-slug>/ . Out-of-bundle wikilinks render as stub cards (title + outcome, no click). Subtree publication: /tapestries/<root-slug>/<descendant-slug>/ . Paths within the bundle are bundle-root-relative, regardless of the source .felt/ location. In-bundle wikilinks resolve to internal navigation; out-of-bundle wikilinks render as stubs. Bare-slug collisions (same tail under different parents) error at bake time. Scope In scope: cailmdaley/tapestries migration: push current main to legacy-graph-viewer ; reset main to the new shell. vellum-reader new entry points: src/bake/ CLI, src/static-adapter.ts , src/static-main.tsx , Vite static build target, package.json + tsconfig updates. Smoke test: bake + push constitution-tapestries-publish ; serve at the URL above. Vellum-reader README: capture a screenshot of cailmdaley.github.io/tapestries/vellum-on-vellum/ (after also publishing the vellum-on-vellum fiber from the vellum-reader repo’s own .felt/ ), replace the TAPESTRIES_SCREENSHOT: vellum-on-vellum placeholder, commit. Close static-deploy-vellum-reader-scoping with --outcome pointing here. Out of scope: Felt grows anything (no felt weave , no felt publish , no .felt/publish.yaml ). Any built-in publish verb. Each user wraps bake in their own shell. npm registry publish of vellum-reader. Installation stays file: -sibling or npm install -g github:cailmdaley/vellum-reader . vellum-reader dev replacing mystra-as-dev-server. (Tempting follow-up; clean factoring.) Round-tripping giscus comments back into fibers. Asset offload (R2/S3). Cross-publication wikilink resolution. Astra-rendering in the static adapter. Quality bar Mechanical: cd ~/Documents/projects/vellum && npm install && npm run build succeeds — produces both dist/ (browser) and dist/bake/ (Node). node ~/Documents/projects/vellum/dist/bake/cli.js --root ~/loom --slug constitution-tapestries-publish --depth 1 --out /tmp/smoke produces /tmp/smoke/content/constitution-tapestries-publish.json with valid FiberContent JSON, /tmp/smoke/search-index.json containing a Fuse index, /tmp/smoke/index.html shelling vellum. npm run build:static in vellum-reader produces dist-static/ whose asset paths begin with /tapestries/_vellum/ . cd ~/Documents/projects/LightconeResearch/felt && go build ./... succeeds with no changes (felt is untouched). After publish: curl -sf https://cailmdaley.github.io/tapestries/constitution-tapestries-publish/ returns 200; HTML contains the fiber’s slug; JS loads from /tapestries/_vellum/ . (Retry after 60s if GitHub Pages serves stale — CDN propagation, not a real failure.) Qualitative: Open the published URL in a browser. The fiber renders with vellum’s normal layout. Search finds matching fibers. Wikilink neighbors render as stubs. Bake output serves cleanly with python -m http.server against the _vellum/ directory; vellum loads without internet. A felt user who hasn’t seen this constitution can npm install -g github:cailmdaley/vellum-reader , cd into their own felt store, run vellum-reader bake <slug> --out ./out , serve ./out locally, and see their fiber rendered. Evidence The worker leaves these artifacts: Commits in vellum-reader (bake CLI + static adapter + static build + package.json/tsconfig updates). Commit messages name this constitution. cailmdaley/tapestries:legacy-graph-viewer carries the old main (push before resetting); cailmdaley/tapestries:main carries the new shell. Live URL serving the fiber. Vellum-reader README screenshot in place, committed. outcome: rewritten to landed state + URL. felt history append editorial event: what landed, what surprised in the bake, what felt brittle, natural next constitution. static-deploy-vellum-reader-scoping closed with --outcome pointing here."
+    }
+  ],
+  "index": {
+    "keys": [
+      {
+        "path": [
+          "title"
+        ],
+        "id": "title",
+        "weight": 2,
+        "src": "title"
+      },
+      {
+        "path": [
+          "outcome"
+        ],
+        "id": "outcome",
+        "weight": 1.4,
+        "src": "outcome"
+      },
+      {
+        "path": [
+          "body"
+        ],
+        "id": "body",
+        "weight": 1,
+        "src": "body"
+      },
+      {
+        "path": [
+          "tags"
+        ],
+        "id": "tags",
+        "weight": 0.6,
+        "src": "tags"
+      },
+      {
+        "path": [
+          "id"
+        ],
+        "id": "id",
+        "weight": 0.2,
+        "src": "id"
+      }
+    ],
+    "records": [
+      {
+        "i": 0,
+        "$": {
+          "0": {
+            "v": "Tapestries: vellum-reader bake, GitHub Pages deploy",
+            "n": 0.408
+          },
+          "1": {
+            "v": "Ready to dispatch. `vellum-reader` grows a Node `bake` CLI that walks\n`.felt/`, parses MyST, and emits a self-contained static bundle.\n`cailmdaley/tapestries` (existing repo) gets its current `main` parked\non a `legacy-graph-viewer` branch and reset to a fresh main carrying\nshared `/_vellum/` assets plus per-publication subpaths. Publishing\nis user-owned shell — felt stays pure substrate. Smoke test: bake +\npush `constitution-tapestries-publish` and serve it at\n`cailmdaley.github.io/tapestries/constitution-tapestries-publish/`,\nAND capture a screenshot of `vellum-on-vellum` for the vellum-reader\nREADME's `TAPESTRIES_SCREENSHOT` placeholder.",
+            "n": 0.121
+          },
+          "2": {
+            "v": "Build the static publishing surface for fibers. vellum-reader bake <fiber> walks a .felt/ store, parses MyST via myst-parser , and emits per-fiber JSON + a Fuse search index + a tiny index.html shell into --out . Pushing the bundle to a GitHub Pages repo is the user’s shell — no built-in publish verb. Vellum-reader becomes reader and producer of its own FiberContent shape; felt grows nothing. Desired state cailmdaley/tapestries : legacy-graph-viewer branch preserves the current main untouched. main carries a fresh shell: README.md (new pitch), 404.html (SPA fallback), _vellum/ (shared vellum-reader static build), .gitignore . Per-publication subdirectories live at /<slug>/ with the publication’s content/ , search-index.json , and a tiny per-pub index.html that boots vellum from /_vellum/ . GitHub Pages serves from main:/ . vellum-reader : src/bake/ — Node CLI. cli.ts , fiber-loader.ts (adapted from mystra’s felt-loader.ts , lightcone-ui-core dropped), serialize.ts ( FeltFiber → FiberContent ), search-index.ts (Fuse over emitted bundle). src/static-adapter.ts — ReadOnlyAdapter that fetches ./content/<slug>.json and ./search-index.json relative to the publication, returns empty for annotations/history, throws on writes. src/static-main.tsx + Vite static build target producing dist-static/ with base: \"/tapestries/_vellum/\" . Bake copies this into each publication’s deploy. package.json : bin: { \"vellum-reader\": \"./dist/bake/cli.js\" } ; runtime deps add myst-parser , myst-ext-tabs , myst-ext-proof , js-yaml , fuse.js , katex . React stays peer-dep-only; bake code must not transitively import React. A tsconfig.bake.json produces dist/bake/ alongside the existing Vite browser build. npm run build runs both. felt (unchanged): no new verbs, no config, no TS subdir. Usage: vellum-reader bake <slug> [--root <path>] [--depth N] [--out <dir>] # Default --root: walks up from cwd for .felt/ # Default --depth: 1 (single fiber). 0 means \"all descendants.\" # Default --out: $XDG_CACHE_HOME/vellum-reader/<slug> URL shape: Single-fiber publication: /tapestries/<bare-slug>/ . Out-of-bundle wikilinks render as stub cards (title + outcome, no click). Subtree publication: /tapestries/<root-slug>/<descendant-slug>/ . Paths within the bundle are bundle-root-relative, regardless of the source .felt/ location. In-bundle wikilinks resolve to internal navigation; out-of-bundle wikilinks render as stubs. Bare-slug collisions (same tail under different parents) error at bake time. Scope In scope: cailmdaley/tapestries migration: push current main to legacy-graph-viewer ; reset main to the new shell. vellum-reader new entry points: src/bake/ CLI, src/static-adapter.ts , src/static-main.tsx , Vite static build target, package.json + tsconfig updates. Smoke test: bake + push constitution-tapestries-publish ; serve at the URL above. Vellum-reader README: capture a screenshot of cailmdaley.github.io/tapestries/vellum-on-vellum/ (after also publishing the vellum-on-vellum fiber from the vellum-reader repo’s own .felt/ ), replace the TAPESTRIES_SCREENSHOT: vellum-on-vellum placeholder, commit. Close static-deploy-vellum-reader-scoping with --outcome pointing here. Out of scope: Felt grows anything (no felt weave , no felt publish , no .felt/publish.yaml ). Any built-in publish verb. Each user wraps bake in their own shell. npm registry publish of vellum-reader. Installation stays file: -sibling or npm install -g github:cailmdaley/vellum-reader . vellum-reader dev replacing mystra-as-dev-server. (Tempting follow-up; clean factoring.) Round-tripping giscus comments back into fibers. Asset offload (R2/S3). Cross-publication wikilink resolution. Astra-rendering in the static adapter. Quality bar Mechanical: cd ~/Documents/projects/vellum && npm install && npm run build succeeds — produces both dist/ (browser) and dist/bake/ (Node). node ~/Documents/projects/vellum/dist/bake/cli.js --root ~/loom --slug constitution-tapestries-publish --depth 1 --out /tmp/smoke produces /tmp/smoke/content/constitution-tapestries-publish.json with valid FiberContent JSON, /tmp/smoke/search-index.json containing a Fuse index, /tmp/smoke/index.html shelling vellum. npm run build:static in vellum-reader produces dist-static/ whose asset paths begin with /tapestries/_vellum/ . cd ~/Documents/projects/LightconeResearch/felt && go build ./... succeeds with no changes (felt is untouched). After publish: curl -sf https://cailmdaley.github.io/tapestries/constitution-tapestries-publish/ returns 200; HTML contains the fiber’s slug; JS loads from /tapestries/_vellum/ . (Retry after 60s if GitHub Pages serves stale — CDN propagation, not a real failure.) Qualitative: Open the published URL in a browser. The fiber renders with vellum’s normal layout. Search finds matching fibers. Wikilink neighbors render as stubs. Bake output serves cleanly with python -m http.server against the _vellum/ directory; vellum loads without internet. A felt user who hasn’t seen this constitution can npm install -g github:cailmdaley/vellum-reader , cd into their own felt store, run vellum-reader bake <slug> --out ./out , serve ./out locally, and see their fiber rendered. Evidence The worker leaves these artifacts: Commits in vellum-reader (bake CLI + static adapter + static build + package.json/tsconfig updates). Commit messages name this constitution. cailmdaley/tapestries:legacy-graph-viewer carries the old main (push before resetting); cailmdaley/tapestries:main carries the new shell. Live URL serving the fiber. Vellum-reader README screenshot in place, committed. outcome: rewritten to landed state + URL. felt history append editorial event: what landed, what surprised in the bake, what felt brittle, natural next constitution. static-deploy-vellum-reader-scoping closed with --outcome pointing here.",
+            "n": 0.037
+          },
+          "3": [
+            {
+              "v": "tapestry",
+              "i": 0,
+              "n": 1
+            },
+            {
+              "v": "vellum",
+              "i": 1,
+              "n": 1
+            },
+            {
+              "v": "publish",
+              "i": 2,
+              "n": 1
+            },
+            {
+              "v": "static",
+              "i": 3,
+              "n": 1
+            },
+            {
+              "v": "constitution",
+              "i": 4,
+              "n": 1
+            }
+          ],
+          "4": {
+            "v": "constitution-tapestries-publish",
+            "n": 1
+          }
+        }
+      }
+    ]
+  }
+}

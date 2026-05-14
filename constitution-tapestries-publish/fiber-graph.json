@@ -1,0 +1,48 @@
+{
+  "nodes": [
+    {
+      "id": "constitution-tapestries-publish",
+      "label": "Tapestries: vellum-reader bake, GitHub Pages deploy",
+      "slug": "constitution-tapestries-publish",
+      "kind": "analysis",
+      "createdAt": "2026-05-13T10:35:20.915Z",
+      "status": "active",
+      "tags": [
+        "tapestry",
+        "vellum",
+        "publish",
+        "static",
+        "constitution"
+      ],
+      "verdict": "Ready to dispatch. `vellum-reader` grows a Node `bake` CLI that walks\n`.felt/`, parses MyST, and emits a self-contained static bundle.\n`cailmdaley/tapestries` (existing repo) gets its current `main` parked\non a `legacy-graph-viewer` branch and reset to a fresh main carrying\nshared `/_vellum/` assets plus per-publication subpaths. Publishing\nis user-owned shell — felt stays pure substrate. Smoke test: bake +\npush `constitution-tapestries-publish` and serve it at\n`cailmdaley.github.io/tapestries/constitution-tapestries-publish/`,\nAND capture a screenshot of `vellum-on-vellum` for the vellum-reader\nREADME's `TAPESTRIES_SCREENSHOT` placeholder.",
+      "decisionCount": 0,
+      "findingCount": 0,
+      "tempered": false,
+      "depth": 0,
+      "narrative": false,
+      "hasStructuredData": false
+    },
+    {
+      "id": "ai-futures/portolan/design/static-deploy-vellum-reader-scoping",
+      "label": "Static deploy: vellum reader index, scoping",
+      "slug": "ai-futures/portolan/design/static-deploy-vellum-reader-scoping",
+      "kind": "analysis",
+      "createdAt": "2026-04-15T06:18:23.926Z",
+      "status": "open",
+      "tags": [
+        "tapestry-dissolves",
+        "portolan",
+        "static",
+        "question"
+      ],
+      "verdict": "Three-part change: prebake fiber+graph in tapestry export, teach createPortolanStaticAdapter to read them, swap src/static/main.ts to mount WorkspaceMount/IndexView. All three need to land together.",
+      "decisionCount": 0,
+      "findingCount": 0,
+      "tempered": false,
+      "narrative": false,
+      "hasStructuredData": false
+    }
+  ],
+  "links": [],
+  "rootSlug": "constitution-tapestries-publish"
+}

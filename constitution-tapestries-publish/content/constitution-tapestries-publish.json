@@ -1,0 +1,4547 @@
+{
+  "slug": "constitution-tapestries-publish",
+  "kind": "Article",
+  "mdast": {
+    "type": "root",
+    "children": [
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 6,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Build the static publishing surface for fibers. ",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "vellum-reader bake <fiber>",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " walks a ",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": ".felt/",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " store, parses MyST via ",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "myst-parser",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": ", and\nemits per-fiber JSON + a Fuse search index + a tiny ",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "index.html",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " shell\ninto ",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "--out",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": ". Pushing the bundle to a GitHub Pages repo is the user’s\nshell — no built-in publish verb. Vellum-reader becomes reader ",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "and",
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": "\nproducer of its own ",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "FiberContent",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " shape; felt grows nothing.",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 8,
+            "column": 1
+          },
+          "end": {
+            "line": 8,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Desired state",
+            "position": {
+              "start": {
+                "line": 8,
+                "column": 1
+              },
+              "end": {
+                "line": 8,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 10,
+            "column": 1
+          },
+          "end": {
+            "line": 10,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "inlineCode",
+            "value": "cailmdaley/tapestries",
+            "position": {
+              "start": {
+                "line": 10,
+                "column": 1
+              },
+              "end": {
+                "line": 10,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": ":",
+            "position": {
+              "start": {
+                "line": 10,
+                "column": 1
+              },
+              "end": {
+                "line": 10,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 12,
+            "column": 1
+          },
+          "end": {
+            "line": 19,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 12,
+                "column": 1
+              },
+              "end": {
+                "line": 12,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "legacy-graph-viewer",
+                    "position": {
+                      "start": {
+                        "line": 12,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " branch preserves the current ",
+                    "position": {
+                      "start": {
+                        "line": 12,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "main",
+                    "position": {
+                      "start": {
+                        "line": 12,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " untouched.",
+                    "position": {
+                      "start": {
+                        "line": 12,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 13,
+                "column": 1
+              },
+              "end": {
+                "line": 17,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "main",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " carries a fresh shell: ",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "README.md",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (new pitch), ",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "404.html",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\n(SPA fallback), ",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "_vellum/",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (shared vellum-reader static build),\n",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": ".gitignore",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ". Per-publication subdirectories live at ",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "/<slug>/",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nwith the publication’s ",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "content/",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", ",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "search-index.json",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", and a tiny\nper-pub ",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "index.html",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " that boots vellum from ",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "/_vellum/",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ".",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 18,
+                "column": 1
+              },
+              "end": {
+                "line": 19,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "GitHub Pages serves from ",
+                    "position": {
+                      "start": {
+                        "line": 18,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "main:/",
+                    "position": {
+                      "start": {
+                        "line": 18,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ".",
+                    "position": {
+                      "start": {
+                        "line": 18,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 20,
+            "column": 1
+          },
+          "end": {
+            "line": 20,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "inlineCode",
+            "value": "vellum-reader",
+            "position": {
+              "start": {
+                "line": 20,
+                "column": 1
+              },
+              "end": {
+                "line": 20,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": ":",
+            "position": {
+              "start": {
+                "line": 20,
+                "column": 1
+              },
+              "end": {
+                "line": 20,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 22,
+            "column": 1
+          },
+          "end": {
+            "line": 39,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 22,
+                "column": 1
+              },
+              "end": {
+                "line": 25,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "src/bake/",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " — Node CLI. ",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "cli.ts",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", ",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "fiber-loader.ts",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (adapted from\nmystra’s ",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "felt-loader.ts",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", lightcone-ui-core dropped),\n",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "serialize.ts",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "FeltFiber → FiberContent",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "), ",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "search-index.ts",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\n(Fuse over emitted bundle).",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 29,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "src/static-adapter.ts",
+                    "position": {
+                      "start": {
+                        "line": 26,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " — ",
+                    "position": {
+                      "start": {
+                        "line": 26,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "ReadOnlyAdapter",
+                    "position": {
+                      "start": {
+                        "line": 26,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " that fetches\n",
+                    "position": {
+                      "start": {
+                        "line": 26,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "./content/<slug>.json",
+                    "position": {
+                      "start": {
+                        "line": 26,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " and ",
+                    "position": {
+                      "start": {
+                        "line": 26,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "./search-index.json",
+                    "position": {
+                      "start": {
+                        "line": 26,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " relative to the\npublication, returns empty for annotations/history, throws on\nwrites.",
+                    "position": {
+                      "start": {
+                        "line": 26,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 30,
+                "column": 1
+              },
+              "end": {
+                "line": 32,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "src/static-main.tsx",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " + Vite static build target producing\n",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "dist-static/",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " with ",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "base: \"/tapestries/_vellum/\"",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ". Bake copies\nthis into each publication’s deploy.",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 33,
+                "column": 1
+              },
+              "end": {
+                "line": 36,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "package.json",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ": ",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "bin: { \"vellum-reader\": \"./dist/bake/cli.js\" }",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ";\nruntime deps add ",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "myst-parser",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", ",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "myst-ext-tabs",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", ",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "myst-ext-proof",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ",\n",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "js-yaml",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", ",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "fuse.js",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", ",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "katex",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ". React stays peer-dep-only; bake\ncode must not transitively import React.",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 37,
+                "column": 1
+              },
+              "end": {
+                "line": 39,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A ",
+                    "position": {
+                      "start": {
+                        "line": 37,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "tsconfig.bake.json",
+                    "position": {
+                      "start": {
+                        "line": 37,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " produces ",
+                    "position": {
+                      "start": {
+                        "line": 37,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "dist/bake/",
+                    "position": {
+                      "start": {
+                        "line": 37,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " alongside the\nexisting Vite browser build. ",
+                    "position": {
+                      "start": {
+                        "line": 37,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "npm run build",
+                    "position": {
+                      "start": {
+                        "line": 37,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " runs both.",
+                    "position": {
+                      "start": {
+                        "line": 37,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 40,
+            "column": 1
+          },
+          "end": {
+            "line": 40,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "inlineCode",
+            "value": "felt",
+            "position": {
+              "start": {
+                "line": 40,
+                "column": 1
+              },
+              "end": {
+                "line": 40,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " (unchanged): no new verbs, no config, no TS subdir.",
+            "position": {
+              "start": {
+                "line": 40,
+                "column": 1
+              },
+              "end": {
+                "line": 40,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 42,
+            "column": 1
+          },
+          "end": {
+            "line": 42,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Usage:",
+            "position": {
+              "start": {
+                "line": 42,
+                "column": 1
+              },
+              "end": {
+                "line": 42,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "lang": "bash",
+        "value": "vellum-reader bake <slug> [--root <path>] [--depth N] [--out <dir>]\n# Default --root: walks up from cwd for .felt/\n# Default --depth: 1 (single fiber). 0 means \"all descendants.\"\n# Default --out: $XDG_CACHE_HOME/vellum-reader/<slug>",
+        "position": {
+          "start": {
+            "line": 44,
+            "column": 1
+          },
+          "end": {
+            "line": 49,
+            "column": 1
+          }
+        }
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 51,
+            "column": 1
+          },
+          "end": {
+            "line": 51,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "URL shape:",
+            "position": {
+              "start": {
+                "line": 51,
+                "column": 1
+              },
+              "end": {
+                "line": 51,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 53,
+            "column": 1
+          },
+          "end": {
+            "line": 61,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 53,
+                "column": 1
+              },
+              "end": {
+                "line": 54,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Single-fiber publication: ",
+                    "position": {
+                      "start": {
+                        "line": 53,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 53,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "/tapestries/<bare-slug>/",
+                    "position": {
+                      "start": {
+                        "line": 53,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 53,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ". Out-of-bundle\nwikilinks render as stub cards (title + outcome, no click).",
+                    "position": {
+                      "start": {
+                        "line": 53,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 53,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 55,
+                "column": 1
+              },
+              "end": {
+                "line": 58,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Subtree publication: ",
+                    "position": {
+                      "start": {
+                        "line": 55,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 55,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "/tapestries/<root-slug>/<descendant-slug>/",
+                    "position": {
+                      "start": {
+                        "line": 55,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 55,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ".\nPaths within the bundle are bundle-root-relative, regardless of the\nsource ",
+                    "position": {
+                      "start": {
+                        "line": 55,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 55,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": ".felt/",
+                    "position": {
+                      "start": {
+                        "line": 55,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 55,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " location. In-bundle wikilinks resolve to internal\nnavigation; out-of-bundle wikilinks render as stubs.",
+                    "position": {
+                      "start": {
+                        "line": 55,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 55,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 59,
+                "column": 1
+              },
+              "end": {
+                "line": 61,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Bare-slug collisions (same tail under different parents) error at\nbake time.",
+                    "position": {
+                      "start": {
+                        "line": 59,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 59,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 62,
+            "column": 1
+          },
+          "end": {
+            "line": 62,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Scope",
+            "position": {
+              "start": {
+                "line": 62,
+                "column": 1
+              },
+              "end": {
+                "line": 62,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 64,
+            "column": 1
+          },
+          "end": {
+            "line": 64,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 64,
+                "column": 1
+              },
+              "end": {
+                "line": 64,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "In scope:",
+                "position": {
+                  "start": {
+                    "line": 64,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 64,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 66,
+            "column": 1
+          },
+          "end": {
+            "line": 80,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 66,
+                "column": 1
+              },
+              "end": {
+                "line": 67,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "cailmdaley/tapestries",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " migration: push current ",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "main",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " to\n",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "legacy-graph-viewer",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "; reset ",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "main",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " to the new shell.",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 68,
+                "column": 1
+              },
+              "end": {
+                "line": 70,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "vellum-reader",
+                    "position": {
+                      "start": {
+                        "line": 68,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 68,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " new entry points: ",
+                    "position": {
+                      "start": {
+                        "line": 68,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 68,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "src/bake/",
+                    "position": {
+                      "start": {
+                        "line": 68,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 68,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " CLI,\n",
+                    "position": {
+                      "start": {
+                        "line": 68,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 68,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "src/static-adapter.ts",
+                    "position": {
+                      "start": {
+                        "line": 68,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 68,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", ",
+                    "position": {
+                      "start": {
+                        "line": 68,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 68,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "src/static-main.tsx",
+                    "position": {
+                      "start": {
+                        "line": 68,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 68,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", Vite static build\ntarget, package.json + tsconfig updates.",
+                    "position": {
+                      "start": {
+                        "line": 68,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 68,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 71,
+                "column": 1
+              },
+              "end": {
+                "line": 72,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Smoke test: bake + push ",
+                    "position": {
+                      "start": {
+                        "line": 71,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 71,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "constitution-tapestries-publish",
+                    "position": {
+                      "start": {
+                        "line": 71,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 71,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "; serve\nat the URL above.",
+                    "position": {
+                      "start": {
+                        "line": 71,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 71,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 73,
+                "column": 1
+              },
+              "end": {
+                "line": 77,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Vellum-reader README: capture a screenshot of\n",
+                    "position": {
+                      "start": {
+                        "line": 73,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 73,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "cailmdaley.github.io/tapestries/vellum-on-vellum/",
+                    "position": {
+                      "start": {
+                        "line": 73,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 73,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (after also\npublishing the ",
+                    "position": {
+                      "start": {
+                        "line": 73,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 73,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "vellum-on-vellum",
+                    "position": {
+                      "start": {
+                        "line": 73,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 73,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " fiber from the vellum-reader\nrepo’s own ",
+                    "position": {
+                      "start": {
+                        "line": 73,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 73,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": ".felt/",
+                    "position": {
+                      "start": {
+                        "line": 73,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 73,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "), replace the\n",
+                    "position": {
+                      "start": {
+                        "line": 73,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 73,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "TAPESTRIES_SCREENSHOT: vellum-on-vellum",
+                    "position": {
+                      "start": {
+                        "line": 73,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 73,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " placeholder, commit.",
+                    "position": {
+                      "start": {
+                        "line": 73,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 73,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 78,
+                "column": 1
+              },
+              "end": {
+                "line": 80,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Close "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/ai-futures/portolan/design/static-deploy-vellum-reader-scoping",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "static-deploy-vellum-reader-scoping"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " with "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "--outcome",
+                    "position": {
+                      "start": {
+                        "line": 78,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 78,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\npointing here.",
+                    "position": {
+                      "start": {
+                        "line": 78,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 78,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 81,
+            "column": 1
+          },
+          "end": {
+            "line": 81,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 81,
+                "column": 1
+              },
+              "end": {
+                "line": 81,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Out of scope:",
+                "position": {
+                  "start": {
+                    "line": 81,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 81,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 83,
+            "column": 1
+          },
+          "end": {
+            "line": 95,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 83,
+                "column": 1
+              },
+              "end": {
+                "line": 84,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Felt grows anything (no ",
+                    "position": {
+                      "start": {
+                        "line": 83,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 83,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "felt weave",
+                    "position": {
+                      "start": {
+                        "line": 83,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 83,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", no ",
+                    "position": {
+                      "start": {
+                        "line": 83,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 83,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "felt publish",
+                    "position": {
+                      "start": {
+                        "line": 83,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 83,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", no\n",
+                    "position": {
+                      "start": {
+                        "line": 83,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 83,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": ".felt/publish.yaml",
+                    "position": {
+                      "start": {
+                        "line": 83,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 83,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ").",
+                    "position": {
+                      "start": {
+                        "line": 83,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 83,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 85,
+                "column": 1
+              },
+              "end": {
+                "line": 86,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Any built-in publish verb. Each user wraps ",
+                    "position": {
+                      "start": {
+                        "line": 85,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 85,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "bake",
+                    "position": {
+                      "start": {
+                        "line": 85,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 85,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " in their own\nshell.",
+                    "position": {
+                      "start": {
+                        "line": 85,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 85,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 87,
+                "column": 1
+              },
+              "end": {
+                "line": 88,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "npm registry publish of vellum-reader. Installation stays\n",
+                    "position": {
+                      "start": {
+                        "line": 87,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 87,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "file:",
+                    "position": {
+                      "start": {
+                        "line": 87,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 87,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "-sibling or ",
+                    "position": {
+                      "start": {
+                        "line": 87,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 87,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "npm install -g github:cailmdaley/vellum-reader",
+                    "position": {
+                      "start": {
+                        "line": 87,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 87,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ".",
+                    "position": {
+                      "start": {
+                        "line": 87,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 87,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 89,
+                "column": 1
+              },
+              "end": {
+                "line": 90,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "vellum-reader dev",
+                    "position": {
+                      "start": {
+                        "line": 89,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 89,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " replacing mystra-as-dev-server. (Tempting\nfollow-up; clean factoring.)",
+                    "position": {
+                      "start": {
+                        "line": 89,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 89,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 91,
+                "column": 1
+              },
+              "end": {
+                "line": 91,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Round-tripping giscus comments back into fibers.",
+                    "position": {
+                      "start": {
+                        "line": 91,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 91,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 92,
+                "column": 1
+              },
+              "end": {
+                "line": 92,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Asset offload (R2/S3).",
+                    "position": {
+                      "start": {
+                        "line": 92,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 92,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 93,
+                "column": 1
+              },
+              "end": {
+                "line": 93,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Cross-publication wikilink resolution.",
+                    "position": {
+                      "start": {
+                        "line": 93,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 93,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 94,
+                "column": 1
+              },
+              "end": {
+                "line": 95,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Astra-rendering in the static adapter.",
+                    "position": {
+                      "start": {
+                        "line": 94,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 94,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 96,
+            "column": 1
+          },
+          "end": {
+            "line": 96,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Quality bar",
+            "position": {
+              "start": {
+                "line": 96,
+                "column": 1
+              },
+              "end": {
+                "line": 96,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 98,
+            "column": 1
+          },
+          "end": {
+            "line": 98,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Mechanical:",
+            "position": {
+              "start": {
+                "line": 98,
+                "column": 1
+              },
+              "end": {
+                "line": 98,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 100,
+            "column": 1
+          },
+          "end": {
+            "line": 116,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 100,
+                "column": 1
+              },
+              "end": {
+                "line": 101,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "cd ~/Documents/projects/vellum && npm install && npm run build",
+                    "position": {
+                      "start": {
+                        "line": 100,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 100,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nsucceeds — produces both ",
+                    "position": {
+                      "start": {
+                        "line": 100,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 100,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "dist/",
+                    "position": {
+                      "start": {
+                        "line": 100,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 100,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (browser) and ",
+                    "position": {
+                      "start": {
+                        "line": 100,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 100,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "dist/bake/",
+                    "position": {
+                      "start": {
+                        "line": 100,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 100,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (Node).",
+                    "position": {
+                      "start": {
+                        "line": 100,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 100,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 102,
+                "column": 1
+              },
+              "end": {
+                "line": 106,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "node ~/Documents/projects/vellum/dist/bake/cli.js --root ~/loom --slug constitution-tapestries-publish --depth 1 --out /tmp/smoke",
+                    "position": {
+                      "start": {
+                        "line": 102,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 102,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nproduces ",
+                    "position": {
+                      "start": {
+                        "line": 102,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 102,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "/tmp/smoke/content/constitution-tapestries-publish.json",
+                    "position": {
+                      "start": {
+                        "line": 102,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 102,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nwith valid ",
+                    "position": {
+                      "start": {
+                        "line": 102,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 102,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "FiberContent",
+                    "position": {
+                      "start": {
+                        "line": 102,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 102,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " JSON, ",
+                    "position": {
+                      "start": {
+                        "line": 102,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 102,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "/tmp/smoke/search-index.json",
+                    "position": {
+                      "start": {
+                        "line": 102,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 102,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\ncontaining a Fuse index, ",
+                    "position": {
+                      "start": {
+                        "line": 102,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 102,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "/tmp/smoke/index.html",
+                    "position": {
+                      "start": {
+                        "line": 102,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 102,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " shelling vellum.",
+                    "position": {
+                      "start": {
+                        "line": 102,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 102,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 107,
+                "column": 1
+              },
+              "end": {
+                "line": 108,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "npm run build:static",
+                    "position": {
+                      "start": {
+                        "line": 107,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 107,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " in vellum-reader produces ",
+                    "position": {
+                      "start": {
+                        "line": 107,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 107,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "dist-static/",
+                    "position": {
+                      "start": {
+                        "line": 107,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 107,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nwhose asset paths begin with ",
+                    "position": {
+                      "start": {
+                        "line": 107,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 107,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "/tapestries/_vellum/",
+                    "position": {
+                      "start": {
+                        "line": 107,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 107,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ".",
+                    "position": {
+                      "start": {
+                        "line": 107,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 107,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 109,
+                "column": 1
+              },
+              "end": {
+                "line": 110,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "cd ~/Documents/projects/LightconeResearch/felt && go build ./...",
+                    "position": {
+                      "start": {
+                        "line": 109,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 109,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nsucceeds with no changes (felt is untouched).",
+                    "position": {
+                      "start": {
+                        "line": 109,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 109,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 111,
+                "column": 1
+              },
+              "end": {
+                "line": 116,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "After publish:\n",
+                    "position": {
+                      "start": {
+                        "line": 111,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 111,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "curl -sf https://cailmdaley.github.io/tapestries/constitution-tapestries-publish/",
+                    "position": {
+                      "start": {
+                        "line": 111,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 111,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nreturns 200; HTML contains the fiber’s slug; JS loads from\n",
+                    "position": {
+                      "start": {
+                        "line": 111,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 111,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "/tapestries/_vellum/",
+                    "position": {
+                      "start": {
+                        "line": 111,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 111,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ". (Retry after 60s if GitHub Pages serves\nstale — CDN propagation, not a real failure.)",
+                    "position": {
+                      "start": {
+                        "line": 111,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 111,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 117,
+            "column": 1
+          },
+          "end": {
+            "line": 117,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Qualitative:",
+            "position": {
+              "start": {
+                "line": 117,
+                "column": 1
+              },
+              "end": {
+                "line": 117,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 119,
+            "column": 1
+          },
+          "end": {
+            "line": 128,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 119,
+                "column": 1
+              },
+              "end": {
+                "line": 121,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Open the published URL in a browser. The fiber renders with\nvellum’s normal layout. Search finds matching fibers. Wikilink\nneighbors render as stubs.",
+                    "position": {
+                      "start": {
+                        "line": 119,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 119,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 122,
+                "column": 1
+              },
+              "end": {
+                "line": 123,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Bake output serves cleanly with ",
+                    "position": {
+                      "start": {
+                        "line": 122,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 122,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "python -m http.server",
+                    "position": {
+                      "start": {
+                        "line": 122,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 122,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " against\nthe ",
+                    "position": {
+                      "start": {
+                        "line": 122,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 122,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "_vellum/",
+                    "position": {
+                      "start": {
+                        "line": 122,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 122,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " directory; vellum loads without internet.",
+                    "position": {
+                      "start": {
+                        "line": 122,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 122,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 124,
+                "column": 1
+              },
+              "end": {
+                "line": 128,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A felt user who hasn’t seen this constitution can ",
+                    "position": {
+                      "start": {
+                        "line": 124,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 124,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "npm install -g github:cailmdaley/vellum-reader",
+                    "position": {
+                      "start": {
+                        "line": 124,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 124,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", ",
+                    "position": {
+                      "start": {
+                        "line": 124,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 124,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "cd",
+                    "position": {
+                      "start": {
+                        "line": 124,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 124,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " into their own felt store,\nrun ",
+                    "position": {
+                      "start": {
+                        "line": 124,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 124,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "vellum-reader bake <slug> --out ./out",
+                    "position": {
+                      "start": {
+                        "line": 124,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 124,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ", serve ",
+                    "position": {
+                      "start": {
+                        "line": 124,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 124,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "./out",
+                    "position": {
+                      "start": {
+                        "line": 124,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 124,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nlocally, and see their fiber rendered.",
+                    "position": {
+                      "start": {
+                        "line": 124,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 124,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 129,
+            "column": 1
+          },
+          "end": {
+            "line": 129,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Evidence",
+            "position": {
+              "start": {
+                "line": 129,
+                "column": 1
+              },
+              "end": {
+                "line": 129,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 131,
+            "column": 1
+          },
+          "end": {
+            "line": 131,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "The worker leaves these artifacts:",
+            "position": {
+              "start": {
+                "line": 131,
+                "column": 1
+              },
+              "end": {
+                "line": 131,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "start": 1,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 133,
+            "column": 1
+          },
+          "end": {
+            "line": 145,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 133,
+                "column": 1
+              },
+              "end": {
+                "line": 135,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Commits in ",
+                    "position": {
+                      "start": {
+                        "line": 133,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 133,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "vellum-reader",
+                    "position": {
+                      "start": {
+                        "line": 133,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 133,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (bake CLI + static adapter + static\nbuild + package.json/tsconfig updates). Commit messages name this\nconstitution.",
+                    "position": {
+                      "start": {
+                        "line": 133,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 133,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 136,
+                "column": 1
+              },
+              "end": {
+                "line": 138,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "cailmdaley/tapestries:legacy-graph-viewer",
+                    "position": {
+                      "start": {
+                        "line": 136,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 136,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " carries the old\n",
+                    "position": {
+                      "start": {
+                        "line": 136,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 136,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "main",
+                    "position": {
+                      "start": {
+                        "line": 136,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 136,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (push before resetting); ",
+                    "position": {
+                      "start": {
+                        "line": 136,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 136,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "cailmdaley/tapestries:main",
+                    "position": {
+                      "start": {
+                        "line": 136,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 136,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\ncarries the new shell.",
+                    "position": {
+                      "start": {
+                        "line": 136,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 136,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 139,
+                "column": 1
+              },
+              "end": {
+                "line": 139,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Live URL serving the fiber.",
+                    "position": {
+                      "start": {
+                        "line": 139,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 139,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 140,
+                "column": 1
+              },
+              "end": {
+                "line": 140,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Vellum-reader README screenshot in place, committed.",
+                    "position": {
+                      "start": {
+                        "line": 140,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 140,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 141,
+                "column": 1
+              },
+              "end": {
+                "line": 141,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "outcome:",
+                    "position": {
+                      "start": {
+                        "line": 141,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 141,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " rewritten to landed state + URL.",
+                    "position": {
+                      "start": {
+                        "line": 141,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 141,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 142,
+                "column": 1
+              },
+              "end": {
+                "line": 143,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "felt history append",
+                    "position": {
+                      "start": {
+                        "line": 142,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 142,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " editorial event: what landed, what surprised\nin the bake, what felt brittle, natural next constitution.",
+                    "position": {
+                      "start": {
+                        "line": 142,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 142,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 144,
+                "column": 1
+              },
+              "end": {
+                "line": 145,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "link",
+                    "url": "/ai-futures/portolan/design/static-deploy-vellum-reader-scoping",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "static-deploy-vellum-reader-scoping"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " closed with "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "--outcome",
+                    "position": {
+                      "start": {
+                        "line": 144,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 144,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\npointing here.",
+                    "position": {
+                      "start": {
+                        "line": 144,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 144,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "frontmatter": {
+    "name": "Tapestries: vellum-reader bake, GitHub Pages deploy",
+    "status": "active",
+    "tags": [
+      "tapestry",
+      "vellum",
+      "publish",
+      "static",
+      "constitution"
+    ],
+    "created-at": "2026-05-13T10:35:20.915Z",
+    "outcome": "Ready to dispatch. `vellum-reader` grows a Node `bake` CLI that walks\n`.felt/`, parses MyST, and emits a self-contained static bundle.\n`cailmdaley/tapestries` (existing repo) gets its current `main` parked\non a `legacy-graph-viewer` branch and reset to a fresh main carrying\nshared `/_vellum/` assets plus per-publication subpaths. Publishing\nis user-owned shell — felt stays pure substrate. Smoke test: bake +\npush `constitution-tapestries-publish` and serve it at\n`cailmdaley.github.io/tapestries/constitution-tapestries-publish/`,\nAND capture a screenshot of `vellum-on-vellum` for the vellum-reader\nREADME's `TAPESTRIES_SCREENSHOT` placeholder.",
+    "shuttle": {
+      "enabled": true,
+      "kind": "oneshot",
+      "project_dir": "/Users/cd280747/Documents/projects/vellum",
+      "agent": "pi-gpt-5.4"
+    },
+    "depends_on": [
+      {
+        "id": "ai-futures/portolan/vellum-reader/constitution-vellum-extraction"
+      }
+    ],
+    "title": "Tapestries: vellum-reader bake, GitHub Pages deploy"
+  },
+  "references": {},
+  "dependencies": []
+}

@@ -1,0 +1,10 @@
+# Cloudflare Pages SPA fallback: any URL that doesn't match a file falls
+# through to index.html so client-side routing (react-router) handles it.
+# The 200 (not 301) means the browser URL stays as-is and the SPA reads
+# location.pathname to pick the right route.
+#
+# Explicit exclusions keep the baked content/ and static/ trees from
+# getting swallowed by the fallback — they're real files.
+/content/*   /content/:splat   200
+/static/*    /static/:splat    200
+/*           /index.html       200

@@ -1,0 +1,2055 @@
+{
+  "_1c-DcfxwkHm.js": {
+    "file": "assets/1c-DcfxwkHm.js",
+    "name": "1c",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_abnf-Da4SgzqN.js": {
+    "file": "assets/abnf-Da4SgzqN.js",
+    "name": "abnf",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_accesslog-CsKcH4P6.js": {
+    "file": "assets/accesslog-CsKcH4P6.js",
+    "name": "accesslog",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_actionscript-BuCexoWm.js": {
+    "file": "assets/actionscript-BuCexoWm.js",
+    "name": "actionscript",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_ada-qro1UYDr.js": {
+    "file": "assets/ada-qro1UYDr.js",
+    "name": "ada",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_angelscript-DuTUpYuc.js": {
+    "file": "assets/angelscript-DuTUpYuc.js",
+    "name": "angelscript",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_apache-CkwEB5PL.js": {
+    "file": "assets/apache-CkwEB5PL.js",
+    "name": "apache",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_applescript-7QuSClGF.js": {
+    "file": "assets/applescript-7QuSClGF.js",
+    "name": "applescript",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_arcade-CuKeYPWl.js": {
+    "file": "assets/arcade-CuKeYPWl.js",
+    "name": "arcade",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_arduino-DkJunoTG.js": {
+    "file": "assets/arduino-DkJunoTG.js",
+    "name": "arduino",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_armasm-DjpmmI3u.js": {
+    "file": "assets/armasm-DjpmmI3u.js",
+    "name": "armasm",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_asciidoc-BDOr4rTD.js": {
+    "file": "assets/asciidoc-BDOr4rTD.js",
+    "name": "asciidoc",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_aspectj-BI2eokak.js": {
+    "file": "assets/aspectj-BI2eokak.js",
+    "name": "aspectj",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_autohotkey-CUs432vg.js": {
+    "file": "assets/autohotkey-CUs432vg.js",
+    "name": "autohotkey",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_autoit-BDBrGvUm.js": {
+    "file": "assets/autoit-BDBrGvUm.js",
+    "name": "autoit",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_avrasm-DuzoPOJ_.js": {
+    "file": "assets/avrasm-DuzoPOJ_.js",
+    "name": "avrasm",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_awk-3zLOR67T.js": {
+    "file": "assets/awk-3zLOR67T.js",
+    "name": "awk",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_axapta-DCtxbBQ2.js": {
+    "file": "assets/axapta-DCtxbBQ2.js",
+    "name": "axapta",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_bash-7Dijm8cn.js": {
+    "file": "assets/bash-7Dijm8cn.js",
+    "name": "bash",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_basic-CsxnXEis.js": {
+    "file": "assets/basic-CsxnXEis.js",
+    "name": "basic",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_bnf-B8bd8hqn.js": {
+    "file": "assets/bnf-B8bd8hqn.js",
+    "name": "bnf",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_brainfuck-Ch104uY1.js": {
+    "file": "assets/brainfuck-Ch104uY1.js",
+    "name": "brainfuck",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_c-BnQuN9GV.js": {
+    "file": "assets/c-BnQuN9GV.js",
+    "name": "c",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_c-like-Y_8_qZkp.js": {
+    "file": "assets/c-like-Y_8_qZkp.js",
+    "name": "c-like",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_cal-EoHUp-6v.js": {
+    "file": "assets/cal-EoHUp-6v.js",
+    "name": "cal",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_capnproto-CbaluBU5.js": {
+    "file": "assets/capnproto-CbaluBU5.js",
+    "name": "capnproto",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_ceylon-I4LdabDo.js": {
+    "file": "assets/ceylon-I4LdabDo.js",
+    "name": "ceylon",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_clean-VzCTDkWO.js": {
+    "file": "assets/clean-VzCTDkWO.js",
+    "name": "clean",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_clojure-BOIFV3b1.js": {
+    "file": "assets/clojure-BOIFV3b1.js",
+    "name": "clojure",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_clojure-repl-DTw35i67.js": {
+    "file": "assets/clojure-repl-DTw35i67.js",
+    "name": "clojure-repl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_cmake-Bn94q_6g.js": {
+    "file": "assets/cmake-Bn94q_6g.js",
+    "name": "cmake",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_codemirror-N-J2yHH_.js": {
+    "file": "assets/codemirror-N-J2yHH_.js",
+    "name": "codemirror"
+  },
+  "_coffeescript-enYQ4mLu.js": {
+    "file": "assets/coffeescript-enYQ4mLu.js",
+    "name": "coffeescript",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_coq-wbraDqbh.js": {
+    "file": "assets/coq-wbraDqbh.js",
+    "name": "coq",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_cos-CJs_AzD-.js": {
+    "file": "assets/cos-CJs_AzD-.js",
+    "name": "cos",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_cpp-DJJAuGwt.js": {
+    "file": "assets/cpp-DJJAuGwt.js",
+    "name": "cpp",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_crmsh-WXC7UTb5.js": {
+    "file": "assets/crmsh-WXC7UTb5.js",
+    "name": "crmsh",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_crystal-Cky-xnbI.js": {
+    "file": "assets/crystal-Cky-xnbI.js",
+    "name": "crystal",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_csharp-CCM8VrnA.js": {
+    "file": "assets/csharp-CCM8VrnA.js",
+    "name": "csharp",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_csp-DCsaU0gv.js": {
+    "file": "assets/csp-DCsaU0gv.js",
+    "name": "csp",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_css-DhxS1kfy.js": {
+    "file": "assets/css-DhxS1kfy.js",
+    "name": "css",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_d-Dv7hcK8S.js": {
+    "file": "assets/d-Dv7hcK8S.js",
+    "name": "d",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_dart-C_27fzp1.js": {
+    "file": "assets/dart-C_27fzp1.js",
+    "name": "dart",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_delphi-BkrnbNVH.js": {
+    "file": "assets/delphi-BkrnbNVH.js",
+    "name": "delphi",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_diff-RBYgd-UF.js": {
+    "file": "assets/diff-RBYgd-UF.js",
+    "name": "diff",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_django-D7lLcC9Z.js": {
+    "file": "assets/django-D7lLcC9Z.js",
+    "name": "django",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_dns-CLvln35m.js": {
+    "file": "assets/dns-CLvln35m.js",
+    "name": "dns",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_dockerfile-CTsw0yAc.js": {
+    "file": "assets/dockerfile-CTsw0yAc.js",
+    "name": "dockerfile",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_dos-DTSY69Jz.js": {
+    "file": "assets/dos-DTSY69Jz.js",
+    "name": "dos",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_dsconfig-DMRlHjoG.js": {
+    "file": "assets/dsconfig-DMRlHjoG.js",
+    "name": "dsconfig",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_dts-xlw7PkT2.js": {
+    "file": "assets/dts-xlw7PkT2.js",
+    "name": "dts",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_dust-Dm7Yp0kQ.js": {
+    "file": "assets/dust-Dm7Yp0kQ.js",
+    "name": "dust",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_ebnf-mCxW9W8d.js": {
+    "file": "assets/ebnf-mCxW9W8d.js",
+    "name": "ebnf",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_elixir-B8kBdun9.js": {
+    "file": "assets/elixir-B8kBdun9.js",
+    "name": "elixir",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_elm-ClMF6Z_7.js": {
+    "file": "assets/elm-ClMF6Z_7.js",
+    "name": "elm",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_erb-gPy60l7K.js": {
+    "file": "assets/erb-gPy60l7K.js",
+    "name": "erb",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_erlang-DXuCga4n.js": {
+    "file": "assets/erlang-DXuCga4n.js",
+    "name": "erlang",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_erlang-repl-BtrksCfk.js": {
+    "file": "assets/erlang-repl-BtrksCfk.js",
+    "name": "erlang-repl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_excel-vf6nAnlP.js": {
+    "file": "assets/excel-vf6nAnlP.js",
+    "name": "excel",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_fix-DDDjIhqJ.js": {
+    "file": "assets/fix-DDDjIhqJ.js",
+    "name": "fix",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_flix-CZO0_Jwf.js": {
+    "file": "assets/flix-CZO0_Jwf.js",
+    "name": "flix",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_fortran-DPmYYXgE.js": {
+    "file": "assets/fortran-DPmYYXgE.js",
+    "name": "fortran",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_fsharp-D5Kjsdg7.js": {
+    "file": "assets/fsharp-D5Kjsdg7.js",
+    "name": "fsharp",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_gams-DDUGRoOa.js": {
+    "file": "assets/gams-DDUGRoOa.js",
+    "name": "gams",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_gauss-CfokFcDH.js": {
+    "file": "assets/gauss-CfokFcDH.js",
+    "name": "gauss",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_gcode-CGVBfVXx.js": {
+    "file": "assets/gcode-CGVBfVXx.js",
+    "name": "gcode",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_gherkin-X5gJP6xU.js": {
+    "file": "assets/gherkin-X5gJP6xU.js",
+    "name": "gherkin",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_glsl-2uX1kT6L.js": {
+    "file": "assets/glsl-2uX1kT6L.js",
+    "name": "glsl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_gml-y9cQIwl4.js": {
+    "file": "assets/gml-y9cQIwl4.js",
+    "name": "gml",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_go-NJL9zuu_.js": {
+    "file": "assets/go-NJL9zuu_.js",
+    "name": "go",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_golo-CGBibgl8.js": {
+    "file": "assets/golo-CGBibgl8.js",
+    "name": "golo",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_gradle-BmpPmA8C.js": {
+    "file": "assets/gradle-BmpPmA8C.js",
+    "name": "gradle",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_groovy-DhNfIFig.js": {
+    "file": "assets/groovy-DhNfIFig.js",
+    "name": "groovy",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_haml-Dy3X0jN0.js": {
+    "file": "assets/haml-Dy3X0jN0.js",
+    "name": "haml",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_handlebars-DlsYJzHi.js": {
+    "file": "assets/handlebars-DlsYJzHi.js",
+    "name": "handlebars",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_haskell-DfCUmDkc.js": {
+    "file": "assets/haskell-DfCUmDkc.js",
+    "name": "haskell",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_haxe-CmEPFPQ7.js": {
+    "file": "assets/haxe-CmEPFPQ7.js",
+    "name": "haxe",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_hsp-Cykl0rv9.js": {
+    "file": "assets/hsp-Cykl0rv9.js",
+    "name": "hsp",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_htmlbars-CHkCFPzz.js": {
+    "file": "assets/htmlbars-CHkCFPzz.js",
+    "name": "htmlbars",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_http-C0QnvKWi.js": {
+    "file": "assets/http-C0QnvKWi.js",
+    "name": "http",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_hy-DnPTJQUT.js": {
+    "file": "assets/hy-DnPTJQUT.js",
+    "name": "hy",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_inform7-Drk8hf50.js": {
+    "file": "assets/inform7-Drk8hf50.js",
+    "name": "inform7",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_ini-GPC7iAc4.js": {
+    "file": "assets/ini-GPC7iAc4.js",
+    "name": "ini",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_irpf90-CB6B-663.js": {
+    "file": "assets/irpf90-CB6B-663.js",
+    "name": "irpf90",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_isbl-LXU2j6ml.js": {
+    "file": "assets/isbl-LXU2j6ml.js",
+    "name": "isbl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_java-Ctid8rWU.js": {
+    "file": "assets/java-Ctid8rWU.js",
+    "name": "java",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_javascript-DWRjTAGo.js": {
+    "file": "assets/javascript-DWRjTAGo.js",
+    "name": "javascript",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_jboss-cli-Dni0dR0u.js": {
+    "file": "assets/jboss-cli-Dni0dR0u.js",
+    "name": "jboss-cli",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_json-Bo0uNMp_.js": {
+    "file": "assets/json-Bo0uNMp_.js",
+    "name": "json",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_julia-BwTikQv9.js": {
+    "file": "assets/julia-BwTikQv9.js",
+    "name": "julia",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_julia-repl-DsB4oDmD.js": {
+    "file": "assets/julia-repl-DsB4oDmD.js",
+    "name": "julia-repl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_kotlin-CCr-FL9C.js": {
+    "file": "assets/kotlin-CCr-FL9C.js",
+    "name": "kotlin",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_lasso-7AT2bxG3.js": {
+    "file": "assets/lasso-7AT2bxG3.js",
+    "name": "lasso",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_latex-BRzvjYht.js": {
+    "file": "assets/latex-BRzvjYht.js",
+    "name": "latex",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_ldif-CAqcWPa0.js": {
+    "file": "assets/ldif-CAqcWPa0.js",
+    "name": "ldif",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_leaf-BQaWEuB9.js": {
+    "file": "assets/leaf-BQaWEuB9.js",
+    "name": "leaf",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_less-DuGWnLWd.js": {
+    "file": "assets/less-DuGWnLWd.js",
+    "name": "less",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_lisp-B_z8GfIY.js": {
+    "file": "assets/lisp-B_z8GfIY.js",
+    "name": "lisp",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_livecodeserver-CEvfGLCm.js": {
+    "file": "assets/livecodeserver-CEvfGLCm.js",
+    "name": "livecodeserver",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_livescript-BFfT7s--.js": {
+    "file": "assets/livescript-BFfT7s--.js",
+    "name": "livescript",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_llvm-Dx4u_s0v.js": {
+    "file": "assets/llvm-Dx4u_s0v.js",
+    "name": "llvm",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_lsl-BVYj8ml8.js": {
+    "file": "assets/lsl-BVYj8ml8.js",
+    "name": "lsl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_lua-BfJnGgEU.js": {
+    "file": "assets/lua-BfJnGgEU.js",
+    "name": "lua",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_makefile-BjVBI5gI.js": {
+    "file": "assets/makefile-BjVBI5gI.js",
+    "name": "makefile",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_markdown-CFel5CX7.js": {
+    "file": "assets/markdown-CFel5CX7.js",
+    "name": "markdown",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_mathematica-DlTk5mBK.js": {
+    "file": "assets/mathematica-DlTk5mBK.js",
+    "name": "mathematica",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_matlab-CLJ9fSv5.js": {
+    "file": "assets/matlab-CLJ9fSv5.js",
+    "name": "matlab",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_maxima-DiKeegqF.js": {
+    "file": "assets/maxima-DiKeegqF.js",
+    "name": "maxima",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_mel-AbDkdD19.js": {
+    "file": "assets/mel-AbDkdD19.js",
+    "name": "mel",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_mercury-DZ6RFKBQ.js": {
+    "file": "assets/mercury-DZ6RFKBQ.js",
+    "name": "mercury",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_mipsasm-COeyBXxM.js": {
+    "file": "assets/mipsasm-COeyBXxM.js",
+    "name": "mipsasm",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_mizar-J8ZrlK7B.js": {
+    "file": "assets/mizar-J8ZrlK7B.js",
+    "name": "mizar",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_mojolicious-ChgbZILg.js": {
+    "file": "assets/mojolicious-ChgbZILg.js",
+    "name": "mojolicious",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_monkey-xfz158hR.js": {
+    "file": "assets/monkey-xfz158hR.js",
+    "name": "monkey",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_moonscript-DL0Kipx0.js": {
+    "file": "assets/moonscript-DL0Kipx0.js",
+    "name": "moonscript",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_myst-zKyhD5rJ.js": {
+    "file": "assets/myst-zKyhD5rJ.js",
+    "name": "myst",
+    "dynamicImports": [
+      "_1c-DcfxwkHm.js",
+      "_abnf-Da4SgzqN.js",
+      "_accesslog-CsKcH4P6.js",
+      "_actionscript-BuCexoWm.js",
+      "_ada-qro1UYDr.js",
+      "_angelscript-DuTUpYuc.js",
+      "_apache-CkwEB5PL.js",
+      "_applescript-7QuSClGF.js",
+      "_arcade-CuKeYPWl.js",
+      "_arduino-DkJunoTG.js",
+      "_armasm-DjpmmI3u.js",
+      "_asciidoc-BDOr4rTD.js",
+      "_aspectj-BI2eokak.js",
+      "_autohotkey-CUs432vg.js",
+      "_autoit-BDBrGvUm.js",
+      "_avrasm-DuzoPOJ_.js",
+      "_awk-3zLOR67T.js",
+      "_axapta-DCtxbBQ2.js",
+      "_bash-7Dijm8cn.js",
+      "_basic-CsxnXEis.js",
+      "_bnf-B8bd8hqn.js",
+      "_brainfuck-Ch104uY1.js",
+      "_c-like-Y_8_qZkp.js",
+      "_c-BnQuN9GV.js",
+      "_cal-EoHUp-6v.js",
+      "_capnproto-CbaluBU5.js",
+      "_ceylon-I4LdabDo.js",
+      "_clean-VzCTDkWO.js",
+      "_clojure-repl-DTw35i67.js",
+      "_clojure-BOIFV3b1.js",
+      "_cmake-Bn94q_6g.js",
+      "_coffeescript-enYQ4mLu.js",
+      "_coq-wbraDqbh.js",
+      "_cos-CJs_AzD-.js",
+      "_cpp-DJJAuGwt.js",
+      "_crmsh-WXC7UTb5.js",
+      "_crystal-Cky-xnbI.js",
+      "_csharp-CCM8VrnA.js",
+      "_csp-DCsaU0gv.js",
+      "_css-DhxS1kfy.js",
+      "_d-Dv7hcK8S.js",
+      "_dart-C_27fzp1.js",
+      "_delphi-BkrnbNVH.js",
+      "_diff-RBYgd-UF.js",
+      "_django-D7lLcC9Z.js",
+      "_dns-CLvln35m.js",
+      "_dockerfile-CTsw0yAc.js",
+      "_dos-DTSY69Jz.js",
+      "_dsconfig-DMRlHjoG.js",
+      "_dts-xlw7PkT2.js",
+      "_dust-Dm7Yp0kQ.js",
+      "_ebnf-mCxW9W8d.js",
+      "_elixir-B8kBdun9.js",
+      "_elm-ClMF6Z_7.js",
+      "_erb-gPy60l7K.js",
+      "_erlang-repl-BtrksCfk.js",
+      "_erlang-DXuCga4n.js",
+      "_excel-vf6nAnlP.js",
+      "_fix-DDDjIhqJ.js",
+      "_flix-CZO0_Jwf.js",
+      "_fortran-DPmYYXgE.js",
+      "_fsharp-D5Kjsdg7.js",
+      "_gams-DDUGRoOa.js",
+      "_gauss-CfokFcDH.js",
+      "_gcode-CGVBfVXx.js",
+      "_gherkin-X5gJP6xU.js",
+      "_glsl-2uX1kT6L.js",
+      "_gml-y9cQIwl4.js",
+      "_go-NJL9zuu_.js",
+      "_golo-CGBibgl8.js",
+      "_gradle-BmpPmA8C.js",
+      "_groovy-DhNfIFig.js",
+      "_haml-Dy3X0jN0.js",
+      "_handlebars-DlsYJzHi.js",
+      "_haskell-DfCUmDkc.js",
+      "_haxe-CmEPFPQ7.js",
+      "_hsp-Cykl0rv9.js",
+      "_htmlbars-CHkCFPzz.js",
+      "_http-C0QnvKWi.js",
+      "_hy-DnPTJQUT.js",
+      "_inform7-Drk8hf50.js",
+      "_ini-GPC7iAc4.js",
+      "_irpf90-CB6B-663.js",
+      "_isbl-LXU2j6ml.js",
+      "_java-Ctid8rWU.js",
+      "_javascript-DWRjTAGo.js",
+      "_jboss-cli-Dni0dR0u.js",
+      "_json-Bo0uNMp_.js",
+      "_julia-repl-DsB4oDmD.js",
+      "_julia-BwTikQv9.js",
+      "_kotlin-CCr-FL9C.js",
+      "_lasso-7AT2bxG3.js",
+      "_latex-BRzvjYht.js",
+      "_ldif-CAqcWPa0.js",
+      "_leaf-BQaWEuB9.js",
+      "_less-DuGWnLWd.js",
+      "_lisp-B_z8GfIY.js",
+      "_livecodeserver-CEvfGLCm.js",
+      "_livescript-BFfT7s--.js",
+      "_llvm-Dx4u_s0v.js",
+      "_lsl-BVYj8ml8.js",
+      "_lua-BfJnGgEU.js",
+      "_makefile-BjVBI5gI.js",
+      "_markdown-CFel5CX7.js",
+      "_mathematica-DlTk5mBK.js",
+      "_matlab-CLJ9fSv5.js",
+      "_maxima-DiKeegqF.js",
+      "_mel-AbDkdD19.js",
+      "_mercury-DZ6RFKBQ.js",
+      "_mipsasm-COeyBXxM.js",
+      "_mizar-J8ZrlK7B.js",
+      "_mojolicious-ChgbZILg.js",
+      "_monkey-xfz158hR.js",
+      "_moonscript-DL0Kipx0.js",
+      "_n1ql-qpOyYOVP.js",
+      "_nginx-D60pYc1e.js",
+      "_nim-D5vCyUEi.js",
+      "_nix-B2zutfPv.js",
+      "_node-repl-BJpBGif9.js",
+      "_nsis-pALxFAfd.js",
+      "_objectivec-aWkH1EDY.js",
+      "_ocaml-DpAwUAc9.js",
+      "_openscad-BEYKiBLr.js",
+      "_oxygene-BIGhMMbo.js",
+      "_parser3-DhIa1HEl.js",
+      "_perl-ys6eeqgJ.js",
+      "_pf-C9nKjNUl.js",
+      "_pgsql-DN5slRgc.js",
+      "_php-template-CbqN8BAS.js",
+      "_php-G35hhR3I.js",
+      "_plaintext-B6o217U4.js",
+      "_pony-XfgUbd25.js",
+      "_powershell-CEAQv__E.js",
+      "_processing-D7TCiEs_.js",
+      "_profile-BkHnh24B.js",
+      "_prolog-DmgigTBJ.js",
+      "_properties-fL4DatJo.js",
+      "_protobuf-wrXjSwdO.js",
+      "_puppet-D7wdk8qV.js",
+      "_purebasic-rWnkZE6A.js",
+      "_python-repl-Dkci-xc9.js",
+      "_python-Cg4CNgYV.js",
+      "_q-BE9n1-dJ.js",
+      "_qml-BpJzVGYQ.js",
+      "_r-DJT6o4aN.js",
+      "_reasonml-BmMTSOvD.js",
+      "_rib-YCrVJI2o.js",
+      "_roboconf-1vnRMkwK.js",
+      "_routeros-B4w4V6mZ.js",
+      "_rsl-BWIkOJVB.js",
+      "_ruby-DnQzOyef.js",
+      "_ruleslanguage-Dom42aCB.js",
+      "_rust-y2vFlKOO.js",
+      "_sas-CZLiUQmu.js",
+      "_scala-CxDsuibn.js",
+      "_scheme-KI6KSoWF.js",
+      "_scilab-B-VwkL6Z.js",
+      "_scss-BNh0eEiS.js",
+      "_shell-Bd01xUJe.js",
+      "_smali-BA6DbubY.js",
+      "_smalltalk-DPl3_s2a.js",
+      "_sml-P-WDCNIM.js",
+      "_sqf-S1X6qhcz.js",
+      "_sql-bUj2SHUg.js",
+      "_sql_more-CHOENDxH.js",
+      "_stan-Blj0_mPs.js",
+      "_stata-iFgHNVla.js",
+      "_step21-D0q_VDID.js",
+      "_stylus-B5E8sABh.js",
+      "_subunit-D3L12Syj.js",
+      "_swift-KIgILoPW.js",
+      "_taggerscript-DPn4H1Zx.js",
+      "_tap-CuyRfIXI.js",
+      "_tcl-B_lFgevh.js",
+      "_thrift-BTVtHPiw.js",
+      "_tp-DAKyPOJM.js",
+      "_twig-sUSVlhfJ.js",
+      "_typescript-CwUHogfk.js",
+      "_vala-Cr4R5n5z.js",
+      "_vbnet-K_aoit5G.js",
+      "_vbscript-html-Zj0M_g38.js",
+      "_vbscript-Dx09vxnd.js",
+      "_verilog-CugbQqIW.js",
+      "_vhdl-UVtOlecX.js",
+      "_vim-BU2KK5xe.js",
+      "_x86asm-CXCywvZB.js",
+      "_xl-D3qlaQPm.js",
+      "_xml-mrr0pWmE.js",
+      "_xquery-CwfqssWs.js",
+      "_yaml-CSAxMAgM.js",
+      "_zephir-CaYia2Aj.js"
+    ]
+  },
+  "_n1ql-qpOyYOVP.js": {
+    "file": "assets/n1ql-qpOyYOVP.js",
+    "name": "n1ql",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_nginx-D60pYc1e.js": {
+    "file": "assets/nginx-D60pYc1e.js",
+    "name": "nginx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_nim-D5vCyUEi.js": {
+    "file": "assets/nim-D5vCyUEi.js",
+    "name": "nim",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_nix-B2zutfPv.js": {
+    "file": "assets/nix-B2zutfPv.js",
+    "name": "nix",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_node-repl-BJpBGif9.js": {
+    "file": "assets/node-repl-BJpBGif9.js",
+    "name": "node-repl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_nsis-pALxFAfd.js": {
+    "file": "assets/nsis-pALxFAfd.js",
+    "name": "nsis",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_objectivec-aWkH1EDY.js": {
+    "file": "assets/objectivec-aWkH1EDY.js",
+    "name": "objectivec",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_ocaml-DpAwUAc9.js": {
+    "file": "assets/ocaml-DpAwUAc9.js",
+    "name": "ocaml",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_openscad-BEYKiBLr.js": {
+    "file": "assets/openscad-BEYKiBLr.js",
+    "name": "openscad",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_oxygene-BIGhMMbo.js": {
+    "file": "assets/oxygene-BIGhMMbo.js",
+    "name": "oxygene",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_parser3-DhIa1HEl.js": {
+    "file": "assets/parser3-DhIa1HEl.js",
+    "name": "parser3",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_perl-ys6eeqgJ.js": {
+    "file": "assets/perl-ys6eeqgJ.js",
+    "name": "perl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_pf-C9nKjNUl.js": {
+    "file": "assets/pf-C9nKjNUl.js",
+    "name": "pf",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_pgsql-DN5slRgc.js": {
+    "file": "assets/pgsql-DN5slRgc.js",
+    "name": "pgsql",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_php-G35hhR3I.js": {
+    "file": "assets/php-G35hhR3I.js",
+    "name": "php",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_php-template-CbqN8BAS.js": {
+    "file": "assets/php-template-CbqN8BAS.js",
+    "name": "php-template",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_plaintext-B6o217U4.js": {
+    "file": "assets/plaintext-B6o217U4.js",
+    "name": "plaintext",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_pony-XfgUbd25.js": {
+    "file": "assets/pony-XfgUbd25.js",
+    "name": "pony",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_powershell-CEAQv__E.js": {
+    "file": "assets/powershell-CEAQv__E.js",
+    "name": "powershell",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_processing-D7TCiEs_.js": {
+    "file": "assets/processing-D7TCiEs_.js",
+    "name": "processing",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_profile-BkHnh24B.js": {
+    "file": "assets/profile-BkHnh24B.js",
+    "name": "profile",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_prolog-DmgigTBJ.js": {
+    "file": "assets/prolog-DmgigTBJ.js",
+    "name": "prolog",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_properties-fL4DatJo.js": {
+    "file": "assets/properties-fL4DatJo.js",
+    "name": "properties",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_protobuf-wrXjSwdO.js": {
+    "file": "assets/protobuf-wrXjSwdO.js",
+    "name": "protobuf",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_puppet-D7wdk8qV.js": {
+    "file": "assets/puppet-D7wdk8qV.js",
+    "name": "puppet",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_purebasic-rWnkZE6A.js": {
+    "file": "assets/purebasic-rWnkZE6A.js",
+    "name": "purebasic",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_python-Cg4CNgYV.js": {
+    "file": "assets/python-Cg4CNgYV.js",
+    "name": "python",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_python-repl-Dkci-xc9.js": {
+    "file": "assets/python-repl-Dkci-xc9.js",
+    "name": "python-repl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_q-BE9n1-dJ.js": {
+    "file": "assets/q-BE9n1-dJ.js",
+    "name": "q",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_qml-BpJzVGYQ.js": {
+    "file": "assets/qml-BpJzVGYQ.js",
+    "name": "qml",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_r-DJT6o4aN.js": {
+    "file": "assets/r-DJT6o4aN.js",
+    "name": "r",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_reasonml-BmMTSOvD.js": {
+    "file": "assets/reasonml-BmMTSOvD.js",
+    "name": "reasonml",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_rib-YCrVJI2o.js": {
+    "file": "assets/rib-YCrVJI2o.js",
+    "name": "rib",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_roboconf-1vnRMkwK.js": {
+    "file": "assets/roboconf-1vnRMkwK.js",
+    "name": "roboconf",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_routeros-B4w4V6mZ.js": {
+    "file": "assets/routeros-B4w4V6mZ.js",
+    "name": "routeros",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_rsl-BWIkOJVB.js": {
+    "file": "assets/rsl-BWIkOJVB.js",
+    "name": "rsl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_ruby-DnQzOyef.js": {
+    "file": "assets/ruby-DnQzOyef.js",
+    "name": "ruby",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_ruleslanguage-Dom42aCB.js": {
+    "file": "assets/ruleslanguage-Dom42aCB.js",
+    "name": "ruleslanguage",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_rust-y2vFlKOO.js": {
+    "file": "assets/rust-y2vFlKOO.js",
+    "name": "rust",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_sas-CZLiUQmu.js": {
+    "file": "assets/sas-CZLiUQmu.js",
+    "name": "sas",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_scala-CxDsuibn.js": {
+    "file": "assets/scala-CxDsuibn.js",
+    "name": "scala",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_scheme-KI6KSoWF.js": {
+    "file": "assets/scheme-KI6KSoWF.js",
+    "name": "scheme",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_scilab-B-VwkL6Z.js": {
+    "file": "assets/scilab-B-VwkL6Z.js",
+    "name": "scilab",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_scss-BNh0eEiS.js": {
+    "file": "assets/scss-BNh0eEiS.js",
+    "name": "scss",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_shell-Bd01xUJe.js": {
+    "file": "assets/shell-Bd01xUJe.js",
+    "name": "shell",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_smali-BA6DbubY.js": {
+    "file": "assets/smali-BA6DbubY.js",
+    "name": "smali",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_smalltalk-DPl3_s2a.js": {
+    "file": "assets/smalltalk-DPl3_s2a.js",
+    "name": "smalltalk",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_sml-P-WDCNIM.js": {
+    "file": "assets/sml-P-WDCNIM.js",
+    "name": "sml",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_sqf-S1X6qhcz.js": {
+    "file": "assets/sqf-S1X6qhcz.js",
+    "name": "sqf",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_sql-bUj2SHUg.js": {
+    "file": "assets/sql-bUj2SHUg.js",
+    "name": "sql",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_sql_more-CHOENDxH.js": {
+    "file": "assets/sql_more-CHOENDxH.js",
+    "name": "sql_more",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_stan-Blj0_mPs.js": {
+    "file": "assets/stan-Blj0_mPs.js",
+    "name": "stan",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_stata-iFgHNVla.js": {
+    "file": "assets/stata-iFgHNVla.js",
+    "name": "stata",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_step21-D0q_VDID.js": {
+    "file": "assets/step21-D0q_VDID.js",
+    "name": "step21",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_stylus-B5E8sABh.js": {
+    "file": "assets/stylus-B5E8sABh.js",
+    "name": "stylus",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_subunit-D3L12Syj.js": {
+    "file": "assets/subunit-D3L12Syj.js",
+    "name": "subunit",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_swift-KIgILoPW.js": {
+    "file": "assets/swift-KIgILoPW.js",
+    "name": "swift",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_taggerscript-DPn4H1Zx.js": {
+    "file": "assets/taggerscript-DPn4H1Zx.js",
+    "name": "taggerscript",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_tap-CuyRfIXI.js": {
+    "file": "assets/tap-CuyRfIXI.js",
+    "name": "tap",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_tcl-B_lFgevh.js": {
+    "file": "assets/tcl-B_lFgevh.js",
+    "name": "tcl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_thrift-BTVtHPiw.js": {
+    "file": "assets/thrift-BTVtHPiw.js",
+    "name": "thrift",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_tp-DAKyPOJM.js": {
+    "file": "assets/tp-DAKyPOJM.js",
+    "name": "tp",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_twig-sUSVlhfJ.js": {
+    "file": "assets/twig-sUSVlhfJ.js",
+    "name": "twig",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_typescript-CwUHogfk.js": {
+    "file": "assets/typescript-CwUHogfk.js",
+    "name": "typescript",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_vala-Cr4R5n5z.js": {
+    "file": "assets/vala-Cr4R5n5z.js",
+    "name": "vala",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_vbnet-K_aoit5G.js": {
+    "file": "assets/vbnet-K_aoit5G.js",
+    "name": "vbnet",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_vbscript-Dx09vxnd.js": {
+    "file": "assets/vbscript-Dx09vxnd.js",
+    "name": "vbscript",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_vbscript-html-Zj0M_g38.js": {
+    "file": "assets/vbscript-html-Zj0M_g38.js",
+    "name": "vbscript-html",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_verilog-CugbQqIW.js": {
+    "file": "assets/verilog-CugbQqIW.js",
+    "name": "verilog",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_vhdl-UVtOlecX.js": {
+    "file": "assets/vhdl-UVtOlecX.js",
+    "name": "vhdl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_vim-BU2KK5xe.js": {
+    "file": "assets/vim-BU2KK5xe.js",
+    "name": "vim",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_x86asm-CXCywvZB.js": {
+    "file": "assets/x86asm-CXCywvZB.js",
+    "name": "x86asm",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_xl-D3qlaQPm.js": {
+    "file": "assets/xl-D3qlaQPm.js",
+    "name": "xl",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_xml-mrr0pWmE.js": {
+    "file": "assets/xml-mrr0pWmE.js",
+    "name": "xml",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_xquery-CwfqssWs.js": {
+    "file": "assets/xquery-CwfqssWs.js",
+    "name": "xquery",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_yaml-CSAxMAgM.js": {
+    "file": "assets/yaml-CSAxMAgM.js",
+    "name": "yaml",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "_zephir-CaYia2Aj.js": {
+    "file": "assets/zephir-CaYia2Aj.js",
+    "name": "zephir",
+    "isDynamicEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js"
+    ]
+  },
+  "node_modules/katex/dist/fonts/KaTeX_AMS-Regular.ttf": {
+    "file": "assets/KaTeX_AMS-Regular-DRggAlZN.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_AMS-Regular.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_AMS-Regular.woff": {
+    "file": "assets/KaTeX_AMS-Regular-DMm9YOAa.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_AMS-Regular.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_AMS-Regular.woff2": {
+    "file": "assets/KaTeX_AMS-Regular-BQhdFMY1.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_AMS-Regular.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Caligraphic-Bold.ttf": {
+    "file": "assets/KaTeX_Caligraphic-Bold-ATXxdsX0.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Caligraphic-Bold.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Caligraphic-Bold.woff": {
+    "file": "assets/KaTeX_Caligraphic-Bold-BEiXGLvX.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Caligraphic-Bold.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Caligraphic-Bold.woff2": {
+    "file": "assets/KaTeX_Caligraphic-Bold-Dq_IR9rO.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Caligraphic-Bold.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Caligraphic-Regular.ttf": {
+    "file": "assets/KaTeX_Caligraphic-Regular-wX97UBjC.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Caligraphic-Regular.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Caligraphic-Regular.woff": {
+    "file": "assets/KaTeX_Caligraphic-Regular-CTRA-rTL.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Caligraphic-Regular.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Caligraphic-Regular.woff2": {
+    "file": "assets/KaTeX_Caligraphic-Regular-Di6jR-x-.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Caligraphic-Regular.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Fraktur-Bold.ttf": {
+    "file": "assets/KaTeX_Fraktur-Bold-BdnERNNW.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Fraktur-Bold.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Fraktur-Bold.woff": {
+    "file": "assets/KaTeX_Fraktur-Bold-BsDP51OF.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Fraktur-Bold.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Fraktur-Bold.woff2": {
+    "file": "assets/KaTeX_Fraktur-Bold-CL6g_b3V.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Fraktur-Bold.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Fraktur-Regular.ttf": {
+    "file": "assets/KaTeX_Fraktur-Regular-CB_wures.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Fraktur-Regular.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Fraktur-Regular.woff": {
+    "file": "assets/KaTeX_Fraktur-Regular-Dxdc4cR9.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Fraktur-Regular.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Fraktur-Regular.woff2": {
+    "file": "assets/KaTeX_Fraktur-Regular-CTYiF6lA.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Fraktur-Regular.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Main-Bold.ttf": {
+    "file": "assets/KaTeX_Main-Bold-waoOVXN0.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Main-Bold.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Main-Bold.woff": {
+    "file": "assets/KaTeX_Main-Bold-Jm3AIy58.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Main-Bold.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Main-Bold.woff2": {
+    "file": "assets/KaTeX_Main-Bold-Cx986IdX.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Main-Bold.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Main-BoldItalic.ttf": {
+    "file": "assets/KaTeX_Main-BoldItalic-DzxPMmG6.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Main-BoldItalic.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Main-BoldItalic.woff": {
+    "file": "assets/KaTeX_Main-BoldItalic-SpSLRI95.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Main-BoldItalic.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Main-BoldItalic.woff2": {
+    "file": "assets/KaTeX_Main-BoldItalic-DxDJ3AOS.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Main-BoldItalic.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Main-Italic.ttf": {
+    "file": "assets/KaTeX_Main-Italic-3WenGoN9.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Main-Italic.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Main-Italic.woff": {
+    "file": "assets/KaTeX_Main-Italic-BMLOBm91.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Main-Italic.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Main-Italic.woff2": {
+    "file": "assets/KaTeX_Main-Italic-NWA7e6Wa.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Main-Italic.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Main-Regular.ttf": {
+    "file": "assets/KaTeX_Main-Regular-ypZvNtVU.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Main-Regular.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Main-Regular.woff": {
+    "file": "assets/KaTeX_Main-Regular-Dr94JaBh.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Main-Regular.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Main-Regular.woff2": {
+    "file": "assets/KaTeX_Main-Regular-B22Nviop.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Main-Regular.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Math-BoldItalic.ttf": {
+    "file": "assets/KaTeX_Math-BoldItalic-B3XSjfu4.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Math-BoldItalic.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Math-BoldItalic.woff": {
+    "file": "assets/KaTeX_Math-BoldItalic-iY-2wyZ7.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Math-BoldItalic.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Math-BoldItalic.woff2": {
+    "file": "assets/KaTeX_Math-BoldItalic-CZnvNsCZ.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Math-BoldItalic.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Math-Italic.ttf": {
+    "file": "assets/KaTeX_Math-Italic-flOr_0UB.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Math-Italic.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Math-Italic.woff": {
+    "file": "assets/KaTeX_Math-Italic-DA0__PXp.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Math-Italic.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Math-Italic.woff2": {
+    "file": "assets/KaTeX_Math-Italic-t53AETM-.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Math-Italic.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_SansSerif-Bold.ttf": {
+    "file": "assets/KaTeX_SansSerif-Bold-CFMepnvq.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_SansSerif-Bold.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_SansSerif-Bold.woff": {
+    "file": "assets/KaTeX_SansSerif-Bold-DbIhKOiC.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_SansSerif-Bold.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_SansSerif-Bold.woff2": {
+    "file": "assets/KaTeX_SansSerif-Bold-D1sUS0GD.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_SansSerif-Bold.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_SansSerif-Italic.ttf": {
+    "file": "assets/KaTeX_SansSerif-Italic-YYjJ1zSn.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_SansSerif-Italic.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_SansSerif-Italic.woff": {
+    "file": "assets/KaTeX_SansSerif-Italic-DN2j7dab.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_SansSerif-Italic.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_SansSerif-Italic.woff2": {
+    "file": "assets/KaTeX_SansSerif-Italic-C3H0VqGB.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_SansSerif-Italic.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_SansSerif-Regular.ttf": {
+    "file": "assets/KaTeX_SansSerif-Regular-BNo7hRIc.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_SansSerif-Regular.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_SansSerif-Regular.woff": {
+    "file": "assets/KaTeX_SansSerif-Regular-CS6fqUqJ.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_SansSerif-Regular.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_SansSerif-Regular.woff2": {
+    "file": "assets/KaTeX_SansSerif-Regular-DDBCnlJ7.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_SansSerif-Regular.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Script-Regular.ttf": {
+    "file": "assets/KaTeX_Script-Regular-C5JkGWo-.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Script-Regular.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Script-Regular.woff": {
+    "file": "assets/KaTeX_Script-Regular-D5yQViql.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Script-Regular.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Script-Regular.woff2": {
+    "file": "assets/KaTeX_Script-Regular-D3wIWfF6.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Script-Regular.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Size1-Regular.ttf": {
+    "file": "assets/KaTeX_Size1-Regular-Dbsnue_I.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Size1-Regular.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Size1-Regular.woff": {
+    "file": "assets/KaTeX_Size1-Regular-C195tn64.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Size1-Regular.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Size1-Regular.woff2": {
+    "file": "assets/KaTeX_Size1-Regular-mCD8mA8B.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Size1-Regular.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Size2-Regular.ttf": {
+    "file": "assets/KaTeX_Size2-Regular-B7gKUWhC.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Size2-Regular.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Size2-Regular.woff": {
+    "file": "assets/KaTeX_Size2-Regular-oD1tc_U0.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Size2-Regular.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Size2-Regular.woff2": {
+    "file": "assets/KaTeX_Size2-Regular-Dy4dx90m.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Size2-Regular.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Size3-Regular.ttf": {
+    "file": "assets/KaTeX_Size3-Regular-DgpXs0kz.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Size3-Regular.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Size3-Regular.woff": {
+    "file": "assets/KaTeX_Size3-Regular-CTq5MqoE.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Size3-Regular.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Size4-Regular.ttf": {
+    "file": "assets/KaTeX_Size4-Regular-DWFBv043.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Size4-Regular.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Size4-Regular.woff": {
+    "file": "assets/KaTeX_Size4-Regular-BF-4gkZK.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Size4-Regular.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Size4-Regular.woff2": {
+    "file": "assets/KaTeX_Size4-Regular-Dl5lxZxV.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Size4-Regular.woff2"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Typewriter-Regular.ttf": {
+    "file": "assets/KaTeX_Typewriter-Regular-D3Ib7_Hf.ttf",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Typewriter-Regular.ttf"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Typewriter-Regular.woff": {
+    "file": "assets/KaTeX_Typewriter-Regular-C0xS9mPB.woff",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Typewriter-Regular.woff"
+  },
+  "node_modules/katex/dist/fonts/KaTeX_Typewriter-Regular.woff2": {
+    "file": "assets/KaTeX_Typewriter-Regular-CO6r4hn1.woff2",
+    "src": "node_modules/katex/dist/fonts/KaTeX_Typewriter-Regular.woff2"
+  },
+  "node_modules/pdfjs-dist/build/pdf.mjs": {
+    "file": "assets/pdf-B75MOh95.js",
+    "name": "pdf",
+    "src": "node_modules/pdfjs-dist/build/pdf.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/pdfjs-dist/build/pdf.worker.min.mjs": {
+    "file": "assets/pdf.worker.min-iDqQPrd3.mjs",
+    "src": "node_modules/pdfjs-dist/build/pdf.worker.min.mjs"
+  },
+  "static.html": {
+    "file": "assets/static-D34nmqZC.js",
+    "name": "static",
+    "src": "static.html",
+    "isEntry": true,
+    "imports": [
+      "_myst-zKyhD5rJ.js",
+      "_codemirror-N-J2yHH_.js"
+    ],
+    "dynamicImports": [
+      "node_modules/pdfjs-dist/build/pdf.mjs"
+    ],
+    "css": [
+      "assets/static-rH7EcmJl.css"
+    ],
+    "assets": [
+      "assets/pdf.worker.min-iDqQPrd3.mjs",
+      "assets/KaTeX_AMS-Regular-BQhdFMY1.woff2",
+      "assets/KaTeX_AMS-Regular-DMm9YOAa.woff",
+      "assets/KaTeX_AMS-Regular-DRggAlZN.ttf",
+      "assets/KaTeX_Caligraphic-Bold-Dq_IR9rO.woff2",
+      "assets/KaTeX_Caligraphic-Bold-BEiXGLvX.woff",
+      "assets/KaTeX_Caligraphic-Bold-ATXxdsX0.ttf",
+      "assets/KaTeX_Caligraphic-Regular-Di6jR-x-.woff2",
+      "assets/KaTeX_Caligraphic-Regular-CTRA-rTL.woff",
+      "assets/KaTeX_Caligraphic-Regular-wX97UBjC.ttf",
+      "assets/KaTeX_Fraktur-Bold-CL6g_b3V.woff2",
+      "assets/KaTeX_Fraktur-Bold-BsDP51OF.woff",
+      "assets/KaTeX_Fraktur-Bold-BdnERNNW.ttf",
+      "assets/KaTeX_Fraktur-Regular-CTYiF6lA.woff2",
+      "assets/KaTeX_Fraktur-Regular-Dxdc4cR9.woff",
+      "assets/KaTeX_Fraktur-Regular-CB_wures.ttf",
+      "assets/KaTeX_Main-Bold-Cx986IdX.woff2",
+      "assets/KaTeX_Main-Bold-Jm3AIy58.woff",
+      "assets/KaTeX_Main-Bold-waoOVXN0.ttf",
+      "assets/KaTeX_Main-BoldItalic-DxDJ3AOS.woff2",
+      "assets/KaTeX_Main-BoldItalic-SpSLRI95.woff",
+      "assets/KaTeX_Main-BoldItalic-DzxPMmG6.ttf",
+      "assets/KaTeX_Main-Italic-NWA7e6Wa.woff2",
+      "assets/KaTeX_Main-Italic-BMLOBm91.woff",
+      "assets/KaTeX_Main-Italic-3WenGoN9.ttf",
+      "assets/KaTeX_Main-Regular-B22Nviop.woff2",
+      "assets/KaTeX_Main-Regular-Dr94JaBh.woff",
+      "assets/KaTeX_Main-Regular-ypZvNtVU.ttf",
+      "assets/KaTeX_Math-BoldItalic-CZnvNsCZ.woff2",
+      "assets/KaTeX_Math-BoldItalic-iY-2wyZ7.woff",
+      "assets/KaTeX_Math-BoldItalic-B3XSjfu4.ttf",
+      "assets/KaTeX_Math-Italic-t53AETM-.woff2",
+      "assets/KaTeX_Math-Italic-DA0__PXp.woff",
+      "assets/KaTeX_Math-Italic-flOr_0UB.ttf",
+      "assets/KaTeX_SansSerif-Bold-D1sUS0GD.woff2",
+      "assets/KaTeX_SansSerif-Bold-DbIhKOiC.woff",
+      "assets/KaTeX_SansSerif-Bold-CFMepnvq.ttf",
+      "assets/KaTeX_SansSerif-Italic-C3H0VqGB.woff2",
+      "assets/KaTeX_SansSerif-Italic-DN2j7dab.woff",
+      "assets/KaTeX_SansSerif-Italic-YYjJ1zSn.ttf",
+      "assets/KaTeX_SansSerif-Regular-DDBCnlJ7.woff2",
+      "assets/KaTeX_SansSerif-Regular-CS6fqUqJ.woff",
+      "assets/KaTeX_SansSerif-Regular-BNo7hRIc.ttf",
+      "assets/KaTeX_Script-Regular-D3wIWfF6.woff2",
+      "assets/KaTeX_Script-Regular-D5yQViql.woff",
+      "assets/KaTeX_Script-Regular-C5JkGWo-.ttf",
+      "assets/KaTeX_Size1-Regular-mCD8mA8B.woff2",
+      "assets/KaTeX_Size1-Regular-C195tn64.woff",
+      "assets/KaTeX_Size1-Regular-Dbsnue_I.ttf",
+      "assets/KaTeX_Size2-Regular-Dy4dx90m.woff2",
+      "assets/KaTeX_Size2-Regular-oD1tc_U0.woff",
+      "assets/KaTeX_Size2-Regular-B7gKUWhC.ttf",
+      "assets/KaTeX_Size3-Regular-CTq5MqoE.woff",
+      "assets/KaTeX_Size3-Regular-DgpXs0kz.ttf",
+      "assets/KaTeX_Size4-Regular-Dl5lxZxV.woff2",
+      "assets/KaTeX_Size4-Regular-BF-4gkZK.woff",
+      "assets/KaTeX_Size4-Regular-DWFBv043.ttf",
+      "assets/KaTeX_Typewriter-Regular-CO6r4hn1.woff2",
+      "assets/KaTeX_Typewriter-Regular-C0xS9mPB.woff",
+      "assets/KaTeX_Typewriter-Regular-D3Ib7_Hf.ttf"
+    ]
+  }
+}

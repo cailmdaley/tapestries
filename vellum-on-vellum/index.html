@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vellum-on-vellum — Vellum</title>
+    <meta name="description" content="Vellum publication: vellum-on-vellum" />
+  </head>
+  <body data-publication-root="vellum-on-vellum">
+    <div id="root"></div>
+    <script>
+      (() => {
+        const deploy = window.location.pathname.startsWith('/tapestries/');
+        window.__VELLUM_STATIC__ = {
+          siteBase: deploy ? '/tapestries' : '/',
+          publicationBase: deploy ? '/tapestries/vellum-on-vellum/' : new URL('./', window.location.href).pathname,
+        };
+        const head = document.head;
+        const css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.crossOrigin = 'anonymous';
+        css.href = deploy ? '/tapestries/_vellum/assets/static-rH7EcmJl.css' : './_vellum/assets/static-rH7EcmJl.css';
+        head.appendChild(css);
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.crossOrigin = 'anonymous';
+        script.src = deploy ? '/tapestries/_vellum/assets/static-D34nmqZC.js' : './_vellum/assets/static-D34nmqZC.js';
+        head.appendChild(script);
+      })();
+    </script>
+  </body>
+</html>

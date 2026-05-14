@@ -1,0 +1,25 @@
+{
+  "nodes": [
+    {
+      "id": "vellum-on-vellum",
+      "label": "Vellum on Vellum",
+      "slug": "vellum-on-vellum",
+      "kind": "analysis",
+      "status": "open",
+      "tags": [
+        "vellum",
+        "reader",
+        "introduction"
+      ],
+      "verdict": "A self-referential introduction to Vellum, rendered by Vellum. The fiber\nthis README's screenshot is captured against; the first thing the\ntapestries pipeline ever publishes.",
+      "decisionCount": 0,
+      "findingCount": 0,
+      "tempered": false,
+      "depth": 0,
+      "narrative": false,
+      "hasStructuredData": false
+    }
+  ],
+  "links": [],
+  "rootSlug": "vellum-on-vellum"
+}
