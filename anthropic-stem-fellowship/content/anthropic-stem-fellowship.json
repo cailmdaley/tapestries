@@ -1,0 +1,5643 @@
+{
+  "slug": "anthropic-stem-fellowship",
+  "kind": "Article",
+  "mdast": {
+    "type": "root",
+    "children": [
+      {
+        "type": "heading",
+        "depth": 1,
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Anthropic STEM Fellowship",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 3,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Apply to the ",
+            "position": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "link",
+            "url": "https://job-boards.greenhouse.io/anthropic/jobs/5189848008",
+            "position": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Anthropic STEM Fellowship",
+                "position": {
+                  "start": {
+                    "line": 3,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ". High-reward, deadline ",
+            "position": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "May 15, 2026",
+                "position": {
+                  "start": {
+                    "line": 3,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ".",
+            "position": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 5,
+            "column": 1
+          },
+          "end": {
+            "line": 5,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Base on the CNRS AI Rising Talents application (",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "ai-futures/cnrs-5pp/",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": "), but the shape is fundamentally different — short-essay form, not a dossier. See "
+          },
+          {
+            "type": "link",
+            "url": "/anthropic-stem-fellowship/anthropic-call-requirements",
+            "children": [
+              {
+                "type": "text",
+                "value": "anthropic-call-requirements"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " for the full call: 5 textareas + CV + 2 references, no word limits."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 7,
+            "column": 1
+          },
+          "end": {
+            "line": 7,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Audience flip from CNRS",
+            "position": {
+              "start": {
+                "line": 7,
+                "column": 1
+              },
+              "end": {
+                "line": 7,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 9,
+            "column": 1
+          },
+          "end": {
+            "line": 11,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 9,
+                "column": 1
+              },
+              "end": {
+                "line": 9,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 9,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "CNRS:",
+                        "position": {
+                          "start": {
+                            "line": 9,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 9,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " AI/CS committee evaluating a cosmologist’s research programme. Lead with cosmology, motivate it as the proving ground for agentic science, position AI as the practice that makes cosmology better.",
+                    "position": {
+                      "start": {
+                        "line": 9,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 10,
+                "column": 1
+              },
+              "end": {
+                "line": 11,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 10,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Anthropic:",
+                        "position": {
+                          "start": {
+                            "line": 10,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 10,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " AI researchers evaluating a domain expert who already lives inside Claude Code. They know agents deeply; they don’t know weak lensing. Lead with ",
+                    "position": {
+                      "start": {
+                        "line": 10,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 10,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "the cosmologist who is already deep in real, daily, frontier Claude-Code-mediated science",
+                        "position": {
+                          "start": {
+                            "line": 10,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 10,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " — domain expertise + lived agentic practice as the offering.",
+                    "position": {
+                      "start": {
+                        "line": 10,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 12,
+            "column": 1
+          },
+          "end": {
+            "line": 12,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Strengths to lean on",
+            "position": {
+              "start": {
+                "line": 12,
+                "column": 1
+              },
+              "end": {
+                "line": 12,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 14,
+            "column": 1
+          },
+          "end": {
+            "line": 17,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 14,
+                "column": 1
+              },
+              "end": {
+                "line": 14,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 14,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Lived Claude Code practice at unusual depth.",
+                        "position": {
+                          "start": {
+                            "line": 14,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 14,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " UNIONS B-mode workflow (~10k lines agent-written, 120k total), felt, shuttle, lightcone — all real, all in production, all defensible. Question 3 (Claude Code usage) is where most applicants will be thin and Cail can be deep.",
+                    "position": {
+                      "start": {
+                        "line": 14,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 15,
+                "column": 1
+              },
+              "end": {
+                "line": 15,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 15,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "PhD in a hard STEM field with first-author frontier results.",
+                        "position": {
+                          "start": {
+                            "line": 15,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 15,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " SPT-3G CMB lensing, UNIONS B-mode lead author, SPT × Euclid MoU first author, h-index 19, ~1,640 citations.",
+                    "position": {
+                      "start": {
+                        "line": 15,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 16,
+                "column": 1
+              },
+              "end": {
+                "line": 17,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 16,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A view on what “doing science with AI” actually means",
+                        "position": {
+                          "start": {
+                            "line": 16,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 16,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " — agentic science framing, tapestry as verification infrastructure, the bitter-lesson scaffolding with the verification counter-theme. Cail has thought about this carefully and at length.",
+                    "position": {
+                      "start": {
+                        "line": 16,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 18,
+            "column": 1
+          },
+          "end": {
+            "line": 18,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Working architecture per question",
+            "position": {
+              "start": {
+                "line": 18,
+                "column": 1
+              },
+              "end": {
+                "line": 18,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 20,
+            "column": 1
+          },
+          "end": {
+            "line": 20,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Sketches per question — entry shape, draw-from, length target. To shape with Cail; nothing here is committed until he reads it.",
+            "position": {
+              "start": {
+                "line": 20,
+                "column": 1
+              },
+              "end": {
+                "line": 20,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 3,
+        "position": {
+          "start": {
+            "line": 22,
+            "column": 1
+          },
+          "end": {
+            "line": 22,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Q1 — STEM Expertise",
+            "position": {
+              "start": {
+                "line": 22,
+                "column": 1
+              },
+              "end": {
+                "line": 22,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "blockquote",
+        "position": {
+          "start": {
+            "line": 24,
+            "column": 1
+          },
+          "end": {
+            "line": 24,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "paragraph",
+            "position": {
+              "start": {
+                "line": 24,
+                "column": 1
+              },
+              "end": {
+                "line": 24,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "emphasis",
+                "position": {
+                  "start": {
+                    "line": 24,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 1
+                  }
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "“Please share the STEM field(s) where you have the most expertise and describe your relevant experience/contribution.”",
+                    "position": {
+                      "start": {
+                        "line": 24,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 24,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 26,
+            "column": 1
+          },
+          "end": {
+            "line": 26,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Lift from:",
+                "position": {
+                  "start": {
+                    "line": 26,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " ",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "cnrs-5pp/sections/research-report.tex",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " opener (the LCDM-and-systematics paragraphs that survived the close-read pass), compressed to ~3 short paragraphs. ",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Frame:",
+                "position": {
+                  "start": {
+                    "line": 26,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " observational cosmology, specifically the percent-precision systematics regime where the field now lives. ",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Spine:",
+                "position": {
+                  "start": {
+                    "line": 26,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " (1) what cosmology is converging toward and where the open questions are, (2) Cail’s specific corner — CMB lensing with SPT-3G, cosmic shear with UNIONS, Euclid×CMB cross-correlations, kinematic lensing supervision; the throughline is ",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "characterizing systematics",
+                "position": {
+                  "start": {
+                    "line": 26,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ", (3) concrete output — lead-author UNIONS ",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineMath",
+            "value": "B",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            },
+            "html": "<span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0502em;\">B</span></span></span></span>"
+          },
+          {
+            "type": "text",
+            "value": "-mode paper, SPT-3G lensing pipeline, SPT × Euclid MoU first author, bibliometrics line. Voice: arrive through content; first sentence is about the universe, not about Cail.",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 3,
+        "position": {
+          "start": {
+            "line": 28,
+            "column": 1
+          },
+          "end": {
+            "line": 28,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Q2 — ML/AI Experience  ",
+            "position": {
+              "start": {
+                "line": 28,
+                "column": 1
+              },
+              "end": {
+                "line": 28,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 28,
+                "column": 1
+              },
+              "end": {
+                "line": 28,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "(locked: honest + texture)",
+                "position": {
+                  "start": {
+                    "line": 28,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 28,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "blockquote",
+        "position": {
+          "start": {
+            "line": 30,
+            "column": 1
+          },
+          "end": {
+            "line": 30,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "paragraph",
+            "position": {
+              "start": {
+                "line": 30,
+                "column": 1
+              },
+              "end": {
+                "line": 30,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "emphasis",
+                "position": {
+                  "start": {
+                    "line": 30,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 30,
+                    "column": 1
+                  }
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "“Describe any experience you have with ML/AI, e.g. training custom models, applying an existing model, using adjacent techniques, etc.”",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 32,
+            "column": 1
+          },
+          "end": {
+            "line": 32,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Three short paragraphs.",
+            "position": {
+              "start": {
+                "line": 32,
+                "column": 1
+              },
+              "end": {
+                "line": 32,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "start": 1,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 34,
+            "column": 1
+          },
+          "end": {
+            "line": 37,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 34,
+                "column": 1
+              },
+              "end": {
+                "line": 34,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 34,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 34,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Honest opener.",
+                        "position": {
+                          "start": {
+                            "line": 34,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 34,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Cail is a domain scientist, not an ML researcher. Name that cleanly.",
+                    "position": {
+                      "start": {
+                        "line": 34,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 34,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 35,
+                "column": 1
+              },
+              "end": {
+                "line": 35,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 35,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 35,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The small ML usage that is real and distinctively his.",
+                        "position": {
+                          "start": {
+                            "line": 35,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 35,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " word2vec for a Foucault philosophy project (2018) + text-to-speech models run locally. Dates the timeline as someone curious about these tools years before the LLM party; texture, not padding.",
+                    "position": {
+                      "start": {
+                        "line": 35,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 35,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 36,
+                "column": 1
+              },
+              "end": {
+                "line": 37,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 36,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 36,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The statistical substrate of his actual work.",
+                        "position": {
+                          "start": {
+                            "line": 36,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 36,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Bayesian inference, MCMC, hierarchical modeling, likelihood design, posterior validation (AU Mic, UNIONS, SPT-3G). Then the soft on-ramp: ",
+                    "position": {
+                      "start": {
+                        "line": 36,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 36,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 36,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 36,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "the more substantive recent AI experience has been applying frontier LLMs as collaborators in scientific workflows — see Q3.",
+                        "position": {
+                          "start": {
+                            "line": 36,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 36,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 38,
+            "column": 1
+          },
+          "end": {
+            "line": 38,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Brevity is the signal. Most applicants will pad Q2 by reaching; Cail being short and pointing forward distinguishes him.",
+            "position": {
+              "start": {
+                "line": 38,
+                "column": 1
+              },
+              "end": {
+                "line": 38,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 3,
+        "position": {
+          "start": {
+            "line": 40,
+            "column": 1
+          },
+          "end": {
+            "line": 40,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Q3 — Claude Code Usage ",
+            "position": {
+              "start": {
+                "line": 40,
+                "column": 1
+              },
+              "end": {
+                "line": 40,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 40,
+                "column": 1
+              },
+              "end": {
+                "line": 40,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "(the showpiece)",
+                "position": {
+                  "start": {
+                    "line": 40,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 40,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "blockquote",
+        "position": {
+          "start": {
+            "line": 42,
+            "column": 1
+          },
+          "end": {
+            "line": 42,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "paragraph",
+            "position": {
+              "start": {
+                "line": 42,
+                "column": 1
+              },
+              "end": {
+                "line": 42,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "emphasis",
+                "position": {
+                  "start": {
+                    "line": 42,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 42,
+                    "column": 1
+                  }
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "“Describe any experience you have with Claude Code or similar agentic coding products. If you have used them before, please describe your use case(s) and workflow.”",
+                    "position": {
+                      "start": {
+                        "line": 42,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 42,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 44,
+            "column": 1
+          },
+          "end": {
+            "line": 44,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 44,
+                "column": 1
+              },
+              "end": {
+                "line": 44,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Where Cail wins or loses this application.",
+                "position": {
+                  "start": {
+                    "line": 44,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 44,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " The shape, with Lightcone now forward:",
+            "position": {
+              "start": {
+                "line": 44,
+                "column": 1
+              },
+              "end": {
+                "line": 44,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 46,
+            "column": 1
+          },
+          "end": {
+            "line": 50,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 46,
+                "column": 1
+              },
+              "end": {
+                "line": 46,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 46,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 46,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "¶1 — The artifact.",
+                        "position": {
+                          "start": {
+                            "line": 46,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 46,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " UNIONS ",
+                    "position": {
+                      "start": {
+                        "line": 46,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 46,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineMath",
+                    "value": "B",
+                    "position": {
+                      "start": {
+                        "line": 46,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 46,
+                        "column": 1
+                      }
+                    },
+                    "html": "<span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0502em;\">B</span></span></span></span>"
+                  },
+                  {
+                    "type": "text",
+                    "value": "-mode paper (Daley et al. 2026), conducted almost entirely through Claude Code: ~10k lines of agent-written analysis code, figures, manuscript; ~120k lines edited across the workflow. Peer-reviewed; presented at Moriond; the role-shift (architect rather than implementer); since mid-2025 Cail has worked this way exclusively.",
+                    "position": {
+                      "start": {
+                        "line": 46,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 46,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 47,
+                "column": 1
+              },
+              "end": {
+                "line": 47,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "¶2 — The substrate Cail co-builds.",
+                        "position": {
+                          "start": {
+                            "line": 47,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 47,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Lightcone Research as joint CNRS–Berkeley open-source project building ",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "the open ecosystem for reproducible, composable, and verifiable scientific research in the age of agentic AI",
+                        "position": {
+                          "start": {
+                            "line": 47,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 47,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " (their own public framing). Cail’s contributions: ",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "felt",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (Go CLI he maintains, tracks decisions/findings as structured fibers), ",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "ASTRA",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (open YAML schema for analysis nodes carrying decisions + alternatives + evidence anchors), ",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Vellum",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (viewer that renders an analysis as browsable provenance graph). ",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Anchor:",
+                        "position": {
+                          "start": {
+                            "line": 47,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 47,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " “Lightcone is the infrastructure AI co-scientists are missing” — public framing, complement-not-competitor to Claude Code. Lets us wave at the value-prop in ",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "their",
+                        "position": {
+                          "start": {
+                            "line": 47,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 47,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " language.",
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 48,
+                "column": 1
+              },
+              "end": {
+                "line": 48,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 48,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 48,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "¶3 — The day-to-day workflow.",
+                        "position": {
+                          "start": {
+                            "line": 48,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 48,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Fiber → Claude Code (surveys, drafts against constitution, reports at handoffs) → shuttle (cross-session handoff to fresh agent against same constitution) → verification. Posture: ",
+                    "position": {
+                      "start": {
+                        "line": 48,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 48,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 48,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 48,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "human as architect, agent as implementer",
+                        "position": {
+                          "start": {
+                            "line": 48,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 48,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "; structured record makes review tractable at this volume.",
+                    "position": {
+                      "start": {
+                        "line": 48,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 48,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 49,
+                "column": 1
+              },
+              "end": {
+                "line": 50,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 49,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 49,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Reflexive close:",
+                        "position": {
+                          "start": {
+                            "line": 49,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 49,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " “This application is being co-drafted with Claude” — embodies Anthropic’s own transparency principle. Charming if it lands, easily cuttable if it doesn’t.",
+                    "position": {
+                      "start": {
+                        "line": 49,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 49,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 51,
+            "column": 1
+          },
+          "end": {
+            "line": 51,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 51,
+                "column": 1
+              },
+              "end": {
+                "line": 51,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Scientist-not-builder anchoring throughout.",
+                "position": {
+                  "start": {
+                    "line": 51,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 51,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " Cail ",
+            "position": {
+              "start": {
+                "line": 51,
+                "column": 1
+              },
+              "end": {
+                "line": 51,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 51,
+                "column": 1
+              },
+              "end": {
+                "line": 51,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "contributes to",
+                "position": {
+                  "start": {
+                    "line": 51,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 51,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " and ",
+            "position": {
+              "start": {
+                "line": 51,
+                "column": 1
+              },
+              "end": {
+                "line": 51,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 51,
+                "column": 1
+              },
+              "end": {
+                "line": 51,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "maintains",
+                "position": {
+                  "start": {
+                    "line": 51,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 51,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " — not “co-founded” or “built.” The project is ",
+            "position": {
+              "start": {
+                "line": 51,
+                "column": 1
+              },
+              "end": {
+                "line": 51,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 51,
+                "column": 1
+              },
+              "end": {
+                "line": 51,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "the open ecosystem I work inside",
+                "position": {
+                  "start": {
+                    "line": 51,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 51,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ", not ",
+            "position": {
+              "start": {
+                "line": 51,
+                "column": 1
+              },
+              "end": {
+                "line": 51,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 51,
+                "column": 1
+              },
+              "end": {
+                "line": 51,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "the startup I’m in",
+                "position": {
+                  "start": {
+                    "line": 51,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 51,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ". Larry Page funding mentioned in voice; left out of the written draft (private, and CNRS+Berkeley is sufficient public framing). Researcher verbs.",
+            "position": {
+              "start": {
+                "line": 51,
+                "column": 1
+              },
+              "end": {
+                "line": 51,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 53,
+            "column": 1
+          },
+          "end": {
+            "line": 53,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 53,
+                "column": 1
+              },
+              "end": {
+                "line": 53,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Drawing-from:",
+                "position": {
+                  "start": {
+                    "line": 53,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 53,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " the agentic-science section of CNRS 5pp, reshaped — flip from “selling agentic science to AI evaluators” to “telling AI evaluators how I already do this.” Reader knows agents; speak peer-to-peer.",
+            "position": {
+              "start": {
+                "line": 53,
+                "column": 1
+              },
+              "end": {
+                "line": 53,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 55,
+            "column": 1
+          },
+          "end": {
+            "line": 55,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Longest of the five. Still well under a dossier section.",
+            "position": {
+              "start": {
+                "line": 55,
+                "column": 1
+              },
+              "end": {
+                "line": 55,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 3,
+        "position": {
+          "start": {
+            "line": 57,
+            "column": 1
+          },
+          "end": {
+            "line": 57,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Q4 — Project Ideas",
+            "position": {
+              "start": {
+                "line": 57,
+                "column": 1
+              },
+              "end": {
+                "line": 57,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "blockquote",
+        "position": {
+          "start": {
+            "line": 59,
+            "column": 1
+          },
+          "end": {
+            "line": 59,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "paragraph",
+            "position": {
+              "start": {
+                "line": 59,
+                "column": 1
+              },
+              "end": {
+                "line": 59,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "emphasis",
+                "position": {
+                  "start": {
+                    "line": 59,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 59,
+                    "column": 1
+                  }
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "“Propose one or two concrete ideas for evaluating, improving, or applying Claude in your field that you think are promising and would be excited about.”",
+                    "position": {
+                      "start": {
+                        "line": 59,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 59,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 61,
+            "column": 1
+          },
+          "end": {
+            "line": 61,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Non-binding. Anthropic frames this as a ",
+            "position": {
+              "start": {
+                "line": 61,
+                "column": 1
+              },
+              "end": {
+                "line": 61,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 61,
+                "column": 1
+              },
+              "end": {
+                "line": 61,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "taste-and-reach",
+                "position": {
+                  "start": {
+                    "line": 61,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 61,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " signal: mentors co-design the actual project. So the bar is not “this is what we should do” but “look at how I think about leveraged uses of Claude in real science.” Lead with ",
+            "position": {
+              "start": {
+                "line": 61,
+                "column": 1
+              },
+              "end": {
+                "line": 61,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 61,
+                "column": 1
+              },
+              "end": {
+                "line": 61,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "one ambitious capability-add",
+                "position": {
+                  "start": {
+                    "line": 61,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 61,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " and ",
+            "position": {
+              "start": {
+                "line": 61,
+                "column": 1
+              },
+              "end": {
+                "line": 61,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 61,
+                "column": 1
+              },
+              "end": {
+                "line": 61,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "one evaluation/benchmark",
+                "position": {
+                  "start": {
+                    "line": 61,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 61,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ", since the question invites both axes (“evaluating, improving, or applying”).",
+            "position": {
+              "start": {
+                "line": 61,
+                "column": 1
+              },
+              "end": {
+                "line": 61,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 63,
+            "column": 1
+          },
+          "end": {
+            "line": 63,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Candidates, ranked by my read of fit (Cail to reshape):",
+            "position": {
+              "start": {
+                "line": 63,
+                "column": 1
+              },
+              "end": {
+                "line": 63,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "start": 1,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 65,
+            "column": 1
+          },
+          "end": {
+            "line": 68,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 65,
+                "column": 1
+              },
+              "end": {
+                "line": 65,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 65,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 65,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Real-cosmology benchmarks for agentic capability.",
+                        "position": {
+                          "start": {
+                            "line": 65,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 65,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Package real cosmological analyses (UNIONS ",
+                    "position": {
+                      "start": {
+                        "line": 65,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 65,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineMath",
+                    "value": "B",
+                    "position": {
+                      "start": {
+                        "line": 65,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 65,
+                        "column": 1
+                      }
+                    },
+                    "html": "<span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"strut\" style=\"height:0.6833em;\"></span><span class=\"mord mathnormal\" style=\"margin-right:0.0502em;\">B</span></span></span></span>"
+                  },
+                  {
+                    "type": "text",
+                    "value": "-mode validation, CMB lensing pipelines, kinematic lensing) as evaluation harnesses for Claude, scored by numerical agreement + expert rubric + LLM-as-judge. The existing AI-science benchmarks evaluate isolated tasks; this would evaluate the ",
+                    "position": {
+                      "start": {
+                        "line": 65,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 65,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 65,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 65,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "full workflow",
+                        "position": {
+                          "start": {
+                            "line": 65,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 65,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " — data → analysis → judging the result’s trustworthiness. Initial release possible inside 3 months given Cail’s existing analyses. Aligned with Anthropic’s own move toward evaluation grounded in messy real problems (OpenAI’s Proof Q&A is the closest precedent on the model-lab side). ",
+                    "position": {
+                      "start": {
+                        "line": 65,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 65,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 65,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 65,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Strength:",
+                        "position": {
+                          "start": {
+                            "line": 65,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 65,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Cail is uniquely positioned; Anthropic doesn’t have this; deliverable inside the fellowship; useful to Anthropic past the fellowship.",
+                    "position": {
+                      "start": {
+                        "line": 65,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 65,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 66,
+                "column": 1
+              },
+              "end": {
+                "line": 66,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Provenance/verification as a first-class capability inside long-running Claude sessions.",
+                        "position": {
+                          "start": {
+                            "line": 66,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 66,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " When a Claude Code session produces a multi-step scientific analysis, automatically emit an inspectable provenance graph (ASTRA-shaped: nodes for decisions, jobs, findings; edges for data flow; evidence anchors) that humans or downstream Claude instances can audit. This is a ",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "capability question for Claude itself",
+                        "position": {
+                          "start": {
+                            "line": 66,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 66,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": ": does the model produce reasoning that another instance can trustworthily verify? ",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Strength:",
+                        "position": {
+                          "start": {
+                            "line": 66,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 66,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " uses the tapestry/felt work Cail has already built; the science-verification thread maps onto a broader Claude capability concern (auditable agentic work). ",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Risk:",
+                        "position": {
+                          "start": {
+                            "line": 66,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 66,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " more infrastructure-shaped; needs framing that lands with Anthropic as model-capability research, not as tooling.",
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 67,
+                "column": 1
+              },
+              "end": {
+                "line": 68,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 67,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 67,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Claude as scientific verifier (red-team mode).",
+                        "position": {
+                          "start": {
+                            "line": 67,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 67,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Use Claude to systematically critique published scientific claims — trace chains of reasoning, identify load-bearing assumptions, flag missing checks. Evaluate against historical cases where errors were eventually caught (BICEP2 dust, OPERA neutrinos) and current open tensions. Connects to the PleIAs scientific-claim-verification thread. ",
+                    "position": {
+                      "start": {
+                        "line": 67,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 67,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 67,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 67,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Risk:",
+                        "position": {
+                          "start": {
+                            "line": 67,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 67,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " less “build something inside Claude,” more “use Claude to verify”; possibly too applied for Anthropic’s interest.",
+                    "position": {
+                      "start": {
+                        "line": 67,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 67,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 69,
+            "column": 1
+          },
+          "end": {
+            "line": 69,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "My recommendation: lead with ",
+            "position": {
+              "start": {
+                "line": 69,
+                "column": 1
+              },
+              "end": {
+                "line": 69,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 69,
+                "column": 1
+              },
+              "end": {
+                "line": 69,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "#1 (benchmarks)",
+                "position": {
+                  "start": {
+                    "line": 69,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 69,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ", follow with ",
+            "position": {
+              "start": {
+                "line": 69,
+                "column": 1
+              },
+              "end": {
+                "line": 69,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 69,
+                "column": 1
+              },
+              "end": {
+                "line": 69,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "#2 (provenance-as-capability)",
+                "position": {
+                  "start": {
+                    "line": 69,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 69,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ". Together they say ",
+            "position": {
+              "start": {
+                "line": 69,
+                "column": 1
+              },
+              "end": {
+                "line": 69,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 69,
+                "column": 1
+              },
+              "end": {
+                "line": 69,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "I will build evaluation that grounds your models in real science, and I will push on the model-side capability that makes scientific Claude trustworthy.",
+                "position": {
+                  "start": {
+                    "line": 69,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 69,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " Both inside three months. Both leveraged by Cail’s existing work.",
+            "position": {
+              "start": {
+                "line": 69,
+                "column": 1
+              },
+              "end": {
+                "line": 69,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 71,
+            "column": 1
+          },
+          "end": {
+            "line": 71,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "To check with Cail before drafting.",
+            "position": {
+              "start": {
+                "line": 71,
+                "column": 1
+              },
+              "end": {
+                "line": 71,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 3,
+        "position": {
+          "start": {
+            "line": 73,
+            "column": 1
+          },
+          "end": {
+            "line": 73,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Q5 — References  ",
+            "position": {
+              "start": {
+                "line": 73,
+                "column": 1
+              },
+              "end": {
+                "line": 73,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 73,
+                "column": 1
+              },
+              "end": {
+                "line": 73,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "(locked: Lanusse + Holder)",
+                "position": {
+                  "start": {
+                    "line": 73,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 73,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "blockquote",
+        "position": {
+          "start": {
+            "line": 75,
+            "column": 1
+          },
+          "end": {
+            "line": 75,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "paragraph",
+            "position": {
+              "start": {
+                "line": 75,
+                "column": 1
+              },
+              "end": {
+                "line": 75,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "emphasis",
+                "position": {
+                  "start": {
+                    "line": 75,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 75,
+                    "column": 1
+                  }
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "“Provide two references that can speak to your past work and experience.”",
+                    "position": {
+                      "start": {
+                        "line": 75,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 75,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 77,
+            "column": 1
+          },
+          "end": {
+            "line": 79,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 77,
+                "column": 1
+              },
+              "end": {
+                "line": 77,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 77,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 77,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "François Lanusse",
+                        "position": {
+                          "start": {
+                            "line": 77,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 77,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " — CNRS, CosmoStat, Lightcone Research co-lead. Speaks to agentic-science practice from inside; daily proximity to Cail’s Claude Code work.",
+                    "position": {
+                      "start": {
+                        "line": 77,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 77,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 78,
+                "column": 1
+              },
+              "end": {
+                "line": 79,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 78,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 78,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Gil Holder",
+                        "position": {
+                          "start": {
+                            "line": 78,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 78,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " — Brand & Monica Fortner Endowed Chair in Theoretical Astrophysics, UIUC. Cail’s PhD advisor; 5 yrs close supervision on SPT-3G CMB lensing. Certifies STEM foundations.",
+                    "position": {
+                      "start": {
+                        "line": 78,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 78,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 80,
+            "column": 1
+          },
+          "end": {
+            "line": 80,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Email + contact details available in ",
+            "position": {
+              "start": {
+                "line": 80,
+                "column": 1
+              },
+              "end": {
+                "line": 80,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "cnrs-5pp/sections/references-contacts.tex",
+            "position": {
+              "start": {
+                "line": 80,
+                "column": 1
+              },
+              "end": {
+                "line": 80,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": ".",
+            "position": {
+              "start": {
+                "line": 80,
+                "column": 1
+              },
+              "end": {
+                "line": 80,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 3,
+        "position": {
+          "start": {
+            "line": 82,
+            "column": 1
+          },
+          "end": {
+            "line": 82,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "CV",
+            "position": {
+              "start": {
+                "line": 82,
+                "column": 1
+              },
+              "end": {
+                "line": 82,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 84,
+            "column": 1
+          },
+          "end": {
+            "line": 84,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Only attachment. Carries weight. The CNRS CV at ",
+            "position": {
+              "start": {
+                "line": 84,
+                "column": 1
+              },
+              "end": {
+                "line": 84,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "cnrs-5pp/sections/cv.tex",
+            "position": {
+              "start": {
+                "line": 84,
+                "column": 1
+              },
+              "end": {
+                "line": 84,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " is well-structured and Anthropic-friendly already — ",
+            "position": {
+              "start": {
+                "line": 84,
+                "column": 1
+              },
+              "end": {
+                "line": 84,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 84,
+                "column": 1
+              },
+              "end": {
+                "line": 84,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Agentic science",
+                "position": {
+                  "start": {
+                    "line": 84,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 84,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " is the first Research subsection, supervision and outreach are present, bibliometrics are there. Two options:",
+            "position": {
+              "start": {
+                "line": 84,
+                "column": 1
+              },
+              "end": {
+                "line": 84,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 86,
+            "column": 1
+          },
+          "end": {
+            "line": 88,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 86,
+                "column": 1
+              },
+              "end": {
+                "line": 86,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 86,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 86,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Reuse the CNRS CV",
+                        "position": {
+                          "start": {
+                            "line": 86,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 86,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " as a standalone PDF, lightly retargeted (remove dossier-specific framing if any; tighten Research-Interests bullets toward AI/agentic-coding). Fast, defensible, already polished.",
+                    "position": {
+                      "start": {
+                        "line": 86,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 86,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 87,
+                "column": 1
+              },
+              "end": {
+                "line": 88,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 87,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 87,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Build a leaner standalone CV",
+                        "position": {
+                          "start": {
+                            "line": 87,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 87,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " that pushes agentic-coding practice up and to the front. More effort; possibly redundant with what Q3 already says.",
+                    "position": {
+                      "start": {
+                        "line": 87,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 87,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 89,
+            "column": 1
+          },
+          "end": {
+            "line": 89,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 89,
+                "column": 1
+              },
+              "end": {
+                "line": 89,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "My lean: option 1.",
+                "position": {
+                  "start": {
+                    "line": 89,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 89,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " The CV’s job is to certify the STEM record; Q3 carries the Claude Code story.",
+            "position": {
+              "start": {
+                "line": 89,
+                "column": 1
+              },
+              "end": {
+                "line": 89,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 3,
+        "position": {
+          "start": {
+            "line": 91,
+            "column": 1
+          },
+          "end": {
+            "line": 91,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Voice",
+            "position": {
+              "start": {
+                "line": 91,
+                "column": 1
+              },
+              "end": {
+                "line": 91,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 93,
+            "column": 1
+          },
+          "end": {
+            "line": 93,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Inherits ",
+            "position": {
+              "start": {
+                "line": 93,
+                "column": 1
+              },
+              "end": {
+                "line": 93,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "ai-futures/CLAUDE.md",
+            "position": {
+              "start": {
+                "line": 93,
+                "column": 1
+              },
+              "end": {
+                "line": 93,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": ":",
+            "position": {
+              "start": {
+                "line": 93,
+                "column": 1
+              },
+              "end": {
+                "line": 93,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 95,
+            "column": 1
+          },
+          "end": {
+            "line": 99,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 95,
+                "column": 1
+              },
+              "end": {
+                "line": 95,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Researcher verbs (",
+                    "position": {
+                      "start": {
+                        "line": 95,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 95,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 95,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 95,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "conduct, investigate, build, lead",
+                        "position": {
+                          "start": {
+                            "line": 95,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 95,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "), not builder verbs (",
+                    "position": {
+                      "start": {
+                        "line": 95,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 95,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 95,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 95,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "architect, design, create",
+                        "position": {
+                          "start": {
+                            "line": 95,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 95,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": ").",
+                    "position": {
+                      "start": {
+                        "line": 95,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 95,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 96,
+                "column": 1
+              },
+              "end": {
+                "line": 96,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Arrive through content — never ",
+                    "position": {
+                      "start": {
+                        "line": 96,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 96,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 96,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 96,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "“In this essay I will…”",
+                        "position": {
+                          "start": {
+                            "line": 96,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 96,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "; open on the universe / the practice / the claim.",
+                    "position": {
+                      "start": {
+                        "line": 96,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 96,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 97,
+                "column": 1
+              },
+              "end": {
+                "line": 97,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "No declarative slogans, no triplet punchlines, no empty signposting.",
+                    "position": {
+                      "start": {
+                        "line": 97,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 97,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 98,
+                "column": 1
+              },
+              "end": {
+                "line": 99,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Textarea register: tighter than dossier prose, but still flowing — these are short essays, not bullet lists. Bullets sparingly, where they earn their keep (e.g., distinguishing the parts of the agentic workflow in Q3).",
+                    "position": {
+                      "start": {
+                        "line": 98,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 98,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 100,
+            "column": 1
+          },
+          "end": {
+            "line": 100,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Context — Lightcone is forward",
+            "position": {
+              "start": {
+                "line": 100,
+                "column": 1
+              },
+              "end": {
+                "line": 100,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 102,
+            "column": 1
+          },
+          "end": {
+            "line": 102,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Per Cail (May 12 chat): Lightcone is much bigger than the prior architecture had it. Joint CNRS–Berkeley open-source project funded by Larry Page (private; don’t write); going public this week; premier talk at Uros Seljak’s festival; six-person team with Cail fourth on the linear list; three advisors; developer summit at the end of June (during the fellowship window). Liam (Berkeley PhD with Seljak, possible Dario Amodei adjacency) is on the team. The North Star document explicitly positions Lightcone as ",
+            "position": {
+              "start": {
+                "line": 102,
+                "column": 1
+              },
+              "end": {
+                "line": 102,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 102,
+                "column": 1
+              },
+              "end": {
+                "line": 102,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "“the infrastructure [AI co-scientists] are missing”",
+                "position": {
+                  "start": {
+                    "line": 102,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 102,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " — public framing that lands hot with Anthropic and is ",
+            "position": {
+              "start": {
+                "line": 102,
+                "column": 1
+              },
+              "end": {
+                "line": 102,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 102,
+                "column": 1
+              },
+              "end": {
+                "line": 102,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "not",
+                "position": {
+                  "start": {
+                    "line": 102,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 102,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " me reaching for it.",
+            "position": {
+              "start": {
+                "line": 102,
+                "column": 1
+              },
+              "end": {
+                "line": 102,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 104,
+            "column": 1
+          },
+          "end": {
+            "line": 104,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 104,
+                "column": 1
+              },
+              "end": {
+                "line": 104,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Implication for the application:",
+                "position": {
+                  "start": {
+                    "line": 104,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 104,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " Lightcone is forward in Q3 (substrate Cail contributes to) and provides backdrop for Q4 (project ideas land inside an ecosystem Anthropic can see, not in a vacuum). CV gets a clean Lightcone line in the agentic-science section. ",
+            "position": {
+              "start": {
+                "line": 104,
+                "column": 1
+              },
+              "end": {
+                "line": 104,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 104,
+                "column": 1
+              },
+              "end": {
+                "line": 104,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Scientist-not-builder anchoring throughout",
+                "position": {
+                  "start": {
+                    "line": 104,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 104,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " — Cail’s own load-bearing identity claim (“I want to remain a scientist, not a builder or businessman”). Lightcone is ",
+            "position": {
+              "start": {
+                "line": 104,
+                "column": 1
+              },
+              "end": {
+                "line": 104,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 104,
+                "column": 1
+              },
+              "end": {
+                "line": 104,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "the ecosystem I contribute to as a scientist",
+                "position": {
+                  "start": {
+                    "line": 104,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 104,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ", never ",
+            "position": {
+              "start": {
+                "line": 104,
+                "column": 1
+              },
+              "end": {
+                "line": 104,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 104,
+                "column": 1
+              },
+              "end": {
+                "line": 104,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "the startup I co-founded",
+                "position": {
+                  "start": {
+                    "line": 104,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 104,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ". Researcher verbs (",
+            "position": {
+              "start": {
+                "line": 104,
+                "column": 1
+              },
+              "end": {
+                "line": 104,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 104,
+                "column": 1
+              },
+              "end": {
+                "line": 104,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "contribute, maintain, develop",
+                "position": {
+                  "start": {
+                    "line": 104,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 104,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ") never builder verbs.",
+            "position": {
+              "start": {
+                "line": 104,
+                "column": 1
+              },
+              "end": {
+                "line": 104,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 106,
+            "column": 1
+          },
+          "end": {
+            "line": 106,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 106,
+                "column": 1
+              },
+              "end": {
+                "line": 106,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Awareness:",
+                "position": {
+                  "start": {
+                    "line": 106,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 106,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " Liam may meet with Dario Amodei. Whatever Anthropic sees from us should not be discordant with what arrives in Dario’s awareness through Liam’s channel. Possibly worth a check-in with Liam on framing before submission.",
+            "position": {
+              "start": {
+                "line": 106,
+                "column": 1
+              },
+              "end": {
+                "line": 106,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 108,
+            "column": 1
+          },
+          "end": {
+            "line": 108,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Open decisions remaining for Cail",
+            "position": {
+              "start": {
+                "line": 108,
+                "column": 1
+              },
+              "end": {
+                "line": 108,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 110,
+            "column": 1
+          },
+          "end": {
+            "line": 110,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Confirmed: in-person SF + US work auth + June 15 – Sept 15. ",
+            "position": {
+              "start": {
+                "line": 110,
+                "column": 1
+              },
+              "end": {
+                "line": 110,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 110,
+                "column": 1
+              },
+              "end": {
+                "line": 110,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "(Cail to confirm logistics and citizenship status.)",
+                "position": {
+                  "start": {
+                    "line": 110,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 110,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "start": 1,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 112,
+            "column": 1
+          },
+          "end": {
+            "line": 115,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 112,
+                "column": 1
+              },
+              "end": {
+                "line": 112,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 112,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 112,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Project ideas ranking and shape (Q4).",
+                        "position": {
+                          "start": {
+                            "line": 112,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 112,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Concur with benchmarks + provenance-as-capability (now Lightcone-anchored), or different lean?",
+                    "position": {
+                      "start": {
+                        "line": 112,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 112,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 113,
+                "column": 1
+              },
+              "end": {
+                "line": 113,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 113,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 113,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "CV (attachment).",
+                        "position": {
+                          "start": {
+                            "line": 113,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 113,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Reuse CNRS CV as standalone, or build leaner version with Lightcone forward?",
+                    "position": {
+                      "start": {
+                        "line": 113,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 113,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 114,
+                "column": 1
+              },
+              "end": {
+                "line": 115,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 114,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 114,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Drafting cadence.",
+                        "position": {
+                          "start": {
+                            "line": 114,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 114,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Four days. Suggest: today — Q3 draft (showpiece) + Q1 draft; tomorrow — Q2 + Q4; Thursday — close-read + cohesion + CV export; Friday — submit early morning.",
+                    "position": {
+                      "start": {
+                        "line": 114,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 114,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 116,
+            "column": 1
+          },
+          "end": {
+            "line": 116,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Decisions locked (May 12)",
+            "position": {
+              "start": {
+                "line": 116,
+                "column": 1
+              },
+              "end": {
+                "line": 116,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 118,
+            "column": 1
+          },
+          "end": {
+            "line": 121,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 118,
+                "column": 1
+              },
+              "end": {
+                "line": 118,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 118,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 118,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Q2 shape:",
+                        "position": {
+                          "start": {
+                            "line": 118,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 118,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " honest + texture (word2vec/Foucault, Bayesian substrate, soft on-ramp to Q3).",
+                    "position": {
+                      "start": {
+                        "line": 118,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 118,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 119,
+                "column": 1
+              },
+              "end": {
+                "line": 119,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 119,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 119,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Q5 references:",
+                        "position": {
+                          "start": {
+                            "line": 119,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 119,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Lanusse + Holder.",
+                    "position": {
+                      "start": {
+                        "line": 119,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 119,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 120,
+                "column": 1
+              },
+              "end": {
+                "line": 121,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 120,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 120,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Vision placement:",
+                        "position": {
+                          "start": {
+                            "line": 120,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 120,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " voice only, implicit. The beach-with-friends future animates the writing from behind; not explicitly stated.",
+                    "position": {
+                      "start": {
+                        "line": 120,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 120,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 122,
+            "column": 1
+          },
+          "end": {
+            "line": 122,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Original dispatch (preserved)",
+            "position": {
+              "start": {
+                "line": 122,
+                "column": 1
+              },
+              "end": {
+                "line": 122,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 124,
+            "column": 1
+          },
+          "end": {
+            "line": 124,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "I would like to apply to the Anthropic STEM Fellowship, https://job-boards.greenhouse.io/anthropic/jobs/5189848008",
+            "position": {
+              "start": {
+                "line": 124,
+                "column": 1
+              },
+              "end": {
+                "line": 124,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 126,
+            "column": 1
+          },
+          "end": {
+            "line": 126,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "We can base the application strongly on my cnrs ai rising talents application, although i want to put a ",
+            "position": {
+              "start": {
+                "line": 126,
+                "column": 1
+              },
+              "end": {
+                "line": 126,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 126,
+                "column": 1
+              },
+              "end": {
+                "line": 126,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "lot",
+                "position": {
+                  "start": {
+                    "line": 126,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 126,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " of effort into it this week since it’s a hugely high-reward application. i think first step is to open a new sub-fiber with the full application requirements, including all the questions on the application with word limits, etc. then you can stay open and not kill ppid or close, and i’ll come chat and we’ll start fleshing out a plan and application",
+            "position": {
+              "start": {
+                "line": 126,
+                "column": 1
+              },
+              "end": {
+                "line": 126,
+                "column": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "frontmatter": {
+    "name": "anthropic-stem-fellowship",
+    "status": "active",
+    "tags": [
+      "constitution",
+      "application"
+    ],
+    "created-at": "1901-01-01T00:00:00.000Z",
+    "outcome": "**Substantial close-read pass on Q1 + Q2 + Q3 ¶1 landed (May 14); drafts now plain-text and paste-ready for Greenhouse.** Q1 rewritten across all three paragraphs — umbrella opener (weak gravitational lensing), chronological PhD→postdoc arc with \"difficult reality of cosmological data\" framing and 3–6-year analysis foreshadow, CEA Paris-Saclay credentials cluster with CNRS glossed at first mention. Q2 restructured into 2 paragraphs + handoff — ML knowledge + Bayesian/frequentist substrate + bias-vs-variance argument; word2vec/Foucault final project with ultimate-point sentence + TTS/STT + Pleias reframed for synthetic-data scaling. Q3 ¶1 added orienting sentence, replaced \"results\" with \"null-test validation,\" added arXiv link inline, rewrote role-shift around \"constructing back pressure that allows the agent to check its own work.\" CV: in-prep language replaced with \"submitted to A&A\"; publication counts synced at 4 further refereed. All markdown stripped from Q1–Q5 prose. **References (Lanusse + Holder) confirmed — Cail has been in touch.**\n\n**Remaining for Cail:** close-read on Q3 ¶2–4 (Lightcone substrate, day-to-day workflow, multi-language tools), Q4 (three project ideas + Anthropic motivation + France–Anthropic closer), Q5 (reference context paragraphs). CV interactive walk-through still parked at [[application/anthropic-stem-fellowship/cv-rebuild]] (header shape, Lightcone wording trim, CNRS phrasing, any 2026 additions, Skills \"AI & workflows\" line). Optional INSPIRE eyeball. **Paste into Greenhouse and submit by Friday May 15.**",
+    "shuttle": {
+      "enabled": true,
+      "kind": "oneshot",
+      "host": "local",
+      "project_dir": "/Users/cd280747/Documents/projects/ai-futures",
+      "agent": "claude-opus",
+      "session": {
+        "id": "d260593b-59ff-41d3-99a1-8881d83d7d2e",
+        "agent": "claude-opus",
+        "dispatched_at": "2026-05-14T15:09:22.444Z"
+      }
+    },
+    "title": "anthropic-stem-fellowship"
+  },
+  "references": {},
+  "dependencies": []
+}

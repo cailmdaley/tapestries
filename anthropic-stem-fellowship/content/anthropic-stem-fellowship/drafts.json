@@ -1,0 +1,2210 @@
+{
+  "slug": "anthropic-stem-fellowship/drafts",
+  "kind": "Article",
+  "mdast": {
+    "type": "root",
+    "children": [
+      {
+        "type": "heading",
+        "depth": 1,
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Anthropic STEM Fellowship — Application Drafts",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 3,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Deadline: ",
+            "position": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "May 15, 2026",
+                "position": {
+                  "start": {
+                    "line": 3,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " · Submission: ",
+            "position": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "link",
+            "url": "https://job-boards.greenhouse.io/anthropic/jobs/5189848008",
+            "position": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Greenhouse form",
+                "position": {
+                  "start": {
+                    "line": 3,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " · Constitution & meta: "
+          },
+          {
+            "type": "link",
+            "url": "felt://application/anthropic-stem-fellowship",
+            "children": [
+              {
+                "type": "text",
+                "value": "application/anthropic-stem-fellowship"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 5,
+            "column": 1
+          },
+          "end": {
+            "line": 6,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Five textareas + CV (only attachment) + two references.\nNo word limits stated; textarea convention reads as “short and tight.”",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "thematicBreak",
+        "position": {
+          "start": {
+            "line": 8,
+            "column": 1
+          },
+          "end": {
+            "line": 8,
+            "column": 1
+          }
+        }
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 10,
+            "column": 1
+          },
+          "end": {
+            "line": 10,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Q1 — STEM Expertise",
+            "position": {
+              "start": {
+                "line": 10,
+                "column": 1
+              },
+              "end": {
+                "line": 10,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "blockquote",
+        "position": {
+          "start": {
+            "line": 12,
+            "column": 1
+          },
+          "end": {
+            "line": 12,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "paragraph",
+            "position": {
+              "start": {
+                "line": 12,
+                "column": 1
+              },
+              "end": {
+                "line": 12,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "emphasis",
+                "position": {
+                  "start": {
+                    "line": 12,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 1
+                  }
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Please share the STEM field(s) where you have the most expertise and describe your relevant experience/contribution.",
+                    "position": {
+                      "start": {
+                        "line": 12,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 14,
+            "column": 1
+          },
+          "end": {
+            "line": 19,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Observational cosmology studies the contents and history of the universe through the light that reaches us across cosmic time.\nOver the past century, cosmologists have converged on a consensus model that fits a wide range of observables including the cosmic microwave background, the large-scale distribution of galaxies, supernova distances, and light-element abundances with just six parameters.\nThis model is named ΛCDM after its dominant components, dark energy (Λ) and cold dark matter (CDM), which together make up 95% of the universe yet are detectable only through their impact on spacetime.\nAs a result, ΛCDM can only describe the dominant components of the universe phenomenologically.\nModern cosmology largely involves pushing measurements to higher precision across complementary probes and asking whether they reveal tensions in ΛCDM that might point to a more fundamental model.\nWith the next generation of cosmology experiments coming online, including Euclid, LSST, and Simons Observatory, statistical errors will shrink by another order of magnitude in the coming years, and systematic uncertainties will dominate every measurement.",
+            "position": {
+              "start": {
+                "line": 14,
+                "column": 1
+              },
+              "end": {
+                "line": 14,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 21,
+            "column": 1
+          },
+          "end": {
+            "line": 25,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "My research has focused on mapping the distribution of matter in the universe with weak gravitational lensing.\nDuring my PhD I worked on CMB lensing with the South Pole Telescope’s third-generation receiver (SPT-3G), building one of three independent pipelines for SPT-3G’s first flagship lensing analysis.\nIn my postdoctoral work I have moved to weak lensing of galaxy shapes with the UNIONS optical survey, cross-correlations of SPT-3G CMB lensing with Euclid, and the emerging field of kinematic lensing which uses galaxy rotation rather than shape.\nMy work across all of these has centered on the difficult reality of cosmological data — building pipelines for processing and analysis, characterizing systematics (often astrophysics in their own right), and cross-validating results across independent methods.\nAn observational cosmology analysis typically takes three to six years from initial data to final cosmological results, and much of that time is spent characterizing the impact of analysis choices and systematics on the data.",
+            "position": {
+              "start": {
+                "line": 21,
+                "column": 1
+              },
+              "end": {
+                "line": 21,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 27,
+            "column": 1
+          },
+          "end": {
+            "line": 29,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "I am a postdoctoral researcher at CEA Paris-Saclay’s Département d’Astrophysique (UMR AIM / CosmoStat), where I led the principal null-test validation for the first UNIONS weak lensing cosmology release and now lead a Memorandum of Understanding between the SPT and Euclid collaborations for CMB-lensing × galaxy-shear cross-correlations targeting Euclid’s first data release in October 2026.\nI am first author on two publications, have made substantive individual contributions to four further refereed papers, and am co-author on more than thirty (h-index 19, ~1,800 citations on INSPIRE-HEP).\nThe CNRS (France’s national research agency) has invited me to interview in mid-June as a finalist for the two AI Rising Talents fellowship positions awarded this year, for which I have proposed a four-year research program in observational cosmology structured around developing the practice of agentic AI for science.",
+            "position": {
+              "start": {
+                "line": 27,
+                "column": 1
+              },
+              "end": {
+                "line": 27,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "thematicBreak",
+        "position": {
+          "start": {
+            "line": 31,
+            "column": 1
+          },
+          "end": {
+            "line": 31,
+            "column": 1
+          }
+        }
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 33,
+            "column": 1
+          },
+          "end": {
+            "line": 33,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Q2 — ML/AI Experience",
+            "position": {
+              "start": {
+                "line": 33,
+                "column": 1
+              },
+              "end": {
+                "line": 33,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "blockquote",
+        "position": {
+          "start": {
+            "line": 35,
+            "column": 1
+          },
+          "end": {
+            "line": 35,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "paragraph",
+            "position": {
+              "start": {
+                "line": 35,
+                "column": 1
+              },
+              "end": {
+                "line": 35,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "emphasis",
+                "position": {
+                  "start": {
+                    "line": 35,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 35,
+                    "column": 1
+                  }
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Describe any experience you have with ML/AI, e.g. training custom models, applying an existing model, using adjacent techniques, etc.",
+                    "position": {
+                      "start": {
+                        "line": 35,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 35,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 37,
+            "column": 1
+          },
+          "end": {
+            "line": 40,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "I have worked alongside machine learning cosmologists throughout my career and have a general understanding of basic ML methods and the architectures of neural networks and large language models.\nI have not trained or applied custom models in my own research, and I would not represent myself as part of that work.\nMy work relies on more standard Bayesian and frequentist statistical techniques, including MCMC samplers, two-point statistics, and semi-analytic covariances.\nIn cosmology, characterizing systematic errors tends to be more important than minimizing statistical uncertainties, and methods that can be decomposed and cross-checked at every step tend to be more reliable than neural-network-based estimators.",
+            "position": {
+              "start": {
+                "line": 37,
+                "column": 1
+              },
+              "end": {
+                "line": 37,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 42,
+            "column": 1
+          },
+          "end": {
+            "line": 47,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "My other engagements with ML lie outside my cosmology research.\nAs an undergraduate in 2018 I trained a word2vec model on a corpus of nineteenth-century texts on the prison and the penal system as the final project for a class on Foucault, treating word co-occurrence as a computational analog of his “invisible ensembles” of statements.\nI argued that the distributional geometry such models learn could serve as a computational instrument for Foucauldian discourse analysis, making visible the relations between statements that traditional reading misses.\nMore recently, I run text-to-speech and speech-to-text models locally for research and personal use.\nI have also begun a collaboration with Pleias, the French open-model laboratory whose synthetic data work has become central to recent frontier LLM scaling.\nThe shared project is a three-stage scientific-claim verification pipeline — claim extraction, evidence retrieval, and per-claim labeling — comparing domain-fine-tuned smaller models against general-purpose frontier LLMs on real scientific verification tasks; cosmology is the proposed lead domain.",
+            "position": {
+              "start": {
+                "line": 42,
+                "column": 1
+              },
+              "end": {
+                "line": 42,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 49,
+            "column": 1
+          },
+          "end": {
+            "line": 49,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "At the center of my recent AI work, though, is the daily collaboration with frontier large language models in cosmological research itself — which I describe in the next question.",
+            "position": {
+              "start": {
+                "line": 49,
+                "column": 1
+              },
+              "end": {
+                "line": 49,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "thematicBreak",
+        "position": {
+          "start": {
+            "line": 51,
+            "column": 1
+          },
+          "end": {
+            "line": 51,
+            "column": 1
+          }
+        }
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 53,
+            "column": 1
+          },
+          "end": {
+            "line": 53,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Q3 — Claude Code Usage",
+            "position": {
+              "start": {
+                "line": 53,
+                "column": 1
+              },
+              "end": {
+                "line": 53,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "blockquote",
+        "position": {
+          "start": {
+            "line": 55,
+            "column": 1
+          },
+          "end": {
+            "line": 55,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "paragraph",
+            "position": {
+              "start": {
+                "line": 55,
+                "column": 1
+              },
+              "end": {
+                "line": 55,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "emphasis",
+                "position": {
+                  "start": {
+                    "line": 55,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 55,
+                    "column": 1
+                  }
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Describe any experience you have with Claude Code or similar agentic coding products. If you have used them before, please describe your use case(s) and workflow.",
+                    "position": {
+                      "start": {
+                        "line": 55,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 55,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 57,
+            "column": 1
+          },
+          "end": {
+            "line": 61,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "I started using Claude Code in summer 2025.\nSince then it has become the singular interface between me and all aspects of my work, including analysis code, manuscript preparation, literature search, note-taking, and meeting transcripts.\nThe first UNIONS weak-lensing cosmology null-test validation (Daley et al. 2026, https://arxiv.org/abs/2604.03227) was produced with about 10,000 lines of agent-written analysis code, figures, and manuscript text, against roughly 120,000 lines edited across the full workflow.\nAs I have become more competent in agentic research, my usage has shifted from prompting script writing and debugging to higher levels of abstraction: analysis design, specifying test criteria, and — most importantly — constructing back pressure that allows the agent to check its own work.\nWorking this way made it practical to explore a broader space of methodological choices, run validation checks that would otherwise have been triaged for lack of time, and document every decision in a structured record.",
+            "position": {
+              "start": {
+                "line": 57,
+                "column": 1
+              },
+              "end": {
+                "line": 57,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 63,
+            "column": 1
+          },
+          "end": {
+            "line": 68,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Alongside the practice, I help build the substrate that makes it rigorous.\nI am a core team member of Lightcone Research, a joint open-source project of the CNRS and UC Berkeley developing the open ecosystem for reproducible, composable, and verifiable scientific research in the age of agentic AI.\nThe premise is that scientific knowledge does not accumulate in papers but in the decisions behind them.\nThe central artifact is ",
+            "position": {
+              "start": {
+                "line": 63,
+                "column": 1
+              },
+              "end": {
+                "line": 63,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "ASTRA",
+            "position": {
+              "start": {
+                "line": 63,
+                "column": 1
+              },
+              "end": {
+                "line": 63,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": ", an open YAML schema in which an analysis carries its decisions, alternatives considered, and evidence anchors alongside its data and code.\nI contribute to its development and maintain ",
+            "position": {
+              "start": {
+                "line": 63,
+                "column": 1
+              },
+              "end": {
+                "line": 63,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "felt",
+            "position": {
+              "start": {
+                "line": 63,
+                "column": 1
+              },
+              "end": {
+                "line": 63,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": ", a Go CLI for tracking decisions and findings as a structured graph of markdown fibers.\nLightcone positions itself as the infrastructure AI co-scientists are missing — a complement, not a competitor, to the kind of work Claude Code already does well.",
+            "position": {
+              "start": {
+                "line": 63,
+                "column": 1
+              },
+              "end": {
+                "line": 63,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 70,
+            "column": 1
+          },
+          "end": {
+            "line": 72,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "The day-to-day shape: I open a fiber for whatever decision the analysis needs to make; Claude Code surveys related code and prior fibers, drafts against a constitution I have written, and reports back at chosen handoff points.\nMulti-session work hands off through ",
+            "position": {
+              "start": {
+                "line": 70,
+                "column": 1
+              },
+              "end": {
+                "line": 70,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "shuttle",
+            "position": {
+              "start": {
+                "line": 70,
+                "column": 1
+              },
+              "end": {
+                "line": 70,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": ", an orchestration tool I also maintain — in spirit, my version of what OpenAI’s Symphony does for agent dispatch, though grown out of the practice rather than from a system design.\nThe verification posture throughout is “human as architect, agent as implementer”: I specify what should be true and design the tests for it; the agent does the work; I inspect what was decided and why, and the structured record is what makes that inspection tractable at this volume of code.",
+            "position": {
+              "start": {
+                "line": 70,
+                "column": 1
+              },
+              "end": {
+                "line": 70,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 74,
+            "column": 1
+          },
+          "end": {
+            "line": 76,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "I have built tools for agent orchestration and context management across Go, Elixir, and Rust — none of which I write directly.\nThey have emerged less as products than as ways to learn the principles from the inside.\nfelt is now used by a handful of collaborators for their own scientific work.",
+            "position": {
+              "start": {
+                "line": 74,
+                "column": 1
+              },
+              "end": {
+                "line": 74,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "thematicBreak",
+        "position": {
+          "start": {
+            "line": 78,
+            "column": 1
+          },
+          "end": {
+            "line": 78,
+            "column": 1
+          }
+        }
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 80,
+            "column": 1
+          },
+          "end": {
+            "line": 80,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Q4 — Project Ideas",
+            "position": {
+              "start": {
+                "line": 80,
+                "column": 1
+              },
+              "end": {
+                "line": 80,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "blockquote",
+        "position": {
+          "start": {
+            "line": 82,
+            "column": 1
+          },
+          "end": {
+            "line": 82,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "paragraph",
+            "position": {
+              "start": {
+                "line": 82,
+                "column": 1
+              },
+              "end": {
+                "line": 82,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "emphasis",
+                "position": {
+                  "start": {
+                    "line": 82,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 82,
+                    "column": 1
+                  }
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Propose one or two concrete ideas for evaluating, improving, or applying Claude in your field that you think are promising and would be excited about. (This is not necessarily what you will work on – the mentors will help co-design the actual project – but it helps us understand your interests.)",
+                    "position": {
+                      "start": {
+                        "line": 82,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 82,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 84,
+            "column": 1
+          },
+          "end": {
+            "line": 89,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "The closest existing AI-for-science benchmarks evaluate isolated capabilities or extract tasks from published papers.\nWhat I would most want to build is something different: full evaluation environments drawn from real cosmological analyses, complete with the standard mess that distinguishes a working dataset from a sanitized one.\nReal survey data — UNIONS galaxy shape catalogs, CMB power spectra, kinematic lensing pilot data — together with the systematics that have not been fully characterized, the mask boundaries, the calibration jitter, the format quirks that anyone who has worked with cosmological data will recognize.\nThe agent’s task is to deliver a cosmological result that survives joint scrutiny: expert rubric, numerical agreement against a withheld reference, and LLM-as-judge scoring.\nThis is the part of doing science most current benchmarks step around, and it is also the part where domain expertise matters most.\nAn initial set, drawn from the UNIONS and SPT analyses I have already led, would be deliverable within the fellowship, and the format generalizes to other observational fields.",
+            "position": {
+              "start": {
+                "line": 84,
+                "column": 1
+              },
+              "end": {
+                "line": 84,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 91,
+            "column": 1
+          },
+          "end": {
+            "line": 93,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "I am also interested in the inverse mode within the same project: substantial synthetic environments designed around problems that require taste rather than rote correctness — scenarios with multiple defensible answers where the cosmologist’s judgment about which assumption to commit to matters more than the numerical answer.\nSynthetic environments have the advantage of being clean enough to evaluate definitively, and the open question is whether they can be designed to capture the things that make real cosmology genuinely hard, or whether the loss of mess strips out exactly what one wants to evaluate.\nThe question of how much real-data difficulty can be carried into synthetic generation is itself worth investigating, and the two modes — real and synthetic — would inform each other.",
+            "position": {
+              "start": {
+                "line": 91,
+                "column": 1
+              },
+              "end": {
+                "line": 91,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 95,
+            "column": 1
+          },
+          "end": {
+            "line": 97,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "A complementary, live-rather-than-evaluative project would take a serious open cosmology problem and see how far a domain expert paired with Claude can push it inside three months.\nCandidates within my reach include accelerated systematics exploration in the UNIONS multi-probe pipeline, characterization of post-Born curl-mode CMB lensing in cross-correlation with galaxy surveys, or methodological work on kinematic lensing as an emerging probe.\nThe point would be less to produce a publishable cosmology result inside the fellowship — some of these have natural longer timescales — than to learn what concentrating the model against a real cosmological problem with someone who knows the domain in detail actually unlocks, and where it is presently weakest.",
+            "position": {
+              "start": {
+                "line": 95,
+                "column": 1
+              },
+              "end": {
+                "line": 95,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 99,
+            "column": 1
+          },
+          "end": {
+            "line": 99,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Two further interests inform why Anthropic in particular draws me to this work: alignment and model behavior beyond what my technical work has so far directly engaged with, and the phenomenology of working closely with frontier models in collaborative settings — what the experience is actually like, for researcher and model both, when the work is shared.",
+            "position": {
+              "start": {
+                "line": 99,
+                "column": 1
+              },
+              "end": {
+                "line": 99,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 101,
+            "column": 1
+          },
+          "end": {
+            "line": 103,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Underneath all of this is a broader motivation.\nThe French research community where I am based has deep capability in observational cosmology and statistical methods, and limited prior working contact with frontier AI laboratories.\nBeyond whatever the fellowship produces directly, I would like to help open the working relationship between European scientific research and Anthropic, and to leave it stronger than I found it.",
+            "position": {
+              "start": {
+                "line": 101,
+                "column": 1
+              },
+              "end": {
+                "line": 101,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "thematicBreak",
+        "position": {
+          "start": {
+            "line": 105,
+            "column": 1
+          },
+          "end": {
+            "line": 105,
+            "column": 1
+          }
+        }
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 107,
+            "column": 1
+          },
+          "end": {
+            "line": 107,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Q5 — References",
+            "position": {
+              "start": {
+                "line": 107,
+                "column": 1
+              },
+              "end": {
+                "line": 107,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "blockquote",
+        "position": {
+          "start": {
+            "line": 109,
+            "column": 1
+          },
+          "end": {
+            "line": 109,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "paragraph",
+            "position": {
+              "start": {
+                "line": 109,
+                "column": 1
+              },
+              "end": {
+                "line": 109,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "emphasis",
+                "position": {
+                  "start": {
+                    "line": 109,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 109,
+                    "column": 1
+                  }
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Provide two references that can speak to your past work and experience. Please include their name, email address (or preferred contact method), and any additional context about your collaboration.",
+                    "position": {
+                      "start": {
+                        "line": 109,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 109,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "start": 1,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 111,
+            "column": 1
+          },
+          "end": {
+            "line": 124,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 111,
+                "column": 1
+              },
+              "end": {
+                "line": 117,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "position": {
+                  "start": {
+                    "line": 111,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 116,
+                    "column": 1
+                  }
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "François Lanusse\nChargé de Recherche CNRS · CosmoStat, CEA Paris-Saclay\nfrancois.lanusse@cea.fr\nColleague at CosmoStat since I joined as a postdoc in fall 2024.\nWe collaborate closely on Lightcone Research, the joint CNRS–Berkeley project building the open ecosystem for reproducible, composable, and verifiable AI-mediated science; I am a core team member and François co-leads the project.\nHe has daily proximity to my agentic research practice and can speak to both the scientific quality of the work and the way I work with frontier models on real cosmological problems.",
+                    "position": {
+                      "start": {
+                        "line": 111,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 111,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 118,
+                "column": 1
+              },
+              "end": {
+                "line": 124,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "position": {
+                  "start": {
+                    "line": 118,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 123,
+                    "column": 1
+                  }
+                },
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Gil Holder\nBrand & Monica Fortner Endowed Chair in Theoretical Astrophysics · University of Illinois Urbana-Champaign\ngholder@illinois.edu\nMy Ph.D. advisor (2019–2024).\nGil supervised my doctoral research on CMB lensing measurements with the South Pole Telescope’s third-generation receiver, including the independent quadratic-estimator pipeline that contributes to the upcoming SPT-3G data release.\nHe can speak to the foundations of my scientific judgment from five years of close work, and to the careful observational practice on which the more recent agentic work is built.",
+                    "position": {
+                      "start": {
+                        "line": 118,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 118,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "thematicBreak",
+        "position": {
+          "start": {
+            "line": 125,
+            "column": 1
+          },
+          "end": {
+            "line": 125,
+            "column": 1
+          }
+        }
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 127,
+            "column": 1
+          },
+          "end": {
+            "line": 127,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "CV (attachment)",
+            "position": {
+              "start": {
+                "line": 127,
+                "column": 1
+              },
+              "end": {
+                "line": 127,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 129,
+            "column": 1
+          },
+          "end": {
+            "line": 131,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Plan: export ",
+            "position": {
+              "start": {
+                "line": 129,
+                "column": 1
+              },
+              "end": {
+                "line": 129,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "cnrs-5pp/sections/cv.tex",
+            "position": {
+              "start": {
+                "line": 129,
+                "column": 1
+              },
+              "end": {
+                "line": 129,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " to standalone PDF.\nThe CV’s ",
+            "position": {
+              "start": {
+                "line": 129,
+                "column": 1
+              },
+              "end": {
+                "line": 129,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 129,
+                "column": 1
+              },
+              "end": {
+                "line": 129,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Research",
+                "position": {
+                  "start": {
+                    "line": 129,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 129,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " section already leads on ",
+            "position": {
+              "start": {
+                "line": 129,
+                "column": 1
+              },
+              "end": {
+                "line": 129,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 129,
+                "column": 1
+              },
+              "end": {
+                "line": 129,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Agentic science (2025–present)",
+                "position": {
+                  "start": {
+                    "line": 129,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 129,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " and includes the UNIONS workflow; the ",
+            "position": {
+              "start": {
+                "line": 129,
+                "column": 1
+              },
+              "end": {
+                "line": 129,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 129,
+                "column": 1
+              },
+              "end": {
+                "line": 129,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Skills",
+                "position": {
+                  "start": {
+                    "line": 129,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 129,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " section includes ",
+            "position": {
+              "start": {
+                "line": 129,
+                "column": 1
+              },
+              "end": {
+                "line": 129,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "emphasis",
+            "position": {
+              "start": {
+                "line": 129,
+                "column": 1
+              },
+              "end": {
+                "line": 129,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "AI & workflows",
+                "position": {
+                  "start": {
+                    "line": 129,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 129,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ".\nLight retargeting may be worth a pass:",
+            "position": {
+              "start": {
+                "line": 129,
+                "column": 1
+              },
+              "end": {
+                "line": 129,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 133,
+            "column": 1
+          },
+          "end": {
+            "line": 135,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 133,
+                "column": 1
+              },
+              "end": {
+                "line": 133,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Add a Lightcone Research line under the agentic-science subsection (one bullet).",
+                    "position": {
+                      "start": {
+                        "line": 133,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 133,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 134,
+                "column": 1
+              },
+              "end": {
+                "line": 135,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Confirm Research Interests bullets land for the Anthropic audience (currently: agentic science methodology, CMB lensing & cross-correlations, lensing systematics, verification of AI-mediated research, cosmic shear & LSS, kinematic lensing). All fine, but the AI-side bullets could come first.",
+                    "position": {
+                      "start": {
+                        "line": 134,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 134,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 136,
+            "column": 1
+          },
+          "end": {
+            "line": 136,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "See "
+          },
+          {
+            "type": "link",
+            "url": "felt://application/anthropic-stem-fellowship/cv-rebuild",
+            "children": [
+              {
+                "type": "text",
+                "value": "application/anthropic-stem-fellowship/cv-rebuild"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": "."
+          }
+        ]
+      },
+      {
+        "type": "thematicBreak",
+        "position": {
+          "start": {
+            "line": 138,
+            "column": 1
+          },
+          "end": {
+            "line": 138,
+            "column": 1
+          }
+        }
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 140,
+            "column": 1
+          },
+          "end": {
+            "line": 140,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Voice (reminders)",
+            "position": {
+              "start": {
+                "line": 140,
+                "column": 1
+              },
+              "end": {
+                "line": 140,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 142,
+            "column": 1
+          },
+          "end": {
+            "line": 147,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 142,
+                "column": 1
+              },
+              "end": {
+                "line": 142,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Researcher verbs (",
+                    "position": {
+                      "start": {
+                        "line": 142,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 142,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 142,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 142,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "conduct, investigate, build, lead, contribute, maintain, develop",
+                        "position": {
+                          "start": {
+                            "line": 142,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 142,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "), not builder verbs (",
+                    "position": {
+                      "start": {
+                        "line": 142,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 142,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 142,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 142,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "architect, design, create, found",
+                        "position": {
+                          "start": {
+                            "line": 142,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 142,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": ").",
+                    "position": {
+                      "start": {
+                        "line": 142,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 142,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 143,
+                "column": 1
+              },
+              "end": {
+                "line": 143,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Arrive through content — never ",
+                    "position": {
+                      "start": {
+                        "line": 143,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 143,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 143,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 143,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "“In this essay I will…”",
+                        "position": {
+                          "start": {
+                            "line": 143,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 143,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": ".",
+                    "position": {
+                      "start": {
+                        "line": 143,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 143,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 144,
+                "column": 1
+              },
+              "end": {
+                "line": 144,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "No declarative slogans, no triplet punchlines, no empty signposting.",
+                    "position": {
+                      "start": {
+                        "line": 144,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 144,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 145,
+                "column": 1
+              },
+              "end": {
+                "line": 145,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Textarea register: tight but flowing. Short essays, not bullet lists.",
+                    "position": {
+                      "start": {
+                        "line": 145,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 145,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 146,
+                "column": 1
+              },
+              "end": {
+                "line": 146,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Scientist not builder: Lightcone is ",
+                    "position": {
+                      "start": {
+                        "line": 146,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 146,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 146,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 146,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "the ecosystem I contribute to",
+                        "position": {
+                          "start": {
+                            "line": 146,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 146,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": ", never ",
+                    "position": {
+                      "start": {
+                        "line": 146,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 146,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 146,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 146,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "the startup I founded",
+                        "position": {
+                          "start": {
+                            "line": 146,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 146,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": ".",
+                    "position": {
+                      "start": {
+                        "line": 146,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 146,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 147,
+                "column": 1
+              },
+              "end": {
+                "line": 147,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The vision (beach, friends, wonder, accessibility) animates from behind; never stated explicitly.",
+                    "position": {
+                      "start": {
+                        "line": 147,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 147,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "frontmatter": {
+    "name": "Application drafts",
+    "tags": [
+      "application"
+    ],
+    "created-at": "2026-05-13T15:15:31.358Z",
+    "outcome": "Five textareas + Q5 references; close-reading in progress.",
+    "title": "Application drafts",
+    "status": "open"
+  },
+  "references": {},
+  "dependencies": []
+}

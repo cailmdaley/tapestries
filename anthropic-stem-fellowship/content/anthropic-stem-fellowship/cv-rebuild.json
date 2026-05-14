@@ -1,0 +1,1109 @@
+{
+  "slug": "anthropic-stem-fellowship/cv-rebuild",
+  "kind": "Article",
+  "mdast": {
+    "type": "root",
+    "children": [
+      {
+        "type": "heading",
+        "depth": 1,
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 1,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "CV rebuild — Anthropic STEM Fellowship",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 3,
+            "column": 1
+          },
+          "end": {
+            "line": 3,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Context",
+            "position": {
+              "start": {
+                "line": 3,
+                "column": 1
+              },
+              "end": {
+                "line": 3,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 5,
+            "column": 1
+          },
+          "end": {
+            "line": 5,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Cail is applying to the ",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "link",
+            "url": "https://job-boards.greenhouse.io/anthropic/jobs/5189848008",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Anthropic STEM Fellowship",
+                "position": {
+                  "start": {
+                    "line": 5,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " — deadline May 15 2026. The CV is the only attachment to the Greenhouse form and carries weight independently of the textarea answers.",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 7,
+            "column": 1
+          },
+          "end": {
+            "line": 7,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "The parent application fiber is "
+          },
+          {
+            "type": "link",
+            "url": "felt://application/anthropic-stem-fellowship",
+            "children": [
+              {
+                "type": "text",
+                "value": "application/anthropic-stem-fellowship"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ". Read its constitution first — audience, voice principles, the Q3 / Q4 architecture this CV needs to be consistent with. The form-question drafts live at "
+          },
+          {
+            "type": "inlineCode",
+            "value": "ai-futures/anthropic-stem/drafts.md",
+            "position": {
+              "start": {
+                "line": 7,
+                "column": 1
+              },
+              "end": {
+                "line": 7,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": ".",
+            "position": {
+              "start": {
+                "line": 7,
+                "column": 1
+              },
+              "end": {
+                "line": 7,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 9,
+            "column": 1
+          },
+          "end": {
+            "line": 9,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Mode",
+            "position": {
+              "start": {
+                "line": 9,
+                "column": 1
+              },
+              "end": {
+                "line": 9,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 11,
+            "column": 1
+          },
+          "end": {
+            "line": 11,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "strong",
+            "position": {
+              "start": {
+                "line": 11,
+                "column": 1
+              },
+              "end": {
+                "line": 11,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "value": "Interactive.",
+                "position": {
+                  "start": {
+                    "line": 11,
+                    "column": 1
+                  },
+                  "end": {
+                    "line": 11,
+                    "column": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " Cail will attach and shape the CV with you collaboratively. Do not charge ahead autonomously — read the context, then work with him. Aesthetic and formatting calls in particular are taste-y and his to make; expect to surface candidates and proposals rather than committing on his behalf.",
+            "position": {
+              "start": {
+                "line": 11,
+                "column": 1
+              },
+              "end": {
+                "line": 11,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 13,
+            "column": 1
+          },
+          "end": {
+            "line": 13,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Source",
+            "position": {
+              "start": {
+                "line": 13,
+                "column": 1
+              },
+              "end": {
+                "line": 13,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 15,
+            "column": 1
+          },
+          "end": {
+            "line": 18,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 15,
+                "column": 1
+              },
+              "end": {
+                "line": 15,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Current CV (LaTeX, currently included by the CNRS dossier): ",
+                    "position": {
+                      "start": {
+                        "line": 15,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "ai-futures/cnrs-5pp/sections/cv.tex",
+                    "position": {
+                      "start": {
+                        "line": 15,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 16,
+                "column": 1
+              },
+              "end": {
+                "line": 16,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Built dossier PDF (CV pages within): ",
+                    "position": {
+                      "start": {
+                        "line": 16,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "ai-futures/cnrs-5pp/Daley_CNRS_AI_Rising_Talents_2026.pdf",
+                    "position": {
+                      "start": {
+                        "line": 16,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 17,
+                "column": 1
+              },
+              "end": {
+                "line": 18,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Dossier compile context: ",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "ai-futures/cnrs-5pp/CLAUDE.md",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 19,
+            "column": 1
+          },
+          "end": {
+            "line": 19,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Two confirmed additions",
+            "position": {
+              "start": {
+                "line": 19,
+                "column": 1
+              },
+              "end": {
+                "line": 19,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "start": 1,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 21,
+            "column": 1
+          },
+          "end": {
+            "line": 23,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 21,
+                "column": 1
+              },
+              "end": {
+                "line": 21,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 21,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Lightcone Research line",
+                        "position": {
+                          "start": {
+                            "line": 21,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 21,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " under the ",
+                    "position": {
+                      "start": {
+                        "line": 21,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 21,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Agentic science (2025–present)",
+                        "position": {
+                          "start": {
+                            "line": 21,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 21,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Research subsection. See the parent fiber’s Q3 framing for how Lightcone is positioned in this application; the CV line should match.",
+                    "position": {
+                      "start": {
+                        "line": 21,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 22,
+                "column": 1
+              },
+              "end": {
+                "line": 23,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "CNRS AI Rising Talents",
+                        "position": {
+                          "start": {
+                            "line": 22,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 22,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " interview line under Awards & Fellowships — ",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Selected for interview, 2026.",
+                        "position": {
+                          "start": {
+                            "line": 22,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 22,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Confirm exact phrasing with Cail.",
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 24,
+            "column": 1
+          },
+          "end": {
+            "line": 24,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Plus the aesthetic / formatting cleanup Cail wants to walk through together, plus any 2026 additions (talks, supervision, papers) he surfaces in session.",
+            "position": {
+              "start": {
+                "line": 24,
+                "column": 1
+              },
+              "end": {
+                "line": 24,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 26,
+            "column": 1
+          },
+          "end": {
+            "line": 26,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Standing preferences",
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1
+              },
+              "end": {
+                "line": 26,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 28,
+            "column": 1
+          },
+          "end": {
+            "line": 31,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 28,
+                "column": 1
+              },
+              "end": {
+                "line": 28,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Researcher verbs throughout (",
+                    "position": {
+                      "start": {
+                        "line": 28,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 28,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "emphasis",
+                    "position": {
+                      "start": {
+                        "line": 28,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 28,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "conduct, lead, build, characterize, supervise, contribute, maintain, develop",
+                        "position": {
+                          "start": {
+                            "line": 28,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 28,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "). No builder-verb creep.",
+                    "position": {
+                      "start": {
+                        "line": 28,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 28,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 29,
+                "column": 1
+              },
+              "end": {
+                "line": 29,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Do not report page count after edits unless Cail explicitly asks.",
+                    "position": {
+                      "start": {
+                        "line": 29,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 29,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 30,
+                "column": 1
+              },
+              "end": {
+                "line": 31,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Keep the CV consistent with the form-question drafts at ",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "ai-futures/anthropic-stem/drafts.md",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " — any position, paper, talk, or role should match what’s claimed there.",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 32,
+            "column": 1
+          },
+          "end": {
+            "line": 32,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "On exit",
+            "position": {
+              "start": {
+                "line": 32,
+                "column": 1
+              },
+              "end": {
+                "line": 32,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 34,
+            "column": 1
+          },
+          "end": {
+            "line": 34,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Update ",
+            "position": {
+              "start": {
+                "line": 34,
+                "column": 1
+              },
+              "end": {
+                "line": 34,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "inlineCode",
+            "value": "outcome:",
+            "position": {
+              "start": {
+                "line": 34,
+                "column": 1
+              },
+              "end": {
+                "line": 34,
+                "column": 1
+              }
+            }
+          },
+          {
+            "type": "text",
+            "value": " to reflect what was settled and where the standalone PDF lives. Anything Cail flagged for later — typography choices not yet made, additions he wasn’t sure about — should surface there so they don’t get lost.",
+            "position": {
+              "start": {
+                "line": 34,
+                "column": 1
+              },
+              "end": {
+                "line": 34,
+                "column": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "frontmatter": {
+    "name": "CV rebuild — Anthropic STEM Fellowship",
+    "status": "active",
+    "tags": [
+      "constitution",
+      "cv"
+    ],
+    "created-at": "2026-05-12T20:11:40.775Z",
+    "outcome": "Walkthrough pass with Cail landed. Standalone CV at `cv-rebuild/cv.tex` is in submission-ready shape (3 pages, compiles cleanly; `cv.pdf` is gitignored per the loom policy added this session — rebuild with `pdflatex cv.tex`).\n\n**Settled this session:**\n- **Title block**: \"Cail Daley\" in **EB Garamond** bold smallcaps (not Raleway), subheading *\"Postdoctoral Researcher · Cosmology and Agentic Science\"* below in smaller smallcaps, thin rule. Title-to-subtitle and subtitle-to-rule spacing balanced. Running header band dropped from all pages; centered page-number footers only.\n- **Research Interests grid**: AI items lead (*Agentic science methodology* | *Verification of AI-mediated research*) in row 1; cosmology fills rows 2–3 (*Cosmic shear* | *CMB lensing & cross-correlations*; *Lensing systematics* | *Kinematic lensing*).\n- **Citation line**: settled at **\"h-index 19; ~1,800 citations to refereed publications\"** — rounded up from the precise 1,769 in the refreshed snapshot [[bibliometrics-may-2026]]. INSPIRE-HEP and ORCID hyperlinked.\n- **Lightcone bullet** (under *Agentic science — 2025–present*): *\"Core team member of [Lightcone Research](https://lightconeresearch.org), a joint CNRS–Berkeley open-source project developing the [ASTRA](https://astra-spec.org) schema and surrounding infrastructure for reproducible, composable, and verifiable AI-mediated science. Maintain [felt](https://github.com/cailmdaley/felt), a Go CLI for tracking analysis decisions and findings as structured fibers.\"* Three teal hyperlinks; ASTRA correctly framed as Lightcone's deliverable, not a parallel project.\n- **Workshop entry** at top of *Outreach & Service*: *\"09/2026 — DAp SciAI Days, CEA Paris-Saclay (forthcoming): co-organize the department's three-day workshop on AI for scientific research; lead Day 2 on agentic research, including a live Claude Code demo and panel discussion.\"*\n- **Loom gitignore policy** (separate commit `311712ff`): aggressive-ignore for `*.pdf`, `*.png`, `*.jpg`, `*.jpeg` + LaTeX scratch. `cv.pdf` removed from tracking. Existing PNGs across the loom were *not* mass-untracked — Cail flagged that decision as a follow-up audit.\n\n**Open follow-ups (none blocking submission):**\n1. **Q3 consistency in `ai-futures/anthropic-stem/drafts.md`**: currently says *\"core contributor to Lightcone Research\"*; should swap to *\"core team member\"* to match the CV's framing.\n2. **Skills \"AI & workflows\" row**: surfaced as candidate for harder Claude Code emphasis; not changed this pass (researcher-not-builder anchor weighed against pitch-deck adjacency).\n3. **Daley+26 publication entry**: surfaced as candidate (currently absorbed into the bibliometrics summary line); not broken out.\n4. **Portolan public Friday**: if it ships before submission, a fourth hyperlink could land — explicitly scoped out of this pass to avoid a half-broken link risk.\n5. **Existing tracked PNGs in the loom** (~30 across portolan/dossier/analysis-frontispiece): policy now says default-ignore, but existing tracked files weren't bulk-removed. Separate audit pass when Cail wants.",
+    "shuttle": {
+      "enabled": true,
+      "kind": "oneshot",
+      "agent": "claude-opus",
+      "session": {
+        "id": "6c19cbb1-9fde-4839-ac84-6abe30b2efdb",
+        "agent": "claude-opus",
+        "dispatched_at": "2026-05-13T11:50:27.129Z"
+      }
+    },
+    "title": "CV rebuild — Anthropic STEM Fellowship"
+  },
+  "references": {},
+  "dependencies": []
+}

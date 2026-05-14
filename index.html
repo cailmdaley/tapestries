@@ -39,48 +39,50 @@
         color: var(--muted);
       }
       .rule {
-        height: 1px;
-        background: var(--rule);
-        margin: 2rem 0;
+        border-top: 1px solid var(--rule);
+        margin-bottom: 2rem;
       }
       ul {
         list-style: none;
-        padding: 0;
         margin: 0;
+        padding: 0;
         display: grid;
         gap: 1rem;
       }
-      li {
-        border: 1px solid var(--rule);
-        background: rgba(255, 255, 255, 0.45);
-      }
       a.card {
         display: block;
-        padding: 1.1rem 1.2rem 1rem;
+        padding: 1.25rem 1.5rem;
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid var(--rule);
+        border-radius: 6px;
         color: inherit;
         text-decoration: none;
+        transition: background 120ms ease, border-color 120ms ease;
       }
       a.card:hover {
         background: rgba(255, 255, 255, 0.72);
+        border-color: var(--accent);
       }
-      .title {
+      a.card .title {
         display: block;
-        margin-bottom: 0.35rem;
-        font-size: 1.4rem;
-        color: var(--accent);
+        font-size: 1.25rem;
+        font-weight: 600;
       }
-      .desc {
+      a.card .desc {
         display: block;
+        margin-top: 0.35rem;
         color: var(--muted);
-        line-height: 1.4;
-        font-size: 1.05rem;
+        line-height: 1.45;
       }
       footer {
-        margin-top: 2rem;
+        margin-top: 3rem;
+        font-size: 0.95rem;
         color: var(--muted);
-        font-size: 1rem;
       }
-      code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+      code {
+        font-family: "JetBrains Mono", SFMono-Regular, Menlo, monospace;
+        font-size: 0.9em;
+      }
     </style>
   </head>
   <body>
@@ -94,15 +96,21 @@
       <div class="rule"></div>
       <ul>
         <li>
-          <a class="card" href="./vellum-on-vellum/">
-            <span class="title">Vellum on Vellum</span>
-            <span class="desc">A self-referential tour of Vellum, rendered by Vellum.</span>
+          <a class="card" href="./anthropic-stem-fellowship/">
+            <span class="title">anthropic-stem-fellowship</span>
+            <span class="desc">Substantial close-read pass on Q1 + Q2 + Q3 ¶1 landed (May 14); drafts now plain-text and paste-ready for Greenhouse.</span>
           </a>
         </li>
         <li>
           <a class="card" href="./constitution-tapestries-publish/">
             <span class="title">Tapestries: vellum-reader bake, GitHub Pages deploy</span>
-            <span class="desc">The constitution that landed this publishing pipeline.</span>
+            <span class="desc">Ready to dispatch. vellum-reader grows a Node bake CLI that walks .felt/, parses MyST, and emits a self-contained static bundle.</span>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="./vellum-on-vellum/">
+            <span class="title">Vellum on Vellum</span>
+            <span class="desc">A self-referential introduction to Vellum, rendered by Vellum.</span>
           </a>
         </li>
       </ul>

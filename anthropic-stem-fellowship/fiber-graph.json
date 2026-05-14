@@ -1,0 +1,102 @@
+{
+  "nodes": [
+    {
+      "id": "anthropic-stem-fellowship",
+      "label": "anthropic-stem-fellowship",
+      "slug": "anthropic-stem-fellowship",
+      "kind": "analysis",
+      "createdAt": "1901-01-01T00:00:00.000Z",
+      "status": "active",
+      "tags": [
+        "constitution",
+        "application"
+      ],
+      "verdict": "**Substantial close-read pass on Q1 + Q2 + Q3 ¶1 landed (May 14); drafts now plain-text and paste-ready for Greenhouse.** Q1 rewritten across all three paragraphs — umbrella opener (weak gravitational lensing), chronological PhD→postdoc arc with \"difficult reality of cosmological data\" framing and 3–6-year analysis foreshadow, CEA Paris-Saclay credentials cluster with CNRS glossed at first mention. Q2 restructured into 2 paragraphs + handoff — ML knowledge + Bayesian/frequentist substrate + bias-vs-variance argument; word2vec/Foucault final project with ultimate-point sentence + TTS/STT + Pleias reframed for synthetic-data scaling. Q3 ¶1 added orienting sentence, replaced \"results\" with \"null-test validation,\" added arXiv link inline, rewrote role-shift around \"constructing back pressure that allows the agent to check its own work.\" CV: in-prep language replaced with \"submitted to A&A\"; publication counts synced at 4 further refereed. All markdown stripped from Q1–Q5 prose. **References (Lanusse + Holder) confirmed — Cail has been in touch.**\n\n**Remaining for Cail:** close-read on Q3 ¶2–4 (Lightcone substrate, day-to-day workflow, multi-language tools), Q4 (three project ideas + Anthropic motivation + France–Anthropic closer), Q5 (reference context paragraphs). CV interactive walk-through still parked at [[application/anthropic-stem-fellowship/cv-rebuild]] (header shape, Lightcone wording trim, CNRS phrasing, any 2026 additions, Skills \"AI & workflows\" line). Optional INSPIRE eyeball. **Paste into Greenhouse and submit by Friday May 15.**",
+      "decisionCount": 0,
+      "findingCount": 0,
+      "tempered": false,
+      "depth": 0,
+      "narrative": false,
+      "hasStructuredData": false
+    },
+    {
+      "id": "anthropic-stem-fellowship/anthropic-call-requirements",
+      "label": "Anthropic STEM Fellowship — call requirements",
+      "slug": "anthropic-stem-fellowship/anthropic-call-requirements",
+      "kind": "analysis",
+      "createdAt": "2026-05-11T14:56:25.612Z",
+      "status": "open",
+      "tags": [
+        "requirements",
+        "reference"
+      ],
+      "verdict": "Single source of truth for the application — 5 short-essay questions + CV + 2 references, no word limits, due May 15. Tight, focused, very different shape from CNRS.",
+      "decisionCount": 0,
+      "findingCount": 0,
+      "tempered": false,
+      "depth": 1,
+      "narrative": false,
+      "hasStructuredData": false
+    },
+    {
+      "id": "anthropic-stem-fellowship/cv-rebuild",
+      "label": "CV rebuild — Anthropic STEM Fellowship",
+      "slug": "anthropic-stem-fellowship/cv-rebuild",
+      "kind": "analysis",
+      "createdAt": "2026-05-12T20:11:40.775Z",
+      "status": "active",
+      "tags": [
+        "constitution",
+        "cv"
+      ],
+      "verdict": "Walkthrough pass with Cail landed. Standalone CV at `cv-rebuild/cv.tex` is in submission-ready shape (3 pages, compiles cleanly; `cv.pdf` is gitignored per the loom policy added this session — rebuild with `pdflatex cv.tex`).\n\n**Settled this session:**\n- **Title block**: \"Cail Daley\" in **EB Garamond** bold smallcaps (not Raleway), subheading *\"Postdoctoral Researcher · Cosmology and Agentic Science\"* below in smaller smallcaps, thin rule. Title-to-subtitle and subtitle-to-rule spacing balanced. Running header band dropped from all pages; centered page-number footers only.\n- **Research Interests grid**: AI items lead (*Agentic science methodology* | *Verification of AI-mediated research*) in row 1; cosmology fills rows 2–3 (*Cosmic shear* | *CMB lensing & cross-correlations*; *Lensing systematics* | *Kinematic lensing*).\n- **Citation line**: settled at **\"h-index 19; ~1,800 citations to refereed publications\"** — rounded up from the precise 1,769 in the refreshed snapshot [[bibliometrics-may-2026]]. INSPIRE-HEP and ORCID hyperlinked.\n- **Lightcone bullet** (under *Agentic science — 2025–present*): *\"Core team member of [Lightcone Research](https://lightconeresearch.org), a joint CNRS–Berkeley open-source project developing the [ASTRA](https://astra-spec.org) schema and surrounding infrastructure for reproducible, composable, and verifiable AI-mediated science. Maintain [felt](https://github.com/cailmdaley/felt), a Go CLI for tracking analysis decisions and findings as structured fibers.\"* Three teal hyperlinks; ASTRA correctly framed as Lightcone's deliverable, not a parallel project.\n- **Workshop entry** at top of *Outreach & Service*: *\"09/2026 — DAp SciAI Days, CEA Paris-Saclay (forthcoming): co-organize the department's three-day workshop on AI for scientific research; lead Day 2 on agentic research, including a live Claude Code demo and panel discussion.\"*\n- **Loom gitignore policy** (separate commit `311712ff`): aggressive-ignore for `*.pdf`, `*.png`, `*.jpg`, `*.jpeg` + LaTeX scratch. `cv.pdf` removed from tracking. Existing PNGs across the loom were *not* mass-untracked — Cail flagged that decision as a follow-up audit.\n\n**Open follow-ups (none blocking submission):**\n1. **Q3 consistency in `ai-futures/anthropic-stem/drafts.md`**: currently says *\"core contributor to Lightcone Research\"*; should swap to *\"core team member\"* to match the CV's framing.\n2. **Skills \"AI & workflows\" row**: surfaced as candidate for harder Claude Code emphasis; not changed this pass (researcher-not-builder anchor weighed against pitch-deck adjacency).\n3. **Daley+26 publication entry**: surfaced as candidate (currently absorbed into the bibliometrics summary line); not broken out.\n4. **Portolan public Friday**: if it ships before submission, a fourth hyperlink could land — explicitly scoped out of this pass to avoid a half-broken link risk.\n5. **Existing tracked PNGs in the loom** (~30 across portolan/dossier/analysis-frontispiece): policy now says default-ignore, but existing tracked files weren't bulk-removed. Separate audit pass when Cail wants.",
+      "decisionCount": 0,
+      "findingCount": 0,
+      "tempered": false,
+      "depth": 1,
+      "narrative": false,
+      "hasStructuredData": false
+    },
+    {
+      "id": "anthropic-stem-fellowship/drafts",
+      "label": "Application drafts",
+      "slug": "anthropic-stem-fellowship/drafts",
+      "kind": "analysis",
+      "createdAt": "2026-05-13T15:15:31.358Z",
+      "status": "open",
+      "tags": [
+        "application"
+      ],
+      "verdict": "Five textareas + Q5 references; close-reading in progress.",
+      "decisionCount": 0,
+      "findingCount": 0,
+      "tempered": false,
+      "depth": 1,
+      "narrative": false,
+      "hasStructuredData": false
+    }
+  ],
+  "links": [
+    {
+      "source": "anthropic-stem-fellowship/anthropic-call-requirements",
+      "target": "anthropic-stem-fellowship",
+      "kind": "cites"
+    },
+    {
+      "source": "anthropic-stem-fellowship",
+      "target": "anthropic-stem-fellowship/anthropic-call-requirements",
+      "kind": "contains"
+    },
+    {
+      "source": "anthropic-stem-fellowship",
+      "target": "anthropic-stem-fellowship/cv-rebuild",
+      "kind": "contains"
+    },
+    {
+      "source": "anthropic-stem-fellowship",
+      "target": "anthropic-stem-fellowship/drafts",
+      "kind": "contains"
+    }
+  ],
+  "rootSlug": "anthropic-stem-fellowship"
+}
