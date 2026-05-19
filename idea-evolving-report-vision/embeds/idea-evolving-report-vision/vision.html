@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evolving report vision — 2026-05-19</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #EDE2CE;
+    --rag: #FBF6E9;
+    --ink: #1B1611;
+    --ink-muted: #7A6F5C;
+    --cinnabar: #BC4538;
+    --cinnabar-faint: rgba(188, 69, 56, 0.10);
+    --teal: #3F8278;
+    --teal-faint: rgba(63, 130, 120, 0.10);
+    --cobalt: #3D5BA0;
+    --cobalt-faint: rgba(61, 91, 160, 0.10);
+    --ochre: #C49333;
+    --ochre-faint: rgba(196, 147, 51, 0.12);
+    --rule: #C5B89E;
+    --tooth: rgba(197, 184, 158, 0.45);
+    --serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+    --mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 64px 32px 96px;
+  }
+
+  /* —— Header */
+  .stamp {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .stamp .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cinnabar);
+    flex: 0 0 auto;
+  }
+  .stamp .sep {
+    color: var(--rule);
+  }
+
+  h1.title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 1.05;
+    margin: 0 0 24px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  h1.title em {
+    color: var(--cinnabar);
+    font-style: italic;
+  }
+
+  .tagline {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--ink);
+    max-width: 640px;
+    margin: 0 0 8px;
+  }
+  .tagline strong { font-weight: 600; color: var(--cinnabar); }
+
+  .byline {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 32px;
+    letter-spacing: 0.02em;
+  }
+  .byline a {
+    color: var(--cobalt);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--cobalt);
+  }
+  .byline a:hover { color: var(--cinnabar); border-bottom-color: var(--cinnabar); }
+
+  /* —— Section structure */
+  section {
+    margin-top: 80px;
+    position: relative;
+  }
+  .section-mark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cinnabar);
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.15;
+    margin: 0 0 28px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 1.3;
+    margin: 36px 0 12px;
+    color: var(--ink);
+  }
+
+  p { margin: 0 0 18px; }
+  p strong { font-weight: 600; }
+  p em { font-style: italic; color: var(--ink); }
+
+  .lede {
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .lede::first-letter {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--cinnabar);
+    font-size: 1.6em;
+    line-height: 1;
+    float: left;
+    padding: 4px 8px 0 0;
+  }
+
+  /* —— Rules */
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 56px 0;
+  }
+  hr.rule.short {
+    width: 80px;
+    margin: 40px 0;
+    border-top-color: var(--cinnabar);
+    border-top-width: 2px;
+  }
+
+  /* —— Quote / margin notes */
+  blockquote {
+    margin: 24px 0;
+    padding: 0 0 0 24px;
+    border-left: 2px solid var(--ochre);
+    font-style: italic;
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.5;
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
+  blockquote cite::before { content: "— "; }
+
+  /* —— Architecture diagram */
+  .diagram {
+    background: var(--rag);
+    border: 1px solid var(--tooth);
+    border-radius: 2px;
+    padding: 40px 32px;
+    margin: 32px 0;
+    box-shadow: 0 1px 2px rgba(27, 22, 17, 0.04);
+  }
+  .diagram svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .diagram-caption {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    text-align: center;
+    margin-top: 16px;
+    letter-spacing: 0.04em;
+  }
+
+  /* —— Convergence: four voices */
+  .voices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 32px 0;
+    border: 1px solid var(--tooth);
+    background: var(--rag);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .voice {
+    padding: 24px 28px;
+    border-right: 1px solid var(--tooth);
+    border-bottom: 1px solid var(--tooth);
+    position: relative;
+    transition: background 200ms;
+  }
+  .voice:nth-child(2n) { border-right: none; }
+  .voice:nth-child(n+3) { border-bottom: none; }
+  .voice:hover { background: var(--cinnabar-faint); }
+  .voice h4 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0 0 4px;
+    color: var(--ink);
+  }
+  .voice .who {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 12px;
+  }
+  .voice .quote {
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 12px;
+  }
+  .voice .gloss {
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .voice .gloss strong { color: var(--cinnabar); font-weight: 600; }
+
+  /* —— Primitives */
+  .primitives {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin: 24px 0;
+  }
+  .primitive {
+    background: var(--rag);
+    border: 1px solid var(--tooth);
+    border-top: 3px solid var(--ochre);
+    padding: 20px 24px;
+    border-radius: 2px;
+  }
+  .primitive:nth-child(1) { border-top-color: var(--cinnabar); }
+  .primitive:nth-child(2) { border-top-color: var(--teal); }
+  .primitive:nth-child(3) { border-top-color: var(--cobalt); }
+  .primitive:nth-child(4) { border-top-color: var(--ochre); }
+  .primitive h4 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+  .primitive .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 8px;
+  }
+  .primitive p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* —— Trajectory */
+  .trajectory {
+    margin: 32px 0;
+    counter-reset: step;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--tooth);
+    align-items: start;
+  }
+  .step:last-child { border-bottom: none; }
+  .step .num {
+    counter-increment: step;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 36px;
+    color: var(--rule);
+    line-height: 1;
+    padding-top: 2px;
+  }
+  .step.done .num { color: var(--cinnabar); }
+  .step .num::before { content: counter(step); }
+  .step .body h4 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 19px;
+    margin: 0 0 4px;
+    color: var(--ink);
+  }
+  .step.done .body h4::after {
+    content: "✓ done";
+    margin-left: 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cinnabar);
+    font-weight: 500;
+  }
+  .step .body p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .step .body code {
+    font-family: var(--mono);
+    font-size: 13px;
+    background: var(--ochre-faint);
+    padding: 1px 6px;
+    border-radius: 2px;
+  }
+
+  /* —— Footer */
+  footer.coda {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    font-family: var(--mono);
+  }
+  footer.coda a {
+    color: var(--cobalt);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--cobalt);
+  }
+
+  /* —— Selection */
+  ::selection {
+    background: var(--cinnabar-faint);
+    color: var(--ink);
+  }
+
+  /* —— Smaller screens */
+  @media (max-width: 720px) {
+    .page { padding: 40px 20px 64px; }
+    h1.title { font-size: 40px; }
+    h2 { font-size: 28px; }
+    .voices { grid-template-columns: 1fr; }
+    .voice { border-right: none !important; }
+    .primitives { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <div class="stamp">
+    <span class="dot"></span>
+    <span>2026 · 05 · 19</span>
+    <span class="sep">·</span>
+    <span>brainstorm</span>
+    <span class="sep">·</span>
+    <span>cail &amp; claude</span>
+  </div>
+
+  <h1 class="title">The evolving<br>report.</h1>
+
+  <p class="tagline">
+    The agent's cognition is not a transcript. It is a
+    <strong>manipulable artifact</strong> — renderable, addressable, typed —
+    that the worker maintains and the human steers.
+  </p>
+
+  <p class="byline">
+    Brainstormed in an interactive Shuttle dispatch on
+    <em>constitution-tapestries-publish</em>, with prompts from
+    <a href="https://x.com/trq212">Thariq</a>, François, Kangning, and
+    the Symphony team. First consequence already landed: the
+    constitution itself was restructured into the new shape.
+  </p>
+
+  <hr class="rule">
+
+  <!-- THESIS -->
+  <section>
+    <div class="section-mark">§ I · Thesis</div>
+    <h2>Chat is no longer the medium.</h2>
+
+    <p class="lede">
+      We have been treating chat as the gravitational center of working
+      with Claude — files, fibers, code, the kanban orbit the conversation
+      and the conversation carries them by reference. Tonight, four
+      threads converged on the opposite move: <em>the conversation
+      orbits the work, not vice versa.</em>
+    </p>
+
+    <p>
+      What replaces chat-as-medium is an artifact the worker maintains
+      and the human reads, annotates, and steers. The artifact lives
+      somewhere durable — a fiber's body, a rich HTML companion, a
+      typed reasoning graph — and chat shrinks to the back-and-forth
+      anchored to specific parts of it. <em>Plural, contextual,
+      placed.</em>
+    </p>
+
+    <p>
+      For the artifact to bear that weight, it needs three properties.
+      <strong>Renderable:</strong> the human can see it richly (vellum's
+      job). <strong>Addressable:</strong> the human can talk about
+      specific parts (anchored chats, annotations). <strong>Typed:</strong>
+      operations on it are constrained and meaningful — not "I don't
+      like this," but "exclude option X with reason Y."
+      Without typing, the back-channel collapses to free-text prose
+      the next worker has to interpret. With it, iteration closes
+      structurally.
+    </p>
+  </section>
+
+  <hr class="rule short">
+
+  <!-- ARCHITECTURE -->
+  <section>
+    <div class="section-mark">§ II · Architecture</div>
+    <h2>The loop, drawn in one breath.</h2>
+
+    <p>
+      Task at the top, loop closes through the artifact at the bottom.
+      The orchestrator dispatches a worker; the worker produces a
+      typed graph of cognition; the renderer composes it from
+      primitives into an interactive steerable report; the human's
+      typed amendments feed back to the next dispatch.
+    </p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture diagram: task → orchestrator → worker produces typed graph → renderer → interactive steerable report → typed amendments → loop">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#7A6F5C"/>
+          </marker>
+          <marker id="arrow-cinnabar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#BC4538"/>
+          </marker>
+        </defs>
+
+        <!-- Task -->
+        <g>
+          <rect x="290" y="20" width="140" height="48" rx="2" fill="#FBF6E9" stroke="#7A6F5C" stroke-width="1.2"/>
+          <text x="360" y="42" font-family="EB Garamond, serif" font-style="italic" font-size="16" fill="#1B1611" text-anchor="middle">Task / Goal</text>
+          <text x="360" y="60" font-family="IBM Plex Mono, monospace" font-size="10" fill="#7A6F5C" text-anchor="middle">constitution + outcome</text>
+        </g>
+
+        <!-- arrow down -->
+        <path d="M 360 70 L 360 100" stroke="#7A6F5C" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+
+        <!-- Orchestrator -->
+        <g>
+          <rect x="290" y="102" width="140" height="48" rx="2" fill="#FBF6E9" stroke="#3F8278" stroke-width="1.5"/>
+          <text x="360" y="124" font-family="EB Garamond, serif" font-style="italic" font-size="16" fill="#1B1611" text-anchor="middle">Orchestrator</text>
+          <text x="360" y="142" font-family="IBM Plex Mono, monospace" font-size="10" fill="#3F8278" text-anchor="middle">shuttle · dispatch</text>
+        </g>
+
+        <!-- arrow down -->
+        <path d="M 360 152 L 360 182" stroke="#7A6F5C" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+
+        <!-- Worker produces typed graph -->
+        <g>
+          <rect x="170" y="184" width="380" height="120" rx="2" fill="#FBF6E9" stroke="#7A6F5C" stroke-width="1.2"/>
+          <text x="360" y="208" font-family="EB Garamond, serif" font-style="italic" font-size="17" fill="#1B1611" text-anchor="middle">Worker produces typed graph</text>
+          <line x1="200" y1="220" x2="520" y2="220" stroke="#C5B89E" stroke-width="0.8"/>
+          <text x="200" y="240" font-family="EB Garamond, serif" font-size="13" fill="#1B1611">· decisions + options + evidence (ASTRA grammar)</text>
+          <text x="200" y="258" font-family="EB Garamond, serif" font-size="13" fill="#1B1611">· multiverse branches at decision points</text>
+          <text x="200" y="276" font-family="EB Garamond, serif" font-size="13" fill="#1B1611">· free-form notes alongside (Thariq style)</text>
+          <text x="200" y="294" font-family="EB Garamond, serif" font-size="13" fill="#1B1611">· code, plots, recordings (Symphony-flavored)</text>
+        </g>
+
+        <!-- arrow down -->
+        <path d="M 360 306 L 360 336" stroke="#7A6F5C" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+
+        <!-- Renderer -->
+        <g>
+          <rect x="240" y="338" width="240" height="48" rx="2" fill="#FBF6E9" stroke="#3D5BA0" stroke-width="1.5"/>
+          <text x="360" y="360" font-family="EB Garamond, serif" font-style="italic" font-size="16" fill="#1B1611" text-anchor="middle">Renderer composes from primitives</text>
+          <text x="360" y="378" font-family="IBM Plex Mono, monospace" font-size="10" fill="#3D5BA0" text-anchor="middle">vellum + mystra</text>
+        </g>
+
+        <!-- arrow down -->
+        <path d="M 360 388 L 360 418" stroke="#7A6F5C" stroke-width="1.4" fill="none" marker-end="url(#arrow)"/>
+
+        <!-- Interactive steerable report -->
+        <g>
+          <rect x="170" y="420" width="380" height="92" rx="2" fill="#FBF6E9" stroke="#BC4538" stroke-width="1.5"/>
+          <text x="360" y="444" font-family="EB Garamond, serif" font-style="italic" font-weight="500" font-size="17" fill="#BC4538" text-anchor="middle">Interactive steerable report</text>
+          <line x1="200" y1="454" x2="520" y2="454" stroke="#C5B89E" stroke-width="0.8"/>
+          <text x="200" y="474" font-family="EB Garamond, serif" font-size="13" fill="#1B1611">· knobs on decisions · multiverse selectors</text>
+          <text x="200" y="492" font-family="EB Garamond, serif" font-size="13" fill="#1B1611">· anchored chats · margin annotations</text>
+        </g>
+
+        <!-- back-channel arrow (curving around left side) -->
+        <path d="M 170 466 C 60 466, 60 124, 290 124" stroke="#BC4538" stroke-width="1.6" fill="none" marker-end="url(#arrow-cinnabar)"/>
+        <text x="50" y="290" font-family="IBM Plex Mono, monospace" font-size="10" fill="#BC4538" text-anchor="middle" transform="rotate(-90 50 290)">typed amendments · back-channel</text>
+      </svg>
+      <div class="diagram-caption">fig. 1 — the loop closes through the artifact, not through chat</div>
+    </div>
+
+    <p>
+      Every box in this diagram is something one of us named tonight.
+      What's new is that it's <em>one system</em> — the parts have been
+      sketched independently for months across different conversations,
+      and they fit.
+    </p>
+  </section>
+
+  <hr class="rule short">
+
+  <!-- CONVERGENCE -->
+  <section>
+    <div class="section-mark">§ III · Convergence</div>
+    <h2>Four voices, one architecture.</h2>
+
+    <p>
+      Tonight's synthesis emerged because four threads in the air were
+      pointing at parts of the same picture. Each is doing its own
+      work; together they describe the loop above.
+    </p>
+
+    <div class="voices">
+      <div class="voice">
+        <h4>Thariq Shihipar</h4>
+        <div class="who">Claude Code team · 2026-05-19</div>
+        <p class="quote">"Implement &lt;SPEC&gt; and while you do, keep a running implementation-notes.html file with decisions you had to make weren't in the spec, things you had to change, tradeoffs you had to make or anything else I should know."</p>
+        <p class="gloss">The <strong>in-flight decision log</strong> — a fifth surface beyond outcome / body / history / sub-fibers. Captures the choices the spec didn't cover, while they happen.</p>
+      </div>
+
+      <div class="voice">
+        <h4>François Lanusse</h4>
+        <div class="who">cosmology · ASTRA · 2026-05-19</div>
+        <p class="quote">"A system where an LLM/agent doesn't spit out a CoT, but is forced to build the reasoning chain block by block using a schema. This leads to interpretability — if it builds a website in a particular way, it will have had to first declare all the decision points, consider alternatives, and make a choice, which is traceable."</p>
+        <p class="gloss">ASTRA's grammar generalized: <strong>typed reasoning as explainable-AI infrastructure</strong>. Don't extract structure post-hoc; constrain the agent to build structured cognition as it goes.</p>
+      </div>
+
+      <div class="voice">
+        <h4>Kangning Diao</h4>
+        <div class="who">cosmology · ASTRA · 2026-05-19</div>
+        <p class="quote">"The process is always dynamic: first determine decisions, then another option pops up. My question is, can this be merged into the multiverse feature — adding new decision points is equivalently a new universe."</p>
+        <p class="gloss"><strong>Multiverse-as-decision-point.</strong> The worker doesn't choose silently; it materializes branches at each unspecified choice. The human steers by promoting a branch — typed amendment, not free-text correction.</p>
+      </div>
+
+      <div class="voice">
+        <h4>Symphony</h4>
+        <div class="who">Anthropic · ongoing</div>
+        <p class="quote">"Task/goal + evolving multimedia report for the human, with some orchestration around that. Linear with screenshots and screen recordings as the interface — models are getting good enough that chat and steering aren't needed all the time."</p>
+        <p class="gloss">The same arc, with <strong>media evidence as the carrier</strong>. Confirms the genre: task on top, evolving report below, chat shrunk to anchored back-channel. Symphony ships sooner; ours has more rigor at the cognition layer.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule short">
+
+  <!-- PRIMITIVES -->
+  <section>
+    <div class="section-mark">§ IV · Primitives</div>
+    <h2>Four pieces of substrate.</h2>
+
+    <p>
+      Stripping the architecture to its parts. Each primitive has a
+      clear job and a clear relationship to the others.
+    </p>
+
+    <div class="primitives">
+      <div class="primitive">
+        <div class="tag">substrate</div>
+        <h4>Fibers</h4>
+        <p>Concerns. The unit of named thing. Directory-contained markdown with YAML frontmatter; relationships through containment, wikilinks, and project-owned conventions. Felt owns this layer.</p>
+      </div>
+
+      <div class="primitive">
+        <div class="tag">work product</div>
+        <h4>Artifacts</h4>
+        <p>Rich rendered outputs — typed reasoning graphs plus free-form prose, plus plots, HTML companions, recordings. Lives in fiber dirs or in the body inline. Vellum + Mystra render.</p>
+      </div>
+
+      <div class="primitive">
+        <div class="tag">conversation</div>
+        <h4>Chats</h4>
+        <p>Anchored, plural, contextual. Attach to a fiber, an artifact span, a running dispatch, a kanban card. Not the front door — the back-and-forth around specific things.</p>
+      </div>
+
+      <div class="primitive">
+        <div class="tag">orchestration</div>
+        <h4>Dispatch</h4>
+        <p>Shuttle. Watches the fiber tree, dispatches workers per eligible fiber, handles lifecycle (oneshot, standing, awaiting review, tempered). Consumes typed amendments from the artifact as input to the next dispatch.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule short">
+
+  <!-- TRAJECTORY -->
+  <section>
+    <div class="section-mark">§ V · Trajectory</div>
+    <h2>How we get there from here.</h2>
+
+    <p>
+      Each step is independently useful. Each makes the next easier.
+      Step 1 already landed tonight.
+    </p>
+
+    <div class="trajectory">
+      <div class="step done">
+        <div class="num"></div>
+        <div class="body">
+          <h4>Constitution as evolving report</h4>
+          <p>Restructure the constitution body into a status report with the spec inline as reference: <code>Current State</code> / <code>Findings</code> / <code>Open Questions</code> on top, <code>Desired State</code> / <code>Context</code> below. Plots and media embed via markdown image syntax. The body becomes the single document; the kanban outcome shrinks to a CLI headline. Shuttle skill updated; <em>constitution-tapestries-publish</em> migrated as the first instance.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num"></div>
+        <div class="body">
+          <h4>Typed decisions in Findings</h4>
+          <p>When a non-trivial decision lands during dispatch, the worker writes it as a structured YAML entry inside <code>## Findings</code> — decision, options, chosen, rationale, evidence. Free-form notes stay for the small stuff. The same body holds both surfaces. No new infrastructure; just convention plus vellum's existing YAML-in-markdown rendering.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num"></div>
+        <div class="body">
+          <h4>Multiverse as branchpoint</h4>
+          <p>Extend ASTRA's multiverse so new decision points can be added <em>by a worker</em> during dispatch, not only declared up-front in <code>astra.yaml</code>. Each unspecified choice the worker hits becomes a branch; the worker implements the preferred branch and leaves the alternatives live for the human to promote later. Kangning's framing, made concrete in lightcone.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num"></div>
+        <div class="body">
+          <h4>Typed annotations as back-channel</h4>
+          <p>Vellum's annotation surface grows typed gestures for structured entries: <em>exclude option</em>, <em>promote branch</em>, <em>anchor insight</em>, <em>challenge rationale</em>. Free margin notes stay for the prose. The amendments serialize into the next dispatch's context as <em>typed</em> input, not free text. The loop closes structurally.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num"></div>
+        <div class="body">
+          <h4>Mystra primitives, agent composes</h4>
+          <p>The agent stops writing raw HTML and instead emits compositions of typed Mystra primitives — <code>compare-universes</code>, <code>decision-tree</code>, <code>before-after-diff</code>, <code>interactive-slider</code>. The renderer realizes them with affordances. Separation of cognition from affordance; the renderer gets better over time without retraining the model.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- CODA -->
+  <footer class="coda">
+    <p>
+      Filed under <em>ai-futures/portolan/idea-evolving-report-vision</em>
+      in loom. The fiber's body holds the markdown sketch; this file holds
+      the rich version. Both will accrete as the trajectory advances —
+      this is a vision, not a checkpoint.
+    </p>
+    <p>
+      Step 1 landed at commit <code>ca5970e4</code>. Step 2 waits for
+      pressure from the work.
+    </p>
+  </footer>
+
+</main>
+<script>
+  // Vellum embed handshake: when rendered inside an HtmlEmbed iframe,
+  // post the document's measured height up to the parent so the iframe
+  // can size to fit and the surrounding prose layout stays correct.
+  // No-op when opened standalone (postMessage just goes nowhere).
+  (function () {
+    if (window.parent === window) return;
+    var last = 0;
+    function post() {
+      var h = Math.max(
+        document.documentElement.scrollHeight,
+        document.body ? document.body.scrollHeight : 0
+      );
+      if (h > 0 && Math.abs(h - last) > 1) {
+        last = h;
+        window.parent.postMessage({ type: 'vellum:height', value: h }, '*');
+      }
+    }
+    window.addEventListener('load', post);
+    window.addEventListener('resize', post);
+    if (typeof ResizeObserver !== 'undefined') {
+      new ResizeObserver(post).observe(document.documentElement);
+    }
+    // Re-post after web fonts settle, since EB Garamond shifts metrics on load.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(post);
+    }
+  })();
+</script>
+</body>
+</html>

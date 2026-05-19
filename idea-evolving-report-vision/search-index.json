@@ -1,0 +1,100 @@
+{
+  "documents": [
+    {
+      "id": "idea-evolving-report-vision",
+      "title": "Evolving report vision: agent cognition as manipulable artifact",
+      "status": "open",
+      "tags": [
+        "idea",
+        "brainstorm",
+        "vision"
+      ],
+      "outcome": "Vision sketch from 2026-05-19 brainstorm: chat is no longer the medium — the medium is an evolving, renderable, addressable, typed artifact that the worker maintains and the human steers. See vision.html for the architecture, convergence map, and 1→5 trajectory.",
+      "body": "Current State A sketch, not a plan. Tonight (2026-05-19) Cail and Claude worked through the synthesis in this fiber’s body; the rich version is the HTML companion embedded below (also viewable standalone at vision.html ). The first concrete consequence already landed: ai-futures/portolan/tapestry/constitution-tapestries-publish was restructured into the new five-section shape (Current State / Findings / Open Questions over Desired State / Context) and the shuttle skill was updated to match. That is step 1 of the trajectory below. Findings Tonight surfaced four threads pointing at the same architecture : Thariq Shihipar (Anthropic, Claude Code team) — HTML over markdown as the agent’s output format , plus the running implementation-notes.html pattern: the worker maintains a companion artifact capturing decisions, deviations, tradeoffs, open questions while it works. François Lanusse (cosmology, ASTRA-side) — typed reasoning tracking with decisions + options + supporting insight as a general grammar for interpretable AI, generalizing what ASTRA already does for scientific analyses. Kangning Diao — multiverse-as-decision-point : a new decision is equivalently a new universe; the agent doesn’t choose silently, it materializes branches at each unspecified choice and the human steers by promoting a branch. Symphony (Anthropic) — task/goal + evolving multimedia report + orchestration using Linear with screenshots and screen recordings: the same arc, with media evidence as the carrier instead of typed structure. These converge on a single thesis: the agent’s cognition wants to be a manipulable artifact, not a transcript , with three necessary properties — renderable, addressable, typed. When all three hold, iteration can close through the artifact rather than through chat. Open Questions Where does the structured-reasoning surface live in the artifact? For now: free-form prose in the report sections of the constitution body, plus markdown image embeds for plots/media. Typed entries (ASTRA-style YAML inside Findings, or as separate decision sub-fibers) wait for pressure from the work. What’s the minimum mystra-primitives set the agent should compose against? Cail’s framing: “expose mystra primitives and let claude compose the page.” Hasn’t been specified yet. Does this absorb into Shuttle, or remain a parallel layer? Shuttle is the dispatcher; the evolving report is the work product. They compose, but the boundary needs to be tested in practice. Desired State A way of working where: The worker produces an evolving rich document (markdown body for spec + report, with embedded media and HTML companions for richness) — not a transcript of decisions, not a final spec. The human reads and steers the artifact directly (annotations, typed amendments, multiverse promotions) — not a chat session. Chat is anchored, plural, contextual — it attaches to specific parts of the artifact when prose-of-thought is needed, but it’s not the front door. The reasoning is interpretable by construction — typed decisions + options + evidence + branches make the cognition reviewable without post-hoc weight-introspection. This is a direction , not a checkpoint. The trajectory in vision.html (steps 1 → 5) is the path forward; step 1 is done, step 2 is the next pressure point. Context Three threads in the air tonight prompted the synthesis: A long brainstorm between Cail and Claude (this interactive Shuttle dispatch) about the gap between Shuttle and Vellum — Shuttle is dispatch and lifecycle; Vellum is read and annotation; what sits between is the return channel by which annotations on the worker’s output feed the next dispatch. Thariq’s tweet (and longer post) on HTML-over-markdown as the agent’s output format, with the running implementation-notes.html companion as a specific pattern. A Slack exchange in #lightcone-research with François pitching ASTRA-style reasoning tracking as general explainable-AI infrastructure, and Kangning suggesting it merge with multiverse. The synthesis emerged because all four threads were pointing at parts of the same architecture, and the parts fit together. See vision.html for the full picture."
+    }
+  ],
+  "index": {
+    "keys": [
+      {
+        "path": [
+          "title"
+        ],
+        "id": "title",
+        "weight": 2,
+        "src": "title"
+      },
+      {
+        "path": [
+          "outcome"
+        ],
+        "id": "outcome",
+        "weight": 1.4,
+        "src": "outcome"
+      },
+      {
+        "path": [
+          "body"
+        ],
+        "id": "body",
+        "weight": 1,
+        "src": "body"
+      },
+      {
+        "path": [
+          "tags"
+        ],
+        "id": "tags",
+        "weight": 0.6,
+        "src": "tags"
+      },
+      {
+        "path": [
+          "id"
+        ],
+        "id": "id",
+        "weight": 0.2,
+        "src": "id"
+      }
+    ],
+    "records": [
+      {
+        "i": 0,
+        "$": {
+          "0": {
+            "v": "Evolving report vision: agent cognition as manipulable artifact",
+            "n": 0.354
+          },
+          "1": {
+            "v": "Vision sketch from 2026-05-19 brainstorm: chat is no longer the medium — the medium is an evolving, renderable, addressable, typed artifact that the worker maintains and the human steers. See vision.html for the architecture, convergence map, and 1→5 trajectory.",
+            "n": 0.16
+          },
+          "2": {
+            "v": "Current State A sketch, not a plan. Tonight (2026-05-19) Cail and Claude worked through the synthesis in this fiber’s body; the rich version is the HTML companion embedded below (also viewable standalone at vision.html ). The first concrete consequence already landed: ai-futures/portolan/tapestry/constitution-tapestries-publish was restructured into the new five-section shape (Current State / Findings / Open Questions over Desired State / Context) and the shuttle skill was updated to match. That is step 1 of the trajectory below. Findings Tonight surfaced four threads pointing at the same architecture : Thariq Shihipar (Anthropic, Claude Code team) — HTML over markdown as the agent’s output format , plus the running implementation-notes.html pattern: the worker maintains a companion artifact capturing decisions, deviations, tradeoffs, open questions while it works. François Lanusse (cosmology, ASTRA-side) — typed reasoning tracking with decisions + options + supporting insight as a general grammar for interpretable AI, generalizing what ASTRA already does for scientific analyses. Kangning Diao — multiverse-as-decision-point : a new decision is equivalently a new universe; the agent doesn’t choose silently, it materializes branches at each unspecified choice and the human steers by promoting a branch. Symphony (Anthropic) — task/goal + evolving multimedia report + orchestration using Linear with screenshots and screen recordings: the same arc, with media evidence as the carrier instead of typed structure. These converge on a single thesis: the agent’s cognition wants to be a manipulable artifact, not a transcript , with three necessary properties — renderable, addressable, typed. When all three hold, iteration can close through the artifact rather than through chat. Open Questions Where does the structured-reasoning surface live in the artifact? For now: free-form prose in the report sections of the constitution body, plus markdown image embeds for plots/media. Typed entries (ASTRA-style YAML inside Findings, or as separate decision sub-fibers) wait for pressure from the work. What’s the minimum mystra-primitives set the agent should compose against? Cail’s framing: “expose mystra primitives and let claude compose the page.” Hasn’t been specified yet. Does this absorb into Shuttle, or remain a parallel layer? Shuttle is the dispatcher; the evolving report is the work product. They compose, but the boundary needs to be tested in practice. Desired State A way of working where: The worker produces an evolving rich document (markdown body for spec + report, with embedded media and HTML companions for richness) — not a transcript of decisions, not a final spec. The human reads and steers the artifact directly (annotations, typed amendments, multiverse promotions) — not a chat session. Chat is anchored, plural, contextual — it attaches to specific parts of the artifact when prose-of-thought is needed, but it’s not the front door. The reasoning is interpretable by construction — typed decisions + options + evidence + branches make the cognition reviewable without post-hoc weight-introspection. This is a direction , not a checkpoint. The trajectory in vision.html (steps 1 → 5) is the path forward; step 1 is done, step 2 is the next pressure point. Context Three threads in the air tonight prompted the synthesis: A long brainstorm between Cail and Claude (this interactive Shuttle dispatch) about the gap between Shuttle and Vellum — Shuttle is dispatch and lifecycle; Vellum is read and annotation; what sits between is the return channel by which annotations on the worker’s output feed the next dispatch. Thariq’s tweet (and longer post) on HTML-over-markdown as the agent’s output format, with the running implementation-notes.html companion as a specific pattern. A Slack exchange in #lightcone-research with François pitching ASTRA-style reasoning tracking as general explainable-AI infrastructure, and Kangning suggesting it merge with multiverse. The synthesis emerged because all four threads were pointing at parts of the same architecture, and the parts fit together. See vision.html for the full picture.",
+            "n": 0.04
+          },
+          "3": [
+            {
+              "v": "idea",
+              "i": 0,
+              "n": 1
+            },
+            {
+              "v": "brainstorm",
+              "i": 1,
+              "n": 1
+            },
+            {
+              "v": "vision",
+              "i": 2,
+              "n": 1
+            }
+          ],
+          "4": {
+            "v": "idea-evolving-report-vision",
+            "n": 1
+          }
+        }
+      }
+    ]
+  }
+}

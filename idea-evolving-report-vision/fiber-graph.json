@@ -1,0 +1,47 @@
+{
+  "nodes": [
+    {
+      "id": "idea-evolving-report-vision",
+      "label": "Evolving report vision: agent cognition as manipulable artifact",
+      "slug": "idea-evolving-report-vision",
+      "kind": "analysis",
+      "createdAt": "2026-05-19T00:42:00.000Z",
+      "status": "open",
+      "tags": [
+        "idea",
+        "brainstorm",
+        "vision"
+      ],
+      "verdict": "Vision sketch from 2026-05-19 brainstorm: chat is no longer the medium — the medium is an evolving, renderable, addressable, typed artifact that the worker maintains and the human steers. See vision.html for the architecture, convergence map, and 1→5 trajectory.",
+      "decisionCount": 0,
+      "findingCount": 0,
+      "tempered": false,
+      "depth": 0,
+      "narrative": false,
+      "hasStructuredData": false
+    },
+    {
+      "id": "ai-futures/portolan/tapestry/constitution-tapestries-publish",
+      "label": "Tapestries: vellum-reader bake, GitHub Pages deploy",
+      "slug": "ai-futures/portolan/tapestry/constitution-tapestries-publish",
+      "kind": "analysis",
+      "createdAt": "2026-05-13T10:35:20.915Z",
+      "status": "active",
+      "tags": [
+        "tapestry",
+        "vellum",
+        "publish",
+        "static",
+        "constitution"
+      ],
+      "verdict": "Pipeline landed; two publications live. Review the surface and temper if it holds up — see Current State.",
+      "decisionCount": 0,
+      "findingCount": 0,
+      "tempered": false,
+      "narrative": false,
+      "hasStructuredData": false
+    }
+  ],
+  "links": [],
+  "rootSlug": "idea-evolving-report-vision"
+}
