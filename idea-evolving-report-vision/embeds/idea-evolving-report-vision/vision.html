@@ -29,6 +29,13 @@
 
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
+  /* When this document is rendered inside a vellum embed iframe the
+     parent page handles all scrolling and the iframe height is sized to
+     content via postMessage. Suppressing inner-document overflow under
+     `.in-iframe` (set by the script below when `window.parent !== window`)
+     hides the redundant scrollbar; opening the file standalone leaves
+     overflow alone so the page scrolls normally. */
+  html.in-iframe, html.in-iframe body { overflow: hidden; }
   body {
     background: var(--parchment);
     color: var(--ink);
@@ -717,6 +724,7 @@
   // No-op when opened standalone (postMessage just goes nowhere).
   (function () {
     if (window.parent === window) return;
+    document.documentElement.classList.add('in-iframe');
     var last = 0;
     function post() {
       var h = Math.max(
