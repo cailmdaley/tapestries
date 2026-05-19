@@ -14,7 +14,7 @@
         "static",
         "constitution"
       ],
-      "verdict": "Ready to dispatch. `vellum-reader` grows a Node `bake` CLI that walks\n`.felt/`, parses MyST, and emits a self-contained static bundle.\n`cailmdaley/tapestries` (existing repo) gets its current `main` parked\non a `legacy-graph-viewer` branch and reset to a fresh main carrying\nshared `/_vellum/` assets plus per-publication subpaths. Publishing\nis user-owned shell — felt stays pure substrate. Smoke test: bake +\npush `constitution-tapestries-publish` and serve it at\n`cailmdaley.github.io/tapestries/constitution-tapestries-publish/`,\nAND capture a screenshot of `vellum-on-vellum` for the vellum-reader\nREADME's `TAPESTRIES_SCREENSHOT` placeholder.",
+      "verdict": "Pipeline landed; two publications live. Review the surface and temper if it holds up — see Current State.",
       "decisionCount": 0,
       "findingCount": 0,
       "tempered": false,
@@ -23,26 +23,69 @@
       "hasStructuredData": false
     },
     {
-      "id": "ai-futures/portolan/design/static-deploy-vellum-reader-scoping",
-      "label": "Static deploy: vellum reader index, scoping",
-      "slug": "ai-futures/portolan/design/static-deploy-vellum-reader-scoping",
+      "id": "constitution-tapestries-publish/dogfooding-asf-tapestry",
+      "label": "Dogfooding ASF tapestry: friction log",
+      "slug": "constitution-tapestries-publish/dogfooding-asf-tapestry",
       "kind": "analysis",
-      "createdAt": "2026-04-15T06:18:23.926Z",
+      "createdAt": "2026-05-14T15:42:34.970Z",
       "status": "open",
       "tags": [
-        "tapestry-dissolves",
-        "portolan",
-        "static",
-        "question"
+        "dogfooding",
+        "friction-log"
       ],
-      "verdict": "Three-part change: prebake fiber+graph in tapestry export, teach createPortolanStaticAdapter to read them, swap src/static/main.ts to mount WorkspaceMount/IndexView. All three need to land together.",
+      "verdict": "Open: annotation panel positioning, body-link nav, annotate→GitHub-issues feature.\nClosed in-session: SPA routing fix, asset hash drift, title humanization.",
       "decisionCount": 0,
       "findingCount": 0,
       "tempered": false,
+      "depth": 1,
+      "narrative": false,
+      "hasStructuredData": false
+    },
+    {
+      "id": "ai-futures/portolan/vellum-reader/constitution-vellum-extraction",
+      "label": "Vellum extraction: standalone repo + npm",
+      "slug": "ai-futures/portolan/vellum-reader/constitution-vellum-extraction",
+      "kind": "analysis",
+      "createdAt": "2026-05-13T15:24:23.308Z",
+      "status": "closed",
+      "tags": [
+        "constitution",
+        "vellum",
+        "extraction",
+        "lightcone-decoupling"
+      ],
+      "verdict": "Realized. Vellum lives at https://github.com/cailmdaley/vellum-reader\n(232 commits preserved via `git filter-repo`) with a local checkout at\n`~/Documents/projects/vellum`. MIT-licensed, README scaffold carries\nthe `TAPESTRIES_SCREENSHOT: vellum-on-vellum` placeholder, and a\nself-referential `.felt/vellum-on-vellum/` fiber sits ready for the\nnext constitution to publish.\n\nThe constitution called for `npm publish`; per the human in interactive\nmode, that was overscoped for \"GitHub at this point\" — switched to a\n`file:` dep that resolves to the sibling checkout. No npm registry\ninvolved. Package name `vellum` was already taken (vellum.ai), so the\nfallback `vellum-reader` is used everywhere (npm-shape name, repo,\nimports); local clone path stays `vellum/` per the original quality\nbar.\n\nLightcone (`cail/core-public-api`, commit 332e24a): `vellum/` removed,\nworkspaces drop the entry, `bake` rewritten to copy from\n`node_modules/vellum-reader/dist/` (where `npm install` symlinks\nthrough `file:../../vellum`), README / CLAUDE.md / DEPLOY.md updated.\n`npm install` + `npm run bake` exit 0; `public/` populates from the\nsibling's dist.\n\nPortolan (`main`, commit e4ae075): `\"vellum\": \"file:../lightcone/vellum\"`\n→ `\"vellum-reader\": \"file:../vellum\"`. The three vellum imports rename\nto `vellum-reader`, tsconfig + vite.config `~` alias + `fs.allow`\nrepoint at `node_modules/vellum-reader/`. `npm install` + `npm run\nbuild` exit 0. Merge conflict on `src/vellum/portolan-adapter.ts`\nresolved (HEAD's new `fetchWithBootPrefetch` import kept alongside the\nvellum-reader rename).\n\nNext: [[ai-futures/portolan/tapestry/constitution-tapestries-publish]] dispatches and replaces the\nREADME's TAPESTRIES_SCREENSHOT marker with the captured image of the\n`vellum-on-vellum` fiber.",
+      "decisionCount": 0,
+      "findingCount": 0,
+      "tempered": true,
+      "narrative": false,
+      "hasStructuredData": false
+    },
+    {
+      "id": "ai-futures/application/anthropic-stem-fellowship",
+      "label": "anthropic-stem-fellowship",
+      "slug": "ai-futures/application/anthropic-stem-fellowship",
+      "kind": "analysis",
+      "createdAt": "1901-01-01T00:00:00.000Z",
+      "status": "closed",
+      "tags": [
+        "constitution",
+        "application"
+      ],
+      "verdict": "**Submitted to Greenhouse on Friday May 15, 2026.** Final close-read pass landed the morning of submission: Q1 ¶2 small clarity fix (\"on the data\" → \"on the inference\"); Q3 ¶2 vague Lightcone-contributions sentence rewritten concrete (\"Claude Code skills built around scientific workflows, and the viewers that render these inspectable records as navigable provenance graphs\"); Q3 ¶3 substantially rewritten by Cail (merged \"I am confident\" + bitter-lesson reversal into one compound sentence as a single tension; added shuttle parenthetical with OpenAI Symphony inspiration, portolan parenthetical; cut \"or system design\" and \"porting from TypeScript\"); Q4 ¶3 missing-comma fix after \"combined ranking\"; Q4 ¶3 \"analyses I have led\" softened to \"analyses I have contributed to\" for consistency with Q1's role-claims. Backticks on tool names kept per Cail's preference for plaintext readability. All five textareas + CV submitted via Greenhouse. **Decision date: by June 1.**",
+      "decisionCount": 0,
+      "findingCount": 0,
+      "tempered": true,
       "narrative": false,
       "hasStructuredData": false
     }
   ],
-  "links": [],
+  "links": [
+    {
+      "source": "constitution-tapestries-publish",
+      "target": "constitution-tapestries-publish/dogfooding-asf-tapestry",
+      "kind": "contains"
+    }
+  ],
   "rootSlug": "constitution-tapestries-publish"
 }

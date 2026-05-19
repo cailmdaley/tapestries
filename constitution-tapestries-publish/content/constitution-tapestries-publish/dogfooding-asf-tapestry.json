@@ -1,0 +1,1124 @@
+{
+  "slug": "constitution-tapestries-publish/dogfooding-asf-tapestry",
+  "kind": "Article",
+  "mdast": {
+    "type": "root",
+    "children": [
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1
+          },
+          "end": {
+            "line": 3,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Cail’s first real-use case for vellum-reader publish: share the Anthropic STEM\nFellowship subtree with his wife for comments. This fiber tracks the friction\nthat surfaced once we ran the publish flow against real content.",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1
+              },
+              "end": {
+                "line": 1,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 5,
+            "column": 1
+          },
+          "end": {
+            "line": 5,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Closed in this session",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 7,
+            "column": 1
+          },
+          "end": {
+            "line": 22,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 7,
+                "column": 1
+              },
+              "end": {
+                "line": 10,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "SPA routing fix.",
+                        "position": {
+                          "start": {
+                            "line": 7,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Fresh URLs / shared deep links / refreshes were 404-ing\nbecause GitHub Pages serves ",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "404.html",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " for unmatched paths and the existing\n",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "404.html",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " referenced a stale bundle hash. ",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "publish.ts",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " now regenerates\n",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "404.html",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " on every publish via ",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "fallbackHtml()",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " in ",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "src/bake/html.ts",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": ".",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 11,
+                "column": 1
+              },
+              "end": {
+                "line": 16,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Asset hash drift across publications.",
+                        "position": {
+                          "start": {
+                            "line": 11,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Every publication’s ",
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "index.html",
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nembeds the current reader bundle’s hashed asset paths. When the reader\nrebuilds, all old publications break unless their shells are regenerated.\n",
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "refreshPublicationShells()",
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " in ",
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "publish.ts",
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " rewrites every sibling\npublication’s ",
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "index.html",
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " on each publish, keeping the whole site\nconsistent against the latest bundle.",
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 17,
+                "column": 1
+              },
+              "end": {
+                "line": 22,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Title humanization in the root listing.",
+                        "position": {
+                          "start": {
+                            "line": 17,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " When the root fiber’s ",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "name:",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nfield is identical to the slug (common in felt), the listing now humanizes\nthe slug (",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "anthropic-stem-fellowship",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " → “Anthropic Stem Fellowship”) instead\nof showing the raw slug. Users can override with a non-slug ",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "name:",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " value\n(or a richer pipeline could read a separate ",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "title:",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " field later).",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 23,
+            "column": 1
+          },
+          "end": {
+            "line": 23,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Open",
+            "position": {
+              "start": {
+                "line": 23,
+                "column": 1
+              },
+              "end": {
+                "line": 23,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "spread": false,
+        "position": {
+          "start": {
+            "line": 25,
+            "column": 1
+          },
+          "end": {
+            "line": 40,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 25,
+                "column": 1
+              },
+              "end": {
+                "line": 29,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 25,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Body-link navigation.",
+                        "position": {
+                          "start": {
+                            "line": 25,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 25,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Cail reported clicking a fiber link in body prose\nshows “as a card” but doesn’t navigate. Some of this may have been the SPA\nrouting problem (client-side ",
+                    "position": {
+                      "start": {
+                        "line": 25,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "navigate('/slug')",
+                    "position": {
+                      "start": {
+                        "line": 25,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " worked but refreshing or\nsharing the resulting URL 404’d into a broken ",
+                    "position": {
+                      "start": {
+                        "line": 25,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "404.html",
+                    "position": {
+                      "start": {
+                        "line": 25,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "). Worth re-testing\nafter the SPA fix lands.",
+                    "position": {
+                      "start": {
+                        "line": 25,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 30,
+                "column": 1
+              },
+              "end": {
+                "line": 34,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Annotation panel renders on the left, should be right.",
+                        "position": {
+                          "start": {
+                            "line": 30,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 30,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " Margin column\npositioning derives from ",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "--canvas-width",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (set by ",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "CanvasDivider",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "); if the\ndivider isn’t mounted in the static reader path, the rail computation falls\nthrough to an unexpected location. Worth tracing through\n",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "MarginCitations.measure()",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " (src/components/MarginCitations.tsx ~line 234).",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "listItem",
+            "spread": true,
+            "position": {
+              "start": {
+                "line": 35,
+                "column": 1
+              },
+              "end": {
+                "line": 40,
+                "column": 1
+              }
+            },
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "strong",
+                    "position": {
+                      "start": {
+                        "line": 35,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 35,
+                        "column": 1
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Annotate → GitHub issues.",
+                        "position": {
+                          "start": {
+                            "line": 35,
+                            "column": 1
+                          },
+                          "end": {
+                            "line": 35,
+                            "column": 1
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " The dream: a reader can highlight prose,\ndrop a comment, and the comment auto-creates a GitHub issue against the\nsource fiber’s repo (or a designated comments-repo). Cheap collaborative\nread-and-mark surface. Big enough to be its own shuttle dispatch — should\ndraft a constitution as a sibling fiber.",
+                    "position": {
+                      "start": {
+                        "line": 35,
+                        "column": 1
+                      },
+                      "end": {
+                        "line": 35,
+                        "column": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "depth": 2,
+        "position": {
+          "start": {
+            "line": 41,
+            "column": 1
+          },
+          "end": {
+            "line": 41,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Use case",
+            "position": {
+              "start": {
+                "line": 41,
+                "column": 1
+              },
+              "end": {
+                "line": 41,
+                "column": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "position": {
+          "start": {
+            "line": 43,
+            "column": 1
+          },
+          "end": {
+            "line": 46,
+            "column": 1
+          }
+        },
+        "children": [
+          {
+            "type": "text",
+            "value": "Sharing\n"
+          },
+          {
+            "type": "link",
+            "url": "/ai-futures/application/anthropic-stem-fellowship",
+            "children": [
+              {
+                "type": "text",
+                "value": "ai-futures/application/anthropic-stem-fellowship"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " with Michelle for comments on the\nGreenhouse drafts before the May 15 deadline. Real day-to-day flow Cail wants\nto validate the publishing pipeline against."
+          }
+        ]
+      }
+    ]
+  },
+  "frontmatter": {
+    "name": "Dogfooding ASF tapestry: friction log",
+    "tags": [
+      "dogfooding",
+      "friction-log"
+    ],
+    "created-at": "2026-05-14T15:42:34.970Z",
+    "outcome": "Open: annotation panel positioning, body-link nav, annotate→GitHub-issues feature.\nClosed in-session: SPA routing fix, asset hash drift, title humanization.",
+    "title": "Dogfooding ASF tapestry: friction log",
+    "status": "open"
+  },
+  "references": {},
+  "dependencies": []
+}
