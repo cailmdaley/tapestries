@@ -27,15 +27,14 @@
     --mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, monospace;
   }
 
+  /* Standalone styling. When embedded via :::{embed-html}, the parent
+     HtmlEmbed component injects `_vellum/embed-tokens.css` (palette +
+     fonts) and `_vellum/embed-runtime.js` (height handshake +
+     .in-iframe class + overflow suppression) into this document.
+     The tokens here are duplicates of those injected defaults so the
+     file also renders cleanly when opened standalone in a browser. */
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
-  /* When this document is rendered inside a vellum embed iframe the
-     parent page handles all scrolling and the iframe height is sized to
-     content via postMessage. Suppressing inner-document overflow under
-     `.in-iframe` (set by the script below when `window.parent !== window`)
-     hides the redundant scrollbar; opening the file standalone leaves
-     overflow alone so the page scrolls normally. */
-  html.in-iframe, html.in-iframe body { overflow: hidden; }
   body {
     background: var(--parchment);
     color: var(--ink);
@@ -717,35 +716,5 @@
   </footer>
 
 </main>
-<script>
-  // Vellum embed handshake: when rendered inside an HtmlEmbed iframe,
-  // post the document's measured height up to the parent so the iframe
-  // can size to fit and the surrounding prose layout stays correct.
-  // No-op when opened standalone (postMessage just goes nowhere).
-  (function () {
-    if (window.parent === window) return;
-    document.documentElement.classList.add('in-iframe');
-    var last = 0;
-    function post() {
-      var h = Math.max(
-        document.documentElement.scrollHeight,
-        document.body ? document.body.scrollHeight : 0
-      );
-      if (h > 0 && Math.abs(h - last) > 1) {
-        last = h;
-        window.parent.postMessage({ type: 'vellum:height', value: h }, '*');
-      }
-    }
-    window.addEventListener('load', post);
-    window.addEventListener('resize', post);
-    if (typeof ResizeObserver !== 'undefined') {
-      new ResizeObserver(post).observe(document.documentElement);
-    }
-    // Re-post after web fonts settle, since EB Garamond shifts metrics on load.
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(post);
-    }
-  })();
-</script>
 </body>
 </html>

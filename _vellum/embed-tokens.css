@@ -1,0 +1,57 @@
+/* Vellum embed tokens — Layer 2 of the embed architecture.
+ *
+ * Linked into every embed iframe by the parent HtmlEmbed component so
+ * embedded HTML inherits vellum-of-a-piece defaults: palette as CSS
+ * custom properties, EB Garamond + IBM Plex Mono from Google Fonts,
+ * parchment background, ink text. The token names mirror src/vellum.css
+ * so embeds can `var(--cinnabar)` etc. the same way internal styles do.
+ *
+ * Intentionally minimal — no .card, no .grid, no header treatments.
+ * The principle: standardize the materials (paper, ink, type), not the
+ * compositions. Each embed composes its own layout against these tokens.
+ *
+ * Embeds can override anything: redefine `--parchment` to swap the
+ * background palette-wide, set `body { font-family: ... }` to pick a
+ * different typeface, or just ignore the tokens entirely and ship
+ * fully custom CSS. The cascade is theirs.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --parchment: #EDE2CE;
+  --rag: #FBF6E9;
+  --ink: #1B1611;
+  --ink-muted: #7A6F5C;
+  --cinnabar: #BC4538;
+  --cinnabar-faint: rgba(188, 69, 56, 0.10);
+  --teal: #3F8278;
+  --teal-faint: rgba(63, 130, 120, 0.10);
+  --cobalt: #3D5BA0;
+  --cobalt-faint: rgba(61, 91, 160, 0.10);
+  --ochre: #C49333;
+  --ochre-faint: rgba(196, 147, 51, 0.12);
+  --rule: #C5B89E;
+  --tooth: rgba(197, 184, 158, 0.45);
+  --serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, monospace;
+}
+
+html {
+  font-family: var(--serif);
+  color: var(--ink);
+  background: var(--parchment);
+  font-size: 19px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+}
+
+::selection {
+  background: var(--cinnabar-faint);
+  color: var(--ink);
+}
