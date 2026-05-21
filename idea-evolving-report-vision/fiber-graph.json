@@ -19,27 +19,6 @@
       "depth": 0,
       "narrative": false,
       "hasStructuredData": false
-    },
-    {
-      "id": "ai-futures/portolan/tapestry/constitution-tapestries-publish",
-      "label": "Tapestries: vellum-reader bake, GitHub Pages deploy",
-      "slug": "ai-futures/portolan/tapestry/constitution-tapestries-publish",
-      "kind": "analysis",
-      "createdAt": "2026-05-13T10:35:20.915Z",
-      "status": "active",
-      "tags": [
-        "tapestry",
-        "vellum",
-        "publish",
-        "static",
-        "constitution"
-      ],
-      "verdict": "Pipeline landed; two publications live. Review the surface and temper if it holds up — see Current State.",
-      "decisionCount": 0,
-      "findingCount": 0,
-      "tempered": false,
-      "narrative": false,
-      "hasStructuredData": false
     }
   ],
   "links": [],

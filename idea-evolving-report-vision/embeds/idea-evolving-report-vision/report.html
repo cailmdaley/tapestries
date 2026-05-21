@@ -699,19 +699,65 @@
     </div>
   </section>
 
+  <hr class="rule short">
+
+  <!-- OPEN QUESTIONS -->
+  <section>
+    <div class="section-mark">§ VI · Open questions</div>
+    <h2>What's not yet settled.</h2>
+
+    <p>
+      Three threads stay open. Each waits for pressure from the work
+      to force its answer; none is blocking the next move.
+    </p>
+
+    <h3>Where does the structured-reasoning surface live?</h3>
+    <p>
+      For now: free-form prose in the report's sections, plus markdown
+      image embeds for plots and media. Typed entries (ASTRA-style YAML
+      inside Findings, or as separate decision sub-fibers) wait for
+      pressure from the work — once a fiber has enough load-bearing
+      decisions that the free-form treatment loses signal, the typing
+      will earn its place.
+    </p>
+
+    <h3>What's the minimum Mystra primitives set?</h3>
+    <p>
+      The framing is <em>"expose Mystra primitives and let Claude
+      compose the page."</em> Step 5 of the trajectory. The set hasn't
+      been specified — we don't yet know what shapes recur enough to
+      justify factoring. The honest answer: write a few more rich
+      reports, watch which shapes appear repeatedly, then promote them.
+    </p>
+
+    <h3>Does this absorb into Shuttle, or stay a parallel layer?</h3>
+    <p>
+      Shuttle is the dispatcher; the evolving report is the work
+      product. They compose cleanly already — Shuttle dispatches a
+      worker against a constitution, the worker maintains
+      <code>report.html</code>, the human reads. The boundary needs
+      testing in practice before we know whether report-handling
+      deserves first-class treatment inside Shuttle or stays a
+      vellum-level concern.
+    </p>
+  </section>
+
   <hr class="rule">
 
   <!-- CODA -->
   <footer class="coda">
     <p>
       Filed under <em>ai-futures/portolan/idea-evolving-report-vision</em>
-      in loom. The fiber's body holds the markdown sketch; this file holds
-      the rich version. Both will accrete as the trajectory advances —
-      this is a vision, not a checkpoint.
+      in loom. The fiber's body holds spec (Desired State, Context); this
+      file is the body's report — auto-prepended by vellum when reading
+      the fiber. Both accrete as the trajectory advances; this is a
+      vision, not a checkpoint.
     </p>
     <p>
-      Step 1 landed at commit <code>ca5970e4</code>. Step 2 waits for
-      pressure from the work.
+      Step 1 landed at commit <code>ca5970e4</code>. The convention
+      itself — fibers with a <code>report.html</code> companion render
+      it above the markdown body — landed alongside this migration.
+      Step 2 waits for pressure from the work.
     </p>
   </footer>
 
